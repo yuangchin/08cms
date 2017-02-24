@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords"  content="{keywords}">
+<meta name="description" content="{abstract}">
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/newslist.css?{$user_version}"/>
+<script type="text/javascript">
+	function doZoom(a){document.getElementById("zoom").style.fontSize=a+"px";}
+</script>
+</head>
+<body>
+<!-- header begin -->
+{tpl$webdaohang}
+<div class="wrap clearfix">
+    <!--当前位置+搜索-->
+	{tpl$tpl_pososo_zp}
+    <div id="area2_body">
+        <!-- begin 1 -->
+        <div class="w710 l">
+            <div class="area_nr borh clearfix">
+                <div id="title">{subject}</div>
+                <div class="blank10"></div>
+                <div id="riqi">
+                发布者：{fabuzhe}&nbsp;&nbsp;联系电话：<i>{telphone}</i>&nbsp;&nbsp;更新时间：{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}&nbsp;&nbsp;点击量:<i><div id="_08_count_zp_{aid}" class="count08" url-params="{type: 'a', modid: 108, field: 'clicks'}">&nbsp;</div></i></div>
+
+                <div class="blank15"></div>
+                <div class="con" id="zoom">{c$content_njs_fy [cname=content_njs_fy/] [tclass=text/] [tname=content/] [dealhtml=safehtml/] [wordlink=1/] [mp=1/]}{/c$content_njs_fy}</div>
+                <div class='pnav' style="overflow:hidden;width:100%;">{$mpnav}</div>
+                <div class="blank10"></div>
+                <div class="shxpian">
+              {c$next [tclass=archives/] [chids=108/] [chsource=2/] [limits=1/] [orderstr=a.aid ASC/] [wherestr=aid>$aid/]}                  <span class="xyp"> 下一篇：<a href="{arcurl}" title="{subject}" target="_blank">{subject}</a></span>
+                  {/c$next}
+                 {c$pre [tclass=archives/] [limits=1/]  [chsource=2/] [chids=108/] [orderstr=a.aid DESC/] [wherestr=aid<$aid/]}
+                 <span> 上一篇：<a href="{arcurl}" title="{subject}" target="_blank">{subject}</a></span>{/c$pre}
+              </div>
+              <div class="blank0"></div>
+                <div id="pl" class="clearfix">
+                    <div class="red_right"><i class="ico08">&#xe669;</i><a href="javascript:doZoom(16);">大</a> <a href="javascript:doZoom(14);">中</a> <a href="javascript:doZoom(12);">小</a><i class="ico08">&#xf02f;</i><a href="javascript:window.print();">打印</a><i class="ico08">&#xf075;</i><i class="ico08">&#xf14b;</i><a href="#zxpl">我要评论</a><i class="ico08">&#xf011;</i><a href="javascript:window.close();">关闭</a></div>
+                    <!-- Baidu Button BEGIN -->
+                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="line-height:12px;padding:0"> <a style="padding-top:2px;margin-top:5px;padding-bottom:0"> 分享到：</a> <a class="bds_qzone"></a> <a class="bds_tsina"></a> <a class="bds_tqq"></a> <a class="bds_renren"></a> <a class="bds_t163"></a> <span class="bds_more" >更多</span> </div>
+                    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=18486" ></script>
+                    <script type="text/javascript" id="bdshell_js"></script>
+                    <script type="text/javascript">
+                    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                    </script>
+                    <!-- Baidu Button END -->
+
+                </div>
+            </div>
+            <div class="blank10"></div>
+        </div>
+        <!--招聘公用右侧栏-->
+		{tpl$tpl_zprsider}
+    </div>
+</div>
+{tpl$foot}
+</body>
+</html>

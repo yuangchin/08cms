@@ -1,0 +1,139 @@
+/* 头部广告信息 */
+#top {
+    width: auto;margin-bottom: 0;
+}
+.bgf {
+    background-color: #fff;
+}
+.plr30 {
+    padding: 0 30px;
+}
+.bza {
+    line-height: 28px;position: relative;overflow: hidden;
+
+    height: 141px; background-color: #f4f4f4;
+}
+.bza em {
+    font-size: 14px;
+    line-height: 28px;display: block; padding-top: 8px;
+}
+.bza i {
+    float: left; width: 141px;height: 140px;padding-right: 20px;
+
+    background: url(../images/kpyg-gzd.gif) no-repeat;
+}
+
+/* 开盘预告 */
+.kpyg-ct {
+    position: relative;
+
+    padding-top: 15px;
+}
+.kpyg-ct .wqhg {
+    position: absolute;top: 22px;right: 20px;
+}
+.kpyg-tit {
+    padding: 0 20px;
+
+    background-color: #7a3;
+}
+.kpyg-tit h2 {
+    font-family: Microsoft YaHei;
+    font-size: 24px; line-height: 38px; overflow: hidden;height: 38px; color: #fff;
+}
+.hot-lp {
+    margin-right: -10px;
+    margin-bottom: 10px;
+}
+.hot-lp li {
+    display: inline;
+    float: left; width: 306px;margin-top: 20px;padding: 0 37px;border-right: 1px solid #e4e1e0;
+}
+.hot-lp li:nth-child(3n) {
+    border-right: none;
+}
+.hot-lp li img {
+    width: 100%;
+}
+.hot-lp li h2 {
+    font-family: Microsoft YaHei;
+    font-size: 24px; line-height: 28px; overflow: hidden;height: 28px; padding: 10px 0 ;text-align: center;color: #f60;
+}
+.hot-lp li a,
+.f60 {
+    color: #f60;
+}
+.hot-lp li .act {
+    display: block;
+}
+.hot-lp .act .cont {
+    border-right: none;
+}
+.hot-lp li .lh {
+    font-size: 14px;
+    line-height: 28px;overflow: hidden;height: 28px;padding-left: 10px;color: #333;
+}
+.hot-lp li .lh.more {
+    background-color: #d6eeaa;
+}
+.hot-lp li b {
+    color: #666;
+}
+.hot-lp li i {
+    display: block;height: 35px;
+
+    background: url(../images/kpyg-li-bot.jpg) repeat-x;
+}
+
+/* 楼盘回顾 */
+.lphg-ct {
+    border-bottom: 2px solid #318059;
+}
+.lphg-ct table {
+    width: 100%;
+
+    border-width: 2px;border-color: #fff;
+}
+.lphg-ct .table1 {
+    border-collapse: collapse;
+}
+.lphg-ct table td {
+    padding: 5px; border-color: #fff;
+}
+.lphg-ct table td strong {
+    color: #888;
+}
+.lphg-ct table .td1 {
+    font-family: Microsoft YaHei; font-size: 20px;
+
+    color: #fff; background-color: #693;
+}
+.lphg-ct table .td2 {
+    color: #666;
+    background-color: #e6fad0;
+}
+
+/* 往期回顾 */
+.wqhg li {
+    display: inline;
+    float: left;width: 250px;margin: 10px 17px;
+}
+.wqhg li img {
+    padding: 3px;
+
+    border: 1px solid #ddd;
+}
+.wqhg li a {
+    cursor: pointer;
+}
+.wqhg li a:hover h3 {
+    color: #f00;
+}
+.wqhg li.fd {
+    float: right; margin-right: 0;
+}
+.wqhg li h3 {
+    font-size: 14px;font-weight: bold;line-height: 28px; overflow: hidden;
+
+    height: 28px; text-align: center; color: #666;
+}

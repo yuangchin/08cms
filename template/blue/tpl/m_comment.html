@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{title}-{companynm}-{$hostname}</title>
+ <meta content="{companynm}" name="keywords"> 
+ <meta content="{companynm}{if $dizhi},公司地址是{dizhi}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/rater-star.css?{$user_version}">
+<script>var $tplurl = '{$tplurl}';</script>
+</head>
+<body>
+<!--header begin-->
+ {tpl$jz_m_head} 
+<!--内容开始-->
+<div class="area"> 
+  <!--左侧栏开始-->
+  {tpl$jz_m_left}
+  <!--右侧栏开始-->
+  <div class="right_bar">
+    <div class="R_title">
+        <div class="R_title_L">业主评论 （当前平均得分{zonghepf}）</div>
+    </div>
+    <div class="R_con1">
+    <!--评论列表开始-->
+		{c$yzpllist [cname=业主评论列表/] [tclass=commus/] [cuid=31/] [checked=1/] [orderstr=cid desc/] [wherestr=tomid='$mid'/] [mp=1/]}<div class="list-sjs">
+        <div class="list-sjs1">
+            <div class="list-sjs1-1">{nicheng}</div><div class="list-sjs3-1">{c$createdate_ymdhms [cname=createdate_ymdhms/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$createdate_ymdhms}</div>
+            <div class="list-sjs1-2"><span>服务：<strong class="green1">{service}</strong></span><span>设计：<strong class="green1">{design}</strong></span><span>价格：<strong class="green1">{price}</strong></span><span>施工：<strong class="green1">{process}</strong></span><span>售后：<strong class="green1">{aftersale}</strong></span></div>
+        </div>
+        <div class="list-sjs2">{content}</div>
+        <span class="blank10"></span>
+{if $v['reply']}
+        <div class="list-sjs4 replyContent">
+            <div class="close"><img src="{$tplurl}newimages/close5.gif"></div>
+            <ul>
+              <li><span class="red"> {reply}({c$replydate_ymd [cname=replydate_ymd/] [tclass=date/] [tname=replydate/] [date=Y-m-d/]}{/c$replydate_ymd})</span></li>
+            </ul>
+        </div>
+{/if}
+        <div class="cl"></div>
+        </div>{/c$yzpllist}
+        <div>
+        
+<div class="ptb10">{$mpnav}</div>
+</div>
+
+        </div>
+    
+    <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+    <span class="blank10"></span>
+    <div class="R_title">
+      <div class="R_title_L">我也要评论</div>
+    </div>
+    <div class="R_con1">
+        <div class="blank10"></div>
+        <form id="commentForm" method="post" onsubmit="return fyCummus(this,'我要评论');">
+        <input type="hidden" name="cuid" value="31" />
+        <input type="hidden" name="tomid" value="{mid}" />
+        <table width="650" align="center">
+        <tbody><tr>
+            <td>服务</td><td>
+            <span id="iservice">
+
+            </span>
+            </td>
+            <td>价格</td><td>
+            <span id="iprice">
+            
+            </span></td>
+            <td>设计</td><td>
+            <span id="idesign">
+            
+            </span></td>
+        </tr>
+        <tr>
+            <td>施工</td><td>
+            <span id="iprocess">
+            
+            </span></td>
+            <td>售后</td><td><span id="iafterSale">
+            
+            </span>
+            </td>
+            <td> </td><td> </td>
+        </tr>
+        <tr>
+            <td colspan="6"><textarea class="lmtcontent" style="width: 600px; height: 80px; border: 1px solid rgb(204, 204, 204); padding: 5px;" id="cmtcontent" name="fmdata[content]"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="6" height="5"></td>
+        </tr>
+        <tr>
+            <td valign="middle" colspan="2">您的昵称：<input type="text" style="border: 1px solid rgb(204, 204, 204); height: 20px;" name="fmdata[nicheng]">&nbsp;</td>
+            <td valign="middle" colspan="4"><input type="hidden" name="bsubmit" value="1" /><input type="image" src="{$tplurl}newimages/comment_button.gif"></td>
+        </tr>
+        </tbody></table>
+        <input type="hidden" name="fmdata[service]" id="service" value=""/>
+        <input type="hidden" name="fmdata[price]" id="price" value=""/>
+        <input type="hidden" name="fmdata[design]" id="design" value=""/>
+        <input type="hidden" name="fmdata[process]" id="process" value=""/>
+        <input type="hidden" name="fmdata[aftersale]" id="afterSale" value=""/>
+        <div class="blank10"></div>
+    </form></div>
+    <div class="R_B">
+      <div class="R_B_L"></div>
+      <div class="R_B_R"></div>
+    </div>
+  </div>
+  <!--右侧栏结束--> 
+</div>
+<!--内容结束--> 
+<!--footer begin--> 
+<span class="blank10"></span>
+	{tpl$jz_foot}
+<!--footer end-->
+<script src="{$tplurl}js/rater-star.js" type="text/javascript"></script>
+<script src="{$tplurl}js/comment.js" type="text/javascript"></script>
+</body>
+</html>

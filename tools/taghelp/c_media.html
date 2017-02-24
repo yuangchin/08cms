@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">视频模块 media</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>视频模块是调用模型字段类型为[视频]的内容。</p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">参数</div>
+<span class="blank5"></span>
+1. 内容来源应为视频类型。当本标识直接用于media.php的模板中时，内容来源留空。<br />
+2. {url}用于调用附件url，{playbox}用于调用该视频的播放模块。<br />
+3. 播放器宽度或播放器高度为0时，将会以系统在〖系统设置〗→〖网站参数〗→〖附件设置〗里的媒体设置的大小显示。<br />
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+<div>
+	<div>
+        <span class="blank5"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/vid.jpg" class="pad15" /></li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp><embed width="100%" height="100%" align="middle" allowfullscreen="true" type="application/x-shockwave-flash" 
+allowscriptaccess="sameDomain" quality="high" src="http://player.youku.com/player.php/sid/XMjUzMTg4Mjk2/v.swf"></xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li class="bg3">说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>调用视频内容。<br />
+        <b class="FcR">整体截图如下</b><br />
+        <img  src="img/vid2.jpg" class="img"/>
+        
+        </p></li>
+    </div>
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

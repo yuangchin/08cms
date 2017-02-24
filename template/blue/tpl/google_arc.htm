@@ -1,0 +1,115 @@
+<?php echo '<?';?>xml version="1.0" encoding="{$mcharset}"<?php echo '?>';?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+    <url> 
+        <loc><?=htmlspecialchars($cms_abs)?></loc> 
+        <lastmod><?=date('Y-m-d')?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>1.0</priority> 
+    </url> 
+    {c$gg_zixun [cname=google地图_资讯/] [tclass=archives/] [val=v/] [limits=100/] [chsource=2/] [chids=1/]}<url> 
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_zixun}
+    {c$gg_house [cname=google地图_楼盘/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=4/]}<url> 
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_house}
+
+    {c$baidu_house [cname=baidu_看房团/] [tclass=archives/] [limits=10/] [chsource=2/] [chids=110/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_house}
+
+    {c$baidu_house [cname=baidu_特价房/] [tclass=archives/] [limits=10/] [chsource=2/] [chids=117/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_house}
+    {c$gg_ersou [cname=google地图_二手房/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=3/]}<url> 
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_ersou}
+    {c$gg_chuzu [cname=google地图_出租/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=2/]}<url> 
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_chuzu}
+    {c$gg_huxin [cname=google地图_户型/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=11/]}<url> 
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_huxin}
+    {c$baidu_huixing [cname=baidu_相册/] [tclass=archives/] [limits=30/] [chsource=2/] [chids=7/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_huixing}
+    {c$gg_video [cname=google地图_视频/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=12/]}<url> 
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_video}
+    {c$gg_zuanti [cname=google地图_专题/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=14/]}<url> 
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_zuanti}
+    {c$baidu_zuanti [cname=baidu_招聘/] [tclass=archives/] [limits=10/] [chsource=2/] [chids=108/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_zuanti}
+    {c$gg_sjs [cname=google地图_设计师/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=101/]}<url> 
+        <loc><?=htmlspecialchars($v['marcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_sjs}
+    {c$gg_zxal [cname=google地图_装修案例/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=102/]}<url> 
+        <loc><?=htmlspecialchars($v['marcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_zxal}
+    {c$gg_sp [cname=google地图_商品/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=103/]}<url> 
+        <loc><?=htmlspecialchars($v['marcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_sp}
+    {c$gg_gsdt [cname=google地图_公司动态/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=104/]}<url> 
+        <loc><?=htmlspecialchars($v['marcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_gsdt}
+    {c$gg_tg [cname=google地图_家装团购/] [tclass=archives/] [limits=50/] [chsource=2/] [chids=105/]}<url> 
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc> 
+        <lastmod><?=date('Y-m-d',$v['createdate'])?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+    </url> {/c$gg_tg}
+</urlset>

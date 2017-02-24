@@ -1,0 +1,68 @@
+/* CSS Document */
+.con2C3 {
+    overflow: hidden;height: 146px; padding: 2px;
+
+    border: 1px solid #cdcdcd;
+}
+.con2C31A {
+    float: left;
+}
+.txt2 {
+    line-height: 18px;
+
+    width: 115px; height: 18px; border: 1px solid #c4c4c4;
+}
+.con2C4 {
+    line-height: 24px; clear: both;overflow: hidden;height: 24px; background: url(../newimages/t_bg3.gif) repeat-x center center;
+}
+.con2A2C {
+    float: right; padding: 9px 4px 8px 10px;background: #fff;
+}
+.con2A2A {
+    float: left; padding: 0 10px 0 4px; background: #fff;
+}
+.con2A2B {
+    float: left; width: 2px;background: url(../newimages/baoliao_L.gif) no-repeat center center;
+}
+.conB31 {
+    padding: 8px;
+
+    border: 1px solid #e2e2e2; border-top: none;
+}
+.title5 {
+    color: #2f2f2f;
+    border-bottom: 1px solid #e2e2e2;
+}
+.conB31 li {
+    line-height: 24px;overflow: hidden;
+
+    height: 24px;
+}
+.con3_list {
+    clear: both;
+
+    height: 105px; padding: 15px; border-bottom: 1px dashed #e8e6d3;
+}
+.con3_list:hover {
+    background: #fafafa;
+}
+.con3a {
+    float: left; width: 154px;
+}
+.con3b {
+    float: left; width: 410px;
+    padding-left: 15px;
+}
+.con3c {
+    float: right; width: 100px; color: #2a2a2a;
+}
+.con3a {
+    position: relative;
+
+    height: 104px; padding: 1px 0 0 1px;background: url(../newimages/zxtk_bg.gif) no-repeat;
+}
+.con3a .icon {
+    position: absolute;top: -1px;left: -1px;width: 39px;height: 38px;cursor: pointer;
+
+    background: url(../images/lpzd.gif);
+}

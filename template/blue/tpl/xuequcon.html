@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [cname=激活栏目标题1/] [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link type="text/css" rel="stylesheet" href="{$tplurl}css/xuequfang.css?{$user_version}" />
+<?php $navNoFixed = 1; ?>
+<?php $pagetype = 'oldhouse'; ?>
+</head>
+<body>
+{tpl$head}
+<div class="wrap  clearfix">
+    <!--二手出租房公用搜索-->
+    <div class="bread">
+        <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a>{c$nav [tclass=nownav/] [coids=,caid,ccid43,ccid1,ccid2,ccid4,ccid5,ccid6,ccid12/]}<i class="pipe">/</i>{if $v['indexurl'] != '#'}<a href="{indexurl}">{title}</a>{else}{title}{/if}{/c$nav}<i class="pipe">/</i>{subject}
+    </div>
+    <div class="l w890">
+        <h2>{subject}</h2>
+        <div id="gk" class="xdec jqFixed jqScrollspy">
+            <ul class="clearfix">
+                <li><a class="act" href="#gk">学校概况</a></li>
+                <li><a href="#js">学校介绍</a></li>
+                {if $dt}
+                <li><a href="#dt">学校地图</a></li>
+                {/if}
+                <li><a href="#xq">对口小区</a></li>
+                <li><a href="#esf">二手房</a></li>
+                <li><a href="#czf">出租房</a></li>
+            </ul>
+        </div>
+        <?php $zbes = 0; $zbcz = 0; ?>
+        <div class="xxsy clearfix">
+            <div class="l"><a href="{arcurl}"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=450/] [maxheight=350/] [thumb=1/]} src="{url}"  height="350" width="450" {/c$image}/></a></div>
+            {c$archives [cname=list/] [limits=3000/] [tclass=archives/] [chsource=2/] [chids=3/] [detail=1/] [isfunc=1/] [wherestr=u_zhoubian($aid)/]}
+            <?php $zbes = $_archives; ?>
+            [row] [/row]
+            {/c$archives}
+            {c$archives [cname=list/] [limits=3000/] [tclass=archives/] [chsource=2/] [chids=2/] [detail=1/] [isfunc=1/] [wherestr=u_zhoubian($aid)/]}
+            <?php $zbcz = $_archives; ?>
+            [row] [/row]
+            {/c$archives}
+            <div class="r w412">
+                <ul>
+                    <!-- <li><em>对口小区均价</em>：<span><em>8850-12580</em>元/m&sup2;</span></li> -->
+                    <li class="es"><em>二手房</em>：<i><?=count($zbes); ?></i>套 <em>出租房</em>：<i><?=count($zbcz); ?></i>套</li>
+                    <li class="xz"><i>所属性质：</i>{if $leibie}{c$leibie [cname=leibie/] [tclass=field/] [tname=leibie/] [type=archive/] [fname=leibie/]}{/c$leibie}{else}-{/if}</li>
+                    <li><i>级别：</i>{if $jibie}{c$jibie [cname=jibie/] [tclass=field/] [tname=jibie/] [type=archive/] [fname=jibie/]}{/c$jibie}{else}-{/if}</li>
+                    <li><i>地址：</i>{dizhi}</li>
+                    <li class="clearfix tl">
+                        <i class="ico08 l">&#xe744;</i>
+                        <div class="l">
+                            <p class="tel">{dianhua}</p>
+                            <p class="lx">联系时请告知在“{$hostname}”上看到的，谢谢</p>
+                        </div>
+                    </li>
+                 </ul>
+            </div>
+        </div>
+        <div class="blank15"></div>
+        <div id="js" class="xxjs">
+            <div class="xxjst">学校介绍</div>
+            <div class="xxjsb">
+                {abstract}
+            </div>
+        </div>
+        <div class="blank25"></div>
+        {if $dt}
+        <div id="dt" class="xxmap">
+            <div class="xxmapt">学校地图</div>
+            <div class="xxmapb">
+                <div style="width: 890px ; height: 350px;">
+                    <iframe marginwidth="0" marginheight="0" src="{$cms_abs}tools/pointer.html#lat={dt_0}&lng={dt_1}&title={subject}&zoom=12" frameborder="0"  height="350" width="890" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="blank25"></div>
+        {/if}
+        <div id="xq" class="gongyong">
+            <div class="gongyongt clearfix">
+                <div>对口小区</div>
+            </div>
+            <dl class="clearfix">
+                <dt>
+                    <span class="gy1">小区名称</span>
+                    <span class="gy2">小区户数</span>
+                    <span class="gy3">小区均价</span>
+                    <span class="gy4">出售房源</span>
+                    <span class="gy5">出租房源</span>
+                </dt>
+                {c$archives [cname=cxcx/] [tclass=archives/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/] [wherestr=(leixing='0' OR leixing='2')/]}
+                <dd>
+                    <span class="gy1"><a href="{arcurl7}" target="_blank">{subject}</a></span>
+                    <span class="gy2">{if !empty($v['xqhs'])}{xqhs}{else}-{/if}</span>
+                    <span class="gy3"><i>{dj}</i>元/m&sup2;</span>
+                    <span class="gy4">{c$yading [tclass=acount/] [val=u/] [chsource=2/] [chids=3/] [mode=in/] [arid=3/] [detail=1/]}{if $u['counts']}{counts}{else}0{/if}{/c$yading}</span>
+                    <span class="gy5">{c$yading [tclass=acount/] [val=u/] [chsource=2/] [chids=2/] [mode=in/] [arid=3/] [detail=1/]}{if $u['counts']}{counts}{else}0{/if}{/c$yading}</span>
+                </dd>
+                {/c$archives}                            
+            </dl>
+        </div>
+
+        <div class="blank25"></div>
+        <div id="esf" class="gongyong">
+            <div class="gongyongt clearfix">
+                <div>二手房</div>
+            </div>
+            <dl class="clearfix">
+                <dt>
+                    <span class="gy1">房源名称</span>
+                    <span class="gy2">户型</span>
+                    <span class="gy3">面积</span>
+                    <span class="gy4">价格</span>
+                    <span class="gy5">日期</span>
+                </dt>
+                <?php $i = 1; ?>
+                {loop $zbes $k $v}
+                <dd>
+                    <span class="gy1"><a href="{$v[arcurl]}" target="_blank">{$v[subject]}</a></span>
+                    <span class="gy2">{$v[shi]}室{$v[ting]}厅</span>
+                    <span class="gy3">{$v[mj]}m&sup2;</span>
+                    <span class="gy4">{if $v['zj']}<i>{$v[zj]}</i>万{else}面议{/if}</span>
+                    <span class="gy5">{c$date [tclass=date/] [tname=$v[createdate]/] [date=m-d/]}{/c$date}</span>
+                </dd>
+                <?php 
+                    if ($i == 10) {
+                        break;
+                    } 
+                    $i ++;
+                ?>
+                {/loop}
+            </dl>
+        </div>
+
+        <div class="blank25"></div>
+        <div id="czf" class="gongyong">
+            <div class="gongyongt clearfix">
+                <div>出租房</div>
+            </div>
+            <dl class="clearfix">
+                <dt>
+                    <span class="gy1">房源名称</span>
+                    <span class="gy2">户型</span>
+                    <span class="gy3">面积</span>
+                    <span class="gy4">价格</span>
+                    <span class="gy5">日期</span>
+                </dt>
+                <?php $i = 1; ?>
+                {loop $zbcz $k $v}
+                <dd>
+                    <span class="gy1"><a href="{$v[arcurl]}" target="_blank">{$v[subject]}</a></span>
+                    <span class="gy2">{$v[shi]}室{$v[ting]}厅</span>
+                    <span class="gy3">{$v[mj]}m&sup2;</span>
+                    <span class="gy4">{if $v['zj']}<i>{$v[zj]}</i>元/月{else}面议{/if}</span>
+                    <span class="gy5">{c$date [tclass=date/] [tname=$v[createdate]/] [date=m-d/]}{/c$date}</span>
+                </dd>
+                <?php 
+                    if ($i == 10) {
+                        break;
+                    } 
+                    $i ++;
+                ?>
+                {/loop}
+            </dl>
+        </div>
+    </div>
+    <div class="r w280">
+        <div class="coltit3">
+            <h3 class="title">热门学校</h3>
+        </div>
+        <div class="bd-gray p6-25 clearfix">
+            <ul class="list">
+              {c$tjjcon [tclass=archives/] [chids=8/] [chsource=2/] [casource=1/] [caids=26/] [orderstr=a.wclicks DESC/] [ttl=1200/]} <li><span class="more arial"><i class="c2">{if $v['ccid45']}<span>{ccid45title}</span>{/if}</i></span><a href="{arcurl}" target="_blank" title="吉利家园">{subject}</a></li>
+              {/c$tjjcon}
+                   
+            </ul>
+        </div>    
+
+         <div class="clearfix">
+            <div class="bd">
+               {c$cnode [tclass=cnode/] [listby=ca/] [casource=3/]}
+                    <a href="{indexurl}" target="_blank">
+                    <div class="r gengduo"></div>
+                    </a>
+                {/c$cnode}
+                <h3 class="l bd1">学区房学校推荐</h3>
+            </div>
+            <div class="area2_10"> 
+                <ul class="tjtuw clearfix">
+                    {c$pushs [tclass=pushs/] [paid=push_xqf/] [limits=6/] [ttl=600/]}                        
+                        {c$archive [tclass=archive/] [chid=8/] [val=a/] [id=$v[fromid]/] [detail=1/]}                         
+                        <li>
+                            <a href="{arcurl}" target="_blank" title="{subject}"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=126/] [maxheight=90/] [thumb=1/]} src="{url_s}"  height="90" width="126" {/c$image}/><em>{subject}</em></a>
+                            <p><i class="ico">{ccid45title}</i>{if $a['leibie']}{c$leibie [cname=leibie/] [tclass=field/] [tname=leibie/] [type=archive/] [fname=leibie/]}{/c$leibie}{else}待定{/if}</p>
+                        </li>
+                        {/c$archive}
+                    {/c$pushs}
+                </ul>
+            </div>
+        </div>
+    </div>    
+</div>
+{tpl$foot}
+</body>
+</html>

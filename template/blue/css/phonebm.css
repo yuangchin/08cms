@@ -1,0 +1,175 @@
+body {
+    background: #d7d7d7;
+}
+.wrap1 {
+    width: 960px;min-width: 960px;
+    margin: 0 auto;
+}
+.bgFB {
+    border-bottom: 1px solid #ddd;
+    background: #fbfbfb;
+}
+.pR15 {
+    padding-right: 15px;
+}
+.mT10 {
+    margin-top: 10px;
+}
+.tophead {
+    height: 72px; padding-top: 8px; background: url(../images/linebg.gif) 0 74px repeat-x #fff;
+}
+.phnav a {
+    font-size: 14px;  font-weight: bold;float: left;
+
+    padding: 6px 18px;
+}
+.phnav a.act {
+    color: #fff;
+    background: #4375be;
+}
+.phnav a:hover {
+    text-decoration: none;color: #fff;
+    background: #000;
+}
+.overbg {
+    background: url(../images/overbg.gif);
+}
+.phdetail {
+    height: 291px; padding-top: 148px; background: url(../images/introbg.jpg) no-repeat;
+}
+.ewmdown a {
+    float: left;
+
+    width: 110px; height: 110px; margin-right: 42px;
+}
+.ewmdown a.sed {
+    margin-right: 83px;
+}
+.ewmdown a.first {
+    margin-right: 80px;
+}
+.bntdown a {
+    float: left;
+
+    width: 240px; height: 70px; margin: 35px 41px 0 0;
+}
+.bntdown a.first {
+    margin-right: 22px;
+}
+.linebg2 {
+    clear: both;overflow: hidden;
+
+    height: 6px; background: url(../images/linebg2.gif) repeat-x;
+}
+.bgD7 {
+    background: #d7d7d7;
+}
+.phmintro {
+    float: left;
+
+    margin-left: -12px; _display: inline;
+}
+.phmintro li {
+    float: left;
+
+    width: 229px; height: 325px; margin: 15px 0 0 14px; background: #fff                                   ;background: url(../images/picbg.gif);_display: inline;
+}
+.phmintro li img {
+    padding: 4px 0 0 7px;
+}
+.phmintro li.first {
+    margin-left: 0;
+}
+.borTF {
+    border-top: 1px solid #eaeaea;
+}
+/***---
+手机wrap版
+--------------------------------------***/
+.bgFF {
+    background: #fff;
+}
+.phwpshow {
+    width: 425px; height: 805px; background: url(../images/wphone.gif) no-repeat;
+}
+.phwpshow iframe {
+    overflow-x: hidden;
+
+    margin: 132px 0 0 54px; border: 0;
+}
+.w535 {
+    width: 535px;
+}
+.wapTit,
+.wapadr,
+.wapadr a,
+.wapintro i {
+    background: url(../images/wapbg.gif) no-repeat;
+}
+.wapTit {
+    width: 342px; height: 110px; margin: 0 35px 0 5px; _display: inline;
+}
+.waperm {
+    width: 120px; height: 120px;
+}
+.wapadr {
+    width: 520px; height: 50px; background-position: 38px -129px;
+}
+.wapadr a,
+.wapadr input,
+.wapintro i,
+.wapintro div {
+    float: left;
+}
+.wapadr a {
+    width: 40px; height: 50px; background-position: -413px -1px;
+}
+.wapadr a:hover {
+    background-position: -356px 0;
+}
+.wapadr input {
+    font-size: 20px; font-weight: 700; line-height: 34px; overflow: hidden;
+
+    width: 291px; height: 30px; margin: 5px 0 0 164px; color: #666; border: 0;
+}
+.wapintro a:hover {
+    text-decoration: none;
+}
+.wapintro i {
+    width: 50px; height: 50px; margin: 8px 10px 0 0;background-position: -409px -59px;
+}
+.wapintro a:hover i {
+    background-position: -355px -59px;
+}
+.wapintro i.ico2 {
+    background-position: -168px -187px;
+}
+.wapintro a:hover i.ico2 {
+    background-position: -104px -186px;
+}
+.wapintro i.ico3 {
+    background-position: -52px -187px;
+}
+.wapintro a:hover i.ico3 {
+    background-position: 1px -188px;
+}
+.wapintro i.ico4 {
+    background-position: -287px -187px;
+}
+.wapintro a:hover i.ico4 {
+    background-position: -226px -185px;
+}
+.wapintro a:hover b {
+    color: #5070b0;
+}
+.wapintro div {
+    width: 460px; margin-bottom: 30px;
+}
+.wapintro b {
+    font-size: 18px; font-weight: normal;line-height: 40px; display: block; overflow: hidden;
+
+    height: 40px;
+}
+.wapintro p {
+    font-size: 14px; color: #999;
+}

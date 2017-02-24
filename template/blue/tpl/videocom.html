@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords"  content="{keywords}">
+<meta name="description" content="{abstract}">
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/shipin.css?{$user_version}" />
+</head>
+<body>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+    {tpl$tpl_vid_head}
+    <div class="wrap">
+        <div class="blank10"></div>
+        <div class="dqwz">
+            当前位置:  <a href="{c$vedurl [tclass=cnode/] [listby=ca/] [casource=30/]}{indexurl}{/c$vedurl}" target="_blank">视频首页</a> &gt; {c$vedlmurl [tclass=cnode/] [listby=ca/] [casource=active/]}<a href="{indexurl}">{title}列表</a>{/c$vedlmurl}
+        </div>
+        <div class="blank20"></div>
+        <div class="w900 l"> 
+            <div class="pr20">
+                <h2 class="nrybt">{subject}</h2>
+                <div class="blank20"></div>           
+                <div id="video" class="video">
+                    {if $html}
+                        <div class="vdloading"></div>
+                        <div style="display:none;">{$html}</div>
+                        {else}
+                        {c$video [tclass=flash/] [tname=scsp/] [height=500/]}{playbox}{/c$video}
+                        {c$videomk [tclass=media/] [tname=scsp/] [height=500/]}{playbox}{/c$videomk}
+                        {/if}
+                </div>
+           
+                <div class="fxdj clearfix">
+                    <div class="r">
+                        更新时间：{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}&nbsp;&nbsp;来源：{source}&nbsp;&nbsp;点击:<div id="_08_count_xxx_{aid}" class="count08" url-params="{type: 'a', modid: 12, field: 'clicks'}">&nbsp;</div>
+                     </div>
+                    <div class="bdsharebuttonbox">
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    </div>
+                    <script>
+                        window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                    </script>
+                </div>
+                <div class="blank50"></div>
+                <div class="spms">
+                    {c$text [cname=视频介绍/] [tclass=text/] [tname=content/] [dealhtml=safehtml/] [wordlink=1/] [mp=1/]}{/c$text}
+                </div> 
+            </div> 
+        </div>
+        <div class="w300 r">
+            <h2 class="tjph">推荐视频</h2>
+            <div class="blank15"></div>
+            <ul class="tjphall">
+                {c$pushs [tclass=pushs/] [paid=push_96/] [limits=5/][ttl=600/]}
+                <li href="{url}" class="tjspnr {if $v['sn_row']==5}pb20{/if} clearfix">
+                        <a href="{$v['url']}" target="_blank">
+                                {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=67/]}<img src="{url}" width="100" height="67" alt="{$v['subject']}" data-url="{$v['url']}"/>{/c$image}
+                            </a>
+                        <h4><a href="{url}" target="_blank">{subject}</a></h4>
+                        <div class="gxdj">更新：{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}</div>                       
+                </li>   
+                {/c$pushs}
+                
+            </ul>
+            <div class="blank20"></div>
+            <h2 class="tjph">热播排行</h2>
+            <div class="blank15"></div>
+            <ul class="tjphall">
+                {c$jhsplb [cname=激活视频列表/] [tclass=archives/] [chsource=2/] [chids=12/] [orderstr=a.clicks DESC/] [ttl=600/] [caidson=1/] [casource=2/]}
+                {if $v['sn_row']==1}
+                <li class="rbphnrno1 clearfix">
+                    <div class="no1 l">
+                        NO.1
+                    </div>
+                    <h4><a href="{arcurl}" target="_blank">{subject}</a></h4>
+                    <div class="gxdj">点击：<div id="_08_count_aaa_{aid}" class="count08" url-params="{type: 'a', modid: 12, field: 'clicks'}"></div>    
+                </li>
+                {else}
+                <li class="rbphnrno clearfix">
+                    <div class="{if $v['sn_row']<4}no23{else}no{/if}">
+                        {$v['sn_row']}
+                    </div>
+                    <a href="{arcurl}" target="_blank">
+                        {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=67/]}<img src="{url}" width="100" height="67" alt="{$v['subject']}" data-url="{$v['arcurl']}"/>{/c$image}
+                    </a>
+                    <h4><a href="{arcurl}" target="_blank">{subject}</a></h4>
+                    <div class="gxdj">点击：<div id="_08_count_aaa_{aid}" class="count08" url-params="{type: 'a', modid: 12, field: 'clicks'}"></div>    
+                </li>
+                {/if}
+                {/c$jhsplb}
+            </ul>
+        </div>
+        <div class="blank15"></div>
+    </div>
+{tpl$foot}
+{if $html}
+<!-- 自动播放{html}?isAutoPlay=true -->
+<script type="text/javascript">
+if($("#video").html().indexOf("iframe")==-1){
+   $("#video").html('<embed src="{html}" quality="high" width="100%" height="500" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="sameDomain"/>');
+}else{
+    $("#video").html('{html}');
+    $("#video iframe").css({"width":"100%","height":500}); 
+}
+</script>
+{/if}
+</body>
+</html>

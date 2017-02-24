@@ -1,0 +1,60 @@
+    <!--区块标识：资讯右侧栏-->
+    <div id="area2_2"> 
+      <!-- hot news -->
+      <div id="rank-news" class="borgray clearfix">
+          <div class="area2_3">
+              <h3 class="rmlp">热文排行</h3>
+          </div>
+        <div class="area2_4">
+          <ul class="phicon">
+            {c$archives [tclass=archives/][cname=文档列表/] [limits=10/] [chsource=2/] [chids=1/] [caidson=1/] [casource=2/] [orderstr=a.clicks DESC/] [ttl=600/]}
+                <li>
+                    <em class="{if $v['sn_row'] < 4}ccc{/if}">{$v['sn_row']}</em><a href="{arcurl}" target="_blank">{c$subject [tclass=text/] [tname=subject/] [trim=100/][color=color/]}{/c$subject}</a>
+                </li>
+            {/c$archives}
+          </ul>
+        </div>
+      </div>
+      <!-- /hot news -->
+      <!-- 热门楼盘 -->
+      <div class="borgray clearfix">
+        <div class="area2_3"> 
+            {c$cnode [tclass=cnode/] [listby=ca/] [casource=2/]}
+              <a href="{indexurl1}" target="_blank"><p class="gengduo" title="更多"></p></a>
+            {/c$cnode}
+            <h3 class="rmlp">热门楼盘</h3>
+        </div>
+        <div class="area2_10"> 
+          <ul class="tjtuw clearfix">
+            {c$archives [tclass=archives/][cname=文档列表/] [limits=6/] [chsource=2/] [chids=4/] [casource=1/] [caids=2/] [detail=1/] [orderstr=a.clicks DESC/] [wherestr=(leixing='0' OR leixing='1')/] [ttl=600/]}
+              <li>
+                  <a href="{arcurl}" target="_blank" title="{subject}"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=126/] [maxheight=90/] [thumb=1/]} src="{url_s}"  height="90" width="126" {/c$image}/><em>{subject}</em></a>
+                  <p><i class="ico">{ccid1title}</i>{if $v['dj']}<i class="pri">{dj}</i>元/m&sup2;{else}待定{/if}</p>
+              </li>
+              {/c$archives}       
+          </ul>
+        </div>
+      </div>
+      <!-- /热门楼盘 -->
+      <!-- 二手楼盘 -->
+      <div class="borgray clearfix">
+        <div class="area2_3"> 
+            {c$cnode [tclass=cnode/] [listby=ca/] [casource=3/]}
+            <a href="{indexurl}" target="_blank"><p class="gengduo" title="更多"></p></a>
+            {/c$cnode}
+            <h3 class="rmlp">热门二手房</h3>
+        </div>
+        <div class="area2_10"> 
+            <ul class="tjtuw clearfix">
+                {c$archives [tclass=archives/][cname=文档列表/] [limits=6/] [chsource=2/] [chids=3/] [casource=1/] [caids=3/] [orderstr=a.clicks DESC/] [detail=1/] [ttl=600/]}
+                <li>
+                    <a href="{arcurl}" target="_blank" title="{subject}"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=126/] [maxheight=90/] [thumb=1/]} src="{url_s}"  height="90" width="126" {/c$image}/><em>{subject}</em></a>
+                    <p><i class="ico">{ccid1title}</i>{if $v['zj']}<i class="pri">{zj}</i>万元{else}待定{/if}</p>
+                </li>
+                {/c$archives}
+           </ul>
+        </div>
+      </div>
+      <!-- /二手楼盘 -->
+    </div>
+    <!--/区块标识：资讯右侧栏-->

@@ -1,0 +1,167 @@
+{c$member [tclass=member/] [chids=2/] [chsource=2/] [val=m/] [detail=1/]}
+<?php if(empty($m['mid']))cls_Parse::Message('请指定会员'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={$mcharset}">
+	<title>{xingming}网店-网店介绍-{$hostname}</title>
+	<meta content="{xingming}" name="keywords">
+    <meta content="{xingming}{if !empty($m['address'])},地址是{address}{/if}{if $m['lxdh']},电话是{lxdh}{/if}{if $m['qq']},联系QQ是{qq}{/if}" name="description">
+    {tpl$m_headinner}
+    <?
+    $otherdf=1;
+    $pagelimit=8;
+    ?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="{xingming}网店" class="innblank44 active" data-btn="back">
+        <footer>
+        <a href="#index_section" data-target="section" class="active">
+            <i class="icon-f015"></i>店铺首页</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=1"><i class="icon-e61a"></i>二手房</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=2"><i class="icon-e623"></i>出租</a>
+        <a href="#message_section" data-target="section"><i class="icon-e755"></i>留言</a>
+        {if $m['lxdh']}
+        <a href="tel:{lxdh}"><i class="icon-e612"></i>打电话</a>
+        {/if}
+        </footer>
+        {tpl$m_header}
+        <article class="active">
+            <div>
+                <ul class="list list-media inset mt10">
+                    <li class="divider">基本信息</li>
+                    <li class="pset">
+                            <img width="100" height="130" alt="{xingming}" src="{c$image [tclass=image/] [tname=image/] [val=u/] [emptyurl=images/common/mlogo.gif/]}{url}{/c$image}"/>
+                            <strong class="ctrimg">{xingming} &nbsp;{c$fromid [cname=经纪人身份认证2/] [tclass=fromid/] [val=aa/] [type=mctid/] [id=$m[mctid2]/]}<img {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="{cname}通过" alt="身份认证"/>{/c$fromid}&nbsp;{c$fromid [cname=经纪人执照认证2/] [tclass=fromid/] [val=bb/] [type=mctid/] [id=$m[mctid3]/]}<img {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="{cname}通过" alt="执照认证"/>{/c$fromid}</strong>
+                            <p class="ctrimg">服务等级：{c$xytb2 [cname=信用图标2/] [tclass=fromid/] [val=d/] [type=grouptype17/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} title="{cname}" alt="服务等级"/>{/c$xytb2}</p>
+                        <p>注册时间：
+                            {c$regdate_ymd [cname=regdate_ymd/] [tclass=date/] [tname=regdate/] [date=Y-m-d/]}{/c$regdate_ymd}
+                        </p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积分：
+                            <span class="f-alizarin">{currency2}</span>分
+                        </p>
+                        <p>上次登录：
+                            {c$lastvisit_ymd [cname=lastvisit_ymd/] [tclass=date/] [tname=lastvisit/] [date=Y-m-d/]}{/c$lastvisit_ymd}
+                        </p>
+                        <p>访&nbsp;&nbsp;问&nbsp;&nbsp;量：{msclicks}次</p>
+                        {if $m['lxdh']}
+                        <div class="grid item mt10">
+                            <a href="tel:{lxdh}"><span class="button block icon-e612">{lxdh}</span></a>
+                        </div>
+                        {/if}
+                        <div class="mt10">
+                            <span class="label">售</span>{c$acount [tclass=acount/] [val=b/] [chsource=2/] [chids=3/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$acount}套 &nbsp; <span class="label nephritis">租</span>{c$acount [tclass=acount/] [val=b/] [chsource=2/] [chids=2/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$acount}套
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list detail inset mt10">
+                    <li class="divider">个人介绍</li>
+                    <li>
+                        {if $m['incheck4']}
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">所属公司：</div>
+                            {c$jjrgs2 [tclass=member/] [val=a/] [arid=4/]}
+                            <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=3">{cmane}</a>
+                            {/c$jjrgs2}
+                        </div>
+                        {/if}
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">服务区域：</div>
+                            {c$jhjjrqy [tclass=mcnode/] [val=v/] [cnsource=ccid1/] [cnid=$m[szqy]/]}{title}{/c$jhjjrqy}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">从业年限：</div>
+                            {if $m['cynx']}{cynx}{else}-{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">QQ：</div>
+                            {qq}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">邮箱：</div>
+                            {email}
+                        </div>
+                    </li>
+                </ul>
+                {if $m['dpgg']}
+                <ul class="list detail inset mt10">
+                    <li class="divider">店铺公告</li>
+                    <li class="list-media-big">
+                        {c$dpgg [tclass=text/] [tname=dpgg/] [badword=1/]}{/c$dpgg}
+                    </li>
+                </ul>
+                {/if}
+                <div class="p5"></div>
+            </div>
+        </article>
+    </section>
+    <section id="message_section" title="店铺留言" data-btn="back">
+        <footer>
+        <a href="#index_section"  data-target="section">
+            <i class="icon-f015"></i>店铺首页</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=1"><i class="icon-e61a"></i>二手房</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=2"><i class="icon-e623"></i>出租</a>
+        <a href="#message_section" data-target="section" class="active"><i class="icon-e755"></i>留言</a>
+        {if $m['lxdh']}
+        <a href="tel:{lxdh}"><i class="icon-e612"></i>打电话</a>
+        {/if}
+        </footer>
+        {tpl$m_header}
+        <article id="up_refresh_commus" class="active">
+            <div>
+                <ul class="list">
+                    <li>
+                        <form method="get" name="commu5" id="commu5" onsubmit="return fyCummus(this,'我要留言');">
+                            <input type="hidden" name="cuid" value="5" />
+                            <input type="hidden" name="tomid" value="{mid}" />
+                            <div class="input-group">
+                                <input required type="text"  name="fmdata[lxren]" value="" placeholder="联系人">
+                                <input required type="text"  name="fmdata[lxdh]" value="" title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" placeholder="联系电话">
+                                <textarea required min="10" maxLength="300" max="300" title="5-150个汉字" placeholder="请发表您的看法(5-150个汉字)..." name="fmdata[content]"></textarea>
+                                <input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+                            </div>
+                            <button class="button block" name="bsubmit" data-icon="icon-e603">提交</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul class="list comment-list"></ul>
+            </div>
+        </article>
+    </section>
+</div>
+<script>
+//加载数据设置
+var opt = {
+    _param : {
+        'aj_model'     : 'cu,5', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-启用模型表; 如:a,3,1)
+        'aj_pagesize'  : {$pagelimit},
+        'aj_pagenum'   : 1 ,
+        'aj_whrfields' : 'tomid,=,{$mid}',
+        'orderby'      : 'cid', //排序字段
+        'jsoncallback' : '?'
+    },
+    wrap : '#up_refresh_commus' ,
+    dataWrap : '#up_refresh_commus ul.comment-list' ,
+    template : function() {
+        return '<li>'
+                + '<div class="grid f-asbestos mb5">'
+                + '<div class="col-1 f-peter-river">'+this.lxren+'</div>'
+                + '<span class="fz12">' + getLocalTime(this.createdate,1) + '</span>'
+                + '</div>'
+                + this.content
+                + '</li>'
+                if(this.reply){
+                + '<li class="hf">'
+                + '<div class="f-peter-river mb5">店主回复</div>'
+                + this.reply
+                + '</li>'
+                }
+    }
+}
+</script>
+{tpl$m_footer}
+</body>
+</html>
+{/c$member}

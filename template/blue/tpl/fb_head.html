@@ -1,0 +1,15 @@
+{tpl$head}
+<div class="wrap">
+<div class="fb-nav clearfix">
+        <div class="nac">
+            <a {if @$action=='chushou'}class="act"{/if} href="{$cms_abs}info.php?fid=111&action=chushou">发布出售</a>
+            <a {if @$action=='chuzu'}class="act"{/if} href="{$cms_abs}info.php?fid=111&action=chuzu">发布出租</a>
+            <a {if @$action=='qiugou'}class="act"{/if} href="{$cms_abs}info.php?fid=112&action=qiugou">发布求购</a>
+            <a {if @$action=='qiuzu'}class="act"{/if} href="{$cms_abs}info.php?fid=112&action=qiuzu">发布求租</a>
+            <a {if $chid==3&&$fid==101}class="act"{/if} href="{$cms_abs}info.php?fid=101&chid=3">委托出售</a>
+            <a {if $chid==2&&$fid==101}class="act"{/if} href="{$cms_abs}info.php?fid=101&chid=2">委托出租</a>
+        </div>
+    </div>
+	<div class='gflc-topbt gflc'><a href='{$cms_abs}' target='_blank'>返回首页</a> </div>
+
+</div>

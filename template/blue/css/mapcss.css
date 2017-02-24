@@ -1,0 +1,166 @@
+.main .rdiv {
+    float: left; width: 770px;
+}
+.main .rdiv h1.title {
+    font-family: Microsoft YaHei; font-size: 14px; font-weight: 600; line-height: 36px; height: 36px; padding: 0 10px;
+
+    border-bottom: 1px solid #dfdfdf;
+}
+/***公用***/
+.twtopbg,
+.twbotbg,
+.tiwlist li,
+.tiwlist li.act {
+    background: url(../images/wzdu_bg.gif) no-repeat;
+}
+.container2 {
+    width: 998px; margin: 5px auto 0; border: 1px solid #dcdcdc; background: url(../images/wz_tw_bg.gif) repeat-x left top;
+}
+.main .ldiv {
+    float: left;
+
+    width: 175px; margin-right: 12px;
+}
+.main {
+    padding: 19px;
+}
+.content {
+    padding: 10px;
+}
+.tiwlist li {
+    line-height: 41px;
+
+    height: 41px; text-align: center; background-position: 43px -154px;
+}
+.tiwlist li a {
+    font-weight: bold;
+}
+.tiwlist li.act {
+    line-height: 35px; height: 41px; text-align: center;
+
+    background-position: 0 -59px;
+}
+.tiwlist li.act a {
+    font-weight: bold;
+
+    color: #fff;
+}
+.twtopbg {
+    font: 0; overflow: hidden; height: 5px;
+
+    background-position: 4px 0;
+}
+.tiwlist {
+    min-height: 353px;padding-top: 8px;
+
+    background: url(../images/twmid.gif) 4px 0 repeat-y; _height: 353px;
+}
+.twbotbg {
+    height: 50px;
+
+    background-position: 4px -7px;
+}
+/***网站地图***/
+.com .mlist {
+    overflow: hidden;
+
+    margin: 5px 0 0; padding: 1px;border: 1px solid #eee;*zoom: 1;
+}
+.com .mlist:hover {
+    border-color: #85bbf7;background: #f3fafc;
+}
+.com dl {
+    overflow: hidden;
+
+    *zoom: 1;
+}
+.com dt {
+    font-size: 14px;line-height: 20px;
+
+    width: 70px; text-align: center; border-right: 2px solid #85bbf7;
+}
+.com dt a {
+    font-weight: bold;
+}
+.com dd {
+    padding: 0 5px;
+}
+.com b,
+.com dt,
+.com dd {
+    display: -moz-inline-stack                                                                                                                                                                                                                                                ;display: inline-block;
+
+    vertical-align: middle;*zoom: 1;*display: inline;
+}
+.com b {
+    overflow: hidden;width: 1px;
+    height: 52px;margin-left: -1px;background-color: #fff;
+}
+/***网站提问***/
+.baskct {
+    padding: 20px 0 0;
+}
+.baskct i {
+    font-style: normal;
+
+    color: #f00;
+}
+.baskct li {
+    margin-bottom: 10px;
+}
+.baskct li input {
+    vertical-align: middle;
+}
+.inputtext {
+    line-height: 25px;
+
+    width: 410px; height: 25px; border: 1px solid #ccc;
+}
+.areatext {
+    font-size: 13px; overflow-y: auto;
+
+    width: 410px; height: 120px; border: 1px solid #ccc;
+}
+.tjbt {
+    width: 63px; height: 25px; margin-left: 42px; cursor: pointer; border: none;
+    background: url(../images/tijiaobt.gif);
+}
+.co6 {
+    color: #ccc;
+}
+.bg3 {
+    overflow: hidden;
+
+    height: 3px; margin: 0 10px; border-top: 2px solid #327acf; background: #ccc;
+}
+.message {
+    font: 12px/24px SimSun, san-serif;
+
+    margin: 2px 10px -2px; padding: 10px; border-bottom: 1px dotted #bfbfbf;
+}
+.message dt,
+.message .reply {
+    color: #9fa0a0;
+}
+.message .kuan {
+    position: relative;
+
+    margin: 10px 0 0 30px; padding: 10px; border: 1px solid #ebeaea; background-color: #fafafa;
+}
+.message .reply .icon {
+    position: absolute; top: -9px; left: 50px; overflow: hidden; width: 17px; height: 9px; background: url(../images/msg.gif) no-repeat;
+}
+.message .reply span {
+    color: #c00;
+}
+.message .replys {
+    padding: 5px 0 0;
+}
+.moreurl {
+    font-family: SimSun; font-size: 12px; font-weight: normal;
+
+    float: right;
+}
+.moreurl .FcR1 {
+    font-weight: bold; color: #f00;
+}

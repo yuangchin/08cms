@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if $cmane}{cmane}{else}经纪公司{/if}-{subject}-{$hostname}</title>
+<meta content="{cmane}" name="keywords"> 
+<meta content="{cmane}{if $caddress},公司地址是{caddress}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$headinner}
+<?php
+if($caid==554) $mcaid=7;
+?>
+</head>
+<body>
+{tpl$comtop}
+<div class="blank10"></div>
+<div class="mian wrap">
+    <!-- 左栏开始 -->
+{tpl$comleft}
+    <!-- 左栏结束 -->
+    <!-- 右栏开始 -->
+    <div class="inMain">
+         <div class="subT1 dongtai">
+            <div class="l h">公司动态</div>
+            <div class="cb0"></div>
+        </div>
+        <div class="Recommend_content">
+            <div class="blank10"></div>
+            <h2 class="zuti">{subject}</h2>
+            <p class="Date_info">发布时间:{c$createdate [tclass=date/] [tname=createdate/] [date=Y年m月d日/]}{/c$createdate}</p>
+            <div class="p10 fs14">
+               {content}
+            </div>
+        </div>
+    </div>
+    <!-- 右栏开始 -->
+</div>
+{tpl$foot}
+</body>
+</html>

@@ -1,0 +1,200 @@
+
+/* 边框样式 */
+.CWINDOW .LEFT_TOP
+{
+	/* 左上：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 8px;
+	height: 28px;
+	background-image:url(window/vista/LEFT_TOP.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .TOP
+{
+	/* 上边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	height: 28px;
+	background-image: url(window/vista/TOP.gif);
+	background-repeat: repeat-x;
+}
+.CWINDOW .RIGHT_TOP
+{
+	/* 右上：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 8px;
+	height: 28px;
+	background-image: url(window/vista/RIGHT_TOP.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .RIGHT
+{
+	/* 右边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 9px;
+	background-image: url(window/vista/RIGHT.gif);
+	background-repeat: repeat-y;
+}
+.CWINDOW .RIGHT_BOTTOM
+{
+	/* 右下：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 9px;
+	height: 7px;
+	background-image: url(window/vista/RIGHT_BOTTOM.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .BOTTOM
+{
+	/* 下边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	height: 8px;
+	background-image: url(window/vista/BOTTOM.gif);
+	background-repeat: repeat-x;
+}
+.CWINDOW .LEFT_BOTTOM
+{
+	/* 左下：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 8px;
+	height: 7px;
+	background-image: url(window/vista/LEFT_BOTTOM.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .LEFT
+{
+	/* 请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 9px;
+	background-image: url(window/vista/LEFT.gif);
+	background-repeat: repeat-y;
+}
+
+/* 功能区样式 */
+.CWINDOW .CLOSE
+{
+    width: 42px;
+    height: 17px;
+    right: 9px;
+    top: 3px;
+    background-image:url(window/vista/CLOSE_BUTTON.gif);
+	cursor:default;
+}
+.CWINDOW .CLOSE_HOVER
+{
+    background-position:0 -20px;
+}
+.MODAL{
+	background-color:#333435;
+	filter:alpha(opacity=10);
+	opacity:0.1;
+}
+/* 请不要定义margin/left/top属性 */
+.CWINDOW .E_RESIZE{
+	width: 5px;
+    line-height:0;
+	cursor: e-resize;
+}
+.CWINDOW .SE_RESIZE{
+	width: 5px;
+	height: 5px;
+    line-height:0;
+	cursor: se-resize;
+}
+.CWINDOW .S_RESIZE{
+	height: 5px;
+    line-height:0;
+	cursor: s-resize;
+}
+.CWINDOW .SW_RESIZE{
+	width: 5px;
+	height: 5px;
+    line-height:0;
+	cursor: sw-resize;
+}
+.CWINDOW .W_RESIZE{
+	width: 5px;
+    line-height:0;
+	cursor: w-resize;
+}
+.CWINDOW .NW_RESIZE{
+	width: 5px;
+	height: 5px;
+    line-height:0;
+	cursor: nw-resize;
+}
+.CWINDOW .N_RESIZE{
+	height: 5px;
+    line-height:0;
+	cursor: n-resize;
+}
+.CWINDOW .NE_RESIZE{
+	width: 5px;
+	height: 5px;
+    line-height:0;
+	cursor: ne-resize;
+}
+
+/* 逻辑区样式 */
+.CWINDOW .CONTENT
+{
+	/* 请不要定义padding/margin属性 */
+    background-color:#f7f7f7;/*
+    filter:alpha(opacity=95);
+    opacity:0.95;*/
+}
+.CWINDOW .CONTENT .FORM
+{
+	font-size: 14px;
+	margin: 0px;
+	padding: 12px;
+}
+.CWINDOW .TITLE
+{
+	/* 请不要定义margin属性 */
+    padding:7px 60px 0px 9px;
+    font-size:14px;
+    height: 21px;
+    line-height: 15px;
+    overflow: hidden;
+}
+.CWINDOW .TITLE .TEXT
+{
+	color:#FFF;
+    font-size:14px;
+	line-height:17px;
+	font-weight:bold;
+    overflow: hidden;
+	white-space:nowrap;
+	
+}
+/*.CWINDOW .TITLE .TEXT span
+{
+	background:#E6E6E6;
+}*/
+
+/* 内容列表 js设置 可选显示项目 窗口样式 */
+.aListSet_windowall{ width:400px; position:absolute; xtop:100px;}
+.aListSet_wleftop{background:url(window/vista/LEFT_TOP.gif);height:28px; width:8px; float:left;}
+.aListSet_wintitle{ height:28px; line-height:28px; text-align:left; font-weight:bold; background:url(window/vista/TOP.gif); width:380px;float:left;}
+.aListSet_wintitle span{ color:#FFF;}
+.aListSet_wrighttop{background:url(window/vista/RIGHT_TOP.gif);height:28px; width:8px;float:left;}
+.aListSet_wclose{ width:42px; height:17px; background:url(window/vista/CLOSE.gif); float:right; display:block; cursor:pointer;}
+.aListSet_wclose:hover{background:url(window/vista/CLOSE_HOVER.gif);}
+.aListSet_wcontent{width:360px; float:left; background:#FFF; padding:0 20px 10px; background:url(window/vista/LEFT_RIGHT.gif) #fff;}
+
+.aListSet_wlefbottom{background:url(window/vista/LEFT_BOTTOM.gif);height:7px; width:8px; float:left; overflow:hidden;}
+.aListSet_wbottom{ height:7px; line-height:28px; background:url(window/vista/BOTTOM.gif); width:380px;float:left;overflow:hidden;}
+.aListSet_wrightbottom{background:url(window/vista/RIGHT_BOTTOM.gif);height:7px; width:8px;float:left;overflow:hidden;}
+
+._08_plugins_button { float: right; }
+._08_plugins_button a {
+    background: url("button.jpg") no-repeat;
+    text-decoration: none;
+    color: #FFF;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    width: 109px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+._08_plugins_button a:hover {
+    opacity: 0.9;
+    text-decoration: underline;
+}
+

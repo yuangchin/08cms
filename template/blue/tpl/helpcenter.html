@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$yjlmtit2 [tclass=cnode/] [listby=ca/] [casource=active/] [level=2/]}{futitle}{/c$yjlmtit2} {c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] [level=1/]}{title}{/c$yjlmtit}-{hostname}</title>
+<meta content="{listkeywords}" name=keywords>
+<meta content="{listabstract}" name=description>
+{tpl$headinner}
+<base target="_blank"/>
+</head>
+<body>
+ <!--服务中心通用头部-->
+ {tpl$tpl_svhead}
+  <div class="blank15"></div>
+  <div class="wrap">
+  <!--帮助中心新手入门流程-->
+    {tpl$tpl_liucheng}
+    <div class="blank15"></div>
+      <div class="w920 l h612">
+       <div class="blank10"></div>
+       <div class="overnav pos clearfix"><i></i><h3>{title}</h3><em></em></div>
+       <div class="blank10"></div>
+       	  <div class="bzznCon pLR15">
+              {c$bzzxejlm [tclass=catalogs/] [limits=50/] [listby=ca/] [casource=4/] [orderstr=vieworder ASC/] [wherestr=pid='561'/] [ttl=900/]}
+              {c$bzzxsjlm [tclass=catalogs/] [val=f/] [limits=100/] [listby=ca/] [casource=2/] [orderstr=vieworder ASC/] [ttl=900/]}
+              {if count($_bzzxsjlm)}
+                <dl class="clearfix {if $v['sn_row']==1}first{/if}">
+                	<dt><a href="{$v['indexurl']}" target="_self">{$v['title']}</a></dt> 
+                    <dd>
+                    	[row]<a href="{indexurl}" target="_self">{title}</a> [/row]
+                   </dd>
+                </dl>
+                {/if}
+               {/c$bzzxsjlm}
+              {/c$bzzxejlm}
+              <div class="blank8"></div>
+              
+          </div>
+      </div>
+      
+    <!--帮助中心统一右边信息-->
+     	{tpl$tpl_svright}
+      
+</div>
+<!--公用底部-->
+{tpl$foot}
+</body>
+</html>

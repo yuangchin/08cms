@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">投票列表 votes</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>投票列表是展示系统在前面的投票表单，常与[投票选项列表]一起使用。</p>
+</div>
+<span class="blank5"></span>
+
+<div class="w1 h1 bg2">示例</div>
+<div>
+	<div>
+        <span class="blank5"></span>        
+        <li class="t2">效果:</li>
+        <li><img src="img/tp.jpg" /></li>
+        <span class="blank3"></span>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+<form action="{$cms_abs}tools/vote.php?action=vote&amp;fname=toupiao&amp;id={$aid}" method="post" name="vote">
+[row]
+<dl>
+    <dt>{subject}</dt>
+    {c$zt1tpxx}
+</dl>
+[/row]
+    <div class="blank10"></div>
+    <div style="text-align:center; padding:0 0 10px 0;">提交投票：<input type="submit" name="submit" 
+    value="提交" /></div>
+</form>                
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li>说明：<br />
+        1. 用于显示某具体投票的内容，可指定ID，也可继承来自投票页面或投票列表的激活ID。<br />
+2. 本标识属列表性质标识，请参照相关列表标识说明。<br />
+3. 可内嵌通用原始标识、投票相关的原始标识及相应的字段标识。<br />
+4. 表单action="{$cms_abs}tools/vote.php?action=vote&fname=投票字段标识&id=xx",xx为选择的投票类型ID<br />
+5. 本标识不展示具体投票选项的信息，如需要详细民展示，需要内嵌投票模块标识。<br />
+6. {c$zt1tpxx}是投票选项列表标识，详细可以见<i class="FcB">投票选项列表</i>
+        </li>
+        <li>
+        <b class="FcR">整体截图如下</b><br />
+        <img  src="img/tp1.jpg" class="img"/>
+        </li>
+    </div>
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+
+</body>
+</html>

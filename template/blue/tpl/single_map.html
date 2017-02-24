@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>地图-{hostname}</title>
+<meta name="keywords" content="地图-{hostname}"/>
+<meta name="description" content="地图-{hostname}"/>
+{tpl$headinner}
+</head>
+<body>
+<div class="wrap clearfix">
+    <div class="lp-coltit clearfix">
+        <div class="r map-nav">
+            <span id="map-nav-item" class="map-nav-item"><a href="javascript:void(0);" onclick="Search.panelClose();"><i class="ico1"></i>回到楼盘中心</a><a href="javascript:void(0);" onclick="Search.openDis();"><i class="ico2"></i>测距</a><a href="javascript:void(0);" onclick="Search.openMapLp(1);"><i class="ico3"></i>公交</a><a href="javascript:void(0);" onclick="Search.openMapLp(2);" ><i class="ico4"></i>驾车</a></span>
+            <span class="map-nav-item"></span>
+            <span class="map-tits">
+            <a class="map-tit act" href="#" target="_blank">地图</a>
+            <?php 
+               if(cls_env::mconfig('streetviewtype')=='Tencent'){
+             ?>
+                 <a class="map-tit" href="#" target="_blank" id="jiejing-button">街景</a>
+             <?php
+              } 
+            ?>
+            </span>
+        </div>
+        <h3 id="tit1" class="tit1">地图</h3>
+    </div>
+    <div class="bdrbl-gray clearfix map-box">
+        <div id="map_canvas-outer" class="map_canvas-outer">
+            <div id="map_canvas" class="map_canvas"></div>
+        </div>        
+        <div class="mapitem-box por">
+        <!--楼盘周边 -->
+            <ul id="mapitems" class="mapitems clearfix">
+                <li rel="0"><div onclick="Search.showZhoubianPoint(0);"><i class="ico"></i><span>楼盘</span></div></li>                
+                {c$catalogs [cname=地图周边/] [tclass=catalogs/] [ttl=1800/] [listby=ca/] [casource=3/ [orderstr=vieworder ASC/] [wherestr=pid='12'/]}
+                <li><a href="javascript:void(0)" onclick="Search.showZhoubianPoint({caid});"><i class="ico{sn_row}"></i>{title}</a></li>
+                {/c$catalogs}
+            </ul>
+            <div id="mapitem-list" class="mapitem-list dn">
+                <div class="hd">
+                    <span id="fh-btn" class="fh-btn" onclick="Search.panelClose();"><i class="ico"></i>返回</span>
+                    <h4>周边<span id="h4metaTitle">学校</span></h4>
+                </div>
+                <ul class="plr10" id="searchPanel">
+                </ul>               
+            </div>
+         <!-- /楼盘周边 -->
+         <!-- 公交线路 -->
+         <div id="map-lp" class="mapitem-list dn">
+                <div class="hd">
+                    <span id="fh-btn" class="fh-btn" onclick="Search.panelClose();"><i class="ico"></i>返回</span>
+                    <strong id="traffic_title">驾车</strong>
+                </div>
+                <div class="map_lpcon">
+                            <ul class="map_ipt" style="display: block;" id="bus_ipt">
+                                <li><input type="text" class="ipt_txt" name="" id="B_PointName0" value="请输入起点" onfocus="this.className='ipt_txt_focus';Search.selinputb(this,'请输入起点');" onblur="this.className='ipt_txt';Search.selinputb(this,'请输入起点');"></li>
+                                <li><input type="text" class="ipt_txt" name="" id="B_PointName1" value="请输入终点" onfocus="this.className='ipt_txt_focus';Search.selinputb(this,'请输入终点');" onblur="this.className='ipt_txt';Search.selinputb(this,'请输入终点');"></li>
+                                <li><input type="button" class="ipt_btn" value="获取线路" onclick="Search.searchway();"></li>
+                                <li class="change"><a href="javascript:void(0)" onclick="Search.changeStartEnd();"></a></li>
+                            </ul>
+                            <div class="" style="display:none;" id="traffic_type"></div>
+                            <div class="traffic_result" style="display: none;" id="bus_wrap"></div>
+                            <div class="traffic_result map_line" style="display: none;" id="drive_wrap"></div>
+                </div>              
+            </div>
+        <!-- /公交线路 -->
+        </div>
+    </div>
+    <div class="bdrbl-gray clearfix dn map-box">
+        <div class="map-jiejing" id="qq_jiejing" style="height:335px;">
+         
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+body{font-family: Microsoft yahei;}
+.bdrbl-gray {border: 1px solid #DDD; border-top: none; }
+.lp-coltit {line-height: 2; background: url({$tplurl}images/lpline.png) 0 bottom repeat-x;position: relative;padding: 10px 0;} 
+.lp-coltit h3 { border-bottom: 2px solid #1F96EA;font-size: 22px; padding: 0 5px;position: absolute;left: 0;bottom: 0;}
+.map_canvas-outer{ height:342px; float: left;width: 938px;position: relative;}
+#map_canvas{height:342px;}
+.map-nav .map-nav-item a{float: left;margin-right: 8px;}
+.map-nav i{float: left;width:14px;height:14px; overflow:hidden;margin: 11px 5px 0 0;background: url({$tplurl}images/lpindex.png) 0 -79px no-repeat;}
+.map-nav .ico2{background-position: 0 -111px;}
+.map-nav .ico3{background-position: 0 -127px;}
+.map-nav .ico4{background-position: 0 -143px;}
+.map-nav .map-tits{float: left;line-height: 24px;margin-top: 4px;border-radius: 3px;overflow: hidden;}
+.map-nav .map-tits a{text-decoration: none;padding: 0 10px;float: left;border: 1px solid #ddd;}
+.map-nav .map-tits .act{background: #2E9EE8;color: #fff;border-color: #2E9EE8;}
+
+.mapitem-box{float: right;width: 260px;}
+.mapitem-box .mapitems li{float: left;width: 52px;display: inline;text-align: center;margin: 16px 0 10px 26px;}
+.mapitems li a:hover{text-decoration: none;}
+.mapitems li div{cursor:pointer;}
+.mapitems li i{display: block;width:52px;height:52px;margin-bottom: 8px;background: url({$tplurl}images/maptab.png) -4px -4px no-repeat;}
+.mapitems li i:hover{background: url({$tplurl}images/maptab-hover.png) -4px -4px no-repeat;}
+.mapitems li i.ico{background-position: -4px -4px;}
+.mapitems li i.ico1{background-position: -484px -4px;}
+.mapitems li i.ico2{background-position: -64px -4px;}
+.mapitems li i.ico3{background-position: -244px -4px;}
+.mapitems li i.ico4{background-position: -364px -4px;}
+.mapitems li i.ico5{background-position: -304px -4px;}
+.mapitems li i.ico6{background-position: -183px -4px;}
+.mapitems li i.ico7{background-position: -424px -4px;}
+.mapitems li i.ico8{background-position: -124px -4px;}
+
+.mapitem-box .mapitem-list{position: absolute;left: 0;top: 0;width: 100%;height: 335px;background: #fff;}
+.mapitem-list .hd{line-height: 26px;border-bottom: 1px solid #ddd;padding:5px 10px;}
+.mapitem-list .hd h4{font-weight: bold;font-size: 14px;}
+.mapitem-list .hd .fh-btn{float: right;line-height: 24px;border: 1px solid #ddd;width:55px;color: #666;border-radius: 2px;}
+.mapitem-list .hd .fh-btn:hover{text-decoration: none;background: #fafafa;color: #c00;}
+.mapitem-list .hd .ico{float: left;width:9px;height:7px;overflow: hidden;background: url({$tplurl}images/lpindex.png) 0 -66px no-repeat;margin: 8px 5px 0 1px;}
+
+.mapitem-list ul {height: 298px;overflow-y: auto;}
+/*.mapitem-list ul a{display: block;height:24px;line-height:24px;overflow: hidden;}*/
+.mapitem-list ul span{float: right;}
+#searchPanel li {cursor:pointer;}
+
+
+.tc_mes{width:354px; border:solid 1px #ccc; background:#fff;box-shadow:2px 2px 8px #888888;}
+.tc_mes .sanj{width:19px; height:10px; position:absolute; bottom:-9px; left:180px;display: inline-flex;}
+.tc_mes .sanj img{position: absolute;}
+.tc_mes .tc_mes_nr{width:335px; height:auto;display:table; margin:0px auto;}
+.popbox {position:fixed;_position:absolute; top:45%; left:50%; margin-left:-200px; width:400px; background:#fff; border:6px solid #f0f0f0; padding:20px 0; text-align:center; overflow:hidden; z-index:99999; }
+a.popclose { position:absolute; right:13px; top:17px; display:block; width:14px; height:14px; background:url({$tplurl}newmap/images/map_icon.png) no-repeat -124px -5px; overflow:hidden; text-indent:-9999em; }
+a:hover.popclose { background-position:-173px -5px; }
+.tc_mes .tc_mes_nr dl{ border-bottom: solid 1px #ccc; height:45px; overflow:hidden;}
+.tc_mes .tc_mes_nr dl dd{font-family:"微软雅黑";font-size:16px;line-height:45px;float:left;overflow: hidden;height: 45px;}
+.daishou{ padding:0px 3px 0px 3px;text-align:center;  color:#fff; background-color:#7269FC;line-height: 16px;}
+.weifang{ padding:0px 3px 0px 3px;text-align:center;  color:#fff; background-color:#BA9A20;line-height: 16px;}
+.zaishou{ padding:0px 3px 0px 3px;text-align:center;  color:#fff; background-color:#f39800;line-height: 16px;}
+.qifang{ padding:0px 3px 0px 3px;text-align:center; color:#fff; background-color:#42B01D;line-height: 16px;}
+.shouwan{ padding:0px 3px 0px 3px;text-align:center;  color:#fff; background-color:#BDB8A6;line-height: 16px;}
+.tc_mes .tc_mes_nr .tc_mes_xx{width:335px;margin-top:15px;}
+#tipContent{width:210px;}
+.tc_mes .tc_mes_nr .tc_mes_xx ul{width:auto; overflow:hidden; margin-left:5px;}
+.tc_mes .tc_mes_nr .tc_mes_xx li{line-height:25px;}
+.tc_mes .tc_mes_nr .tc_mes_xx li b{color:#ff3333; margin-right:5px; display:inline;}
+.tc_mes .tc_mes_nr .tc_mes_xx li span{color:#fff; padding:3px 5px 4px 5px; color:#fff;background-color:#ff0000;display:inline; _padding-top:5px;}
+.tc_mes .tc_mes_nr .tc_mes_xx li a{color:#0066cc;}
+.tc_mes .tc_mes_nr .tc_mes_xx li a:hover{text-decoration:none;}
+.tc_mes .tc_mes_nr .tc_mes_xx img{float:right;display:inline;}
+.Inp_qbk{outline: medium;}
+
+/*地图Tab效果*/
+.w3295{width:32.95%;}
+.w4972{width:49.72%;}
+.slideTxtBox{ width:354px;_width:355px; border-top:1px solid #ddd; text-align:left; margin:14px auto;}
+.slideTxtBox .hd{ height:40px;line-height:30px; background:#f4f4f4; position:relative; width:354px;overflow:hidden;}
+.slideTxtBox .hd ul{ float:left;  position:absolute; left:-1px; top:0px; height:39px;width:100%; width:358px; }
+.slideTxtBox .hd ul li{ float:left; color:#666; /*padding:0 17px 0 17px;*/ text-align:center;line-height:39px; cursor:pointer;border-bottom:1px solid #ddd; }
+.slideTxtBox .hd ul li .i1{width:17px; height:14px; background:url({$tplurl}newmap/images/map_icon.png) no-repeat -5px -5px; border:0;padding-left:28px;}
+.slideTxtBox .hd ul li .i2{width:17px; height:14px; background:url({$tplurl}newmap/images/map_icon.png) no-repeat -40px -5px; border:0;padding-left:27px;}
+.slideTxtBox .hd ul li .i3{width:17px; height:14px; background:url({$tplurl}newmap/images/map_icon.png) no-repeat -80px -5px; border:0;padding-left:27px;}
+.slideTxtBox .hd ul li.on{ height:40px; background:#fff; border:1px solid #ddd;border-bottom:1px solid #fff; border-top:none; }
+.slideTxtBox .bd ul{ padding:11px 9px 9px 9px;  zoom:1;  }
+.slideTxtBox .bd li{ height:18px; }
+.slideTxtBox .bd ul li label{color:#333; margin-right:10px; line-height:30px;margin-left:5px;}
+.slideTxtBox .bd ul li .inp_a{padding-left:5px; line-height:25px;color:#999;width:174px; height:24px;border:solid 1px #999;}
+.slideTxtBox .bd ul li .inp_b{padding-left:5px; line-height:25px;color:#999;width:75px; height:24px;bborder:solid 1px #999;}
+.slideTxtBox .bd ul li .iw_bt{width: 48px;cursor:pointer;height: 27px;line-height: 18px;padding: 0; background-color:#fff; border:solid 1px #999;margin-left:3px; display:inline;background:url({$tplurl}newmap/images/rpx.gif) repeat-x 0 -45px #f0f0f0;}
+.slideTxtBox .bd ul li .iw_bt:hover { border:1px solid #999; background:#ebebeb;}
+.slideTxtBox .bd ul li .offer a{color:#333; line-height:30px; padding-left:5px;}
+.slideTxtBox .bd ul li .offer a:hover{text-decoration:none;color:#cc0000;}    
+
+/*楼盘Marker样式*/
+.searchRichMarker{color:#fff;cursor:pointer;height:32px;overflow:visible;position:absolute;}
+.searchRichMarker div{float:left;background:url({$tplurl}/newmap/images/qp01.png) no-repeat scroll 0 -68px;height:32px;}    
+.searchRichMarker em{float:left;display:block;color:#fff;height:32px;line-height:25px;background:url({$tplurl}/newmap/images/qp01.png) no-repeat scroll 100% -100px;padding:0 10px;font-style:normal;white-space: nowrap;}
+
+/*线路查询*/
+.map_ipt{ position: relative; padding:10px 0 0 40px; background:url({$tplurl}/newmap/images/way.gif) 10px 19px no-repeat;}
+.map_ipt li{ padding:9px 0;}
+.map_ipt .ipt_txt,.map_ipt .ipt_txt_focus{ margin:0; padding:6px; border: 1px solid #ddd; width: 150px; outline:none; color:#999;}
+.map_ipt .ipt_txt_focus{  border: 1px solid #bbb; color:#333;}
+.map_ipt .ipt_btn{ margin:0; padding:0 15px; height: 30px; line-height:30px; border:0 none; border-radius:3px; background:#46b9e8; cursor:pointer; color:#fff; overflow:visible; outline:none;}
+.map_ipt .ipt_btn:hover{ background:#39c;}
+.map_ipt .change{ position: absolute; right:5px; top:39px; }
+.map_ipt .change a{ display: block; width:22px; height:21px; background:url({$tplurl}/newmap/images/way_change.gif) no-repeat;}
+
+.map_line{ margin-top:12px; border:1px solid #9cb5ff;}
+.map_line_tit{ padding:0 5px; line-height:20px; border-bottom:1px solid #9cb5ff; background:#ebf1fb; color:#999;cursor: pointer;}
+.map_line_tit strong{ margin-right:5px; font-size: 14px; color:#039;}
+.map_line_way{ margin:0 5px; padding:5px 0 20px 0;}
+.map_line_way dd{ padding: 3px 0; overflow:hidden;}
+.map_line_way dd i{ float: left; width:23px; height:22px; line-height:20px; text-align:right; font-style:normal;}
+.map_line_way dd .info{ line-height:20px; overflow: hidden;}
+.map_line_way dd a{ color:#039;}
+.map_line_way dd i.walk{ background:url({$tplurl}/newmap/images/way_more.gif) no-repeat left -1px;}
+.map_line_way dd i.bus{ background:url({$tplurl}/newmap/images/way_more.gif) no-repeat -24px -1px;}
+.map_line_way .start{ padding: 5px 6px 0 30px; height:28px; line-height:28px; background:url({$tplurl}/newmap/images/way_start.gif) 0 7px no-repeat;}
+.map_line_way .end{ padding: 5px 6px 0 30px; height:28px; line-height:28px; background:url({$tplurl}/newmap/images/way_end.gif) 0 7px no-repeat;}
+.map_line_way.drive dd{ border-bottom:1px solid #ddd;}
+
+.map_lp{ display:none; padding:10px 0 0 10px;}
+.map_lpcon{ padding-right:10px;padding-left:10px; height:295px; overflow-y:auto; overflow-x:hidden; }
+.map_tit{ margin-right:10px; padding-bottom:10px; border-bottom:1px solid #ddd; font-size: 14px;}
+.map_tit a{ float: right; padding:1px 4px 1px 13px; background:url(arr_back.gif) 2px center no-repeat; border: 1px solid #ddd; border-radius:2px; font-size: 12px; color:#999;}
+.map_tit a:hover{ background-color:#f1eee9; text-decoration:none;}
+
+</style>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript" charset="utf-8" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+<script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+<script type="text/javascript" src="{$tplurl}newmap/js/Map.Search.js"></script>
+<script type="text/javascript">
+{c$archive [tclass=archive/] [val=a/] [id=$lp/] [detail=1/]}
+<?php $chid = empty($a['chid']) ? 4 : $a['chid'];?>
+var options = {
+    lng: {dt_1},
+    lat: {dt_0},
+    distance:2,//查找范围的半径(km)
+    aid: {aid},
+    chid: {chid},
+    subject: '{subject}',
+    maxZoom: 19,
+    minZoom: 9,
+    dj: <?php echo intval($a['dj']); ?>,
+    thumb: '<img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=120/] [maxheight=80/] [thumb=1/]} src="{url_s}"  height="80" width="120" {/c$image}/>'
+}; 
+var papoID = '{pano}'; 
+{/c$archive}
+$('#tit1').html(options.subject+'地图');
+  Search.createMap('map_canvas',options);
+  Search.getZhoubianData();
+  Search.showSearchResult();
+</script>
+<script type="text/javascript">
+$('.map-tit').click(function () {
+    var i = $('.map-tit').index(this);
+    $('.map-tit').removeClass('act').eq(i).addClass('act')
+    $('.map-box').hide().eq(i).show();
+    $('.map-nav-item').hide().eq(i).show();
+    return false;
+});
+/****当前组件的全局函数***/
+
+function show_menuc(id1, id2, index, count, classcurrent, classname) {
+    for (var i = 0; i < count; i++) {
+    document.getElementById(id2.toString() + i).style.display = "none";
+    document.getElementById(id1.toString() + i).className = classname;
+    }
+    document.getElementById(id2.toString() + index).style.display = "block";
+    document.getElementById(id1.toString() + index).className = classcurrent;
+}
+function show_menu(id, index, count) {
+    for (var i = 0; i < count; i++) {
+    document.getElementById(id.toString() + i).style.display = "none";
+    }
+    document.getElementById(id.toString() + index).style.display = "block";
+}
+
+</script>
+
+<script type="text/javascript" charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=<?= cls_env::mconfig('streetviewkey');?>"></script>
+<script  type="text/javascript">
+         //http://lbs.qq.com//tool/streetview/index.html        
+         if(papoID){
+            ~function(){
+                pano_container=document.getElementById('qq_jiejing');  //街景容器
+                pano = new qq.maps.Panorama(pano_container, {
+                    pano: papoID,    //场景ID
+                    pov:{   //视角
+                            heading:1,  //偏航角
+                            pitch:0     //俯仰角
+                        },
+                    zoom:1      //缩放
+                })
+            }(); 
+        }else{
+            $('#jiejing-button').hide();
+        }
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=37873055" charset="UTF-8"></script></body>
+
+</div>
+<div id="log"></div>
+<hr />
+<div id="test"></div>
+</body>
+</html>

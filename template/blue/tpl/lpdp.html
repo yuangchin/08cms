@@ -1,0 +1,101 @@
+<script type="text/javascript">var $aid = {$aid};</script>
+	<div class="lp-coltit">{if empty($addno)}<a class="more" href="{arcurl5}" target="_blank">更多>></a>{/if}<h3 class="tit1">楼盘点评</h3></div>
+	<div class="lp-dp-star clearfix">
+		<div class="fwb mb5">
+			<i class="ico08 mr3 fcr">&#xf073;</i>综合评分 <b id="total" class="fcr">100</b>/100
+		</div>
+		<ul id="point-list" class="point-list"></ul>
+		<ul id="star-list" class="star-list"></ul>
+	</div>
+	<div id="lp-dp" class="lp-dp">
+		<?php
+			$plcode = block_open('user_plcode');//判断区块标识是否开启
+		?>
+		{if !empty($plcode)}
+		{tpl$user_plcode}
+		{else}
+		<div id="comment" class="comment">
+			<div class="comment-form form form-sm">
+				<form method="get" data-tipmode="#cmttip" class="jqValidate" onsubmit="return add_pl(this);">
+					<input type="hidden" name="cuid" value="1">
+					<input type="hidden" name="aid" value="{aid}">
+					<input type="hidden" name="tocid" value="">
+					<div class="textarea form-control">
+						<textarea wrap="physical" name="fmdata[content]" data-monitor="#numtip" data-type="*5-125" placeholder="请发表您的看法(5-125个汉字)..."></textarea>
+					</div>
+					<div class="clearfix comment-sub por">
+						<div class="btn-face"><i class="ico08">&#xf11b;</i>表情</div>
+						<div class="reg-wrap w240 l" data-regcode="commu1"><input type="text" name="regcode" size="8" data-type="*0-4" class="txt" placeholder="验证码" value=""/></div>
+						<div class="l">
+							<span id="cmttip"></span>
+						</div>
+						<div class="r">
+							<button type="submit" name="bsubmit" disabled="disabled" class="btn form-bdrs"><i class="ico08 mr5">&#xe7cc;</i>提交评论</button>
+						</div>
+						<div id="numtip" class="numtip r mr5"></div>
+					</div>
+				</form>
+				<div class="blank1"></div>
+			</div><!--评论列表-->
+			<div id="pl-list" class="pl-list"></div>
+			{if !empty($addno)}
+    		<div class="load-more" id="load-more">点击加载更多</div>
+			{/if}
+			<!--//评论列表-->
+		</div>
+		<script type="text/javascript">
+		var cmtOptCustom = {
+		    loadOpt : {
+				'aid' : {aid}
+		    }
+		    , zcOpt : {
+				'aid' : {aid}
+		    }
+		    , dataWrap : '#pl-list'
+		    , template    : function(hf) {
+
+		        function getHf(_d) {
+		            if(!_d) return '';
+		            var H = '';
+		            for (var i = 0; i < _d.length; i++) {
+		                H += getHfTpl(_d[i]);
+		            };
+		            return H;
+		        }
+		        // 回复模板
+		        function getHfTpl(hf) {
+		            return '<div class="hfcon">'
+		                +       '<div class="plcon-hd">'
+		                +           '<span class="colorbl">'+hf.mname+'</span>&nbsp;' + getLocalTime(hf.createdate) + '&nbsp;回复'
+		                +       '</div>'
+		                +       '<div class="plcon-bd">'+ showFace(hf.content) +'</div>'
+		                + '</div>';
+		        }
+		        var _len = this.subitems && this.subitems.length || 0;
+		        return !hf ? '<div class="pl-box">'
+		                    + '    <div class="plcon" data-zc="' + this.cid + '">'
+		                    + '        <div class="plcon-hd">'
+		                    + '            <span class="plcon-hd-tip">'+ this.louceng +'</span><span class="colorbl">' + this.mname + '</span>&nbsp;' + getLocalTime(this.createdate, 1)
+		                    + '        </div>'
+		                    + '        <div class="plcon-bd">'
+		                    +              showFace(this.content)
+		                    + '            <div class="zc_btn">'
+		                    + '                <a class="zc"><i class="ico08">&#xf089;</i>支持<em>(' + (this.opt1?this.opt1:0) + ')</em></a> '
+		                    // 楼盘首页去掉回复按钮
+    	{if !empty($addno)} + '<a class="wyhf"><i class="ico08">&#xe629;</i>回复</a>'{/if}
+		                    + '            </div>'
+		                    + '        </div>'
+		                    + '    </div>'
+		                    +      (_len ? getHf(this.subitems) : '')
+		                    + '</div>'
+		                : getHfTpl(this);
+		    }
+		}	
+
+		</script>
+		<script type="text/javascript">$.fn.jqModal || document.write('<script src="{$tplurl}js/jqmodal.js"><\/script>');</script>
+		<script type="text/javascript" src="{$tplurl}js/news_comment.js"></script>
+		{/if}
+	</div>
+	
+

@@ -1,0 +1,84 @@
+@charset "gb2312";
+/**
+ * 
+ * @authors honey
+ * @date    2014-04-08 11:16:55
+ * @version 1.0
+ */
+ /* reset */
+body,html{color:#333;margin:0;padding:0;font:12px/24px "\5B8B\4F53",san-serif;_background: url(about:blank);}
+body{background-color:#f0f0f0;}
+div,p,form,img,ul,ol,li,dl,dt,dd,textarea{margin:0;padding:0;border:0;}
+textarea{ font-size:13px; color:#666; padding:5px;}
+input,select,h2,object{margin:0;padding:0;}
+object{ vertical-align:top;}
+address,cite,code,em,th,i{font-weight:normal; font-style:normal;}
+ul,li{list-style-type:none}
+a{text-decoration:none;color:#474747;}
+a:hover{text-decoration:underline;color:#AA2329;}
+h1,h3,h4,h5,h6{font-size:12px; margin:0; padding:0; font-weight:100;}
+h2{font-size:20px; color:#000; text-align:center;}
+h3{font-size:14px; font-weight:600; padding-left:10px;}
+.wrap{margin:0 auto; width:960px;}
+.l,.mark{float:left;}
+.r,.subMark{float:right;}
+.fwb { font-weight: bold; }
+img{ border-width:0; vertical-align:top; }
+.center{ margin:0 auto;}
+.txCenter{ text-align:center;}
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.clearfix{*zoom:1;}
+.pos{ position:relative;}
+.mb30{margin-bottom:30px;}
+.mb15{margin-bottom:15px;}
+/* blank */
+.blank0,.blank5,.blank10,.blank15{clear:both;display:block; font-size:1px; overflow:hidden}
+.blank0{height:0px;}
+.blank5{height:5px;}
+.blank10{height:10px;}
+.blank15{height:15px;}
+/*头部*/
+.head,.head p,.mb,.mb a,.btn1,.btn2,.ulB li i,.ulD li div i,.notbk,.bta a,.ulD li input{ background: url(../images/stupe.png) no-repeat;}
+.wrap{ width: 960px; margin: 0 auto;}
+.head{background-position:left -613px;background-repeat:repeat-x; height: 86px;}
+.head p{width:341px; height: 84px;text-indent: -99999px; overflow: hidden;background-position: -1px -362px;height:84px; }
+.copy{width: 180px;position: absolute;top:30px; right: 0;height: 24px;line-height: 24px;text-align:right;color: #FFF}
+
+.mb{height: 72px; }
+.database{background-position: 0px -92px;}
+.install{background-position: 0px -186px;}
+.complete{background-position: 0px -267px;}
+.mb a{ height:34px;line-height: 34px;float:right;padding-left: 10px;background-position: 5px -477px; height: 35px; width: 92px;text-indent: -9999px;overflow: hidden;margin-top:17px; }
+.mb a.next{background-position: -98px -477px;}
+.layA{background-color: #FFF; border: 1px solid #bbbbbb; padding: 20px 40px;min-height: 380px; height: auto!important;height: 450px; overflow: hidden;}
+
+.ulA li{height: 24px; line-height: 24px; overflow: hidden;font-size: 14px;}
+.btn1, .btn2 {height:37px; line-height: 38px; font-size: 14px; text-align: center; width:132px;margin: 10px auto; cursor: pointer;}
+.btn1{background-position: -218px -475px;}
+.btn2{background-position: 0 -721px; color:#fff}
+.info{ height: 48px; line-height: 48px; text-align: center;font-size: 14px;}
+.step1 h2{height: 32px; line-height: 32px; color:#115ec1;font-family:Microsoft YaHei,Tahoma,Geneva,sans-serif;text-align: left; font-size: 12px }
+.ulB,.ulC{ width: 868px;border:1px solid #bbb; border-width: 1px 0 0 1px}
+.ulB li{ float: left; width: 216px; height: 35px; line-height: 35px; text-align: center;border: 1px solid #bbb;border-width: 0 1px 1px 0;}
+.ulB li.h{background-color:#eff7ff; }
+.ulC{ width:867px }
+.ulC li{  width: 288px;}
+.ulC li i{float: left;text-align:left;padding-left:24px; margin-left: 115px;background-position:-493px -352px;height: 35px; line-height: 35px;font-style: normal;}
+.ulC li i.er{background-position: -493px -414px;}
+/*第三步*/
+.step2 h2{font-size: 14px; height: 40px;line-height: 40px;text-align: left;color: #333;margin-bottom:5px; }
+.boxA{width: 410px;float: left;border-right: 1px solid #bbb;margin: 10px 0 10px 20px;  }
+.ulD li{height:32px;line-height: 32px; }
+.ulD li.gt{ margin-bottom:20px;}
+.ulD li input{border-width: 0;height: 22px; line-height: 22px; background-position: 0px -551px;padding-left: 5px; float: left;width: 200px}
+.ulD li.m{height: 18px;line-height: 18px;padding-left:132px;color:#CCC; margin: 6px 0 20px 0;  }
+.ulD li>label{ float: left;width: 130px; text-align:right; padding-right: 2px; font-size: 14px}
+.ulD li div{float: left;height:32px; }
+.ulD li div i{float:left; height: 32px;line-height: 32px;width: 5px;background-position: right -551px; margin-left: -5px;}
+.boxB{width: 390px;float:right; margin: 20px 10px 20px 0;}
+/*第四步*/
+.notes{height: 78px; line-height:78px;width:860px; margin: 47px auto 85px; border: 1px solid #3d9a01; background-color:#edffcd; font-family:Microsoft YaHei,Tahoma,Geneva,sans-serif;font-size: 20px;text-align: center;color: #398a05;}
+.notbk{ width: 266px; height: 48px; margin: 0 auto 30px;background-position: -270px -736px;}
+.bta{ width: 297px; height: 38px;margin:10px auto;}
+.bta a{ width: 132px; height: 38px;line-height: 38px;text-align: center;float: left;color:#FFF;text-decoration: none;margin-right:15px;background-position: 0px -720px; }
+.bta a:hover{color:#FFF;text-decoration: none;}

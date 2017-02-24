@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">视频列表 medias</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>视频列表是调用模型字段类型为[视频集]的内容。</p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">标识说明</div>
+<span class="blank5"></span>
+1. 指定内容来源只允许为视频集类型字段。<br />
+2. 本标识属列表性质标识，列表展示视频集的多个视频内容。<br />
+3. {url}调用视频的URL，{title}调用视频标题,{playbox}调用该视频的播放模块。<br />
+4. 专用播放页面链接{$cms_abs}tools/media.php?tname=xxxx&aid={aid}&fid={fid}，其中xxxx为视频集的字段名称，{fid}为集内的序号。<br />
+
+
+
+<div class="w1 h1 bg2">示例</div>
+<div>
+	<div>
+        <span class="blank5"></span>
+        <li class="bg3">描述</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>一个视频列表。</p></li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp><ul class="p pv">
+<li><span><embed width="100%" height="100%" align="middle" allowfullscreen="true" type="application/x-shockwa
+ve-flash" allowscriptaccess="sameDomain" quality="high" src="http://player.youku.com/player.php/sid/XMjUzMTg4
+Mjk2/v1.swf"><span><h6 >魁拔</h6></li>
+
+<li><span><embed width="100%" height="100%" align="middle" allowfullscreen="true" type="application/x-shockwa
+ve-flash" allowscriptaccess="sameDomain" quality="high" src="http://player.youku.com/player.php/sid/XMjUzMTg4
+Mjk2/v2.swf"><span><h6 >一夜未了情</h6></li>
+
+<li><span><embed width="100%" height="100%" align="middle" allowfullscreen="true" type="application/x-shockwa
+ve-flash" allowscriptaccess="sameDomain" quality="high" src="http://player.youku.com/player.php/sid/XMjUzMTg4
+Mjk2/v3.swf"><span><h6 >夺命心跳</h6></li>
+
+<li><span><embed width="100%" height="100%" align="middle" allowfullscreen="true" type="application/x-shockwa
+ve-flash" allowscriptaccess="sameDomain" quality="high" src="http://player.youku.com/player.php/sid/XMjUzMTg4
+Mjk2/v4.swf"><span><h6 >财神客栈</h6></li>
+</ul>                </xmp>
+            </div>
+        </li>
+        <span class="blank5"></span>
+        <li class="t2">标只调用:</li>
+        <li><img src="img/mediasb.jpg" class="pad15" /></li>
+        
+        <li class="t2">前后展示:</li>
+        <li><img src="img/mediass.jpg" class="pad15" /></li>
+    </div>
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{title}-{if $companynm}{companynm}{else}{mname}{/if}-{$hostname}</title>
+<meta content="{companynm}" name="keywords"> 
+<meta content="{companynm}{if $dizhi},地址是{dizhi}{/if}{if $lxdh},电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+</head>
+<body>
+<!--header begin-->
+{tpl$jz_sj_head}
+<div class="container">
+	<div class="con">
+		<!--左侧栏开始-->
+		{tpl$jz_sj_left}
+		<!--左侧栏结束  右侧栏开始-->
+		<div class="right_bar">
+
+			<div class="title3">
+				<div class="title3_l"></div>
+				<div class="title3_m">公司动态</div>
+				<div class="title3_r"></div>
+				<div class="title3_m2"></div>
+			</div>
+			<!--所有商品结束 特价商品开始-->
+			<div class="right_con2 sysp">
+				<!--公司列表开始-->
+				{c$jz_m_gsdt1 [cname=公司动态列表/][limits=10/] [tclass=archives/] [chsource=2/] [chids=104/] [caidson=1/] [casource=1/] [caids=512/] [space=1/] [detail=1/] [ttl=900/] [mp=1/]}
+				<?php $tjls=count($_jz_m_gsdt1);?>
+				[row]
+				<div class="gsdt-title">
+					<a target="_blank" href="{marcurl}">{subject}</a>
+					<span class="nom gray79">
+						({c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd})
+					</span>
+				</div>
+				<div class="gsdt-con">
+					{c$text [tclass=text/] [tname=abstract/] [trim=200/] [ellip=.../]}{/c$text} ［<a class="greenlink1" target="_blank" href="{marcurl}">查看全文</a>］
+				</div>
+				[/row]
+				{/c$jz_m_gsdt1}
+				{if @$tjls<=0}
+			      <div class="noinfo">很抱歉！暂无公司动态信息</div>
+			    {/if}
+				<div class="blank0"></div>
+				{$mpnav}
+				<!--公列表结束-->
+			</div>
+			<div class="right_b">
+				<div class="right_b_l"></div>
+				<div class="right_b_r"></div>
+			</div>
+		</div>
+		<!--右侧栏结束--> 
+	</div>
+	<div class="blank0"></div>
+</div>
+	{tpl$jz_foot}
+</body>
+</html>

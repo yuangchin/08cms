@@ -1,0 +1,27 @@
+<?php $pagetype = 'ask'; ?>
+{tpl$head}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/v4_ask.css?{$user_version}" />
+<div class="wrap">
+  <div class="bread clearfix">
+        <div class="r w450 clearfix">
+            <?php $searchword = empty($searchword)?'':$searchword;?>
+                <form name="asksearch" action="{cms_abs}index.php" method="get">
+                <div class="search-group form form-bdrs">
+                    <a rel="nofollow" class="btn btn-jqModal" data-head="<i class='ico08 fz16 fcg'>&#xf059;</i>我要提问" data-bodycss='{"width":"600"}' rel="nofollow" href="{$cms_abs}etools/wdadd.php?domain={$_SERVER['HTTP_HOST']}"><i class="ico08 mr5">&#xf059;</i>提问</a><a href="javascript:this.asksearch.submit()" class="btn" target="_self"><i class="ico08 mr5">&#xe607;</i>搜索</a>
+                    <div class="txt-wrap">
+                      <input class="txt" type="text" name="searchword"  value="{searchword}" placeholder="请输入关键字" x-webkit-speech speech/>
+                    </div>
+                    <input type="hidden" name="caid" value="516" />
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a>{c$position [cname=当前位置/] [tclass=nownav/] [coids=caid/]}<i class="pipe">/</i><a href="{indexurl}">{title}</a>{/c$position}
+        </span>
+  </div>
+  <div class="blank1"></div>
+  <!-- <div class="wdNav clearfix">
+    <div class="r wtnum"> <i class="ico08">&#xf058;</i>已解决问题：<span class="num">{c$asked_count [cname=已解决问题数量/] [tclass=acount/] [chsource=2/] [chids=106/] [ccids18=123/] [ccids19=141/] [ccidson35=1/] [cosource35=1/] [ccids35=3036/]}{if $v['counts']}{counts}{else}0{/if}{/c$asked_count}</span> <i class="ico08">&#xf059;</i>待解决问题：<span class="num">{c$ask_counts [cname=待解决问题数量/] [tclass=acount/] [chsource=2/] [chids=106/] [ccids18=124/] [ccids19=140/] [ccidson35=1/] [cosource35=1/] [ccids35=3035/]}{if $v['counts']}{counts}{else}0{/if}{/c$ask_counts}</span> </div>
+  </div> -->
+</div>
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>{subject}-{$cmstitle}</title>
+	<meta name="keywords" content="{keywords}"/>
+  	<meta name="description" content="{abstract}"/>
+	{tpl$m_headinner}
+	<style type="text/css">
+		#player_a{position: absolute;left: 0;top: 0;bottom:0;width: 100%;height: 100%;height:300px;z-index:1;}	
+	</style>
+</head>
+
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" class="active">
+        <article class="active">
+            <div>
+                {tpl$m_header_arc}
+                <!-- video -->
+                {c$lpnsp [cname=楼盘内视频/] [tclass=archive/] [arid=5/] [chid=12/] [detail=1/]}
+						{if $v['scsp']}
+		                <div id="a1">
+		                	<video id="player_a" class="projekktor" title="{subject}" width="100%" height="100%" controls autoplay>
+					        	{c$flash [tclass=flash/] [val=a/] [tname=scsp/]}
+					        	<source src="{url}" type="video/mp4" />
+					        	<source src="{url}" type="video/webm" />
+					        	<source src="{url}" type="video/ogg" />
+					        	{/c$flash}
+					    	</video>
+		                </div>
+						{else}
+						<iframe id="a1" height="100%" width="100%" src="{html}" frameborder="0"></iframe>
+						{/if}
+				{/c$lpnsp}
+                <!-- /video -->
+            </div>
+        </article>
+    </section>
+    
+</div><!-- /page -->
+    {tpl$m_footer}
+    <script type="text/javascript">
+    {c$lpnsp [cname=楼盘内视频/] [tclass=archive/] [arid=5/] [chid=12/] [detail=1/]}
+    $(function () {
+    	
+    	$('#player_a').height($(window).height())
+
+    	{if empty($v['scsp'])&&$v['html']}
+		if($("#video").html().indexOf("iframe")==-1){
+		   $("#video").html('<embed src="{html}" quality="high" width="100%" height="160" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="sameDomain"/>');
+		}else{
+		    $("#video").html('{html}').find('iframe').css({
+		    	width: '100%',
+		    	height: $(window).height()
+		    });
+		}
+		{/if}
+    })
+{/c$lpnsp}
+    </script>
+</body>
+</html>

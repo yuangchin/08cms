@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if $cmane}{cmane}{else}经纪公司{/if}-公司动态-{$hostname}</title>
+<meta content="{cmane}" name="keywords">
+<meta content="{cmane}{if $caddress},公司地址是{caddress}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$headinner}
+</head>
+<body>
+{tpl$comtop}
+<div class="mian wrap">
+    <div class="blank10"></div>
+    <!-- 左栏开始 -->
+    {tpl$comleft}
+    <!-- 左栏结束 -->
+    <!-- 右栏开始 -->
+    <div class="inMain">
+        <div class="subT1 dongtai">
+            <div class="l h">公司动态</div>
+            <div class="cb0"></div>
+        </div>
+        <div class="Recommend_content">
+        <div style="margin: 20px 20px 0;line-height: 28px; font-size: 14px;">
+            <ul class="tlist">
+                {c$v3_jjgsgsdt [cname=经纪公司公司动态/] [tclass=archives/] [limits=20/] [chsource=2/] [chids=104/] [caidson=1/] [casource=1/] [caids=554/] [space=1/] [mp=1/]}
+                <?php $tjls=count($_v3_jjgsgsdt);?>
+                [row]
+                <li class="{if $v['sn_row']%5==0}line5{/if}"><a href="{marcurl}" target="_blank">{subject}</a></li>
+                [/row]
+                {/c$v3_jjgsgsdt}
+            </ul>
+            {if @$tjls<=0}
+            <div class="noinfo">很抱歉！暂无公司动态信息</div>
+            {/if}
+            <div class="ptb10">
+                {$mpnav}
+            </div>
+        </div>
+        </div>
+        <div class="Recommend_bottom"></div>
+    </div>
+<!-- 右栏开始 -->
+</div>
+{tpl$foot}
+</body>
+</html>

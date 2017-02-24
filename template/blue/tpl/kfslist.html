@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<title>{listtitle}-{$hostname}</title>
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" href="{$tplurl}css/kfs.css?{$user_version}" type="text/css">
+<?php $pagetype = 'newhouse'; ?>
+</head>
+<body>
+{tpl$head}
+<div class="wrap">
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form form-bdrs w300">
+                    <button class="btn" type="submit"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+                    <div class="txt-wrap">
+                      <input type="text" class="txt" value=""  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a><i class="pipe">/</i>{title}
+        </span>
+    </div>
+    <div class="blank0 bdt-gray"></div>
+	<div class="kf-left">
+    <div class="zjlist">
+    <ul>
+{c$archives [tclass=archives/] [ttl=600/] [limits=20/] [detail=1/] [chsource=2/] [chids=13/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [mp=1/]}
+        <li class="clearfix">
+         <i class="td1"><a href="{arcurl}" title="{subject}" target="_blank"><img alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=a/] [maxwidth=134/] [maxheight=80/]}{url_s}{/c$image}" width="134" height="80" /></a></i>
+         <i class="td2">
+            <p class="fwb fz14"><span class="ico08 fcr mr5">&#xf0de;</span><a href="{arcurl}" title="{subject}" target="_blank">{subject}</a></p>
+            <p>{if $v['tel']}{tel}{else}暂无电话{/if}</p>
+            <p>{address}</p>
+         </i>
+         <i class="td3"><a href="{arcurl}" target="_blank">&gt;&nbsp;查看更多</a></i>
+        </li>
+        {/c$archives}
+    </ul>
+        </div>
+         {if $mpacount>0}
+		<!-- 分页 -->
+		<div class="ptb10">{$mpnav}</div>
+		{else}
+		 <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+		{/if}
+     </div>
+     <div class="kf-right">
+        <!-- 热门开发商 -->
+       <div class="hotkfs">
+            <div class="area2_3">
+                <h3>热门开发商</h3>
+            </div>
+              <div class="borh clearfix">
+               <div class="p10">
+               <ul>
+               	{c$archives [cname=热门开发商/] [tclass=archives/] [chsource=2/] [chids=13/] [orderstr=a.wclicks DESC/] [forceindex=a.wclicks/] [ttl=600/]}
+                <li>
+                 <i class="area2_41">{sn_row}</i>
+                 <span class="area2_42"><a href="{arcurl}" title="{subject}" target="_blank">{c$text [cname=text/] [tclass=text/] [tname=subject/] [trim=40/]}{/c$text}</a></span>
+                </li>
+                {/c$archives}
+               </ul>
+               </div>
+              </div>
+        </div>
+        <!-- 品牌开发商 -->
+        <div class="kfs-ml ">
+            <div class="area2_3">
+                <h3>品牌开发商</h3>
+            </div>
+            <div class="borh clearfix">
+               <div class="p10">
+                  <ul>
+                    {c$fgfgfh [tclass=pushs/] [paid=push_kfs/] [limits=10/]}
+                     <li>
+                        <a href="{url}" target="_blank" title="{subject}">{subject}</a>
+                     </li>
+                     {/c$fgfgfh}
+                  </ul>
+               </div>
+            </div>
+      </div>
+    </div>
+ </div>
+{tpl$foot}
+</body>
+</html>

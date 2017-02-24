@@ -1,0 +1,28 @@
+/* CSS Document */
+body, td{margin: 0px;font: 12px Arial, Helvetica, sans-serif;text-align:center;}
+html, body {background: #FAFAFF;}
+input, textarea, select{margin: 3px 0px;border: 1px solid #6699CC;font: 12px Arial, Helvetica, sans-serif;line-height: 1.2em;color: #006699;background: #FFFFFF;vertical-align: middle;}
+form {margin: 0px;}
+textarea {overflow: auto;}
+.checkbox, .radio {border: 0px;background: none;vertical-align: middle;height: 16px;}
+
+a {text-decoration: none;color: #555555}
+a:hover {text-decoration: underline;}
+.button{
+	border:0px;  
+	font: 12px Arial, Helvetica, sans-serif;
+	color:#000; 
+	text-align:center; 
+	padding-top:2px; 
+	width:65px; 
+	height:19px; 
+	background:url(button_bg1.gif) no-repeat;
+}
+
+.tabmain{margin:10px 0px;outline: 1px solid #8CC3DE;border: 0px!important;> border: 1px solid #8CC3DE !important;border: 1px solid ##8CC3DE;empty-cells: show;border-collapse: separate !important;> border-collapse: collapse !important;border-collapse: collapse;}
+.tabmain td {line-height: 1.5em;height: 2em;padding: 2px;color: #333333;}
+.tabmain td .smalltxt{line-height: 20px;}
+td.item1, .item1 td {text-align:left;background: #FFFFFF;padding: 0px 10px;}
+td.item2, .item2 td {text-align:left;background: #FFFFFF;padding: 0px 10px;}
+.header td {background: #D6E7F7;line-height: 16px;font-weight: bold;color: #005584;border-bottom: 1px solid #8CC3DE;padding: 0px 8px;}
+.footer td {background: #FFFFFF;line-height: 16px;border-bottom: 1px solid #8CC3DE;padding: 0px 8px;}

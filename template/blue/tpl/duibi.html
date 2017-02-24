@@ -1,0 +1,261 @@
+<?php
+    if (empty($chid)||$chid==4){
+		$chid=4;
+		$title='楼盘';
+		$caid=2;
+	}elseif ($chid==3){
+		$title='二手房';
+		$caid=3;
+	}elseif ($chid==2){
+		$title='出租';
+		$caid=4;
+	}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{title}对比-{$hostname}</title>
+{tpl$headinner}
+<style type="text/css">
+body,html{_background: url(about:blank)}
+.wrap{width:1000px; margin: 0 auto;}
+
+.list {border-left: 1px solid #ddd;border-top: 1px solid #ddd;}
+.list .td0{font-weight: bold;font-size: 14px;}
+.list ul{float: left;width: 220px;}
+.list ul.col0{width: 99px;font-weight: bold;}
+.list li{border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;}
+.list .hover{background: #E2E9EC;}
+.list li div{padding: 5px;}
+.list li div img{width: 100%;}
+.list-head-outer{height: 72px;}
+.list-head-inner{width: 100%;}
+.list-head{
+background: #FBFBFB;
+background-image: -moz-linear-gradient(top, #ffffff, #eeeeee);
+background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eeeeee));
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType='0');
+}
+.list-head li div{padding:20px 10px;position: relative;height: 30px;vertical-align:top;overflow: hidden;}
+.list-head .txt{height:28px;line-height:28px;width: 100%; font-size: 14px;font-family: Microsoft yahei;overflow: hidden;border:0 none;border: 1px solid #ABADB3;background: #fff;text-indent: 10px;}
+.reset{position: absolute;display: none;width: 15px;height: 15px;background: url({$tplurl}images/close-ico.png) no-repeat; right: 15px;top: 27px;cursor: pointer;}
+.reset:hover{background-position: 0 bottom;}
+.nav-db {background: #F5F5F5;border-bottom: 3px solid #e43;}
+.nav-db li {float: left;margin-left: 30px;display: inline;margin-bottom: -3px;}
+.nav-db li a{float: left;padding: 12px 23px;font-family: Microsoft yahei;font-size: 20px;}
+.nav-db li a:hover{text-decoration: none;}
+.nav-db li.act a{border: 3px solid #e43;border-radius: 5px 5px 0 0;border-bottom-color: #fff;background: #fff;color: #e43;padding: 9px 20px;position: relative;}
+</style>
+<?php $navNoFixed = 1; ?>
+</head>
+<body>
+{tpl$head}
+<!-- nav -->
+<div class="blank20"></div>
+<div class="wrap">
+	<div class="nav-db">
+		<ul class="clearfix">
+			<li id="nav-4"><a title="楼盘对比" href="{$cms_abs}info.php?fid=8&chid=4">楼盘对比</a></li>
+			<li id="nav-3"><a title="二手房对比" href="{$cms_abs}info.php?fid=8&chid=3">二手房对比</a></li>
+			<li id="nav-2"><a title="出租对比" href="{$cms_abs}info.php?fid=8&chid=2">出租对比</a></li>
+		</ul>
+	</div>
+</div>
+<div class="blank20"></div>
+<!-- /nav -->
+<!-- 头部 -->
+<div class="list-head-outer">
+	<div class="list-head-inner jqFixed" data-css='{"z-index":1000}'>
+		<div class="wrap">
+			<div id="list-head" class="list list-head clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!-- /头部 -->
+<div class="blank0"></div>
+<div class="wrap">
+<div class="list list-body clearfix" id="list-body">
+ 	<?php
+ 		//显示文档中，除了标题外的其他文档信息
+ 		compareInfo(5,$chid);
+ 	?>
+</div>
+</div>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<!-- 自动完成 -->
+<script type="text/javascript" src="{$tplurl}js/jqautocomplete.js"></script>
+<script type="text/javascript">
+$('#nav-{chid}').addClass('act');
+	//初始化, 注意顺序不能变
+var hds='<ul class="col0"><li class="td0"><div>{title}标题</div></li></ul>';
+for (var i = 0; i < 5; i++) {
+	hds +='<ul class="col'+(i+1)+'">'
+			 +'<li class="td'+(i+1)+'">'
+				 +'<div>'
+				 +'<form>'
+				 +'<input type="text" class="txt clear-txt" data-aid="0" placeholder="{title}名称/拼音/地址" value="" name="searchword">'
+				 +'<a class="reset"></a>'
+				 +'</form>'
+				 +'</div>'
+			 +'</li>'
+		 +'</ul>';
+};
+document.getElementById('list-head').innerHTML=hds;
+</script>
+<div class="blank10"></div>
+{tpl$foot}
+<script>
+var $listBody  = $('#list-body')
+, $listHead    = $('#list-head')
+, num          = $listBody.find('.col1').find('li').length
+, aids         = location.hash.replace("#aids=","").split(',')
+, $searchwords = $listHead.find("input[name='searchword']");
+//打开页面更新信息
+$(aids).each(function(i) {
+	if(aids[i] > 0) update_column(i+1,aids[i]);
+})
+
+/**
+ * 手动选择时更新信息
+ * @return array aid的数组
+ */
+function getAids() {
+	var s = [];
+	$searchwords.each(function() {
+		s.push($(this).attr('data-aid') * 1);
+	})
+	return s;
+}
+/**
+ * 设置每一行的高度
+ */
+function setHeight() {
+    for (var i = 0; i < num; i++) {
+    	var maxH=0;
+    	$listBody.find('ul').find('li:eq('+i+')').each(function() {
+        		maxH = Math.max(parseInt($(this).height()),maxH);
+        	}).height(maxH).eq(0).find('div').css('line-height',(maxH-10)+'px');
+
+    };
+}
+
+// 下面是自定义的
+var template1 = function() {//下拉框内列表项目模板function() this:返回的数据
+    return '<li data-url="' + this.url + '" data-aid="' + this.aid + '">'
+          + '   <span class="subject">' + this.subject + '</span>'
+          + '</li>'
+}
+
+$searchwords.each(function(i) {
+	$(this).jqAutocomplete({
+		param:{
+			caid:{caid}
+			, _isxq : 0
+			, searchmode:'subject,address'
+		}
+	})
+	.on('ajaxDone', function (el, $dataBox, data) {
+        var l = data.length;
+        if (l > 0) {
+            var html = '<ul>';
+            for (var i = 0; i < l; i++) html += template1.call(data[i]);
+            html += '</ul>';
+            $dataBox.html(html).css('display','block');
+        } //else $dataBox.css('display', 'none');
+    })
+	.on('pressDown', function (el, $li) {
+		var aid = $li.data('aid');
+		if ($.inArray(aid, getAids()) < 0) {
+			update_column(i + 1, aid);
+		} else {
+			$(this).focus();
+			alert('已存在，请重新选择！');
+		}
+	});
+})
+
+//鼠标hover
+$listBody.on('mouseover','li',function() {
+	$listBody.find('ul').find('li:eq('+$(this).index()+')').addClass('hover');
+}).on('mouseout','li',function() {
+	$listBody.find('ul').find('li:eq('+$(this).index()+')').removeClass('hover');
+})
+ /**
+  * 更新或增加信息
+  * @param  col 第col行
+  * @param  aid 文档id
+  */
+function update_column(col,aid){
+    $.getScript(CMS_ABS+uri2MVC("ajax=front_archiveinfo&chid={chid}&aid=" + aid + "&gettype=archivedata"),function(){
+        if($.isPlainObject(data)){
+				var $ths = $listHead.find('.col'+col)
+				,subject
+				,url
+				,tds     = '';
+
+                for(var d in data){
+                	switch(d){
+	                	case 'aid':
+	                	break;
+	                	case 'subject':
+	                    	subject = data[d];
+	                	break;
+	                	case 'url':
+                			url = data[d];
+                          break;
+                      case 'kpsj':
+                           if (data[d]){
+                            tds +="<li><div>" + (formatDate(new Date(data[d] * 1000),'yyyy-MM-dd')) + "</div></li>"
+                           }
+
+	                	break;
+	                	case 'thumb':
+                			tds += "<li><div>" + (data[d]==''?'-':"<img width='209' height='120' src='"+data[d]+"'/>") + "</div></li>"
+	                	break;
+	                	default:
+                        	tds += "<li><div>" + (data[d]==''?'-':data[d]) + "</div></li>"
+                	}
+                }
+                $listBody.find('.col'+col).html(tds).find('img').wrap('<a href="'+ url +'" target="_blank"/>');
+				setHeight();
+                //不跳转修改当前页面的链接
+                $ths.find('.txt').val(subject).attr('data-aid',aid);
+                location.hash='#aids=' + getAids().join(',');
+                //处理表单
+                $ths.find('.reset').show();
+                $ths.on('click','.reset',function() {
+                	$(this).hide();
+                	$ths.find('.txt').val('').attr('data-aid',0).focus().blur()
+                	$listBody.find('.col'+col).find('div').html('&nbsp;');
+                	location.hash='#aids=' + getAids().join(',');
+                });
+            }else{
+            	alert(data);
+            }
+
+    });
+}
+
+function formatDate(date,format){
+    var o =
+    {
+        "M+" : date.getMonth()+1,
+        "d+" : date.getDate(),
+        "h+" : date.getHours(),
+        "m+" : date.getMinutes(),
+        "s+" : date.getSeconds(),
+        "q+" : Math.floor((date.getMonth()+3)/3),
+        "S" : date.getMilliseconds()
+    }
+    if(/(y+)/.test(format))
+        format=format.replace(RegExp.$1,(date.getFullYear()+"").substr(4 - RegExp.$1.length));
+    for(var k in o)
+        if(new RegExp("("+ k +")").test(format))
+            format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    return format;
+}
+
+</script>
+</body>
+</html>

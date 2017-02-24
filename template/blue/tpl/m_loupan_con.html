@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>{subject}-{$cmstitle}</title>
+	<meta name="keywords" content="{keywords}"/>
+	<meta name="description" content="{abstract}"/>
+	{tpl$m_headinner}
+</head>
+
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" class="innblank44 active">
+        <footer>
+		    <a href="tel:{$tel}"><i class="icon-e612"></i>打电话</a>
+		    <a onclick="return popupExt(this);" href="#tpl_popup_yx"><i class="icon-f07a"></i>我想买</a>
+		    <a onclick="return publicCollect('{$aid}','','7','new');"><i class="icon-f004"></i>收藏它</a>
+		    <a href="#comment_section" data-target="section"><i class="icon-e755"></i>在线点评</a>
+		</footer>
+        <article class="active">
+            <div>
+                {tpl$m_header_arc}
+                <div id="slider" class="slider" style="height:200px">
+                        {c$pushs [tclass=pushs/] [paid=push_107/] [limits=10/] [wherestr=pid3 = '$aid'/] [ttl=600/]}
+                    <div>
+                        [row]
+                        <div class="slider-item">
+                            <a href="{$arcurl3}&img_tk={$v[fromid]}">
+                                <img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=640/] [thumb=2/] [padding=0/]} src="{url_s}"{/c$image}/><span class="slider-text">{subject}</span>
+                            </a>
+                        </div>
+                        [/row]
+                    </div>
+                        {/c$pushs}
+                </div><!-- /flash -->
+				<ul class="list detail">
+					<li>
+						<h1>{subject} <span class="fz14 f-alizarin">均价：{dj}元/m&sup2; </span> <a href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=1/]}{indexurl2}{/c$caidx}" class="fz14 icon-f1ec f-peter-river">计算器</a></h1>
+						<p class="f-alizarin">{if $bdsm}<i class="icon-e602"></i>{bdsm}{/if}</p>
+						<p>开盘日期：{kprq}</p>
+						<p><span class="label">{ccid1title}</span>{if $ccid2title}<span class="label">{ccid2title}</span>{/if}<span class="label">{ccid18title}</span>{c$catalogs [tclass=catalogs/] [listby=co12/] [cosource12=1/] [ccids12=$ccid12/]}<span class="label">{title}</span>{/c$catalogs}<?php echo cls_uview::field_value($tslp, 'tslp', 4, "<span class='ts_(value) label'>(title)</span>"); ?></p>
+					</li>
+				</ul>
+				<!-- 看房团数据 -->
+				{c$archives [tclass=archives/] [chids=110/] [chsource=2/] [limits=1/] [casource=1/] [caids=560/] [validperiod=1/] [mode=belong/] [arid=32/]}
+                    <?php $kftdata = $_archives; ?>[row] [/row]
+				{/c$archives}
+				<!-- 团购数据 -->
+				{c$archives [cname=在线团购/] [tclass=archives/] [limits=1/] [chsource=2/] [chids=5/] [validperiod=1/] [ttl=600/] [mode=in/] [arid=3/]}
+                    <?php $tgdata = $_archives; ?>[row] [/row]
+				{/c$archives}
+				{if @$kftdata || @$tgdata}
+				<ul class="list detail">
+					<li>
+						<div class="control-group">
+						{if @$kftdata}
+		                    <a href="#kft" data-target="element" class="active"><i class="icon icon-e639"></i>看房团报名</a>
+						{/if}
+						{if @$tgdata}
+		                    <a href="#tg" data-target="element"><i class="icon icon-f0c0"></i>团购报名</a>
+						{/if}
+		                </div>
+		                <div class="p5"></div>
+		                {loop @$kftdata $k $v}
+                        <div id="kft" class="element">
+                        	<form name="commu45" id="commu45" method="get" onsubmit="return fyCummus(this,'看房报名');">
+					    	    <input type="hidden" name="cuid" value="45"><!--交互项目id-->
+					    	    <input type="hidden" name="aid" value="{$v[aid]}"><!--针对文档的aid,不是针对文档就不要这项-->
+					    	    <input type="hidden" name="fmdata[yxlp]" value="{$aid}">
+					    		<div class="input-group">
+									<input type="text" id="fmdata[xingming]" name="fmdata[xingming]" required="" maxlength="20" min="0" max="20" placeholder="您的姓名">
+									<input type="text" id="fmdata[tel]" name="fmdata[tel]" required="" title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" placeholder="手机号码">
+									<input type="text" name="regcode" required="" maxlength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码">
+								</div>
+								<div class="grid">
+									<div class="col-1">
+										<a href="{$v[arcurl]}" class="button small" data-icon="icon-f10b">详情</a>
+									</div>
+									<div class="col-1">
+										<button class="fr small" name="bsubmit" type="submit" data-icon="icon-e603">提交</button>
+									</div>
+								</div>
+					    	</form>
+                        </div><!-- /看房团报名 -->
+                        {/loop}
+                        {loop @$tgdata $k $v}
+                        <div id="tg" class="element dn">
+                        	<form name="commu8" id="commu8" method="get" onsubmit="return fyCummus(this,'团购报名');">
+					    	    <input type="hidden" name="cuid" value="8"><!--交互项目id-->
+					    	    <input type="hidden" name="aid" value="{$v[aid]}"><!--针对文档的aid,不是针对文档就不要这项-->
+					    		<div class="input-group">
+									<input type="text" id="fmdata[lxren]" name="fmdata[lxren]" required="" maxlength="20" min="0" max="20" placeholder="您的姓名">
+									<input type="text" id="fmdata[lxdh]" name="fmdata[lxdh]" required="" title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" placeholder="手机号码">
+									<input type="text" name="regcode" required="" maxlength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码">
+								</div>
+								<div class="grid">
+									<div class="col-1">
+										<a href="{$v[arcurl]}" class="button small" data-icon="icon-f10b">详情</a>
+									</div>
+									<div class="col-1">
+										<button class="fr small" name="bsubmit" type="submit" data-icon="icon-e603">提交</button>
+									</div>
+								</div>
+					    	</form>
+                        </div><!-- /团购报名 -->
+						{/loop}
+					</li>
+				</ul>
+				{/if}
+				<ul class="list detail">
+					{c$archives [cname=资讯列表/] [tclass=archives/] [limits=3/] [chsource=2/] [chids=1/] [mode=in/] [arid=1/]}
+					<li class="divider" data-icon="icon-f054">
+						<a href="#news_section" data-target="section">最新动态</a>
+					</li>
+					<li>
+                        [row]
+                        <a href="{arcurl}">{subject} &nbsp;<span class="f-asbestos">[{c$time [cname=time/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$time}]</span></a>
+                        [/row]
+                    </li>
+					{/c$archives}
+					<li class="divider">
+						楼盘详情
+					</li>
+					<li>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">开盘时间：</div>{kprq}
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">交房时间：</div><div class="col-1">{jfrq}</div>
+						</div>
+						<div class="line"></div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">物业类型：</div>{ccid12title}
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">建筑类别：</div>{c$lcs}
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">装修状况：</div>{c$zxcd}
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">住户数：</div>{xqhs}
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">容积率：</div>{yjl}
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">绿化率：</div>{lhl}
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">停车位：</div>{cksm}
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">交通路线：</div><div class="col-1">{jtxl}</div>
+						</div>
+						<div class="line"></div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">开发商：</div><div class="col-1">{kfsname}</div>
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">预售许可：</div><div class="col-1">{xkzh}</div>
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">物业公司：</div><div class="col-1">{wygs}</div>
+						</div>
+						<div class="grid item">
+							<div class="grid-label f-asbestos">物业费： </div>{wyf}
+						</div>
+						{if $content}<div class="grid item">
+                            <div class="grid-label f-asbestos">楼盘介绍： </div>
+
+                        </div>
+                        <div class="js_minh200">
+                                {c$content [tclass=text/] [tname=content/] [dealhtml=safehtml/] [maxwidth=500/]}{/c$content}
+   				{c$catalogs [tclass=catalogs/] [limits=5/] [listby=ca/] [casource=3/] [wherestr=pid='12'/] [ttl=300/]}
+               <!--a:配套开始--> {c$archives1 [tclass=archives/] [val=b/][cname=文档列表/][detail=1/] [chsource=2/] [chids=8/] [casource=2/] [mode=in/] [arid=1/][ttl=600/]}
+                <?php $kk=count($_archives1); ?>
+                [row]
+                {if $b['sn_row']!=1}、{else}<b class="fs14">{$v['title']}：</b> {/if}<b class="fs12">{subject}</b>
+                [/row]{if @$kk}<br/>{/if}
+                {/c$archives1}
+                {/c$catalogs}
+                            </div>
+                        <div class="house_flex"><span>展开<i class="icon-e684"></i></span></div>
+                        {/if}
+
+					</li>
+                	{c$pushs1 [tclass=pushs/] [paid=push_108/] [limits=4/][wherestr=pid3 = '$aid'/] [ttl=600/]}
+					<li class="divider" data-icon="icon-f054">
+						<a href="{$arcurl3}&img_hx=1">主力户型</a>
+					</li>
+					<li>
+						<div id="slider1" class="slider" style="height:200px">
+			                    <div>
+					[row]
+					{c$archive [tclass=archive/] [chsource=11/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+
+			                        <div class="slider-item">
+			                            <a href="{$arcurl3}&img_hx={$v[fromid]}">
+			                                <img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=640/] [thumb=2/] [padding=0/]} src="{url_s}"{/c$image}/>
+			                                <span class="slider-text">{subject} {c$shi}{c$ting}{c$wei}&bull;{mj}m&sup2;</span>
+			                            </a>
+			                        </div>
+					{/c$archive}
+					[/row]
+			                    </div>
+			                </div>
+					</li>
+					{/c$pushs1}
+					<li class="divider">
+						位置及周边
+					</li>
+					<li>
+						<div class="">
+							<a href="{arcurl1}"><img width="100%" height="300" src="http://api.map.baidu.com/staticimage?width=320&height=300&center={dt_1},{dt_0}&zoom=13&markers={dt_1},{dt_0}&markerStyles=l,a" /></a>
+						</div>
+					</li>
+					<li class="divider" data-icon="icon-f054">
+						<a href="{arcurl5}" >价格走势</a>
+					</li>
+					<li>
+				        <canvas id="line_canvas"></canvas>
+					</li>
+					{c$lpnsp [cname=楼盘内视频/] [tclass=archive/] [arid=5/] [chid=12/] [detail=1/]}
+					<li class="divider">
+						视频看房
+					</li>
+					<li>
+						<a href="{$arcurl4}" onclick="return videoTip(this)"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/]  [maxheight=200/] [thumb=1/]} src="{url_s}"  width="100%" {/c$image}/></a>
+					</li>
+					{/c$lpnsp}
+                	{c$pushs1 [tclass=pushs/] [paid=push_109/] [limits=4/][wherestr=pid3 = '$aid'/] [ttl=600/]}
+					<li class="divider" data-icon="icon-f054">
+						<a href="{$arcurl3}&img_tk=1">楼盘相册</a>
+					</li>
+					<li>
+						<div id="slider2" class="slider" style="height:200px">
+		                    <div>
+								[row]
+		                        <div class="slider-item">
+		                            <a href="{$arcurl3}&img_tk={$v[fromid]}">
+		                                <img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=640/] [thumb=2/] [padding=0/]} src="{url_s}"{/c$image}/>
+		                                <span class="slider-text">{subject}</span>
+		                            </a>
+		                        </div>
+								[/row]
+		                    </div>
+		                </div>
+					</li>
+					{/c$pushs1}
+					{c$commus [tclass=commus/] [cuid=1/] [limits=3/] [wherestr=aid=$aid and tocid=''/]}
+					<li class="divider" data-icon="icon-f054">
+						<a href="#comment_section" data-target="section">楼盘点评</a>
+					</li>
+					[row]
+					<li class="comment-list">
+						<div class="grid f-asbestos mb5">
+							<div class="col-1 f-peter-river">{mname}</div>
+							<span class="fz12"><?=u_time_format($v['createdate'])?></span>
+						</div>
+					  	{content}
+					</li>
+					[/row]
+					{/c$commus}
+				</ul>
+				<div class="control-group">
+                    <a href="#tabcon1" data-target="element" class="active">同区域楼盘</a>
+                    <a href="#tabcon2" data-target="element">同价位楼盘</a>
+                </div>
+				<ul id="tabcon1" class="list list-media element">
+					{c$archives [tclass=archives/] [chsource=2/] [limits=3/] [chids=4/] [ttl=600/] [detail=1/] [ccidson1=1/] [cosource1=2/] [wherestr=((leixing='0' OR leixing='1') AND a.aid != '$aid')/]}
+					<li>
+                        <a href="{arcurl}">
+                            <img class="media-object" width="100" height="80" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=80/] [thumb=1/]}{url_s}{/c$image}">
+                            <div class="grid">
+                                <div class="col-1">
+                                    <strong>{if $v['ccid41']}<span class="label pumpkin fl">顶</span>{/if}{$v[subject]} </strong>
+                                </div>
+                                {if $v['dj']}<span class="f-alizarin">{dj}</span>元/m&sup2;{/if}
+                            </div>
+                            <p class="f-belize-hole">{bdsm}</p>
+                            <p>{address}</p>
+                            <p><span class="label">{ccid1title}</span>{if $v['ccid2title']}<span class="label peter-river">{ccid2title}</span>{/if}<span class="label amethyst">{ccid12title}</span><span class="label alizarin">{ccid18title}</span>
+                            </p>
+                        </a>
+                    </li>
+					{/c$archives}
+				</ul>
+				<ul id="tabcon2" class="list list-media dn element">
+					{c$archives [tclass=archives/] [chsource=2/] [limits=3/] [chids=4/] [ttl=600/] [detail=1/] [cosource17=2/] [wherestr=((leixing='0' OR leixing='1') AND a.aid != '$aid' AND ($dj-1000)<a.dj AND a.dj<($dj+1000))/]}
+					<li>
+                        <a href="{arcurl}">
+                            <img class="media-object" width="100" height="80" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=80/] [thumb=1/]}{url_s}{/c$image}">
+                            <div class="grid">
+                                <div class="col-1">
+                                    <strong>{if $v['ccid41']}<span class="label pumpkin fl">顶</span>{/if}{$v[subject]} </strong>
+                                </div>
+                                {if $v['dj']}<span class="f-alizarin">{dj}</span>元/m&sup2;{/if}
+                            </div>
+                            <p class="f-belize-hole">{bdsm}</p>
+                            <p>{address}</p>
+                            <p><span class="label">{ccid1title}</span>{if $v['ccid2title']}<span class="label peter-river">{ccid2title}</span>{/if}<span class="label amethyst">{ccid12title}</span><span class="label alizarin">{ccid18title}</span>
+                            </p>
+                        </a>
+                    </li>
+					{/c$archives}
+				</ul>
+    			{tpl$m_footer_ft}
+            </div>
+        </article>
+    </section>
+    <section id="news_section" data-btn="back" title="最新动态">
+    	<footer>
+		    <a href="tel:{tel}"><i class="icon-e612"></i>打电话</a>
+		    <a onclick="return popupExt(this);" href="#tpl_popup_yx"><i class="icon-f07a"></i>我想买</a>
+		    <a href="#comment_section" data-target="section"><i class="icon-e755"></i>在线点评</a>
+		</footer>
+        {tpl$m_header}
+        <article id="up_refresh_news" class="active" >
+            <div>
+            	<ul class="list detail">
+                    <li class="divider">最新动态</li>
+                </ul>
+            </div>
+        </article>
+    </section>
+{tpl$m_dp}
+</div><!-- /page -->
+    <div class="dn" id="tpl_popup_yx" style="padding:10px;">
+    	<form name="commu3" id="commu3" method="get" onsubmit="return fyCummus(this,'意向提交');">
+    	    <input type="hidden" name="cuid" value="3" /><!--交互项目id-->
+    	    <input type="hidden" name="cutype" value="a" /><!--a:针对文档,m:针对,都不是就不要这项-->
+    	    <input type="hidden" name="aid" value="{aid}" /><!--针对文档的aid,不是针对文档就不要这项-->
+
+    		<div class="input-group">
+				<input type="text" id="fmdata[ndxm]" name="fmdata[ndxm]" required maxLength="20" min="0" max="20" placeholder="您的姓名">
+				<input type="text" id="fmdata[sjhm]" name="fmdata[sjhm]" required title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" placeholder="手机号码">
+				<input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+			</div>
+			<button class="block" name="bsubmit" type="submit" data-icon="icon-e603">提交</button>
+    	</form>
+    </div>
+    <!-- 走势图 -->
+	<script type="text/javascript" src="{$tplurl}mobile/js/JChart.debug.js"></script>
+	<script type="text/javascript">
+    	var _data = {
+	            labels : [{c$outinfos [tclass=outinfos/] [dsid=0/] [limits=6/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$date}'{/c$outinfos}],
+	            datasets : [
+	                {
+	                    name : '{subject}',
+	                    color : "#E67E22",
+	                    pointColor : "#e43",
+	                    pointBorderColor : "#fff",
+	                    data : [{c$outinfos [tclass=outinfos/] [dsid=0/] [limits=6/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}{$v[average]}{/c$outinfos}]
+	                }
+	            ]
+	        }
+	    _data.labels.reverse();
+	    _data.datasets[0].data.reverse();
+	//最新动态加载数据设置
+	var opt2 = {
+            _param : {
+                'aj_model'    : 'a,1,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+                'aj_arids'    : '1,4,{$aid}',
+                'aj_pagenum'  : 1 ,
+                'aj_pagesize' : 10
+            } ,
+            wrap      : '#up_refresh_news' ,
+            dataWrap  : '#up_refresh_news ul.list' ,
+            template : function() {
+                return '<li>'
+                     + '<a href="'+this.arcurl+'">'+this.subject+' &nbsp;<span class="f-asbestos">['+getLocalTime(this.createdate)+']</span></a>'
+                     + '</li>'
+            }
+        }
+</script>
+    {tpl$m_footer}
+    <script type="text/javascript" src="{$tplurl}mobile/js/TouchSlide.js"></script>
+    <script type="text/javascript">
+    //加载最新动态
+        $('#news_section').one('pageshow',function() {
+        	pullRefresh(opt2,this.id);
+        })
+        // slide
+	    TouchSlide({
+	        slideCell : '#slider' ,
+	        mainCell  : '#slider div'
+	    });
+	    TouchSlide({
+	        slideCell : '#slider1' ,
+	        mainCell  : '#slider1 div'
+	    });
+	    TouchSlide({
+	        slideCell : '#slider2' ,
+	        mainCell  : '#slider2 div'
+	    });
+        //video
+    	function videoTip(h){
+            J.confirm('友情提示','建议您在wifi环境下观看',function(){
+				location.href = h.href;
+            },function(){});
+			return false;
+    	}
+
+    </script>
+
+</body>
+</html>

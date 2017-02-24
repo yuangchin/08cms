@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link href="browser.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+
+var sActiveFolder ;
+var bIsLoaded = false ;
+var iIntervalId ;
+
+var oListManager = new Object() ;
+
+oListManager.Clear = function()
+{
+	document.body.innerHTML = '' ;
+}
+
+oListManager.GetFolderUpRow = function( folderPath )
+{
+	if( folderPath == '/') return;
+	sParentFolderPath = folderPath.substring( 0, folderPath.lastIndexOf( '/', folderPath.length - 2 ) + 1 ) ;
+	var sLink = '<a href="#" onclick="OpenFolder(\'' + sParentFolderPath.replace( /'/g, '\\\'') + '\');return false;">' ;
+
+	return '<tr>' +
+			'<td width="16">' +
+				sLink +
+				'<img alt="" src="images/FolderUp.gif" width="16" height="16" border="0"></a>' +
+			'</td><td nowrap colspan="4">&nbsp;' +
+				sLink +
+				'..</a>' +
+		'</td></tr>' ;
+}
+
+oListManager.GetFolderRowHtml = function( folderName, folderPath )
+{
+	var sLink = '<a href="#" onclick="OpenFolder(\'' + folderPath.replace( /'/g, '\\\'') + '\');return false;">' ;
+
+	return '<tr>' +
+			'<td width="16">' +
+				sLink +
+				'<img alt="" src="images/Folder.gif" width="16" height="16" border="0"></a>' +
+			'</td><td nowrap colspan="4">&nbsp;' +
+				sLink +
+				folderName +
+				'</a>' +
+			'</td></tr>' ;
+}
+
+oListManager.GetfileRowHtml = function( fileName, fileUrl, fileDate, fileSize )
+{
+	var sLink = '<a href="#" onclick="Openfile(\'' + fileUrl.replace( /'/g, '\\\'') + '\');return false;">' ;
+	var sIcon = oIcons.GetIcon( fileName ) ;
+	if(-1!=',gif,jpg,jpeg,png,bmp,'.indexOf(','+sIcon.toLowerCase()+',')){
+	return '<tr>' +
+			'<td width="16">' +
+				sLink +
+				'<img alt="" src="images/icons/' + sIcon + '.gif" width="16" height="16" border="0"></a>' +
+			'</td><td>&nbsp;' +
+				sLink +
+				fileName +
+				'</a>' +
+			'</td><td><a href="' +
+				fileUrl +
+				'" target="_blank">‘§¿¿</a>' +
+			'</td><td align="right" nowrap>&nbsp;' +
+				fileSize +
+				' KB' +
+			'</td><td align="right" nowrap>&nbsp;' +
+				fileDate +
+		'</td></tr>' ;
+	}else{
+	return '<tr>' +
+			'<td width="16">' +
+				sLink +
+				'<img alt="" src="images/icons/' + sIcon + '.gif" width="16" height="16" border="0"></a>' +
+			'</td><td colspan="2">&nbsp;' +
+				sLink +
+				fileName +
+				'</a>' +
+			'</td><td align="right" nowrap>&nbsp;' +
+				fileSize +
+				' KB' +
+			'</td><td align="right" nowrap>&nbsp;' +
+				fileDate +
+		'</td></tr>' ;
+	}
+}
+function SetResourceType( type )
+{
+	oConnector.ResourceType = type ;
+	OpenFolder( '/' ) ;
+}
+
+
+function Openfile( fileUrl )
+{
+	window.top.opener.seturl( fileUrl ) ;
+	window.top.close() ;
+	window.top.opener.focus() ;
+}
+
+function CheckLoaded()
+{
+	if ( window.top.IsLoadedCreateFolder
+		&& window.top.IsLoadedUpload)
+	{
+		window.clearInterval( iIntervalId ) ;
+		bIsLoaded = true ;
+		OpenFolder( sActiveFolder ) ;
+	}
+}
+
+function OpenFolder( folderPath )
+{
+	sActiveFolder = folderPath ;
+
+	if ( ! bIsLoaded )
+	{
+		if ( ! iIntervalId )
+			iIntervalId = window.setInterval( CheckLoaded, 100 ) ;
+		return ;
+	}
+	window.parent.frames['frmCreateFolder'].SetCurrentFolder( oConnector.ResourceType, folderPath ) ;
+	window.parent.frames['frmUpload'].SetCurrentFolder( oConnector.ResourceType, folderPath ) ;
+	window.parent.frames['frmResourceType'].SetCurrentFolder( folderPath ) ;
+	LoadResources( oConnector.ResourceType, folderPath ) ;
+}
+
+function LoadResources( resourceType, folderPath )
+{
+	oListManager.Clear() ;
+	oConnector.ResourceType = resourceType ;
+	oConnector.CurrentFolder = folderPath ;
+	oConnector.SendCommand( 'GetFoldersAndfiles', null, GetFoldersAndfilesCallBack ) ;
+}
+
+function Refresh()
+{
+	LoadResources( oConnector.ResourceType, oConnector.CurrentFolder ) ;
+}
+
+function GetFoldersAndfilesCallBack( fckXml )
+{
+	if ( oConnector.CheckError( fckXml ) != 0 )
+		return ;
+
+	var oFolderNode = fckXml.SelectSingleNode( 'Connector/CurrentFolder' ) ;
+	if ( oFolderNode == null )
+	{
+		alert( 'The server didn\'t reply with a proper XML file\r\nCheck your configuration.' ) ;
+		return ;
+	}
+	var sCurrentFolderPath	= oFolderNode.attributes.getNamedItem('path').value ;
+	var sCurrentFolderUrl	= oFolderNode.attributes.getNamedItem('url').value ;
+
+
+	var oHtml = new StringBuilder( '<table id="tablefiles" cellspacing="1" cellpadding="0" width="100%" border="0">' ) ;
+
+	oHtml.Append( oListManager.GetFolderUpRow( sCurrentFolderPath ) ) ;
+
+	var oNodes ;
+	oNodes = fckXml.SelectNodes( 'Connector/Folders/Folder' ) ;
+	for ( var i = 0 ; i < oNodes.length ; i++ )
+	{
+		var sFolderName = oNodes[i].attributes.getNamedItem('name').value ;
+		oHtml.Append( oListManager.GetFolderRowHtml( sFolderName, sCurrentFolderPath + sFolderName + "/" ) ) ;
+	}
+
+	oNodes = fckXml.SelectNodes( 'Connector/files/file' ) ;
+	for ( var j = 0 ; j < oNodes.length ; j++ )
+	{
+		var oNode = oNodes[j] ;
+		var sfileName = oNode.attributes.getNamedItem('name').value ;
+		var sfileDate = oNode.attributes.getNamedItem('date').value ;
+		var sfileSize = oNode.attributes.getNamedItem('size').value ;
+
+		var ofileUrlAtt = oNodes[j].attributes.getNamedItem('url') ;
+		var sfileUrl = ofileUrlAtt != null ? ofileUrlAtt.value : sCurrentFolderUrl + sfileName ;
+
+		oHtml.Append( oListManager.GetfileRowHtml( sfileName, sfileUrl, sfileDate, sfileSize ) ) ;
+	}
+
+	oHtml.Append( '<\/table>' ) ;
+
+	document.body.innerHTML = oHtml.ToString() ;
+}
+
+window.onload = function()
+{
+	OpenFolder( '/' ) ;
+}
+	</script>
+</head>
+<body class="fileArea" bottommargin="3" leftmargin="10" topmargin="3" rightmargin="10">
+</body>
+</html>
+

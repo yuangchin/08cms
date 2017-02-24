@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>{subject}-{$hostname}</title>
+	<meta name="keywords" content="{keywords}"/>
+	<meta name="description" content="{abstract}"/>
+    {tpl$m_headinner}
+    <?php $pagelimit=10;?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="news_section" data-btn="back" title="最新动态" class="active">
+        {tpl$m_header}
+        <article id="up_refresh_news" class="active" >
+            <div>
+            	<ul class="list detail">
+                    <li class="divider">最新动态</li>
+                    {c$archives [tclass=archives/] [limits=$pagelimit/] [chsource=2/] [chids=1/] [mode=in/] [arid=1/]}
+                    <li>
+                        <a href="{arcurl}">{subject} &nbsp;<span class="f-asbestos">[{c$time [cname=time/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$time}]</span></a>
+                    </li>
+                    {/c$archives}
+                </ul>
+            </div>
+        </article>
+    </section>
+</div>
+<script type="text/javascript">
+	var opt = {
+            _param : {
+                'aj_model'    : 'a,1,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+                'aj_arids'    : '1,4,{$aid}',
+                'aj_pagesize' :{$pagelimit}
+            } ,
+            wrap      : '#up_refresh_news' ,
+            dataWrap  : '#up_refresh_news ul.list' ,
+            template : function() {
+                return '<li>'
+                     + '<a href="'+this.arcurl+'">'+this.subject+' &nbsp;<span class="f-asbestos">['+getLocalTime(this.createdate)+']</span></a>'
+                     + '</li>'
+            }
+        }
+</script>
+{tpl$m_footer}
+</body>
+</html>

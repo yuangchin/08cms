@@ -1,0 +1,15 @@
+<?php $hidenav=1;$ismem=1;?>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/common_front_shop.css?{$user_version}">
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/jzgs_index.css?{$user_version}">
+{tpl$jz_head}
+  <!--子导航开始-->
+<div class="wrap">
+	<div class="mb5"><img alt="{companynm}" {c$image [tclass=image/] [tname=banner/] [val=u/] } src="{url}"  height="135" width="1000" {/c$image}/></div>
+    <ul class="sub_nav">
+	    <li {if @$mid&&@$mcaid==""} class="bg1"{/if}><a href="{$mspacehome}">首页</a></li>
+        {c$m_nav [cname=装修空间列表/] [tclass=mcatalogs/] [listby=0/] [casource=1/] [caids=6,7,8,10,11,12,13,14,5/]}<li {if $v['mcaid']==$mcaid }class="menu_bg1 bg1"{/if}><a href="{indexurl}" >{title}</a></li>{/c$m_nav}
+    </ul>
+</div>
+  <!--子导航结束-->
+<div class="blank10"></div>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>

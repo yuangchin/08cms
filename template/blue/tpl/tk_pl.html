@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+	<title>{subject}_{c$yjlmtit2 [tclass=cnode/] [listby=ca/] [casource=active/] [level=2/]}{title}{/c$yjlmtit2} {c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] [level=1/]}{title}{/c$yjlmtit}-{hostname}</title> 
+	<meta content="{keywords}" name=keywords>
+	<meta content="{description}" name=description>
+{tpl$headinner}
+	<link rel="stylesheet" type="text/css" href="{$tplurl}css/tk.css?{$user_version}"/>
+	<base target="_blank"/>
+</head>
+<body>
+<!--图库统一头部-->
+{tpl$tpl_tkhead}
+	<script type="text/javascript" src="{$tplurl}js/jquery.js" /></script>
+<div class="wrap">
+	<div class="blank8"></div>
+
+	<div class="w690 l">
+		<div class="bGray connr clearfix">
+			<div class="hd ">
+				<h1>
+					<a href="{arcurl}">{subject}</a>
+				</h1>
+			</div>
+			<div class="zhaiyao">
+				<p>
+					{abstract}
+					<a href="{arcurl}">详细>></a>
+				</p>
+			</div>
+		</div>
+		<div class="blank10"></div>
+		<!-- 评论区块 -->
+		 {tpl$tpl_plkuan}
+		<!-- /评论区块 -->
+	</div>
+	<!--图库右侧信息-->
+	{tpl$tpl_tkright}
+	<!--公用底部-->
+</div>
+{tpl$foot}
+</body>
+</html>

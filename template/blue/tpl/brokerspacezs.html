@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if $xingming}{xingming}{else}{mname}{/if}网店-网店介绍-{$hostname}</title>
+<meta content="{xingming}" name="keywords">
+<meta content="{xingming}{if !empty($address)},地址是{address}{/if}{if $lxdh},电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$headinner}
+</head>
+<body>
+{tpl$brokertop}
+<div class="blank10"></div>
+<div class="wrap">
+	<!-- 左栏开始 -->
+{tpl$brokerleft}
+
+	<!-- 右栏开始 -->
+<div class="inMain">
+	  	<div class="subT1"><span class="l h">个人介绍</span></div>
+        <div class="ui-box1 person_intro mt10">
+             <div class="bor1 txt1">
+                  <p><span class="fwb">姓名：</span>{xingming}</p>
+                  <p><span class="fwb">从业年限：</span>{if $cynx}{cynx}{else}-{/if}</p>
+                  <p><span class="fwb">手机：</span>{lxdh}</p>
+                  <p><span class="fwb">邮箱：</span><a href='mailto:{email}'>{email}</a></p>
+             </div>
+             <div class="bor1 txt1">详细介绍：{c$dpgg [tclass=text/] [tname=dpgg/] [dealhtml=html_decode/] [badword=1/]}{/c$dpgg}</div>
+           
+        </div>
+</div>
+	<!-- 右栏开始 -->
+</div>
+{tpl$foot}
+</body>
+</html>

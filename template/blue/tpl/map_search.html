@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$mcharset}" />
+<title>地图找房 - {$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}newmap/css/mapcss.css?{$user_version}" />
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden" scroll=no>
+<!-- 顶部导航 begin --> 
+{tpl$tpl_map_header}
+<!-- 顶部导航 end -->
+<div class="box">
+  <!-- 主体 begin -->
+  <div class="mainbox">
+  <!-- 左侧bengin-->
+    <div id="leftwrapper">
+    <div id="leftwrapperTips">
+      <div class="clear"></div>
+          <div id="ltitle1" class="ltitle">
+    	    <a class="noatag"><div class="s1" id="a010">搜索结果</div></a>
+    	    <a class="noatag"><div class="s2" id="a011">浏览历史</div></a>
+    	   </div>
+         <div class="blank0"></div>
+          <div class="search-boxProject" id="conditionDiv">
+              <div id="conditionDiv_tip"></div>
+              <div class="blank0"></div>
+          </div>
+      </div>
+      <div id="searchResultShow">
+                <!-- 没有搜索结果 begin -->
+        	    <div id="no_search_result" class="dn">
+        	    	<div class="seachtip tc"> <i class="ico08 fco fz18">&#xf11c;</i>抱歉，没有找到相关楼盘! </div>
+        	    </div>
+	            <!-- 没有搜索结果 end -->
+                <!-- 有搜索结果 begin-->
+                <div id="have_search_result" style=" position: relative;">
+                    <div class="seajg">
+                         <span id="total_count" style="float: left;display:none;">努力查找中...</span>
+                    </div>
+                    <div class="lstitle" value="0%0"><div class="s1" id="sort_default" ><a class="noatag">默认</a></div><div class="s2" id="sortPrice" value="1%0"><a class="noatag">价格</a><img src="{$tplurl}newmap/images/icon05.gif" width="10" height="8"></div><div class="s2" id="sortStartTime" value="2%0" ><a class="noatag">开盘</a><img src="{$tplurl}newmap/images/icon05.gif" width="10" height="8" /></div></div>
+                        <div  class="lconnr1" id="search_result" style="display:none;">
+
+                              <div class="blank5"></div>
+                            <div id="house_result_wrap">
+                            </div>
+
+                        </div>                   
+                <!-- 有搜索结果 end-->
+          </div>
+           <!--搜索结果 end-->
+          </div>
+           <!--游览历史记录 start-->
+           <div class="lcon noneBox" id="historyshow" style="display: none;">
+        	    <div class="seajg">
+        		<span id="clearAllHistoryProject"><a class="qingk" style="float:right;">全部清空</a></span>最近浏览的<em id="total_history_count">0</em>个楼盘
+        	    </div>
+    	        <div id="map_B06_02">
+                    <div class="lconnr" id="browsing_history" style="overflow-x: hidden;">
+                    </div>
+                </div>
+	       </div>
+           <!--游览历史记录 end--> 
+    </div>    
+  <!-- 左侧 end -->
+    <div id="mapouterdiv" class="rightbar">
+      <div id="divMap"></div>      
+    <div id="maptip" class="newqipao" style="display: block; top: 30px; left: 70px;">
+      <div class="blank0"></div>
+    </div>
+      <div id="projturndiv" class="info-box" style="display:none;">
+        <div id="projturndivbg" class="info-bg"></div>
+        <p class="txt" id="esfmap_B03_01">当前显示<span id="ViewVolume">50</span>个楼盘，[<a id="change100proj" href="javascript:void(0)">换一批</a>]</p>
+      </div>
+      <div class="close03" id="closeprojturndiv" style="display:none;"></div>
+    </div>
+    <div class="clear"></div>  
+  </div>
+</div>
+<script type="text/javascript" src="{$cms_abs}include/js/common.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<?php
+$allCondition = array('price'=>17,'district'=>1,'area'=>6,'purpose'=>12,'salestat'=>18,'loupantese'=>'tslp','zhuangxiuchengdu'=>'zxcd','louceng'=>'lcs','huanxian'=>'hxs',);//筛选条件配置项
+if(empty($fcdisabled3)) $allCondition['ditie'] = 3;
+$ConditionConfig = conditionFilter($allCondition,4);
+$ConditionData = getConditions($ConditionConfig,'chid_4');
+$ConditionData =_08_Documents_JSON::encode($ConditionData,true);
+?>
+<script type="text/javascript">
+Conditions = <?php echo $ConditionData;?>;
+</script>
+<script type="text/javascript">
+ <?php
+    $chid = 4;
+    $dt = cls_cache::Read('field',$chid,'dt');
+    $centerPoint = empty($mconfigs['init_map']) ? (empty($dt['vdefault']) ? '39.909074,116.403591' : $dt['vdefault']) : $mconfigs['init_map'];
+    $centerPoint_x = substr($centerPoint,strpos($centerPoint,',')+1);
+    $centerPoint_y = substr($centerPoint,0,strpos($centerPoint,','));
+    $centerZoom = empty($mconfigs['init_map_zoom']) ? 12 : $mconfigs['init_map_zoom'];
+?>
+</script>
+<script type="text/javascript" language="javascript">
+    var FileVision=<?php echo $FileVision='20141011';?>;
+        var mapInfo={
+			initZoom:<?php echo $centerZoom;?>,//地图初始缩放级别
+			//mapZoom:12,
+			//communityVeiwZoom:12,//小区显示
+			singleDistrictZoom:13,//单个地区Marker时地图zoom
+			px:'<?php echo $centerPoint_x;?>',
+			py:'<?php echo $centerPoint_y;?>',
+			maptype:'loupan',//楼盘
+            defaultKeyword:'请输入楼盘名称搜索',//默认搜索框显示
+            ViewVolume:50 //小区页面最大数量,还得配合ajax参数pageNum
+			};
+        var searchInfo={
+            order:'0%0',//排序
+			district:"",//地区
+			price:"",//价格
+            salestat:'',//销售状态
+			purpose:"",//物业类型
+			keyword:"",//关键字搜索	
+			projcode:"",//楼盘id
+			px:"",//经纬
+			py:"" //经纬
+			};
+        var searchHouseInfo={
+            order:'0%0',//排序
+            keyword:'',//关键字搜索
+			projcode:"",//楼盘id
+			district:"",//地区
+			price:"",//价格
+            salestat:'',//销售状态
+            purpose:"",//物业类型
+			px:"",//经纬
+			py:"",//经纬
+			x1:"",//地图边界
+			y1:"",//地图边界
+			x2:"",//地图边界
+			y2:"",//地图边界		
+			projpageindex:1//小区展示100翻面页码
+			};
+    </script>
+<script type="text/javascript" language="javascript" src="{$tplurl}newmap/js/jQuery.js?v={$FileVision}"></script>
+<script type="text/javascript" language="javascript" src="{$tplurl}newmap/js/Jquery.cookie.js?v={$FileVision}"></script>
+<script type="text/javascript" language="javascript" src="{$tplurl}newmap/js/Map.Init.js?v={$FileVision}"></script>
+<script type="text/javascript" language="javascript" src="{$tplurl}newmap/js/Map.Loupan.js?v={$FileVision}"></script>
+
+<div style="display:none;">{$cms_statcode}</div>
+</body>
+</html>

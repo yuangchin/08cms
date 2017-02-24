@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+<title>{subject}-楼盘分销-{$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/lpfx.css?{$user_version}">
+</head>
+<body>
+  <!--统一头部-->
+{tpl$head}
+<div class="wrap">
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form form-bdrs w300">
+                    <button type="submit" class="btn"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+                    <div class="txt-wrap">
+                      <input type="text" class="txt" value="{if !empty($searchword)}{searchword}{/if}"  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<i class="pipe">/</i><a href="{indexurl}">{title}</a>{/c$cnode}<i class="pipe">/</i>{subject}
+        </span>
+    </div>
+    <div class="blank10"></div>
+<!--楼盘详情-->
+<div class="exp_house p10 clearfix">
+    <div class="blank5"></div>
+     <div class="title clearfix">
+         <h2>{subject}<em>&nbsp;[{ccid1title}] 价格：{if $dj}{dj}元/m&sup2;{else}待定{/if}</em></h2>
+     </div>
+    <div class="blank10"></div>
+    <div class="hs_sale clearfix">
+        <i>为您推荐&nbsp;&gt;</i>
+        <font>{if $yhsm}{yhsm}{else}暂无优惠{/if}</font>
+    </div>
+    <div class="hsimg clearfix">
+        <img src="{c$image [tclass=image/] [tname=thumb/] [val=u/]}{url}{/c$image}" width="100%" alt="{subject}"/>
+         <div class="hs_info clearfix">
+          <div class="r btns">
+            <a class="i1" href="{$cms_abs}info.php?fid=114&fxid={aid}">推荐购房</a>
+            <a class="i2" href="{$cms_abs}info.php?fid=114&myself=1&fxid={aid}">我要购房</a>
+          </div>
+          <ul>
+            <li>该楼盘已成交<em><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 113, field: 'deal'}">&nbsp;</div></em>套</li>
+            <li>已预订<em><div id="_08_count_a2_{aid}" class="count08" url-params="{type: 'a', modid: 113, field: 'yds'}">&nbsp;</div></em>套</li>
+            <li>已推荐<em><div id="_08_count_a3_{aid}" class="count08" url-params="{type: 'a', modid: 113, field: 'tjs'}">&nbsp;</div></em>套</li>
+            <li>推荐佣金<em>{if $yj}{yj}元{else}待定{/if}</em>起</li>
+            <li>
+              <em data-endTime="{enddate}" data-endele=".btns" data-noend="<span class='fcr'>永久有效!</span>" data-end="<span class='fcr'>活动已经结束!</span>">
+                剩余时间
+                <span class="pri-txt">
+                    <span class='day'><d>0</d></span>天<span class='hour'><h>0</h></span>小时<span class='minutes'><m>0</m></span>分<span class='second'><s>0</s></span>秒
+                </span>
+              </em>
+            </li>
+          </ul>
+         </div>
+    </div>
+</div>
+</div>
+<div class="wrap">
+<!--分销推荐楼盘右边内容-->
+<!--联系地址内容-->
+<div class="blank15"></div>
+{c$archive [tclass=archive/] [chid=4/] [val=x/] [id=$pid33/] [detail=1/]}
+<div class="w920 l clearfix">
+    <div class="fxleft_left p20 clearfix">
+        <div class="adress">
+           <p><span>物业类型：</span>{ccid12title}</p>
+           <p><span>项目位置：</span>{c$cnode [tclass=cnode/] [listby=co1/] [val=a/] [cosource1=active/]}{title}{/c$cnode}</p>
+           <p><span>面积段：</span>{zdmj}</p>
+           <p><span>开盘时间：</span>{if $kprq}{$kprq}{else}{c$kpsj [tclass=date/] [tname=kpsj/] [date=Y-m-d/]}{/c$kpsj}{/if}</p>
+           <p><span>入住时间：</span>{jfrq}</p>
+           <p><span>物业费：</span>{wyf}</p>
+           <p><span>售楼地址：</span>{sldz}</p>
+           <p><span>开发商：</span>{c$archive1 [tclass=archive/] [chid=13/] [val=e/] [arid=6/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$archive1}</p>
+           <p class="call"><em>{if $tel}{tel}{else}-{/if}</em></p>
+        </div>
+        {if $dt}
+        <div class="map r">
+          <iframe marginwidth="0" marginheight="0" src="{$cms_abs}tools/pointer.html#lat={dt_0}&lng={dt_1}&title={subject}&zoom=12&zbar=1" frameborder="0"  height="262" width="422"   scrolling="no"></iframe>
+        </div>
+        {/if}
+    </div>
+<div class="blank15"></div>
+<!--户型-->
+{c$archives [tclass=archives/] [chids=11/] [chsource=2/] [limits=8/] [mode=in/] [arid=3/] [id=$pid33/] [detail=1/] [ttl=600/]}
+<div class="fxleft_left clearfix">
+     <div class="huxing clearfix">
+         <h2>{c$cnode [tclass=cnode/] [listby=ca/] [casource=11/]}楼盘{title}{/c$cnode}</h2>
+         <ul>
+  [row]
+          <li>
+             <a href="{arcurl}" target="_blank" title="{subject}"><img width="162" height="162" src="{c$image [tclass=image/] [tname=thumb/] [val=a/] [maxwidth=162/] [maxheight=162/]}{url_s}{/c$image}" alt="{subject}"/></a>
+             <p>{if $v['shi']}{shi}室{/if}{if $v['ting']}{ting}厅{/if}{if $v['chu']}{chu}厨{/if}{if $v['wei']}{wei}卫{/if}{if $v['yangtai']}{yangtai}卫{/if}-{mj}m&sup2;</p>
+          </li>
+  [/row]
+</ul>
+     </div>
+</div>
+<div class="blank15"></div>
+{/c$archives}
+<!--楼盘相册-->
+  {c$archives [tclass=archives/] [chids=7/] [chsource=2/] [val=b/] [limits=6/] [mode=in/] [arid=3/] [detail=1/] [ttl=600/]}
+    <div class="fxleft_left clearfix">
+        <div class="photo clearfix">
+             <h2>{c$cnode [tclass=cnode/] [listby=ca/] [casource=7/]}{title}{/c$cnode}</h2>
+             <ul>
+  [row]
+    <li>
+    <a href="{c$image [tclass=image/] [tname=thumb/] [maxwidth=226/] [maxheight=168/]}{url}{/c$image}" data-lightbox="1" target="_blank" title="{subject}"><img src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=226/] [maxheight=168/]}{url_s}{/c$image}" width="226" height="168" alt="{subject}"/></a>
+    <p>{c$catalogs [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=23,24,25,22/] [val=b/] [limits=1/]}{title}{/c$catalogs}</p>
+  </li>
+  [/row]
+             </ul>
+        </div>
+    </div>
+<div class="blank15"></div>
+  {/c$archives}
+<!--选项卡-->
+ <div class="fxleft_left jqDuang" data-obj=".tab-con ul" data-cell=".tab-tit" data-autoplay="0">
+     <div class="tab-tit">
+           <span>项目介绍</span>
+           <span>项目配套</span>
+           <span>交通状况</span>
+           <span>建材装修</span>
+           <span>楼层状况</span>
+           <span>车位信息</span>
+           <span>相关信息</span>
+     </div>
+     <div class="tab-con">
+         <ul><li>{c$content [tclass=text/] [tname=content/] [badword=1/] [nl2br=1/]}{/c$content}</li></ul>
+         <ul class="dn">
+           <li>
+           {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=3/] [val=pd/] [limits=100/] [wherestr=pid='12'/] [ttl=300/]}
+              {c$archives1 [cname=文档列表/] [tclass=archives/] [chids=8/] [chsource=2/] [val=b/] [limits=200/] [caidson=1/] [casource=2/] [mode=in/] [arid=1/] [id=$pid33/] [detail=1/] [ttl=600/]}                <?php $kk=count($_archives1); ?>
+                [row]
+                {if $b['sn_row']!=1}、{else}<b class="fs14">{$pd['title']}</b> : {/if}<a href="{arcurl}" target="_blank" title="{subject}">{subject}</a>
+                [/row]{if @$kk}<br/>{/if}
+                {/c$archives1}
+          {/c$catalogs}
+          {if empty($kk)}更新中...{/if}
+           </li>
+         </ul>
+         <ul class="dn"><li>{c$jtxl [tclass=text/] [tname=jtxl/] [nl2br=1/] [noimgwh=0/]}{/c$jtxl}</li></ul>
+         <ul class="dn"><li>{c$field [tclass=field/] [tname=zxcd/] [type=archive/] [fname=zxcd/]}{/c$field}</li></ul>
+         <ul class="dn"><li>{c$lcs [cname=lcs/] [tclass=field/] [tname=lcs/][[val=a/]] [type=archive/] [fname=lcs/]}{/c$lcs}</li></ul>
+         <ul class="dn"><li>{cksm}</li></ul>
+         <ul class="dn"><li><strong>建筑面积:</strong>{zdmj}/m&sup2;<br>
+                 <strong>占地面积:</strong>{jzmj}<br>
+                 <strong>得 房 率:</strong>{dfl}<br>
+                 <strong>绿 化 率:</strong>{lhl}<br>
+                 <strong>容 积 率:</strong>{yjl}<br>
+                 <strong>许可证号:</strong>{xkzh}<br>
+                 <strong>物业公司:</strong>{wygs}<br>
+                 <strong>物业地址:</strong>{wydz}<br>
+                 <strong>物 业 费:</strong>{wyf}<br>
+                 <strong>开盘日期:</strong>{kprq}<br>
+                 <strong>交房日期:</strong>{jfrq}<br></li>
+         </ul>
+     </div>
+
+    </div>
+</div>
+<div class="w260 fxleft_bk r clearfix">
+<!--同地区楼盘-->
+        {c$archives [tclass=archives/] [chids=4/] [chsource=2/] [val=r/] [limits=5/] [cosource1=2/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+       <div class="area">
+           <h2>同地区楼盘</h2>
+           <div class="content clearfix">
+           <ul>
+              [row]
+                  <li>
+                  <a href="{arcurl}" target="_blank"><img src="{c$image [tclass=image/] [tname=thumb/] [val=a/] [maxwidth=186/] [maxheight=116/]}{url_s}{/c$image}" width="186" height="116" alt="{subject}"/></a>
+                  <p class="l">{subject}</p>
+                  <span class="r">{if $r['dj']}{dj}元/m&sup2;{else}待定{/if}</span>
+              </li>
+              [/row]
+          </ul>
+          </div>
+       </div>
+      <div class="blank15"></div>
+        {/c$archives}
+<!--同类型楼盘-->
+      {c$archives2 [tclass=archives/] [chids=4/] [val=p/] [chsource=2/] [limits=5/] [cosource12=2/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+     <div class="area">
+         <h2>同类型楼盘</h2>
+         <div class="content clearfix">
+             <ul>
+                [row]
+                <li>
+                   <a href="{arcurl}" target="_blank"><img src="{c$image [tclass=image/] [tname=thumb/] [val=a/] [maxwidth=186/] [maxheight=116/]}{url_s}{/c$image}" width="186" height="116" alt="{subject}"/></a>
+                   <p class="l">{subject}</p>
+                   <span class="r">{if $p['dj']}{dj}元/m&sup2;{else}待定{/if}</span>
+               </li>
+                [/row]
+             </ul>
+         </div>
+     </div>
+     {/c$archives2}
+</div>
+{/c$archive}
+<div class="blank15"></div>
+</div>
+<!--统一底部-->
+{tpl$foot}
+    <link rel="stylesheet" href="{$tplurl}css/lightbox.css?{$user_version}" />
+    <script type="text/javascript" src="{$tplurl}js/lightbox.js"></script>
+<script type="text/javascript" src="{$tplurl}js/setHdTime.js"></script>
+<script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+</body>
+</html>

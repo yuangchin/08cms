@@ -1,0 +1,90 @@
+﻿/*** reset
+------------------ ****/
+s { font-style: normal; white-space: nowrap; }
+h2 { font-size: 20px; color: #000; text-align: center; }
+h3 { font-size: 14px; font-weight: bold; padding-left: 15px; }
+/*** 通用
+------------------ ****/
+.moreurl { float: right; margin-right: 8px; color: #327ACF; display: inline; }
+/*** wrap
+------------------ ****/
+.w230 { width: 230px; }
+.w240 { width: 240px; }
+.w280 { width: 280px; }
+.w310 { width: 310px; }
+.w380 { width: 380px; }
+.w390 { width: 390px; }
+.w400 { width: 400px; }
+.wrap1 { border-right: 1px solid #E6E6E6;  padding: 0 17px 0 0; width: 310px;float: left;margin-right: 17px;}
+.wrap2 { border-right: 1px solid #E6E6E6;  padding: 0 17px 0 0; width: 310px;float: left;}
+.wrap3 { width: 310px;float: right;}
+.bdn{border: none;}
+/*** padding
+-------------------- ****/
+.pLR10 { padding: 0 10px; }
+.p10 { padding: 10px; }
+.pLR5 { padding: 0 5px; }
+/*** margin
+------------------ ****/
+.mT10 { margin-top: 10px; }
+.mT8 { margin-top: 8px; }
+.mB10 { margin-bottom: 10px; }
+.mT5 { margin-top: 5px; }
+.mR10 { margin-right: 10px; }
+.mr15 { margin-right: 15px; }
+.ml10{margin-left: 10px;}
+/*** border
+------------------ ****/
+.borGray { border: 1px solid #E6E6E6; zoom: 1; }
+.borGrayRTL { border: 1px solid #E6E6E6; border-bottom: none; zoom: 1; }
+.borGray3 { border: 3px solid #E6E6E6; zoom: 1; }
+.Fs14 { font-size: 14px; }
+.Fw6 { font-weight: 600; }
+.FcR, .FcR a { color: #327ACF; }
+.FcR1 a{ color:#BD0000; font-weight:800;}
+/*** colTit
+--------------------***/
+.colTit { background: url(../images/newbg.gif) repeat-x 0 -141px; height: 30px; line-height: 30px; }
+.colTit h3 { background: url(../images/newbg.gif) -60px -83px #FFF; width: 88px; padding: 1px 0 0 22px; }
+.colTit2 { background:url(../images/v4_zxindnav.png) repeat-x 0 -420px; height: 26px; line-height: 21px; }
+.colTit2 h3 { background:url(../images/v4_zxindnav.png) no-repeat #FFF -94px -402px; line-height:28px; font-size: 16px; height:26px; padding:0 6px 0 12px;}
+.redbg { background: #327ACF; height: 3px; line-height: 3px; overflow: hidden; }
+.colTit3 { border-bottom: 1px solid #E6E6E6; height: 30px; line-height: 30px; background: url(../images/zxlbph_bg.gif) no-repeat 0 -290px; }
+.colTit4 { border-bottom: 1px solid #E6E6E6; height: 30px; line-height: 30px; background: url(../images/newbg.gif) no-repeat -328px -89px; }
+.colTit3 h3, .colTit4 h3 { padding-left: 20px; border-bottom: 1px solid #327ACF; height: 30px; float: left; }
+.colTit5 { border-bottom: 1px solid #D2E1F1; border-top: 1px solid #327ACF; height: 29px; line-height: 29px; }
+.colTit5 .moreurl { color: #327ACF; }
+/*** 内容图片自动缩放
+-------------------- ****/
+#zoom img { max-width: 580px;  _width:expression(document.body.clientWidth > 580 ? "580px" : this.width);}
+/***导航
+-------------------- ****/
+.zxNav { position: relative; top: 2px; padding-left: 20px; }
+.zxNav a { background: url(../images/v4_zxindnav.png) no-repeat 0 -30px; height: 30px; line-height:30px; font-family:"Microsoft YaHei" ; font-size:15px; text-align:center; float: left; color:#7E7B7B; text-shadow:0px 1px 1px rgba(0,0,0,0.2); cursor:pointer;}
+
+.zxNav a.ziNav1{ background:url(../images/v4_zxindnav.png) no-repeat;}
+.zxNav a span{ padding:0 25px; background:url(../images/v4_zxindnav.png) no-repeat right -61px; height:30px; float:left;white-space: nowrap;}
+.zxNav a{-webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none; transition: none;}
+.zxNav a:hover,.zxNav a.act{ background: url(../images/v4_zxindnav.png) no-repeat 0 -91px; float:left; color:#FAFCFE;text-shadow:1px 1px 1px rgba(0,0,0,0.3); text-decoration:none;}
+.zxNav a:hover span,.zxNav a.act span{ background:url(../images/v4_zxindnav.png) no-repeat right -121px; float:left;}
+.subNav { background: url(../images/v4_zxindnav.png) 0 -314px repeat-x; height: 37px; }
+.subNavRight .subNav-items li { float: left; }
+.subNavLeft, .subNavRight, .subNavRight .subNav-items li a:hover, .subNavRight .subNav-items li.act { background: url(../images/v4_zxindnav.png) no-repeat }
+.subNavLeft { background-position: 0 -240px; height: 37px; }
+.subNavRight { background-position: right -277px; height: 37px; padding-left: 10px; }
+.subNavRight .subNav-items li a { padding: 0 12px; height: 37px; line-height: 37px; color: #FFF; display: block; text-decoration: none; float:left; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none; transition: none; }
+.subNavRight .subNav-items li a:hover{ color:#FFF; }
+.subNavRight .subNav-items li a:hover, .subNavRight .subNav-items li.act { background-position: center -355px; }
+.morelist { position: relative; height: 35px; z-index: 100; }
+.morelist .hd { cursor: pointer; display: inline-block; height: 25px; line-height: 22px; padding: 0 22px 0 10px; position: relative; z-index: 50; color: #fff; margin-top: 9px; border-radius: 2px 2px 0 0; margin-right: 8px; }
+.morelist.hover .hd { background: #F3F3F4; color: #666; }
+.morelist .bd { position: absolute; top: 33px; right: 0; width: 232px; background: #F3F3F4; border: 1px solid #ddd; display: none; z-index: 1; padding: 5px; line-height: 21px; box-shadow: 2px 2px 5px rgba(1,1,1,0.5); }
+.morelist.hover .bd { display: block; }
+.morelist .bd li { float: left; margin: 0 5px; white-space: nowrap; }
+.morelist .hd b { -moz-transition: -moz-transform 0.2s ease-in 0s;-webkit-transition: -webkit-transform 0.2s ease-in 0s;transition: transform 0.2s ease-in 0s; border-color: #fff #0058AF #0058AF; border-style: solid; border-width: 5px; font-size: 0; height: 0; line-height: 0; position: absolute; right: 10px; top: 8px; width: 0; }
+.morelist.hover .hd b { -moz-transform: rotate(180deg); -moz-transform-origin: 50% 30%; -webkit-transform: rotate(180deg); -webkit-transform-origin: 50% 30%; -o-transform: rotate(180deg); -o-transform-origin: 50% 30%; transform: rotate(180deg); transform-origin: 50% 30%; filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2); border-color: #666 #F3F3F4 #F3F3F4;  top: 4px\9; _top: 8px}
+
+.newzxBg { background: url(../images/v4_zxindnav.png) repeat-x 0 -449px; }
+.pad1 { padding: 1px; }
+.bggreen { background: #F9FCFF; }
+.bgblue { background: #D2E1F1; }

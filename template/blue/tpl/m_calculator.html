@@ -1,0 +1,723 @@
+<?php
+defined('IN_MOBILE') || define('IN_MOBILE', TRUE);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  <title>购房工具-{$hostname}</title>
+  <meta name="keywords" content="购房工具" />
+  <meta name="description" content="购房工具" />
+    {tpl$m_headinner}
+
+<style type="text/css">
+    input[type="number"]{border-bottom: 1px solid #f50;width: auto;height: auto;border-width: 0 0 1px;}
+    input[tpye="radio"]{vertical-align: middle;}
+    .input-group select{padding-left: 0;border-top: none;}
+    .input-group label:first-child {width: auto;-webkit-box-flex: 1;box-flex: 1;}
+    .input-group label:last-child {width: auto;-webkit-box-flex: 0;box-flex: 0;}
+    .input-group label:last-child input{padding: 0;max-width: 120px;}
+</style>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="购房工具" class="active" data-footer="false" data-btn="back">
+        {tpl$m_header}
+        <nav class="header-secondary inset">
+            <div class="control-group">
+                <a href="#pg" class="active" data-target="article" >能力评估</a>
+                <a href="#dk" data-target="article" >贷款计算</a>
+                <a href="#gjj" data-target="article" >公积金</a>
+                <a href="#hd" data-target="article" >提前还贷</a>
+                <a href="#sf1" data-target="article" >税费</a>
+            </div>
+        </nav>
+        <article id="pg" class="active">
+            <div>
+                <ul class="list">
+                    <li>
+                        <form name="nlpg" id="nlpg" action="#">
+                        <div class="input-group">
+                            <div class="input-row">
+                                <label>购房资金</label>
+                                <label><input type="number" name="rg01" onBlur="chk01()">万</label>
+                            </div>
+                            <div class="input-row">
+                                <label>月收入</label>
+                                <label><input type="number" name="rg02" onBlur="chk02()">元/月</label>
+                            </div>
+                            <div class="input-row">
+                                <label>购房支出</label>
+                                <label><input type="number" name="rg03">元</label>
+                            </div>
+                            <div class="input-row">
+                                <label>房屋面积</label>
+                                <label><input type="number" name="rg06">m&sup2;</label>
+                            </div>
+                            <div class="input-row">
+                                <label>按揭年数</label>
+                                <div class="select"> <i class="icon icon-f0db"></i>
+                                    <select name="rg04">
+                                        <option value="24">2年(24期)</option>
+                                        <option value="36">3年(36期)</option>
+                                        <option value="48">4年(48期)</option>
+                                        <option value="60">5年(60期)</option>
+                                        <option value="72">6年(72期)</option>
+                                        <option value="84">7年(84期)</option>
+                                        <option value="96">8年(96期)</option>
+                                        <option value="108">9年(108期)</option>
+                                        <option value="120">10年(120期)</option>
+                                        <option value="180">15年(180期)</option>
+                                        <option selected="selected" value="240">20年(240期)</option>
+                                        <option value="300">25年(300期)</option>
+                                        <option value="360">30年(360期)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="button small block" type="submit">计算</button>
+                        </form>
+                        <div class="p5"></div>
+                        <div class="input-group clouds">
+                            <div class="input-row">
+                                <label>房屋总价</label>
+                                <label><span class="f-alizarin" id="rg07"></span>元</label>
+                            </div>
+                            <div class="input-row">
+                                <label>房屋单价</label>
+                                <label><span class="f-alizarin" id="rg08"></span>元</label>
+                            </div>
+                        </div>
+                        <div class="input-group clouds">
+                            <div class="input-group-divider">购房相关税费</div>
+                            <div class="input-row">
+                                <label>契税</label>
+                                <label><span class="f-alizarin" id="rg10"></span>元</label>
+                            </div>
+                            <div class="input-row">
+                                <label>公共维修基金</label>
+                                <label><span class="f-alizarin" id="rg11"></span>元</label>
+                            </div>
+                        </div>
+                        <div class="input-group clouds">
+                            <div class="input-group-divider">银行贷款需支付的费用</div>
+                            <div class="input-row">
+                                <label>首付款</label>
+
+                                <label><span class="f-alizarin" id="rg12"></span>元</label>
+                            </div>
+                            <div class="input-row">
+                                <label>保险费</label>
+
+                                <label><span class="f-alizarin" id="rg13"></span>元</label>
+                            </div>
+                            <div class="input-row">
+                                <label>律师费</label>
+
+                                <label><span class="f-alizarin" id="rg14"></span>元</label>
+                            </div>
+                            <div class="input-row">
+                                <label>抵押登记费</label>
+
+                                <label><span class="f-alizarin" id="rg15"></span>元</label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article><!-- /购房能力评估 -->
+        <article id="dk">
+            <div>
+                <ul class="list">
+                    <li>
+                        <form name="dkjs" id="dkjs" action="#">
+                            <div class="input-group big">
+                                <div class="input-row">
+                                    <label>货款类别</label>
+                                    <div class="select"> <i class="icon icon-f0db"></i>
+                                        <select id="dktype" name="type">
+                                            <option value="1">商业贷款</option>
+                                            <option value="2">公积金</option>
+                                            <option value="3">组合型</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-row zh1">
+                                    <label>计算方法</label>
+                                    <label for="calc2_radio1"><input id="calc2_radio1" type="radio"  checked value="1" name="jisuan_radio"/>按面积单价计算</label>
+                                </div>
+                                <div class="input-row zh1">
+                                    <label></label>
+                                    <label for="calc2_radio2"><input id="calc2_radio2" type="radio" value="2" name="jisuan_radio" />按贷款总额计算</label>
+                                </div>
+                                <div class="input-row dk1 zh1">
+                                    <label>单价</label>
+
+                                    <label><input type="number" name="price"/>元/m&sup2;</label>
+                                </div>
+                                <div class="input-row dk1 zh1">
+                                    <label>面积</label>
+
+                                    <label><input type="number" value="" name="sqm"/>m&sup2;</label>
+                                </div>
+                                <div class="input-row dk1 zh1">
+                                    <label>按揭成数</label>
+                                    <div class="select"> <i class="icon icon-f0db"></i>
+                                        <select name="anjie">
+                                            <option value="9">9成</option>
+                                            <option value="8">8成</option>
+                                            <option value="7" selected="">7成</option>
+                                            <option value="6">6成</option>
+                                            <option value="5">5成</option>
+                                            <option value="4">4成</option>
+                                            <option value="3">3成</option>
+                                            <option value="2">2成</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="dn dk2 zh1">
+                                    <div class="input-row">
+                                        <label>贷款总额</label>
+
+                                        <label><input type="number" value="" name="daikuan_total000"/>万</label>
+                                    </div>
+                                </div>
+                                <div class=" dn zh2">
+                                    <div class="input-row">
+                                        <label>商业性</label>
+
+                                        <label><input type="number" value="" name="total_sy"/>万</label>
+                                    </div>
+                                </div>
+                                <div class="dn zh2">
+                                    <div class="input-row">
+                                        <label>公积金</label>
+
+                                        <label><input type="number" value="" name="total_gjj"/>万</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="input-row">
+                                    <label>按揭年数</label>
+                                    <div class="select"> <i class="icon icon-f0db"></i>
+                                        <select id="years" name="years">
+                                            <option value="1">1年（12期）</option>
+                                            <option value="2">2年（24期）</option>
+                                            <option value="3">3年（36期）</option>
+                                            <option value="4">4年（48期）</option>
+                                            <option value="5">5年（60期）</option>
+                                            <option value="6">6年（72期）</option>
+                                            <option value="7">7年（84期）</option>
+                                            <option value="8">8年（96期）</option>
+                                            <option value="9">9年（108期）</option>
+                                            <option value="10">10年（120期）</option>
+                                            <option value="11">11年（132期）</option>
+                                            <option value="12">12年（124期）</option>
+                                            <option value="13">13年（156期）</option>
+                                            <option value="14">14年（168期）</option>
+                                            <option value="15">15年（180期）</option>
+                                            <option value="16">16年（192期）</option>
+                                            <option value="17">17年（204期）</option>
+                                            <option value="18">18年（216期）</option>
+                                            <option value="19">19年（228期）</option>
+                                            <option value="20" selected="">20年（240期）</option>
+                                            <option value="25">25年（300期）</option>
+                                            <option value="30">30年（360期）</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="input-row">
+                                    <label>银行利率</label>
+                                    <div class="select" style="width:174px"> <i class="icon icon-f0db"></i>
+                                        <select data-listdata="#lltpl" name="lilv"></select>
+                                    </div>
+                                </div>
+
+
+                                <div class="input-row">
+                                    <label>还贷方式</label>
+                                    <label for="hdfs1"><input id="hdfs1" type="radio"  checked value="1" name="htype"/>等额本息还款法</label>
+                                </div>
+                                <div class="input-row">
+                                    <label></label>
+                                    <label for="hdfs2"><input id="hdfs2" type="radio" value="2" name="htype" />等额本金还款法</label>
+                                </div>
+                            </div>
+                            <button class="button small block" type="submit">计算</button>
+                            <div class="p5"></div>
+
+                            <div class="input-group big2 clouds" id="result">
+                                <div id="divr1">
+                                    <div class="input-row">
+                                        <label>房屋总价</label>
+
+                                        <label><span class="f-alizarin" id="fangkuan_total1"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>贷款总额</label>
+
+                                        <label><span class="f-alizarin" id="daikuan_total1"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>还款总额</label>
+
+                                        <label><span class="f-alizarin" id="all_total1"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>支付利息</label>
+
+                                        <label><span class="f-alizarin" id="accrual1"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>首期付款</label>
+
+                                        <label><span class="f-alizarin" id="money_first1"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>贷款月数</label>
+
+                                        <label><span class="f-alizarin" id="month1"></span>月</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>月均还款</label>
+
+                                        <label><span class="f-alizarin" id="month_money1"></span>元</label>
+                                    </div>
+                                </div>
+                                <div id="divr2" class="dn">
+                                    <div class="input-row">
+                                        <label>房屋总价</label>
+
+                                        <label><span class="f-alizarin" id="fangkuan_total2"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>贷款总额</label>
+
+                                        <label><span class="f-alizarin" id="daikuan_total2"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>还款总额</label>
+
+                                        <label><span class="f-alizarin" id="all_total2"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>支付利息</label>
+
+                                        <label><span class="f-alizarin" id="accrual2"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>首期付款</label>
+
+                                        <label><span class="f-alizarin" id="money_first2"></span>元</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>贷款月数</label>
+
+                                        <label><span class="f-alizarin" id="month2"></span>月</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>每月还款</label>
+                                        <textarea id="month_money2" name="month_money2" readonly></textarea>
+                                        <label>元</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </article><!-- /贷款计算 -->
+        <article id="gjj">
+            <div>
+                <ul class="list">
+                    <li>
+                        <form name="gjjhd" id="gjjhd">
+                            <input type="hidden" class="gjj" name="lilv" value="40"/>
+                            <div class="input-group big">
+                                <div class="input-row">
+                                    <label>贷款额度</label>
+
+                                    <label><input type="number" name="need">万</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>贷款申请年限</label>
+
+                                    <label><input type="number" name="mount10">年</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>还款方式</label>
+                                    <div class="select"> <i class="icon icon-f0db"></i>
+                                         <select name="select">
+                                            <option value="1">等额本息</option>
+                                            <option value="2">等额本金</option>
+                                            <option value="3">自由还款</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button small block" type="submit">计算</button>
+                            <div class="p5"></div>
+                            <div class="input-group big clouds">
+                                <div class="input-group-divider">等额本息</div>
+                                <div class="input-row">
+                                    <label>月均还款额</label>
+
+                                    <label><span class="f-alizarin" id="ze22"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>本息合计</label>
+
+                                    <label><span class="f-alizarin" id="lx2"></span>元/平米</label>
+                                </div>
+                            </div>
+                            <div class="input-group clouds">
+                                <div class="input-group-divider">等额本金</div>
+                                <div class="input-row">
+                                    <label>首月还款</label>
+
+                                    <label><span class="f-alizarin" id="sfk2"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>本息合计</label>
+
+                                    <label><span class="f-alizarin" id="lx3"></span>元</label>
+                                </div>
+                            </div>
+                            <div class="input-group clouds">
+                                <div class="input-group-divider">自由还款</div>
+                                <div class="input-row">
+                                    <label>最低还款</label>
+
+                                    <label><span class="f-alizarin" id="sfksan"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>最后利息</label>
+
+                                    <label><span class="f-alizarin" id="lx4"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>最后本金</label>
+
+                                    <label><span class="f-alizarin" id="lx5"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>总偿利息</label>
+
+                                    <label><span class="f-alizarin" id="lx6"></span>元</label>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </article><!-- /公积金贷款 -->
+        <article id="hd">
+            <div>
+                <ul class="list">
+                    <li>
+                        <form name="tqhd" id="tqhd">
+
+                            <div class="input-group big">
+
+                                <div class="input-row">
+                                    <label>还款类型</label>
+                                    <label for="dklx1"><input id="dklx1" type="radio"  checked value="1" name="dklx"/>公积金贷款</label>
+                                </div>
+                                <div class="input-row">
+                                    <label></label>
+                                    <label for="dklx2"><input id="dklx2" type="radio" value="2" name="dklx" />商业性贷款</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>原贷款金额</label>
+                                    <label><input type="number" name="dkzws">万</label>
+                                </div>
+
+                                <div class="input-row">
+                                    <label>原贷款年限</label>
+                                    <div class="select"> <i class="icon icon-f0db"></i>
+                                        <select name="yhkqs">
+                                            <option value="24">2年(24期)</option>
+                                            <option value="36">3年(36期)</option>
+                                            <option value="48">4年(48期)</option>
+                                            <option value="60">5年(60期)</option>
+                                            <option value="72">6年(72期)</option>
+                                            <option value="84">7年(84期)</option>
+                                            <option value="96">8年(96期)</option>
+                                            <option value="108">9年(108期)</option>
+                                            <option value="120">10年(120期)</option>
+                                            <option value="132">11年(132期)</option>
+                                            <option value="144">12年(144期)</option>
+                                            <option value="156">13年(156期)</option>
+                                            <option value="168">14年(168期)</option>
+                                            <option value="180">15年(180期)</option>
+                                            <option selected="" value="240">20年(240期)</option>
+                                            <option value="300">25年(300期)</option>
+                                            <option value="360">30年(360期)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <label>贷款利率</label>
+                                    <div class="select" style="width:174px"> <i class="icon icon-f0db"></i>
+                                        <select name="dklv_class" data-listdata="#lltpl" id="lilv"></select>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <label>第一次还款时间</label>
+                                    <div class="select" style="width:85px;min-width:0!important;"> <i class="icon icon-f0db"></i>
+                                        <select name="yhksjn">
+                                            <option value="2001">2001年</option>
+                                            <option value="2002">2002年</option>
+                                            <option value="2003">2003年</option>
+                                            <option value="2004">2004年</option>
+                                            <option value="2005">2005年</option>
+                                            <option value="2006">2006年</option>
+                                            <option value="2007">2007年</option>
+                                            <option value="2008">2008年</option>
+                                            <option value="2009">2009年</option>
+                                            <option value="2010">2010年</option>
+                                            <option value="2011">2011年</option>
+                                            <option value="2012">2012年</option>
+                                            <option value="2013">2013年</option>
+                                            <option value="2014">2014年</option>
+                                            <option selected="selected" value="2015">2015年</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="select" style="width:55px;min-width:0!important;"> <i class="icon icon-f0db"></i>
+                                        <select name="yhksjy">
+                                            <option value="1">1月</option>
+                                            <option value="2">2月</option>
+                                            <option selected="selected" value="3">3月</option>
+                                            <option value="4">4月</option>
+                                            <option value="5">5月</option>
+                                            <option value="6">6月</option>
+                                            <option value="7">7月</option>
+                                            <option value="8">8月</option>
+                                            <option value="9">9月</option>
+                                            <option value="10">10月</option>
+                                            <option value="11">11月</option>
+                                            <option value="12">12月</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="input-row">
+                                    <label>预计提前还款时间</label>
+                                    <div class="select" style="width:85px;min-width:0!important;"> <i class="icon icon-f0db"></i>
+                                        <select name="tqhksjn">
+                                            <option value="2013">2013年</option>
+                                            <option value="2014">2014年</option>
+                                            <option selected="selected" value="2015">2015年</option>
+                                            <option value="2016">2016年</option>
+                                            <option value="2017">2017年</option>
+                                            <option value="2018">2018年</option>
+
+                                            <option value="2019">2019年</option>
+                                            <option value="2020">2020年</option>
+                                            <option value="2021">2021年</option>
+                                            <option value="2022">2022年</option>
+                                            <option value="2023">2023年</option>
+                                            <option value="2024">2024年</option>
+
+                                            <option value="2025">2025年</option>
+                                            <option value="2026">2026年</option>
+                                            <option value="2027">2027年</option>
+                                            <option value="2028">2028年</option>
+                                            <option value="2029">2029年</option>
+                                            <option value="2030">2030年</option>
+
+                                            <option value="2031">2031年</option>
+                                            <option value="2032">2032年</option>
+                                            <option value="2033">2033年</option>
+                                            <option value="2034">2034年</option>
+                                        </select>
+                                    </div>
+                                    <div class="select" style="width:55px;min-width:0!important;"> <i class="icon icon-f0db"></i>
+                                        <select name="tqhksjy">
+                                            <option value="1">1月</option>
+                                            <option value="2">2月</option>
+                                            <option selected="selected" value="3">3月</option>
+                                            <option value="4">4月</option>
+                                            <option value="5">5月</option>
+                                            <option value="6">6月</option>
+                                            <option value="7">7月</option>
+                                            <option value="8">8月</option>
+                                            <option value="9">9月</option>
+                                            <option value="10">10月</option>
+                                            <option value="11">11月</option>
+                                            <option value="12">12月</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="input-row">
+                                    <label>提前还贷方式</label>
+                                    <label for="tqhkfs"><input id="tqhkfs" type="radio"  checked value="1" name="tqhkfs"/>一次提前还清</label>
+                                </div>
+                                <div class="input-row">
+                                    <label></label>
+                                    <label for="tqhkfs1"><input id="tqhkfs1" type="radio" value="2" name="tqhkfs" />部分提前还款</label>
+                                </div>
+
+                                <div class="dn clfs">
+                                    <div class="input-row">
+                                        <label>部分还款金额</label>
+
+                                        <label><input type="number" name="tqhkws">万</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label>处理方式</label>
+                                        <label for="chuli1"><input id="chuli1" type="radio"  checked value="1" name="clfs"/>缩短还款年限</label>
+                                    </div>
+                                    <div class="input-row">
+                                        <label></label>
+                                        <label for="chuli"><input id="chuli" type="radio" value="2" name="clfs" />减少月还款额</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button small block" type="submit">计算</button>
+                            <div class="p5"></div>
+                            <div class="input-group big2 clouds">
+                                <div class="input-row">
+                                    <label>原月还款</label>
+
+                                    <label><span class="f-alizarin" id="ykhke"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>该月一次还款额</label>
+
+                                    <label><span class="f-alizarin" id="gyyihke"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>原最后还款期</label>
+                                    <label class="f-alizarin" id="yzhhkq"></label>
+                                </div>
+                                <div class="input-row">
+                                    <label>下月起月还款额</label>
+
+                                    <label><span class="f-alizarin" id="xyqyhke"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>已还款总额</label>
+
+                                    <label><span class="f-alizarin" id="yhkze"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>节省利息支出</label>
+
+                                    <label><span class="f-alizarin" id="jslxzc"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>已还利息额</label>
+
+                                    <label><span class="f-alizarin" id="yhlxe"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>新的最后还款期</label>
+                                    <label class="f-alizarin" id="xdzhhkq"></label>
+                                </div>
+                                <div class="input-row">
+                                    <label>提示</label>
+                                    <label class="f-alizarin" id="jsjgts"></label>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </article><!-- /提前还款 -->
+        <article id="sf1">
+            <div>
+                <ul class="list">
+                    <li>
+                        <form name="sfjs" id="sfjs">
+                            <div class="input-group">
+                                <div class="input-row">
+                                    <label>单价</label>
+
+                                    <label><input type="number" name="dj3">元/平</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>面积</label>
+
+                                    <label><input type="number" name="mj3">平方米</label>
+                                </div>
+                            </div>
+                            <button class="button small block" type="submit">计算</button>
+                            <div class="p5"></div>
+                            <div class="input-group big2 clouds">
+                                <div class="input-row">
+                                    <label>房屋总价</label>
+
+                                    <label><span class="f-alizarin" id="fkz3"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>契税</label>
+
+                                    <label><span class="f-alizarin" id="q"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>印花税</label>
+
+                                    <label><span class="f-alizarin" id="yh"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>公证费</label>
+
+                                    <label><span class="f-alizarin" id="gzh"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>房屋买卖手续费</label>
+
+                                    <label><span class="f-alizarin" id="fw"></span>元</label>
+                                </div>
+                                <div class="input-row">
+                                    <label>委托办理产权</label>
+
+                                    <label><span class="f-alizarin" id="wt"></span>元</label>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </section><!-- /浏览历史 -->
+</div>
+{tpl$m_footer}
+<script type="text/javascript">
+    $('article').one('articleshow',function() {
+        if(this.id=='gjj'){
+            $.getScript(tplurl+'js/gjjloan2.js?2015-8-25');
+        }
+        if (this.id=='hd') {
+            $('input[name="tqhkfs"]').on('click',function() {
+                J.Scroll('#hd');
+            })
+        };
+        if (this.id=='dk') {
+            $('input[name="htype"]').on('click',function() {
+                J.Scroll('#dk');
+            })
+        };
+    })
+</script>
+
+<script type="text/javascript" src="{$tplurl}js/template.js"></script>
+<script id="lltpl" type="text/html">
+  <!for (i = 0; i < title.length; i ++) {!>
+    <option <!=(i == 3 ? 'selected' : '')!> value="<!=value[i]!>"><!=title[i]!></option>
+  <!}!>
+</script>
+<script type="text/javascript" src="{$tplurl}js/jsq.js"></script>
+<script type="text/javascript" src="{$tplurl}mobile/js/calculator.js"></script>
+</body>
+</html>

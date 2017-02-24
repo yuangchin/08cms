@@ -1,0 +1,17 @@
+<div class="clearfix bread">
+    <div class="r w280">
+        <form  action="{$cms_abs}index.php" method="get" name="searchform">
+        <div class="search-group form">
+            <input type="hidden" value="{$caid}" name="caid">
+            <button type="submit" class="btn"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+            <div class="txt-wrap">
+                <input type="text" name="searchword" value="" placeholder="{if @$searchword}{searchword}{else}请输入关键字{/if}" class="txt" x-webkit-speech speech>
+            </div>
+        </div>
+        </form>
+    </div>
+    <span class="l mt5">
+        <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}" >{title}</a>{/c$cnode}{if !empty($aid)}<i class="pipe">/</i>正文{/if}
+    </span>
+</div>
+<div class="blank10 bdt-gray"></div>

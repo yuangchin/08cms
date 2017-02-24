@@ -1,0 +1,282 @@
+<?php
+foreach(array('mjfrom','mjto','zjfrom','zjto','orderby','ordermode','searchword','cook_id','cx','mchid','ccid9','manyimg','day','goodhouse') as $k) $$k = cls_Parse::Get("_da.$k");
+$cookid = $cook_id = empty($cook_id) ? 1 : intval($cook_id);
+$limit = $cookid == 3 ? 20 : 12;
+$sfields = getsearchfields(3);
+cls_uso::init(array(
+    'ntype'    => 'c', //cm,m,oc,om
+    'chid'     => 3,
+    'rids'     => array(1,2),
+    'nodes'    => array('0','0,1','0,2','0,6','0,43','0,1,4'),
+    'orderbys' => array('aid','dj','mj','zj','clicks'),
+));
+extract(cls_usql::order_str(1,'a.ccid9 DESC,a.refreshdate DESC'));
+$exstr = u_exsql(3);
+!empty($day) && $exstr .= ($exstr ? ' AND ': '') ."createdate >= ".strtotime("-$day day");
+$whrstr = cls_usql::where_str(array(
+    array('subject,address,lpmc','searchword'),
+        array('shi'),array('ting'),array('wei'),array('chu'),
+        array('louxing'),array('zxcd'),array('cx'),
+        array('fwjg'),array('fwpt','fwpt','mso1'), //结构配套
+),$exstr);
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [cname=激活栏目标题1/] [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}{c$lpdh1 [cname=类目导航1/] [tclass=nownav/] [coids=ccid1,ccid2,ccid3,ccid4,ccid5,ccid6,ccid8,ccid43,ccid14,ccid17,ccid18/]}-{title}{/c$lpdh1}-{$hostname}</title>
+{c$cnode [cname=激活栏目关键词/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/esindex.css?{$user_version}"/>
+<?php $pagetype = 'oldhouse'; ?>
+</head>
+<body>
+{tpl$fy_head}
+<div class="wrap">
+    <!--二手出租房公用搜索-->
+    <div class="lp-sea clearfix">
+        <div class="lp-title">
+            <a class="act" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl}{/c$cnode}"><i class="ico08">&#xf0ca;</i>区域找房</a>
+            <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=26/]}{indexurl}{/c$cnode}" target="_blank"><i class="ico08">&#xe6f9;</i>学区找房</a>
+            <a href="{c$freeurl [tclass=freeurl/] [fid=1/]}{/c$freeurl}" target="_blank"><i class="ico08">&#xe613;</i>地图找房</a>
+        </div>
+    </div>
+
+    <!--二手房检索条件-->
+    <div class="fysearch clearfix">
+        <ul class="fyjiansuo clearfix">
+            <? $dlnum = 0; //print_r($sfields);?>
+            {loop $sfields $f $fn}
+            <? $key = is_numeric($f) ? ($f ? "ccid$f" : 'caid') : $f; $$key= empty($$key)?'':$$key; $_rows = !is_numeric($f) ? cls_uso::field_urls($f) : cls_uso::caco_urls($f); ?>
+            <? if($f == 2 && (empty($ccid1) || $fcdisabled2)) continue;?>
+            <? if($fcdisabled3 && in_array($f,array(3,14)) || empty($ccid3) && $f == 14) continue;$dlnum++;?>
+            {if $dlnum > 4}
+            {if $dlnum == 5}
+        </ul>
+        <div class="blank5"></div>
+        <div class="morefjj hover-list1" id="moretj">
+            <ul class="clearfix">
+                <li class="tip">更多：</li>
+                {/if}
+                <li class="list-{$f}"><i class="ico08">&#xe684;</i> <em>{if empty($$key)}{$fn}{else}{loop $_rows $k $v}{if $$key==$k}{$v['title']}{/if}{/loop}{/if}</em>
+                    <div class="items">
+                    <a class="{if empty($$key)}act{/if}" href='<? echo cls_uso::extra_url($key); ?>'>不限</a>
+                    {loop $_rows $k $v}
+                    {if $k != 100}<a class="{if $$key==$k}act{/if}" href="{$v['url']}">{$v['title']}</a>{/if}
+                    {/loop}
+                    </div>
+                </li>
+                {else}
+                <li class="list-{$f}"><b>{$fn}：</b><a  class="{if empty($$key)}act{/if}" href='<? echo cls_uso::extra_url($key); ?>'>不限</a>{loop $_rows $k $v}{if $k != 100}<a  class="{if $$key==$k}act{/if}" href="{$v['url']}">{$v['title']}</a>{/if}{/loop}{if $f==4}<span class="set form form-sm form-bdrs">
+                    <form action="{$cms_abs}index.php" method="get" >
+                        <input type="hidden" name="caid" value="3" />
+                            {loop $sfields $f $fn}
+                            <? $key = is_numeric($f) ? ($f ? "ccid$f" : 'caid') : $f; $$key= empty($$key)?'':$$key; if(empty($$key) || $f==17) continue; ?>
+                            {/loop}
+                            {if !empty($mjfrom)}<input type="hidden" name="mjfrom" value="{$mjfrom}" />{/if}
+                            {if !empty($mjto)}<input type="hidden" name="mjto" value="{$mjto}" />{/if}
+                            <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $$key; ?>" />
+                        <input type="text" class="txt txt-sm" pattern="^[0-9]+.?[0-9]*$" title="请输入最低价格"  name="zjfrom" value="{zjfrom}" size="4">
+                        -
+                        <input class="txt txt-sm" pattern="^[0-9]+.?[0-9]*$" type="text" title="请输入最高价格" name="zjto" value="{zjto}" size="4">
+                        万
+                        <input class="btn btn-sm" type="submit" value="确定">
+                    </form>
+                    </span> {elseif $f==6}<span class="set form form-sm form-bdrs">
+                    <form action="{$cms_abs}index.php" method="get" >
+                        <input type="hidden" name="caid" value="3" />
+                            {loop $sfields $f $fn}
+                            <? $key = is_numeric($f) ? ($f ? "ccid$f" : 'caid') : $f; $$key= empty($$key)?'':$$key; if(empty($$key) || $f==6) continue; ?>
+                            {/loop}
+                            {if !empty($zjfrom)}<input type="hidden" name="zjfrom" value="{$zjfrom}" />{/if}
+                            {if !empty($zjto)}<input type="hidden" name="zjto" value="{$zjto}" />{/if}
+                        <input type="text" class="txt txt-sm" pattern="^[0-9]+.?[0-9]*$" title="请输入最小面积"  name="mjfrom" value="{mjfrom}" size="4">
+                        -
+                        <input class="txt txt-sm" type="text" pattern="^[0-9]+.?[0-9]*$" title="请输入最大面积" name="mjto" value="{mjto}" size="4">
+                        平
+                        <input class="btn btn-sm" type="submit" value="确定">
+                    </form>
+                    </span> {/if} </li>
+                {/if}
+                {/loop}
+                {if $dlnum > 4}
+            </ul>
+        </div>
+        {/if}
+        <?
+        $clr_titles = array('manyimg'=>'多图','goodhouse'=>'优质房源','mchid'=>'个人房源');
+        if(!empty($day)) $clr_titles['day'] = "{$day}天";
+        $pick_urls=cls_uso::pick_urls($clr_titles);
+        unset($pick_urls['caid'],$pick_urls['cook_id']);
+        ?>
+        {if $pick_urls}
+        <div class="dqzftj clearfix"> <span class="tjTil l pL10">当前条件：</span> <?php echo u_sch_now_area(array('mjfrom','mjto'),'平'); ?> <?php echo u_sch_now_area(array('zjfrom','zjto'),'万'); ?> {loop $pick_urls $k $v}
+            <?php if(in_array($k,array('mjfrom','mjto','zjfrom','zjto'))) continue; ?>
+            <a class="search_selected" href="{$v['url']}" title="取消条件">{$v['title']} <i class="ico08">&#xf057;</i></a> {/loop} <a href="{c$esflb [cname=二手房列表/] [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$esflb}"><i class="ico08 mr5">&#xf0e2;</i>取消条件</a>
+            <div class="blank0"></div>
+        </div>
+        {/if}
+    </div>
+    <div class="blank10"></div>
+    <!--/二手房检索条件-->
+    <div class="fy-main l">
+        <div class="fsTil clearfix">
+            <ul class="l">
+                <li class="first <?=$mchid || $manyimg || $goodhouse? '' : 'act'?>"><a href="<?=cls_uso::extra_url('ccid9|mchid|manyimg|goodhouse')?>"><i class="ico08 mr3">&#xe637;</i>所有房源</a></li>
+                <li class="<?=$mchid == 1 ? 'act' : ''?>"><a href="<?=cls_uso::extra_url('ccid9|mchid|manyimg|goodhouse','&mchid=1')?>"><i class="ico08 mr3">&#xe756;</i>个人房源</a></li>
+                <li class="<?=$goodhouse == 1 ? 'act' : ''?>"><a href="<?=cls_uso::extra_url('ccid9|mchid|manyimg|goodhouse','&goodhouse=1')?>"><i class="ico08 mr3">&#xf134;</i>优质房源</a></li>
+                <li class="<?=$manyimg == 1 ? 'act' : ''?>"><a href="<?=cls_uso::extra_url('ccid9|mchid|manyimg|goodhouse','&manyimg=1')?>"><i class="ico08 mr3">&#xf03e;</i>多图房源</a></li>
+            </ul>
+            <div id="sxpage" class="r sxpage"></div>
+        </div>
+        <div class="bar-sort clearfix">
+            <a class="btn-sort btn-state {if $cookid == '3'}act{/if}" href="<?php echo cls_uso::extra_url('cook_id','&cook_id=3');?>" title='切换到文本'><em class="ico08">&#xf039;</em>文本</a>
+            <a class="btn-sort btn-state {if $cookid == '1'}act{/if}" href="<?php echo cls_uso::extra_url('cook_id','&cook_id=1');?>" title='切换到图文'><em class="ico08">&#xf00b;</em>图文</a>
+            <em class="r">
+                <i class="btn-sort {if empty($_da['orderby'])}act{/if}"><a class="mrbg" href="<?=cls_uso::extra_url('orderby|ordermode')?>">默认</a></i>
+                <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">面积<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "mj", array("act bldown","act blup",""))?>
+                <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">总价<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "zj", array("act bldown","act blup",""))?>
+                <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">单价<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "dj", array("act bldown","act blup",""))?>
+            </em>
+            <div class="morefjj r hover-list1">
+                <ul class="clearfix">
+                    <li class="list-cx bx"> <em class="{if empty($day)}n{/if}"><span class="ico08">&#xe684;</span>{if empty($day)}发布时间{else}{$day}天内{/if}</em>
+                        <div class="items">
+                            <a class="{if empty($day)}act{/if}" href="<?= cls_uso::extra_url('day');?>">不限</a>
+                            <a class="{if $day==1}act{/if}" href="<?= cls_uso::extra_url('day','&day=1');?>">1天内</a>
+                            <a class="{if $day==3}act{/if}" href="<?= cls_uso::extra_url('day','&day=3');?>">3天内</a>
+                            <a class="{if $day==7}act{/if}" href="<?= cls_uso::extra_url('day','&day=7');?>">7天内</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="blank0"></div>
+        <div id="esfy">
+            <div class="blank1"></div>
+            {c$fylb [tclass=archives/] [limits=$limit/] [val=aa/] [chsource=2/] [chids=3/] [ccidson1=1/] [cosource1=2/] [ccidson2=1/] [cosource2=2/] [cosource3=2/] [cosource14=2/] [ccidson4=1/] [cosource4=2/][cosource34=2/] [ccidson6=1/] [cosource6=2/] [ccidson43=1/] [cosource43=2/] [validperiod=1/] [detail=1/] [wherestr=$whrstr/] [orderstr=$orderstr/] [ttl=600/] [mp=1/]}
+
+            [row]
+            {if $cookid == 1}<!-- 图文 -->
+            <div class="esfylist">
+                <div class="pic"><a title="{subject}" href="{arcurl}" target="_blank"><img  alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=130/] [maxheight=100/] [thumb=1/]} width="130" height="100"  data-original="{url_s}" src="{$cms_abs}userfiles/notdel/blank.gif" {/c$thumb}>{if $aa['imgnum']}<i class="icon4">{imgnum}图</i>{/if}</a></div>
+                <div class="info">
+                    <em><a class="fz14 fwb" href="{arcurl}" target="_blank">{subject}</a><span class="icons">{if $aa['ccid9']}<b class="icon">置顶</b>{/if}{if $aa['goodhouse']}<b class="icon5">优质</b>{/if}{if $aa['imgnum']}<b class="icon2">多图</b>{/if}{c$fyhy1 [tclass=member/] [val=c/] [detail=1/]}{if $aa['ccid19']&&empty($c['grouptype13'])}<b class="icon3">店铺</b>{/if}{/c$fyhy1}</span></em>
+                    <em>{if $aa['pid3']}
+                    {c$sslp11 [tclass=archive/] [val=a/] [arid=3/] [chid=4/] [detail=1/]}
+                    {c$address20 [cname=address20/] [tclass=text/] [tname=address/] [trim=18/]}{/c$address20} <span>(<a target='_blank' href='{arcurl7}'>{subject}</a>)</span> {/c$sslp11}
+                    {else}{lpmc}{/if}  <a target="_blank" href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=1/]}{/c$dtzf}#mode=mai" class="icon6"><i class="ico08 fco">&#xe613;</i>地图查看</a> </em>
+                    <em> {c$shi}{c$ting}{c$wei}{if $aa['ccid43']}<span class="pip">/</span>{ccid43title}{/if}{if $aa['fl']}<span class="pip">/</span>房龄{c$flfl}{/if}{if $aa['szlc']}<span class="pip">/</span>{szlc}/{zlc}层{/if}{if $aa['zxcd']}<span class="pip">/</span>{c$zxcd}{/if}{if $aa['cx']}<span class="pip">/</span>{c$cxcx}{/if} </em>
+
+                    <em>
+                        {if !empty($aa['mid'])}
+                            {c$fyhy1 [tclass=member/] [val=c/] [detail=1/]}
+                            {if $c['mchid']==2}
+                                {if $c['incheck4']}{c$jjrgs2 [tclass=member/] [val=a/] [arid=4/]}<a href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a>{/c$jjrgs2}{/if}<a class="fco" href="{mspacehome}"><i class="ico08">&#xe756;</i>{if !empty($c['xingming'])}{xingming}{else}{mname}{/if}</a>(经纪人)
+                                {if !empty($c['grouptype17'])}{c$xytb [cname=信用图标/] [tclass=fromid/] [val=d/] [type=grouptype17/] [id=$c[grouptype17]/] [idsoruce=0/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} alt="信用图标"/> {/c$xytb}
+                                {/if}
+                            {else}
+                                <span> {if !empty($c['xingming'])}{xingming}{else}{mname}{/if}</span>(个人)
+                            {/if}
+                            {/c$fyhy1}
+                        {else}
+                            {xingming}
+                        {/if}
+                        <span>
+                        <?=u_time_format($aa['refreshdate'])?>
+                        更新</span>
+                    </em>
+                </div>
+                <div class="info3">
+                    {if $aa['zj']}
+                    <em><i class="zj">{zj}</i>万元</em>
+                    <em>面积：<i>{mj}</i>m&sup2;</em>
+                    <em>单价：<i>{dj}</i>元/m&sup2;</em>
+                    {else}
+                    <em>面积：{mj}m&sup2;</em>
+                    <em><i>面议</i></em>
+                    {/if}
+                    <em class="yx"><a class="yxinfobnt" data-aid="{aid}"><i class="ico08">&#xf07a;</i>我有意向</a>
+                    <label for="pro_{aid}" class="db">
+                        <input type="checkbox" id="pro_{aid}" name="" value=""  onclick="add_comp(this, '{subject}', '{arcurl}', '{aid}')" class="dn" /><i class="ico08">&#xf067;</i>对比</label>
+                    </em>
+                </div>
+                <div class="blank0"></div>
+            </div>
+            {elseif $cookid == 3}<!-- 文本 -->
+            <div class="esfylist esfylist-wb">
+                <div class="info"> <strong><a href="{arcurl}" target="_blank">{c$text [tclass=text/] [tname=subject/] [trim=48/] [ellip=.../] }{/c$text}</a>{c$fyhy1 [tclass=member/] [val=c/] [detail=1/]}{if !empty($c['grouptype13'])}<span class="fw1">(个人)</span>{/if}{/c$fyhy1}<span class="icons">{if $aa['ccid9']}<b class="icon"><i>置顶</i></b>{/if}{if $aa['imgnum']}<b class="icon2"><i>多图</i></b>{/if}{c$fyhy1 [tclass=member/] [val=c/] [detail=1/]}{if $aa['ccid19']&&empty($c['grouptype13'])}<b class="icon3"><i>店铺</i></b>{/if}{/c$fyhy1}</span></strong> <em>{if $aa['pid3']}{c$sslp11 [tclass=archive/] [val=a/] [arid=3/] [chid=4/] [detail=1/]}<span>[<a target='_blank' href='{arcurl7}'>{subject}</a>]</span> {c$address20 [cname=address20/] [tclass=text/] [tname=address/] [trim=18/]}{/c$address20}{/c$sslp11}{else}{lpmc}{/if} <span>
+                    <?=u_time_format($aa['refreshdate'])?>
+                    更新</span></em> </div>
+                <div class="info2"> <b>{c$shi}{c$ting}{c$wei}</b><br>
+                    {mj}m&sup2; </div>
+                <div class="info3"> {if $aa['zj']} <em><i class="zj">{zj}</i>万元</em> <em>单价：<i>{dj}</i>元/m&sup2;</em> {else} <em><i>面议</i></em> {/if} </div>
+                <div class="blank0"></div>
+            </div>
+            {/if}
+            [/row]
+            {/c$fylb} </div>
+        {if $mpacount>0}
+        <div class="ptb20">{$mpnav}</div>
+        {else}
+        <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$cnode}信息</div>
+        {/if} </div>
+        {tpl$fy_right}
+        <div class="blank0"></div>
+</div>
+
+<div id="pop-buy" class="dn modal">
+    <form class="jqValidate" data-tipmode=".yxtip" onsubmit="return fyCummus(this,'意向提交',1)">
+        <input type="hidden" name="cuid" value="46" />
+        <!--交互项目id-->
+        <input type="hidden" name="aid" id="yxaid" value="" />
+        <!--针对文档的aid,不是针对文档就不要这项-->
+        <ul class="form form-lg form-control">
+            <li>
+                <div class="blank20 mt-15"><span class="yxtip"></span></div>
+                <input type="text" placeholder="联系人" class="txt" data-type="*4-8" name="fmdata[uname]" value="" />
+            </li>
+            <li>
+                <input type="text" class="txt" placeholder="联系电话" data-type="m" name="fmdata[utel]" value="" />
+            </li>
+            <li class="reg-wrap" data-regcode="commu46">
+                <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value="" />
+            </li>
+            <li>
+                <input type="submit" class="btn yahei" name="btn" value="提交意向" />
+            </li>
+        </ul>
+    </form>
+</div> <!-- /意向 -->
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/contrast.js"></script>
+<script type="text/javascript">
+        //对比框的位置[1,0,100] [0-左边 1-右边,距边的size,距顶的size]
+        var comp_boxMXY =[1,0,300],chid = '3',comp_action='{$cms_abs}info.php?fid=8&chid='+chid+'#aids=';
+</script>
+<script src="{$tplurl}js/jquery.lazyload.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$('#sxpage').html('<span>共找到<b id="mpacount">{$mpacount}</b>条房源</span><span><a href="{$mppre}" class="blprev ico08">&#xf0dd;</a><span>{$mppage}/{$mpcount}</span><a href="{$mpnext}" class="rnext blnext ico08">&#xf0de;</a></span>')
+
+$('.pic img').lazyload({effect: "fadeIn"});
+$(".yxinfobnt").click(function(){
+    $("#yxaid").val($(this).attr("data-aid"));
+    $('#pop-buy').jqModal({
+        head: '我有意向',
+        headcss: {
+            fontSize: '20px',
+            color: '#e43'
+        },
+        css: {
+            width: 450
+        },
+        drag: 2,
+        animate: 'zoomIn'
+    })
+});
+</script>
+</body>
+</html>

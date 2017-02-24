@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords"  content="{keywords}">
+<meta name="description" content="{abstract}">
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/qxzxy.css?{$user_version}"/>
+<?php $pagetype = 'news'; ?>
+</head>
+<body>
+<script type="text/javascript">
+function doZoom(a){document.getElementById("zoom").style.fontSize=a+"px";}
+</script>
+{tpl$head}
+<div id="container">
+    <!--当前位置+搜索-->
+    {tpl$tpl_pososo}
+    <div id="area2_body" class="clearfix"> 
+    <!-- begin 1 -->
+        <div class="w892 l">
+          <div class="borh clearfix">
+            <h1 id="title">{subject}</h1>
+            <div id="riqi">
+              <div class="laiyuan">{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}  来源：{source}</div>
+              <div class="fcr"><span> <i class="dianji"><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 1, field: 'clicks'}">&nbsp;</div></i><em class="c6">点击</em></span><span><i class="pinglun"><div id="_08_count_cuzxdp_{aid}" class="count08" url-params="{type: 'cu', modid: 1, field: 'aid',_and:'tocid_0'}">&nbsp;</div></i><em class="c6">评论</em> </span></div>
+            </div>
+            <div class="w720 ma">
+            <!-- 相关楼盘 -->
+            {c$archives [tclass=archives/] [val=a/] [limits=1/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/] [ttl=3600/]}
+            <div class="lpwrap">
+              <div class="xglp"> 
+                <a class="pic" target="_blank" href="{arcurl}"><img {c$thumb180_134 [cname=thumb180_134/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=180/] [maxheight=134/] [thumb=1/]}src="{url_s}" width="180" height="134"{/c$thumb180_134} alt="{subject}"/></a>
+                <p><strong class="fs14"><a target="_blank" href="{arcurl}">{subject}</a></strong>  {if $a['dj']}<span class="pri arial"><span>{dj}</span>元/m&sup2;</span>{/if}</p>
+                <p>地&nbsp;&nbsp;&nbsp;&nbsp;址：{address}</p>
+                <p>销售电话：<span class="tel">{tel}</span></p>
+                <p>开&nbsp;发&nbsp;商：{c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$lpkfs}</p>
+                <div class="lpitems">
+                    <a target="_blank" href="{arcurl1}">动态</a> | <a target="_blank" href="{arcurl2}">价格</a> | <a target="_blank" href="{arcurl3}">图库</a> | <a target="_blank" href="{arcurl4}">户型</a> | <a target="_blank" href="{arcurl5}">点评</a> | <a target="_blank" href="{$cms_abs}index.php?caid=516&lpid={aid}">问答</a>{c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=107/] [mode=in/] [arid=1/]}{if $n['counts']} | <a target="_blank" href="{$a[arcurl11]}">特价房</a>{/if}{/c$num}{c$lpdfhd [cname=团购/] [tclass=archives/] [limits=1/] [chsource=2/] [chids=5/] [ttl=600/] [mode=in/] [arid=3/]} | <a target="_blank" href="{arcurl}">团购</a>{/c$lpdfhd}{if !empty($a['ltbk'])} | <a href="{ltbk}" target="_blank">论坛</a>{/if}
+                </div>
+              </div>
+            </div>
+            {/c$archives}
+            <!-- /相关楼盘 --> 
+            <div class="blank20"></div>
+            {if $tuji}
+            <!-- 图集 --> 
+            <div class="addon-gallery mod-gallery" id="gallery">
+              <div class="gallery-content" >
+                <div id="biglist" class="biglist">
+                  <p class="gallery-info"></p>
+                </div>
+              </div>
+              <div  ></div>
+              <div class="gallery-footer" > <span class="gallery-thumb-prev" ><</span> <span class="gallery-thumb-next" >></span>
+                <div class="gallery-thumb-list">
+                  <ul class="gallery-thumb-items" data-slider="items" >
+                    {c$tuji [tclass=images/] [tname=tuji/] [limits=30/] [maxwidth=80/] [maxheight=60/] [thumb=2/]}
+                        <li data-url="{url}" data-title="{title}"  value="<?=($v['sn_row']-1)?>">
+                            <img alt="{title}" src="{url_s}"/><i></i>
+                        </li>
+                    {/c$tuji}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /图集 -->
+            {/if}
+            </div>
+            {if @$arcall}
+                    <div class="con" id="zoom">{c$content_njs_fy [cname=content_njs_fy/] [tclass=text/] [tname=content/] [wordlink=1/]}{/c$content_njs_fy}</div>
+            {else}
+
+                    <div class="con" id="zoom">{c$content_njs_fy [cname=content_njs_fy/] [tclass=text/] [tname=content/] [wordlink=1/] [mp=1/]}{/c$content_njs_fy}</div>
+
+                    <?php
+                         $_mp = cls_Parse::Get('_mp');
+                         if(!empty($_mp['titles']) && count($_mp['titles']) > 1){ ?>
+                            <div class="pagedivk">
+                                <div class="pagedaohang fw6 plr10">文章导航条</div>
+                                <ul class="clearfix">
+                                <?php
+                                    foreach($_mp['titles'] as $k => $v){
+                                    $title = $v ? $v : $subject;
+                                    $url = $_mp['mpurls'][$k];
+                                   ?>
+                                    <li><a id="page{$k}" href="{$url}" title="{$title}">第{$k}页：{$title}</a>   </li>
+                                   <?  } ?>
+                                </ul>
+                            </div>
+                            <script>
+                            var currentobj =  "page"+"{mppage}"
+                            var obj = document.getElementById(currentobj);
+                            if ( obj != undefined ) obj.style.color = "red";
+                            </script>
+                    <? } ?>
+
+                    <div id="pnav" class='pnav' style="overflow:hidden;width:100%;">{$mpnav}</div>
+                    {/if}
+                    <div class="blank10"></div>
+                    <div id="pl" class="clearfix">
+                        <div class="red_right"><i class="ico08">&#xf034;</i><a href="javascript:doZoom(16);">大</a> <a href="javascript:doZoom(14);">中</a> <a href="javascript:doZoom(12);">小</a><i class="ico08">&#xf02f;</i><a href="javascript:window.print();">打印</a><i class="ico08">&#xf14b;</i><a href="#zxpl">我要评论</a><i class="ico08">&#xf011;</i><a href="javascript:window.close();">关闭</a></div>
+                        <!-- Baidu Button BEGIN -->
+                        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                        <script> 
+                        window._bd_share_config = {
+                            "common": {
+                                "bdSnsKey": {},
+                                "bdText": "",
+                                "bdMini": "2",
+                                "bdMiniList": false,
+                                "bdPic": "",
+                                "bdStyle": "0",
+                                "bdSize": "16"
+                            },
+                            "share": {},
+                            "selectShare": {
+                                "bdContainerClass": null,
+                                "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"],
+                                "bdContainerClass" : "con"
+                            }
+                        };
+                        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)]; 
+                        </script>
+                        <!-- Baidu Button END -->
+
+                    </div>
+                </div>
+                <div class="blank10"></div>
+                <div class="area_pl borh">
+                    <div class="xgrdtj clearfix">
+                        <div class="l xgrdtj-inner">
+                            <div class="tjtit">相关阅读</div>
+                            <ul class="tjlist">
+                                {c$jhtjzx [tclass=archives/] [chids=1/] [chsource=2/] [limits=10/] [caidson=1/] [casource=2/] [ttl=600/]}
+                                 <li><a target="_blank" title="{subject}" href="{arcurl}">{c$subject40 [cname=subject40/] [tclass=text/] [tname=subject/] [trim=40/]}{/c$subject40}</a></li>
+                                {/c$jhtjzx}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="blank10"></div>
+            </div>
+            <!--区块标识：资讯右侧栏-->
+            {tpl$tpl_zxside}
+            <!--/区块标识：资讯右侧栏-->
+            <div class="w892 l"> 
+              <!-- 评论区块 -->
+              <!-- <div class="pinglun"> <span class="zxpl">最新评论</span><span class="gong">共<i>274</i>条评论</span> </div> -->
+              {tpl$tpl_plkuan}
+              <!-- /评论区块 -->
+            </div>
+     </div>
+</div>
+<div class="blank10"></div>
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/gallery.js"></script>
+<script type = "text/javascript" >
+$('#rank-news')
+.on('scrollUp scrollDown', function () {
+    $(this).css('margin-top', $('.fixed').height())
+})
+.jqFixed({
+    fixed : $('#area2_2').offset().top + $('#area2_2').height()
+    , fade : 1
+});
+$('#pnav').find('.p_bar').append('<a href="{$cms_abs}archive.php?aid={$aid}&arcall=1">在本页阅读全文</a>')
+$('#biglist').length && $.gallery({
+                            big       :'#biglist',
+                            small     :'.gallery-thumb-items',
+                            botPrev   :'.gallery-thumb-prev',
+                            botNext   :'.gallery-thumb-next',
+                            visible   :6,
+                            maxW      :720,
+                            maxH      :500,
+                            curClass  :'current',
+                            endLayer  :'#end',
+                            oImg      :'#view-pic',
+                            title     :'.gallery-info',
+                            showIndex :1
+                            // , showBigBot:1
+                        })
+</script> 
+</body>
+</html>

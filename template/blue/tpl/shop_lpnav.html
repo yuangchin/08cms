@@ -1,0 +1,53 @@
+<? $lpid=empty($pid36)?$aid:$pid36;?>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/realestate.css?{$user_version}"/>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/xzlpindexys.css?{$user_version}"/>
+<!--商业地产公用导航与搜索-->
+{tpl$realestate_sonav}
+{c$lpxginfo [tclass=archive/] [val=a/] [id=$lpid/] [detail=1/]}
+<script type="text/javascript">var lpaid='{aid}'</script>
+<div class="wrap">
+	<!--楼盘横幅-->
+	{if $a['lphf']}
+	{c$image [cname=image/] [tclass=image/] [tname=lphf/]}
+		<img src="{url}" width="1000" height="120" />
+	<div class="blank10"></div>
+	{/c$image}
+	{/if}
+	<div class="lpcon-bread clearfix">
+		<span class="lpcon-bread-items l"><a href="{$cms_abs}"><i class="ico08">&#xf015;</i>首页</a> &gt; {c$lpurl [tclass=cnode/] [listby=ca/] [casource=active/]}<a href="{indexurl}">{title}</a>{/c$lpurl} &gt; {c$cnode [tclass=cnode/] [listby=co1/] [casource=active/] [cosource1=active/]}<a href="{indexurl}">{title}</a>{/c$cnode} &gt; <a href="{arcurl}">{subject}</a></span>
+		<span class="r">更新时间：{c$08cms [tclass=date/] [tname=updatedate/] [date=Y年m月d日/]}{/c$08cms}&nbsp;&nbsp;<span class="fcr"><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 115, field: 'clicks'}">&nbsp;</div></span>次浏览&nbsp;&nbsp;<a href="{arcurl5}"><span class="fcr"><div id="_08_count_cu_{aid}" class="count08" url-params="{type: 'cu', modid: 2, field: 'aid',_and:'tocid_0'}">&nbsp;</div></span>条评论</a>&nbsp;&nbsp;<a class="{arcurl}#commuadd2"><span class="fcr"><div id="_08_count_cu-yx_{aid}" class="count08" url-params="{type: 'cu', modid: 3, field: 'aid'}">&nbsp;</div></span>人有意向</a></span>
+	</div>
+	<div class="clearfix lptit">
+	<!-- 调用楼盘二维码 -->
+	    <div class="ewmurl">
+	    	<img class="e" src="<?=cls_tpl::QRcodeImage($mobileurl."archive.php?aid=".$a['aid'])?>" width="90" height="90" />
+	    </div>
+		{if $a['loupanlogo']}
+		{c$image [cname=楼盘logo/] [tclass=image/] [tname=loupanlogo/] [maxwidth=80/] [maxheight=60/]}
+		<img class="logo" width="80" height="60" src="{url}" />
+		{/c$image}
+		{/if}
+		<h1 class="title">{subject}</h1>
+		<div class="items">{if $a['ccid46']}<span>{ccid46title}</span>{/if}{if $a['ccid47']}<span>{ccid47title}</span>{/if}{if $a['zxcd']}<span>{c$zxcd2 [tclass=field/] [tname=zxcd/] [type=archive/] [fname=zxcd/]}{/c$zxcd2}</span>{/if}</div>
+	</div>
+	<div class="blank10"></div>
+	</div>
+	<div class="center">
+	<div id="lpcon-nav" class="lpcon-nav clearfix">
+		<div class="lp-inner clearfix">
+			<ul class="lp-main-nav">
+				<li id="fmn0"><a href="{arcurl}">楼盘首页</a></li>
+				<li id="fmn1"><a href="{arcurl1}">楼盘详情</a></li>
+				<li id="fmn2"><a href="{arcurl2}">楼盘动态</a></li>
+				<li id="fmn3"><a href="{arcurl3}">历史价格</a></li>
+				<li id="fmn4"><a href="{arcurl4}">楼盘图库</a></li>
+				<li id="fmn5"><a href="{arcurl5}">楼盘点评</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{/c$lpxginfo}
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript">
+$("#fmn{addno}").addClass('act');
+</script>

@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset={$mcharset}" />
+  <title>{listtitle}-{$hostname}</title>
+  <meta name="keywords" content="{listkeywords}"/>
+  <meta name="description" content="{listabstract}"/>
+  {tpl$headinner}
+</head>
+<body>
+  <!--问答导航-->
+  {tpl$ask_head}
+  <!--问答内容-->
+  <div class="wrap clearfix">
+	<div class="w940 l">
+	  <div class="wdtjLeftbox clearfix">
+			<div id="tuwlist" class="tuwlist l">
+				<div>
+					<ul>
+					  {c$pushs [tclass=pushs/] [paid=push_97/] [limits=5/] [ttl=600/]}
+					  <li>
+						<a href="{url}">
+							<img alt="{subject}" data-url="{url}" {c$thumb [tclass=image/] [tname=thumb/] [val=x/] [maxwidth=320/] [maxheight=230/]}src="{url_s}" width="320" height="230"{/c$thumb} />
+						</a>
+					  </li>
+					  {/c$pushs}
+					</ul>
+				</div>
+				<div class="num" id="num"><i class="act">1</i><i>2</i><i>3</i><i>4</i><i>5</i></div>
+			</div>
+			{c$pushs [tclass=pushs/] [paid=push_97/] [startno=5/] [limits=3/] [ttl=600/]}
+			<div class="lefTxt r">
+				<div class="zdwztit">
+					<h3>精彩推荐</h3>
+				</div>
+				<div class="blank0"></div>
+				<dl class="wdjctj">
+					[row]
+					<dt><a href="{url}" target="_blank">{subject}</a></dt>
+					{c$archive [tclass=archive/] [chid=106/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+					{c$commus [cname=其它答案/] [tclass=commus/] [limits=1/] [cuid=37/] [checked=1/] [orderstr=cid asc/] [wherestr= aid=$a[aid] and tocid=0 and toaid=0/]}
+					<dd>
+						<span>{mname}</span>
+						{content}
+					</dd>
+					{/c$commus}
+					{/c$archive}
+					[/row]
+				</dl>
+			</div>
+			{/c$pushs}
+	  </div>
+  <script type="text/javascript" src="{$tplurl}js/jq.imgchange.js?v=20120503"></script>
+	  <script type="text/javascript">
+	 $('#tuwlist li').imgChange({thumbObj:'#num i',showTxt:1});
+	</script>
+	  <div class="blank10"></div>
+	  <div class="w940 l">
+		<div class="wtmid pl8">
+		  <span class="gytitys tyicon1"> <i class="ico08 fcg2">&#xf059;</i>
+			待解决的问题
+		  </span>
+		</div>
+		<div class="djjwList">
+		  <dl class="twliebiao">
+			{c$archives [tclass=archives/] [limits=8/] [chsource=2/] [chids=106/] [ttl=1200/] [cosource35=1/] [ccids35=3035/]}
+			<dd>
+			  <span>
+				{c$create_md [cname=create_md/] [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$create_md}
+			  </span>
+			  <span>{stat0} 回答</span>
+			  {c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl1}" target="_blank">[{title}]</a> {/c$cnode}<a href="{arcurl}" target="_blank" title="{subject}">{subject}</a>
+			</dd>
+			{/c$archives}
+		  </dl>
+		</div>
+		<div class="blank10"></div>
+		<div class="wtmid pl8">
+		  <span class=" gytitys tyicon2"> <i class="ico08 fcb">&#xf058;</i>
+			已解决的问题
+		  </span>
+		</div>
+		<div class="djjwList">
+		  <dl class="twliebiao">
+			{c$archives [tclass=archives/] [limits=8/] [chsource=2/] [chids=106/] [ttl=1200/]  [cosource35=1/] [ccids35=3036/]}
+			<dd>
+			  <span>
+				{c$create_md [cname=create_md/] [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$create_md}
+			  </span>
+			  <span>{stat0} 回答</span>
+			  {c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl1}" target="_blank">[{title}]</a> {/c$cnode}<a href="{arcurl}" target="_blank" title="{subject}">{subject}</a>
+			</dd>
+			{/c$archives}
+		  </dl>
+		</div>
+		<div class="blank10"></div>
+		<div class="wtmid pl8">
+		  <span class="gytitys tyicon3">
+			<i class="ico08 fco">&#xe625;</i>
+			高悬赏的问题
+		  </span>
+		</div>
+		<div class="djjwList">
+		  <dl class="twliebiao">
+			{c$archives [tclass=archives/] [limits=8/] [chsource=2/] [chids=106/] [ttl=1200/] [detail=1/] [ccidson36=1/] [cosource36=1/] [ccids36=3037/]}
+			<dd>
+			  <span>
+				{c$date [cname=date/] [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$date}
+			  </span>
+			  <span>{stat0} 回答</span>
+			  {c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl1}" target="_blank">[{title}]</a> {/c$cnode}<a href="{arcurl}" target="_blank" title="{subject}">{subject} {if $v['currency']}<i class="ico08 fco">&#xe625;</i><i class="fcg">{currency}</i>{/if}</a>
+			</dd>
+			{/c$archives}
+		  </dl>
+		</div>
+	  </div>
+	</div>
+	{tpl$ask_right}
+  </div>
+  <!--问答底部-->{tpl$foot}
+</body>
+</html>

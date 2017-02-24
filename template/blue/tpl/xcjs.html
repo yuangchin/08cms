@@ -1,0 +1,20 @@
+<script type="text/javascript" src="{$tplurl}js/gallery.js"></script>
+<script type="text/javascript">
+    $.gallery({
+        big        : '#biglist',
+        small      : '#scrollwap',
+        botPrev    : '.prev',
+        botNext    : '.next',
+        visible    : 8,
+        maxW       : 1000,
+        maxH       : 570,
+        curClass   : 'hover',
+        endLayer   : '#end',
+        oImg       : '#view-pic',
+        title      : '#title',
+        showIndex  : 1,
+        keyboard   : 1,
+        showBigBot : 1,
+        now        : $('#scrollwap').find('.hover')[0].value
+    })
+</script>

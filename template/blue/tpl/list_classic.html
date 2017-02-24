@@ -1,0 +1,196 @@
+<?php
+foreach(array('shi','ccid6','ccid32','ccid33','orderby','ordermode','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+    'ntype' => 'c', //cm,m,oc,om
+    'chid' => 102, 
+    'nodes' => array('caid'),
+));
+extract(cls_usql::order_str(1,'ccid42 DESC,a.refreshdate DESC'));
+$whrstr = cls_usql::where_str(array(
+	array('subject'), //array('biaoti',0,'like'),
+    array('shi'),
+)); 
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+{c$cnode [cname=家装title/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<title>{listtitle}-{$hostname}</title>
+<meta content="{listkeywords}" name="keywords">
+<meta content="{listabstract}" name="description">
+{/c$cnode}
+{tpl$jz_headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/common_front.css?{$user_version}">
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/zxal.css?{$user_version}">
+</head>
+<body>
+<!--header begin-->
+{tpl$jz_head}
+<!--header end-->
+<!-- 搜索开始 -->
+<div class="area">
+	<div class="con1A fl">
+		<div class="con1A1 oh h5">
+			<div class="h5 w5 fl"><img src="{$tplurl}newimages/j1.gif"></div>
+			<div class="h5 w5 fr"><img src="{$tplurl}newimages/j2.gif"></div>
+		</div>
+		<div class="con1A3">
+			<div class="con1A31">
+				<form method="get" action="{$cms_abs}index.php">
+				<input type="hidden" name="caid" value="511" />
+				<input type="hidden" name="addno" value="1" />
+					<input type="text" id="community" class="input txt1 clear-txt" value="{$searchword}" placeholder="请输入关键字"  name="searchword">
+					<input type="submit" id="sb" value="搜索" class="searbtn1">
+				</form>
+			</div>
+			<div class="blank5"></div>
+            <div class="blank5"></div>
+			<div class="con1A32">
+				<div class="con1A32A fl bold white tc">户型结构</div>
+				<div class="con1A32B fl p_l10">
+                 <a class="{if empty($shi)} redlink{/if}" href='<? echo cls_uso::extra_url('shi'); ?>'>全部</a> <?php $_rows = cls_uso::field_urls('shi');?>{loop $_rows $k $v}<a class="{if $shi==$k} active{/if}" href="{$v['url']}">{$v['title']}</a>&nbsp;&nbsp;{/loop}
+                 <span class='gray f12'></span>
+                 </div>
+			</div>
+			<div class="blank10"></div>
+			<div class="con1A32">
+				<div class="con1A32A fl bold white tc">房屋面积</div>
+				<div class="con1A32B fl p_l10"><a class="{if empty($ccid6)} redlink{/if}" href='<? echo cls_uso::extra_url('ccid6'); ?>'>全部</a> <?php $_rows = cls_uso::caco_urls(6);?>{loop $_rows $k $v}<a class="{if $ccid6==$k} active{/if}" href="{$v['url']}">{$v['title']}</a>&nbsp;&nbsp;{/loop} </div>
+			</div>
+			<div class="blank10"></div>
+			<div class="con1A32">
+				<div class="con1A32A fl bold white tc">装修费用</div>
+				<div class="con1A32B fl p_l10"> <a class="{if empty($ccid33)} redlink{/if}" href='<? echo cls_uso::extra_url('ccid33'); ?>'>全部</a> <?php $_rows = cls_uso::caco_urls(33);?>{loop $_rows $k $v}<a class="{if $ccid33==$k} active{/if}" href="{$v['url']}">{$v['title']}</a>&nbsp;&nbsp;{/loop} </div>
+			</div>
+			<div class="blank10"></div>
+			<div class="con1A32">
+				<div class="con1A32A fl bold white tc">设计风格</div>
+				<div class="con1A32B fl p_l10"> <a class="{if empty($ccid32)} redlink{/if}" href='<? echo cls_uso::extra_url('ccid32'); ?>'>全部</a> <?php $_rows = cls_uso::caco_urls(32);?>{loop $_rows $k $v}<a class="{if $ccid32==$k} active{/if}" href="{$v['url']}">{$v['title']}</a>&nbsp;&nbsp;{/loop}  </div>
+			</div>
+			<div class="blank6"></div>
+		</div>
+		<div class="con1A2 oh h5">
+			<div class="h5 w5 fl"><img src="{$tplurl}newimages/j4.gif"></div>
+			<div class="h5 w5 fr"><img src="{$tplurl}newimages/j3.gif"></div>
+		</div>
+	</div>
+	<div class="con1B fr">
+		<!--装修公司207_172--><div id="_08_adv_fcatalog109"></div>
+	</div>
+</div>
+<div class="blank10"></div>
+<!-- 内容开始 -->
+<div class="area">
+	<!--左侧栏开始-->
+	<div class="con1A">
+		<div class="title7">
+			<div class="title7_L">成功案例</div>
+			<div class="gd orange1"></div>
+		</div>
+		<div class="con3">
+			<!--主内容-->
+			{c$archives [tclass=archives/] [chsource=2/] [chids=102/] [caidson=1/] [casource=1/] [caids=511/] [cosource6=2/] [cosource32=2/] [cosource33=2/] [validperiod=1/] [detail=1/] [wherestr=$whrstr/] [orderstr=$orderstr/] [ttl=900/] [mp=1/]}
+			<div class="con3_list clearfix">
+                <div class="con3a"> <a target="_blank" href="{marcurl}"> <img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=100/] [thumb=2/]}src="{url_s}" width="150" height="100"{/c$image}> {if $v['ccid42']}<i class="icon"></i>{/if}</a> </div>
+                <div class="con3b">
+                	<span class="font14 bold"><a target="_blank" href="{marcurl}">{subject}</a></span><br>
+                	{c$shi}{c$ting}{c$wei}<br>
+                	{c$member [tclass=member/] [chids=11/] [chsource=2/] [val=a/] [detail=1/]}<a href="{mspacehome}" target="_blank">{companynm}</a>{/c$member}<br>
+                	{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}
+               	</div>
+                <div class="con3c arial">
+                	{if $v['zj']}<b class="f18 fcr">{zj}</b>元 <br>
+                	均价:{if $v['mj']}<b class="fcr"><?=ceil($v['zj']/$v['mj'])?></b>元/m&sup2;{else}待定{/if}{/if}  <br>
+                	<b class="fcr">{mj}</b>m&sup2;
+ 				</div>
+            </div>
+            {/c$archives}
+
+		      {if $mpacount<=0}
+		       <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>的{/if}信息</div>
+		      {/if}
+			<!--主内容end-->
+			<div class="ptb10">
+				{$mpnav}
+			</div>
+			<div class="blank0"></div>
+		</div>
+	</div>
+	<!--左侧栏结束-->
+	<!--右侧栏开始-->
+	<div class="con1B">
+		<!--最新上传作品开始-->
+		<div class="title4">
+			<div class="title4_L"></div>
+			<div class="title4_M">最新上传的作品</div>
+			<div class="title4_R"></div>
+			<div class="title4_R1"></div>
+		</div>
+		<div class="conB31">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0">
+				<tbody>
+					<tr>
+						<td height="25" align="left" class="title5"><strong>名称</strong></td>
+						<td width="55" align="center" class="title5"><strong>上传时间</strong></td>
+					</tr>
+					<tr>
+						<td height="4" align="left"></td>
+						<td align="center" class="gray_8a"></td>
+					</tr>{c$jz_zxsczp [cname=最新上传作品/] [tclass=archives/] [limits=5/] [chsource=2/] [chids=102/] [caidson=1/] [casource=1/] [caids=511/] [detail=1/]}                    <tr>
+                        <td height="22" align="left"><a target="_blank" href="{marcurl}">{c$subject20 [cname=subject20/] [tclass=text/] [tname=subject/] [trim=20/]}{/c$subject20}</a></td>
+                        <td align="center" class="gray_8a">{c$create_md [cname=create_md/] [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$create_md}</td>
+                    </tr>{/c$jz_zxsczp}
+				</tbody>
+			</table>
+		</div>
+		<!--最新上传作品结束-->
+		<div class="blank10"></div>
+		<!--最受关注的作品开始-->
+		<div class="title4">
+			<div class="title4_L"></div>
+			<div class="title4_M">最受关注的作品</div>
+			<div class="title4_R"></div>
+			<div class="title4_R1"></div>
+		</div>
+		<div class="conB31">
+            <!-- 点击数的降序排列 -->
+			<table width="100%" cellspacing="0" cellpadding="0" border="0">
+				<tbody>
+					<tr>
+						<td height="25" align="left" class="title5"><strong>名称</strong></td>
+						<td width="100" align="center" class="title5"><strong>装修公司</strong></td>
+					</tr>
+					<tr>
+						<td height="4" align="left"></td>
+						<td align="center" class="gray_8a"></td>
+					</tr>{c$jz_zsgzzp [cname=最受关注作品/] [tclass=archives/] [limits=5/] [chsource=2/] [chids=102/] [caidson=1/] [casource=1/] [caids=511/] [detail=1/] [orderstr=a.clicks DESC/] [ttl=900/]}                    <tr>
+                        <td height="22" align="left"><a target="_blank" href="{marcurl}">{c$subject20 [cname=subject20/] [tclass=text/] [tname=subject/] [trim=20/]}{/c$subject20}</a></td>
+                        <td align="center" class="gray_8a">{c$member [cname=member/] [tclass=member/] [chsource=11/] [val=b/] [detail=1/]}<a href="{mspacehome}" target="_blank">{c$text [tclass=text/] [tname=companynm/] [trim=12/]}{/c$text}{/c$member}</a></td>
+                    </tr>{/c$jz_zsgzzp}
+				</tbody>
+			</table>
+		</div>
+		<!--最受关注的作品结束-->
+		<div class="blank10"></div>
+		<!--装修指南开始-->
+		      {c$cnode [tclass=cnode/] [listby=ca/] [casource=507/]}<div class="title4">
+			<div class="title4_L"></div>
+			<div class="title4_M"><a class="redlink" target="_blank" href="{indexurl1}">装修指南</a></div>
+			<div class="title4_R"></div>
+			<div class="title4_R1"><a target="_blank" href="{indexurl1}"><img src="{$tplurl}newimages/more3.gif"></a></div>
+		</div>{/c$cnode}
+		<div class="conB31">
+			<ul>
+            {c$archives [tclass=archives/] [limits=6/] [chsource=2/] [chids=1/] [ttl=900/] [detail=1/] [caidson=1/] [casource=1/] [caids=507/]}<li>·<a target="_blank" href="{arcurl}">{c$subject26 [cname=subject26/] [tclass=text/] [tname=subject/]}{/c$subject26}</a></li>{/c$archives}
+			</ul>
+		</div>
+		<!--装修指南结束-->
+		<div class="blank0"></div>
+	</div>
+	<!--右侧栏结束-->
+</div>
+{tpl$jz_foot}
+<!--footer end-->
+</body>
+</html>

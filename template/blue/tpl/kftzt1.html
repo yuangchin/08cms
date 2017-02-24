@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-看房团-{$hostname}</title>    
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link href="{$tplurl}css/kftzt1.css?{$user_version}" rel="stylesheet" type="text/css"/>
+<?php $pagetype = 'newhouse';?>
+</head>
+<body>
+{tpl$head}
+
+<div class="wrap-bg">
+	<div class="wrap">
+		<div class="banner-bg">
+			{tpl$tpl_kftlc}
+		</div>
+		<div id="baom-box" class="wrap {if $enddate<$timestamp && $enddate!=0}dn{/if}">
+			<div id="baom-top">
+				<div class="bkle r">
+					已报名<div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 110, field: 'hdnum'}">&nbsp;</div>人, 报名热线：<span>{if $bmtel}{bmtel}{else}暂无电话{/if}</span><i>(我们将严格为您保密)</i>
+				</div>
+				<div class="top-l"><i class="car"></i>活动报名<span>{subject}</span></div>
+			</div>
+			<div  class="clearfix"> 
+				<div class="col-bm l">
+					<form id="commubm" name="commubm" class="jqValidate" data-tipmode="#kft-tip" method="post" onsubmit="return fyCummus(this,'报名')">
+					  <ul class="clearfix">
+						<li class="col-1"><em>*</em>姓&nbsp;&nbsp;名：
+						  <input type="text" class="txt" name="fmdata[xingming]" data-type="*3-15" value="">
+						  <input type="hidden" name="cuid" value="45" />
+						  <input type="hidden" name="aid" value="{aid}" />
+						</li>
+						<li class="col-2"><em>*</em>电&nbsp;&nbsp;话：
+						  <input type="text" class="txt" value="" name="fmdata[tel]" data-type="/^\s*\d{3,4}[-]?\d{7,8}\s*$/" data-init="请输入电话号码" data-error="电话号码不对">
+						</li>
+						<li class="col-3"><span id="kft-tip"></span></li>
+						<li class="col-1"><em>*</em>楼&nbsp;&nbsp;盘：
+						  <select name="fmdata[yxlp]" data-type="*">
+	                        <option value="">请选楼盘</option>
+	                        {c$lpopt [tclass=archives/] [chids=4/] [chsource=2/] [limits=100/] [mode=in/] [arid=32/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+	                        <option value="{aid}">{subject}</option>
+	                        {/c$lpopt}
+	                    </select>
+						</li>
+						<li class="reg-wrap col-2" data-regcode="commu45">
+							<span class="lbl-yzm"><em>*</em>验证码:</span>
+		                    <div class="yzm">
+		                    	<input type="text" name="regcode" class="txt regcode" placeholder="" value=""/>
+		                    </div>
+		                </li>
+						<li class="col-3">
+							<input type="submit" value="立即报名" class="kftbm">
+						</li>
+					  </ul>
+					</form>
+				  </div>
+				<div class="col-bm-list r">
+					<!--报名列表-->
+			      <div class="tab_baoming clearfix">
+			        <div class="tab_bmTit"><i>登记时间</i><i>姓 名</i><i>联系方式</i><i>楼盘意向</i></div>
+			        <div id="baoming" class="jqDuang oh" data-effect="weibo" data-obj="li" data-visible="3" style="height:105px">
+			          <ul>
+			            {c$kftbmls [tclass=commus/] [cuid=45/] [limits=100/] [checked=1/] [wherestr=aid ='$aid'/]}
+			            <li {if $v['sn_row']%2==0}class="apart"{/if}><i class="gray">{c$createdate_ymd [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}</i><i><?php echo cls_string::CutStr($v['xingming'],2,'').'**'; ?></i><i><?php echo " ".substr($v['tel'],0,3).'*****'." "; ?> </i><i>{c$lpyxsub [tclass=archive/] [chid=4/] [id=$v[yxlp]/]}<a href="{arcurl}" title="{subject}" target="_blank">{subject}</a>{/c$lpyxsub}</i>
+			            </li>
+			            {/c$kftbmls}
+			          </ul>
+			      </div>
+			      </div>
+				</div>
+			</div>
+		</div>
+		<!-- 看房团合影 -->
+		<div class="tit-bg">
+			<span>看房团合影</span>
+		</div>
+		<div class="kft-hy">
+		 <img src="{c$images [cname=logo/] [tclass=image/] [tname=thumb/]}{url}{/c$images}" width="946" height="400" title="{subject}"/>
+		   <div class="ny">{c$content [tclass=text/] [tname=content/] [badword=1/] [wordlink=1/]}{/c$content}</div>
+		</div>
+		<!-- 看房精彩瞬间 -->
+		<div class="tit-bg blue">
+			<span>看房精彩瞬间</span>
+		</div>
+		<div class="kft-jcsj clearfix">
+			<ul class="clearfix">
+				{c$kfttj [tclass=images/] [tname=tuji/] [val=b/] [limits=20/]} 
+				<li>
+					<a href="{url}" data-lightbox="1"><img src="{url_s}" width="220" height="146" title="{title}"/></a>
+					<p>{title}</p>
+				</li>
+				{/c$kfttj}
+			</ul>
+		</div>
+		<!-- 参团楼盘 -->
+		<div class="tit-bg blue">
+			<span>参团楼盘 优惠信息</span>
+		</div>
+		<div class="kft-cflp clearfix">
+			<ul>
+				 {c$archives [tclass=archives/] [chids=4/] [chsource=2/] [limits=3/] [mode=in/] [val=a/] [arid=32/] [detail=1/] [orderstr=b.inorder ASC/] [ttl=1200/] [mp=1/]}
+				<li>
+					<a href="{arcurl}" title="{subject}" target="_blank"><img {c$images [cname=logo/] [tclass=image/] [tname=thumb/]}src="{url_s}"{/c$images} width="620" height="280" title="{subject}"/></a>
+					<div class="info">
+						<h2><a href="{arcurl}" title="{subject}" target="_blank">{subject}</a></h2>
+						<div class="lh"><a href="{arcurl}" title="{subject}" target="_blank">{c$content [tclass=text/] [tname=abstract/] [trim=160/] [ellip=.../] [badword=1/] [wordlink=1/] [mp=1/]}{/c$content}</a></div>
+						<div class="lh"><b>在售房源：</b><span>{ccid18title}</span>,{c$catalogs [tclass=catalogs/] [listby=co12/] [cosource12=1/] [ccids12=$a[ccid12]/]}<span>{title}</span>{/c$catalogs},{dj}元/m&sup2;</div>
+						<div class="lh"><em><b>独家优惠：</b>{bdsm}</em></div>
+						<div class="lh"><b>售楼电话：</b>{if $a['tel']}{tel}{else}暂无电话{/if}</div>
+					</div>
+				</li>
+				{/c$archives}
+			</ul>
+		</div>
+	</div>
+</div>
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+<link rel="stylesheet" href="{$tplurl}css/lightbox.css?{$user_version}" />
+<script type="text/javascript" src="{$tplurl}js/lightbox.js"></script>
+</body>
+</html>

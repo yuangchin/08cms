@@ -1,0 +1,41 @@
+<div class="ask-siderbar">
+	 <!--ask_AD2[1]_198_213--><div id="_08_adv_fcatalog138"></div>
+	 <div class="borgr pRl4">
+	 	<div class="wtftit"><i class="ico08 mr5 fcr">&#xe65e;</i>精彩回答</div>
+	 	<div class="whiteBg">
+	 		<ul class="jchdlist">
+	 			{c$pushs [tclass=pushs/] [paid=push_98/] [limits=4/] [ttl=600/]}
+	 			<li>&middot;<a href="{url}" target="_blank" title="{subject}">{c$subject [tclass=text/] [tname=subject/] [trim=100/][color=color/]}{/c$subject}</a>
+	 			</li>
+	 			{/c$pushs}
+	 		</ul>
+	 	</div>
+		<div class="wtftit"> <i class="ico08 mr5 fcr">&#xf1b3;</i>积分榜 </div>
+		<div class="whiteBg">
+			{c$ask_jfp [cname=问吧_积分榜/] [tclass=members/] [limits=1/] [orderstr=m.currency1 DESC/] [ugid1=0/] [ugid2=0/] [ugid13=0/] [ugid14=0/] [ugid15=0/] [ugid16=0/] [ugid17=0/] [ugid31=0/] [ugid32=0/][wherestr=m.grouptype2!='' and m.isfounder!=1/]}
+			<dl class="wdpaihT clearfix ">
+				<dt>
+					<a {if empty($v['grouptype13'])}href="{mspacehome}" target="_blank"{/if}>
+						<img {c$image60_60 [cname=image60_60/] [tclass=image/] [tname=image/] [val=u/] [maxwidth=60/] [maxheight=60/]}src="{url}" width="60" height="60" {/c$image60_60} />
+					</a>
+				</dt>
+				<dd>
+					<a {if empty($v['grouptype13'])}href="{mspacehome}" target="_blank"{/if}>{mname}</a>
+				</dd>
+				<dd>积分:{currency1}</dd>
+			</dl>
+			{/c$ask_jfp}
+			<ul class="wdpaihBott">
+				{c$askind_jfp2 [cname=问吧首页_积分榜2/] [tclass=members/] [limits=7/] [startno=1/] [orderstr=m.currency1 DESC/] [wherestr=m.grouptype2!='' and m.isfounder!=1/]}
+				<li>
+					<span class="r">{currency1}</span>
+					<a {if empty($v['grouptype13'])}href="{mspacehome}" target="_blank"{/if}>{mname}</a>
+				</li>
+				{/c$askind_jfp2}
+			</ul>
+		</div>
+		<div class="blank5"></div>
+	</div>
+	<div class="blank10"></div>
+	<!--首页右198_150--><div id="_08_adv_fcatalog139"></div>		
+</div>

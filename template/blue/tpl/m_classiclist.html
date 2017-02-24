@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{title}-{companynm}-{$hostname}</title>
+ <meta content="{companynm}" name="keywords"> 
+ <meta content="{companynm}{if $dizhi},公司地址是{dizhi}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+</head>
+<body>
+<!--header begin-->
+{tpl$jz_m_head}  
+<!--内容开始-->
+<div class="area"> 
+  <!--左侧栏开始-->
+  
+  {tpl$jz_m_left}
+  <!--右侧栏开始-->
+  <div class="right_bar">
+  <!-- 检索开始 -->
+    <div class="R_title">
+        <div class="R_title_L">成功案例</div>
+    </div>      
+    <div class="R_con1 wzxx">
+    
+        <!--成功案例列表开始-->
+           {c$jz_m_cgal1 [cname=成功案例/] [tclass=archives/] [chsource=2/] [chids=102/] [caidson=1/] [casource=1/] [caids=511/] [space=1/] [validperiod=1/] [detail=1/] [orderstr=a.refreshdate DESC/] [ttl=900/] [mp=1/]}<div class="list-cgal">
+                <div class="list-cgal1"><a href="{marcurl}"><img alt="{subject}" {c$thumb_150_100 [cname=thumb_150_100/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=100/] [thumb=2/]}src="{url_s}" width="150" height="100"{/c$thumb_150_100}></a></div>
+                <div class="list-cgal2">
+                    <span class="font14 bold green">
+                    <a class="greenlink1" href="{marcurl}">{subject}</a></span> <br>
+                     房屋户型：{c$shi}{c$ting}{c$wei}<br>
+                    <br>                
+                    <br>                
+                </div>
+                <div class="list-cgal3">
+                    设 计 师：{c$jz_shejishi [cname=设计师/] [tclass=archives/] [val=b/] [limits=1/] [chsource=2/] [chids=101/] [caidson=1/] [casource=1/] [caids=510/] [mode=belong/] [arid=31/] [detail=1/] [ttl=900/]}{subject}{/c$jz_shejishi}<br>
+                    建筑面积：<span class="orange">{mj}&nbsp;平方</span><br>
+                    合同报价：<span class="orange">{zj}&nbsp;元</span><br>
+                </div>
+                <div class="list-cgal4"></div>
+                <div class="list-cgal5"><a class="greenlink1" href="{marcurl}">查看详情</a></div>
+                <div class="cl"></div>
+          </div>{/c$jz_m_cgal1}
+      <!--成功案例列表结束-->
+      <div class="ptb10">
+      {$mpnav}
+      </div>
+    </div>
+    
+    <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+    <span class="blank10"></span>
+  </div>
+  <!--右侧栏结束--> 
+</div>
+<!--内容结束--> 
+<!--footer begin--> 
+	{tpl$jz_foot}
+<!--footer end-->
+
+</body></html>

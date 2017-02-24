@@ -1,0 +1,43 @@
+.j-select {
+    position: relative;display: inline-block;vertical-align: middle;background: #fff;*display: inline;*zoom: 1;
+}
+.j-select .j-txt {
+    line-height: 24px;display: block;width: 100%;
+    height: 24px;text-indent: 5px;border: 1px solid #ddd;
+}
+.j-select i {
+    position: absolute;top: 10px; right: 5px;overflow: hidden;width: 0;height: 0;border-width: 5px;border-style: solid dashed dashed;border-color: #aaa transparent transparent;
+}
+.j-droplist {
+    position: absolute;top: 24px;left: 0;display: none;width: 100%;border: 1px solid #ddd;background: #fff;
+}
+.j-droplist a {
+    display: block;padding: 0 5px;white-space: nowrap;*zoom: 1;
+}
+.j-droplist a:hover,
+.j-droplist .j-selected {
+    text-decoration: none;color: #fff;
+    background: #39f;
+}
+
+.j-checkbox,
+.j-radio {
+    line-height: 18px;
+
+    display: inline-block;height: 18px;padding-left: 18px;background: url(../images/simulation.png) no-repeat;*display: inline;*zoom: 1;
+}
+/*.j-checkbox:hover{background-position: 0 -42px;}*/
+.j-radio:hover,
+.j-checkbox:hover {
+    opacity: .8;filter: alpha(opacity=80);
+}
+.j-checkbox.checked {
+    background-position: 0 -85px;
+}
+.j-radio {
+    background-position: 0 -127px;
+}
+/*.j-radio:hover{background-position: 0 -169px;}*/
+.j-radio.checked {
+    background-position: 0 -212px;
+}

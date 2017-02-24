@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-{if $companynm}{companynm}{else}{mname}{/if}-{$hostname}</title>
+<meta content="{companynm}" name="keywords">
+<meta content="{companynm}{if $dizhi},地址是{dizhi}{/if}{if $lxdh},电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/cpxqy.css?{$user_version}">
+</head>
+<body>
+<?php $mcaid=14; ?>
+{tpl$jz_sj_head}
+<script language="javascript" src="{$tplurl}js/inputlimiter.js"> </script>
+<script type="text/javascript" src="{$cms_abs}include/js/validator.js"></script>
+<!--头部开始-->
+<div class="container">
+	<div class="con">
+			<!--左侧栏开始-->
+		{tpl$jz_sj_left}
+			<!--左侧栏结束  右侧栏开始-->
+		<div class="right_bar">
+			<div class="title">{subject}</div>
+			<!--商品简介开始-->
+			<div class="spjj">
+				<div class="spjj_l">
+					<div class="spjj_l_1">
+						<div id="spec-n1"  class="jqzoom" style="width:310px;height:260px">
+							{c$images [tclass=images/] [limits=1/] [tname=tupian/] [val=u/] [maxwidth=310/] [maxheight=260/] [thumb=2/]}
+							<a href="{url}"  rel='gal1' title="{$subject}">
+								<img src="{url_s}" title="{$subject}">
+							</a>
+							{/c$images}
+						</div>
+					</div>
+					<div class="spjj_l_2">
+						<ul>
+							{c$images [tclass=images/] [tname=tupian/] [val=u/] [maxwidth=310/] [maxheight=260/] [thumb=2/]}
+							<li><a class="{if $u['sn_row']<1}zoomThumbActive{/if}" rel="{gallery: 'gal1', smallimage: '{url_s}',largeimage: '{url}'}" href='javascript:void(0);'><img width="40" height="40"  src="{url_s}" /></a></li>
+							{/c$images}
+						</ul>
+					</div>
+				</div>
+				<link rel="stylesheet" type="text/css" href="{$tplurl}css/jqzoom.css?{$user_version}"/>
+				<script src="{$tplurl}js/jqzoom.js"></script>
+				<script>
+				$(function(){
+					  $('#spec-n1 a').jqzoom({
+				            zoomType: 'standard',
+				            lens:true,
+				            preloadImages: false,
+				            zoomWidth: 350,
+				            zoomHeight:310,
+				            alwaysOn:false
+				        });
+					});
+				</script>
+				<div class="spjj_r">
+					<div class="spjj_r1">
+						<span class="f14 bold">市场价：</span>
+						<span class="f14 gray83 wryh bold">{zj}元</span>
+						<br>
+					</div>
+					<div class="spjj_r2">
+						品　　牌：{sppp}<br>
+						商品型号：{spxh}<br>
+						商家编码：{spbm}
+					</div>
+					<div class="spjj_r3"><a href="#buy{$aid}" onclick="javascript:$('#buy{$aid}').show();"><img src="{$tplurl}newimages/but_wygm.gif"></a></div>
+					<div class="spjj_r4"><span class="pic"><img src="{$tplurl}newimages/sc.gif"></span><a onclick="return publicCollect('{$aid}');" href="javascript:void(0)"><span class="txt">收藏此商品</span></a><span class="pic"><img src="{$tplurl}newimages/ly.gif"></span><a href="#pform"><span class="txt">给掌柜留言</span></a></div>
+				</div>
+			</div>
+			<div class="blank10"></div>
+				<!-- 购买 -->
+			<div id="buy{$aid}" style="display:none;">
+				<div class="wycj">
+					<span class="wycj2">我要购买</span><span><img src="{$tplurl}newimages/mid.gif"></span><span class="wycj4">(留下您的联系方式，商家会在第一时间与您取得联系)</span>
+				</div>
+				<div class="form_wycj">
+
+				<form id="buyform" name="buyform" method="post" onsubmit="return fyCummus(this,'我要购买');">
+					<input type="hidden" name="cuid" value="33" />
+					<input type="hidden" name="aid" value="{aid}" />
+					<table width="100%" cellspacing="0" cellpadding="0" border="0" class="form_wycj">
+						<tbody>
+							<tr>
+								<td width="50" height="35" align="right" class="f14">姓名：</td>
+								<td width="290"><input type="text" class="txt1" id="xingming" name="fmdata[xingming]" rule="text" must="1" rev="姓名">&nbsp;<span class="required">*</span></td>
+								<td width="50" align="right" class="f14">手机：</td>
+								<td><input type="text" class="txt1" id="tel" name="fmdata[tel]" rule="text" must="1" regx="/^\s*\d{3,4}[-]?\d{7,8}\s*$/">&nbsp;<span class="required">*</span></td>
+							</tr>
+							<tr>
+								<td height="35" align="right" class="f14">地址：</td>
+								<td colspan="3"><input type="text" class="txt1 txt2" id="address" name="fmdata[address]" rule="text" must="1" rev="地址">&nbsp;<span class="required">*</span></td>
+							</tr>
+							<tr>
+								<td height="25" align="right" class="f14">说明：</td>
+								<td class="form_wycj3" colspan="3"><textarea class="txt3" name="fmdata[content]"></textarea></td>
+							</tr>
+							<tr>
+								<td height="30"></td>
+								<td class="but_wycj" colspan="3">
+									<input type="submit" style="vertical-align:top" class="searbtn1" value="提交" name="bsubmit"/>
+									{c$ppspbm [tclass=regcode/] [type=commu33/] [js=1/]} <?php echo _08_HTML::getCode('buyform111', 'buyform', 'txt1 yzmtxt');?>{/c$ppspbm}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+				</div>
+			</div>
+			<div class="ptb10"><img src="{$tplurl}newimages/gmlc.gif"></div>
+				<!--商品详情开始-->
+			<div class="title3">
+				<div class="title3_l"></div>
+				<div class="title3_m_">商品详情</div>
+				<div class="title3_r"></div>
+			</div>
+			<div class="right_con2 spxq">
+			{intro}
+			</div>
+			<div class="right_b">
+				<div class="right_b_l"></div>
+				<div class="right_b_r"></div>
+			</div>
+			<div class="blank10"></div>
+			<div class="title4">
+				<div class="title4_l"></div>
+				<div class="title4_m">网友留言</div>
+				<div class="title4_r"></div>
+			</div>
+			<div class="right_con2 reply">
+		 		{c$commus [tclass=commus/] [val=m/] [limits=5/] [cuid=34/] [wherestr=tomid='$mid'/]}
+				<div class="wyly1_1">{nicheng}网友说： </div>
+				<div class="wyly2_1">{c$content [tclass=text/] [tname=content/] [trim=50/]}{/c$content}</div>
+				{/c$commus}
+			</div>
+			<div class="right_con2">
+				<style>
+				.limiterBox {border: 1px solid #555; border-top: none; background-color: #ffc; padding: 3px 6px; font-size: 12px; }
+				</style>
+				 <script>
+				$(function(){
+					$(".lmtcontent").inputlimiter({
+							limit: 200,
+							remText: '您还可输入%n个字符',
+							remFullText: '有这么多话要说呀，不可以再输入了',
+							limitText: '总共可以输入%n个字符'
+					});
+
+					$("#pform").submit(function(){
+							if($("#nicheng").val()==""){
+									alert('请输入昵称！');
+									$("#nicheng").focus();
+									return false;
+							}
+							if($("#content").val()==""){
+									alert("请输入内容");
+									$("#content").focus();
+									return false;
+							}
+					});
+				});
+				</script>
+				<form id="pform" method="post" onsubmit="return fyCummus(this,'我要留言');">
+				<input type="hidden" name="cuid" value="34" />
+				<input type="hidden" name="tomid" value="{mid}" />
+				<div id="liuyan" class="wycj">
+					<span class="wycj1"><img src="{$tplurl}newimages/r.gif"></span><span class="wycj2">我要留言</span><span><img src="{$tplurl}newimages/mid.gif"></span>
+					<span class="name">昵称：</span><span class="txt"><input type="text" id="nicheng" name="fmdata[nicheng]"></span>
+				</div>
+				<div class="form_wyly1">
+					<div class="form_wyly1_l">
+						<span><img src="{$tplurl}newimages/text_l.gif"></span>
+						<span class="m"><textarea class="lmtcontent" rows="" cols="" id="content" name="fmdata[content]"></textarea></span>
+						<span><img src="{$tplurl}newimages/text_r.gif"></span>
+					</div>
+					<div class="form_wyly1_r">
+						<input name="bsubmit" type="submit" value=" ">
+					</div>
+				</div>
+				</form>
+				<div class="blank0"></div>
+			</div>
+			<div class="right_b">
+				<div class="right_b_l"></div>
+				<div class="right_b_r"></div>
+			</div>
+			<!--网友留言结束-->
+		</div>
+		<div class="blank10"></div>
+	</div>
+</div>
+{tpl$jz_foot}
+
+</body>
+</html>

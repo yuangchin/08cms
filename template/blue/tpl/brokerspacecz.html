@@ -1,0 +1,145 @@
+<?php
+cls_Parse::Set('_da.ordermode',cls_env::GetG('ordermode'));
+foreach(array('ccid5','ccid6','orderby','ordermode','searchword') as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+    'ntype' => 'sa',
+    'chid' => 2,
+    'nodes' => array('mid'),
+    'orderbys' => array('ccid19','mj','zj',),
+    'cnstr' => "mcaid=$mcaid&mid=$mid"
+    //'addno' => 1
+));
+extract(cls_usql::order_str(1,'a.ccid19 DESC,a.refreshdate DESC'));
+$whrstr = cls_usql::where_str(array(
+  array('subject','searchword'),array('shi')//,address
+),u_exsql(2)); //echo $whrstr;
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if $xingming}{xingming}{else}{mname}{/if}的店铺-出租-{$hostname}</title>
+<meta content="{xingming}" name="keywords"> 
+<meta content="{xingming}{if !empty($address)},地址是{address}{/if}{if $lxdh},电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$headinner}
+</head>
+<body>
+{tpl$brokertop}
+<div class="blank10"></div>
+<div class="wrap">
+   <!-- 楼盘检索 -->
+    <div class="lp-janshuo">
+  <div class="blank10"></div>
+  <!-- 检索 -->
+  <div class="js-list">
+        <dl class="list-1">
+          <dt class="l fw6">户型：</dt>
+          <dd>
+            <a href='<? echo cls_uso::extra_url('shi'); ?>' {if empty($_da['shi'])}class='act'{/if}>不限</a>
+            <? $_rows = cls_uso::field_urls('shi'); ?>
+            {loop $_rows $k $v}
+            <a {if @$_da['shi']==$k}class='act'{/if} href="{$v[url]}">{$v[title]}</a>
+            {/loop}
+            </dd>
+        </dl>
+        <dl class="list-17">
+          <dt class="l fw6">总价：</dt>
+          <dd>
+            <a href="<? echo cls_uso::extra_url(5); ?>" {if empty($_da['ccid5'])}class='act'{/if}>不限</a>
+            <? $_rows = cls_uso::caco_urls(5); ?> 
+            {loop $_rows $k $v}
+            <a href="{$v[url]}" {if @$_da['ccid5']==$k}class='act'{/if}>{$v[title]}</a> 
+            {/loop}
+          </dd>
+        </dl>
+        <dl class="list-12">
+          <dt class="l fw6">面积：</dt>
+          <dd>
+            <a href="<? echo cls_uso::extra_url(6); ?>" {if empty($_da['ccid6'])}class='act'{/if}>不限</a>
+            <? $_rows = cls_uso::caco_urls(6); ?> 
+            {loop $_rows $k $v}
+            <a href="{$v[url]}" {if @$_da['ccid6']==$k}class='act'{/if}>{$v[title]}</a> 
+            {/loop}
+          </dd>
+        </dl>
+<div class="blank5"></div>
+  </div>
+  <!-- 当前条件 -->
+   <div class="morefjj clearfix">
+        <form action="{$mspaceurl}index.php?" method="get" id="es_search" name="es_search">
+        <input type="hidden" name="mid" value="{mid}"/>
+        <input type="text" placeholder="请输入关键字" id="searchword" name="searchword" value="{if !empty($searchword)}{$searchword}{/if}"  class="in3 vm w_c_4 l">
+        <input type="submit" value="搜本店" class="vm b2">
+        <a href="{c$escurl [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$escurl}" target="_blank" class="vm b2 b3">搜全站</a>
+        </form>
+   </div>
+     </div>
+
+     <div class="blank10"></div>
+
+    <!-- 左栏开始 -->
+{tpl$brokerleft}
+    <!-- 左栏结束 -->
+    <!-- 右栏开始 -->
+    <!-- 列表内容 -->
+    <div class="inMain">
+    <div class="inMain_tab">
+       <span>出租列表</span>
+    </div>
+<div class="moreSelect">
+    <div id="countid" class="l pl5"></div>
+        <span class="r">
+            <a class="btn-sort {if empty($_da['orderby'])}act{/if} def" href="<?=cls_uso::extra_url('orderby|ordermode')?>">默认</a>
+            <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">月租<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "zj", array("act bldown","act blup",""))?>
+            <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">面积<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "mj", array("act bldown","act blup",""))?>
+        </span>
+</div>
+  {c$czinfo [tclass=archives/] [chids=2/] [chsource=2/] [ccidson5=1/] [cosource5=2/] [ccidson6=1/] [cosource6=2/] [space=1/] [validperiod=1/] [detail=1/] [orderstr=$orderstr/] [wherestr=$whrstr/] [mp=1/]}
+  <? $tjls=count($_czinfo);?>
+  [row]
+  <div class="esfylist clearfix">
+        <div class="pic">
+            <a title="{subject}" href="{arcurl}" target="_blank"><img  alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=120/] [maxheight=90/] [thumb=1/]} width="120" height="90"  data-original="{url_s}" src="{$cms_abs}userfiles/notdel/blank.gif" {/c$thumb}></a>
+        </div>
+        <div class="info">
+            <h2><a href="{arcurl}" target="_blank" title="{subject}">{subject}</a></h2>
+            <em>
+                <span class="c0"><a target="_blank" href="{arcurl}">[{ccid1title}]{if !empty($v['pid3'])}{lpmc}{else}{lpmc}{/if}</a></span>{address}
+            </em>
+            <em>{c$shi}{c$ting}{c$wei}{if $v['ccid44']}<span class="Tip">&frasl;</span>{ccid44title}{/if}
+              {if $v['fl']}<span class="Tip">&frasl;</span>房龄{c$flfl}{/if}
+              {if $v['szlc']}<span class="Tip">&frasl;</span>{szlc}/{zlc}层{/if}
+              {if $v['zxcd']}<span class="Tip">&frasl;</span>{c$zxcd}{/if}
+              {if $v['cx']}<span class="Tip">&frasl;</span>{c$cxcx}{/if}
+            </em>
+            <em>
+            <span>{c$refreshdate_ymd [cname=refreshdate_ymd/] [tclass=date/][val=v/] [tname=refreshdate/]  [date=Y-m-d/] [time=H:i/]}{/c$refreshdate_ymd}</span>更新
+            </em>
+        </div>
+        <div class="info3 arial">
+          {if $v['zj']} <em><i class="fz22">{zj}</i>元/月</em> {else} <em><i class="fz22">面议</i></em> {/if}
+          {if $v['mj']}<em class="fz14 fwb">{mj}m&sup2;</em>{/if}
+        </div>
+    </div>
+    [/row]
+    {/c$czinfo}
+    <div class="blank0"></div>
+        <div class="ptb10">
+            {$mpnav}
+        </div>
+    {if @$tjls<=0}
+      <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}出租房源</div>
+    {/if}
+</div>
+    <!-- 右栏开始 -->
+</div>
+{tpl$foot}
+<script src="{$tplurl}js/jquery.lazyload.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$('.pic img').lazyload({effect : "fadeIn"});
+</script>
+<script type="text/javascript">
+  $('#countid').html('共找到<em class="fwb w_c_1"> {$mpacount} </em>套符合要求');
+</script>
+</body>
+</html>

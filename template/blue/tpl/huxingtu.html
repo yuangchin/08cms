@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+    {tpl$lptop}
+    <div class="blank10"></div>
+	<script type="text/javascript">
+        $("#fmn4,#fmn0").toggleClass('act');
+	</script>
+	<div id="wrapper" class="wrap clearfix">
+        	<!--滚动看图-->
+    	<div id="gallery" class="clearfix" style="width:850px;float:left">
+            <div class="imgnav" id="imgnav">
+                 <div id="img">
+                     <div id="biglist" class="biglist"></div>
+                 </div>
+
+                 <div id="cbtn">
+                    <i class="prev ico08">&#xe68c;</i>
+                    <i class="next ico08">&#xe68f;</i>
+                    <div id="cSlideUl">
+                        {c$dingfang [tclass=archive/] [val=vvvv/] [arid=3/] [detail=1/][chid=4/]}
+                    	<ul id="scrollwap">
+                            {c$lpsyhxt1 [cname=楼盘所有户型图1/] [tclass=archives/] [limits=1000/] [chsource=2/] [chids=11/] [mode=in/] [arid=3/] [ttl=600/]}
+    						<li class="{if $v['aid'] == $aid}hover{/if}" value="{sn_row}" data-url='{c$thumb [cname=thumb/] [tclass=image/] [tname=thumb/] [val=u/]}{url}{/c$thumb}' data-aid='{aid}' title='{subject}-{aid}'>
+    							<img alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=116/] [maxheight=86/] [thumb=2/] }src="{url_s}" width="116" height="86"{/c$thumb} /><i></i>
+    						</li>
+                            {/c$lpsyhxt1}
+                    	</ul>
+                        {/c$dingfang}
+                    </div>
+                 </div>
+                 <a id="view-pic" href="{c$thumb [cname=thumb_850/] [tclass=image/] [tname=thumb/] [val=u/] }{url}{/c$thumb}" target="_blank"><i class="ico08 mr3">&#xe75b;</i>原图</a>
+            </div>
+            <!--end滚动看图-->
+        </div>
+        <div id="hx-detail" class="hx-detail"></div>
+	</div>
+    <script type="text/javascript" src="{$tplurl}js/gallery.js"></script>
+    <script type="text/javascript" src="{$tplurl}js/ll.js"></script>
+    <script type="text/javascript">
+        function calculator($total,$n,$x,$k,$c){
+            // $total：房屋总价，如490000;
+            var $n = ($n || 20)*12 //贷款年数
+            , $x = $x || nowDkll * 100 //贷款利率 0.049 0.0515
+            , $k = $k || 1 //利率折扣
+            , $c = 1-($c || 3)/10; //贷款成数
+            // console.log('$total:'+$total+',$n:'+$n+',$x:'+$x+',$k:'+$k+',$c:'+$c);
+
+            $y   = ($x*$k/100)/12;//将年利换算成月利息//y=x
+            $sum = $total*$c;
+            $i   = Math.pow((1+$y),$n);//(1+$y)^$n)
+            $h   = $sum*$y*$i/($i-1);
+
+            return {
+                sf : (1-$c)*100
+                , aj : $n/12
+                , dkze : Math.round($sum/10000,1)//贷款总额;
+                , sfje : Math.round(($total-$sum)/10000,1) //首付金额
+                , hkze : Math.round($h*$n/10000,1)//还款总额;
+                , pjyg : Math.round($h)//平均月供;
+                , zlxe : Math.round(($h*$n-$sum)/10000,1)//总利息金额;
+            };
+        }
+        function calhx(T,Y,C) {
+            return '首付<i>'+C+'</i>成，贷款<i>'+Y+'</i>年，月供<b>'+calculator(T,Y,'','',C).pjyg+'</b>元 <br/>'
+        }
+
+        function setHxDetail (d){
+            // console.log(d);
+            d.dj = d.dj || 0;
+            var _html = '', total = d.dj*d.mj;
+            _html = '<h3>'+d.subject+'</h3>'
+                    + '<dl>'
+                    + '    <dt>户型居室:</dt>'
+                    + '    <dd>'+d.shititle+d.tingtitle+d.chutitle+d.weititle+'</dd>'
+                    + '    <dt>建筑面积:</dt>'
+                    + '    <dd><b>'+d.mj+'</b>m&sup2;</dd>'
+                    + '    <dt>参考均价:</dt>'
+                    + '    <dd><b>'+d.dj+'</b>元/平</dd>'
+                    + '    <dt>参考总价:</dt>'
+                    + '    <dd><b>'+Math.round(total/10000,2)+'</b>万<span class="fcg fz14">(参考总价=参考均价*建筑面积)</span></dd>'
+                    + '    <dt>贷款方案:</dt>'
+                    + '    <dd>'
+                    + '        <div id="dkinfo" class="dkinfo">'+calhx(total,20,3)+calhx(total,20,6)+calhx(total,30,3)+calhx(total,30,6)+'</div>'
+                    + '        <a href="'+CMS_ABS+'info.php?fid=3" class="plr5 fco fz14" target="_blank"><i class="ico08">&#xf1ec;</i>贷款计算器>></a>'
+                    + '    </dd>'
+                    + '</dl>'
+            $('#hx-detail').html(_html);
+        }
+        var T;
+        $.gallery({
+            big        : '#biglist',
+            small      : '#scrollwap',
+            botPrev    : '.prev',
+            botNext    : '.next',
+            visible    : 5,
+            maxW       : 850,
+            maxH       : 600,
+            curClass   : 'hover',
+            oImg       : '#view-pic',
+            showIndex  : 1,
+            keyboard   : 1,
+            showBigBot : 1,
+            endFun     : function() {
+                var _aid = this.attr('data-aid');
+                var _param = {
+                    'aj_model'   : 'a,11,1' , //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+                    'aj_ids'     : _aid ,
+                    'aj_check'   : 1 ,     //是否审核(0/1或不设置)
+                    'aj_pagenum' : 1 , //当前分页(数字,默认2)
+                    'datatype'   : 'json'
+                }
+                clearTimeout(T);
+                T = setTimeout(function () {
+                    $.getJSON(CMS_ABS + uri2MVC('ajax=pageload/' + $.param(_param).replace(/\+/g,"%20") + '&callback=?'),
+                        function(r) {
+                            setHxDetail(r[0]);
+                        })
+                }, 500)
+            },
+            now        : $('#scrollwap').find('.hover')[0].value
+        })
+    </script>
+	{tpl$tpl_lp_footer}
+</body>
+</html>

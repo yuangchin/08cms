@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Linux+Apache+PHP+MySQL服务器环境(CentOS篇)</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+
+</head>
+
+<body>
+<div class="w1 h1 bg1">Linux+Apache+PHP+MySQL服务器环境(CentOS篇)</div>
+<a name="top"></a>
+<span class="blank5"></span>
+
+<div class="w1 h1 bg2">一、前言</div>
+<div>
+	CentOS（Community ENTerprise Operating System）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。CentOS是架构LAMP（Linux+Apache+PHP+MySQL）的理想操作系统，具有较高的稳定性。本文以CentOS为例介绍linux系统下yum安装Apache+PHP+MySQL的方法。
+
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">二、工作就绪</div>
+<div>
+	<ul>
+        
+        <li class="bg3">2.1登录服务器</li>
+        <span class="blank5"></span>
+        <li class="t3">登录远程服务器，如果您的服务器在本地并安装有桌面环境，也可以直接打开服务器桌面，进入终端管理器。
+在windows下Putty是一款出色的liunx远程登录工具，打开界面如下
+
+在图中黄色框中填入服务器ip，点击打开，之后提示输入用户名和密码，验证成功后完成登录服务器。<br/>
+<img src="img/env01.gif" class="pad15" /><br/>
+在图中黄色框中填入服务器ip，点击打开，之后提示输入用户名和密码，验证成功后完成登录服务器。
+
+       </li>
+       <li class="bg3">2.2配置源和更新系统软件</li>
+       <span class="blank5"></span>
+        <li class="t3 bgthree">2.2.1 定义非官方yum库</li>
+        <li class="t3">
+        官方提供的软件是当前的稳定版本，但不是最新版本，为了更好的运行08cms，我们需要一些非官方的yum源。<br/>
+ 
+        rpm --import http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br/>
+        vi /etc/yum.repos.d/utterramblings.repo<br/>
+         
+        添加以下内容<br/>
+        [utterramblings]<br/>
+        name=Jason's Utter Ramblings Repo<br/>
+        baseurl=http://www.jasonlitka.com/media/EL$releasever/$basearch/<br/>
+        enabled=1<br/>
+        gpgcheck=1<br/>
+        gpgkey=http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka<br/>
+         
+        [注]vim编辑器修改文件的方法请自行百度之<br/>
+		</li>
+		<li class="t3 bgthree">2.2.2 更新系统</li>
+        <li class="t3">
+        yum update<br/>
+        yum upgrade
+
+        </li>
+        
+        <li class="t3 bgthree">2.2.3 检查系统软件</li>
+        
+        <li class="t3">检查当前系统是否已经安装了apache 和 mysql<br/>
+ 
+        yum list installed | grep httpd<br/>
+        rpm -qa | grep httpd<br/>
+         
+        yum list installed | grep mysql<br/>
+        rpm -qa | grep mysql<br/>
+         
+        如果已经存在，请先卸载<br/></li>
+        
+        <li class="bg3">2.3 创建目录</li>
+        <li class="t3">
+        在这里我们约定各数据存放目录如下<br/>
+         
+        网站数据   /www/htdocs<br/>
+        日志目录   /www/log<br/>
+        数据库文件 /www/mysql<br/>
+         
+        运行以下命令完成目录创建<br/>
+         
+        mkdir /www/mysql<br/>
+        mkdir /www/htdocs<br/>
+        mkdir /www/log/php<br/>
+        mkdir /www/log/mysql<br/>
+         
+        添加apache和mysql用户<br/>
+        useradd -s /sbin/nologin -M apache<br/>
+        useradd -s /sbin/nologin -M mysql<br/>
+         
+        创建了目录之后还需要改变目录属主和用户组，apache和mysql才能完成读写操作<br/>
+        chown -R apache:apache /www/htdocs<br/>
+        chown -R mysql:mysql /www/mysql<br/>
+        chown -R apache:apache /www/log/php<br/>
+        chown -R mysql:mysql /www/log/mysql<br/>
+
+        </li>
+        
+    </ul>
+    
+    <div class="w1 h1 bg2">三、安装与配置</div>
+        <ul>
+            
+            <li class="bg3">3.1 yum 安装 Apache + PHP + MySQL</li>
+            <li class="t3">
+            yum -y install gcc gcc-c++ autoconf make aclocal libtool expat-devel libxml2-devel httpd php php-devel mysql mysql-server mysql-devel libevent libevent-devel mageMagick ImageMagick-devel php-mysql mod_ssl mod_perl mod_auth_mysql php-mcrypt php-gd php-xml php-mcrypt php-mbstring php-ldap php-pear php-xmlrpc php-pecl-memcache mysql-connector-odbc libdbi-dbd-mysql php-eaccelerator
+
+            </li>
+            <li class="bg3">3.2 配置php</li>
+            <li class="t3">
+            vi /etc/php.ini<br/>
+             
+            请根据自己的情况修改，这里只列出部分需要注意的设置<br/>
+            post_max_size = 32M<br/>
+            memory_limit = 256M<br/>
+            allow_url_fopen = On<br/>
+            upload_max_filesize = 32M<br/>
+            upload_tmp_dir = /var/tmp<br/>
+            log_errors = On<br/>
+            error_reporting = E_ALL & ~E_NOTICE | E_STRICT<br/>
+            display_errors = Off<br/>
+            error_log = /www/log/php/php_error.log<br/>
+            magic_quotes_gpc = On<br/></li>
+            <li class="bg3">3.3 配置apache</li>
+            <li class="t3">
+            先给默认配置文件做个备份<br/>
+            cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak<br/>
+            编辑配置<br/>
+            vi /etc/httpd/conf/httpd.conf<br/>
+             
+            根据自己的需要进行修改<br/>
+            DocumentRoot "/www/htdocs"  # 修改为默认网站主目录<br/>
+            NameVirtualHost *:80<br/>
+             
+            如果安装GBK版本08cms出现乱码，可能需要注释掉这个参数<br/>
+            #AddDefaultCharset UTF-8<br/>
+             
+            启动apache服务<br/>
+            service httpd start<br/>
+             
+            检查apache是否正常，打开浏览器，输入http://您的ip，如果看到默认apache test page页面，即表示成功启动。<br/>
+
+            </li>
+            <li class="bg3">3.4 配置mysql</li>
+            
+ 			<li class="t3">
+            系统已经自动安装好了mysql，但我们需要做些简单的修改和优化，配置数据库文件和日志存放位置，才能启动。<br/>
+            在 /usr/share/mysql/目录下有多个my-开头的cnf文件，我们可以针对我们自己的情况选择一个使用，我们这里选择my-medium.cnf<br/>
+             
+            把它复制到/etc目录里<br/>
+            cp /usr/share/mysql/my-medium.cnf /etc/my.cnf<br/>
+            编辑<br/>
+            vi /etc/my.cnf<br/>
+            修改以下配置，在原有的基础上修改，没有的选项就添加<br/>
+            [client]<br/>
+            port = 3306<br/>
+            socket = /var/lib/mysql/mysql.sock<br/>
+            default-character-set = utf8<br/>
+            [mysqld]<br/>
+            user = mysql<br/>
+            datadir = /www/mysql<br/>
+            log-error = /www/log/mysql/mysql_error.log<br/>
+            log-bin=/www/log/mysql/mysql-bin<br/>
+            expire_logs_days＝7<br/>
+            character-set-server = utf8<br/>
+            --skip-external-locking<br/>
+             
+            启动mysql<br/>
+            service mysqld start<br/>
+            系统会自动安装初始数据库，然后启动，如果有错误，请查看/www/log/mysql/mysql_error.log里的错误信息<br/>
+             
+            设置mysql root用户密码<br/>
+            mysql<br/>
+            UPDATE mysql.user SET password = PASSWORD('你的密码') WHERE user = 'root';<br/>
+            FLUSH PRIVILEGES;<br/>
+            exit;<br/>
+
+            </li>
+            </ul>
+            
+            <div class="w1 h1 bg2">四、优化设置</div>
+			<ul>
+            <li class="bg3">4.1 安全设置，禁用 PHP 的敏感函数</li>
+            <li class="t3">
+            vi /etc/php.ini<br/>
+            取消disable_functions前的#,改为<br/>
+            disable_functions = exec,shell_exec,system,popen,escapeshellcmd,escapeshellarg,gzuncompress,proc_open,proc_get_status
+            </li>
+            <li class="bg3">4.2 开启gzip压缩</li>
+            <li class="t3">
+            gzip压缩可以减少服务器流量，但也会增加cpu资源消耗，是否要开启你需要根据情况决定<br/>
+ 
+            vi /etc/httpd/conf/httpd.conf<br/>
+             
+            LoadModule deflate_module modules/mod_deflate.so<br/>
+            &lt;IfModule mod_deflate.c&gt;<br/>
+            DeflateCompressionLevel 6<br/>
+            AddOutputFilterByType DEFLATE text/html text/plain text/xml application/x-httpd-php<br/>
+            AddOutputFilter DEFLATE js css<br/>
+             &lt;IfModule &gt;
+           </li>
+         </ul> 
+         
+         <div class="w1 h1 bg2">五、安装与配置</div>
+         <ul>
+         <li class="t3">
+            创建网站目录<br/>
+            mkdir /www/htdocs/demo<br/>
+            更改以下网站目录的属主和属组<br/>
+            chown -R apache:apache /www/htdocs/demo<br/>
+             
+            配置虚拟主机配置<br/>
+            vi /etc/httpd/conf/httpd.conf<br/>
+            在最后添加<br/>
+            &lt;VirtualHost *:80&gt;<br/>
+            ServerName 域名.com<br/>
+            ServerAlias www.域名.com<br/>
+            DocumentRoot /www/htdocs/demo<br/>
+            &lt;/VirtualHost&gt;<br/>
+            重启apache <br/>
+            service httpd restart<br/>
+             
+            创建数据库<br/>
+            mysql -u root -p<br/>
+            create database demo; #demo为要创建的数据库名<br/>
+            exit;<br/>
+             
+            环境搭建已经全部完成了，下面您只需要把08cms程序上传到/www/htdocs/demo，并把您的域名解析到您的服务器ip，即可完成08cms的安装，本教程到此结束。
+
+         </li>
+         </ul>  
+    
+</div>
+<a href="#top" class="ltop"></a>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{title}-{/c$cnode}{$cmstitle}</title>
+	<meta name="keywords" content="{keywords}"/>
+	<meta name="description" content="{abstract}"/>
+    {tpl$m_headinner}
+    <? $pagelimit=10;?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" data-btn="back" title="{subject}" class="active">
+        {tpl$m_header}
+        <footer>
+            <a href="#live_section" data-target="section"><i class="icon-f0f6"></i>文字直播</a>
+            <a href="{arcurl1}&img=0"><i class="icon-e736"></i>直播图片</a>
+            <a id="btn_actionsheet" href="#"><i class="icon-f1e0"></i>分享</a>
+        </footer>
+        <article id="up_refresh_article" class="active" >
+            <div>
+                <div id="video" class="m8">
+                    {c$archives [tclass=archives/] [chids=12/] [chsource=2/] [limits=1/] [caidson=1/] [casource=1/] [caids=30/] [mode=in/] [arid=34/] [detail=1/]}
+                        {if $v['scsp']}
+                            <video width="100%" height="160" controls="controls">
+                          {c$flash [tclass=flash/] [val=u/] [tname=scsp/]}
+                                <source src="{url}" type="video/mp4" />
+                                <source src="{url}" type="video/webm" />
+                                <source src="{url}" type="video/ogg" />
+                          {/c$flash}
+                           抱歉！您的浏览不支持该视频格式
+                        </video>
+                        {else}
+                        <div style="display:none;">{html}</div>
+                        {/if}
+                       {/c$archives}
+                    </div>
+                <ul class="list detail">
+                    <li class="borN">
+                        <h1>{subject}</h1>
+                        <div class="grid item">
+                        <div class="tag carrot"><a href="#live_section" data-target="section" class="corff"><i class="icon-f0f6"></i>文字直播</a></div>
+                        <div class="col-0 f-asbestos">活动时间：</div>{if $ztsj}{c$date [tclass=date/] [tname=ztsj/] [date=Y-m-d/] [time=H:i:s/]}{/c$date}{else}待定{/if}
+                        </div>
+                        <div class="grid item">
+                        <div class="col-0 f-asbestos">活动地点：</div>{if $didian}{didian}{else}待定{/if}
+                        </div>
+                    </li>
+                    {if $content}
+                    <li class="divider">主题内容</li>
+                    <li class="detail-con detail-img">
+                        {c$content [tclass=text/] [tname=content/]}{/c$content}
+                    </li>
+                    {/if}
+                {c$tuji [tclass=images/] [tname=tuji/] [limits=1/]}
+                    <li class="divider" data-icon="icon-f054"><i class="icon icon-f054"></i>
+                        <a href="{$arcurl1}">直播图片</a>
+                    </li>
+                    <li class="list-media-big pos">
+                        <a href="{$arcurl1}">
+                        <div class="ck-pic-info icon-f10b"></div>
+                        <img src="{url}" alt="{title}">
+                        </a>
+                    </li>
+                {/c$tuji}
+                </ul>
+                {tpl$m_footer_ft}
+            </div>
+        </article>
+    </section>
+    <section id="live_section" title="文字直播">
+        <header>
+            <nav class="left">
+                <a href="#index_section" data-target="section"><span class="icon-f053 left fz20"></span></a>
+            </nav>
+            <h1 class="title">文字直播</h1>
+            <nav class="right">
+                <a id="login-btn" class="icon" href="{$cms_abs}info.php?fid=122"><span class="icon-e756 left fz19"></span></a>
+                <a class="menu icon"><span class="icon-f0ca left fz22"></span></a>
+            </nav>
+        </header>
+        <article id="up_refresh_commus" class="active" >
+            <ul class="list detail" id="wzzbls">
+                    <li class="divider">文字直播</li>
+                    {c$zhibocon [tclass=commus/] [cuid=101/] [limits=$pagelimit/] [checked=1/] [orderstr=cid DESC/] [mp=1/]}
+                    <li>
+                        <p><span class="f-wet-asphalt">[{speeker}]</span> {c$time [tclass=date/] [tname=zhiboshijian/] [date=Y-m-d/] [time=H:i:s/]}{/c$time}</p>
+                        <p>{c$content [tclass=text/] [tname=content/]}{/c$content}</p>
+                    </li>
+                    {/c$zhibocon}
+                </ul>
+        </article>
+    </section>
+</div>
+<script>
+var opt = {
+    _param : {
+        'ajax' : 'pageload_toaid' ,
+        'aj_model'   : 'cu,101' , //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+        'aj_check'   : 1 ,     //是否审核(0/1或不设置)
+        'aj_pagesize' :{$pagelimit},
+        'aid'        : '{$aid}' ,
+        'orderby'    : 'cid', //排序字段
+        'datatype' : 'json'
+    },
+    wrap : '#up_refresh_commus' ,
+    dataWrap : '#up_refresh_commus #wzzbls' ,
+    template : function() {
+        return '<li>'
+                + '<p><span class="f-wet-asphalt">['+this.speeker+']</span> '+getLocalTime(this.zhiboshijian,2)+'</p>'
+                + '<p>'+this.content+'</p>'
+                + '</li>';
+            }
+        } ;
+</script>
+{tpl$m_footer}
+<script type="text/javascript">
+    //分享
+    $('#btn_actionsheet').click(function(){
+        J.Popup.actionsheet([{
+            text : '告诉QQ好友',
+            handler : function(){
+                window.location.href = 'http://share.v.t.qq.com/index.php?c=share&a=index&title={subject}&url={arcurl}';
+            }
+        },{
+            text : '告诉新浪好友',
+            handler : function(){
+                window.location.href = 'http://service.weibo.com/share/share.php?title={subject}&url={arcurl}';
+            }
+        }
+        ]);
+    });
+</script>
+{c$archives2 [tclass=archives/] [chids=12/] [chsource=2/] [limits=1/] [caidson=1/] [casource=1/] [caids=30/] [mode=in/] [arid=34/] [detail=1/]}
+{if empty($v['scsp'])&&$v['html']}
+<script type="text/javascript">
+if($("#video").html().indexOf("iframe")==-1){
+   $("#video").html('<embed src="{html}" quality="high" width="100%" height="160" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="sameDomain"/>');
+}else{
+    $("#video").html('{html}');
+}
+</script>
+{/if}
+{/c$archives2}
+</body>
+</html>

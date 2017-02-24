@@ -1,0 +1,38 @@
+<?php 
+switch ($fid) {
+	case '1':
+		$caid = 2;
+		break;
+	case '117':
+		$caid = 3;
+		break;
+	case '116':
+		$caid = 4;
+		break;
+	
+	default:
+		$caid = 2;
+		break;
+}
+ ?>
+<div id="boxhead">
+	<div class="map-nav-top">
+		<div class="r home">
+			<a class="act" href="###" rel="nofollow"><i class="ico08 fz16 mr5">&#xe748;</i>地图</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=$caid/]}{indexurl}{/c$cnode}"><i class="ico08 fz16 mr5">&#xf00b;</i>列表</a>
+		</div>
+		<div class="map-logo l"></div>
+		<div class="map-search l">
+			<input type="text" value="" id="keyword"/>
+			<input type="button" class="btn" id="btnSearch" value="搜索"/>
+		</div>
+		<div class="map-nav l">
+			<a href="{c$dtzf [tclass=freeurl/] [fid=1/]}{/c$dtzf}" class="{if $fid==1}act{/if}">新房</a>
+			<a href="{c$dtzf [tclass=freeurl/] [fid=117/]}{/c$dtzf}" class="{if $fid==117}act{/if}">二手房</a>
+			<a href="{c$dtzf [tclass=freeurl/] [fid=116/]}{/c$dtzf}" class="{if $fid==116}act{/if}">租房</a>
+		</div>
+	</div>
+<div id="search_cond_select_div" class="search_all clearfix"> 
+	<div class="blank0"></div>
+</div>
+<div class="blank0"></div>
+</div>

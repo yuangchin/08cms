@@ -1,0 +1,41 @@
+<div class="w280 r">
+	<!--周边楼盘-->
+	{c$zbrmlp [tclass=archives/] [chsource=2/] [chids=$lpchid/] [ttl=600/] [detail=1/] [ccidson1=1/] [cosource1=2/] [wherestr=a.aid != '$aid'/]}
+	<div class="lp-coltit"><h3><a href="{c$jhlpqy1 [tclass=cnode/] [listby=co1/] [casource=612/] [cosource1=active/]}{indexurl}{/c$jhlpqy1}" target="_blank">周边楼盘</a></h3></div>
+	<ul class="lp-tlist3 p10 clearfix bd-gray bdrs">
+		[row]
+		<li><i class="td1"><a href="{arcurl}" title="{subject}" target="_blank">{c$subject30 [cname=subject30/] [tclass=text/] [tname=subject/] [trim=30/]}{/c$subject30}</a></i><i class="td2">{if $v['dj']}<b class="fcr">{dj}</b>元/m&sup2;{else}待定{/if}</i><i class="td3">{ccid1title}</i></li>
+		[/row]
+	</ul>
+  {/c$zbrmlp}
+ <!--  同价位楼盘 -->
+{c$zbrmlp [tclass=archives/] [chsource=2/] [chids=$lpchid/] [ttl=600/] [detail=1/] [cosource17=2/] [wherestr=(a.aid != '$aid' AND ($dj-500)<a.dj AND a.dj<($dj+500))/]}
+	<div class="lp-coltit"><h3><a href="{$cms_abs}index.php?caid={$caid}&djfrom=<?=$dj-500?>&djto=<?=$dj+500?>" target="_blank">同价位楼盘</a></h3></div>
+	<ul class="lp-tlist3 p10 clearfix bd-gray bdrs">
+		[row]
+		<li><i class="td1"><a href="{arcurl}" title="{subject}" target="_blank">{c$subject30 [cname=subject30/] [tclass=text/] [tname=subject/] [trim=30/]}{/c$subject30}</a></i><i class="td2">{if $v['dj']}<b class="fcr">{dj}</b>元/m&sup2;{else}待定{/if}</i><i class="td3">{ccid1title}</i></li>
+		[/row]
+	</ul>
+{/c$zbrmlp}
+ <!--  热门楼盘 -->
+{c$zbrmlp [tclass=archives/] [chsource=2/] [chids=$lpchid/] [ttl=600/] [detail=1/]  [orderstr=a.clicks DESC/] [wherestr=a.aid != '$aid'/]}
+	<div class="lp-coltit"><h3><a href="{c$08cms [tclass=cnode/] [listby=ca/] [casource=612/]}{indexurl}{/c$08cms}" target="_blank">热门楼盘</a></h3></div>
+	<ul class="lp-tlist3 p10 clearfix bd-gray bdrs">
+		[row]
+		<li><i class="td1"><a href="{arcurl}" title="{subject}" target="_blank">{c$subject30 [cname=subject30/] [tclass=text/] [tname=subject/] [trim=30/]}{/c$subject30}</a></i><i class="td2">{if $v['dj']}<b class="fcr">{dj}</b>元/m&sup2;{else}待定{/if}</i><i class="td3">{ccid1title}</i></li>
+		[/row]
+	</ul>
+{/c$zbrmlp}
+	{if !empty($addno)}
+	<div class="lp-coltit"><h3>购房工具</h3></div>
+	<div class="home-tools bd-gray bdrs">
+		<a target="_blank" href="{c$08cms [tclass=freeurl/] [fid=3/]}{/c$08cms}" class="fdjs">贷款计算器</a>
+		<a target="_blank" href="{c$08cms [tclass=freeurl/] [fid=5/]}{/c$08cms}" class="mlpg">购房能力评估</a>
+		<a target="_blank" href="{c$08cms [tclass=freeurl/] [fid=6/]}{/c$08cms}" class="gjjdk">公积金贷款</a>
+		<a target="_blank" href="{c$08cms [tclass=freeurl/] [fid=4/]}{/c$08cms}" class="tqhd">提前还贷</a>
+		<a target="_blank" href="{c$08cms [tclass=freeurl/] [fid=108/]}{/c$08cms}" class="gfsf">税费计算器</a>
+		<a href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl1}{/c$cnode}" class="lpsc" target="_blank">楼盘速查</a>
+	</div>
+	{/if}
+	<div class="blank10"></div>
+</div>

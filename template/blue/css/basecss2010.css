@@ -1,0 +1,199 @@
+/*
+filename:basecss2010.css
+files:tugou.htm,tugoucon.htm
+modify:2014-02-10
+*/
+/*家装团购*/
+.reqiure {
+    margin: 0 5px;
+
+    color: #c00;
+}
+.tit-img {
+    padding: 10px;text-align: center;
+
+    border: 1px solid #ddd;background: #eee;
+}
+.tit-img .tit-img-inner {
+    background: #fff;
+}
+.tit-img .title {
+    font-family: Microsoft yahei;font-size: 22px;line-height: 50px;
+
+    height: 50px;
+}
+.more {
+    float: right; padding: 3px;
+}
+.wen3 {
+    font-size: 12px; font-weight: lighter; line-height: 20px; color: #000;
+}
+.heiti16 {
+    font-family: microsoft yahei; font-size: 16px; color: #000;
+}
+.hongti16 {
+    font-family: microsoft yahei; font-size: 16px; color: #c00;
+}
+.hese14 {
+    font-size: 14px; font-weight: bold; line-height: 20px; color: #bd2928;
+}
+.an1 {
+    font-size: 14px; font-weight: bold; color: #fff; border: 1px outset #bd2928; background: #bd2928;
+}
+
+.nav {
+    margin-bottom: 8px;
+}
+.nav .right {
+    float: right;
+
+    padding-right: 10px;
+}
+.nav .right a,
+.nav3 .right a {
+    line-height: 48px;
+
+    height: 48px;
+}
+
+.yeBox .nav {
+    line-height: 43px;
+
+    height: 43px; margin: 0; background: url(../newimages/1_03.jpg?20131212) no-repeat;
+}
+.yeBox .nav .left {
+    font-size: 14px; font-weight: bold; float: left;
+
+    padding-left: 30px; color: #fff;
+}
+.yeBox .nav .right {
+    line-height: 30px;
+}
+.yeBox .nav .right a {
+    line-height: 30px;
+
+    height: 43px;
+}
+.yeBox .cont {
+    overflow: hidden; margin-left: 1px; padding: 10px;
+
+    border: 1px solid #d4d4d4; border-top: none; background-color: #fff;
+}
+.yeBox .cont .bmtab td {
+    height: 34px;
+}
+.yeBox .cont input {
+    line-height: 23px; float: left;
+
+    height: 23px;
+}
+.yeBox .cont .yzmtxt {
+    width: 60px;
+}
+.yeBox .cont input.an1 {
+    width: 80px; height: 27px;margin-right: 5px;cursor: pointer;text-align: center;
+}
+.yeBox .cont input.gray {
+    color: #666;border: 1px solid #ccc;
+    background: #eee;
+}
+input.required,
+textarea.required {
+    border: 1px solid #ccc;
+}
+select.validation-passed,
+input.validation-passed,
+textarea.validation-passed {
+    color: #000;
+    border: 1px solid #ccc;
+}
+.nav3 {
+    line-height: 48px;
+
+    height: 48px; margin: 0; padding-right: 10px; background: url(../newimages/1_11_1.jpg) no-repeat;
+}
+input.required,
+textarea.required {
+    border: 1px solid #ccc;
+}
+select.validation-passed,
+input.validation-passed,
+textarea.validation-passed {
+    color: #000;
+    border: 1px solid #ccc;
+}
+#signdataTable {
+    border: 1px solid #d4d4d4; border-width: 0 0 1px 1px;
+}
+#signdataTable td {
+    height: 30px; text-align: center;
+
+    border: 1px solid #d4d4d4; border-width: 1px 1px 0 0; background-color: #fff;
+}
+#signupDataList {
+    background-color: #d4d4d4;
+}
+
+/**团购**/
+.tugcon {
+    border: 1px solid #a91f19;
+}
+.tugbtit {
+    font-size: 14px; line-height: 37px; height: 37px; padding-left: 10px; color: #a81e19; background: url(../images/jz_tbg.gif) repeat-x;
+}
+.tugbtit h3 {
+    font-family: Microsoft yahei;font-size: 18px;
+
+    width: 95px; height: 37px;
+}
+.tugoulist {
+    padding: 20px;
+}
+.jzthtit {
+    line-height: 34px; height: 34px; padding: 0 10px;
+
+    background: #efefef;
+}
+.jztghd {
+    font-family: Microsoft YaHei; font-size: 16px; overflow: hidden;margin-bottom: 10px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+}
+.jzthtit i {
+    color: #d10000;
+}
+.tuwencon {
+    padding: 10px; border: 1px solid #eee;
+}
+.tuimg {
+    margin-right: 15px;
+}
+.tuimg img {
+    border: 1px solid #efefef;
+}
+.wencon {
+    overflow: hidden;
+
+    width: 510px;
+}
+.wencon em {
+    float: left;
+}
+.wencon span {
+    float: left; width: 430px;
+}
+.wencon p {
+    line-height: 25px; clear: both;overflow: hidden;
+}
+.canyubtn {
+    line-height: 30px; display: inline-block;
+
+    height: 30px; margin-top: 10px; padding: 0 15px;cursor: pointer;vertical-align: top;border-right: 1px solid #5e1414;border-bottom: 1px solid #5e1414; background: #bd2928;  *display: inline;*zoom: 1;
+}
+.canyubtn a,
+.canyubtn a:hover {
+    text-decoration: none;
+
+    color: #fff;
+}
+.mT10 {
+    margin-top: 10px;
+}

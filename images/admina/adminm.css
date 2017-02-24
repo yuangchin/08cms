@@ -1,0 +1,116 @@
+body, div, li, ul{margin:0px; padding:0px;}
+body{background:url(bg.gif) repeat-x; font-size:12px;}
+li{list-style-type:none; float:left;}
+img{border:none;}
+h1{ font-size:14px; font-weight:100;}
+a:link {color:#333; text-decoration:none;}
+a:visited {color:#333;text-decoration:none;}
+a:hover {color:#333; text-decoration:none;}
+a:active {color:#333; text-decoration:none;}
+.top{width:981px;height:68px;overflow:hidden;}
+.top ul{height:100%; width:auto;overflow:hidden;}
+.top ul li.logo{height:100%;line-height:100%;width:155px; padding-left:5px;}
+.top ul li.meninfo{height:100%;width:380px; padding:37px 0px 0px 30px;}
+.top ul li.meninfo span{font-weight:600;}
+.top ul li.meninfo i{padding-left:10px;font-style:normal;}
+.top ul li.meninfo i a{font-size:12px;color:#0068B7;display:inline-block;margin:0px 5px;}
+.top ul li.banner{height:100%;width:400px;float:right; padding-top:5px;}
+.red{color:#F00;}
+.gray{color:#999;}
+
+.other{width:100%;height:39px;}
+.index{width:90px;height:100%;background:url(but_gro.png) 0px 0px; cursor:pointer;}
+.indexclick{width:90px; height:100%; background:url(but_gro.png) 0px 39px; cursor:pointer;}
+.menber{width:90px; height:100%;background:url(but_gro.png) 90px 0px; cursor:pointer; border-right:1px #999 solid;}
+.menberclick{width:90px; height:100%;background:url(but_gro.png) 90px 39px; cursor:pointer; border-right:1px #999 solid;}
+.titcon{width:auto;height:39px; line-height:39px; padding-left:15px; font-weight:600;}
+.center{float:left;width:981px;height:auto;background:url(bg_1.gif) repeat-y; }
+.menu{width:171px;height:auto;overflow:hidden;float:left; padding:5px; min-height:380px;}
+.menu ul{width:100%;height:100%;overflow:hidden;}
+.menu ul li{margin:1px; font-size:12px;}
+.menu ul li.left2_out{background:#666 url(menu_bnt_1.gif);height:29px;line-height:29px;width:145px;padding-left:19px;cursor:pointer;}
+.menu ul li.left2_on{background:#207BD6 url(menu_bnt_1.gif) 0px 29px;height:29px;line-height:29px;width:145px; padding-left:25px; cursor:pointer;}
+.menu ul li.bg{height:auto;}
+.menu ul li.bg a{background:url(menu_bg.gif);display:block;height:24px;margin:1px 0px; width:145px;padding-left:25px;}
+.menu ul li.bg span{background:url(ico_1.gif) no-repeat;display:block; height:24px; line-height:24px; cursor:pointer; padding:0px; width:145px;}
+.menu ul li.bg a:hover{ background-position:0px -24px;}
+.menu ul li.bg a:hover span{ background-position:0px -24px; width:125px; padding-left:20px;}
+.menu ul li.bg a.aclick{background:url(menu_bg.gif) 0px -24px;display:block; height:24px;margin:1px 0px; width:145px; padding-left:25px;}
+.menu ul li.bg a.aclick span{background:url(ico_1.gif) no-repeat 0px -24px;display:block; height:24px; line-height:24px; cursor:pointer; padding-left:20px; width:125px;}
+
+.c_right{height:auto;width:790px; padding:10px 0px 10px 10px; float:left; background:#FFF; font-size:12px;}
+/*.c_right table table{background:#CCC;}*/
+input, textarea, select{margin: 3px 0px;border: 1px solid #6699CC;font: 12px Arial, Helvetica, sans-serif;line-height: 1.2em;color: #006699;background: #FFFFFF;vertical-align: middle;}
+form {margin: 0px;}
+textarea {overflow: auto;}
+.checkbox, .radio {margin: 3px 0px;border: 0px;background: none;vertical-align: middle;height: 16px;}
+.textarea{margin: 3px 0px;border: 1px solid #6699CC;font: 14px Arial, Helvetica, sans-serif;line-height: 1.4em;color: #0A5485;background: #FFFFFF;vertical-align: middle;}
+.cbtn{border:0;margin:0px 2px;padding:3px;height:26px;line-height:26px;background-color:#0A5485;color:#fff;}
+.button{border:0px;font: 12px Arial, Helvetica, sans-serif;color:#000;text-align:center;padding-top:2px;width:65px;height:19px;background:url(button_bg1.gif) no-repeat;}
+.tabmain{margin:5px 0px;background:#CCC;}
+.tabmain td {line-height: 1.5em;height: 2em;padding: 2px;color:#333;}
+td.item1, .item1 td {background:#EFF8FE;padding: 0px 8px;}
+td.item2, .item2 td {background: #FFFFFF;padding: 0px 8px;}
+td.guide {color:#666;background: #FFFFFF;line-height: 22px;}
+td.guide div{margin:2px 10px;}
+td.guide a{color: #005584;text-decoration: underline;}
+td.guide ul{margin-bottom: 0px;margin-top: 0px;}
+td.guide li{margin: 0px 5px;}
+.header td {background: url(td_bg.gif);line-height: 16px;font-weight: bold;color:#333;padding: 0px 8px;}
+.header a{color:#005584;text-decoration: underline;}
+.category td {color:#333;background-color:#F7F7F7;padding: 0px 8px;}
+.ibox,.fbox{zoom: 1; overflow: hidden;border:#DAEDF9 1px solid;padding:1px;margin:3px 0;}
+.ibox .info{float:left;}
+.ibox .tr{width:400px; line-height:24px;}
+.fbox .tr{width:500px; line-height:24px;}
+.ibox .tr .td1,.fbox .tr .td1{width:40px; float:left;padding-left:10px;padding-top:3px;}
+.ibox .tr .td2{width:350px; float:left;padding-top:3px;overflow:hidden;}
+.fbox .tr .td2{width:450px; float:left;padding-top:3px;overflow:hidden;}
+.ibox .thumb{width:150px;float:right;overflow:hidden;}
+
+.s_tr{width:500px;}
+.s_tr .td1{width:280px; float:left;}
+.s_tr .td2{width:110px; float:left;padding-left:10px;padding-top:3px}
+.s_tr .td3{width:100px; float:left;padding-top:5px}
+.s_view{width:498px;padding:2px 0;}
+
+.p_bar {margin: 1px 0px;clear: both;line-height:16px;width: 100%;height: 22px;padding-top: 3px;padding-bottom: 1px !important;}
+.p_bar a {float: left;padding: 1px 4px;font-size: 12px;text-decoration: none;}
+.p_input {border: 0px;padding: 0px;width: 40px;height: 18px !important; height:15px !important;height: 15px;margin: 0px;background: #FFFFFF;}
+.p_total {background-color: #F5FBFF;border: 1px solid #6699CC;border-right: 0px solid #6699CC;font-weight: bold;}
+.p_pages {background-color: #F5FBFF;border: 1px solid #6699CC;margin-right:1px;vertical-align: middle;font-weight: bold;}
+.p_num {background-color: #FFFFFF;border: 1px solid #A3C2E0;margin-right:1px;vertical-align: middle;}
+a:hover.p_num {background-color: #F5FBFF;border: 1px solid #6699CC;text-decoration: none;}
+.p_redirect {background-color: #FFFFFF;border: 1px solid #A3C2E0;margin-right:1px;font-size: 12px !important;font-size: 13px;}
+a:hover.p_redirect {background-color: #F5FBFF;border: 1px solid #0099FF;text-decoration: none;}
+.p_curpage {margin-right:1px;border: 1px solid #A3C2E0;vertical-align: middle;background-color: #FBFFE1;color: #FF6600;font-weight: bold;}
+
+.foot{height:68px; width:100%; background:url(foot_bg.gif);clear:both;}
+.footinfo{height:68px; line-height:68px; text-align:center; width:981px;overflow:hidden;background:url(foot_bg.gif);}
+
+.tree *{white-space: nowrap; line-height:26px;}
+.tree .over{background-color:#e5edf6;}
+.tree input{white-space: nowrap; line-height:normal;}
+.tree .item{width:100%;border-top:none;}
+.tree .icon{background-position: 0px -96px;}
+.tree .spac{width: 32px; cursor: default;}
+.tree .ico0{background-position: -96px 0px;}
+.tree .ico1{background-position: -96px -32px;}
+.tree .ico2{background-position: -96px -64px;}
+.tree .lin0{width: 32px; background-position: 0px 0px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .lin1{width: 32px; background-position: 0px -32px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .lin2{width: 32px; background-position: 0px -64px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .add0{width: 32px; background-position: -64px 0px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .add1{width: 32px; background-position: -64px -32px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .add2{width: 32px; background-position: -64px -64px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .sub0{width: 32px; background-position: -32px 0px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .sub1{width: 32px; background-position: -32px -32px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .sub2{width: 32px; background-position: -32px -64px; background-image: url(tree.gif); background-repeat:no-repeat; cursor: default;}
+.tree .box0{background-position: -32px -96px;}
+.tree .box1{background-position: -64px -96px;}
+.tree .box2{background-position: -96px -96px;}
+
+.popupmenu{width:90px;overflow:hidden;padding:2px;text-align:left;line-height:1.4em;border:1px solid #7FCAE2;background:#f5fbfd;margin:0;}
+.popupmenu li{float:left;margin:0;}
+.popupmenu a{display:block;width:85px;padding:2px 0 2px 5px;}
+.popupmenu a:hover{color:#09C;}

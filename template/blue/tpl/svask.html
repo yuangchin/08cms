@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>在线提问-{hostname}</title>
+{tpl$headinner}
+</head>
+<body>
+ <!--服务中心通用头部-->
+ {tpl$tpl_svhead}
+  <div class="blank15"></div>
+  <div class="wrap">
+  <!--帮助中心新手入门流程-->
+	{tpl$tpl_liucheng}
+	<div class="blank15"></div>
+	  <div class="w920 l">
+	  <div class="bgFF clearfix">
+		<div class="closepl closepl2">
+		 <div class="blank10"></div>
+		 <div class="overnav pos clearfix"><i></i><h3>我要提问</h3><em></em></div>
+
+		 <div class="blank10"></div>
+		<form name="comwztw" id="comwztw" data-tipmode="1" class="jqValidate" onsubmit="return fyCummus(this,'我要提问')">
+        	<input type="hidden" name="cuid" value="40" />
+		  	<ul class="form plr20">
+			  <li><input type="text" class="txt" placeholder="标题" name="fmdata[twtitle]" id="fmdata[twtitle]" data-type="*4-50"></li>
+
+			  <li><select name="fmdata[twlx]" data-type="*">
+			  	<option value="">类型</option>
+				 <?php
+                    foreach (u_cufield_by(40,'twlx') as $k => $v) {
+                        echo '<option value="'.$k.'">'.$v.'</option>';
+                    }
+                 ?>
+			  </select>
+			  </li>
+			  <li class="clearfix pos">
+			  	<textarea data-type="*10-250" placeholder="提问内容" name="fmdata[content]" id="fmdata[content]"></textarea>
+			  </li>
+			  <li class="tiyz pL42">
+			  	<input type="hidden" class="tjbt l mr10" value="提问" name="bsubmit">
+			  	<input type="submit" class="tjbt l mr10" value="提问" name="bsubmit">
+			  	<div class="reg-wrap l" data-regcode="commu40">
+					<input type="text" data-tipmode="#tip-tw" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+				</div>
+				<div class="l mt5" id="tip-tw"></div>
+			  	<div class="blank0"></div>
+			  </li>
+		  </ul>
+		  <div class="fcr fz12 plr20">注意：对本网站有什么不明之处，请向网站管理员提问！</div>
+          <input id="ureset" name="ureset" type="reset" style="display:none;" /> 
+		 </form>
+         
+		 <div class="blank10"></div>
+		</div>
+		<div id="tipsshow" class="noinfo" style="display:none;">很抱歉！在线提问功能已关闭！</div>
+	   </div>
+	   <div class="bgFF clearfix mT15 closepl">
+	   <div class="blank10"></div>
+	   <?
+			$cuid = 40;
+			$commu = cls_cache::Read('commu',$cuid);
+			$lynum = $db->result_one("SELECT COUNT(*) FROM {$tblprefix }$commu[tbl] where checked=1");
+	   ?>
+	   <div class="overnav pos clearfix"><span>已有<strong><?= empty($lynum)? 0 : $lynum?></strong>人留言</span><i></i><h3>用户最新留言</h3><em></em></div>
+	   <div class="blank5"></div>
+	   <div class="pLR10">
+			  <div class="lyCon p10">
+			  {c$webtw_tag [tclass=commus/] [cuid=40/] [checked=1/] [mp=1/]}
+			  <div class="lycon-list">
+					<div class="lycon-list-pl">
+						<div><em class="r"> --{c$createdate [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate}</em><strong>{mname}</strong>的提问：</div>
+						<div>{content}</div>
+					</div>
+				  	{if $v['replydate']}
+					<div class="lycon-list-hf">
+						<div><em class="r"> --{c$replydate_ymdhis [cname=replydate_ymdhis/] [tclass=date/] [tname=replydate/] [date=Y-m-d/]}{/c$replydate_ymdhis}</em><strong>管理员</strong>的回复：</div>
+						<div>{reply}</div>
+					</div>
+					{/if}
+			  </div>
+				{/c$webtw_tag}
+			   <div class="blank10"></div>
+			   {if $mpcount>1}
+				 {$mpnav}
+				 <div class="blank10"></div>
+			   {/if}
+			  </div>
+		  </div>
+	   </div>
+	</div>
+
+	<!--帮助中心统一右边信息-->
+	{tpl$tpl_svright}
+</div>
+<!--公用底部-->
+{tpl$foot}
+
+</body>
+</html>

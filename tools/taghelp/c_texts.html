@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">文本集列表 texts</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>文本集是调出模型字段类型为[文本集]的内容。</p>
+</div>
+<div class="w1 h1 bg2">标识说明</div>
+<span class="blank5"></span>
+1. 指定内容来源只允许为文本集类型字段。<br />
+2. 本标识属列表性质标识，列表展示文本集中的多条内容。<br />
+3. {title0}调用每行的第1项内容，{title1}调用每行的第2项内容...<br />
+
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+<div>
+	<div>
+        <span class="blank5"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/mp.jpg" class="pad15" /></li>
+        
+        <li class="t2">html代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp><span>前 100 RMB</span><span>中间 80 RMB</span><span>后 50 RMB</span></xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp><span>{title0} {title1} {title2}</span></xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li>说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>一个门票的文本集，参数设置，指定内容来源:模型字段(tickets)。{title0}为位置，即前排。{title1}为费用，即100。{title2}为币种，即人民币。需要注意的是title从0开始，即{title0}。<br />
+        <b class="FcR">整体截图如下</b><br />
+        <img  src="img/mpp.jpg" class="img"/>
+        </p></li>
+    </div>
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

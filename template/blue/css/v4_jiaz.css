@@ -1,0 +1,413 @@
+/*margin*/
+.mr8 {
+    margin-right: 8px;
+}
+/**主体内容**/
+.conl {
+    width: 374px;
+}
+.conlTop {
+    padding: 10px;
+
+    background: #d9d7d7;
+}
+.conlbott {
+    padding: 5px 0;
+
+    border: 1px solid #d9d7d7; background: #f8f8f8;
+}
+.hdnewslist li {
+    line-height: 22px; display: inline; float: left; overflow: hidden; width: 170px; height: 22px; margin-left: 10px; text-indent: 8px;
+
+    background: url(../images/jz_icon1.gif) no-repeat 0 10px;
+}
+.conMid {
+    display: inline; float: left; overflow: hidden;
+
+    width: 347px; padding: 0 7px; background: url(../images/toutiao_tj1.gif) no-repeat;
+}
+.conRight {
+    float: right;
+
+    width: 258px;
+}
+.conLeftbott h3 {
+    font-size: 14px; font-weight: bold; line-height: 29px; height: 29px; padding-left: 8px;
+
+    border-bottom: 1px solid #ece9e9;
+}
+.conLeftbott li {
+    font-size: 14px; line-height: 24px; overflow: hidden; height: 24px; text-indent: 11px;
+
+    background: url(../images/bgv3-ahuing.png) no-repeat -320px -309px;
+}
+.conMidpart1 {
+    padding: 6px 0; background: url(../images/hui_xux.gif) 0 bottom repeat-x;
+}
+.conMidpart1 h2 {
+    line-height: 30px; overflow: hidden; height: 30px;
+    padding: 0 12px; text-align: center;
+}
+.conMidpart1 h2 a {
+    font-family: ' Microsoft YaHei', simsun; font-size: 16px; font-weight: bold;
+
+    color: #c00;
+}
+.conMidpart1 p {
+    font-size: 12px; line-height: 21px;
+
+    text-indent: 2em; color: #666;
+}
+.conMidList {
+    padding: 5px 5px 0;
+}
+.conMidList li {
+    line-height: 24px; overflow: hidden; height: 24px;
+
+    color: #a4a4a4;
+}
+.conMidList li a {
+    font-size: 14px;
+}
+.conMidList li span a {
+    color: #a4a4a4;
+}
+.conr {
+    overflow: hidden;
+
+    width: 247px;
+}
+.gsdt {
+    border-top: 2px solid #c70101; background: url(../images/gsdt_bg.gif) repeat-x;
+}
+.gsdt h4 span {
+    float: right;
+}
+.gsdt h4 span a {
+    font-size: 12px; font-weight: normal;
+}
+.gsdt h4 {
+    font-size: 14px; font-weight: bold; line-height: 30px;
+
+    height: 30px; padding: 0 5px 0 5px;
+}
+.gsdtlist {
+    padding: 0 5px;
+}
+.gsdtlist li,
+.tuijian li {
+    overflow: hidden;
+
+    background: url(../images/jz_icon2.gif) no-repeat 0 10px;
+}
+.gsdtlist li {
+    line-height: 23px;
+
+    height: 23px; text-indent: 8px;
+}
+.tuijian li {
+    line-height: 25px;
+
+    height: 25px; text-indent: 12px;
+}
+/** 搜索**/
+.searb {
+    float: left; width: 714px; margin-right: 10px; padding: 10px 17px 0 10px; border: 1px solid #d9d7d7;
+}
+.kaisou {
+    float: left; width: 77px; height: 23px;
+
+    background: url(../images/kuaisou.gif) no-repeat;
+}
+.searbput1 {
+    line-height: 21px; width: 298px; height: 21px; padding: 0 5px;
+
+    border: 1px solid #d9d7d7;
+}
+.searbtn1 {
+    width: 52px; height: 23px; color: #fff; border: none;
+    background: url(../images/searbtn1.gif);
+}
+.searbk {
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid #e7e1e1;
+}
+.searlbox {
+    padding: 8px 0 8px 8px;
+}
+.searlist {
+    line-height: 26px;
+
+    overflow: hidden; height: 26px;
+}
+.searlist dt,
+.searlist dd {
+    float: left;
+}
+.searlist dt {
+    font-weight: bold;
+
+    color: #8b8484;
+}
+.searlist dd a {
+    margin-right: 8px;
+}
+/**装修公司推荐**/
+.zxgsTit {
+    line-height: 27px; height: 27px; padding: 0 11px;
+
+    background: url(../images/area_tit_bg.gif?20131210) no-repeat;
+}
+.zxgsTit span {
+    float: right;
+}
+.zxgsTit h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+.zxgsCon {
+    border: 1px solid #e7e1e1; border-top: 0; background: url(../images/area_con_bg.gif) repeat-x top;
+}
+.zxtuList {
+    width: 980px;margin: 0 auto;
+}
+.zxtuList li {
+    float: left; width: 128px; padding: 0 6px;
+}
+.zxtuList img {
+    border: 1px solid #e7e1e1;
+}
+.rmChanp {
+    position: relative;
+
+    border: 1px solid #e7e1e1; background: #f8f8f8;
+}
+.rmcptulist img {
+    padding: 1px;
+
+    border: 1px solid #e7e1e1;
+}
+.rmcpCon {
+    margin: 0 auto;
+
+    background: #fff;
+}
+.rmcptulist {
+    overflow: hidden;
+
+    padding: 14px 0 8px 0; *zoom: 1;
+}
+.rmtit {
+    line-height: 32px;
+
+    height: 32px; padding: 0 11px 0 22px;
+}
+.rmcptulist li {
+    display: inline;
+    float: left; width: 144px;margin-left: 16px;
+}
+.rmcpCon li p {
+    line-height: 20px; overflow: hidden;
+
+    height: 20px; text-align: center;
+}
+.rightIco {
+    position: absolute; width: 19px; height: 19px;
+
+    background: url(../images/v4red_sanj.gif) no-repeat;
+}
+.redp1 a {
+    color: #c70101;
+}
+.w743 {
+    width: 743px;
+}
+.sjslist {
+    padding-top: 12px;
+}
+.sjslist li {
+    float: left; width: 228px;
+    padding: 0 0 12px 12px;
+}
+.shjFace {
+    margin-right: 9px;
+}
+.shjFace img {
+    padding: 2px;
+
+    border: 1px solid #e7e1e1;
+}
+.zxanlist {
+    padding: 15px 0 0 0;
+}
+.zxanlist li {
+    float: left;
+
+    padding: 0 14px 12px;
+}
+.zxanlist li img {
+    padding: 6px 6px 21px;
+
+    background: url(../images/zxalimg_bg.gif) no-repeat;
+}
+.gjlist li {
+    line-height: 24px; display: inline; float: left; width: 62px; height: 24px; margin: 5px 10px 0; text-align: center;
+
+    background: url(../images/btnlieb.gif) no-repeat;
+}
+.rmcpCon .shejsJis p {
+    text-align: left;
+}
+.rmcpCon .shejsJis {
+    width: 123px;
+}
+.imgbox {
+    position: relative;
+
+    width: 354px; height: 246px;
+}
+.imgbox .bigpic,
+.imgbox .bigpic ul {
+    position: relative;  overflow: hidden;width: 354px; height: 246px;
+}
+.imgbox .bigpic li {
+    position: absolute;top: 0;left: 0;
+}
+.imgbox .txt {
+    font-size: 14px; font-weight: bold;  line-height: 31px;
+
+    position: absolute; z-index: 100; bottom: 0;overflow: hidden; width: 100%; height: 31px; text-indent: 5px; color: #fff; border-top: 2px solid #95060c; background: rgba(0,0,0,.5);filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');
+}
+.imgbox .txt:hover {
+    color: #fff;
+}
+.imgbox .num {
+    position: absolute; z-index: 100; top: 187px; right: 0;
+}
+.imgbox .num li {
+    font-weight: bold; float: left;
+
+    width: 24px; height: 24px; margin-right: 2px; cursor: pointer; text-align: center; color: #fff; background: #000;
+}
+.imgbox .num li.act {
+    padding-bottom: 2px;
+
+    background: #96050c;
+}
+.rmtit h3 {
+    font-size: 14px; font-weight: bold;
+}
+/**团购**/
+.tugcon {
+    width: 958px; margin: 0 auto;
+
+    border: 1px solid #a91f19;
+}
+.tugbtit {
+    font-size: 14px; line-height: 37px; height: 37px; padding-left: 10px; color: #a81e19; background: url(../images/jz_tbg.gif) repeat-x;
+}
+.tugbtit h3 {
+    width: 95px; height: 37px;
+
+    background: url(../images/tgzi.gif) no-repeat;
+}
+.tugoulist {
+    padding: 20px 24px;
+}
+
+.jzthtit {
+    line-height: 31px; height: 31px;
+
+    background: #efefef;
+}
+.jztghd {
+    font-family: 'Microsoft YaHei', simsun; font-size: 16px; margin-bottom: 10px; border-width: 0 1px 3px; border-style: solid;
+    border-color: #efefef;
+}
+.jzthtit {
+    padding: 0 9px;
+}
+.jzthtit i {
+    color: #d10000;
+}
+.tuwencon {
+    padding: 5px;
+}
+.tuimg {
+    margin-right: 15px;
+}
+.tuimg img {
+    padding: 5px; border: 1px solid #efefef;
+}
+.wencon {
+    overflow: hidden;
+
+    width: 431px;
+}
+.wencon em {
+    float: left;
+}
+.wencon span {
+    float: left; width: 348px;
+}
+.wencon p {
+    line-height: 25px; overflow: hidden;
+}
+.canyubtn {
+    font-size: 12px; line-height: 21px;
+
+    width: 213px; height: 21px; margin-top: 13px; text-align: center; border: 1px solid #5e1414; border-top: 0; border-left: 0; background: #bd2928;
+}
+.canyubtn a {
+    font-family: simsun;
+
+    color: #fff;
+}
+.canyubtn a:hover {
+    color: #fff;
+}
+.w200 {
+    overflow: hidden;
+
+    width: 200px;
+}
+.w790 {
+    width: 790px;
+}
+.w790 table {
+    border-collapse: collapse; border: 1px solid #e7e1e1;
+}
+.w790 table td,
+.w790 table th {
+    border: 1px solid #e7e1e1;
+}
+.w790 table th {
+    font-weight: bold;
+}
+.jsqTit {
+    font-size: 14px; font-weight: bold; height: 30px; padding-left: 10px; text-align: left; color: #b0201a;
+    border: 1px solid #e7e1e1; background: #f8f8f8;
+}
+.dwinput {
+    width: 69px; height: 19px; border: 1px solid #e3e9ef; box-shadow: 2px;
+}
+.jibtn1 {
+    font-weight: bold; display: inline-block; width: 87px; height: 22px; margin: 0 4px; text-align: center; color: #fff;
+    border: 0; background: url(../images/jsbtn.gif) no-repeat;
+}
+.jibtn1:hover {
+    color: #fff;
+}
+.fontr {
+    color: #a00000;
+}
+.jisqlist {
+    padding: 0 0 5px 15px;
+}
+.jisqlist li {
+    float: left; margin-right: 10px; text-indent: 8px; background: url(../images/gjlistico.gif) no-repeat 0 6px;
+}
+.mT10 {
+    margin-top: 10px;
+}

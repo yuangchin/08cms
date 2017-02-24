@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+    <title>{subject}-{$cmstitle}</title>
+    <meta name="keywords" content="{keywords}" />
+    <meta name="description" content="{abstract}" />
+    {tpl$m_headinner}
+    <? $pagelimit=10;?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" class="innblank44 active" data-btn="back" title="{subject}">
+        <footer>
+            <a href="tel:{tel}"><i class="icon-e612"></i>打电话</a>
+            <a onclick="return popupExt(this);" href="#tpl_popup_yx"><i class="icon-f07a"></i>我想买</a>
+            <a onclick="return publicCollect('{$aid}');"><i class="icon-f004"></i>收藏它</a>
+            <a href="#comment_section" data-target="section"><i class="icon-e755"></i>在线点评</a>
+        </footer>
+        {tpl$m_header}
+        <article  id="index_article" class="active">
+            <div>
+                {c$pushs [tclass=pushs/] [paid=push_shoplphdp/] [limits=5/] [wherestr=pid36 = '$aid'/] [ttl=600/]}
+                <div id="slider" class="slider" style="height:200px">
+                    <div>
+                        [row]
+                        <div class="slider-item">
+                            <a href="{$arcurl1}&img_sytk={fromid}">
+                                <img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=640/] [thumb=2/] [padding=1/]} src="{url_s}"{/c$image}/>
+                                <span class="slider-text">{subject}</span>
+                            </a>
+                        </div>
+                        [/row]
+                    </div>
+                </div><!-- /flash -->
+                {/c$pushs}
+                <ul class="list detail">
+                    <li>
+                        <h1>{subject} </h1>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">均价：</div><span class="fz14 f-alizarin">{dj}元/m&sup2; </span></div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">开盘时间：</div>{if $kprq}{kprq}{else}待定{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">交房时间：</div>{if $jfrq}{jfrq}{else}待定{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">建筑面积：</div>{jzmj}M&sup2;</div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">楼盘地址：</div>{address}</div>
+                        {c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}<div class="grid item">
+                        <div class="col-0 f-asbestos">开&nbsp;&nbsp;发&nbsp;&nbsp;商：</div>{subject}</div>{/c$lpkfs}
+                    </li>
+                    {c$archives [tclass=archives/] [chids=1/] [chsource=2/] [limits=4/] [mode=in/] [arid=35/]}
+                    <li class="divider" data-icon="icon-f054">
+                        <a href="#news_section" data-target="section">最新动态</a>
+                    </li>
+                    <li>
+                        [row]
+                        <a href="{arcurl}">{subject} &nbsp;<span class="f-asbestos">[{c$time [cname=time/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$time}]</span></a>
+                        [/row]
+                    </li>
+                    {/c$archives}
+                    <li class="divider" data-icon="icon-f054">
+                        <a href="#details_section" data-target="section">楼盘详情</a>
+                    </li>
+                    <li>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">商铺类型： </div>{$ccid48title}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">装修程度：  </div>{c$zxcd2 [tclass=field/] [tname=zxcd/] [type=archive/] [fname=zxcd/]}{/c$zxcd2}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">商铺总面积：  </div>{if $spzmj}{spzmj}M<sup>2</sup>{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">绿化率：  </div>{lhl}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">容积率：  </div>{yjl}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">车位价格：  </div>{cwjg}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">物 业 费：  </div>{wyf}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">车位数：  </div>{cksm}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">物业公司：  </div>{wygs}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">售楼地址：  </div>{sldz}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">特色楼盘：  </div>{c$tslp2 [tclass=field/] [tname=tslp/] [type=archive/] [fname=tslp/]}{/c$tslp2}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">楼内配套：  </div>{c$lnpt2 [tclass=field/] [tname=lnpt/] [type=archive/] [fname=lnpt/]}{/c$lnpt2}
+                        </div>
+                    </li>
+                    <li class="divider" data-icon="icon-f054">
+                        <a href="{arcurl2}">位置及周边</a>
+                    </li>
+                    <li>
+                        <div class="">
+                            <a href="{arcurl2}"><img width="100%" height="300" src="http://api.map.baidu.com/staticimage?width=320&height=300&center={dt_1},{dt_0}&zoom=13&markers={dt_1},{dt_0}&markerStyles=l,a" /></a>
+                        </div>
+                    </li>
+                    <li class="divider">
+                        价格走势
+                    </li>
+                    <li>
+                        <canvas id="line_canvas"></canvas>
+                    </li>
+                    {c$lpnsp [tclass=archive/] [arid=5/] [chid=12/] [detail=1/]}
+                    <li class="divider" data-icon="icon-f054">
+                        <a href="{arcurl}">视频看房</a>
+                    </li>
+                    <li class="list-media-big pos">
+                        <a href="{arcurl}">
+                        <div class="ck-pic-info icon-f0de"></div>
+                        <img {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100%/] [maxheight=200/] [thumb=1/]} src="{url_s}"  height="200" width="100%" {/c$image} alt="{subject}">
+                        </a>
+                    </li>
+                    {/c$lpnsp}
+                    {c$pushs1 [tclass=pushs/] [paid=push_shoplptk/] [limits=4/][wherestr=pid36 = '$aid'/] [ttl=600/]}
+                    <li class="divider">
+                        <a href="{$arcurl1}&img_sytk=1">楼盘相册</a>
+                    </li>
+                    <li>
+                        <div id="slider2" class="slider" style="height: 200px;">
+                            <div>
+                                [row]
+                                <div class="slider-item">
+                                    <a href="{$arcurl1}&img_sytk={fromid}">
+                                        <img alt="{subject}" {c$thumb_s [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=640/] [thumb=2/] [padding=1/] [emptyurl=images/common/nopic.gif/]}src='{url_s}'{/c$thumb_s} />
+                                        <span class="slider-text">{subject}</span>
+                                    </a>
+                                </div>
+                                [/row]
+                            </div>
+                        </div>
+                    </li>
+                    {/c$pushs1}
+                    {c$commus [tclass=commus/] [cuid=1/] [limits=3/] [wherestr=aid=$aid and tocid=''/]}
+                    <li class="divider" data-icon="icon-f054">
+                        <a href="#comment_section" data-target="section">楼盘点评</a>
+                    </li>
+                    [row]
+                    <li class="comment-list">
+                        <div class="grid f-asbestos mb5">
+                            <div class="col-1 f-peter-river">{mname}</div>
+                            <span class="fz12"><?=u_time_format($v['createdate'])?></span>
+                        </div>
+                        {content}
+                    </li>
+                    [/row]
+                    {/c$commus}
+                </ul>
+                {tpl$m_footer_ft}
+            </div>
+        </article>
+    </section>
+    <section id="news_section" data-btn="back" title="最新动态">
+        {tpl$m_header}
+        <article id="up_refresh_news"  class="active">
+            <div>
+                <ul class="list detail">
+                    <li class="divider" data-icon="icon-f054">
+                        <a href="#news_section">最新动态</a>
+                    </li>
+                    {c$archives2 [tclass=archives/] [chids=1/] [chsource=2/] [limits=$pagelimit/] [mode=in/] [arid=35/]}
+                    <li>
+                        <a href="{arcurl}">{subject} &nbsp;<span class="f-asbestos">[{c$time [cname=time/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$time}]</span></a>
+                    </li>
+                    {/c$archives2}
+                </ul>
+            </div>
+        </article>
+    </section>
+    <section id="details_section" data-btn="back" title="商铺详情">
+        {tpl$m_header}
+        <article id="up_refresh_details"  class="active">
+            <div>
+                <ul class="list detail">
+                    <li class="divider">基本信息</li>
+                    <li>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">楼盘均价：</div>
+                            <span class="fz14 f-alizarin">{dj}元/m&sup2; </span>
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">开盘日期：</div>
+                            {if $kprq}{kprq}{else}待定{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">交房日期：</div>
+                            {if $jfrq}{jfrq}{else}待定{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">开盘说明：</div>
+                            {kprq}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">装修程度：</div>
+                            {c$zxcd2 [tclass=field/] [tname=zxcd/] [type=archive/] [fname=zxcd/]}{/c$zxcd2}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">特色楼盘：</div>
+                            {c$tslp2 [tclass=field/] [tname=tslp/] [type=archive/] [fname=tslp/]}{/c$tslp2}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">地铁：</div>
+                            {ccid3title}{if $ccid14}-{ccid14title}{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">项目地址：</div>
+                            {address}
+                        </div>
+                    </li>
+                    <li class="divider">物业信息</li>
+                    <li>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">销售电话：</div>
+                            {tel}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">物业费：</div>
+                            {wyf}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">售楼地址：</div>
+                            {sldz}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">物业公司：</div>
+                            {wygs}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">楼盘开发商：</div>
+                            {c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}{subject}{/c$lpkfs}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">许可证号：</div>
+                            {xkzh}
+                        </div>
+                    </li>
+                    <li class="divider">商铺详情</li>
+                    <li>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">商铺总面积：</div>
+                            {if $spzmj}{spzmj}M&sup2;{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">总楼层：</div>
+                            {if $zlc}{zlc}层{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">面宽：</div>
+                            {if $mk}{mk}m{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">进深：</div>
+                            {if $js}{js}m{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">统一管理：</div>
+                            {c$tygl2 [tclass=field/] [tname=tygl/] [type=archive/] [fname=tygl/]}{/c$tygl2}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">外立面：</div>
+                            {wlm}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">单层层高：</div>
+                            {if $dccg}{dccg}m{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">电梯数：</div>
+                            {dts}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">电梯分区：</div>
+                            {dtfq}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">空调开放时间：</div>
+                            {ktkfsj}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">网络通讯：</div>
+                            {c$wltx2 [tclass=field/] [tname=wltx/] [type=archive/] [fname=wltx/]}{/c$wltx2}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">卫生间：</div>
+                            {wsj}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">供水方式：</div>
+                            {c$gsfs2 [tclass=field/] [tname=gsfs/] [type=archive/] [fname=gsfs/]}{/c$gsfs2}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">供电系统：</div>
+                            {c$gdxt2 [tclass=field/] [tname=gdxt/] [type=archive/] [fname=gdxt/]}{/c$gdxt2}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">排风系统：</div>
+                            {if $pfxt}{c$pfxt2 [tclass=field/] [tname=pfxt/] [type=archive/] [fname=pfxt/]}{/c$pfxt2}{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">排污系统：</div>
+                            {if $pwxt}{c$pwxt2 [tclass=field/] [tname=pwxt/] [type=archive/] [fname=pwxt/]}{/c$pwxt2}{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">楼内配套：</div>
+                            {c$lnpt2 [tclass=field/] [tname=lnpt/] [type=archive/] [fname=lnpt/]}{/c$lnpt2}
+                        </div>
+                    </li>
+                    <li class="divider">其它方面</li>
+                    <li>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">商铺类型：</div>
+                            {$ccid48title}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">停车位：</div>
+                            {cksm}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">车位价格：</div>
+                            {cwjg}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">占地面积：</div>
+                            {if $zdmj}{zdmj}M&sup2;{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">建筑面积：</div>
+                            {if $jzmj}{jzmj}M&sup2;{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">绿化率：</div>
+                            {lhl}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">容积率：</div>
+                            {yjl}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">得房率：</div>
+                            {dfl}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">产权年限：</div>
+                            {if $cqnx}{cqnx}年{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">商铺行业：</div>
+                            {$ccid49title}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">工程进度：</div>
+                            {gcjd}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </section>
+    {tpl$m_dp}<!-- /点评 -->
+</div><!-- /page -->
+    <div class="dn" id="tpl_popup_yx" style="padding:10px;">
+        <form name="commu3" id="commu3" method="get" onsubmit="return fyCummus(this,'意向提交');">
+            <input type="hidden" name="cuid" value="3" /><!--交互项目id-->
+            <input type="hidden" name="aid" value="{aid}" /><!--针对文档的aid,不是针对文档就不要这项-->
+            <div class="input-group">
+                <input type="text" id="fmdata[ndxm]" name="fmdata[ndxm]" required maxLength="20" min="0" max="20" placeholder="您的姓名">
+                <input type="text" id="fmdata[sjhm]" name="fmdata[sjhm]" required title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$"placeholder="手机号码">
+                <input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+            </div>
+            <button class="block" name="bsubmit" type="submit" data-icon="icon-e603">提交</button>
+        </form>
+    </div>
+    <!-- 走势图 -->
+    <script type="text/javascript" src="{$tplurl}mobile/js/JChart.debug.js"></script>
+    <script type="text/javascript">
+        var _data = {
+                labels : [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$date}'{/c$outinfos}],
+                datasets : [
+                    {
+                        name : '{subject}',
+                        color : "#72caed",
+                        pointColor : "#95A5A6",
+                        pointBorderColor : "#fff",
+                        data : [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}{$v[average]}{/c$outinfos}]
+                    }
+                ]
+            }
+        _data.labels.reverse();
+        _data.datasets[0].data.reverse();
+
+        //最新动态加载数据设置
+        var opt2 = {
+            _param : {
+                'aj_model'    : 'a,1,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+                'aj_arids'    : '35,116,{$aid}',
+                'aj_pagesize' :{$pagelimit}
+            } ,
+            wrap      : '#up_refresh_news' ,
+            dataWrap  : '#up_refresh_news ul.list' ,
+            template : function() {
+                return '<li>'
+                     + '<a href="'+this.arcurl+'">'+this.subject+' &nbsp;<span class="f-asbestos">['+getLocalTime(this.createdate)+']</span></a>'
+                     + '</li>'
+            }
+        }
+    </script>
+    {tpl$m_footer}
+    <script type="text/javascript" src="{$tplurl}mobile/js/TouchSlide.js"></script>
+    <script type="text/javascript">
+        //加载最新动态
+        pullRefresh(opt2);
+        // slide
+        TouchSlide({
+            slideCell : '#slider' ,
+            mainCell  : '#slider div'
+        });
+        TouchSlide({
+            slideCell : '#slider1' ,
+            mainCell  : '#slider1 div'
+        });
+        TouchSlide({
+            slideCell : '#slider2' ,
+            mainCell  : '#slider2 div'
+        });
+    </script>
+</body>
+</html>

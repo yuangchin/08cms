@@ -1,0 +1,27 @@
+<?php echo '<?';?>xml version="1.0" encoding="{mcharset}"<?php echo '?>';?>
+<?php 
+defined('IN_MOBILE') || define('IN_MOBILE', TRUE); 
+//以下标签中的备注，可按html的注释方式如：<!--备注放在这里-->，处理链接时会忽略备注里面的内容
+//其实这里不用xml格式的,但是后台只能用xml。
+// 主动推送条件(isuser:1-会员,0-文档)
+// 各版本基本相同, 参考使用
+?>
+
+<xml>
+
+<!--### 新闻 -->
+{c$baidu_zixun [tclass=archives/] [chids=1/] [chsource=2/] [limits=100/] [isfunc=1/] [wherestr=baidu_push(0)/]}
+<url><?=htmlspecialchars($v['arcurl'])?></url>
+{/c$baidu_zixun}
+
+<!--### 楼盘 -->
+{c$baidu_zixun [tclass=archives/] [chids=4/] [chsource=2/] [limits=100/] [isfunc=1/] [wherestr=baidu_push(0)/]}
+<url>{$v['arcurl']}</url>
+{/c$baidu_zixun}
+
+<!--### 经纪人 -->
+{c$baidu_new [tclass=members/] [chsource=2/] [chids=2/] [limits=100/] [isfunc=1/] [wherestr=baidu_push(1)/]}
+<url><?=htmlspecialchars($mobileurl."index.php?caid=13&mid=$v[mid]")?></url>
+{/c$baidu_new}
+
+</xml>

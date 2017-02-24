@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>楼盘房价-{$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/lpfj.css?{$user_version}">
+<?php $pagetype = 'newhouse'; $navNoFixed = 1;?>
+</head>
+<body>
+<!--统一头部-->
+{tpl$head}
+<div class="wrap">
+  <!--面包屑-->
+<div class="bread">
+    <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a><i class="pipe">/</i>楼盘房价
+</div>
+<div class="blank10"></div>
+<div id="zst" style="height:200px"></div>
+<div class="blank20"></div>
+<!--主体内容-->
+<div class="price_all jqFixed">
+   <div class="title ">
+       <h2 class="l pl10">区域房价列表</h2>
+   </div>
+   <ul class="clearfix jqScrollspy" data-offset="110">
+       {c$catalogs [tclass=catalogs/] [listby=co1/] [limits=44/] [cainherit=2/]}
+       <li><a href="#qy-{ccid}">{title}</a></li>
+       {/c$catalogs}
+   </ul>
+</div>
+<div class="blank10"></div>
+<!--各分区楼盘列表-->
+{c$catalogs [tclass=catalogs/] [limits=30/] [listby=co1/] [ttl=300/]}
+{c$archives [tclass=archives/] [chids=4/] [chsource=2/] [val=p/] [limits=20/] [casource=1/] [caids=2/] [cosource1=2/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+<div id="qy-{$v['ccid']}" class="price_area">
+     <div class="pri_title">
+     <div class="pri_title_left"></div>
+        <div class="centitle">
+              <strong class="l">{$v['title']}楼盘</strong>
+              <a href="{c$cnode [tclass=cnode/] [listby=co1/] [val=a/] [casource=2/] [cosource1=active/]}{indexurl1}{/c$cnode}" class="rightmore r">更多{$v['title']}新楼盘</a>
+        </div>
+     <div class="pri_title_right"></div>
+     </div>
+     <!-- price_trend 1升 0平 2下 -->
+        <div class="pri_center clearfix">
+           <ul>
+              [row]
+               <li>
+                  <span class="name">
+                  <a title="{subject}" alt="{subject}" href="{arcurl}" target="_blank">{subject}</a>{c$archives1 [tclass=archives/] [chids=5/] [val=r/] [limits=1/] [mode=in/] [arid=3/] [chsource=2/]}<i><a href="{arcurl}" target="_blank">优惠</a></i>{/c$archives1}
+                  </span>
+                  <span class="price">{if $p['dj']}{dj}元/m&sup2;{else}待定{/if}</span>
+                  <em class="i{price_trend}"></em>
+               </li>
+               [/row]
+            </ul>
+        </div>
+     <div class="pri_bot"></div>
+</div>
+{/c$archives}
+{/c$catalogs}
+</div>
+<!--统一底部-->
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/jqfixed.dev.js"></script>
+<script type="text/javascript" src="{$tplurl}js/highcharts.js"></script>
+
+<script type="text/javascript">
+var jsonData = {
+        "title": "{hostname}楼盘房价",
+        "series": [{
+            "name":  "楼盘房价",
+            "datatype": "house",
+            "data": [{c$commus [tclass=commus/] [cuid=47/] [limits=12/] [wherestr=chid=4 and area=0/]}{if $v['sn_row']>1},{/if}['{c$date [tclass=date/] [tname=month/] [date=Y-m/]}{/c$date}',{price}]{/c$commus}].reverse()
+        }],
+        "month_s": [{c$commus [tclass=commus/] [cuid=47/] [limits=12/] [wherestr=chid=4 and area=0/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=month/] [date=Y-m/]}{/c$date}'{/c$commus}].reverse()
+    };
+    $.each(jsonData.series[0].data, function (i, b) {
+        jsonData.min = i == 0 ? b[1] : Math.min(b[1],jsonData.min);
+    })
+
+$(function(){
+    // 走势图
+    if(typeof(jsonData) != 'undefined'){
+        var options = {
+            colors:[ "#ee4433", "#F8CE5D", "#339966" ],
+            chart:{
+                renderTo:'zst',
+                type:"line"
+            },
+            title:{
+                text:""
+            },
+            subtitle:{
+                text:""
+            },
+            xAxis:{
+                categories:jsonData.month_s,
+                tickmarkPlacement:"on",
+                labels:{
+                    style:{
+                        fontSize:"14px",
+                        fontFamily:"Microsoft YaHei"
+                    },
+                    y:25
+                }
+            },
+            yAxis:{
+                title:"",
+                gridLineColor:"#ddd",
+                opposite:true,
+                labels:{
+                    formatter:function() {
+                        if (this.value == 0) {
+                            return "待定";
+                        } else {
+                            return this.value + "元";
+                        }
+                    },
+                    style:{
+                        fontSize:"14px",
+                        fontFamily:"Microsoft YaHei"
+                    },
+                    y:3
+                },
+                min:jsonData.min
+            },
+            tooltip:{
+                crosshairs:true,
+                useHTML:true,
+                borderWidth:1,
+                borderColor:"#999999",
+                borderRadius:3,
+                backgroundColor:"#FFFFFF",
+                style:{
+                    padding:"8px"
+                },
+                shared:true,
+                formatter:function() {
+                    if (this.y == 0) {
+                        return "待定"
+                    } else {
+                        return jsonData.series[0].name + '<br/>' + this.y + "元/m&sup2;"
+                    }
+                }
+            },
+            legend:{
+                enabled:false
+            },
+            plotOptions:{
+                line:{
+                    fillOpacity:.4,
+                    marker:{
+                        symbol:"circle",
+                        radius:5,
+                        lineWidth:1
+                    }
+                }
+            },
+            series:jsonData.series
+        };
+        if($('#zst')) $('#zst').highcharts(options)
+    }
+})
+
+</script>
+<!-- /走势图 -->
+</body>
+</html>

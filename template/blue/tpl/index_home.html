@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+{c$cnode [cname=家装/] [tclass=cnode/] [listby=ca/] [casource=509/]}
+<title>{listtitle}-{$hostname}</title>
+<meta content="{listkeywords}" name="keyword">
+<meta content="{listabstract}" name="description">
+{/c$cnode}
+{tpl$jz_headinner}
+<link rel="stylesheet" href="{$tplurl}css/v4_jiaz.css?{$user_version}" />
+</head><body>
+{tpl$jz_head} 
+<script type="text/javascript" src="{$tplurl}js/jquery.js"> </script> 
+
+<!--导航下960_70-->
+<div id="_08_adv_fcatalog102"></div>
+<div class="wrap">
+  <div class="l conl mr8">
+    <div class="conlTop"> 
+      <div class="imgbox jqDuang"  data-obj=".bigpic li" data-cell=".num">
+                <div class="bigpic">
+                    <ul>
+                    {c$farc [tclass=farchives/] [casource=fcatalog145/] [limits=5/] [validperiod=1/]}
+                     <li><a href="{link}" target="_blank" >{c$ad_image368_245 [tclass=image/] [tname=image/] [val=u/] [maxwidth=354/] [maxheight=246/]}<img src="{url}" width="354" height="246" alt="{$v['subject']}" data-url="{$v['link']}" />{/c$ad_image368_245}</a>
+                      <a class="txt" target="_blank" href="">{subject}</a>
+                     </li>
+                     
+                     {/c$farc}
+                    </ul>
+                </div>
+                <ul class="num" id="num">
+                    {c$farc [tclass=farchives/] [casource=fcatalog145/] [limits=5/] [validperiod=1/]}
+                    <li>{sn_row}</li>
+                  {/c$farc}
+                </ul>
+            
+            </div>
+    </div>
+    <div class="conlbott clearfix">
+      <ul class="hdnewslist">
+        <!--导航下左文字-->
+        <div id="_08_adv_fcatalog104"></div>
+      </ul>
+    </div>
+  </div>
+  <div class="conMid mr8">
+    <div class="blank5"></div>
+    <!--推送位 头条区块_1--> 
+    {c$pushs [tclass=pushs/] [paid=push_85/] [limits=2/] [ttl=600/]}
+    <div class="conMidpart1">
+      <h2><a  target="_blank" href="{url}">{c$text [tclass=text/] [tname=subject/][color=color/]}{/c$text}</a></h2>
+      <p>{c$abstract120 [cname=abstract120/] [tclass=text/] [tname=abstract/]  [ellip=.../][trim=94/]}{/c$abstract120}<a target="_blank" href="{url}" class="fcr">[详情]</a></p>
+    </div>
+    {/c$pushs}
+    <div class="conMidList ptb5">
+      <ul class="tuijian">
+        {c$pushs [tclass=pushs/] [paid=push_85/] [limits=8/][startno=2/] [ttl=600/]}
+        <li><a target ="_blank" href="{url}">{c$text [tclass=text/] [tname=subject/][color=color/]}{/c$text}</a></li>
+        {/c$pushs}
+      </ul>
+    </div>
+  </div>
+  <div class="conr l">
+    <div class="gsdt"> {c$cnode [tclass=cnode/] [listby=ca/] [casource=512/]}
+      <h4><span><a href="{indexurl1}" target="_blank">更多>></a></span><a href="{indexurl1}" target="_blank">公司动态</a></h4>
+      {/c$cnode} 
+      <!--推送位 公司动态_1-->
+      <ul class="gsdtlist">
+        {c$pushs [tclass=pushs/] [paid=push_86/] [limits=6/] [ttl=600/]}
+        <li><a href="{url}" target="_blank">{c$text [tclass=text/] [tname=subject/][color=color/]}{/c$text}</a></li>
+        {/c$pushs}
+      </ul>
+    </div>
+    <div class="gsdt mT10">
+      <h4><span><a href="{c$tgcxlj [cname=团购促销链接/] [tclass=cnode/] [listby=ca/] [casource=515/]}{indexurl1}{/c$tgcxlj}" target="_blank">更多>></a></span>团购促销</h4>
+      <!--推送位 家装团购_1-->
+      <ul class="gsdtlist">
+        {c$pushs [tclass=pushs/] [paid=push_87/] [limits=6/] [ttl=600/]}
+        <li><a href="{url}" target="_blank">{c$text [tclass=text/] [tname=subject/][color=color/]}{/c$text}</a></li>
+        {/c$pushs}
+      </ul>
+    </div>
+  </div>
+  <div class="blank10"></div>
+  <!--搜索上960_70-->
+  <div id="_08_adv_fcatalog146"></div>
+  <?
+cls_uso::init(array(
+    'ntype' => 'c', //cm,m,oc,om
+    'chid' => 102, 
+    'nodes' => array('caid'),
+   'cnstr' => 'caid=511',
+   'addno' => '1',
+));
+  ?>
+  <div class="blank5"></div>
+  <div class="searb">
+    <div class="searbk"> <span class="kaisou"></span>
+      <form method="get" action="{$cms_abs}index.php">
+        <input type="hidden" name="caid" value="511" />
+        <input type="hidden" name="addno" value="1" />
+        <input type="text"  placeholder="请输入要查找的装修案例" id="community"   name="searchword" class="searbput1 clear-txt" x-webkit-speech speech/>
+        <input type="submit" id="sb" class="searbtn1" value="搜索" />
+      </form>
+    </div>
+    <div class="searlbox clearfix">
+      <dl class="searlist">
+        <dt>户型结构：</dt>
+        <?php $_rows = cls_uso::field_urls('shi');?>
+        {loop $_rows $k $v}
+        <dd><a target="_blank" href="{$v['url']}">{$v['title']}</a></dd>
+        {/loop}
+      </dl>
+      <dl class="searlist">
+        <dt>房屋面积：</dt>
+        <?php $_rows = cls_uso::caco_urls(6);?>
+        {loop $_rows $k $v}
+        <dd><a target="_blank" href="{$v['url']}">{$v['title']}</a></dd>
+        {/loop}
+      </dl>
+      <dl class="searlist">
+        <dt>装修费用：</dt>
+        <?php $_rows = cls_uso::caco_urls(33);?>
+        {loop $_rows $k $v}
+        <dd><a target="_blank" href="{$v['url']}">{$v['title']}</a></dd>
+        {/loop}
+      </dl>
+      <dl class="searlist">
+        <dt>设计风格：</dt>
+        <?php $_rows = cls_uso::caco_urls(32);?>
+        {loop $_rows $k $v}
+        <dd><a target="_blank" href="{$v['url']}">{$v['title']}</a></dd>
+        {/loop}
+      </dl>
+    </div>
+  </div>
+  <div class="searAd l"> 
+    <!--检索右207_168-->
+    <div id="_08_adv_fcatalog106"></div>
+  </div>
+  <div class="blank10"></div>
+  <div class="zxgstj">
+    <div class="zxgsTit"> <span><a href="{c$jz_zxgsurl [cname=装修公司链接/] [tclass=mcnode/] [cnsource=ugid31/] [cnid=101/]}{mcnurl1}{/c$jz_zxgsurl}">更多>></a></span>
+      <h3>装修公司推荐</h3>
+    </div>
+    <div class="zxgsCon ptb10"> 
+      <!--推送位 装修公司_1☆-->
+      <div id="zxtuList" class="zxtuList jqDuang" data-effect="left" data-visible="7">
+        <ul class="clearfix">
+          {c$pushs [tclass=pushs/] [paid=push_88/] [limits=14/] [ttl=600/]}
+          <li><a href="{url}" title="{subject}"><img {c$image [cname=image/] [tclass=image/] [tname=thumb/] [val=p/] [maxwidth=126/] [maxheight=51/] [thumb=2/]} width="126" height="51" src="{url}"{/c$image} alt="{subject}"/></a></li>
+          {/c$pushs}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="rmChanp clearfix mT10"> <em class="rightIco"></em>
+    <div class="rmtit"><span class="r"><a href="{c$cnode [cname=热卖商品更多/] [tclass=cnode/] [listby=ca/] [casource=513/]}{indexurl}{/c$cnode}" target="_blank">更多>></a></span>
+      <h3>热卖商品</h3>
+    </div>
+    <div class="rmcpCon mlr10"> 
+      <!--推送位 热卖商品_1-->
+      <ul class="rmcptulist clearfix">
+        {c$pushs [tclass=pushs/] [paid=push_89/] [limits=6/] [ttl=600/]}
+        <li><a href="{url}" target="_blank"><img  {c$image [cname=image/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=140/] [maxheight=130/] [thumb=1/]}src="{url_s}" width="140" height="130"{/c$image} alt="{subject}" /></a> {c$archive [tclass=archive/] [chid=103/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+          <p class="redp1"><a href="{marcurl}">{if $a['zj']} {zj} 元{else}面议{/if}</a></p>
+          {/c$archive}
+          <p><a href="{url}" target="_blank"> {c$subject16 [cname=subject16/] [tclass=text/] [tname=subject/] [trim=16/][color=color/]}{/c$subject16}</a></p>
+        </li>
+        {/c$pushs}
+      </ul>
+    </div>
+    <div class="blank10"></div>
+  </div>
+  <div class="zxgstj mT10">
+    <div class="zxgsTit"> <span><a href="{c$jz_ppxjlist [cname=品牌商家列表/] [tclass=mcnode/] [val=v/] [cnsource=ugid32/] [cnid=103/]}{mcnurl1}{/c$jz_ppxjlist}" target="_blank">更多>></a></span>
+      <h3>品牌商家</h3>
+    </div>
+    <div class="zxgsCon ptb10"> 
+      <!--推送位 品牌商家_1☆-->
+      <div id="zxtuList1" class="zxtuList jqDuang" data-effect="left" data-visible="7">
+        <ul class="clearfix">
+          {c$pushs [tclass=pushs/] [paid=push_90/] [limits=14/] [ttl=600/]}
+          <li><a href="{url}"><img {c$thumb [tclass=image/] [tname=thumb/] [val=p/] [maxwidth=126/] [maxheight=51/] [thumb=2/]} width="126" height="51" src="{url}"{/c$thumb}  alt="{subject}" /></a></li>
+          {/c$pushs}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="w743 clearfix l mr8">
+    <div class="rmChanp clearfix  "> <em class="rightIco"></em>
+      <div class="rmtit"><span class="r"><a href="{c$jz_sjs [cname=设计师/] [tclass=cnode/] [listby=ca/] [casource=510/]}{indexurl1}{/c$jz_sjs}">更多&gt;></a></span>
+        <h3>精英设计师</h3>
+      </div>
+      <div class="rmcpCon mlr10 clearfix"> 
+        <!--推送位 设计师_1-->
+        <ul class="sjslist clearfix">
+          {c$pushs [tclass=pushs/] [paid=push_91/] [limits=6/] [ttl=600/]}
+          <li>
+            <div class="l shjFace"><a href="{url}" target="_blank"><img {c$thumb_72_90 [cname=thumb_72_90/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=72/] [maxheight=90/] [thumb=1/] [emptyurl=images/common/nopic.gif/]}src="{url_s}" width="72" height="90"{/c$thumb_72_90} alt="{subject}" /></a></div>
+            <div class="l shejsJis">
+              <p><a href="{url}" class="fw6" target="_blank">{c$text [cname=text/] [tclass=text/] [tname=subject/] [color=color/]}{/c$text}</a></p>
+              {c$archive [tclass=archive/] [chid=101/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+              <p>{shejiln}</p>
+              <p><em>从业时间：</em>{c$jobtime [cname=jobtime/] [tclass=field/] [tname=jobtime/] [type=archive/] [limits=1/] [fname=jobtime/]}{/c$jobtime}</p>
+              <p><em>擅长风格：</em>{ccid32title}</p>
+              {/c$archive} </div>
+          </li>
+          {/c$pushs}
+        </ul>
+      </div>
+      <div class="blank10"></div>
+    </div>
+    <div class="blank10"></div>
+    <!--设计师下743_100-->
+    <div id="_08_adv_fcatalog147"></div>
+    <div class="blank5"></div>
+    <div class="rmChanp clearfix"> <em class="rightIco"></em> {c$cnode [tclass=cnode/] [listby=ca/] [casource=511/]}
+      <div class="rmtit"><span class="r"><a href="{indexurl1}" target="_blank">更多>></a></span>
+        <h3><a href="{indexurl1}" target="_blank">装修案例</a></h3>
+      </div>
+      {/c$cnode} 
+      <!--推送位 装修案例_1-->
+      <div class="rmcpCon mlr10">
+        <ul class="zxanlist clearfix">
+          {c$pushs [tclass=pushs/] [paid=push_92/] [limits=4/] [ttl=600/]}
+          <li><a href="{url}"><img  alt="{subject}" {c$image [cname=image/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=140/] [maxheight=100/] [thumb=1/]}src="{url_s}" width="140" height="100"{/c$image} /></a></li>
+          {/c$pushs}
+        </ul>
+      </div>
+      <div class="blank10"></div>
+    </div>
+  </div>
+  <!--推送位 装修课堂_1-->
+  <div class="conr l">
+    <div class="gsdt">
+      <h4><span><a href="{c$zxktlj [cname=装修课堂链接/] [tclass=cnode/] [listby=ca/] [casource=507/]}{indexurl1}{/c$zxktlj}" target="_blank">更多&gt;&gt;</a></span>装修课堂</h4>
+      <ul class="gsdtlist">
+        {c$pushs [tclass=pushs/] [paid=push_93/] [ttl=600/]}
+        <li><a href="{url}" target="_blank" title="{subject}">{c$subject [tclass=text/] [tname=subject/] [trim=100/][color=color/]}{/c$subject}</a></li>
+        {/c$pushs}
+      </ul>
+    </div>
+    <div class="blank13"></div>
+    <div class="gsdt  ">
+      <h4>装修计算器</h4>
+      <ul class="gjlist clearfix">
+        <li> <a href="{$cms_abs}info.php?fid=202#imgFloorBrick" target="_blank"> 地板 </a> </li>
+        <li> <a href="{$cms_abs}info.php?fid=202#imgWindowTamping" target="_blank">填缝剂</a> </li>
+        <li> <a href="{$cms_abs}info.php?fid=202#imgWallPaint" target="_blank">涂料</a> </li>
+        <li> <a href="{$cms_abs}info.php?fid=202#imgWallBrick" target="_blank">墙砖</a> </li>
+        <li> <a href="{$cms_abs}info.php?fid=202#imgWindowCloth" target="_blank">窗帘</a> </li>
+        <li> <a href="{$cms_abs}info.php?fid=202#imgWallPaper" target="_blank">墙纸</a> </li>
+      </ul>
+    </div>
+    <div class="blank14"></div>
+    <div class="gsdt ">
+      <h4><span><a href="{c$v4jz_zxrjurl [cname=装修日记链接/] [tclass=cnode/] [listby=ca/] [casource=508/]}{indexurl1}{/c$v4jz_zxrjurl}" target="_blank">更多&gt;&gt;</a></span>装修日记</h4>
+      <!--推送位 装修日记_1-->
+      <ul class="gsdtlist">
+        {c$pushs [tclass=pushs/] [paid=push_94/][limits=8/] [ttl=600/]}
+        <li><a href="{url}" target="_blank" title="{subject}">{c$subject [tclass=text/] [tname=subject/] [trim=100/][color=color/]}{/c$subject}</a></li>
+        {/c$pushs}
+      </ul>
+    </div>
+  </div>
+</div>
+{tpl$jz_foot}
+<script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+</body>
+</html>

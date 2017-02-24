@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>   
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/lpindexys.css?{$user_version}"/>
+</head>
+<body>
+<!-- header -->
+{tpl$head}
+<!-- main -->
+<div class="wrap clearfix">
+	<div class="borDD clearfix mb10">
+		<div class="p10">
+			<div id="mid_r5"  class="w400 l" style="height:300px">
+				{if $dt}
+				<div style="width: 400px ; height: 300px;float: left;margin-right:20px">
+					<iframe marginwidth="0" marginheight="0" src="{$cms_abs}tools/pointer.html#lat={dt_0}&lng={dt_1}&title={subject}&zoom=12" frameborder="0"  height="300" width="400" scrolling="no"></iframe>
+				</div>
+				{/if}
+			</div>
+			<div class="w720 r">
+				<strong class="fs14">{subject}</strong> <br>
+				{abstract}
+			</div>
+			<div class="blank0"></div>
+		</div>
+	</div>	
+	<div class="borDD clearfix mb10">
+		<div class="lp-coltit"><h3 class="tit1 l">{subject}周边新开发楼盘</h3></div>
+		<ul class="tj-plist clearfix plist-mod">
+			{c$archives [cname=cxcx/] [tclass=archives/] [limits=7/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/][wherestr=(leixing='0' OR leixing='1')/]}
+			<li>
+				<a target="_blank" href="{arcurl}">
+					<img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=145/] [maxheight=110/] [thumb=1/]} src="{url_s}"  height="110" width="145" {/c$image}/>
+					<em>{subject}</em>    
+				</a>
+			</li>
+			{/c$archives}
+		</ul>
+		<div class="blank10"></div>
+	</div>	
+	<div class="borDD clearfix mb10">
+		<div class="lp-coltit"><h3 class="tit1 l">{subject}周边小区</h3></div>
+		<ul class="tj-plist clearfix plist-mod">
+			{c$archives [cname=cxcx/] [tclass=archives/] [limits=7/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/][wherestr=(leixing='0' OR leixing='2')/]}
+			<li>
+				<a target="_blank" href="{arcurl7}">
+					<img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=145/] [maxheight=110/] [thumb=1/]} src="{url_s}"  height="110" width="145" {/c$image}/>
+					<em>{subject}</em>
+					<em>售(<i class="fcr">{c$yading [tclass=acount/] [val=u/] [chsource=2/] [chids=3/] [mode=in/] [arid=3/] [detail=1/]}{if $u['counts']}{counts}{else}0{/if}{/c$yading}</i>)·租(<i class="fcr">{c$yading [tclass=acount/] [val=u/] [chsource=2/] [chids=2/] [mode=in/] [arid=3/] [detail=1/]}{if $u['counts']}{counts}{else}0{/if}{/c$yading}</i>)</em>    
+				</a>
+			</li>
+			{/c$archives}
+		</ul>
+		<div class="blank10"></div>
+	</div>
+	<div class="w595 l">
+		<div class="borDD clearfix">
+			<div class="lp-coltit"><h3 class="tit1 l">{subject}周边最新二手房</h3></div>
+			<dl class="table1 mlr10 ptb5">
+				<dt><i class="td1">房源名称</i><i class="td2">户型</i><i class="td3">面积</i><i class="td4">价格</i><i class="td5">日期</i></dt>
+				{c$archives [cname=list/] [tclass=archives/] [chsource=2/] [chids=3/] [detail=1/] [isfunc=1/] [wherestr=u_zhoubian($aid)/]}
+				<dd><i class="td1 fcb"><a href="{arcurl}" target="_blank">{subject}</a></i><i class="td2">{c$shi}{c$ting}</i><i class="td3">{mj}m2</i><i class="td4">{if $v['zj']}{zj}万{else}面议{/if}</i><i class="td5">{c$date [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$date}</i></dd>
+				{/c$archives}
+			</dl>
+		</div>	
+	</div>
+	<div class="w595 r">
+		<div class="borDD clearfix">
+			<div class="lp-coltit"><h3 class="tit1 l">{subject}周边最新出租房</h3></div>
+			<dl class="table1 mlr10 ptb5">
+				<dt><i class="td1">房源名称</i><i class="td2">户型</i><i class="td3">面积</i><i class="td4">价格</i><i class="td5">日期</i></dt>
+				{c$archives [cname=list/] [tclass=archives/] [chsource=2/] [chids=2/] [detail=1/] [isfunc=1/] [wherestr=u_zhoubian($aid)/]}
+				<dd><i class="td1 fcb"><a href="{arcurl}" target="_blank">{subject}</a></i><i class="td2">{c$shi}{c$ting}</i><i class="td3">{mj}m2</i><i class="td4">{if $v['zj']}{zj}元/月{else}面议{/if}</i><i class="td5">{c$date [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$date}</i></dd>
+				{/c$archives}
+			</dl>
+		</div>	
+	</div>
+	<div class="blank0"></div>
+</div>
+<!-- footer -->
+{tpl$foot}
+</body>
+</html>

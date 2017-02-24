@@ -1,0 +1,53 @@
+<div class="w240 l"> 
+    <div class="fgbg clearfix">
+      <i class="traico"></i>
+      <div class="blank7"></div>
+      	<div class="borTRB  clearfix">
+        <div class="pL10">
+          <div class="bgFF clearfix">
+              <div class="zxQQ">
+              <div class="blank15"></div>
+               <i></i>
+               <em><strong class="Fs14">在线客服</strong></em>
+               <em><!-- qq -->
+                        {if $user_user_qq}
+                        <a title="点击这里给我发消息" style="padding:0" target="_blank" href="http://wpa.qq.com/msgrd?V=1&uin={user_user_qq}&Site=&Menu=yes"><img data-online-qq="{user_user_qq}" border="0" src="{$tplurl}newimages/pa_online.gif"></a>
+                        {/if}
+                    <!-- /qq --></em>
+               <div class="blank10"></div>
+               <p>联系{$hostname}在线客服，快速帮您解决问题</p>
+              </div>
+           <div class="fgx"></div> 
+           <div class="zxtel">
+              <div class="blank15"></div>
+               <i></i>
+               <div class="w110 l">
+               {c$lxtel [tclass=farchives/] [limits=1/] [casource=168/] [validperiod=1/] [orderstr=a.vieworder ASC/]}
+               {c$lxfs [tclass=texts/] [tname=$v[lxfs]/] [val=f/]}<em>{title0}</em>
+<p>{title1}</p>
+{/c$lxfs}{/c$lxtel}
+               </div>
+              </div>
+              <div class="blank5"></div>
+          </div>   
+        </div>
+        </div>
+        </div>
+        <div class="blank10"></div>
+        <div class="fgbg clearfix">
+        <div class="pL10">
+          <div class="bgFF clearfix pR10">
+        	<div class="ggTit"><h3>热点问题</h3></div>
+            <div class="con25 pLR10 mT10">
+        	<ul>
+            	{c$hotbz [tclass=archives/] [chsource=2/] [chids=109/] [orderstr=a.wclicks DESC/] [ttl=1200/]}
+                	<li>&middot;<a href="{arcurl}" title="{subject}" target="_blank">{subject}</a></li>
+                {/c$hotbz}
+            </ul>
+        </div>
+        <div class="blank10"></div>
+        </div>
+        
+        </div>
+        </div>
+      </div>

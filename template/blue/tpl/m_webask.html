@@ -1,0 +1,94 @@
+<?php
+defined('IN_MOBILE') || define('IN_MOBILE', TRUE);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>留言反馈-{$hostname}</title>
+	{tpl$m_headinner}
+</head>
+
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" data-btn="back" title="留言反馈" class="active">
+        {tpl$m_header}
+        <footer>
+		    <a href="tel:{$user_user_tel}"><i class="icon-e612"></i>客服电话</a>
+		    <a href="" id="qqkf"><i class="icon-f1d6"></i>QQ客服</a>
+		</footer>
+        <article id="up_refresh_commus"  class="active">
+            <div>
+            	<ul class="list">
+            		<li>
+						<form method="get" name="commu40" id="commu40" onsubmit="return add_pl(this);">
+							<input type="hidden" name="cuid" value="40">
+
+		        			<div class="input-group">
+		        				<input type="text" name="fmdata[twtitle]" id="fmdata[twtitle]" required maxLength="20" min="0" max="20" placeholder="标题">
+		        				<div class="select" data-icon="icon-f0db">
+		        					<select>
+		        						<option>问题类型</option>
+										 <?php
+						                    foreach (u_cufield_by(40,'twlx') as $k => $v) {
+						                        echo '<option value="'.$k.'">'.$v.'</option>';
+						                    }
+						                 ?>
+		        					</select>
+		        				</div>
+		        				<textarea required min="5" maxLength="125" max="125" title="5-125个汉字" placeholder="请填写您的问题(5-125个汉字)..." name="fmdata[content]"></textarea>
+		        				<input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+		        			</div>
+			                <button class="button block" name="bsubmit" data-icon="icon-e603">提交</button>
+			            </form>
+            		</li>
+            	</ul>
+            	<ul id="comment-list" class="list comment-list"></ul>
+            </div>
+            <?php $cucfgs = cls_cache::Read('commu',40); ?>
+            <script type="text/javascript">
+				//加载数据设置
+				var opt = {
+				    _param : {
+						'aj_model'     : 'cu,40', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+						'orderby'      : 'cid', //排序字段
+						'aj_pagenum'   : 1 ,
+						'ordermode'    : 0 ,
+						'jsoncallback' : '?'
+				    },
+					wrap      : '#up_refresh_commus' ,
+					dataWrap  : '#comment-list' ,
+					ajax      : 'pageload' ,
+					autoCheck : <?=$cucfgs['autocheck']; ?> ,
+					template  : function() {
+						return '<li>'
+								+ '    <div class="grid f-asbestos mb5">'
+								+ '       <div class="col-1 f-peter-river">'+this.mname+'</div>'
+								+ '       <span class="fz12">' + getLocalTime(this.createdate,1) + '</span>'
+								+ '    </div>'
+								+      this.content
+								+ '</li>'
+								+ ((typeof(this.reply)=='undefined'||this.reply=='')?'':'<li class="hf">'
+								+ ' 	<div class="f-peter-river mb5">管理员</div>'
+								+ 		this.reply
+								+ '</li>');
+				    }
+				}
+		    </script>
+        </article>
+    </section>
+</div><!-- /page -->
+
+    {tpl$m_footer}
+    <script type="text/javascript">
+    $('#qqkf').click(function() {
+    	J.popup({
+    		html : '<div class="p10">请添加<span class="f-alizarin">QQ:{$user_user_qq}</span>进行交谈！</div>'
+    		,pos : 'center'
+    	})
+    	return false;
+    });
+    </script>
+</body>
+</html>

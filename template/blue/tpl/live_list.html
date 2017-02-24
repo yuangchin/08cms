@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+<title>视频直播列表-{$hostname}</title>
+{tpl$headinner}
+<link href="{$tplurl}css/live.css?{$user_version}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/shipin.css?{$user_version}" />
+</head>
+<body>
+<!--视频头部--> 
+ {tpl$tpl_vid_head}
+<div class="wrap">
+	<div class="blank15"></div>
+	<!--内容-->
+	<div class="wrap"> 
+		<!--楼盘视频列表-->
+		<div class="w860 l clearfix">
+			<div class="video-list clearfix">
+				<ul>
+					{c$archives [tclass=archives/] [chids=114/] [chsource=2/] [limits=20/] [caids=605/] [detail=1/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [ttl=600/] [mp=1/]}
+					<li> <a href="{arcurl}" target="_blank" class="pic"><img src="{c$image [tclass=image/] [tname=thumb/] [val=a/] [maxwidth=182/] [maxheight=124/] [thumb=1/]}{url_s}{/c$image}" width="182" height="124" alt="{subject}"/></a>
+						<p class="act"><em>主　　题：</em><strong><a href="{arcurl}" target="_blank">{subject}</a></strong></p>
+						<p><em>时　　间：</em>{if $v['ztsj']}{c$date [tclass=date/] [tname=ztsj/] [date=Y-m-d/] [time=H:i:s/]}{/c$date}{else}待定{/if}</p>
+						<p><em>地　　点：</em>{if $v['didian']}{didian}{else}待定{/if}</p>
+						<p class="ny"><em>主题内容：</em>{c$text [tclass=text/] [tname=abstract/] [dealhtml=clearhtml/] [trim=110/] [ellip=.../] [badword=1/]}{/c$text}<a href="{arcurl}" target="_blank" class="c">更多详情&gt;&gt;</a></p>
+					</li>
+					{/c$archives}
+				</ul>
+				{if $mpacount==0}
+				<div class="noinfo">很抱歉,暂无{c$cnode [tclass=cnode/] [listby=ca/] [casource=606/]}{title}{/c$cnode}信息!</div>
+				{/if}
+				{if $mpacount>0} 
+				<!-- 分页 -->
+				<div class="ptb10">{mpnav}</div>
+				{/if} </div>
+		</div>
+		<!--视频直播-->
+		<div class="w300 r clearfix">
+			<div class="coltit"> 
+				<h3 class="tit"><span>热门直播</span></h3>
+			</div>
+			<ul class="tlist ptb8 mr10">
+				{c$archives [tclass=archives/] [chids=114/] [chsource=2/] [limits=4/] [caids=605/] [detail=1/] [orderstr=a.wclicks DESC/]  [ttl=600/]}
+				<li class="clearfix pic"> <a href="{arcurl}" target="_blank"><img alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=o/] [maxwidth=115/] [maxheight=75/]}{url_s}{/c$image}" width="115" height="75"></a>
+                    <h4><a href="{arcurl}" target="_blank" title="{subject}">{subject}</a></h4>
+                </li>
+                {/c$archives}
+			</ul>
+			<!--地产城市、活动视频-->
+			<div class="pr10 bdr jqDuang" data-obj="ul" data-cell=".tabbar2" data-autoplay="0">
+				<div class="coltit por">
+					<div id="tabbar2-1" class="tabbar2"> <span class="act">{c$cnode [tclass=cnode/] [listby=ca/] [val=b/] [casource=32/]}{title}{/c$cnode}</span> <span>{c$cnode [tclass=cnode/] [listby=ca/] [val=b/] [casource=33/]}{title}{/c$cnode}</span> </div>
+					<a href="{c$vedurl [tclass=cnode/] [listby=ca/] [casource=30/]}{indexurl}{/c$vedurl}" target="_blank" class="more">更多&gt;&gt;</a> </div>
+				<div class="blank0"></div>
+				<ul class="tlist ptb8 mr10">
+					{c$archives [tclass=archives/] [chids=12/] [chsource=2/] [val=p/] [limits=3/] [caidson=1/] [casource=1/] [caids=32/] [detail=1/] [ttl=600/]}
+					<li class="clearfix pic"> <a href="{arcurl}" target="_blank"><img alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=o/] [maxwidth=115/] [maxheight=75/]}{url_s}{/c$image}" width="115" height="75"></a>
+						<h4><a href="{arcurl}" title="{subject}">{subject}</a></h4>
+					</li>
+					{/c$archives}
+				</ul>
+				<ul class="tlist ptb8 mr10 dn">
+					{c$archives [tclass=archives/] [chids=12/] [chsource=2/] [val=p/] [limits=3/] [caidson=1/] [casource=1/] [caids=33/] [detail=1/] [ttl=600/]}
+					<li class="clearfix pic"> <a href="{arcurl}" target="_blank"><img alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=o/] [maxwidth=115/] [maxheight=75/]}{url_s}{/c$image}" width="115" height="75"></a>
+						<h4><a href="{arcurl}" title="{subject}">{subject}</a></h4>
+					</li>
+					{/c$archives}
+				</ul>
+			</div>
+			<!--广告、娱乐视频-->
+			<div class="pr10 bdr jqDuang" data-obj="ul" data-cell=".tabbar2" data-autoplay="0">
+				<div class="coltit por">
+					<div class="tabbar2"> <span class="act">{c$cnode [tclass=cnode/] [listby=ca/] [val=b/] [casource=34/]}{title}{/c$cnode}</span> <span>{c$cnode [tclass=cnode/] [listby=ca/] [val=b/] [casource=35/]}{title}{/c$cnode}</span> </div>
+					<a href="{c$vedurl [tclass=cnode/] [listby=ca/] [casource=30/]}{indexurl}{/c$vedurl}" target="_blank" class="more">更多&gt;&gt;</a> </div>
+				<div class="blank0"></div>
+				<ul class="tlist ptb8 mr10">
+					{c$archives [tclass=archives/] [chids=12/] [chsource=2/] [val=p/] [limits=3/] [caidson=1/] [casource=1/] [caids=34/] [detail=1/] [ttl=600/]}
+					<li class="clearfix pic"> <a href="{arcurl}" target="_blank"><img alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=o/] [maxwidth=115/] [maxheight=75/]}{url_s}{/c$image}" width="115" height="75"></a>
+						<h4><a href="{arcurl}" title="{subject}">{subject}</a></h4>
+					</li>
+					{/c$archives}
+				</ul>
+				<ul class="tlist ptb8 mr10 dn">
+					{c$archives [tclass=archives/] [chids=12/] [chsource=2/] [val=p/] [limits=3/] [caidson=1/] [casource=1/] [caids=35/] [detail=1/] [ttl=600/]}
+					<li class="clearfix pic"> <a href="{arcurl}" target="_blank"><img alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=o/] [maxwidth=115/] [maxheight=75/]}{url_s}{/c$image}" width="115" height="75"></a>
+						<h4><a href="{arcurl}" title="{subject}">{subject}</a></h4>
+					</li>
+					{/c$archives}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--统一底部--> 
+{tpl$foot} 
+<script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+</body>
+</html>

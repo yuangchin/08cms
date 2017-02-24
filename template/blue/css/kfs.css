@@ -1,0 +1,59 @@
+﻿#top_nemu { border:1px solid #D8D8D8; background:url(../images/top1_menu_bg.gif) repeat-x; line-height: 24px;padding: 10px;}
+/* 开发商列表 */
+.zjlist ul li{border-bottom: 1px dashed #ddd;padding: 15px 0;}
+.zjlist .td1{width: 140px; float: left; padding-left: 15px;}
+.zjlist .td2{float: left; padding-left: 20px;width: 420px;}
+.zjlist .td2 p{height: 28px; line-height: 28px; overflow: hidden; color: #666;}
+.zjlist .td3{float: right;padding-right: 15px; margin-top: 56px;}
+.zjlist ul li img{border:1px solid #ddd; width: 134px; height: 80px;}
+.zjlist ul li a img:hover{border:1px solid #d00;}
+
+.hotzt{ width:648px;}
+.hotzt em{ color:#999; }
+.hotzt li a:before{content:'·';font-weight: bold;color: #999;}
+.hotzt ul{ width:580px;}
+.borh{ border: 1px solid #D8D8D8;}
+
+#title{height:40px;line-height:40px;border-bottom: 1px solid #ccc;padding: 10px 0;margin: 0 20px;}
+#title h2{font-size: 24px;overflow: hidden;font-weight: bold;font-family: Microsoft yahei;}
+#title a{color: #f00; margin-left: 15px;}
+
+.con { margin:10px 12px; line-height:28px; font-size:14px; color:#666; overflow:hidden;-ms-word-wrap: break-word; word-wrap: break-word;}
+.con a{color: #e00;}
+.con p{text-indent: 20px;}
+
+.kf-left { width:920px; float:left;}
+.kf-right{ width:250px; float:right;}
+.kf-right .hotkfs{margin-bottom: 10px;} 
+.area2_3 {height:36px; line-height:36px;}
+.area2_3 h3{border-bottom: 2px solid #e43;float: left;font-weight: bold; overflow:hidden;font-size:14px;color:#e43;}
+.hotkfs ul li {height: 15px;line-height: 15px; overflow: hidden;padding: 6px 0;}
+.hotkfs .area2_41 { width:16px; height:15px; line-height:16px; text-align:center;  color:#fff; float:left; font-family:Arial, Helvetica, sans-serif; overflow: hidden;background: #aaa;}
+.hotkfs li:nth-child(1) .area2_41,
+.hotkfs li:nth-child(2) .area2_41,
+.hotkfs li:nth-child(3) .area2_41 {background: #e43;}
+.hotkfs .area2_42 { height:18px; float:left; line-height:18px; padding-left:8px; width:195px; overflow:hidden; }
+
+.title_list { margin:0 20px;}
+.title_menu { height:28px; border-bottom:1px solid #D8D8D8; background:#FAFAFA; padding-left:20px; line-height:28px;  font-weight:bold; font-size:14px; }
+
+/*** 开发商
+--------------------- ***/
+.kfshouse ul li{float: left;width: 150px;padding: 10px 12px 5px 20px;display: inline;}
+.kfshouse li img{width: 150px;height: 112px;}
+.kfshouse span{display: block;height: 26px;line-height: 26px; overflow: hidden; width: 150px;}
+.kfshouse span i{color: #2E59AF}
+.kfshouse span em{color: #EE2222; font-weight: bold;font-size: 14px;font-family: arial;}
+#zoom img{max-width:620px; _width:expression(this.width > 620 ? "620px" : this.width);}
+
+/*** 开发商名录***/
+.kfs-ml li{height: 28px; line-height: 28px;overflow: hidden;}
+.kfs-ml li a:before{content:'·';font-weight: bold;color: #999;}
+
+/*** 企业名片***/
+.busines-card{border: 1px solid #000;background: url(../images/titbg.gif) repeat-x  0 -145px;}
+.busines-card .logo{background: #fff url(../images/titbg.gif) no-repeat 200px 0;width: 250px;height: 144px;margin-right: 20px;}
+.busines-card .logo img{padding:36px 16px;}
+.busines-card .info {color: #fff;height: 144px;}
+.busines-card .info h1 {font-size: 24px;font-family: Microsoft yahei; height: 36px;line-height: 36px;}
+

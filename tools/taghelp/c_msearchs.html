@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">会员搜索列表 msearchs</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>会员搜索列表是系统标签之一，不常用，与会员列表一致，些标识用在会员搜索页。</p>
+	{mspacehome}<i class="FcO">//会员空间首页URL(汽车网Va2.0用{mspaceurl})</i><br/>
+	{$mpnav} <i class="FcO">//系统内置标识分页标识</i><br/>
+	[row][/row] <i class="FcO">//系统循环区块标识，在标识内应用本标识时，只有[row][/row]的数据才能被循环输出</i>
+</div>
+<span class="blank5"></span>
+
+<div>
+        <span class="blank5"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/hysslb.jpg" class="pad15" /></li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+<div class="title6_1">共有<strong class="red">{$mpacount}</strong>个公司</div>
+    <div class="con3">
+[row]
+<div onMouseOut="this.style.backgroundColor=&quot;#fff&quot;"
+ onMouseOver="this.style.backgroundColor=&quot;#fdf8e8&quot;" class="sj_list" >
+        <div class="sjA"><a rel="nofollow" target="_blank" href="{mspacehome}"><img {c$pic180_55}/></a></div>
+        <div class="sjB">
+          <div class="sjB1">
+            <div class="sjB1A"><a class="redlink" target="_blank" href="{mspacehome}">{companynm}</a></div>
+            
+          </div>
+          <div class="con3B2 gray_2f">联系电话：{if $a['lxdh']}{$a['lxdh']}{else}暂无{/if}<br>
+            地址：{if $a['dizhi']}{$a['dizhi']}{else}暂无{/if}</div>
+        </div>
+      </div>
+[/row]
+      
+      <div>
+        <div class="pnav">
+          <div class="fr pages-nav">
+                {$mpnav}
+            <div style="clear: both;"></div>
+          </div>
+          <div style="clear: both;"></div>
+        </div>
+      </div>
+      <div class="cl"></div>
+</div>
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li>说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>"[row]"中间是要循环的列表，之所以把"[row]"以外的代码也放入标识主要原因是,标识“{$mpacount}”只在嵌套在标识里才会显示<br />
+        <b class="FcR">整体截图如下</b><br />
+        <img src="img/hysslb2.jpg" class="img"/>
+        
+        </p></li>
+    </div>
+
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+
+</body>
+</html>

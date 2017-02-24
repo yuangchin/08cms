@@ -1,0 +1,102 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>中介公司,房屋出售 - {$hostname}</title>
+<meta name="keywords" content="公司,房屋出售,{hostname}" />
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/companycss.css?{$user_version}">
+<?php $jjgs=1?>
+</head>
+<body>
+<!-- header begin --> 
+{tpl$fy_head}
+<!-- end begin -->
+<?php
+foreach(array('ccid1','orderby','ordermode','searchword','letter') as $k) $$k = cls_Parse::Get("_da.$k");
+$letter = mhtmlspecialchars($letter);
+cls_uso::init(array(
+    'ntype' => 'm', 
+    'chid' => 3, 
+    'nodes' => array('mcnid'), //('ugid32','mcnid'), ,'ccid1'
+    'orderbys' => array('mid','msclicks','grouptype16'),
+));
+extract(cls_usql::order_str(1,'m.grouptype16 DESC,m.lastactive DESC'));
+$whrstr = cls_usql::where_str(array(
+    array('cmane','searchword','like'),
+    array('letter',0,'=','str'),
+    array('szqy','ccid1'),
+)); 
+?>
+<div class="wrap">
+    <div class="bread clearfix">
+        <div class="r w300">
+            <form method="get" action="{$cms_abs}member/index.php">
+                <div class="search-group form">
+                    <input type="submit" class="btn" value="搜 索" />
+                    <div class="txt-wrap">
+                      <input name="searchword" placeholder="经纪公司" value="{if !empty($searchword)}{searchword}{/if}" class="txt" type="text">
+                    </div>
+                    <input type="hidden" name="ccid1" value="{ccid1}" />
+                    <input type="hidden" name="mcnid" value="51" />
+                </div>
+            </form>
+        </div>
+        <div class="l mt5"><a href="{$cms_abs}" target="_blank"><i class="ico08 fcr mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$deefd [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$deefd}" target="_blank">二手房</a><i class="pipe">/</i>经纪公司列表</div>
+    </div>
+    <div class="search-box">
+        <div class="area area-letter">
+            <em class="td1">全部索引：</em><a href="<?php echo cls_uso::extra_url('letter'); ?>" class="{if empty($_da['letter'])}act{/if}">全部</a>
+            <?php
+            for($i=0; $i<26; $i++){ $chr = chr(65+$i);
+            echo "<a href='".cls_uso::extra_url('letter',"&letter=$chr")."' ".($letter==$chr ? ' class="act"' : '').">$chr</a>";
+            }?>
+        </div>
+        <div class="blank10"></div>
+        <div class="area"><em>区域列表：</em><span><a href='<? echo cls_uso::extra_url(1); ?>' class="{if empty($_da['ccid1'])}act{/if}">全部</a> 
+              <? $_rows = cls_uso::caco_urls(1); ?> 
+              {loop $_rows $k $v}
+              <a href="{$v[url]}" class="{if @$_da['ccid1']==$k}act{/if}">{$v[title]}</a> 
+              {/loop} 
+            </span>
+        </div>
+    </div>
+    <div class="Agent">
+      <div class="bar-sort plr10 clearfix">
+          <em class="r"> 
+              <a href="<? echo cls_uso::extra_url('orderby|ordermode'); ?>" class="btn-sort {if empty($orderby)}act{else}mr{/if}">默认排序</a> 
+              <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">人气<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "msclicks", array("act bldown","act blup",""))?>
+              <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">等级<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "grouptype16", array("act bldown","act blup",""))?>
+          </em>
+          <span id="title6_1" class="mt5 l"></span>
+      </div>
+      <div class="jcompany">
+        <ul class="tlist4 clearfix">
+        {c$jjgsls [tclass=members/] [chsource=2/] [chids=3/] [limits=20/] [ttl=1200/]  [detail=1/] [wherestr=$whrstr/] [orderstr=$orderstr/] [mp=1/]}
+          <li> <a href="{mspacehome}" target="_blank"><img src="{c$image [tclass=image/] [tname=image/] [val=u/]}{url}{/c$image}" alt="{cmane}"></a>
+            <p><a href="{mspacehome}" target="_blank" title="{cmane}">{cmane}</a></p>
+            <p>电话：<em>{lxdh}</em></p>
+            <p>地址：{caddress}</p>
+            <p>房源：<i>售(<em>{vesfys}</em>)</i><i>租(<em>{vczfys}</em>)</i></p>
+          </li>
+          {/c$jjgsls}
+          {if $mpacount<=0}
+          <div class="noinfo">很抱歉！暂无{if @$cmane}<span>"{cmane}"</span>的{/if}信息</div>
+          {/if}
+        </ul>
+      </div>
+      <div class="blank10"></div>
+      {$mpnav} 
+      <!-- 经纪公司列表 end --> 
+    </div>
+    <!-- 侧栏 -->
+    {tpl$fy_right}
+    <div class="blank0"></div>
+ </div>
+<script type="text/javascript">
+    $('#title6_1').html('已找到 <strong class="fco">{$mpacount}</strong> 家公司')
+</script> 
+{tpl$foot} 
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  <title>{subject}-{$cmstitle}</title>
+  <meta name="keywords" content="{keywords}" />
+  <meta name="description" content="{abstract}" />
+  {tpl$m_headinner}
+<body>
+  <div id="section_container">
+    <section id="index_section" class="innblank44 active" data-btn="back" title="{subject}">
+      <footer>
+        <a href="tel:{bmtel}"><i class="icon-e612"></i>打电话</a>
+        {if $enddate>$timestamp}
+        <a onclick="return popupExt('#tpl_popup');"><i class="icon-e60f"></i>我要报名</a>
+        {else}
+        <a><i class="icon-e60f"></i>报名结束</a>
+        {/if}
+        <a href="#comment_section" data-target="section"><i class="icon-e755"></i>在线点评</a>
+    </footer>
+    {tpl$m_header}
+    <article id="up_refresh_article" class="active" >
+        <div>
+            {if $thumb}
+            <div class="list-media-big mt8">
+              <img {c$thumb [tclass=image/] [tname=thumb/] [val=u/]} src="{url}"{/c$thumb} alt="{subject}"/>
+            </div>
+            {/if}
+            <ul class="list detail">
+              <li>
+                <h1>{subject}</h1>
+                <div class="grid item">
+                    <div class="col-0 f-asbestos">优惠说明:</div>{if $yhsm}{yhsm}{else}暂无优惠{/if}
+                </div>
+                <div class="grid item">
+                    <div class="col-0 f-asbestos">参团楼盘数：</div>{c$acount [tclass=acount/] [chids=4/] [chsource=2/] [mode=in/] [arid=32/] [ttl=1200/]}{if $v['counts']}{counts}{else}{/if}{/c$acount}
+                </div>
+                <div class="grid item">
+                    <div class="col-0 f-asbestos">报名截止：</div>{c$startdate [tclass=date/] [tname=startdate/] [date=Y-m-d/]}{/c$startdate}至{c$enddate [tclass=date/] [tname=enddate/] [date=Y-m-d/]}{/c$enddate}
+                </div>
+                <div class="grid item">
+                    <div class="col-0 f-asbestos">报名人数：</div>{hdnum}人
+                </div>
+                {if $bmtel}
+                <div class="grid item mt5">
+                    <a href="tel:{bmtel}"><span class="button block icon-e612">{bmtel}</span></a>
+                </div>
+                {/if}
+              </li>
+          {if $content}
+          <li class="divider">
+             活动说明
+          </li>
+          <li class="list-media-big">
+            {c$content [tclass=text/] [tname=content/]}{/c$content}
+          </li>
+          {/if}
+          </ul>
+          {c$archives [tclass=archives/] [chids=4/] [chsource=2/] [limits=20/] [mode=in/] [arid=32/] [detail=1/] [orderstr=b.inorder ASC/] [ttl=1200/]}
+          <ul class="list list-media">
+          <li class="divider">
+             主线楼盘介绍
+          </li>
+          [row]
+          <li>
+            <a href="{arcurl}">
+                <img class="media-object" height="80" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=80/] [thumb=1/]}{url_s}{/c$image}">
+                <div class="grid"><div class="col-1"><strong>{$v[subject]} </strong></div>{if $v['dj']}<span class="f-alizarin">{dj}</span>元/m&sup2;{/if}</div>
+                <p class="f-alizarin">{bdsm}</p>
+                <p>{address}</p>
+                <p><span class="label">{ccid1title}</span>{if $v['ccid2title']}<span class="label peter-river">{ccid2title}</span>{/if}<span class="label amethyst">{ccid12title}</span><span class="label alizarin">{ccid18title}</span>
+                </p>
+            </a>
+        </li>
+        [/row]
+        </ul>
+        {/c$archives}
+        <ul class="list detail">
+          {c$commus [tclass=commus/] [cuid=45/] [checked=1/] [wherestr=aid ='$aid'/]}
+          <li class="divider">
+             最近报名实况
+          </li>
+          <li><div class="grid demo-grid">
+                <div class="col-1">姓 名</div><div class="col-1">联系方式</div><div class="col-1">楼盘意向</div></div></li>
+            [row]
+           <li>
+            <div class="grid demo-grid">
+                <div class="col-1"><?php echo cls_string::CutStr($v['xingming'],2,'').'**'; ?></div>
+                <div class="col-1 f-pumpkin"><?php echo " ".substr($v['tel'],0,3).'*****'." "; ?></div>
+                <div class="col-1 f-belize-hole">{c$lpyxsub [tclass=archive/] [chid=4/] [id=$v[yxlp]/]}<a href="{arcurl}" title="{subject}" target="_blank">{subject}</a>{/c$lpyxsub}</div>
+            </div>
+           </li>
+           [/row]
+           {/c$commus}
+           {c$commus [tclass=commus/] [cuid=1/] [limits=3/] [wherestr=aid=$aid and tocid=''/]}
+                    <li class="divider" data-icon="icon-f054">
+                        <a href="#comment_section" data-target="section">最新点评</a>
+                    </li>
+                    [row]
+                    <li class="comment-list">
+                        <div class="grid f-asbestos mb5">
+                            <div class="col-1 f-peter-river">{mname}</div>
+                            <span class="fz12"><?=u_time_format($v['createdate'])?></span>
+                        </div>
+                        {content}
+                    </li>
+                    [/row]
+                    {/c$commus}
+        </ul>
+        {tpl$m_footer_ft}
+        </div>
+    </article>
+    </section>
+    {tpl$m_dp}<!-- /点评 -->
+  </div>
+  <div class="dn" id="tpl_popup" style="padding:10px;">
+        <form name="commu45" id="commu45" method="get" onsubmit="return fyCummus(this,'我要报名');">
+            <input type="hidden" name="cuid" value="45" /><!--交互项目id-->
+            <input type="hidden" name="aid" value="{$aid}" /><!--针对文档的aid,不是针对文档就不要这项-->
+            <div class="input-group">
+                <input type="text"  name="fmdata[xingming]" required maxLength="20" min="0" max="20" placeholder="您的姓名">
+                <input type="text"  name="fmdata[tel]" required title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$"placeholder="手机号码">
+                <select name="fmdata[yxlp]" required="required">
+                <option value="">请选楼盘</option>
+                 {c$lpopt [tclass=archives/] [chids=4/] [chsource=2/] [limits=100/] [mode=in/] [arid=32/]}
+                <option value="{aid}">{subject}</option>
+                {/c$lpopt}
+              </select>
+                <input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+            </div>
+            <button class="block" name="bsubmit" type="submit" data-icon="icon-e603">提交</button>
+        </form>
+    </div>
+  {tpl$m_footer}
+</body>
+</html>

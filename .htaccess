@@ -1,0 +1,19 @@
+##
+# @package		08CMS
+# @copyright	Copyright (C) 2008 - 2013 08CMS, Inc. All rights reserved.
+##
+        
+##
+# 使用该文件时请先阅读该内容
+# 要使用该文件，请在服务器配置里开启Rewrite模块，具体配置方法请查看：http://www.08cms.com/html/tech/1157-1.html
+##
+RewriteEngine Off
+
+RewriteBase /
+RewriteRule ^member/index-htm-(.+)$ member/index.php?$1 [L]
+RewriteRule ^mspace/archive-htm-(.+)$ mspace/archive.php?$1 [L]
+RewriteRule ^mspace/index-htm-(.+)$ mspace/index.php?$1 [L]
+RewriteRule ^wap/login-htm-(.+)$ wap/login.php?$1 [L]
+RewriteRule ^index-htm-(.+)$ index.php?$1 [L]
+RewriteRule ^archive-htm-(.+)$ archive.php?$1 [L]
+RewriteRule ^info-htm-(.+)$ info.php?$1 [L]

@@ -1,0 +1,60 @@
+/* Link */
+a:link {color: #333; text-decoration:none;}
+a:hover {color: #134d9d; text-decoration:underline;}
+a:active {color: #103d7c;}
+a:visited {color: #333;text-decoration:none;}
+/* Color */
+.cRed,a.cRed:link,a.cRed:visited{ color:#f00; }
+.cBlue,a.cBlue:link,a.cBlue:visited,a.cBlue:active{color:#1f3a87;}
+.cDRed,a.cDRed:link,a.cDRed:visited{ color:#bc2931;}
+.cGray,a.cGray:link,a.cGray:visited{ color: #4F544D;}
+.csGray,a.csGray:link,a.csGray:visited{ color: #999;}
+.cDGray,a.cDGray:link,a.cDGray:visited{ color: #666;}
+.cWhite,a.cWhite:link,a.cWhite:visited{ color:#fff;}
+.cBlack,a.cBlack:link,a.cBlack:visited{color:#000;}a.cBlack:hover{color:#bc2931;}
+.cYellow,a.cYellow:link,a.cYellow:visited{color:#ff0;}
+.cGreen,a.cGreen:link,a.cGreen:visited{color:#008000;}
+/* Font  */
+.fn{font-weight:normal;}
+.fB{font-weight:bold;}
+.f12px{font-size:12px;}
+.f14px{font-size:14px;}
+.f16px{font-size:16px;}
+.f18px{font-size:18px;}
+.f24px{font-size:24px;}
+/* Other */
+.left{ float: left;}
+.right{ float: right;}
+.clear{ clear: both; font-size:1px; width:1px; height:0; visibility: hidden; }
+.clearfix:after{content:"."; display:block; height: 0; clear: both; visibility: hidden;} /* only FF */
+.hidden {display: none;}
+.unLine ,.unLine a{text-decoration: none;}
+.noBorder{border:none;}
+.txtleft{text-align:left;}
+.txtright{text-align:right;}
+.nobg{background:none;}
+.txtindent12 {text-indent:12px;}
+.txtindent24 {text-indent:24px;}
+.lineheight24{line-height:24px;}
+.lineheight20{line-height:20px;}
+.lineheight16{line-height:16px;}
+.lineheight200,.lineheight300{line-height:200%;}
+.blank1{ height:1px; clear:both;display:block; font-size:1px;overflow:hidden;}
+.blank3{ height:3px; clear:both;display:block; font-size:1px;overflow:hidden;}
+.blank9{ height:9px; font-size:1px;display:block; clear:both;overflow:hidden;}
+.blank6{height:6px; font-size:1px; display:block;clear:both;overflow:hidden;}
+.blankW6{ height:6px; display:block;background:#fff; clear:both;overflow:hidden;}
+.blankW9{ height:9px; display:block;background:#fff; clear:both;overflow:hidden;}
+.blank12{ height:12px; font-size:1px;clear:both;overflow:hidden;}
+.blank18{ height:18px; font-size:1px;clear:both;overflow:hidden;}
+.blank36{ height:36px; font-size:1px;clear:both;overflow:hidden;}
+
+/*border*/
+.borderall {border:1px #CCCCCC solid;}
+.borderall2 {border:1px #CCCCCC solid; border-right:1px #666 solid; border-bottom:1px #666 solid; }/* “ı”∞øÚ */
+.borderleft {border-left:1px #CCC solid;}
+.borderright {border-right:1px #CCC solid;}
+.bordertop {border-top:1px #CCC solid;}
+.borderbottom {border-bottom:1px #CCC solid;}
+.borderno {border:none;}
+.borderbottom_no {border-bottom:none;}

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}_{c$yjlmtit3 [tclass=cnode/] [listby=ca/] [casource=active/] [level=3/]}{title} {/c$yjlmtit3}{c$yjlmtit2 [tclass=cnode/] [listby=ca/] [casource=active/] [level=2/]}{title} {/c$yjlmtit2}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] [level=1/]}{title}{/c$yjlmtit}-{hostname}</title>
+<meta content="{keywords}" name='keywords'>
+<meta content="{description}" name='description'>
+{tpl$headinner}
+<base target="_blank"/>
+</head>
+<body>
+ <!--服务中心通用头部-->
+ {tpl$tpl_svhead}
+  <div class="blank15"></div>
+  <div class="wrap">
+    <!--帮助中心新手入门流程-->
+    {tpl$tpl_liucheng}
+    <div class="blank15"></div>
+      <div class="fgbg2 clearfix">
+      <!--帮助中统一左栏信息 导航-->
+      {tpl$tpl_svleft}
+      <div class="w945 l">
+      <div class="blank7"></div>
+      <div class="bgFF clearfix">
+        <div class="blank10"></div>
+      	<div class="conml pLR15" id="mlList">
+        	<ul>
+            	{c$dqcon [tclass=archives/] [limits=100/] [chsource=2/] [chids=109/] [caidson=1/] [casource=2/] [orderstr=a.wclicks DESC/] [ttl=1200/]}
+                  <li {if $v['sn_row']>9}class="act"{/if}>&middot;<a href="{arcurl}" title="{subject}" target="_self" {if $aid==$v['aid']}class="cur"{/if}>{subject}</a></li>
+                {/c$dqcon}
+            </ul>
+            {c$dqcon2 [tclass=archives/] [limits=10/] [chsource=2/] [chids=109/] [caidson=1/] [casource=2/] [orderstr=a.wclicks DESC/] [ttl=1200/]}
+            {if $v['sn_row']==10}<p><i>展开</i></p>{/if}
+            {/c$dqcon2}
+            <div class="blank20"></div>
+        </div>
+        <div class="xgml pL15 pos">
+        <i></i>
+        <em>{subject}</em>
+        </div>
+        <div class="svcon mT15 Fs14 h612">
+        {c$content [tclass=text/] [tname=content/] [mp=1/]}{/c$content}
+        {if $mpcount>1}<div class="blank15"></div>
+        {$mpnav}
+        {/if}
+        <div class="blank15"></div>
+        </div>
+      </div>
+      </div>
+      </div>
+  </div>
+<!--公用底部-->
+{tpl$foot}
+</body>
+</html>

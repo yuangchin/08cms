@@ -1,0 +1,75 @@
+  <!-- head -->
+	<!-- {tpl$head-} -->
+<div class="bgFF clearfix pos zind1000" style="margin-top:-5px">
+	<div class="blank10"></div>
+  <div class="wrap">
+	<link rel="stylesheet" href="{$tplurl}css/service_global.css?{$user_version}" />
+	<link rel="stylesheet" href="{$tplurl}css/svctcss.css?{$user_version}" />
+	<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+	  <!--soso start-->
+	  <? $ks=0;?>    
+	  {c$lm2 [tclass=cnode/] [listby=ca/] [casource=active/] [level=2/]}<? $ks=$v['caid'];?>{/c$lm2}
+		  <div class="w500 bGray r mT15">
+			<div class="bzsoso clearfix zind100">
+			<form action="{cms_abs}index.php" method="get" target="_self">
+			  <input type="hidden" value="561" name="caid"/>
+              <input type="hidden" value="2" name="addno"/>
+			  <div class="bRbr1 l">
+				<input name="searchword" type="text" class="bztxt l clear-txt" id="searchword" placeholder="{if @$searchword!=''}{searchword}{else}请输入关键字{/if}" value="" x-webkit-speech speech/>
+			  </div>
+			  <input type="submit" value="搜索" class="bzsobnt l">
+			  <a href="{c$zxtw [tclass=freeurl/] [fid=102/]}{/c$zxtw}" class="twbnt l">提问</a>
+			</form>
+		  </div> 
+		</div> 
+		<!--soso end-->
+		<div class="svctlogo">
+		<a href="{c$fwcturl [tclass=cnode/] [listby=ca/] [casource=76/]}{indexurl}{/c$fwcturl}"><img src="{$tplurl}images/fwzxlogo.gif" width="150" height="40"/></a>
+		<p>欢迎来到{$hostname}的服务中心</p>
+		</div>
+	  </div>
+	<div class="blank15"></div>
+	<div class="svctnav">
+	  <div class="wrap">
+		<ul>
+			  <li class="first {if @$caid==561 && @$addno==0}act{/if}"><a href="{c$fwcturl [tclass=cnode/] [listby=ca/] [casource=561/]}{indexurl}{/c$fwcturl}" target="_self">&nbsp;&nbsp;首页&nbsp;&nbsp;</a></li>
+			  <li class="bzico {if in_array(@$addno,array(1,2))}act{/if}" id="bzcenter">{c$bzznurl [tclass=cnode/] [listby=ca/] [casource=561/]}
+			  <a href="{indexurl1}" target="_self">帮助指南</a>{/c$bzznurl}
+			  <div class="bzzxnav">
+				{c$bzzxejlm [tclass=catalogs/] [limits=50/] [listby=ca/] [casource=4/] [orderstr=vieworder ASC/] [wherestr=pid='561'/] [ttl=900/]}
+				  {c$bzzxsjlm [tclass=catalogs/] [val=f/] [limits=100/] [listby=ca/] [casource=2/] [orderstr=vieworder ASC/] [ttl=900/]}
+					<dl class="clearfix {if $v['sn_row']==1}first{/if}">
+						<dt><a href="{$v['indexurl']}" target="_self">{$v['title']}</a></dt>
+						<dd>
+						[row]
+							<a href="{indexurl}" target="_self">{title}</a>   
+						[/row]
+						</dd>
+					</dl>
+				  {/c$bzzxsjlm}
+				{/c$bzzxejlm}
+				<div class="wzclm">
+				{c$bzzxejlm2 [tclass=catalogs/] [limits=50/] [listby=ca/] [casource=4/] [orderstr=vieworder ASC/] [wherestr=pid='561'/] [ttl=900/]}
+				  {c$bzzxsjlm2 [tclass=catalogs/] [val=f/] [limits=100/] [listby=ca/] [casource=2/] [orderstr=vieworder ASC/] [ttl=900/]}
+				  {if count($_bzzxsjlm2)}
+				  [row]<span></span>[/row]
+				  {else} 
+				  <a href="{$v['indexurl']}" target="_self">{$v['title']}</a>
+				  {/if}
+				  {/c$bzzxsjlm2}
+				{/c$bzzxejlm2}
+				</div>
+				<div class="blank10"></div>
+			  </div>  
+			  </li>
+			  {c$tgadurl [tclass=catalogs/] [limits=4/] [listby=ca/] [casource=1/] [caids=572,573,574,575/][orderstr=vieworder ASC/] [ttl=900/]}
+				<li {if $ks==$v['caid']}class="act"{/if}><a href="{indexurl}" target="_self">{title}</a></li>
+			  {/c$tgadurl}
+			  <li {if @$fid==102}class="act"{/if}><a href="{c$zxtwurl [tclass=freeurl/] [fid=102/]}{/c$zxtwurl}" target="_self">在线提问</a></li>
+		</ul>                        
+	  </div>
+	</div>
+  </div>
+<script type="text/javascript">
+   $("#bzcenter").hover(function(){$(this).addClass("cur"); },function(){$(this).removeClass("cur"); })
+</script>

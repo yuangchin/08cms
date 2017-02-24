@@ -1,0 +1,13 @@
+<style type="text/css">
+/*导航样式*/
+.subnav,.subnav a.first{background:url({$tplurl}images/video.gif);}
+.subnav{height:42px; line-height:42px; background-position: 0 -42px;}
+.subnav a{display:inline-block; padding:0 40px; height:42px; line-height:42px; font-size:14px; color:#fff;  text-align:center;font-family: Microsoft YaHei; float: left;font-size: 16px; }
+.subnav a.act,.subnav a:hover{font-size: 16px; color:#FFFF00;}
+.subnav a.first{background-repeat:no-repeat;padding: 0 45px; }
+</style>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/] [level=2/]}
+<? @$zblb=$v['caid']?>
+{/c$cnode}
+<div class="blank10"></div>
+<div class="subnav clearfix"> <a href="{c$vedurl [tclass=cnode/] [listby=ca/] [casource=30/]}{indexurl}{/c$vedurl}" class="first">视频首页</a>{c$catalogs [tclass=catalogs/] [listby=ca/] [casource=3/] [limits=8/] [wherestr=pid=30 AND level=1/] [ttl=900/]}<a href="{indexurl}" class="{if $v['caid']==@$zblb}act{/if}">{title}</a>{/c$catalogs} </div>

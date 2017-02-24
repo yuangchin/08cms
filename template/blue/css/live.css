@@ -1,0 +1,331 @@
+.wrap-detail {
+    width: 1000px;min-width: 1000px;
+}
+/* 面包屑样式 */
+.jgcrumbs {
+    font-size: 12px;line-height: 30px; height: 30px;padding-left: 5px;
+}
+.jgcrumbs span {
+    color: #e55414;
+}
+.footer .wrap {
+    width: 1200px;
+}
+/* 楼盘视频列表 */
+.w680 {
+    width: 680px;
+}
+.video-list ul li {
+    font-family: Microsoft YaHei;
+    font-size: 14px;float: left;margin-bottom: 20px;
+}
+.video-list ul li .pic {
+    display: inline;float: left;width: 182px;height: 124px;margin-right: 15px;
+    padding: 2px; border: 1px solid #ccc;
+}
+.video-list ul li p {
+    line-height: 24px; overflow: hidden;height: 24px;border-bottom: 1px dotted #ccc;
+}
+.video-list ul li p.ny {
+    height: auto;
+}
+.video-list ul li p .c {
+    white-space: nowrap;
+
+    color: #999;
+}
+.video-list ul li em {
+    font-weight: bold;
+
+    color: #0056a9;
+}
+.video-list a:hover,
+.video-list.act {
+    color: #046bd4;
+}
+
+/* 视频直播 */
+.coltit {
+    line-height: 32px;
+
+    height: 32px;border-bottom: 1px solid #ddd;
+}
+.coltit .more {
+    float: right;margin-right: 10px;color: #666;
+}
+.coltit .tit {
+    position: relative;margin-bottom: -1px;
+
+    border-bottom: 2px solid #327acf;
+}
+.coltit h3 {
+    font-family: simsun;font-size: 16px; line-height: 31px; display: inline;
+    float: left;padding: 0 10px;
+}
+.coltit .tit a:hover,
+.coltit h3 span {
+    color: #2e9ee8;
+}
+.tlist li {
+    overflow: hidden;padding-left: 10px;
+}
+.tlist .pic {
+    height: auto;
+    margin-bottom: 4px;padding: 6px 0;
+}
+.tlist .pic img {
+    float: left;margin-right: 8px;
+}
+.tlist .pic h4 {
+    font-size: 14px;line-height: 26px;overflow: hidden;
+
+    height: 75px;padding-top: 2px;
+}
+.tlist .pic h4 a:hover {
+    text-decoration: none;
+
+    color: #2e9ee8;
+}
+
+/* 地产城市、活动、广告、娱乐视频 */
+.tabbar2 {
+    position: absolute;top: 2px;left: 8px;
+}
+.tabbar2 .act {
+    padding: 0 14px;color: #327acf;
+    border: 1px solid #eaeaea;border-top: 1px solid #327acf;border-bottom: none;background: #fff;
+}
+.tabbar2 span {
+    font-family: simsun;font-size: 14px;line-height: 28px;  display: inline;
+    float: left;height: 30px;padding: 1px 15px;cursor: pointer;
+}
+
+/*视频直播内容页*/
+.c-red {
+    color: #f75c17;
+}
+.no-line {
+    border-bottom: none !important;
+}
+.logo-365 {
+    line-height: 34px;
+
+    display: block;float: left;width: 90px;height: 34px;
+}
+.t-link {
+    line-height: 34px;
+
+    float: right; padding-right: 50px;text-align: right; color: #b5b5b7;
+}
+.t-link a {
+    color: #b5b5b7;
+}
+.all {
+    color: #333;
+    background: url(../images/bg.jpg) no-repeat #70bce1 center 34px;
+}
+
+/* 视频直播 */
+.view-warp {
+    margin-top: 210px; padding: 20px 20px 25px;
+}
+.vieo-title {
+    font-family: Microsoft YaHei;font-size: 30px;font-weight: 800;margin-bottom: 20px;
+
+    text-align: center; color: #fff;
+}
+.vieo-title span {
+    font-size: 36px;
+
+    text-decoration: underline;color: #fafc32;
+}
+.video {
+    float: left;width: 565px;margin-right: 30px;
+
+    border: 7px solid #fff;
+}
+.video-txt {
+    font-size: 14px;line-height: 26px;float: left;overflow-x: hidden; overflow-y: auto;
+
+    width: 350px;height: 442px;color: #fff;
+}
+.video-txt h2 {
+    font-family: Microsoft YaHei;font-size: 18px;font-weight: 800;margin: 15px 0 15px 0;
+
+    text-align: center;
+}
+/* 文字直播 */
+.warps {
+    position: relative;
+
+    margin-top: 25px;
+}
+.warps .hd {
+    position: relative;height: 65px;
+
+    background: url(../images/t-b.png) no-repeat;
+}
+.warps .bd {
+    margin-top: -20px;
+
+    background: #ecf8ff;
+}
+#text-live .bd {
+    padding: 30px 10px 20px 20px;
+}
+.text-txt {
+    font-size: 14px;position: relative;overflow-y: auto;height: 690px;background-color: #fff;
+}
+.text-txt .loading {
+    position: absolute;top: 50%;left: 50%;
+
+    width: 32px;height: 32px;margin: -16px 0 0 -16px;padding: 10px;border-radius: 5px;background: #fafafa url(../images/loading1.gif) no-repeat center center;
+}
+.text-btn {
+    line-height: 30px;
+
+    height: 30px;cursor: pointer;text-align: center;background: #ddd;
+}
+#text-live  dl {
+    font-size: 14px;line-height: 26px;
+
+    padding: 15px 10px;border-bottom: 1px dotted #bebebe;
+}
+#text-live  dl span {
+    margin-right: 5px;
+}
+#text-live  dl em {
+    font-weight: 800;
+}
+#text-live  dl em.u-s {
+    color: #364877;
+}
+.r-t {
+    font-size: 12px; position: relative;top: 17px;right: 20px;
+
+    color: #fff;
+}
+.r-t a {
+    color: #fff;
+}
+.refresh-btn {
+    visibility: hidden;
+
+    padding: 4px 6px 3px;vertical-align: top;border: 1px solid #128ace;background: #44bbea;
+}
+.refresh-btn:hover {
+    text-decoration: none;
+}
+/* 图片直播 */
+#pic-live .hd {
+    background-position: 0 -67px;
+}
+#pic-live .bd {
+    padding: 50px 15px 25px 15px;
+}
+#pic-live .bd .pages {
+    line-height: 20px;
+
+    position: absolute;top: 20px;right: 20px;height: 20px;text-align: right;
+}
+#pic-live .bd .pages i {
+    line-height: 100;
+
+    display: inline-block;overflow: hidden;width: 15px;height: 15px;margin-left: 10px;cursor: pointer;-webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%;background: #fff;-webkit-box-shadow: 0 1px 1px 2px #22a7e8; box-shadow: 0 1px 1px 2px #22a7e8;-ms-border-radius: 50%; -o-border-radius: 50%;
+}
+#pic-live .bd .pages i.act {
+    background: #666;
+}
+#pic-live dl {
+    display: inline;float: left;
+
+    width: 260px; margin-right: 35px;text-align: center;
+}
+#pic-live dl dt img {
+    padding: 3px;
+
+    border: 1px solid #bebfbf;background: #fff;
+}
+#pic-live dl dd {
+    padding-top: 10px;
+}
+.scrollWarp {
+    display: inline;float: left;overflow: hidden;
+
+    width: 850px;margin-left: 30px;
+}
+.moveBox {
+    width: 9999px;
+}
+.prevBtn,
+.nextBtn {
+    display: block;width: 28px;height: 41px; margin-top: 80px;background: url(../images/btns.gif) no-repeat;
+}
+.prevBtn {
+    float: left; background-position: 0 0;
+}
+.nextBtn {
+    float: right; background-position: -30px 0;
+}
+
+/* 往期回顾 */
+#over-live .hd {
+    background-position: 0 -134px;
+}
+#over-live .bd {
+    padding: 50px 10px 20px 20px;
+}
+#over-live li {
+    display: inline;float: left;
+
+    width: 200px;margin-left: 33px;
+}
+#over-live li p {
+    line-height: 26px;overflow: hidden;height: 26px;
+
+    text-align: center;
+}
+
+/* 版权信息 */
+.footer {
+    margin-top: 30px;padding-top: 15px; padding-bottom: 70px; text-align: center;color: #fff;
+    border-top: 1px solid #fff;
+}
+.footer p {
+    line-height: 22px;
+}
+.footer a {
+    color: #fff;
+}
+.m-img {
+    margin: 0 auto 15px auto;
+}
+.m-img img {
+    border: 1px solid #fff;
+}
+/* 滑动图片样式 */
+.flash1 {
+    position: relative; overflow: hidden; width: 958px; height: 176px; margin: 0 auto;
+}
+.flash1 li {
+    position: absolute; top: 0; left: 0;
+}
+.flash1 .txt {
+    font-weight: bold; line-height: 30px; position: absolute; top: 140px; left: 0; overflow: hidden; width: 100%;
+    height: 30px; text-decoration: none; text-indent: 10px; color: #fff; background: rgba(0,0,0,.5); filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');
+} 
+.flash1 .num {
+    position: absolute; top: 147px; right: 0;
+}
+.flash1 i {
+    line-height: 18px; display: inline;
+    float: left; width: 18px; height: 18px; margin-right: 5px; cursor: pointer;text-align: center;
+
+    color: orange; background: #fff;
+}
+.flash1 .act {
+    font-weight: bold; color: #fff;
+    background: orange;
+}
+
+

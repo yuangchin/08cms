@@ -1,0 +1,408 @@
+<?
+@session_start();
+$action = empty($action) ? 'step1' : $action;
+$chid = empty($chid) ? 3 : max(2,min(3,intval($chid)));
+$cuid = 36;
+if(!($commu = cls_cache::Read('commu',$cuid)) || !$commu['available']) cls_Parse::Message('委托功能已关闭。');
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title><?=$chid == 3 ? '出售' : '出租'?>房源委托-{$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/fywt.css?{$user_version}">
+{tpl$kuayujs}
+<link rel="stylesheet" href="{$cms_abs}images/common/validator.css" />
+</head>
+<body>
+<script type="text/javascript" src="{$cms_abs}include/js/floatwin.js"></script>
+<script type="text/javascript" src="{$cms_abs}include/js/common.js?domain=1"></script>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"> </script>
+<script type="text/javascript" src="{$cms_abs}include/js/_08cms.js"></script>
+<script type="text/javascript" src="{$cms_abs}include/js/validator.js"></script>
+{tpl$fb_head}
+<div class="wrap">
+  <div class="right-blocks">
+
+    <div class=" sub-menu">
+    <div class="<?=$action == 'step1' ? ' stetbg1 ' : ''?><?=$action == 'step2' ? ' stetbg2' : ''?><?=$action == 'step3' ? ' stetbg3' : ''?>"></div>
+
+
+    </div>
+
+<?
+if($action == 'step1'){
+$_SESSION['send'] = 1;
+if(@$curuser->info['mchid']==2){
+	echo "<div class='block'>";
+	echo "<div class='msg'><span class='red' style='display:inline-block;margin-left:50px'>您是经纪人，不能发布委托信息！</div></span>";
+	echo "</div>";
+	cls_Parse::Message();
+}
+?>
+	<div class="block">
+      <div class=" msg">您可以委托<span class="red">5</span>套房子，每套房子最多可以委托5位经纪人，<span class="red">您的电话及房源信息不对外公开，只有注册用户才能管理委托信息。</span></div>
+    </div>
+    <form action="{$cms_abs}info.php?fid=101&chid=<?=$chid?>" method="post" name="_08wt_form" id="_08wt_form">
+    <input type="hidden" value="step2" name="action" />
+      <div class="green-round-new">
+        <div class="head">
+          <div id="title">
+            <div class="title_L"><img src="r_m1.gif" height="26" width="2"></div>
+            <div class="title_MA5"><span class="f14">基本信息</span><span class="bold">（*为必填）</span></div>
+            <div class="title_R"><img src="r_m3.gif" height="26" width="2"></div>
+            <div class="title_MB"></div>
+          </div>
+        </div>
+      </div>
+      <div class=" bor-r">
+        <div class="col1-a">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+              <tr>
+                <td class="col1-a-a bor2-b" align="right" height="54" width="110"><strong><i>*</i>小区名称：</strong></td>
+                <td class="col1-a-b bor3-b">
+                  <div id="layer">
+                    <input  type="text" style="width: 220px;" class="input-gbk-only textcss" id="fmdata[lpmc]" name="fmdata[lpmc]" value="" autocomplete="off" rule="text" must="1" init="请输入小区名称或地址"/> <span id="hidesel" style="display:none;"><strong>请选择区域：</strong> <select name="fmdata['ccid1']" id="selccid1" disabled="true"><option value="0">请选择</option>{c$ccid1option [cname=ccid1option/] [tclass=catalogs/] [limits=9999/] [listby=co1/]}
+                    <option value="{ccid}">{title}</option>
+                    {/c$ccid1option}</select></span>
+                    <input type="hidden" name="fmdata[pid]" id="fmdata[pid]" />
+
+                    <input type="hidden" name="fmdata[ccid1]" id="fmdata[ccid1]" />
+                    <input type="hidden" name="fmdata[ccid2]" id="fmdata[ccid2]" />
+                    <input type="hidden" name="fmdata[ccid3]" id="fmdata[ccid3]" />
+                    <input type="hidden" name="fmdata[ccid14]" id="fmdata[ccid14]" />
+                    <input type="hidden" name="fmdata[dt]" id="fmdata[dt]" />
+                    <div id="showDictionary" style="display:none;">
+                      <div id="dictionary">
+                      </div>
+                      <div id="dictionaryPage">
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+			  <tr>
+			  	<td class="col1-a-a bor2-b" align="right" height="54"><strong><i>*</i>地址：</strong></td>
+				<td class="col1-a-b bor3-b"><input class="textcss" type="text" name="fmdata[address]" id="fmdata[address]" rule="text" must="1"/></td>
+			  </tr>
+              <tr>
+                <td class="col1-a-a bor2-b" align="right" height="54"><strong><i>*</i>楼栋号：</strong></td>
+                <td class="col1-a-b bor3-b"><label>
+                  <input class="textcss" style="width: 40px;" name="fmdata[louhao]" id="fmdata[louhao]" value="" type="text" rule="number" must="1">
+                  </label>
+                  <label> 号/幢</label>
+                  <label>
+                  <input class="textcss" style="width: 40px;" name="fmdata[loushi]" id="fmdata[loushi]" value="" type="text" rule="number" must="1">
+                  </label>
+                  <label> 室 <span class="gray">楼栋号不对外显示</span></label></td>
+              </tr>
+              <tr>
+                <td class="col1-a-a bor2-b" align="right" height="54"><strong><?=$chid == 3 ? '<i>*</i>产证面积：' : '<i>*</i>出租面积'?></strong></td>
+                <td class="col1-a-b bor3-b"><input class="textcss" style="width: 70px;" name="fmdata[mj]" id="fmdata[mj]" value="" type="text" rule="number" must="1">
+                  <label>平方米 <span class="gray">请准确输入您的房产证面积</span></label></td>
+              </tr>
+              <tr>
+                <td class="col1-a-a bor2-b" align="right" height="54"><strong>房型：</strong></td>
+                <td class="col1-a-b bor3-b" style="line-height: 24px;">
+                <?
+                $fields = cls_cache::Read('fields',$chid);
+				$farr = array('shi','ting','wei');
+				foreach($farr as $f){
+				if(isset($fields[$f])){
+                    $fv = $fields[$f];
+					echo "<label>\n";
+					echo "<select class=\"selectcss\" name=\"fmdata[$f]\" id=\"fmdata[shi]\">\n";
+					echo "<option value=\"\">请选择</option>";
+					$inarr = explode("\n",$fv['innertext']);
+					foreach($inarr as $in){
+						$ov = explode("=",$in);
+						echo "<option value=\"$ov[0]\">$ov[1]</option>\n";
+					}
+					echo "</select>\n";
+					echo "<label> $fv[cname]</label>\n";
+					echo "</label>\n";
+				}}
+				?>
+                  <p class="gray">(室-厅-卫都不选时表示为"自由分割")</p></td>
+              </tr>
+              <tr>
+                <td class="col1-a-a bor2-b" align="right" height="54"><strong><i>*</i>装修程度：</strong></td>
+                <td class="col1-a-b bor3-b">
+                <?
+                //$fields = cls_cache::Read('fields',$chid);
+                if(isset($fields['zxcd'])){
+                  $zxcdv = $fields['zxcd'];
+                  echo "<select class=\"selectcss\" name=\"fmdata[zxcd]\" id=\"fmdata[zxcd]\">\n";
+                  echo "<option value=\"\">请选择</option>";
+                  $zxcdarr = explode("\n",$zxcdv['innertext']);
+                  foreach($zxcdarr as $in1){
+                    $ov1 = explode("=",$in1);
+                    echo "<option value=\"$ov1[0]\">$ov1[1]</option>\n";
+                  }
+                  echo "</select>\n";
+                }
+                ?>
+                </td>
+              </tr>
+              <tr>
+                <td class="col1-a-a{if $chid == 2} bor2-b{/if}" align="right" height="54"><strong><?=$chid == 3 ? '<i>*</i>售价：' : '<i>*</i>租金'?></strong></td>
+                <td class="col1-a-b{if $chid == 2} bor3-b{/if}"><input class="textcss" style="width: 70px;" name="fmdata[zj]" id="fmdata[zj]" value="" type="text" rule="number" must="1">
+                  <label><?=$chid == 3 ? '万' : '元/月'?></label></td>
+              </tr>
+              {if $chid == 2}
+              <tr>
+                <td class="col1-a-a" align="right" height="54"><strong><i>*</i> 租赁方式：</strong></td>
+                <td class="col1-a-b">
+                <label><input type="radio" name="fmdata[zlfs]" value="1" checked="checked"/> 整租</label>&nbsp;&nbsp;
+                <label><input type="radio" name="fmdata[zlfs]" value="2"/> 合租</label>
+                </td>
+              </tr>
+              {/if}
+            </tbody>
+          </table>
+        </div>
+        <div class="blank0"></div>
+      </div>
+      <div class="green-round-new">
+        <div class="head">
+          <div id="title">
+            <div class="title_L"></div>
+            <div class="title_MA5"><span class="f14">联系方式</span><span class="bold">（*为必填）</span></div>
+            <div class="title_R"></div>
+            <div class="title_MB"></div>
+          </div>
+        </div>
+      </div>
+      <div class=" bor-r">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tbody>
+            <tr>
+              <td class="col1-a-a bor2-b" align="right" height="54" width="110"><strong><i>*</i>手机：</strong></td>
+              <td class="col1-a-b bor3-b"><input class="textcss" style="width: 200px;" name="fmdata[tel]" id="fmdata[tel]" value="" type="text" rule="text" must="1" regx="/^\s*\d{3,4}[-]?\d{7,8}\s*$/"></td>
+            </tr>
+            <tr>
+              <td class="col1-a-a bor2-b" align="right" height="54"><strong><i>*</i>联系人：</strong></td>
+              <td class="col1-a-b bor3-b"><input class="textcss" style="width: 100px;" name="fmdata[lxr]" id="fmdata[lxr]" value="" type="text" rule="text" must="1" warn="必填"></td>
+            </tr>
+
+            {c$fywtyzm [tclass=regcode/] [type=archive101/] [js=1/]}
+            <tr>
+                <td class="col1-a-a bor2-b" align="right" height="54"><strong>*验 证 码：</strong></td>
+                <td  class="col1-a-b bor3-b">
+                    <?php echo _08_HTML::getCode('_08wt_form11', '_08wt_form', 'textcss');?>
+                </td>
+            </tr>
+            {/c$fywtyzm}
+            <tr>
+              <td class="col1-a-a" align="right" height="54">&nbsp;</td>
+              <td class="col1-a-b"><input class="btn1" type="submit" value="" style=" cursor:pointer"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--开启伪静态下,bsubmit=' '出现翻页报错,所以这里设置固定参数1-->
+      <input name="bsubmit" type="hidden" value="1">
+    </form>
+<?
+}elseif($action == 'step2' && ((!empty($bsubmit) && !empty($fmdata) && @$_SESSION['send'] == 1) || !empty($cid) || !empty($fanye)) ){
+	//列表下方，分页链接上传递该变量s
+	$cid = empty($cid) ? 0 : max(1,intval($cid));
+	$fanye = empty($fanye) ? 0 : 1;
+	$is_mc = empty($is_mc) ? 0 : 1;
+	$tel = empty($tel)?'':$tel;
+	$ccid1 = empty($ccid1) ? '' : max(1,intval($ccid1));
+	$lpmc = empty($lpmc) ? '' : urldecode($lpmc);
+
+
+	//is_mc是会员中心>>我的委托>>继续委托，通过链接传递过来的参数，用于区分是会员中心还是前台页面的委托
+    if(empty($is_mc) && empty($fanye)){
+		if(!regcode_pass('archive101',empty($regcode) ? '' : trim($regcode))) cls_Parse::Message('验证码输入错误！',M_REFERER);
+	}
+
+	$fmdata['tel'] = empty($fmdata['tel']) ? $tel : trim($fmdata['tel']);
+    $fmdata['ccid1'] = empty($fmdata['ccid1']) ? $ccid1 : $fmdata['ccid1'];
+	$lpmc = empty($fmdata['lpmc']) ? $lpmc : $fmdata['lpmc'];
+
+
+	//判断cid是否为空，插入数据
+	//获取$wtnum(该条委托房源已经委托的经纪人个数),$_where_str
+	$_sqlstr_and_wtnum = wt_step2($cid,$cuid,$chid,$fmdata);
+
+
+	//根据url传递的cid以及tel来检测，是否存在该数据，防止链接修改参数
+	//$_cid_exist = 0 表示房源信息不存在
+	$_cid_exist = wt_step2_cid_exist($cid,@$fmdata['tel'],$cuid,$fanye);
+
+
+	//获取sendwtnum：某个会员或者是某个电话号码已经发布的委托房源条数
+
+	$sendwtnum = wt_step2_sendwtnum($cid,@$fmdata['tel'],$chid,$cuid);
+	if($sendwtnum < 5){
+		$urlstr = "&cid=$cid&fanye=1&tel=$fmdata[tel]&lpmc=$lpmc&ccid1=$fmdata[ccid1]";
+		if($_cid_exist && !empty($fmdata)){
+			$wtnum = empty($_sqlstr_and_wtnum['wtnum']) ? 0 : $_sqlstr_and_wtnum['wtnum'];//该条委托房源已经委托的经纪人个数
+
+			$_SESSION['send'] = 2;
+?>
+<script>var hassel = '<?=$wtnum?>'; var cid= '<?=$cid?>'</script>
+            <div class="block">
+              <div class="msg">以下是<span class="bold f14 red"><?=$lpmc?></span>小区周边的专业经纪人，请勾选或点击"<span class="red">立即委托</span>"，完成后点击"<span class="red">下一步</span>"</div>
+            </div>
+            <div class="green-round-new">
+              <div class="head">
+                <div id="title">
+                  <div class="title_L"></div>
+                  <div class="title_MA5"><span class="f14 green">选择经纪人</span></div>
+                  <div class="title_R"></div>
+                  <div class="title_MB"></div>
+                </div>
+              </div>
+            </div>
+            <form method="post" action="{$cms_abs}info.php?fid=101&chid=<?=$chid?>">
+                <input type="hidden" name="action" value="step3" />
+                <input type="hidden" name="cid" value="<?=$cid?>" />
+
+                {c$member [tclass=members/] [chsource=2/] [chids=2/] [mp=1/] [detail=1/] [wherestr={$_sqlstr_and_wtnum['where_str']}/]}
+                    <div class="area xzjjr">
+                      <table width="100%" cellspacing="1" cellpadding="0" border="0">
+                        <tbody>
+                          <tr>
+                            <td width="70" align="center" rowspan="2"><a target="_blank" href="{$v['mspacehome']}"> <img width="51px" height="66px" src="{c$mimage66_51 [cname=mimage66_51/] [tclass=image/] [tname=$v[image]/] [val=m/] [maxwidth=51/] [maxheight=66/] [thumb=1/] [emptyurl=images/common/mlogo.gif/]}{url_s}{/c$mimage66_51}" style="margin-top: 8px;"><br>
+                              </a> <a target="_blank" href="{mspacehome}">{if $v['xingming']}{xingming}{else}未知姓名{/if}</a></td>
+                            <td class="xzjjr1">经纪人信息</td>
+                            <td width="120" class="xzjjr1">专业资质</td>
+                            <td width="120" class="xzjjr1">联系电话</td>
+                            <td width="110" class="xzjjr1">在线委托</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              服务区域：{if !empty($v['szqy'])}{c$weituojhjjrqy [cname=经纪人所在区域/] [val=bb/] [tclass=mcnode/] [cnsource=ccid1/] [cnid=$v[szqy]/]}<a href='{mcnurl1}' target="_blank">{title}</a>{/c$weituojhjjrqy}{else}未知{/if}</td>
+                            <td align="center"><label>{c$xytb [cname=信用图标/] [tclass=fromid/] [val=d/] [type=grouptype17/] [id=$v[grouptype17]/] [idsoruce=0/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} />{/c$xytb}</label>
+                              <span class="blank5"></span>
+                              <label>{c$jjrsfrz3 [cname=经纪人身份认证3/] [tclass=fromid/] [val=bb/] [type=mctid/] [id=$v[mctid2]/]}<img border=0 {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="身份证认证通过">{/c$jjrsfrz3}</label>
+                              <label>{c$jjrzzrz3 [cname=经纪人执照认证3/] [tclass=fromid/] [val=bb/] [type=mctid/] [id=$v[mctid3]/]}<img border=0 {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="执照认证通过"/>{/c$jjrzzrz3}</label>
+                            </td>
+                            <td align="center">{lxdh}</td>
+                            <td align="center"><input type="checkbox" value="{mid}" class="entrust-checkbox" id="wtchk{mid}" onclick="chkwt('{mid}','{$cid}')" name="wtcheckbox[]">
+                              <div style="padding-top: 4px;" > <a href="javascript:void(0)" class="wtbtn" id="wtbtn{mid}" onclick="chkwt('{mid}','{$cid}')"></a> </div></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                {/c$member}
+                <div class="ptb10 tr">
+                {$mpnav}
+                </div>
+                <div class="tr">
+                    <input type="hidden" id="checked_mids" name="checked_mids" value="<?php echo empty($_sqlstr_and_wtnum['midstr']) ? 0 : $_sqlstr_and_wtnum['midstr'];?>">
+                    <input type="submit" id="fsubmit" name="fsubmit" value=" " class="btn1" onclick="return chkboxnum()">
+                </div>
+			</form>
+            <script type="text/javascript">
+				var input_checked_mids = document.getElementById('checked_mids');
+				var weituo_cid_val = getcookie('weituo_cid');
+				var fanye = <?php echo $fanye;?>;
+				var is_mc = <?php echo $is_mc;?>;
+				/*根据cookie中的cid的值与传递进来的cid的值进行判断是否是分页跳转页面，还是重新委
+				托房源（重新委托房源cid与cookie中的值肯定不同）*/
+				if(cid != weituo_cid_val){
+					setcookie('weituo_mids','', -1);//清空之前遗留的cookie
+					setcookie('weituo_cid',cid, 864000000);//改变cid的cookie的值
+					input_checked_mids.value = '';
+				}
+				//如果是会员中心>>我委托的房源>>继续委托：跳转过来的，则要清掉cookie重新赋值
+				if(is_mc){
+					setcookie('weituo_mids','<?php echo empty($_sqlstr_and_wtnum['midstr']) ? 0 : $_sqlstr_and_wtnum['midstr'];?>', 864000000);//清空之前遗留的cookie
+					setcookie('weituo_cid',cid, 864000000);//改变cid的cookie的值
+					input_checked_mids.value = '';
+				}
+				input_checked_mids.value = getcookie('weituo_mids');
+				var mids_arr = input_checked_mids.value.split(',');
+				for(var i = 0;i < mids_arr.length; i++){
+					var check_obj = $("#wtchk" + mids_arr[i]);
+					var a_obj = $("#wtbtn" + mids_arr[i]);
+					if(check_obj){check_obj.prop('checked',true);}
+					if(a_obj){a_obj.prop('class','qxwtbtn')}
+				}
+
+				if(fanye == 0){
+					var $_ex_url = '<?php echo $urlstr;?>';
+					var a_arr = $("a[class='p_num']");
+					var a_next_page = $("a[class='p_redirect']");
+					a_arr.each(function(){
+						var a_fref = $(this).attr('href').replace('&fmdata=Array','');
+						$(this).attr('href',a_fref+$_ex_url);
+					})
+					a_next_page.attr('href',a_next_page.attr('href').replace('&fmdata=Array','')+$_ex_url);
+				}
+			</script>
+<?
+		}else{
+			wtmsg('错误了，查找的数据不存在！');
+		}
+	}else{
+		wtmsg('你发布的信息已经超过了5条！');
+	}
+}elseif($action == 'step3' && !empty($fsubmit) && !empty($checked_mids) && @$_SESSION['send'] == 2){
+	$_SESSION['send'] = 0;
+	$_hmtl_code = <<<EOT
+		  <div style="margin-top: 10px;" class="green-round-new">
+			<div class="head">
+			  <div id="title">
+				<div class="title_L"></div>
+				<div class="title_MA5"><span class="f14 green">委托成功</span></div>
+				<div class="title_R"></div>
+				<div class="title_MB"></div>
+			  </div>
+			</div>
+		  </div>
+          <div style="text-align: center; padding-top: 20px; padding-bottom: 20px;" class="area bor-r">
+            <div class="fbcg4">
+              <div class="fbcg1"><img src="{$tplurl}images/wtcg.gif"></div>
+              <div class="blank10"></div>
+              <a href="{$cms_abs}info.php?fid=101&chid=3" style=" color:#008000;">继续委托出售房源</a><br/>
+              <a href="{$cms_abs}info.php?fid=101&chid=2" style=" color:#008000;">继续委托出租房源</a>
+            </div>
+          </div>
+EOT;
+	wt_step3($_hmtl_code,$checked_mids,$cid);
+}else{
+	wtmsg('错误，页面禁止刷新！');
+}
+?>
+  </div>
+<script type="text/javascript">	var $cms_abs = '{$cms_abs}',$tplurl = '{$tplurl}';</script>
+<script type="text/javascript" src="{$tplurl}js/weituo.js"></script>
+  <div id="ft">
+    <div id="seokeywords">
+      <div class="gray seo-tips"> 专业的房产网站，每日提供真实有效的二手房买卖信息。详细的房型图，室内图和小区信息，让您足不出户看房选房更便捷。 </div>
+      <div class="keywords">
+        <div class="line">
+          <div class="l green"> 相关信息： </div>
+          <div class="fl links"> <a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}">新房</a> <a href="{c$loupanliebiao [cname=楼盘列表/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl1}{/c$loupanliebiao}">楼盘大全</a> <a href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=1/]}{/c$dtzf}" target="_top">地图找房</a> <a href="{c$esfsy [cname=二手房首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=3/]}{indexurl}{/c$esfsy}" target="_top">二手房</a> <a href="{c$czsy [cname=出租首页/] [tclass=cnode/] [listby=ca/] [casource=4/]}{indexurl}{/c$czsy}" target="_top">租房</a> <a href="{c$xqzdlj [cname=小区节点链接/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl2}{/c$xqzdlj}" target="_top">小区</a> <a href="{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl1}{/c$jjrjd}" target="_top">经纪人</a> <a href="{c$jz_url [cname=家装链接/] [tclass=cnode/] [listby=ca/] [casource=509/]}{indexurl}{/c$jz_url}" target="_top">家装</a> </div>
+          <div class="blank0"></div>
+        </div>
+        <div class="line">
+          <div class="l green"> 热门二手房： </div>
+          <div class="l links">	{c$fyeslb [cname=二手房列表/] [tclass=archives/] [chids=3/] [chsource=2/] [validperiod=1/] [orderstr=a.clicks DESC/]}<a href="{arcurl}" target="_top">{c$subject28 [cname=subject28/] [tclass=text/] [tname=subject/] [trim=28/] [color=color/]}{/c$subject28}</a> {/c$fyeslb}</div>
+          <div class="blank0"></div>
+        </div>
+        <div class="line">
+          <div class="l green"> 热门出租： </div>
+          <div class="l links">	{c$fyczlb [cname=出租房列表/] [tclass=archives/] [chids=2/] [chsource=2/] [validperiod=1/] [orderstr=a.clicks DESC/]}<a href="{arcurl}" target="_top">{c$subject28 [cname=subject28/] [tclass=text/] [tname=subject/] [trim=28/] [color=color/]}{/c$subject28}</a> {/c$fyczlb}</div>
+          <div class="blank0"></div>
+        </div>
+        <div class="blank0"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+    $("[id^='fmdata']").attr('offset',1);
+</script>
+{tpl$foot}
+</body>
+</html>

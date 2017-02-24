@@ -1,0 +1,74 @@
+<?
+empty($mcaid) && $mcaid = 0;
+empty($extra) && $extra = '';
+$mchid = empty($mchid)? 0 : (int)$mchid;
+# 获取按价格与房型的统计数，注：按小区以AJAX获取
+$stat = u_member_houses($mid, $mchid, $houses_stat);
+$baseurl = "{$cms_abs }{$mspacedir}/index.php"; //伪静态,需要这个参数
+if($mcaid != 2){?>
+		<div class="Listing_Categories jjresf_22"> 二手分类 </div>
+		<div class="left_bj">
+			<div class="Category_contents_left">
+				<div class="mb5"><strong>按小区:</strong> </div>
+				<div id="v1"> </div>
+                <script type="text/javascript">
+                    $.get("{cms_abs}" + uri2MVC("ajax=get_house_for_area&mid={$mid}&mchid={$mchid}&chid=3&mcaid=1&domain="+document.domain), function(data){
+                       $('#v1').html(data);
+                    });
+                    function showHouseList3(page)
+                    {
+                        $.get("{cms_abs}" + uri2MVC("ajax=get_house_for_area&mid={$mid}&mchid={$mchid}&chid=3&mcaid=1&page=" + page + "&domain="+document.domain) , function(data){
+                           $('#v1').html(data);
+                        });
+                    }
+                </script>
+			</div>
+			<div class="Category_contents_right">
+				<? $coclasses = cls_cache::Read('coclasses', 4)?>
+				<div class="mb5"><strong>按售价:</strong> </div>
+				<div id="v2">
+{loop $coclasses $coclasse}					<a href="{$baseurl}?mcaid=1&addno=1&mid={$mid}&extra=price:{$coclasse['ccid']}">{$coclasse['title']}(<?=isset($stat[3]['price'][$coclasse['ccid']]) ? $stat[3]['price'][$coclasse['ccid']] : 0;?>)</a><br />{/loop}
+				</div>
+				<? $room = u_field_by(3, 'shi'); ksort($room);?>
+				<div class="blank5"></div>
+				<div class="mb5"><strong>按房型:</strong></div>
+				<div id="v3">
+{loop $room $k $v}{if !empty($v)} <a href="{$baseurl}?mcaid=1&addno=1&mid={$mid}&extra=room:{$k}">{$v}(<?=isset($stat[3]['room'][$k]) ? $stat[3]['room'][$k] : 0?>)</a><br />{/if}{/loop}
+				</div>
+			</div>
+		</div>
+<? }
+if($mcaid != 1){?>
+		<div class="Listing_Categories jjresf_22"> 出租分类 </div>
+		<div class="left_bj">
+			<div class="Category_contents_left">
+				<div class="mb5"><strong>按小区:</strong></div>
+<?php $i=0; ?><!-- 数量大于20不显示 -->
+				<div id="v4"> </div>
+                <script type="text/javascript">
+                    $.get("{cms_abs}" + uri2MVC("ajax=get_house_for_area&mid={$mid}&mchid={$mchid}&chid=2&mcaid=2&domain="+document.domain) , function(data){
+                       $('#v4').html(data);
+                    });
+                    function showHouseList2(page)
+                    {
+                        $.get("{cms_abs}" + uri2MVC("ajax=get_house_for_area&mid={$mid}&mchid={$mchid}&chid=2&mcaid=2&page=" + page + "&domain="+document.domain), function(data){
+                           $('#v4').html(data);
+                        });
+                    }
+                </script>
+			</div>
+			<div class="Category_contents_right">
+				<? $coclasses = cls_cache::Read('coclasses', 5)?>
+				<div class="mb5"><strong>按租金:</strong></div>
+				<div id="v5">
+{loop $coclasses $k $coclasse}					<a href="{$baseurl}?mcaid=2&addno=1&mid={$mid}&extra=price:{$k}">{$coclasse['title']}(<?=isset($stat[2]['price'][$coclasse['ccid']]) ? $stat[2]['price'][$coclasse['ccid']] : 0;?>)</a><br />{/loop}
+				</div>
+				<? $room = u_field_by(2, 'shi');  ksort($room);?>
+				<div class="blank5"></div>
+				<div class="mb5"><strong>按房型:</strong></div>
+				<div id="v6">
+{loop $room $k $v}{if !empty($v)} <a href="{$baseurl}?mcaid=2&addno=1&mid={$mid}&extra=room:{$k}">{$v}(<?=isset($stat[2]['room'][$k]) ? $stat[2]['room'][$k] : 0?>)</a><br />{/if}{/loop}
+				</div>
+			</div>
+		</div>
+<? }?>

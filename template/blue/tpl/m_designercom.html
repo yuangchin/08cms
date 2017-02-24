@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-设计师-{companynm}-{$hostname}</title>
+ <meta content="{companynm}" name="keywords"> 
+ <meta content="{companynm}{if $dizhi},公司地址是{dizhi}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+<?php $mcaid=10; ?>
+</head>
+<body>
+<!--header begin-->
+ {tpl$jz_m_head} 
+<!--内容开始-->
+<div class="area"> 
+	<!--左侧栏开始-->
+	{tpl$jz_m_left}
+	<!--右侧栏开始-->
+	<div class="right_bar">
+		<div class="R_title">
+			<div class="R_title_L"><strong>设计师介绍</strong></div>
+		</div>
+		<div style="padding: 10px; line-height: 22px;" class="R_con1">
+			<!--介绍内容-->
+					<img {c$archive [tclass=archive/] [val=vvv/] [chid=101/]}{c$thumb_140_190 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=140/] [maxheight=190/] [thumb=2/]}src="{url_s}" width="140" height="190"{/c$thumb_140_190}{/c$archive} class="l mr10">
+					<div><strong>姓名：</strong>{subject}</div>
+					<div><strong>设计理念：</strong>{shejiln}</div>
+					<div><strong>毕业学校：</strong>{school}</div>
+					<div><strong>从业时间：</strong>{c$jobtime [cname=jobtime/] [tclass=field/] [tname=jobtime/] [type=archive/] [limits=1/] [fname=jobtime/]}{/c$jobtime}</div>
+					<div><strong>风格：</strong>{c$sjsfg [cname=设计师风格/] [tclass=catalogs/] [listby=co32/] [cosource32=1/] [ccids32=$ccid32/]}{title},{/c$sjsfg}</div>  
+												
+					<div><strong>简介：</strong>{abstract}</div>
+					<div class="cl"></div>
+			<!--介绍内容end-->
+		</div>
+		
+		<div class="R_B">
+				<div class="R_B_L"></div>
+				<div class="R_B_R"></div>
+		</div>
+		<span class="blank10"></span>
+		<!-- 相关作品 -->
+		<div style="margin-top: 5px;" class="R_title">
+			<div class="R_title_L">相关作品</div>
+		</div>
+		<div style="padding: 5px;" class="R_con1">
+						{c$jz_xgalb1 [cname=相关案例列表/] [tclass=archives/] [limits=4/] [chsource=2/] [chids=102/] [caidson=1/] [casource=1/] [caids=511/] [mode=in/] [arid=31/] [validperiod=1/] [detail=1/] [ttl=900/]}<div class="con3B22">
+								<div class="con3B23">
+										<a href="{marcurl}">
+											 <img  alt="{subject}" {c$thumb_149_99 [cname=thumb_149_99/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=149/] [maxheight=99/] [thumb=1/]}src="{url_s}" width="149" height="99"{/c$thumb_149_99}/>
+										</a>
+								</div>
+								<div class="sjs4">
+										<strong><a href="{marcurl}">{c$subject18 [cname=subject18/] [tclass=text/] [tname=subject/] [trim=18/]}{/c$subject18}</a></strong>
+								</div>
+						</div>{/c$jz_xgalb1}
+						
+			<div class="cl"></div>
+		</div>
+		<div class="R_B">
+			<div class="R_B_L"></div>
+			<div class="R_B_R"></div>
+		</div>
+	</div>
+	<!--右侧栏结束--> 
+</div>
+<!--内容结束--> 
+<!--footer begin--> 
+	{tpl$jz_foot}
+<!--footer end-->
+
+</body></html>

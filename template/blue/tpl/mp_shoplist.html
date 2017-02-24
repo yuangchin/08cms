@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{title}-{if $companynm}{companynm}{else}{mname}{/if}-{$hostname}</title>
+<meta content="{companynm}" name="keywords"> 
+<meta content="{companynm}{if $dizhi},地址是{dizhi}{/if}{if $lxdh},电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+</head>
+<body>
+<!--header begin-->
+ {tpl$jz_sj_head}
+  <!--头部结束--> 
+<div class="container">
+  <div class="con">
+  	<!--左侧栏开始-->
+    
+    {tpl$jz_sj_left}    
+    <!--左侧栏结束  右侧栏开始-->
+    <div class="right_bar"> 
+      <!--广告开始--><!--广告结束 所有商品开始-->
+      <div class="title3">
+        <div class="title3_l"></div>
+        <div class="title3_m">所有商品</div>
+        <div class="title3_r"></div>
+        <div class="title3_m2"></div>
+      </div>
+      <!--所有商品结束 特价商品开始-->
+      <div class="right_con2 sysp"> 
+        <!--特价商品列表开始-->
+	       {c$jz_sj_splist [cname=商品列表/] [tclass=archives/] [limits=8/] [chsource=2/] [chids=103/] [caidson=1/] [casource=1/] [caids=513/] [space=1/] [detail=1/] [ttl=900/] [mp=1/]}<div class="list">
+              <div class="list1">
+                      <a target="_blank" href="{marcurl}"><img alt="{subject}"  {c$thumb_139_139 [cname=thumb_139_139/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=139/] [maxheight=139/] [thumb=2/]}src="{url_s}" width="139" height="139"{/c$thumb_139_139}></a>
+              </div>
+              <div style="text-align: center;" class="list2">
+                  <a rel="nofollow" target="_blank" href="{marcurl}">
+                      {c$subject20 [cname=subject20/] [tclass=text/] [tname=subject/] [trim=20/]}{/c$subject20}<br>
+                  </a>
+              </div>
+                  <div class="list4">价格：{if $v['zj']==0}待定{else}{zj}元{/if}</div>
+            </div>{/c$jz_sj_splist}
+	        
+        <div class="blank0"></div>
+        {$mpnav}
+        <!--特价商品列表结束-->
+      </div>
+      <div class="right_b">
+        <div class="right_b_l"></div>
+        <div class="right_b_r"></div>
+      </div>
+      <div>
+
+    <!--右侧栏结束--> 
+  </div>
+  </div>
+  <div class="blank0"></div>
+</div>
+</div>
+{tpl$jz_foot}
+</body>
+</html>

@@ -1,0 +1,260 @@
+/**
+ * @name comment.css
+ * @author ahuing
+ * @link 08cms.com
+ * @date 2015-12-10 15:08:22
+ */
+
+@charset "UTF-8";
+.comment {
+  border: 1px solid #d8d8d8;
+}
+
+.comment .wyxzTit1 {
+  line-height: 34px;
+  position: relative;
+  height: 34px;
+  padding: 0 10px 0 150px;
+}
+
+.comment .wyxzTit1 em {
+  font: bold 15px/34px Microsoft yahei;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  height: 34px;
+  padding: 0 15px;
+  color: #fff;
+  border-radius: 0 0 3px 0;
+  background: #e43;
+}
+
+.comment .wyxzTit1 em:after {
+  position: absolute;
+  top: 33px;
+  left: 20px;
+  width: 144px;
+  height: 7px;
+  content: ' ';
+}
+
+.comment .num-info {
+  font-family: Microsoft yahei;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: #999;
+}
+
+.comment .num-info:hover {
+  text-decoration: none;
+  color: #e43;
+}
+
+.comment .comment-form {
+  font-size: 12px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 5px;
+}
+
+.comment-form input,
+.comment-form img {
+  float: left;
+}
+
+.comment-form input:focus {
+  box-shadow: 0 0 1px #1d5fc1 inset;
+}
+
+.comment-form .textarea {
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+.comment-form .textarea textarea {
+  line-height: 25px;
+  width: 100%;
+  height: 75px;
+}
+
+.comment-form .comment-sub {
+  line-height: 28px;
+  height: 28px;
+}
+
+.comment-form .btn {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #e43;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+.comment-form .btn-face {
+  position: relative;
+  float: left;
+  margin-right: 8px;
+  cursor: pointer;
+  color: #e43;
+}
+
+.comment-form .btn-face .ico08 {
+  font-size: 18px;
+  float: left;
+}
+
+.comment-form .bqface {
+  position: absolute;
+  z-index: 900;
+  top: 25px;
+  left: 0;
+  display: none;
+  width: 180px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.comment-form .bqface li {
+  float: left;
+  height: 30px;
+  padding: 3px 6px;
+  cursor: pointer;
+}
+
+.comment-form .bqface li img {
+  vertical-align: middle;
+}
+
+.comment-form .hover .bqface {
+  display: block;
+}
+
+.comment-form .tipkuan {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 146px;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 146px;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid #dcdcdc;
+  background: #eee;
+}
+.comment-form .tipkuan .tipkuan a {
+  font-size: 12px;
+  font-weight: normal;
+  color: #244a99;
+}
+
+/*** 评论列表 
+--------------------- ***/
+.comment .pl-box {
+  line-height: 22px;
+  padding: 10px 0 10px 35px;
+  color: #666;
+  border-top: 1px solid #ddd;
+}
+
+.comment .pl-box .plcon-hd-tip {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.comment .pl-box .plcon .plcon-hd {
+  position: relative;
+  margin-left: -28px;
+}
+
+.comment .pl-box .plcon-hd .name {
+  float: left;
+}
+
+.comment .pl-box .plcon-hd .time {
+  float: right;
+}
+
+.comment .pl-box .plcon-hd .colorbl {
+  color: #244a99;
+}
+
+.comment .pl-box .zc_btn {
+  position: relative;
+  text-align: right;
+}
+
+.comment .pl-box .zc_btn a {
+  font-size: 12px;
+  line-height: 21px;
+  position: relative;
+  display: inline-block;
+  height: 21px;
+  margin-top: 4px;
+  cursor: pointer;
+  color: #999;
+}
+
+.comment .pl-box .zc_btn a:hover {
+  text-decoration: none;
+  color: #555;
+}
+
+.comment .pl-box .zc_btn a:hover .ico08 {
+  color: #e43;
+}
+
+.comment .pl-box .zc_btn a em {
+  font-style: normal;
+  padding: 0 2px;
+}
+
+.comment .pl-box .zc_btn .tip {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  line-height: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 16px;
+  text-align: center;
+  color: #f00;
+  border: 1px solid #ddd;
+}
+
+.comment .pl-box .plcon-bd {
+  font-size: 14px;
+  line-height: 24px;
+  text-align: justify;
+  color: #444;
+}
+
+.comment .pl-box .hfcon {
+  padding: 10px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+
+/*more*/
+.load-more {
+  line-height: 30px;
+  display: none;
+  height: 30px;
+  cursor: pointer;
+  text-align: center;
+  background: #f5f5f5;
+}
+
+.load-more-ing {
+  line-height: 1000px;
+  overflow: hidden;
+  background: url(../images/page_loading.gif) center no-repeat #f5f5f5;
+}

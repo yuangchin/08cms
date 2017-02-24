@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [cname=激活栏目标题/] [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/fangtuan.css?{$user_version}"/>
+<?php $pagetype = 'newhouse'; ?>
+<base target="_blank" />
+</head>
+<body>
+{tpl$head}
+{c$archives [cname=楼盘列表/] [tclass=archives/][chsource=2/] [chids=4/] [mode=belong/] [arid=3/]}<?php $lpid=$v['aid'];?>{/c$archives}
+<?php $tgaid=$aid;?>
+<!-- 页面主体 -->
+<div class="wrap">
+	<div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form w300">
+                    <input type="submit" value="搜索" class="btn">
+                    <div class="txt-wrap">
+                        <input type="text" class="txt" value="{if !empty($searchword)}{searchword}{/if}"  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_self">新房</a><i class="pipe">/</i>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}" target="_self">{title}</a>{/c$cnode}<i class="pipe">/</i>{subject}
+        </span>
+    </div>
+    <!-- 团购优惠,代码和首页一致,无需再重新写 -->
+    <div class="jrtg clearfix">
+        <div class="l-titimg">
+            <div class="recom">今日团购</div>
+            <h2><a href="{arcurl}" target="_blank" title="{subject}">{subject}</a></h2>
+            <div class="imgimg">
+                <a href="{arcurl}" target="_blank" title="{subject}"><img alt="{subject}" {c$thumb620_280 [cname=thumb620_280/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=620/] [maxheight=280/] [thumb=1/]} src="{url_s}"  height="280" width="620" {/c$thumb620_280}></a>
+                <div class="bminfo">
+                    <div class="jqDuang ma" data-effect="leftMarqueue" data-visible="3" data-interval="30">
+                        <ul>
+                            {c$fthome_baoming [cname=房团Home-报名实况/] [tclass=commus/] [cuid=8/] [checked=1/] [isall=1/] [wherestr=SELECT c.lxren,c.xinbie,c.lxdh,a.*
+                        FROM {$tblprefix }commu_df c INNER JOIN {$tblprefix }".atbl(5)." a ON a.aid=c.aid WHERE a.aid=$aid /]}
+                            <li><?php echo cls_string::CutStr($v['lxren'],2,'').'**'; ?>
+                                <em><?php echo " ".substr($v['lxdh'],0,3).'*****'.substr($v['lxdh'],-3)." "; ?></em>
+                                报名成功
+                            </li>
+                            {/c$fthome_baoming}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="r-info w300">
+            <div class="end-date clearfix" data-endTime="{enddate}" data-noend="<span class='fcr'>永久有效!</span>" data-end="<span class='fcr fz16'>活动已经结束!</span>" data-endele=".biaod">
+                <span>剩余时间：</span>
+                <span class="pri-txt">
+                    <span class='day'><d>0</d></span>天<span class='hour'><h>0</h></span>小时<span class='minutes'><m>0</m></span>分<span class='second'><s>0</s></span>秒
+                </span>
+            </div>
+            <div class="jg pt40 clearfix">
+                <ul>
+                    <li>
+                        <i class="ico1"></i>
+                        <span><em class="f90">{if $tgj}{tgj}{else}待定{/if}</em></span><span>最低价</span>
+                    </li>
+                    <li>
+                        <i class="ico1"></i>
+                        <span><b>{if $scj}{scj}{else}待定{/if}</b></span><span>市场价</span>
+                    </li>
+                    <li>
+                        <i class="ico2"></i>
+                        <span><b>{clicks}</b></span><span>人气</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="ptb5">楼盘地址：{if $hdadr}{hdadr}{else}待定{/if}</div>
+            <div class="ptb5">联系电话：<em>{if $hdtel}{hdtel}{else}待定{/if}</em></div>
+            <div class="biaod">
+                <!-- 表单 -->
+                <form id="bmform" class="jqValidate" data-tipmode="#tg-tip" onsubmit="return fyCummus(this,'报名');">
+                    <input type="hidden" name="cuid" value="8" />
+                    <input type="hidden" name="aid" value="{aid}" />
+                    <div class="blank25" style="margin-top:-10px"><span id="tg-tip"></span></div>
+                    <ul class="form form-control">
+                        <li>
+                            <input type="text" class="txt" name="fmdata[lxren]" placeholder="您的姓名" data-type="*3-15"/>
+                        </li>
+                        <li>
+                            <input type="text" class="txt" name="fmdata[lxdh]" placeholder="您的电话" value="" data-type="m" />
+                        </li>
+                        <li class="reg-wrap" data-regcode="commu8">
+                            <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                        </li>
+                        <li>
+                            <div class="r info">已报名<em><div id="_08_count_a5_{aid}" class="count08" url-params="{type: 'a', modid: 5, field: 'hdnum'}">&nbsp;</div></em>人<br />房源共<em>{ksnum}</em>套</div>
+                        {if $enddate<$timestamp&&$enddate!=0}<a class="btn-tg end" href="###" rel="nofollow">报名结束</a>{else}<input type="submit" class="btn-tg" value="立即报名"/>{/if}
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="blank10"></div>
+		<!-- 本月团购排行 -->
+	<div class="w320 r">
+      <div class="tgph clearfix">
+          <div class="tg-tit">
+              <h3>>>本月团购排行</h3>
+          </div>
+          <div class="content1">
+              <dl class="table1">
+                  <dt><i class="td1">楼盘名称</i><i class="td2">区县</i><i class="td3">团购(人)</i><i class="td4">团购</i></dt>
+                  {c$archives [cname=团购排行/] [tclass=archives/] [chsource=2/] [chids=5/] [caidson=1/] [casource=1/] [caids=5/] [detail=1/] [orderstr=hdnum DESC,awgs DESC/]}
+                  <dd>
+                     <i class="td1">{c$v3_ftlplj3 [cname=楼盘链接3/] [tclass=archives/] [val=a/] [limits=1/] [chsource=2/] [chids=4/] [detail=1/] [caidson=1/] [casource=1/] [caids=2/] [mode=belong/] [arid=3/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$v3_ftlplj3}</i>
+                     <i class="td2">{c$v3_tgjhdq [cname=团购激活地区/] [tclass=cnode/] [val=a/] [listby=co1/] [cosource1=active/]}{title}{/c$v3_tgjhdq}</i>
+                     <i class="td3"><div id="_08_count_a1_{$v[aid]}" class="count08" url-params="{type: 'a', modid: 5, field: 'hdnum'}">&nbsp;</div></i>
+                     <i class="td4"><a target="_blank" href="{arcurl}">参团</a></i>
+                  </dd>
+                  {/c$archives}
+              </dl>
+          </div>
+      </div>
+      <div class="blank10"></div>
+      <!-- 热门楼盘 -->
+      <div class="rmlp clearfix">
+          <div class="tg-tit">
+              <h3>>>热门楼盘</h3>
+          </div>
+          <div class="content1">
+            <ul id="tlist1" class="tlist1 hover-list clearfix">
+            	{c$v3_tgrmlp [cname=热门楼盘/] [tclass=archives/] [chsource=2/] [chids=4/] [orderstr=a.clicks DESC/] [detail=1/] [caidson=1/] [casource=1/] [caids=2/]}
+                <li class="{if $v['sn_row']==1}hover{/if}"><i>{$v['sn_row']}</i><a class="img" href="{arcurl}"> <img title="{subject}" alt="{subject}" {c$thumb_75_56 [cname=thumb_75_56/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=75/] [maxheight=56/] [thumb=1/] }src="{url_s}" width="75" height="56"{/c$thumb_75_56}/></a><h4><a href="{arcurl}" target="_blank">{subject}</a></h4><p>电话:{c$tel13 [cname=tel13/] [tclass=text/] [tname=tel/] [trim=13/]}{/c$tel13}</p><p class="arial">均价：{if $v['dj']}{dj}元/m&sup2;{else}待定{/if}</p></li>
+                {/c$v3_tgrmlp}
+            </ul>
+          </div>
+      </div>
+  </div>
+  <div class="w860 l">
+        <!-- 活动说明 -->
+      <div class="tg-hdsm">
+          <div class="tg-tit">
+              <h3>>>活动说明</h3>
+          </div>
+          <div class="content2">
+              <div class="content-txt">{content}</div>
+          </div>
+      </div>
+      <div class="blank10"></div>
+<!-- 项目简介 -->
+          {c$archive [tclass=archive/] [chid=4/] [arid=3/] [detail=1/]}
+        <div class="tg-xmjj">
+          <div class="tg-tit">
+              <h3>>>项目简介</h3>
+          </div>
+          <div class="content2">
+              <div class="content-txt"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="width: 70px;">楼盘名称：</td>
+                            <td style="width: 200px;"><a class="fred" href="{arcurl}">{subject}</a></td>
+                            <td style="width: 64px;"></td>
+                            <td style="width: 329px;"> </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 70px;">开盘时间：</td>
+                            <td style="width: 200px;"> {kprq}</td>
+                            <td style="width: 70px;">交房日期：</td>
+                            <td style="width: 329px;"> {jfrq}</td>
+                        </tr>
+                        <tr>
+                            <td>许可证号：</td>
+                            <td>{xkzh}</td>
+                            <td>物业地址：</td>
+                            <td>{wydz} <span class="fgray"></span></td>
+                        </tr>
+                        <tr>
+                            <td>建筑面积：</td>
+                            <td>{zdmj}</td>
+                            <td>开 发 商：</td>
+                            <td>{c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$lpkfs}</td>
+                        </tr>
+                        <tr>
+                            <td>物业类别：</td>
+                            <td>{ccid12title}</td>
+                            <td>售楼地址：</td>
+                            <td>{if $hdadr}{$hdadr}{else}{sldz}{/if}</td>
+                        </tr>
+                        <tr>
+                            <td>可售套数：</td>
+                            <td class="fred">{$ksnum}</td>
+                            <td>咨询电话：</td>
+                            <td  class="fred">{if $hdtel}{$hdtel}{else}{tel}{/if}</td>
+                        </tr>
+                    </tbody>
+                </table></div>
+          </div>
+      </div>
+      <div class="blank10"></div>
+     <!--  项目详情 -->
+     <div class="tg-xmxq">
+          <div class="tg-tit">
+              <h3>>>项目详情</h3>
+              <em class="fz14 pl10">{subject}</em>
+          </div>
+          <div class="content2 p10 jqDuang" data-cell=".tab-tit2" data-obj=".tab-con2 .con-info" data-autoplay="0" data-speed="0">
+                 <ul class="tab-tit2 clearfix">
+                    <li>项目介绍</li>
+                    <li>交通配套</li>
+                    <li>楼层状况</li>
+                    <li>车位信息</li>
+                    <li class="last">相关信息</li>
+                </ul>
+                <div class="tab-con2">
+                    <div class="con-info">{content}</div>
+                    <div class="con-info" style="display:none">{c$jtxl [tclass=text/] [tname=jtxl/] [nl2br=1/] [noimgwh=0/]}{/c$jtxl}</div>
+                    <div class="con-info" style="display:none">{c$lcs [cname=lcs/] [tclass=field/] [tname=lcs/] [type=archive/] [fname=lcs/]}{/c$lcs}</div>
+                    <div class="con-info" style="display:none">{cksm}</div>
+                    <div class="con-info" style="display:none">
+                        <strong>建筑面积:</strong>{zdmj}平方米 <br>
+                        <strong>占地面积:</strong>{jzmj}<br>
+                        <strong>得 房 率:</strong>{dfl}<br>
+                        <strong>绿 化 率:</strong>{lhl}<br>
+                        <strong>容 积 率:</strong>{yjl}<br>
+                        <strong>许可证号:</strong>{xkzh}<br>
+                        <strong>物业公司:</strong>{wygs}<br>
+                        <strong>物业地址:</strong>{wydz}<br>
+                        <strong>物 业 费:</strong>{wyf}<br>
+                        <strong>开盘日期:</strong>{kprq}<br>
+                        <strong>交房日期:</strong>{jfrq}<br>
+                    </div>
+                </div>
+          </div>
+     </div>
+     <div class="blank10"></div>
+     <!-- 房价走势 -->
+     <div class="tg-fjzs">
+         <div class="tg-tit" >
+              <span class="r pr10">&gt;<a href="{arcurl2}" target="_blank" title="">&nbsp;更多历史价格</a></span>
+              <h3>>>房价走势</h3>
+              <em class="fz14 pl10">{subject}</em>
+         </div>
+         <div class="content2 p10">
+          <div id="zst" style="background:#fff;height:160px"></div>
+
+        </div>
+
+     </div>
+    {/c$archive}
+    </div>
+</div>
+		<!-- /页面主体 -->
+  <div class="blank10"></div>
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/jqduang.js?2015-7-30"></script>
+
+<script type="text/javascript" src="{$tplurl}js/highcharts.js"></script>
+{c$archive [tclass=archive/] [val=a/] [chid=4/] [arid=3/] [detail=1/]}
+<script type="text/javascript">
+    $(function () {
+        $('#zst').highcharts({
+            title: {text: ''},
+            xAxis: {
+                categories: [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$a[aid]' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=y-m-d/]}{/c$date}'{/c$outinfos}],
+                tickPosition: 'inside',
+                reversed:true,
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {fontSize: '12px', fontFamily: 'arial'}
+                },
+                lineWidth:1,
+                lineColor: '#cccccc'
+            },
+            colors: [
+              '#FF680B'
+            ],
+            yAxis: {
+                title: {text: ''},
+                min:0,
+                gridLineDashStyle: 'longdash',
+                lineWidth:1,
+                lineColor: '#cccccc'
+            },
+            tooltip: {valueSuffix: '元/m2'},
+            legend: {enabled:false },
+            series: [{name: '价格', data: [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$a[aid]' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}{$v[average]}{/c$outinfos}] }],
+            credits: {enabled: false }
+        });
+    });
+</script>
+{/c$archive}
+<script type="text/javascript" src="{$tplurl}js/setHdTime.js"></script>
+</body>
+</html>

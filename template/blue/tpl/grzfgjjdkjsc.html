@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>公积金贷款-{$hostname}</title>
+{tpl$headinner}
+</head>
+<body class="calc">
+{tpl$toolshead}
+<div id="main" class="main wrap">
+<!--内容区-->		
+		<div class="calc_main_wrap">
+			<div class="calc_main cf">
+				<div class="left fl">
+					<div class="top cf goufang">
+						<form action="" method="get" name="formt2">
+						<div class="sr fl">
+							<h2>个人公积金贷款计算器</h2>
+							<ul class="cf">
+								<li class="cf"><span class="fl">银行利率：</span>
+									<select class="fl gjj" data-listdata="#lltpl" name="lilv"></select>
+								</li>
+								<li class="cf fl"><span class="fl">您所需要的贷款额度：</span><input class="fl txt" name="need" type="text" value=""/><b class="fl">万元</b></li>
+								<li class="cf fl"><span class="fl">贷款申请年限：</span><input class="fl txt" type="text" name="mount10" value=""/><b class="fl">年</b></li>
+								<p class="zhuyi">（注意：不得超过30年。）</p>
+								<li class="cf fl"><span class="fl">请选择还款方式：</span>
+									<select class="fl" name="select">
+										<option value="1">等额本息</option>
+										<option value="2">等额本金</option>
+										<option value="3">自由还款</option>
+									</select>
+								</li>
+							</ul>
+							<p class="btn_p">
+								<input type="button" class="btn1" value="计算" onclick="gjjloan2(this.form)" />
+								<a id="reset" href="#" title="" target="_blank">请除数据，重新计算</a></p>
+						</div>
+						<div class="re fl" >
+							<h2>计算结果<span>(&nbsp;&nbsp;计算结果仅供参考&nbsp;&nbsp;)</span></h2>
+							<div class="re_in re_jj">
+								<span class="sj"></span>
+								<h3>等额本息</h3>
+								<p><b>月均还款额：</b><span id="ze22">0</span>元</p>
+								<p class="no_br"><b>本息合计：</b><span id="lx2">0</span>元<input type="hidden" name="yj2"></p>
+								<h3>等额还款</h3>
+								<p><b>首月还款：</b><span id="sfk2">0</span>元</p>
+								<p class="no_br"><b>本息合计：</b><span id="lx3">0</span>元</p>
+								<h3>自由还款:</h3>
+								<p><b>最低还款：</b><span id="sfksan">0</span>元</p>
+								<p><b>最后利息：</b><span id="lx4">0</span>元</p>
+								<p><b>最后本金：</b><span id="lx5">0</span>元</p>
+								<p class="no_br"><b>总偿利息：</b><span id="lx6">0</span>元</p>
+							</div>
+						</div>
+						</form>
+					</div>
+					<div class="bottom">
+						<h4>公积金</h4>
+						<p>公积金最大贷款年龄65岁，月收入低于800元，没有还款能力，不能贷款 月收入不变情况下：35岁以内为同一个贷款额，35-65岁随年龄增加贷款额和年限减少 年龄不变情况下：800-1700元随收入增加贷款额增加，收入1700元以上为同一贷款额</p>
+					</div>
+				</div>
+				{tpl$tpl_jsq_right}
+			</div>
+		</div>
+	<script language=JavaScript>
+	var ze22=document.getElementById("ze22");
+	var lx2=document.getElementById("lx2");
+	var sfk2=document.getElementById("sfk2");
+	var lx3=document.getElementById("lx3");
+	var sfksan=document.getElementById("sfksan");
+	var lx4=document.getElementById("lx4");
+	var lx5=document.getElementById("lx5");
+	var lx6=document.getElementById("lx6");
+	document.getElementById("reset").onclick=function() {
+		document.getElementsByName('formt2')[0].reset();
+		return false;
+	}
+	</script>
+	
+	<script type="text/javascript" src="{$tplurl}js/gjjloan2.js"></script>
+	<script type="text/javascript">
+		//计算器导航
+		(function() {
+			var str='';
+			$('#calc_nav').find('li').on({
+				'mouseenter':function() {
+					str=$(this).attr('class');
+					$(this).addClass(str+'_h');
+				},
+				'mouseleave':function() {
+					$(this).removeClass(str+'_h');
+				}
+			});
+		})();
+		$(".calc_dl dd:odd").css("background","#eee");
+	</script>	
+</div>
+{tpl$foot}
+</body>
+</html>

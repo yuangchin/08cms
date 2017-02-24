@@ -1,0 +1,208 @@
+<?php
+$ccid18 = cls_Parse::Get('_da.ccid18');
+?>
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-{c$cnode [cname=频道标题/] [tclass=cnode/] [listby=ca/] [casource=active/]}{title}{/c$cnode}{c$mapnan [cname=mapnan/] [tclass=nownav/] [coids=ccid36,ccid35,ccid38/]}-{title}{/c$mapnan}-{hostname}</title>
+{tpl$headinner}
+</head>
+<body>
+{tpl$ask_head}
+<script type="text/javascript" src="{$tplurl}js/answer.js?{$user_version}"></script>
+<!-- 问答头部 -->
+<div class="wrap">
+	<div class="w940 l mr10">
+
+    	<div class="djjwt">
+            <div class="content9">
+        	<dl>
+            	<dt class="tit">
+                    <span class="r">
+                        <a class="btn btn-xs form-bdrs" href="javascript:void(0)" onclick="return publicCollect('{$aid}');"><i class="ico08 mr5">&#xf005;</i>收藏</a>
+                        <a href='#pop-report' data-head="我要举报" class="btn btn-xs form-bdrs btn-jqModal"><i class="ico08 mr5">&#xf024;</i>举报</a>
+                    </span>{subject}{c$aq_title [cname=问题状态/] [tclass=catalogs/] [limits=1/] [listby=co35/] [cosource18=1/] [ccids18=$ccid18/] [cosource35=1/] [ccids35=$ccid35/] [ttl=1200/]}<span class="wdzt tit_{ccid35}">&nbsp;</span>{/c$aq_title}
+                    {if $currency>50}{c$gexs_title [cname=高额悬赏/] [tclass=catalogs/] [limits=1/] [listby=co36/] [cosource18=1/] [ccids18=$ccid18/] [ccids36=3037/] [ttl=1200/]}<span class="wdzt tit_{ccid36}">&nbsp;</span>{/c$gexs_title}{/if}
+                    {c$xzjh [cname=选择精华/] [tclass=catalogs/] [limits=1/] [listby=co38/] [cosource18=1/] [ccids18=$ccid18/] [cosource38=1/] [ccids38=$ccid38/] [ttl=1200/]}<span class="wdzt tit_{ccid38}">&nbsp;</span>{/c$xzjh}
+                </dt>
+                <dd><span class="price">{currency}</span>标签：<span><?=print_keywords($keywords,$cms_abs."index.php?caid=516&addno=1&searchword=")?></span></dd>
+                <dd class="aCtt">{c$ptoquestion [cname=问吧多行文本处理/] [tclass=text/] [tname=question/] [nl2br=1/]}{/c$ptoquestion}</dd>
+                {c$answerbuchong [cname=问题补充/] [tclass=commus/] [val=bc/] [limits=9999/] [cuid=37/] [checked=1/] [orderstr=cid asc/] [wherestr=toaid='$aid'/]}                    <dd class="bcCon">
+                    问题补充 {c$create_ymdhis [cname=create_ymdhis/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$create_ymdhis}
+                </dd>
+                <dd>{c$texttop [cname=处理多行文本/] [tclass=text/] [tname=content/] [nl2br=1/]}{/c$texttop}</dd>{/c$answerbuchong}
+                <dt>
+                    <span><i class="ico08 mr5 fco">&#xe756;</i>{mname}</span><span><i class="ico08 mr5 fco">&#xe014;</i>{c$create_ymdhis [cname=create_ymdhis/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$create_ymdhis}</span>
+                    <span class="a"><i class="ico08 mr5 fco">&#xe628;</i>回答：{stat0}</span>
+                    <span><i class="ico08 mr5 fco">&#xe000;</i>人气：<div id="_08_count_xxx_{aid}" class="count08" url-params="{type: 'a', modid: 106, field: 'clicks'}">&nbsp;</div></span>
+                </dt>
+                {if $memberid == $mid && !$answercid && !@$closed}
+
+                <dd class="lineSolidGray"></dd>
+                <dd class="askArea">
+                    <form name="supplementary" action="{$cms_abs}etools/answer.php?action=supplementary&aid={aid}&toaid={aid}" method="post" onsubmit="return chk_supplementary(this)">
+            		<ul>
+        				<li class="bcwtinput"><input type="checkbox" onclick="if($(this).prop('checked')){$('#showadded,#showbtn').css('display','block');}else{$('#showadded,#showbtn').css('display','none');}" id="chk1" class="chk" name="added"><label for="chk1">补充问题</label>
+                            <input type="checkbox" onclick="if($(this).prop('checked')){$('#showbtn').css('display','block');}else{$('#showbtn').css('display','none');}" name="addreward" class="chk" id="chk3"><label for="chk3">追加悬赏</label>
+                            <select name="rewardpoints">
+                                <option value="5">5分</option>
+                                <option value="10">10分</option>
+                                <option value="15">15分</option>
+                                <option value="20">20分</option>
+                                <option value="30">30分</option>
+                                <option value="50">50分</option>
+                                <option value="80">80分</option>
+                                <option value="100">100分</option>
+                            </select>
+                            您当前的积分是<b id="jifens" class="fcr"><? $curuser->detail_data();echo $curuser->info['currency1']?></b>分。
+                        </li>
+        				<li id="showadded" style="display:none;" class="ptb5">
+							<textarea name="fmdata[content]" class="textarea"></textarea>
+        				</li>
+            			<li id="showbtn" style="display:none;">
+                            <button class="btn btn-sm form-bdrs" type="submit" name="bsubmit"><i class="ico08 mr5">&#xf058;</i>提交</button>
+            			</li>
+            		</ul>
+                	</form>
+                </dd>
+                {/if}
+            </dl>
+        </div>
+
+        </div>
+         {if $answercid}
+        <!-- 最佳回答 start-->
+        <div class="blank10"></div>
+        <div class="zuijia plrb10">
+      	<div class="wtftit">最佳答案 </div>
+        	<div class="zjicon"></div>
+             <div class="datij p10 Fs14">
+				{c$zuijiadaan [cname=最佳答案/] [tclass=commus/] [limits=1/] [cuid=37/] [js=1/] [checked=1/] [wherestr=isanswer and aid=$aid/]}                <p>{c$texttop [cname=处理多行文本/] [tclass=text/] [tname=content/] [nl2br=1/]}{/c$texttop}</p>
+            <div>{c$gtid [cname=组--/] [tclass=member/] [val=e/] [id=$v[mid]/]}{if !empty($e['grouptype3'])}<a href="{mspacehome}">{mname}</a>{else}{mname}{/if}{/c$gtid} 回答于 {c$create_ymdhis [cname=create_ymdhis/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$create_ymdhis}</div>
+{c$zwandbc [cname=我的追问/] [tclass=commus/] [val=z/] [limits=999/] [cuid=37/] [checked=1/] [orderstr=cid asc/] [wherestr=aid='$aid' and tocid='$v[cid]'/]}                <span class="line_dotted margintt"></span>
+                <div class="color99">{if $z['mid']==$mid}我的追问{else}回答人的补充{/if} {c$create_ymdhis [cname=create_ymdhis/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$create_ymdhis}</div>
+                <div>{c$texttop [cname=处理多行文本/] [tclass=text/] [tname=content/] [nl2br=1/]}{/c$texttop}</div>{/c$zwandbc}
+    {/c$zuijiadaan}
+             </div>
+        </div>
+        <!-- 最佳回答 end-->
+      {/if}
+       <!-- 相关楼盘 -->
+        {c$v3_zxxglp [cname=资讯相关楼盘/] [tclass=archives/] [val=a/] [limits=1/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/] [ttl=3600/]}
+      <div class="blank10"></div>
+      <div class="zuijia plrb10">
+
+        <div class="wtftit"><i class="ico08 mr5">&#xe617;</i>楼盘信息 </div>
+             <div class="datij">
+                <div class="lpwrap">
+                    <a class="pic" target="_blank" href="{arcurl}"><img {c$thumb120_90 [cname=thumb120_90/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=120/] [maxheight=90/] [thumb=1/]}src="{url_s}" width="150" height="110"{/c$thumb120_90} alt="{subject}"/></a>
+                        <p><strong class="fz14"><a target="_blank" href="{arcurl}">{subject}</a></strong>  {if $a['dj']}<span class="pri"><span>{dj}</span>元/m&sup2;</span>{/if}</p>
+                        <p>地&nbsp;&nbsp;&nbsp;&nbsp;址：{address}</p>
+                        <p>销售电话：<span class="tel">{tel}</span></p>
+                        <p>开&nbsp;发&nbsp;商：{c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$lpkfs}</p>
+                        <div class="lpitems">
+                            <a target="_blank" href="{arcurl1}">楼盘动态</a> | <a target="_blank" href="{arcurl2}">价格</a> | <a target="_blank" href="{arcurl3}">图库</a> | <a target="_blank" href="{arcurl4}">户型</a> | <a target="_blank" href="{arcurl5}">点评</a> | <a target="_blank" href="{$cms_abs}index.php?caid=516&lpid={aid}">问答</a>{c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=107/] [mode=in/] [arid=1/]}{if $n['counts']} | <a target="_blank" href="{$a[arcurl11]}">特价房</a>{/if}{/c$num}{c$lpdfhd [cname=团购/] [tclass=archives/] [limits=1/] [chsource=2/] [chids=5/] [ttl=600/] [mode=in/] [arid=3/]} | <a target="_blank" href="{arcurl}">团购</a>{/c$lpdfhd}{if !empty($a['ltbk'])} | <a href="{ltbk}" target="_blank">论坛</a>{/if}
+                        </div>
+                    </div>
+             </div>
+        </div>
+        {/c$v3_zxxglp}
+        <!-- 相关楼盘 -->
+       {if $stat0 > 1 || (!$answercid && $stat0!=0) }
+        <!-- 其他回答 start-->
+        {c$qitadaan [cname=其它答案/] [tclass=commus/] [limits=9999/] [cuid=37/] [checked=1/] [orderstr=cid asc/] [wherestr=isanswer=0 and aid=$aid and tocid=0 and toaid=0/]}
+        <div class="blank10"></div>
+        <div class="borgr plrb10">
+
+       <div class="wtftit"> 其他回答</div>
+       [row]
+            <div class="datij p10">
+                {if $v['sn_row']>1}<div class="line_dotted margintt"></div>{/if}
+                <div class="dd"><span class="r">回答于 <span class="fcg">{c$create_ymdhis [cname=create_ymdhis/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$create_ymdhis}</span></span><span class="fw6">{c$gtid [cname=组--/] [tclass=member/] [val=e/] [id=$v[mid]/]}{if !empty($e['grouptype3'])}<a href="{mspacehome}">{mname}</a>{else}{mname}{/if}{/c$gtid}</span></div>
+                <div class="r_reply">{c$texttop [cname=处理多行文本/] [tclass=text/] [tname=content/] [nl2br=1/]}{/c$texttop}</div>
+                {c$zwandbc [cname=我的追问/] [tclass=commus/] [val=z/] [limits=999/] [cuid=37/] [checked=1/] [orderstr=cid asc/] [wherestr=aid='$aid' and tocid='$v[cid]'/]}
+                <div class="color99">{if $z['mid']==$mid}我的追问{else}回答人的补充{/if} {c$create_ymdhis [cname=create_ymdhis/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$create_ymdhis}</div>
+                <div>{c$texttop [cname=处理多行文本/] [tclass=text/] [tname=content/] [nl2br=1/]}{/c$texttop}</div>{/c$zwandbc}
+
+{if !$answercid && $mid==$memberid}
+                <div class="blank0"></div>
+                <button class="btn btn-sm form-bdrs" onclick="location.href='{$cms_abs}etools/answer.php?action=ok&aid={$aid}&cid={cid}'"><i class="ico08 mr5">&#xe60c;</i>最佳答案</button>
+                <div class="blank5"></div>
+{/if}
+{if !$answercid && ($memberid==$mid || $memberid==$v['mid'])}
+                <form name="zhuiwenform" class="jqValidate" data-tipmode="1" action="{$cms_abs}etools/answer.php?action=supplementary&aid={$aid}&tocid={cid}" method="post">
+                  <input type="checkbox" onclick="if($(this).prop('checked')){$('#showzw{cid}').css('display','block');}else{$('#showzw{cid}').css('display','none');}" id="selzw{cid}" class="chk" name="selzw"><label for="selzw{cid}">{if $memberid==$mid}继续追问{else}补充答案{/if}</label>
+                    <div id="showzw{cid}" class="askArea form-bdrs" style="display:none;">
+                      <textarea class="textarea" name="fmdata[content]" data-monitor="1" data-type="*10-250"></textarea>
+                      <div class="blank10"></div>
+                      <div class="btns">
+                        <input type="hidden" name="bsubmit" class="btn" value="提交">
+                        <button type="submit" class="btn btn-sm"><i class="ico08 mr5">&#xf058;</i>提交</button>
+                        <button type="button" class="btn btn-sm btn-orange" onclick="this.parentNode.parentNode.style.display='none';$('#selzw{cid}').prop('checked', false)"><i class="ico08 mr5">&#xf057;</i>取消</button>
+                      </div>
+                </div>
+                </form>
+                <div class="blank10"></div>
+{/if}
+            </div>
+
+       [/row]
+        </div>
+        {/c$qitadaan}
+       {/if}
+
+      {if !$answercid && !@$closed && $memberid!=$mid}
+
+        <div class="blank10"></div>
+        <div class="borgr plrb10">
+        <div class="wtftit"> 回答 </div>
+        <div class="datij p10">
+        	<form id="answer" class="jqValidate" data-tipmode=".tip-wd" method="post" name="answer" action="{$cms_abs}etools/answer.php?aid={aid}">
+                <ul class="form form-control form-bdrs w520">
+                    <li>
+                        <div class="textarea">
+                            <textarea name="fmdata[content]" style="height:120px" data-monitor="1" data-type="*10-250"></textarea>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="submit" class="btn r form-control-auto"><i class="ico08">&#xf14b;</i>回答</button>
+                        <span class="tip-wd r"></span>
+                        <div class="reg-wrap w240" data-regcode="archive106">
+                            <input type="text" placeholder="验证码" name="regcode" class="txt regcode ajaxurl" placeholder="" value=""/>
+                        </div>
+                        <input type="hidden" name="bsubmit" value="回答" >
+                    </li>
+                </ul>
+            </form>
+        </div>
+      </div>
+      {/if}
+    </div>
+    {tpl$ask_right}
+</div>
+<div id="pop-report" class="dn pop modal" style="width: 400px;">
+    <div class="phlayer plr10">
+        <form name="reportFm" class="jqValidate" data-tipmode=".tip-jb" id="reportFm" onsubmit="return fyCummus(this,'举报',1)">
+            <input type="hidden" name="cuid" value="38" />
+            <input type="hidden" name="aid" value="{aid}" />
+            <ul class="form form-control">
+                <li class="textarea">
+                    <textarea placeholder="问题说明" data-type="*10-250" name="fmdata[content]" ></textarea>
+                </li>
+                <li>
+                    <input type="submit" class="btn r form-control-auto" value="立即举报"/>
+                    <span class="tip-jb r"></span>
+                    <div class="reg-wrap w240" data-regcode="commu38">
+                        <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                    </div>
+                </li>
+            </ul>
+            <div class="blank1"></div>
+        </form>
+    </div>
+</div>
+<div class="blank10"></div>
+{tpl$foot}
+</body>
+</html>

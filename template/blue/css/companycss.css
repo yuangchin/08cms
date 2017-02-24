@@ -1,0 +1,73 @@
+﻿/*
+ *	modify : 2014-12-19
+ *  relative-files:brokerlist.html,comlist.html
+ *
+ */
+/* 地区经纪人列表 */
+
+#zjgs { width:1000px; height:auto; margin-top:8px }
+.zj_list{overflow: hidden;zoom: 1;height:40px;line-height:40px;background: url(../images/arrow1s.gif) 10px center no-repeat;padding-left: 25px;border-bottom: 1px dashed #ddd;font-size:12px;vertical-align: top;}
+.zj_list:hover{background: #fafafa url(../images/arrow1s.gif) 10px center no-repeat;}
+.zj_list_z1 { width:160px;color:#BD2928; float:left; }
+.zj_list_z1 a { font-weight:bold; text-decoration:none; font-weight:normal }
+.zj_list_z3, .zj_list_z5 { color:#333;  float:left; padding-left: 10px;}
+.zj_list_z3 { width:430px; }
+.zj_list_z5 { width:170px; }
+.zj_list_z4 { width:121px; height:19px; float:right;  padding:11px 0 10px 0; }
+
+.zjtitLeft, .zjtitMid { float:left }
+.zjtitLeft { background:url(../images/zjtit_lr.gif) no-repeat 0 -30px; width:5px; height:30px; }
+.zjtitR { background:url(../images/zjtit_lr.gif) no-repeat 0 0; float:right; width:5px; height:30px; }
+.zjtitMid { border:1px solid #DCE0E3; border-bottom:0; margin-top:2px; background:#FFF; width:98px; height:27px; text-align:center; color:#327ACF; font-size:14px; font-weight:bold; }
+.zjtit { width:1000px; height:30px; background:url(../images/zjtit_mid.gif) repeat-x; height:30px; }
+.zjconlsit li { border-bottom:1px dashed #CFCFCF; overflow:hidden; height:40px; line-height:40px; background: url(../images/arrow1s.gif) no-repeat 10px 16px;padding:0 20px;}
+.zjconlsit li:hover { background: #FAFAFA url(../images/arrow1s.gif) no-repeat 10px 16px;}
+
+#zjgs { min-height:250px; _height:250px; }
+.hotzt{ width:648px;}
+.hotzt em{ color:#999; }
+.hotzt li{ height:35px; line-height:35px;}
+.hotzt li i{ color:#999;}
+.hotzt ul{ width:580px;}
+
+/*** 经纪人列表
+--------------------- ***/
+.borg-rbl{border: 1px solid #ddd;border-top:none;}
+.Agent{width:940px;float: left;}
+.Top{width:240px;float: right;}
+.Listing_agent .divli{border-bottom: 1px solid #E5E5E5;padding: 25px 0 15px 0;}
+.Listing_agent .jjr-bk{background: url(../images/jjr-list.gif) repeat-y;}
+.Listing_agent .divli:hover{background:#FAFAFA;}
+
+.Contact{height:30px; line-height:30px;background:#fafafa;padding: 0 10px;}
+	.Contact span{margin: 0 5px;font-family: tahoma;}
+	.Contact a{color:#0072B4;}
+	.Contact img{vertical-align: text-bottom;_margin-top: 7px;}
+.jjr-title{height:33px; line-height:33px;background:url(../images/jjrcolbg.png) repeat-x 0 0;padding: 0 10px;font-size:14px;font-weight:bold;}
+.jjr-con span{color:#f00;}
+.jjr-con li{background: url(../images/disc.png) no-repeat 0 center;padding-left:8px;}
+ /* 列表内容 */
+.jjr .jjr-liebiao{border-bottom: 1px solid #E5E5E5;padding: 25px 0 15px 0;}
+.jjr .jjr-bk {}
+.jjr-liebiao .pic{float: left;width: 105px;position: relative;}
+.jjr-liebiao .pic img {border: 1px solid #ccc;padding: 2px;}
+.jjr-liebiao .info{float: left;width: 330px;padding: 0 20px;display: inline;border-right:1px #ccc solid;}
+.jjr-liebiao .info em{display: block;height: 26px;line-height: 26px;overflow: hidden; padding-right:10px; }
+.jjr-liebiao .info em img{padding: 0 5px; vertical-align:middle;}
+.jjr-liebiao .info3{ width:425px;font-size: 12px;margin-left:25px;}
+.jjr-liebiao .info3 p{padding-bottom: 4px;}
+.jjr-liebiao .info3 em{display: block;height: 20px;line-height: 20px;overflow: hidden;}
+.jjr-liebiao .info3 b{font-size: 14px;}
+.jjr-liebiao .ico1{background: url(../images/lpzd.gif) repeat 0 0; height: 38px; left: 0; position: absolute; top: 0; width: 39px; line-height: 100; overflow: hidden;}
+.jjr-liebiao .icon {border-radius: 2px;padding:1px 3px;color: #fff;margin-right: 3px;background-color: #F06D07;font-size: 12px;}
+.jjr-liebiao .icon1{background-color: #2D99D6;}
+
+
+.jcompany{background: url(../images/gslist.gif);}
+.tlist4 li{padding: 20px 0;float: left;width: 470px;font-size: 14px;display: inline;}
+.tlist4 img{float:left; border: 5px solid #E6E6E6; padding: 1px; margin-right:10px; margin-top: 30px;width: 160px;height: 70px;}
+.tlist4 p{line-height:28px; overflow:hidden; height: 28px;}
+.tlist4 a:hover{color: #CC0000;}
+.tlist4 p em{color:#6F6D6C;font-weight: bold;}
+.tlist4 p i em{font-weight:normal;}
+.tlist4 p i{padding-right: 10px;}

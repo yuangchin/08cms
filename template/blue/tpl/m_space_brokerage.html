@@ -1,0 +1,175 @@
+{c$member [tclass=member/] [chids=3/] [chsource=2/] [val=m/] [detail=1/]}
+<?php if(empty($m['mid']))cls_Parse::Message('请指定会员'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={$mcharset}">
+	<title>{cmane}-{$hostname}</title>
+	<meta name="keywords" content="公司,房屋出售,{$hostname}" />
+    {tpl$m_headinner}
+    <?
+    $otherdf=1;
+    $pagelimit=10;
+    ?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="{cmane}" class="innblank44 active" data-btn="back">
+        <footer>
+        <a href="#index_section" data-target="section" class="active">
+            <i class="icon-f015"></i>店铺首页</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=4"><i class="icon-e61a"></i>二手房</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=5"><i class="icon-e623"></i>出租</a>
+        <a href="#broker_section" data-target="section"><i class="icon-e757"></i>经纪人</a>
+        {if $m['lxdh']}
+        <a href="tel:{lxdh}"><i class="icon-e612"></i>打电话</a>
+        {/if}
+        </footer>
+        {tpl$m_header}
+        <article id="brokerage" class="active" >
+            <div>
+                <ul class="list inset mt10">
+                    <li class="divider">基本信息</li>
+                    <li class="detail">
+                        <img style="box-shadow: 0 0 1px #aaa" width="100%" alt="{cmane}" src="{c$image [tclass=image/] [tname=image/] [val=u/]}{url}{/c$image}"/>
+                        <strong class="p10">{cmane}</strong>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">联系人：</div>
+                            {xingming}
+                        </div>
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">地址：</div>
+                            <div class="col-1">{caddress}</div>
+                        </div>
+                        {if $m['qq']}
+                        <div class="grid item">
+                            <div class="col-0 f-asbestos">QQ：</div>
+                            {qq}
+                        </div>
+                        {/if}
+                        <div class="mt5">
+                            <span class="label">售</span>{vesfys}套 &nbsp; <span class="label nephritis">租</span>{vczfys}套
+                        </div>
+                        {if $m['lxdh']}
+                        <div class="grid item mt10">
+                            <a href="tel:{lxdh}"><span class="button block icon-e612">{lxdh}</span></a>
+                        </div>
+                        {/if}
+                    </li>
+                </ul>
+                {if $m['dpgg']}
+                <ul class="list detail inset mt10">
+                    <li class="divider">店铺公告</li>
+                    <li class="list-media-big">
+                        {c$dpgg [tclass=text/] [tname=dpgg/] [badword=1/]}{/c$dpgg}
+                    </li>
+                </ul>
+                {/if}
+                {c$dtlist [tclass=archives/] [chids=104/] [chsource=2/] [limits=5/] [space=1/]}
+                <ul class="list detail inset mt10">
+                    <li class="divider"><i class="icon icon-f054"></i><a href="#broker_dongtai" data-target="section">最新动态</a></li>
+                        [row]
+                    <li>
+                        <a href="{arcurl}">{subject} &nbsp;<span class="f-asbestos">[{c$time [cname=time/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$time}]</span></a>
+                    </li>
+                        [/row]
+                </ul>
+                {/c$dtlist}
+                <div class="p10"></div>
+            </div>
+        </article>
+    </section>
+    <section id="broker_section" title="经纪人列表" data-btn="back">
+        <footer>
+            <a href="#index_section" data-target="section"><i class="icon-f015"></i>店铺首页</a>
+            <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=4"><i class="icon-e61a"></i>二手房</a>
+            <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=5"><i class="icon-e623"></i>出租</a>
+            <a href="#broker_section" data-target="section" class="active"><i class="icon-e757"></i>经纪人</a>
+            <a href="tel:{lxdh}"><i class="icon-e612"></i>打电话</a>
+        </footer>
+        {tpl$m_header}
+        <article id="up_refresh_broker" class="active" >
+            <div>
+                <ul class="list list-media">
+                    <li class="divider">经纪人</li>
+                </ul>
+            </div>
+        </article>
+    </section>
+    <section id="broker_dongtai" title="公司动态" data-btn="back">
+        <footer>
+        <a href="#index_section" data-target="section">
+            <i class="icon-f015"></i>店铺首页</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=4"><i class="icon-e61a"></i>二手房</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=5"><i class="icon-e623"></i>出租</a>
+        <a href="#broker_section" data-target="section"><i class="icon-e757"></i>经纪人</a>
+        {if $m['lxdh']}
+        <a href="tel:{lxdh}"><i class="icon-e612"></i>打电话</a>
+        {/if}
+        </footer>
+        {tpl$m_header}
+        <article id="up_refresh_dongtai" class="active" >
+            <div>
+                <ul class="list detail">
+                    <li class="divider">最新动态</li>
+                </ul>
+            </div>
+        </article>
+    </section>
+</div>
+<script>
+
+//最新动态加载数据设置
+var opt = {
+    _param : {
+        'aj_model'     : 'a,104', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+        'aj_pagesize'  : {$pagelimit},
+        'aj_pagenum'   : 1 ,
+        'aj_whrfields' : 'mid,=,{mid}',
+    } ,
+    wrap      : '#up_refresh_dongtai' ,
+    dataWrap  : '#up_refresh_dongtai ul.list' ,
+    template : function() {
+        return '<li>'
+                + '<a href="'+this.arcurl+'">'+this.subject+'&nbsp;<span class="f-asbestos">['+getLocalTime(this.createdate)+']</span></a>'
+                + '</li>'
+    }
+}
+
+//经纪人加载数据设置
+var opt2 = {
+    'ajax' : 'pageload_users',
+    _param : {
+        'aj_model'     : 'm,2,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-启用模型表; 如:a,3,1)
+        'aj_pagesize'  : {$pagelimit},
+        'aj_pagenum'   : 1 ,
+        'aj_whrfields' : 'pid4,=,{mid};m.incheck4,=,1',
+        'aj_thumb'     : 'image'
+    },
+    wrap     : '#up_refresh_broker' ,
+    dataWrap : '#up_refresh_broker ul.list' ,
+    template : function() {
+        return  '<li class="pset">'
+                + '<a href="{$mobileurl}index.php?caid=13&mid='+this.mid+'">'
+                + '<img width="100" height="130" alt="'+this.xingming+'" src="'+(this.thumbOrg||CMS_ABS+'images/common/mlogo.gif')+'">'
+                + '<strong class="ctrimg">'+this.xingming+' &nbsp;'+(this.mctid2icon?'<img src="'+this.mctid2icon+'" alt="身份认证"/>':'')+'&nbsp;'+(this.mctid3icon?'<img src="'+this.mctid3icon+'" alt="执照认证"/>':'')+'</strong>'
+                + '<p class="ctrimg">服务等级：<img src="'+this.grouptype17icon+'" alt="服务等级"></p>'
+                + '<p>联系电话：'+(this.lxdh?this.lxdh:'-')+'</p>'
+                + '<p>服务区域：'+(this.szqytitle?this.szqytitle:'-')+'</p>'
+                +'<p>从业年限：'+(this.cynx?this.cynx:'-')+'</p>'
+                + '<p><span class="label">售</span>'+this.cntchid3+'套 &nbsp; <span class="label nephritis">租</span>'+this.cntchid2+'套</p>'
+                + '</a>'
+                + '</li>';
+    }
+}
+</script>
+{tpl$m_footer}
+<script>
+$('#broker_section').one('pageshow', function() {
+    pullRefresh(opt2,this.id);
+})
+</script>
+</body>
+</html>
+{/c$member}

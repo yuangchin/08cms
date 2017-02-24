@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>手机短信删除-{hostname}</title>
+{tpl$headinner}
+ <link rel="stylesheet" type="text/css" href="{$tplurl}css/help.css?{$user_version}"/>
+ <script type="text/javascript">var isOpenMob='arcxdel';</script>
+</head>
+<body>
+ <!--服务中心通用头部-->
+ {tpl$tpl_svhead}
+<div class="wrap">
+<div class="blank10"></div>
+<div class="bgFF p15 clearfix">
+<div class="loading" id="stloading"></div>
+<div class="noinfo" id="closephtip" style="display:none;">很抱歉！暂不能进行手机短信删除，有疑问请联系管理员或<a href="{c$twurl [tclass=freeurl/] [fid=102/]}{/c$twurl}" target="_blank">去提问</a></div>
+<div id="sendtophone" style="display:none;">
+<div class="blank10"></div>
+<div class="tabline clearfix"> 
+<div class="blank20"></div>
+<div class="tabinfo l">
+    <ul>
+    <li class="act">
+        <a href="{$cms_abs}info.php?fid=121">
+        <i class="ico08">&#xe74d;</i>
+        <b>手机短信删除</b>
+        <p>电话被冒用或忘记密码可以使用此功能</p>
+        </a>
+    </li>
+    <li>
+        <a href="{$cms_abs}adminm.php">
+            <i class="ico08">&#xe7cc;</i>
+            <b>登录账户修改/删除</b>
+            <p>通过会员中心修改/删除自己发布的信息</p>
+        </a>
+    </li>
+   </ul>
+</div>
+<div class="w750 l">
+    <div class="selectinfo">
+    <div id="Step01">
+    <p class="fz14">请输入您的手机号码，点击查询按钮查找信息</p>
+    <form method="post" class="jqValidate" onsubmit="return phonePost(this)">
+        <ul>
+        <li><span>*</span>手机号：<input name='fmdata[lxdh]' type="text" data-type="m" id="phonenum" value="" class="pl40"/></li>
+        <li>
+        <span>*</span>确认码：<input type="hidden" name="stamp" id="stampinfo" value=""/><input  type="text" class="code" size="20" id="msgcode" name="msgcode" value="" rule="text" data-offset="1" data-type="*0-8" rev="确认码" ajaxpara2="phonenum"/>
+        <button type="button" class="code" id="vcode">点击获取确认码</button>
+        </li>
+        <li><input type="submit" class="btn" value="点击查询"/></li>
+        </ul>
+    </form>
+    </div>
+    </div>
+<div class="loading" id="selloading" style="display:none;"></div>
+<div id="noselinfo"></div>
+<div id="showinfo" style=" display:none;">
+        <div class="blank10"></div>
+        <div class="sel-tit"><i class="ico08">&#xf03a;</i>&nbsp;通过“<span id="getnum"></span>”号码查询的结果，如下:</div>
+        <div class="sel-result">
+        <div class="blank15"></div>
+        <ul id="insertinfo">
+        </ul>
+        </div>
+        <div class="fgline"></div>
+         <input type="checkbox" class="allsel l" id="allsel" /><label for="all">全选</label><button class="delbnt" onclick="delphinfo()">确定删除</button>
+         <a href="{$cms_abs}info.php?fid=121" class="colorbl">[重新查询信息]</a>
+</div>
+</div>
+</div>
+
+    <div class="blank30"></div>
+<div class="helptips">
+        <i class="ico08">&#xe64b;</i>
+        <p>
+        1、请输入您的手机号码，以及通过手机短信发送到您的手机的确认码，并输入正确的确认码后，点击查询按钮，可查询到您发布出售、出租、求购、求租相关信息。若无信息说明你未用该号码来发布信息。<br/>
+        2、若您想删除信息，可勾选上相应信息，点击确定删除按钮，方可删除。<br/>
+        3、感谢您对本网站的关注与支持，若有疑问，可到<a href="{c$helpurl [tclass=cnode/] [listby=ca/] [casource=561/]}{indexurl}{/c$helpurl}" target="_blank">服务中心</a>或<a href="{c$wztwurl [tclass=freeurl/] [fid=102/]}{/c$wztwurl}" target="_blank">网站提问</a>
+        </p>
+    </div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{$tplurl}js/smsverif.js"></script>
+<script type="text/javascript" src="{$tplurl}js/infosel.js"></script>
+<script type="text/javascript" src="{$tplurl}js/jq.cookie.js"></script>
+<script type="text/javascript">
+var sAjaxUrl = '{$cms_abs}index.php?/ajax/sms_msend/mod/'+ isOpenMob +'/act/check/isjs/1/_rnd_/v01/datatype/json/domain/' + document.domain;
+
+$('#msgcode')
+.on('focus', function () {
+    // 聚焦时动态获取手机号
+    $(this).data('url', sAjaxUrl + '/tel/'+ $('#phonenum').val());
+})
+.attr('data-alias', 'code')
+// 用于设置该表单项需要ajax验证
+.attr('data-url', sAjaxUrl)
+// ajax请求完成后的设置
+.on('ajaxDone', function (e,res,fn) {
+    res ? fn('error', res) : fn('pass');
+})
+$('#vcode').on('click', function () {
+    $(this).closest('form').jqValidate(function (v) {
+        // 验证通过执行倒计时
+        v.validate('#phonenum') && sendverCode(60)
+    })
+})
+// _08cms_validator.init("ajax","msgcode",{ url: '{$cms_abs}<?php echo _08_Http_Request::uri2MVC("ajax=sms_msend&mod=arcxdel&act=check&isjs=1&_rnd_=v01&code=%1&tel=%2"); ?>' });
+</script>
+<!--公用底部-->
+{tpl$foot}
+</body>
+</html>

@@ -1,0 +1,110 @@
+<?php
+$actcaids = cls_catalogbase::Pccids($caid,0,1); //print_r($actcaids);
+$actcaidtop = isset($actcaids[0]) ? $actcaids[0] : 0; //echo $actcaidtop;
+foreach(array('fsale','ccid1','ccid6','ccid12','ccid35','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+  'ntype' => 'c', //cm,m,oc,om
+  'chid' => 106, 
+  'nodes' => array('0'), 
+  'orderbys' => array('aid','mj','clicks'),
+));
+extract(cls_usql::order_str(1,'refreshdate DESC'));
+$whrstr = cls_usql::where_str(array(
+  array('subject'), //array('biaoti',0,'like'),
+)); 
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}{c$cnode [tclass=cnode/] [listby=co35/] [cosource35=active/]}-{title}{/c$cnode}-{hostname}</title>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+</head>
+<body>
+{tpl$ask_head} 
+<!--主体-->
+<div class="wrap">
+  <div class="w940 l mr10"> 
+    <!-- 问答检索条件 -->
+    <div class="content7 clearfix">
+      <dl>
+        <dt>栏目：</dt>
+        <dd> <a class="{if $caid==516} subcol_nm{/if}" href="<? echo cls_uso::extra_url('caid','&caid=516'); ?>">全部</a>
+          <?php $_rows = cls_uso::caco_urls(0,516);?>
+          {loop $_rows $k $v}<a class="{if in_array($k,$actcaids)}subcol_nm{/if}" href="{$v['url']}">{$v['title']}</a>{/loop} </dd>
+      </dl>
+      {if $caid && $caid!=516} <span class="line_solid"></span>
+      <dl class="marginl50">
+        <dt>子栏目：</dt>
+        <dd>
+          <?php $_rows = cls_uso::caco_urls(0,$actcaids[1]);?>
+          {loop $_rows $k $v}<a class="{if in_array($k,$actcaids)}subcol_nm{/if}" href="{$v['url']}">{$v['title']}</a>{/loop} </dd>
+      </dl>
+      {/if}
+      <dl>
+        <dt>精选：</dt>
+        <dd> <a class="{if empty($ccid38)}subcol_nm{/if}" href="<? echo cls_uso::extra_url('ccid38'); ?>" >全部</a>
+          <?php $_rows = cls_uso::caco_urls(38);?>
+          {loop $_rows $k $v}<a class="{if !empty($ccid38) && $ccid38==$k}subcol_nm{/if}" href="{$v['url']}">{$v['title']}</a>{/loop} </dd>
+      </dl>
+      <dl>
+        <dt>悬赏：</dt>
+        <dd> <a class="{if empty($ccid36)}subcol_nm{/if}" href="<? echo cls_uso::extra_url('ccid36'); ?>" >全部</a>
+          <?php $_rows = cls_uso::caco_urls(36);?>
+          {loop $_rows $k $v}<a class="{if !empty($ccid36) && $ccid36==$k}subcol_nm{/if}" href="{$v['url']}">{$v['title']}</a>{/loop} </dd>
+      </dl>
+    </div>
+    <div class="blank10"></div>
+    {if !empty($lpid)}
+      {c$archive [tclass=archive/] [chid=4/] [id=$lpid/]}
+    <div class="msg-wd">
+      以下是关于"<a href="{arcurl}" target="_blank">{subject}</a>"的问答
+    </div>
+      {/c$archive}
+    {/if}
+    <div class="wjjTit">
+      <div class="wjNavLeft l"> </div>
+      <div class="wjNavMid l ">
+        <ul class="wjNav">
+          <li class="{if empty($ccid35)}act{/if}"><a  href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=516/]}{indexurl}{/c$cnode}">全部问题</a></li>
+          <?php $_rows = cls_uso::caco_urls(35);?>
+          {loop $_rows $k $v}
+          <li class="{if $ccid35==$k}act{/if}"><a  href="{$v['url']}">{$v['title']}</a></li>
+          {/loop}
+        </ul>
+      </div>
+      <div class="wjNavright r"> </div>
+    </div>
+    <div class="blank0"></div>
+    <div class="askList">
+      <dl>
+        {if empty($lpid)}
+        {c$ask_list [cname=问吧_列表/] [tclass=archives/] [chsource=2/] [limits=30/] [caidson=1/] [casource=2/] [chids=106/] [cosource38=2/][cosource36=2/][cosource35=2/] [detail=1/] [wherestr=$whrstr/] [ttl=1200/] [mp=1/]}
+        <dd> <span class="td1">{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}" target="_blank">[{title}]</a> {/c$cnode}<a href="{arcurl}" target="_blank">{c$subject52 [cname=subject52/] [tclass=text/] [tname=subject/] [dealhtml=clearhtml/] [trim=52/] [ellip=.../]}{/c$subject52}</a>{if $v['currency']}<i class="price">{currency}</i>{/if}</span> <span class="td2"><i class="fcr">{stat0}</i>回答</span> <span class="td3">{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}</span> </dd>
+        {/c$ask_list}
+        {else}
+        {c$archives [cname=问答列表/] [tclass=archives/][val=n/][limits=20/] [ttl=600/] [chsource=2/] [chids=106/] [mode=in/] [id=$lpid/] [arid=1/] [mp=1/] [detail=1/]}
+        <dd> <span class="td1">{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}" target="_blank">[{title}]</a> {/c$cnode}<a href="{arcurl}" target="_blank">{c$subject52 [cname=subject52/] [tclass=text/] [tname=subject/] [dealhtml=clearhtml/] [trim=52/] [ellip=.../]}{/c$subject52}</a>{if $v['currency']}<i class="price">{currency}</i>{/if}</span> <span class="td2"><i class="fcr">{stat0}</i>回答</span> <span class="td3">{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}</span> </dd>
+        {/c$archives}
+        {/if}
+      </dl>
+      {if $mpacount>0} 
+      <!--分页栏 start-->
+      <div class="blank10"></div>
+      {$mpnav} 
+      <!--分页栏 end-->
+      <div class="blank10"></div>
+      {else}
+      <div class="pList actsearch p10 Fs14">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+      {/if} </div>
+  </div>
+  {tpl$ask_right} </div>
+<div class="blank10"></div>
+{tpl$foot}
+</body>
+</html>

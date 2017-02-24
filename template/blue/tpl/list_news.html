@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+{c$cnode [cname=家装title/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<title>{listtitle}-{$hostname}</title> 
+<meta name="keywords" content="{listkeywords}" />
+<meta name="description" content="{listabstract}" />
+{/c$cnode}
+{tpl$jz_headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/common_front.css?{$user_version}">
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/zsjs.css?{$user_version}">
+</head>
+<body>
+<!--header begin-->
+{tpl$jz_head} 
+<!--header end-->
+<!--内容开始-->
+<div class="area">
+	<!--左侧栏开始-->
+	<div class="title7"> <div class="title7_L">公司动态</div> </div>
+	<div class="con3 ieHack">
+		<div class="blank10"></div>
+	<!--公司动态列表开始-->
+		{c$jz_gsdtlist [cname=公司动态列表/] [tclass=archives/] [limits=20/] [chsource=2/] [chids=104/] [forceindex=a.PRIMARY/] [ttl=900/] [detail=1/] [caidson=1/] [casource=1/] [caids=512/] [mp=1/]}<div class="list-sjs">
+		<a href="{marcurl}" target="_blank">{subject}</a> <span class="fcg">{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date} </span>
+		</div>{/c$jz_gsdtlist}
+		<!--公司动态列表开始-->
+
+		<!-- 分页 -->
+		<div class="ptb10">
+		{$mpnav}
+		</div>
+		<div class="blank0"></div>
+	</div>
+</div>
+<!--内容结束-->
+{tpl$jz_foot}
+</body>
+</html>

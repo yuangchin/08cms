@@ -1,0 +1,76 @@
+/*** jiazhuang
+--------------------- ***/ 
+#jiazhuang .area {
+    clear: both; overflow: hidden; width: 1000px; margin: 0 auto 10px; text-align: left;
+}
+#jiazhuang .jzmlogo {
+    width: 137px;
+    padding: 0 4px;
+}
+#jiazhuang .slogo {
+    text-align: center;
+}
+#jiazhuang .jznav {
+    line-height: 36px;
+
+    width: 1000px; height: 39px; margin: 0 auto; background: url(../images/v4_jsdhbg.gif) repeat-x;
+}
+#jiazhuang .mtj10 {
+    overflow: hidden; *zoom: 1;
+}
+#jiazhuang .jznavlist a {
+    font-size: 14px; font-weight: bold;float: left;
+
+    width: 94px; text-align: center; white-space: nowrap;color: #fff;
+}
+#jiazhuang .jznavlist em {
+    float: left;overflow: hidden; width: 2px; height: 36px;
+
+    background: url(../images/v4_dhline.gif) no-repeat;
+}
+#jiazhuang .jznavlist a:visited {
+    color: #fff;
+}
+#jiazhuang .jznavlist a:hover,
+.jznavlist a.act {
+    text-decoration: none; color: #fff;
+    background: url(../images/v4_jz_actbg.gif) no-repeat;
+}
+/*red*/
+body #footer {
+    border-color: #c70101;
+}
+body .p_bar a:hover,
+body .p_bar .p_curpage {
+    color: #fff;border-color: #c00;
+    background: #c00;
+}  
+body .feilei1 a {
+    color: #c00;
+}
+body .fixed-div li .ico-4 {
+    background-position: 0 -264px;
+}
+body .fixed-div .hover .ico-4 {
+    background-position: -54px -264px;
+}
+body .comment .wyxzTit1 em {
+    background: #c52d2d;
+}
+body .comment-form .btn {
+    font-weight: bold;line-height: 27px;overflow: hidden;
+
+    height: 25px; margin: 0; cursor: pointer; color: #fff; border: none 0;background: #c52d2d;
+}
+body .comment-form .btn:hover {
+    background: #f63535;
+}
+body .bT3LBR {
+    border-top-color: #c70101;
+}
+#footer .wrap {
+    border-top-color: #9f1d18;
+}
+.fixed-div li .ico {
+    background: #9f1d18;
+}

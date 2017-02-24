@@ -1,0 +1,778 @@
+
+/**
+ * @name World
+ * @author ahuing
+ * @link 08cms.com
+ * @date 2015-11-12 09:06:25
+ */
+
+@charset 'UTF-8';
+/*导航样式*/
+.subnav {
+    font-family: Microsoft yahei;
+    line-height: 42px;
+
+    height: 42px;
+
+    border-radius: 5px;
+    background-color: #2e9ee8;
+}
+
+.subnav a {
+    font-size: 18px;
+    line-height: 42px;
+
+    display: inline-block;
+
+    width: 128px;
+    height: 42px;
+    padding: 0 24px;
+
+    transition: color ,background .3s;
+    text-align: center;
+    text-decoration: none;
+
+    color: #fff;
+}
+
+.subnav a:nth-child(1) {
+    border-radius: 5px 0 0 5px;
+}
+
+.subnav a.act,
+.subnav a.act:hover {
+    background-color: #448bc8;
+}
+
+.subnav a:hover {
+    text-decoration: none;
+
+    color: #fff;
+    background-color: #448bc8;
+}
+
+/*搜房源*/
+.fangy {
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+}
+
+.fangy h2 {
+    font-family: Microsoft yahei;
+    font-size: 24px;
+}
+
+.fangy h2 em {
+    font-size: 16px;
+
+    color: #f60;
+}
+
+.choose_list {
+    float: left;
+
+    width: 300px;
+    margin-right: 20px;
+}
+
+select.sortSelect {
+    line-height: 25px;
+
+    width: 200px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+/*分销楼盘列表*/
+.fxbk {
+    margin-bottom: 15px;
+    padding: 10px;
+
+    border: 1px solid #ddd;
+}
+
+.fxbk h2 {
+    font-family: Microsoft yahei;
+    font-size: 26px;
+}
+
+.fxbk h2 em {
+    font-size: 18px;
+
+    color: #f60;
+}
+
+.fxbk h2 a {
+    text-decoration: none;
+}
+
+.fxbk .house {
+    padding-top: 10px;
+}
+
+.fxbk .house a {
+    float: left;
+
+    width: 570px;
+}
+
+.fxbk .house .houses_info {
+    font-family: Microsoft yahei;
+    font-size: 14px;
+
+    float: right;
+
+    width: 400px;
+
+    background-color: #f4f4f4;
+}
+
+.houses_info .w330 {
+    width: 330px;
+}
+
+.houses_info h3 {
+    font-size: 24px;
+
+    color: #f60;
+}
+
+.houses_info h4 {
+    font-size: 16px;
+
+    color: #f60;
+}
+
+.houses_info h4 em {
+    font-size: 14px;
+
+    text-decoration: line-through;
+
+    color: #999;
+}
+
+.houses_info p {
+    line-height: 28px;
+
+    float: left;
+    overflow: hidden;
+
+    width: 180px;
+}
+
+.houses_info i {
+    font-family: arial;
+}
+
+.houses_where {
+    float: left;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px dotted #333;
+}
+
+.houses_where a,
+.tuijian a {
+    text-align: center;
+    text-decoration: none;
+
+    color: #fff;
+}
+
+.houses_where a:hover,
+.tuijian a:hover {
+    text-decoration: none;
+
+    color: #fff;
+}
+
+.houses_where a.J_Submit,
+.tuijian a.J_Submit {
+    background: url(../images/fxlb.gif) no-repeat;
+}
+
+.houses_where a.J_Submit {
+    font-size: 20px;
+    line-height: 48px;
+
+    overflow: hidden;
+
+    width: 134px;
+    height: 48px;
+
+    cursor: pointer;
+
+    color: #fff;
+    border: 0 none;
+    background-position: 0 0;
+}
+
+.tuijian {
+    float: left;
+
+    margin-top: 12px;
+
+    color: #333;
+}
+
+.tuijian em,
+.houses_time em {
+    font-size: 18px;
+
+    color: #c00;
+}
+
+.tuijian a.J_Submit {
+    font-size: 16px;
+    line-height: 32px;
+
+    overflow: hidden;
+
+    width: 134px;
+    height: 32px;
+    margin-right: 10px;
+
+    cursor: pointer;
+
+    border: 0 none;
+    background-position: 0 -76px;
+}
+
+.houses_time {
+    clear: both;
+
+    padding: 10px 15px;
+
+    background-color: #dfdfdf;
+}
+
+.houses_time .pri-txt span {
+    font-size: 18px;
+
+    color: #c00;
+}
+
+/*分销推荐楼盘内容*/
+.exp_house {
+    border: 1px solid #f57802;
+}
+
+.exp_house .title h2 {
+    font-family: Microsoft yahei;
+    font-size: 24px;
+
+    float: left;
+}
+
+.exp_house .title h2 em {
+    font-size: 14px;
+
+    color: #666;
+}
+
+.exp_house .title a {
+    float: right;
+}
+
+.exp_house .hs_sale {
+    font-family: Microsoft yahei;
+    line-height: 32px;
+
+    overflow: hidden;
+
+    height: 32px;
+
+    background-color: #f4f4f4;
+}
+
+.exp_house .hs_sale i {
+    font-size: 14px;
+    line-height: 24px;
+
+    display: block;
+    display: inline;
+    float: left;
+    overflow: hidden;
+
+    width: 90px;
+    height: 24px;
+    margin: 3px 0 0 10px;
+
+    text-align: center;
+
+    color: #fff;
+    border-radius: 15px;
+    background-color: #f55042;
+}
+
+.exp_house .hs_sale font {
+    font-size: 16px;
+
+    padding-left: 5px;
+
+    color: #e55414;
+}
+
+.exp_house .hsimg {
+    position: relative;
+}
+
+.hsimg .hs_info {
+    font-size: 14px;
+    line-height: 46px;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 46px;
+
+    color: #fff;
+    background: rgba(0, 0, 0, .5);
+
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');
+}
+
+.hsimg .hs_info li {
+    float: left;
+
+    padding: 0 10px;
+}
+
+.hsimg .hs_info em {
+    padding: 0 5px;
+
+    color: #fc6;
+}
+
+.hsimg .hs_info a {
+    font-weight: bold;
+
+    display: inline-block;
+    float: left;
+
+    width: 100px;
+    height: 46px;
+    margin-left: 2px;
+
+    text-align: center;
+
+    color: #fff;
+}
+
+.hsimg .hs_info a:hover {
+    text-decoration: none;
+
+    opacity: .9;
+}
+
+.hsimg .hs_info .is-end {
+    display: none;
+}
+
+.hsimg a.i1 {
+    background-color: #ff8100;
+}
+
+.hsimg a.i2 {
+    background-color: #2b97e1;
+}
+
+/*分销推荐楼盘左边内容*/
+/*联系方式*/
+.w770 {
+    width: 770px;
+}
+
+.p20 {
+    padding: 20px;
+}
+
+.fxleft_left {
+    border: 1px solid #e8e8e8;
+}
+
+.fxleft_left h2 {
+    font-family: Microsoft yahei;
+    font-size: 14px;
+
+    padding: 10px 20px;
+}
+
+.fxleft_left .adress {
+    font-family: Microsoft yahei;
+
+    float: left;
+
+    width: 290px;
+
+    color: #000;
+}
+
+.fxleft_left .adress p {
+    line-height: 28px;
+
+    overflow: hidden;
+
+    height: 28px;
+}
+
+.fxleft_left .adress p span {
+    font-weight: bold;
+}
+
+.fxleft_left .adress p.call {
+    line-height: 42px;
+
+    overflow: hidden;
+
+    height: 42px;
+    padding-left: 30px;
+
+    background-color: #f8f8f8;
+}
+
+.fxleft_left .adress p.call em {
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: bold;
+
+    padding-left: 30px;
+
+    color: #e55414;
+    background: url(../images/call.gif) no-repeat;
+}
+
+.fxleft_left .map {
+    width: 422px;
+    height: 262px;
+}
+
+/*户型*/
+.huxing ul li {
+    display: inline;
+    float: left;
+
+    width: 167px;
+    margin: 5px 0 10px 50px;
+
+    text-align: center;
+}
+
+.huxing ul li img {
+    width: 162px;
+    height: 162px;
+    padding: 1px;
+
+    border: 1px solid #e3e3e3;
+}
+
+.huxing ul li p {
+    line-height: 26px;
+
+    overflow: hidden;
+
+    height: 26px;
+}
+
+/*楼盘相册*/
+.photo ul li {
+    display: inline;
+    float: left;
+
+    width: 230px;
+    margin: 5px 0 10px 55px;
+
+    text-align: center;
+}
+
+.photo ul li img {
+    width: 226px;
+    height: 168px;
+    padding: 1px;
+
+    border: 1px solid #e3e3e3;
+}
+
+.photo ul li p {
+    line-height: 26px;
+
+    overflow: hidden;
+
+    height: 26px;
+}
+
+/* 选项卡 */
+.tab-tit {
+    font-size: 14px;
+
+    height: 41px;
+
+    background: url(../images/hd_titbg.gif) repeat-x;
+}
+
+.tab-tit span {
+    line-height: 40px;
+
+    float: left;
+
+    padding: 0 20px;
+
+    cursor: pointer;
+    text-align: center;
+
+    border-right: 1px #efefef solid;
+}
+
+.tab-tit .act {
+    font-weight: bold;
+
+    position: relative;
+    top: -1px;
+
+    height: 41px;
+
+    color: #046bd4;
+    border-top: 1px solid #046bd4;
+    border-bottom: none;
+    background-color: #fff;
+}
+
+.tab-con {
+    font-size: 14px;
+
+    overflow: hidden;
+
+    margin: 10px;
+}
+
+.tab-con ul li {
+    line-height: 24px;
+}
+
+/*分销推荐楼盘右边内容*/
+/*同地区楼盘*/
+.w210 {
+    width: 210px;
+}
+
+.area h2 {
+    font-family: Microsoft yahei;
+    font-size: 14px;
+    line-height: 32px;
+
+    height: 32px;
+    padding-left: 12px;
+
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+}
+
+.area .content {
+    border: 1px solid #e8e8e8;
+}
+
+.area .content li {
+    overflow: hidden;
+
+    width: 190px;
+    margin: 12px auto;
+
+    text-align: center;
+
+    *zoom: 1;
+}
+
+.area .content li img {
+    width: 186px;
+    height: 118px;
+    padding: 1px;
+
+    border: 1px solid #e3e3e3;
+}
+
+.area .content li p {
+    font-size: 12px;
+    line-height: 26px;
+
+    overflow: hidden;
+
+    height: 26px;
+}
+
+.area .content li span {
+    white-space: nowrap;
+
+    color: #e55414;
+}
+
+/*表单内容*/
+.re_ele,
+.tjbutton {
+    background: url(../images/tuijian.gif) no-repeat;
+}
+
+.form_frame {
+    padding-top: 30px;
+
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #f8f8f8;
+}
+
+.form_frame .tijiao {
+    font-size: 16px;
+}
+
+.form_frame .tijiao .inptext {
+    line-height: 42px;
+
+    height: 42px;
+    padding: 5px 0;
+}
+
+.form_frame .label {
+    font-weight: bold;
+
+    display: inline;
+    float: left;
+    overflow: hidden;
+
+    width: 150px;
+    padding-right: 10px;
+
+    text-align: right;
+}
+
+.form_frame .inputtext {
+    font-family: simsun;
+    font-size: 12px;
+    line-height: 30px;
+
+    float: left;
+
+    width: 278px;
+    height: 30px;
+    margin-right: 5px;
+    padding-left: 5px;
+
+    color: #888;
+    border: 1px solid #ebebeb;
+}
+
+.form_frame select {
+    width: 180px;
+    height: 31px;
+    padding: 2px;
+
+    border: 1px solid #ddd;
+}
+
+.form_frame select#setarea {
+    width: 100px;
+}
+
+.form_frame .re_ele {
+    line-height: 32px;
+
+    width: 70px;
+    height: 32px;
+
+    cursor: pointer;
+    vertical-align: middle;
+
+    color: #fff;
+    border: 0;
+    background-position: -1px -2px;
+}
+
+.form_frame .radi {
+    margin: 10px 0;
+
+    vertical-align: middle;
+}
+
+.form_frame .yzm {
+    float: left;
+
+    width: 286px;
+}
+.form_frame .yzm .txt-wrap {
+    overflow: hidden;
+
+    padding-right: 8px;
+}
+.form_frame .yzm .inputtext1 {
+    font-family: simsun;
+    font-size: 12px;
+    line-height: 30px;
+
+    width: 100%;
+    height: 30px;
+
+    color: #888;
+    border: 1px solid #ebebeb;
+}
+.form_frame .yzm .lbl {
+    float: right;
+}
+.form_frame .yzm .lbl img {
+    height: 32px;
+}
+
+.form_frame em {
+    font-size: 12px;
+
+    color: #999;
+}
+
+.form_frame .tjbutton {
+    font-size: 16px;
+    line-height: 48px;
+
+    width: 134px;
+    height: 48px;
+
+    cursor: pointer;
+
+    color: #fff;
+    border: none;
+    background-position: 0 -46px;
+}
+
+.form_frame .ser_ad {
+    font-size: 12px;
+
+    background: url(../images/ser_ad.gif) no-repeat;
+}
+
+.ser_ad dl {
+    margin: 0 30px 12px;
+}
+
+.ser_ad dt {
+    font-family: Microsoft yahei;
+    font-size: 24px;
+
+    overflow: hidden;
+
+    margin-bottom: 5px;
+
+    color: #f60;
+}
+
+.ser_ad dd {
+    line-height: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 15px;
+
+    color: #999;
+}
+
+/*# sourceMappingURL=lpfx.css.map */

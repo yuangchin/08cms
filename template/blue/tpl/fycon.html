@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [cname=激活栏目标题1/] [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link type="text/css" rel="stylesheet" href="{$tplurl}css/fy_house.css?{$user_version}" />
+<?php $navNoFixed = 1; ?>
+</head>
+<body>
+{tpl$fy_head}
+<div class="wrap">
+    <!--二手出租房公用搜索-->
+    <div class="bread">
+        <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a>{c$nav [tclass=nownav/] [coids=,caid,ccid1,ccid2,ccid6/]}<i class="pipe">/</i>{if $v['indexurl'] != '#'}<a href="{indexurl}">{title}</a>{else}{title}{/if}{/c$nav}<i class="pipe">/</i>{subject}
+    </div>
+    <div class="info-main-hd bd-gray mb20 p10 bdrs por">
+        <h1>【{lpmc}】{subject} </h1>
+        <div class=" olorg clearfix">
+            <span class="fcg">发布时间：</span>{c$create_ymdhis [cname=create_ymdhis/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$create_ymdhis}(<?=u_time_format($refreshdate)?> 更新)&nbsp;&nbsp;
+            <span class="fcg">房源编号：</span><i class="fco fwb">{aid}</i>&nbsp;&nbsp;<span class="fcg">点击：</span><span class="fco fwb"><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: {$fy_chid}, field: 'clicks'}">&nbsp;</div></span>次
+            <span class="share r">
+            <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+            <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </span>
+            <div class="blank5"></div>
+        </div>
+        <div id="btns" class="fy-sc">
+            <a class="btn-jqModal" data-head="举报虚假" data-css='{"width": 450}' href='#pop-report' data-animate="flipInY" title="举报虚假"><i class="ico08">&#xf024;</i>举报虚假</a><a onclick="return publicCollect('{$aid}');"><i class="ico08">&#xf005;</i>收藏房源</a><a class="btn-jqModal" data-head="购买意向" data-css='{"width": 450}' href='#pop-buy' data-animate="flipInY" title="购买意向"><i class="ico08">&#xf07a;</i>购买意向</a><a href="#pop-phone" id="sendtophone" class="btn-phone btn-jqModal" data-css='{"width": "400"}' data-head="发送手机" style="display: none;"><i class="ico08">&#xe74d;</i>发送手机</a>
+        </div>
+    </div>
+    <div class="detail-main">
+            <!--左侧图片轮换-->
+            {c$archives [tclass=archives/] [chids=121/] [chsource=2/] [limits=50/][mode=in/] [arid=38/]}
+            <div id="preview" class="preview mb15">
+                <div class="p20">
+                    <div id="big-img" style="height:500px;">
+                        <div id="biglist" class="biglist"></div>
+                    </div>
+                    <div class="blank20"></div>
+                    <div id="sml-img" class="sml-img">
+                        <div class="center">
+                            <ul id="scrollwap" class="clearfix">
+                                [row]
+                                {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=80/] [maxheight=60/] [thumb=2/] [padding=1/]}
+                                <li class="{if $v['sn_row']==1}on{/if}" data-url='{url}'><img src='{url_s}' width='80' height='60'/></li>
+                                {/c$image}
+                                [/row]
+                            </ul>
+                        </div>
+                        <span class="es-prev"><</span>
+                        <span class="es-next">></span>
+                    </div>
+                    <div class="blank0"></div>
+                </div>
+            </div>
+            {/c$archives}
+
+            <!-- /左侧图片轮换 -->
+        <div id="tab-tit" class="tab-tit jqScrollspy jqFixed" data-offset="0">
+            <div class="tab-info r"><i class="ico08 fz18">&#xe744;</i><i class="arial">{$lxdh}</i> {$xingming}</div>
+            <ul>
+                <li><a class="act" rel="nofollow" href="#tab-tit">房源概况</a></li>
+                <li><a rel="nofollow" href="#description">房源描述</a></li>
+                {if $pid3}
+                <li> <a rel="nofollow" href="#xiaoqu">小区信息</a> </li>
+                {/if}
+                {if $pid3 || $dt}
+                <li> <a rel="nofollow" href="#map">地图</a> </li>
+                {/if}
+            </ul>
+        </div>
+        <!--房源信息-->
+        <div class="house-info">
+
+            <ul class="house-info-bd clearfix">
+
+                {if @$zj}
+                    {if $fy_caid==4}
+                <li>
+                    <span class="fcg">月租：</span><span class="fco arial"><span data-zj="1" class="fz22">{zj}</span>{$unit}</span>
+                </li>
+                    {else}
+                <li>
+                    <span class="fcg">总价：</span><span class="fco arial"><span data-zj="1" class="fz22">{zj}</span>{$unit}</span>
+                </li>
+                <li>
+                    <span class="fcg">单价：</span><span class="fco arial">{dj}元/m&sup2;</span>
+                </li>
+                <li class="nowrap">
+                    <span class="fcg">参考：</span><span class="fco arial">首付：<b data-sf="1"></b>万 月供：<b data-yg="1"></b>元/月(20年)</span> <a href="{c$freeurl [cname=二手房交易/] [tclass=freeurl/] [fid=5/]}{/c$freeurl}" target="_blank" class="fco fz12"><i class="ico08">&#xf1ec;</i> 贷款计算器</a>
+                </li>
+                    {/if}
+                {else}
+                <li>
+                    <span class="fcg">价格：</span><span class="fco">面议</span>
+                </li>
+                {/if}
+            </ul>
+            <div class="blank0 bdt-dashed-gray"></div>
+            <ul class="house-info-bd clearfix">
+                <li>
+                    <span class="fcg">户型：</span><i>{c$shi}{c$ting}{c$wei}</i>
+                </li>
+                <li>
+                    <span class="fcg">面积：</span><i>{mj}平米</i>
+                </li>
+                <li>
+                   <span class="fcg">装修：</span><i>{if !empty($zxcd)}{c$zxcd}{else}-{/if}</i>
+                </li>
+                <li>
+                   <span class="fcg">类别：</span><i>{if $fy_caid==4}{ccid44title}{else}{ccid43title}{/if}</i>
+                </li>
+                <li>
+                   <span class="fcg">楼层：</span><i>第{szlc}层/总{zlc}层</i>
+                </li>
+                <li>
+                   <span class="fcg">朝向：</span><i>{if $cx}{c$chaoxiang}{else}-{/if}</i>
+                </li>
+
+                <li><span class="fcg">年代：</span><i>{if $fl}{c$flfl}{else}不详{/if}</i>
+                </li>
+                {if $fy_caid==4}
+                <li class="nowrap">
+                    <span class="fcg">配套：</span><i>{c$fwpt}</i>
+                </li>
+                {/if}
+                <li class="nowrap">
+                    <span class="fcg">地址：</span><i>{address}</i>
+                </li>
+            </ul>
+        </div><!--/房源信息-->
+        <div id="description" class="tab-tit">
+            <ul>
+                <li><a class="act">房源描述</a></li>
+            </ul>
+        </div>
+        <div class="house-info">
+            <div class="ptb20 mlr5">{c$content [tclass=text/] [tname=content/] [dealhtml=clearhtml/] [dealhtml_tags=img/] [noimgwh=0/]}{/c$content}</div>
+        </div><!-- /房源描述 -->
+        <!-- 小区信息 -->
+        {c$archive [cname=所属楼盘7/] [tclass=archive/] [chid=4/] [arid=3/] [detail=1/]}
+        <div id="xiaoqu" class="tab-tit">
+            <a class="r mr10 fcg" target="_blank" href="{arcurl7}">查看详情>></a>
+            <ul>
+                <li><a class="act">小区信息</a></li>
+            </ul>
+        </div>
+        <ul class="house-info-bd house-info-bd2 clearfix">
+            <li class="nowrap">
+                <span class="fcg">小区名称：</span><i><a href="{arcurl7}" target="_blank">{subject}</a></i>
+                <a class="fco" target="_blank" href="{arcurl8}&fang=mai">二手房<b>{lpesfsl}</b>套</a>
+                <a class="fco" target="_blank" href="{arcurl8}&fang=zhu">出租房<b>{lpczsl}</b>套</a>
+            </li>
+            <li>
+                <span class="fcg">区域：</span><i>{ccid1title}</i>
+            </li>
+            <li>
+                <span class="fcg">物业公司：</span><i>{wygs}</i>
+            </li>
+            <li>
+                <span class="fcg">物业类型：</span><i>{ccid12title}</i>
+            </li>
+            <li>
+                <span class="fcg">物业费用：</span><i>{wyf}</i>
+            </li>
+            <li>
+                <span class="fcg">总建面积：</span><i>{zdmj}</i>
+            </li>
+            <li>
+                <span class="fcg">小区户数：</span><i>{xqhs}</i>
+            </li>
+            <li>
+                <span class="fcg">容积率：</span><i>{yjl}</i>
+            </li>
+            <li>
+                <span class="fcg">停车位：</span><i>{cksm}</i>
+            </li>
+            <li>
+                <span class="fcg">绿化率：</span><i>{lhl}</i>
+            </li>
+            <li>
+                <span class="fcg">本月均价：</span><i>{cspjj}元/平米</i>
+            </li>
+            <li>
+               <span class="fcg">最高价：</span><i>{csjgz}万元</i>
+            </li>
+            <li>
+               <span class="fcg">最低价：</span><i>{csjdj}万元</i>
+            </li>
+
+            <li class="nowrap">
+                <span class="fcg">小区地址：</span><i>{address}</i>
+            </li>
+        </ul>
+        <div class="blank10"></div>
+        <!-- 走势图 -->
+        <div>
+            <b>小区价格走势：</b><br/>
+            <div id="zst" style="height:200px;"></div>
+        </div>
+        {/c$archive}
+        {if $pid3 || $dt}
+        <div class="blank10"></div>
+        <div id="map" class="tab-tit">
+            <ul>
+                <li><a class="act">地图</a></li>
+            </ul>
+        </div>
+        <div class="blank10"></div>
+        <div id="mapdiv" class="blank0"></div>
+        {/if}
+        <div class="blank10"></div>
+        <!-- /小区信息 -->
+    </div>
+    <div class="detail-sidebar">
+         <!-- 右侧 -->
+            <div class="de-pople">
+                <div class="p20 bd-gray bdrs clearfix">
+                    {c$member [cname=房源会员/] [tclass=member/] [detail=1/]}
+                    <dl>
+                        {if $v['mchid']==2}
+                            <dt class="img"><a href="{mspacehome}" target="_blank"><img src='{if empty($v['image'])}{$cms_abs}images/common/mlogo.gif{else}{c$image [cname=头像/] [tclass=image/] [tname=image/] [val=u/]}{url}{/c$image}{/if}' width="100" height="130" alt="{$xingming}店铺" /></a></dt>
+                            <dt>认证：</dt>
+                            <dd>{c$jjrsfrz2 [cname=经纪人身份认证2/] [tclass=fromid/] [val=aa/] [type=mctid/] [id=$v[mctid2]/]}<img {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="{cname}通过" alt="{$xingming}身份认证"/>{/c$jjrsfrz2}&nbsp;&nbsp;{c$jjrzzrz2 [cname=经纪人执照认证2/] [tclass=fromid/] [val=bb/] [type=mctid/] [id=$v[mctid3]/]}<img {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="{cname}通过" alt="{$xingming}执照认证"/>{/c$jjrzzrz2}</dd>
+                            <dt>等级：</dt>
+                            <dd class="credit">{c$xytb2 [cname=信用图标2/] [tclass=fromid/] [val=d/] [type=grouptype17/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} title="{cname}" alt="{$xingming}服务等级"/>{/c$xytb2}</dd>
+                            {c$member1 [cname=经纪公司/] [tclass=member/] [val=a/] [arid=4/] [detail=1/]}
+                                <dt>公司：</dt>
+                                <dd><a href="{mspacehome}" target="_blank">{cmane}</a></dd>
+                                <dt>地址：</dt>
+                                <dd>{caddress}</dd>
+                            {/c$member1}
+                            <dd class="auto mb10"><a class="btn bdrs" target="_blank" href="{mspacehome}">进入我的店铺 <i class="ico08">&#xf10b;</i></a></dd>
+                        {else}
+                            <dt class="img">
+                                <img src='{if empty($v['image'])}{$cms_abs}images/common/mlogo.gif{else}{c$image [cname=头像/] [tclass=image/] [tname=image/] [val=u/]}{url}{/c$image}{/if}' width="100" height="130" alt="{$xingming}店铺" />
+                                <br/>个人房源
+                            </dt>
+                        {/if}
+                        <dd class="btn2">
+                            <i class="ico08">&#xe60e;</i>
+                            <div class="btn2-con">{$lxdh}</div>
+                        </dd>
+                        <dt>姓名：</dt>
+                        <dd>
+                            {$xingming}
+                            {if !empty($v['qq'])}<div id="qq" data-qq="{qq}"></div>{/if}
+                            {if !empty($v['grouptype34name'])}<a class="btn-1" href="{$cms_abs}info.php?fid=107&mid={mid}" target="_blank"><i class="ico08">&#xe60b;</i> 向TA提问</a>{/if}
+                        </dd>
+                    </dl>
+                    {/c$member}
+                </div>
+            </div>
+            <!-- /右侧 -->
+        <!-- 浏览历史 -->
+        <div id='list_{caid}' class="blank0"></div>
+        <!-- /浏览历史 -->
+        <div class="coltit1">
+            <a target="_blank" href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=3/] [cosource1=active/]}{indexurl}{/c$cnode}" class="more">更多&gt;&gt;</a>
+            <h3 class="tit1">同区域{$fy_title}</h3>
+        </div>
+        <ul class="plist2 bd-gray">
+            {c$tqycon [tclass=archives/][chsource=1/] [casource=2/] [ccidson1=1/] [cosource1=2/] [forceindex=a.wclicks/] [orderstr=a.wclicks DESC/] [wherestr=a.aid!='$aid'/] [ttl=1200/]}
+            {if $v['sn_row']==1}
+            <li class="first">
+                <a title="{subject}" target="_blank" href="{arcurl}">
+                    <img alt="{subject}" {c$thumb100_75 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=75/] [thumb=1/]} src="{url_s}"  height="75" width="100"
+                    {/c$thumb100_75}/>
+                    <strong>{subject}</strong>
+                    <em class="arial"><span class="pri">{if $v['zj']}{zj}{$unit}{else}面议{/if}</span>{c$shi}{c$ting}/{mj}m&sup2;</em>
+                </a>
+            </li>
+            {else}
+            <li><span class="pri">{if $v['zj']}{zj}{$unit}{else}面议{/if}</span><a title="{subject}" target="_blank" href="{arcurl}">{subject}</a></li>
+            {/if}
+            {/c$tqycon}
+        </ul><!-- /同区域房源 -->
+        <div class="es-conrig">
+            <div class="coltit1"><a target="_blank" href="{c$jhdqurl [tclass=cnode/] [listby=ca/] [casource=3/] [cosource4=active/]}{indexurl}{/c$jhdqurl}" class="more">更多&gt;&gt;</a><h3 class="tit1">同价位{$fy_title}</h3></div>
+            <ul class="plist2 bd-gray">
+              {c$tjjcon [tclass=archives/] [chsource=1/] [casource=2/] [orderstr=a.wclicks DESC/] [wherestr=a.aid!='$aid' and a.zj>($zj-5) and a.zj<($zj+5)/] [ttl=1200/]}
+              {if $v['sn_row']==1}
+                <li class="first">
+                    <a title="{subject}" target="_blank" href="{arcurl}">
+                        <img alt="{subject}" {c$thumb100_75 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=75/] [thumb=1/]} src="{url_s}"  height="75" width="100"
+                        {/c$thumb100_75}/>
+                        <strong>{subject}</strong>
+                        <em class="arial"><span class="pri">{if $v['zj']}{zj}{$unit}{else}面议{/if}</span>{c$shi}{c$ting}/{mj}m&sup2;</em>
+                    </a>
+                </li>
+                {else}
+                <li><span class="pri">{if $v['zj']}{zj}{$unit}{else}面议{/if}</span><a title="{subject}" target="_blank" href="{arcurl}">{subject}</a></li>
+                {/if}
+                {/c$tjjcon}
+            </ul>
+        </div><!-- /同价位房源 -->
+        <div class="coltit1"><a target="_blank" href="{c$08cms [tclass=cnode/] [listby=ca/] [casource=$wd_caid/]}{indexurl}{/c$08cms}" class="more">更多&gt;&gt;</a><h3 class="tit1">{$fy_title}问答</h3></div>
+        <div class="bd-gray p10">
+            <div class="sea-wd clearfix mb5">
+               <form action="{$cms_abs}index.php" method="get" onsubmit="if(this.searchword.value == '请输入关键字') this.searchword.value = '';"  target="_blank">
+                   <div class="search-group form">
+                        <input type="submit" class="btn ico08" value="&#xf002;"/>
+                        <div class="txt-wrap">
+                            <input type="text" class="txt" placeholder="请输入关键字" name="searchword"/>
+                        </div>
+                        <input type="hidden" name="caid" value="{$wd_caid}" />
+                       </div>
+                </form>
+            </div>
+            <ul class="tlist3">
+                {c$archives [tclass=archives/] [chsource=2/] [chids=106/][caidson=1/] [casource=1/] [caids=$wd_caid/] [cosource35=1/] [ccids35=3036/] [ttl=600/]}
+                <li><a href="{arcurl}" target="_blank" title="{subject}">{subject}</a></li>
+                {/c$archives}
+            </ul>
+        </div><!-- /问答 -->
+    </div>
+    <div class="blank20"></div>
+    <!-- 通栏 -->
+    {if $pid3}
+    <div class="coltit1 bd-gray-b"><h3 class="tit1">该小区其他{$fy_title}</h3></div>
+    <div class="blank15"></div>
+    <ul class="plist1 clearfix">
+        {c$archives [tclass=archives/] [chids=3/] [chsource=1/] [limits=5/] [casource=2/] [mode=in/] [arid=3/] [id=$pid3/] [orderstr=a.clicks DESC/] [wherestr=a.aid!='$aid'/] [ttl=1200/]}
+        <li>
+            <a title="{subject}" target="_blank" href="{arcurl}">
+                <img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=215/] [maxheight=135/] [thumb=1/]} src="{url_s}"  height="135" width="215"
+                {/c$image}/>
+                <strong>{subject}</strong>
+                <em class="arial">{c$shi}{c$ting}/{mj}m&sup2; - <b class="fco">{if $v['zj']}{zj}{$unit}{else}面议{/if}</b></em>
+            </a>
+        </li>
+        {/c$archives}
+    </ul>
+    {/if}<!-- /该小区其他房源 -->
+    <div class="coltit1 bd-gray-b"><a target="_blank" href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl1}{/c$cnode}" class="more">更多&gt;&gt;</a><h3 class="tit1">猜你想浏览的新房</h3></div>
+    <div class="blank15"></div>
+    <ul class="plist1 clearfix">
+        {c$archives [cname=文档列表/] [tclass=archives/] [chids=4/] [chsource=2/] [limits=5/] [caidson=1/] [casource=1/] [caids=2/] [cosource41=1/] [ccids41=3054/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/] [ttl=600/]}
+        <li>
+            <a title="{subject}" target="_blank" href="{arcurl}">
+                <img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=215/] [maxheight=135/] [thumb=1/]} src="{url_s}"  height="135" width="215"
+                {/c$image}/>
+                <strong>[{ccid1title}]{subject}</strong>
+                <em>均价：<b class="fco arial">{if $v['dj']}{dj}元/m&sup2;{else}待定{/if}</b></em>
+            </a>
+            <em class="fco"><a target="_blank" href="{arcurl1}">动态</a> - <a target="_blank" href="{arcurl3}">相册</a>{c$v3_lptg [cname=楼盘团购/] [tclass=archives/] [val=b/] [limits=1/] [chsource=2/] [chids=5/] [ttl=600/] [mode=in/] [arid=3/]} - <a target="_blank" href="{arcurl}" >团购</a>{/c$v3_lptg}</em>
+        </li>
+        {/c$archives}
+    </ul><!-- /猜你想浏览的新房 -->
+    <div class="blank15"></div>
+    {if @$user_fy_disclaimer}
+    <div class="fcg p10 bd-gray">
+        <b><i class="ico08 fcr">&#xe606;</i> 免责声明:</b>{$user_fy_disclaimer}
+    </div>
+    {/if}
+
+</div>
+<!-- 意向 -->
+<div id="pop-buy" class="dn pop modal">
+    <div class="phlayer">
+        <form class="jqValidate" data-tipmode="#tip-yx" onsubmit="return fyCummus(this,'意向提交',1)">
+            <input type="hidden" name="cuid" value="46" /><!--交互项目id-->
+            <input type="hidden" name="cutype" value="a" /><!--a:针对文档,m:针对,都不是就不要这项-->
+            <input type="hidden" name="aid" value="{aid}" /><!--针对文档的aid,不是针对文档就不要这项-->
+            <ul class="form form-control form-lg">
+                <li>
+                    <div class="blank20 mt-15"><span id="tip-yx"></span></div>
+                    <input type="text" class="txt" placeholder="联系人" data-type="*4-20" name="fmdata[uname]" value=""/>
+                </li>
+                <li>
+                    <input type="text" class="txt" placeholder="联系电话" data-type="/^\s*\d{3,4}[-]?\d{7,8}\s*$/" data-error="请填写正确电话号码，座机与手机号均可" name="fmdata[utel]" value=""/>
+                </li>
+                <li class="reg-wrap" data-regcode="commu46">
+                    <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                </li>
+                <li class="submit">
+                    <input type="submit" class="btn" value="提交意向"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<!-- /意向 -->
+<!-- 举报 -->
+<div id="pop-report" class="dn pop modal">
+    <div class="phlayer">
+        <form name="reportFm" class="jqValidate" data-tipmode="#tip-jb" id="reportFm" onsubmit="return fyCummus(this,'举报',1)">
+            <input type="hidden" name="cuid" value="4" /><!--交互项目id-->
+            <input type="hidden" name="cutype" value="a" /><!--a:针对文档,m:针对,都不是就不要这项-->
+            <input type="hidden" name="aid" value="{aid}" /><!--针对文档的aid,不是针对文档就不要这项-->
+            <ul class="form form-control form-lg">
+                <li>
+                    <div class="blank20 mt-15"><span id="tip-jb"></span></div>
+                    <select name="fmdata[leixing]" data-type="*">
+                        <option value="">反馈类型</option>
+                        <?php
+                            foreach (u_cufield_by(4,'leixing') as $k => $v) {
+                                echo '<option value="'.$k.'">'.$v.'</option>';
+                            }
+                         ?>
+                    </select>
+                </li>
+                <li>
+                    <input type="text" class="txt" placeholder="问题说明" data-type="*4-100" name="fmdata[bcsm]" value=""/>
+                </li>
+                <li>
+                    <input type="text" class="txt" placeholder="手机号码" data-type="/^\s*\d{3,4}[-]?\d{7,8}\s*$/" rule="text" name="fmdata[lxdh]" data-error="请填写正确电话号码，座机与手机号均可" value=""/>
+                </li>
+                <li class="reg-wrap" data-regcode="commu4">
+                    <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                </li>
+                <li class="submit">
+                    <input type="submit" class="btn" value="立即举报"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<!-- /举报 -->
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="{$tplurl}js/gallery.js?{$user_version}"></script>
+
+<script type="text/javascript">
+var aid = {$aid},caid = {$caid};
+$.gallery({
+    big          : '#biglist'
+    , small      : '#scrollwap'
+    , botPrev    : '.es-prev'
+    , botNext    : '.es-next'
+    , visible    : 8
+    , maxW       : 860
+    , maxH       : 500
+    , curClass   : 'on'
+    , showBigBot : 1
+    , circular   : 1
+})
+// qq
+if($('#qq').length){
+    var online= [],myqq = $('#qq').attr('data-qq');
+    $.getScript('http://webpresence.qq.com/getonline?Type=1&'+myqq+':',function() {
+        $('#qq').replaceWith('<a title="点击这里给我发消息" class="btn-0" target="_blank" href="http://wpa.qq.com/msgrd?V=1&uin='+myqq+'&Site={$xingming}&Menu=yes"><img border="0" src="{$tplurl}newimages/'+(online[0]?'pa_online.gif':'pa.gif')+'"></a>');
+    })
+}
+//
+var sys_distance = <?php echo !empty($circum_km)?$circum_km:3;?>;
+</script>
+<script type="text/javascript" src="{$tplurl}js/highcharts.js"></script>
+<script>
+        var jsonData = {
+            "title": "",
+            "series": [{
+                "name": "\u672c\u9879\u76ee\u623f\u4ef7",
+                "datatype": "house",
+                "data": [
+                {c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='0' and aid='$pid3' order by createdate DESC,cid DESC/]}
+                {if $v['sn_row']>1},{/if}['{c$date [tclass=date/] [tname=createdate/] [date=y-m-d/]}{/c$date}',{$v[average]}]
+                {/c$outinfos}
+                ]
+            }],
+            "month_s": [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='0' and aid='$pid3' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=m/d/]}{/c$date}'{/c$outinfos}]
+        };
+        var seriesData = jsonData.series;
+
+</script>
+<script type="text/javascript" src="{$tplurl}js/fy.js?{$user_version}"></script>
+<script type="text/javascript" src="{$tplurl}js/ll.js?{$user_version}"></script>
+<!-- 发送到手机短信模板 -->
+<script type="text/javascript">
+    var isOpenMob='arcfyinfo';
+    var msgpara = 'a,{chid},{aid}';
+</script>
+{tpl$smsphone}
+<div class="blank10"></div>
+{tpl$foot}
+{if $pid3}
+<script type="text/javascript">
+    $('#mapdiv').replaceWith('<iframe id="iframe" width="100%" height="370" scrolling="no" allowtransparency="true" frameborder="0" src="{$cms_abs}info.php?fid=120&ids={$pid3}&chid=4&isxq=1" ></iframe>');
+</script>
+{else}
+<script type="text/javascript">
+    $('#mapdiv').replaceWith('<iframe id="iframe" width="100%" height="370" scrolling="no" allowtransparency="true" frameborder="0" src="{$cms_abs}info.php?fid=120&ids={$aid}&chid={$chid}" ></iframe>');
+</script>
+{/if}
+</body>
+</html>

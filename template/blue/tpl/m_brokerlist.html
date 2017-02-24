@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>经纪人-{$hostname}</title>
+	<meta name="keywords" content="经纪人积分榜,经纪人人气榜,经纪人房源榜,{hostname}" />
+    {tpl$m_headinner}
+    <?php
+    foreach(array('ccid1','orderby','ordermode','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+    cls_uso::init(array(
+        'ntype' => 'om',
+        'chid' => 2,
+        'nodes' => array('caid','ccid1'), //('ugid32','mcnid'),
+        'orderbys' => array('mid','msclicks','grouptype16'),
+    ));
+    extract(cls_usql::order_str(1,'m.grouptype16 DESC,m.lastactive DESC'));
+    $whrstr = cls_usql::where_str(array(
+        array('xingming',0,'like'),
+        array('lxdh',0,'like'),
+        array('szqy','ccid1'),
+    ));
+    $pagelimit=8;
+    $df_broker=1;
+    ?>
+</head>
+<body>
+<div id="aside_container">
+    <aside id="menu" data-position="right" data-transition="overlay" data-show-close="true">
+        <div><!-- 表单 -->
+            <div class="clearfix">
+                <div class="p10">
+                    <form method="get" action="{$mobileurl}index.php">
+                        <input type="hidden" name="caid" value="{$caid}"/>
+                        <input type="hidden" name="addno" value="3"/>
+                        <input type="hidden" name="ccid1" value="<?php echo @$_da['ccid1']; ?>"/><input name="xingming" type="text" class="txt" value='<?php echo @$xingming; ?>' placeholder="经纪人姓名">
+                        <input name="lxdh" type="text" class="txt" value='<?php echo @$lxdh; ?>' placeholder="经纪人电话">
+                        <input type="submit" value="搜索" class="button block peter-river"/>
+                    </form>
+                </div>
+            </div>
+                <dl class="conditions">
+                    <dt><span class="icon-f009 left"></span>区域：</dt>
+                    <dd>
+                        <a {if empty($ccid1)}class='pomegranate'{/if} href="<? echo cls_uso::extra_url(1); ?>">不限</a>
+                        <? $_rows = cls_uso::caco_urls(1); ?>
+                        {loop $_rows $k $v} <a href="{$v[url]}" {if $ccid1==$k}class='pomegranate'{/if}>{$v[title]}</a> {/loop}
+                    </dd>
+                </dl>
+            </div>
+    </aside>
+</div>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="经纪人" class="innblank44 active" data-btn="back">
+        {tpl$m_header}
+        <article id="up_refresh_article" class="active" >
+            <div>
+                <ul class="list list-media">
+                        <?
+                            $pick_urls=cls_uso::pick_urls(array('xingming'=>cls_Parse::Get('_da.xingming'),'lxdh'=>cls_Parse::Get('_da.lxdh')));
+                            unset($pick_urls['caid']);
+                        ?>
+                    {if $pick_urls}
+                    <li class="divider">
+                        <div class="grid">
+                            当前条件：
+                            <div class="col-1 f-asbestos">
+                            {loop $pick_urls $k $v}
+                            <a title="取消此条件" class="icon-f057 button-s" href="{$v['url']}">{$v['title']}</a>
+                            {/loop}
+                            <a class="icon-f0e2 button-s" title="取消所有" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl3}{/c$cnode}">取消</a>
+                            </div>
+                        </div>
+                    </li>
+                    {/if}
+                    <li class="divider">
+                        <div class="grid">
+                            <div class="col-1">
+                                经纪人列表
+                            </div>
+                            <div class="col-0">
+                                <span class="f-asbestos">
+                                  <a rel="nofollow" href="<? echo cls_uso::extra_url('orderby'); ?>">默认</a>
+                                  <?=cls_uso::order_tpl('<a class="(class)" rel="nofollow" href="(url)">人气</a>', "msclicks",  array('icon-e62c down','icon-e62d up','icon-e62c'))?>
+                                  <?=cls_uso::order_tpl('<a class="(class)" rel="nofollow" href="(url)">等级</a>', "grouptype16",  array('icon-e62c act','icon-e62d act','icon-e62c'))?>
+                                </span>&nbsp;
+                                <a data-target="menu" href="#menu" class="icon button carrot"><span class="icon-ea5b fz12"></span>筛选</a>
+                            </div>
+                        </div>
+                    </li>
+                    {c$members [tclass=members/] [limits=$pagelimit/] [chsource=2/] [chids=2/] [wherestr=$whrstr/] [orderstr=$orderstr/]}
+                    <? $allnum=count($_members);?>
+                    [row]
+                    <li class="pset">
+                        <a href="{$mobileurl}index.php?caid=13&mid={mid}">
+                            <img width="100" height="130" alt="{xingming}" src="{c$image [tclass=image/] [tname=image/] [val=u/] [emptyurl=images/common/mlogo.gif/]}{url}{/c$image}"/>
+                            {if $v['grouptype16']==5}<div class="tag">推荐</div>{/if}
+                            <strong class="ctrimg">{xingming} &nbsp;{c$fromid [cname=经纪人身份认证2/] [tclass=fromid/] [val=aa/] [type=mctid/] [id=$v[mctid2]/]}<img {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} alt="身份认证"/>{/c$fromid}&nbsp;{c$fromid [cname=经纪人执照认证2/] [tclass=fromid/] [val=bb/] [type=mctid/] [id=$v[mctid3]/]}<img {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon}  alt="执照认证"/>{/c$fromid}</strong>
+                            <p class="ctrimg">服务等级：{c$xytb2 [cname=信用图标2/] [tclass=fromid/] [val=d/] [type=grouptype17/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} alt="服务等级"/>{/c$xytb2}</p>
+                            <p>联系电话：{if $v['lxdh']}{lxdh}{else}-{/if}</p>
+                            <p>服务区域：{if $v['szqy']}{c$field [tclass=field/] [tname=szqy/] [type=member/] [fname=szqy/]}{/c$field}{else}-{/if}</p>
+                            {if $v['incheck4']}
+                            <p>所属公司：{c$member [tclass=member/] [val=a/] [arid=4/]}{cmane}{/c$member}</p>
+                            {/if}
+                            <p><span class="label">售</span>{c$acount [tclass=acount/] [val=b/] [chsource=2/] [chids=3/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$acount}套 &nbsp; <span class="label nephritis">租</span>{c$acount [tclass=acount/] [val=b/] [chsource=2/] [chids=2/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$acount}套</p>
+                        </a>
+                    </li>
+                    [/row]
+                    {/c$members}
+                     {if @$allnum==0}<li class="noinfo">~ 暂无相关数据 ~</li>{/if}
+                </ul>
+                 <div id="upinfo_js" class="refresh-container f-asbestos dn"><span class="refresh-icon icon-e61c"></span><span class="refresh-label">上拉加载更多...</span></div>
+            </div>
+        </article>
+    </section>
+</div>
+<script>
+//加载数据设置
+var opt = {
+	'ajax' : 'pageload_users',
+    _param : {
+		'aj_model'    : 'm,2,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-启用模型表; 如:a,3,1)
+        'aj_pagesize' :{$pagelimit},
+        'aj_whrfields': 'xingming,like,;lxdh,like,;szqy,like,{$ccid1}',
+        'aj_deforder' : 'grouptype16 DESC,lastactive DESC', //默认排序
+        'aj_thumb'    : 'image'
+    },
+    filterUrl : '&<?php echo cls_uso::$urls['fullurl']; ?>' ,//从地址获取的url参数
+    wrap : '#up_refresh_article' ,
+    dataWrap : '#up_refresh_article ul.list' ,
+    template : function() {
+        return  '<li class="pset">'
+                + '<a href="{$mobileurl}index.php?caid=13&mid='+this.mid+'">'
+                + '<img width="100" height="130" alt="'+this.xingming+'" src="'+(this.thumbOrg||CMS_ABS+'images/common/mlogo.gif')+'">'
+                +(this.grouptype16==5?'<div class="tag">推荐</div>':'')
+                + '<strong class="ctrimg">'+this.xingming+' &nbsp;'+(this.mctid2icon?'<img src="'+this.mctid2icon+'" alt="身份认证"/>':'')+'&nbsp;'+(this.mctid3icon?'<img src="'+this.mctid3icon+'" alt="执照认证"/>':'')+'</strong>'
+                + '<p class="ctrimg">服务等级：<img src="'+this.grouptype17icon+'" alt="服务等级"></p>'
+                + '<p>联系电话：'+(this.lxdh?this.lxdh:'-')+'</p>'
+                + '<p>服务区域：'+(this.szqytitle?this.szqytitle:'-')+'</p>'
+                +(this.pid4title?'<p>所属公司：'+this.pid4title+'</p>':'')
+                + '<p><span class="label">售</span>'+this.cntchid3+'套 &nbsp; <span class="label nephritis">租</span>'+this.cntchid2+'套</p>'
+                + '</a>'
+                + '</li>';
+    }
+}
+</script>
+{tpl$m_footer}
+</body>
+</html>

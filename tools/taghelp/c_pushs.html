@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">推送列表 pushs</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+  <p>推送列表是系统重要标签之一，是用来调用有关推送相关信息。要详细了解推送管理设置，请阅读<a href="f_pushFrame.html">推送管理☆</a></p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">参数</div>
+<div>
+  <ul>
+    <li class="bg3">标识模板(重要)</li>
+    <span class="blank2"></span>
+    <li class="t1">目前推送位默认字段标识有：{subject}、{url}、{thumb}、{classid1}、{classid2}</li>
+    <span class="blank2"></span>
+  </ul>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+<div> 
+  <!-- exam1 -->
+  <div> <span class="blank5"></span>
+    <li class="bg3">示例1</li>
+    <li class="t2">效果:</li>
+    <li><img src="img/push08.gif" class="pad15" /></li>
+    <li class="t2">原html代码</li>
+    <li class="bg4 w3 h">
+      <div>
+        <xmp>
+<ul>
+  <li> <i><a title="行情" href="#">行情</a> | </i> 
+  <a title="7款美丽手绘背景墙 DIY出的小清新家居" href="#">7款美丽手绘背景墙 DIY出的小清新家居</a> </li>
+  <li> <i><a title="创意家品" href="#">创意家品</a> | </i> 
+  <a title="15款童趣时尚家品 为缤纷生活加分" href="#">15款童趣时尚家品 为缤纷生活加分</a> </li>
+  <li> <i><a title="创意家品" href="#">创意家品</a> | </i> 
+  <a title="小窝也减肥 15款收纳家品超实用" href="#">小窝也减肥 15款收纳家品超实用</a> </li>
+  <li> <i><a title="创意家品" href="#">创意家品</a> | </i> 
+  <a title="10款心意小装饰 给您家增添浪漫气氛" href="#">10款心意小装饰 给您家增添浪漫气氛</a> </li>
+  <li> <i><a title="行情" href="#">行情</a> | </i> 
+  <a title="自然清新 6款家具打造日式风格女孩家" href="#">自然清新 6款家具打造日式风格女孩家</a> </li>
+  <li> <i><a title="行情" href="#">行情</a> | </i> 
+  <a title="时尚收纳柜 拯救闲置或杂乱的家居角落" href="#">时尚收纳柜 拯救闲置或杂乱的家居角落</a> </li>
+</ul>
+        </xmp>
+      </div>
+    </li>
+    <li class="t2">标识模板(template)代码:</li>
+    <li class="bg4 w3 h">
+      <div>
+        <xmp>
+<ul>
+  {c$indtt3 [tclass=pushs/] [paid=2/] [startno=4/] [limits=6/] [ttl=1200/]}
+  <li> <i>{c$jhlm [tclass=cnode/] [val=f/] [listby=ca/] [casource=$v[classid1]/]} 
+  <a href="{indexurl}" title="{title}">{title}</a>{/c$jhlm} | </i>
+  <a href="{url}" title="{subject}">
+  {c$subjectcolor [tclass=text/] [tname=subject/] [color=color/]}{/c$subjectcolor}
+  </a> 
+  </li>
+  {/c$indtt3}
+</ul>
+        </xmp>
+      </div>
+    </li>
+    <span class="blank3"></span>
+    <li>说明</li>
+    <span class="blank3"></span>
+    <li class="t3">
+      <p>其中$v[classid1]、{url}、{subject}就是推送位字段名，还有{c$subjectcolor [tclass=text/] [tname=subject/] [color=color/]}{/c$subjectcolor}为资讯信息设置颜色字体<br />
+        <b class="FcR">标识套用过程，截图如下</b><br />
+        首页先调用激活栏目部分，模板风格->复合标识->类目节点->添加，如图09所示<br />
+        <img src="img/push09.gif" class="img"/><br />
+        点击生成激活栏目部分的代码：
+        <xmp>{c$jhlm [tclass=cnode/] [val=f/] [listby=ca/] [casource=$v[classid1]/]}<a href="{indexurl}" title="{title}">{title}</a>{/c$jhlm}</xmp>
+        <br />
+        然后，调用推送列表部分，模板风格->复合标识->推送列表->添加。如图10所示
+        <img src="img/push10.gif" class="img"/><br />
+         </p>
+    </li>
+  </div>
+  <!-- exam2 -->
+  <div> <span class="blank5"></span>
+    <li class="bg3">示例2</li>
+    <li class="t2">结果:</li>
+    <li><img src="img/push11.gif" class="pad15" /></li>
+        <li class="t2">原html代码:</li>
+    <li class="bg4 w3 h">
+      <div>
+        <xmp>
+<ul>
+  <li>
+    <div><a title="美式古典家居尽显优雅高贵气质" href="#">
+    <img width="110" height="80" alt="美式古典家居尽显优雅高贵气质" src="01.jpg"></a></div>
+    <em><a title="美式古典家居尽显优雅高贵气质" href="#">
+    美式古典家居尽显优雅高贵气质</a></em> 
+    </li>
+  <li>
+    <div><a title="新中式混搭风格别墅" href="#">
+    <img width="110" height="80" alt="新中式混搭风格别墅" src="02.jpg"></a></div>
+    <em><a title="新中式混搭风格别墅" href="#">新中式混搭风格别墅</a></em> 
+    </li>
+  <li>
+    <div><a title="浓郁地中海风情撩动你的异域情怀" href="#">
+    <img width="110" height="80" alt="浓郁地中海风情撩动你的异域情怀" src="03.jpg"></a></div>
+    <em><a title="浓郁地中海风情撩动你的异域情怀" href="#">
+    浓郁地中海风情撩动你的异域情怀</a></em> 
+    </li>
+</ul>
+
+        </xmp>
+      </div>
+    </li>
+    <li class="t2">标识模板(template)代码:</li>
+    <li class="bg4 w3 h">
+      <div>
+        <xmp>
+<ul>
+  {c$zxaltj [tclass=pushs/] [paid=61/] [limits=3/] [ttl=1200/]}
+   <li>
+   <div><a href="{url}" title="{subject}">
+   <img {c$thumb110_80 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=110/] [maxheight=80/] [thumb=1/]} 
+   src="{url_s}" width="110" height="80"
+    {/c$thumb110_80} alt="{subject}"></a>
+   </div>
+   <em><a href="{url}" title="{subject}">{subject}</a></em>
+   </li>
+  {/c$zxaltj}
+</ul>
+
+        </xmp>
+      </div>
+    </li>
+    <span class="blank3"></span>
+    <li>说明</li>
+    <span class="blank3"></span>
+    <li class="t3">
+      <p><b class="FcR">标识套用过程，截图如下</b><br /> 
+      <img src="img/push12.gif" class="pad15" /><br /> 
+      </p>
+    </li>
+  </div>
+</div>
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

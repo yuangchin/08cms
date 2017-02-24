@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">单个文档 archive</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+<p>单个文档识：指定单一文档ID值（ID值可以为变量名称），调用该文档内容信息。</p>
+ <p>常用于某文档列表中调用其栏目名称，关联本文档的信息内容调用。</p>
+	
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+
+<div>
+	<div>
+        <span class="blank5"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/archives24.gif" class="pad15" /></li>
+        <span class="blank3"></span>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp><div class="anniubj" style="margin-top:30px;">
+    <ul style="background:url({$tplurl}images/esf/888888.jpg) repeat-x;">
+    <li style="float:left;"><img src="{$tplurl}images/esf/898989.jpg" height="26"/></li>
+    <li style="float:left; line-height:28px;"><font color="#FFFFFF"><b>{subject}</b></font></li>
+    <li style="float:left;"><img src="{$tplurl}images/esf/878787.jpg" height="26"/></li>
+    </ul>
+</div>
+<div style=" float:left; height:3px; background-color:#c03411; overflow:hidden; width:100%;"></div>
+<TABLE border=0 cellSpacing=1 cellPadding=4 width="100%" bgColor=#cccccc>
+<TBODY>
+<TR bgColor=#ffffff>
+  <TD class=td_005 bgColor=#fafaf1 width=90 align=middle>楼盘本月均价</TD>
+  <TD bgColor=#ffffff><?=floatval($v['dj'])?>元/平方米</TD>
+  <TD class=td_005 bgColor=#ffffff width=90 align=middle></TD>
+  <TD bgColor=#ffffff align=left></TD>
+</TR>
+<TR bgColor=#ffffff>
+  <TD class=td_005 bgColor=#fafaf1><DIV align=center>物业类型：</DIV></TD>
+  <TD bgColor=#ffffff>住宅</TD>
+  <TD class=td_005 bgColor=#ffffff align=middle>管理费：</TD>
+  <TD bgColor=#ffffff align=left>{wyf}元/平方米/月</TD>
+</TR>
+<TR bgColor=#ffffff>
+  <TD class=td_005 bgColor=#fafaf1><DIV align=center>容&nbsp;积&nbsp;率：</DIV></TD>
+  <TD bgColor=#ffffff>{yjl}%</TD>
+  <TD class=td_005 bgColor=#ffffff align=middle>绿&nbsp;化&nbsp;率：</TD>
+  <TD bgColor=#ffffff align=left>{lhl} </TD>
+</TR>
+<TR bgColor=#ffffff>
+  <TD class=td_005 bgColor=#fafaf1><DIV align=center>开&nbsp;发&nbsp;商：</DIV></TD>
+  <TD bgColor=#ffffff>{kfs} </TD>
+  <TD class=td_005 bgColor=#ffffff align=middle>物业公司：</TD>
+  <TD bgColor=#ffffff align=left>{wygs}</TD>
+</TR>
+<TR bgColor=#ffffff>
+  <TD class=td_005 bgColor=#fafaf1><DIV align=center>交通状况：</DIV></TD>
+  <TD bgColor=#fafaf1 colSpan=3>{jtxl}</TD>
+</TR>
+<TR bgColor=#ffffff>
+  <TD class=td_005 bgColor=#fafaf1><DIV align=center>周边配套：</DIV></TD>
+  <TD bgColor=#fafaf1 colSpan=3>周边配套设施：{c$facilities} </TD>
+</TR>
+<TR bgColor=#ffffff>
+  <TD class=td_005 bgColor=#fafaf1 colSpan=4 align=middle></TD>
+</TR></TBODY>
+</TABLE>
+</xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li class="bg3">说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>上面这个例子是展示与房源相关的楼盘的信息。</p>
+		<b class="FcR">截图如下：</b><br/>
+		<img src="img/danwd.jpg" class="img">
+		</li>
+    </div>
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

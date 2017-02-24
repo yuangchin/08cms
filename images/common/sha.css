@@ -1,0 +1,12 @@
+p { margin: 10px 0 0 50px; }
+#shapan-i{position: absolute;left: 0;top: 0;}
+#shapan-i .sha-dot { z-index: 999; position: absolute; white-space:nowrap;line-height: 26px;padding: 0 10px;outline: none;background: #FB841F;color: #fff;border-radius: 2px;}
+#shapan-i .sha-dot:hover{text-decoration: none;}
+#shapan-i .sha-dot i{position: absolute;left: 5px;top: 26px;height:0;width:0;overflow: hidden;border-color: #FB841F transparent transparent transparent;border-style: solid dashed dashed dashed;border-width:10px 10px 10px 0;position: absolute;}
+#shapan-i .sha-dot-2 {background: #3393F5;}
+#shapan-i .sha-dot-2 i{border-top-color: #3393F5;}
+#shapan-i .sha-dot-3 {background: #A9A9AA;}
+#shapan-i .sha-dot-3 i{border-top-color: #A9A9AA;}
+
+.sha-dot b{position: absolute;right: -10px;top: -10px;width:15px;height:15px;background: url(close-ico.png) 0 0 no-repeat;cursor: pointer;}
+.sha-dot b:hover{background-position: 0 bottom;}

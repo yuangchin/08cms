@@ -1,0 +1,20 @@
+<div class="r">
+    <ul class="search1">
+            <form action="{cms_abs}index.php" method="get"  onsubmit="if(document.getElementById('searchword').value=='' || document.getElementById('searchword').value=='请输入关键字'){alert('请输入关键字');document.getElementById('searchword').focus();return false;} ">
+                <li class="keyword1">
+                    <input type="hidden" name="caid" value="516" />
+                    <div class="ie6_7_martop_d1">
+                        <input class="input_bor" id="searchword" type="text" name="searchword"  value="{if !$aid}{if $searchword}{searchword}{else}请输入关键字{/if}{else}请输入关键字{/if}" onblur="if(this.value.match(/^\s*$/)){this.value = '请输入关键字'}" onfocus="if(this.value == '请输入关键字'){this.value = ''}"/>
+                    </div>
+                </li>
+                <li>
+                    <input class="input_bg2" value="" type="submit" />
+                </li>
+            </form>
+        </ul>
+        
+    <script type="text/javascript">
+    $('#caid{c$top_list_id [cname=顶级栏目id/] [tclass=cnode/] [listby=ca/] [casource=active/] [level=1/]}{caid}{/c$top_list_id}').click();
+   
+   </script>
+  </div>

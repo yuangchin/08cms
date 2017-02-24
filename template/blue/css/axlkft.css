@@ -1,0 +1,161 @@
+﻿/***看房团内容页***/
+.bgF6{ background:#F6F6F6;}
+.m9{margin: 9px;}
+.p15{ padding:15px;}
+.mT5{ margin-top:5px;}
+.mr1{ margin-right:1px;}
+.bT3LBR{border:1px solid #DDD; border-top:3px solid #0250F8; background:#FFF; }
+.bT3{border-top:3px solid #0250F8; background:#FFF; }
+.bgFF{ background:#FFF;}
+.borB{ border-bottom:1px solid #DDD;}
+.borDD{ border:1px solid #DDD;}
+.borRB{ border:1px solid #DDD; border-width:0 1px 1px 0;}
+.borBT{ border:1px solid #DDD;border-width:1px 0;}
+.borTLR{border:1px solid #DDD; border-bottom:0;}
+.bgF4{ background:#F4F4F4;}
+.w710{ width:710px;}
+.w750{ width:750px;}
+.w248{ width:248px;}
+.colored{ color:#CC0000;}
+.w770{width: 770px;}
+.w220{width: 220px;}
+.w640{width: 640px;}
+.w320{width: 320px;}
+.kftbus,.lpTit i,.hdLCon i,.rkftTit em{background:url(../images/axlfkbg.gif) no-repeat;} 
+.ftrTit{ background:url(../images/bgline.gif) repeat-x;}
+.kftintro .img { float:left; width:300px; height:210px; padding:5px; margin-right:20px; border-right:1px solid #DDD; background:#f8f8f8;}
+.kftintro ul{ width:350px; float:left; overflow:hidden;}
+.kftintro li{ height:32px; line-height:32px; font-size:14px; overflow:hidden;}
+.kftintro li span{ color:#666; }
+.kftintro h3{ font-size:22px;padding-top: 5px;height:44px;line-height:44px;overflow: hidden;}
+.kftintro em{ color:#CC0000;}
+
+.ftrTit{ height:40px; line-height:32px; font-size:16px; font-family:"Microsoft YaHei"; padding-left:10px; background-color:#F4F4F4; background-position:0 32px;}
+.ftmCon{ font-size:14px; padding:0 10px; margin-top:10px;}
+.ftmCon img{max-width:660px;_width:expression(document.body.clientWidth > 660 ? "660px" : this.width);}
+.lpTit{ height:34px; line-height:34px; position:relative; border-top:1px solid #DDD; background-color:#F7F9FD; color:#666;}
+.lpTit em{ height:30px; line-height:30px; background:#e43; color:#FFF; font-size:14px; font-weight:bold; float:left; padding:0 15px; margin:4px 10px 0 0;}
+.lpTit i{ width:8px; height:35px; position:absolute; left:-8px; top:-1px; background-position:-94px -1px;}
+.lpTit span{ float:right; padding-right:10px; color:#666;}
+.lpTit b{ color:#CC0000; font-weight:normal;}
+.kfbread{height:36px; line-height:36px;}
+.kfbread span{ color:#E55414; margin: 0 5px;}
+.kfbread em{color: #a9a9a9;}
+/*** 楼盘列表
+--------------------- ***/
+.houselist{border-top:1px solid #edebeb; padding: 10px 0; margin:0 10px; line-height:20px; vertical-align: top; *zoom:1; } 
+.listF{ border-top:0;} 
+.houselist:hover{background:#F7F9FD; }
+.houselist .pic{float:left; width:150px; position: relative; z-index:1; }
+.houselist .pic img{border: 1px solid #ddd; padding: 2px;}
+.houselist .pic i{background: url(../images/lpzd.gif);cursor: pointer;height: 38px;left: 3px;position: absolute;top: 3px;width: 39px;}
+.houselist .info{float:left; width:360px; }
+.houselist .info h3{height:24px; line-height:24px; overflow:hidden; }
+.houselist .info h3 a{font-weight:bold; font-size:14px; float:left; }
+.houselist .info p{height:20px; line-height: 20px;overflow: hidden;}
+.houselist .info a{ color:#049;}
+.houselist .info .icon1{position: absolute; margin:3px 0 0 5px; line-height:16px; z-index:1; }
+.houselist .info .icon2{background:url(../images/fdj.gif) no-repeat 4px 0; padding-left:22px; position: absolute; }
+.houselist .item{position: absolute; white-space: nowrap; }
+.houselist .item a{margin-right:6px; }
+.houselist .item i{color: #f60; }    
+.houselist .other {float:right; width:200px; position: relative;padding-top: 24px;}
+.houselist .other p{padding:0 8px 2px 0; }
+.houselist .other .tel{position: absolute;right: 0;top: 0;white-space: nowrap;color: #049;}
+.houselist .other .dj{font: 600 16px Microsoft yahei, Arial, sans-serif} 
+.houselist .other .icon{width: 97px;display:inline-block;  height:34px; line-height:1000px;overflow: hidden; background:url(../images/e_ticket.gif) no-repeat 0 0;}
+.houselist .other .icon-end{background:url(../images/e_ticket2.gif) no-repeat 0 0;}
+.houselist .other .icon a {width: 100%; height:100%; line-height:1000px;overflow: hidden;float: left;}
+/*** 团购报名
+--------------------- ***/
+
+.tab_baoming li{ float:left; height:32px; line-height:32px; overflow:hidden; border-top:1px solid #edebeb;}
+.tab_baoming i{width:97px;  float:left; text-align:center; padding:0 5px;}
+.tab_baoming a{ color: #e43;}
+.tab_baoming .dt{height:32px; line-height:32px; background:#F7F9FD; color:#666; font-family:"Microsoft YaHei"; font-size:14px; border:0;}
+/* 右边信息 */
+.rkftTit{ height:30px; line-height:30px;   background:url(../images/sline.gif) 0 15px repeat-x; padding-left:1px;}
+.rkftTit em{ background-position:-182px -23px; background-color:#FFF;padding:0 10px 0 20px; font-size:14px; font-weight:bold; }
+.rkftTit em.tp{background-position:-175px 1px; padding-left:30px;}
+.kftzttp a{ float:right; width:13px; height:13px; display:block; overflow:hidden; text-indent:-1000px; background-position:-48px -5px; margin-top:8px;}
+.kftzttp em{ font-weight:bold; line-height:25px; color:#666;}
+.kftzttp span{ color:#CC0000;}
+.kftzttp label{ color:#666;}
+.kftzttp input{ vertical-align:middle;}
+.tpline{ height:1px; border-bottom:1px solid #CECECE; overflow:hidden; clear:both; margin:10px 0;}
+.hdLCon li{ border:1px solid #DDD; margin:8px 10px 0; padding:10px 5px; clear:both; color:#666;}
+.hdLCon i { float:left;}
+.hdLCon i {width:26px; height:30px; background-position:5px -74px;float: left;}
+.hdLCon i.num2{background-position:-42px -74px; }
+.hdLCon i.num3{background-position:-87px -74px; }
+.hdLCon i.num4{background-position:-132px -74px; }
+.hdLCon i.num5{background-position:-178px -74px; }
+.hdLCon em{ padding-left: 35px;display: block;}
+.hdLCon span{ color:#004499;display: block;}
+/*  右边热门看房团 */
+.rdkfCon li{ margin:0 auto 10px; width:225px;  border:1px solid #DDD; padding:2px 2px 10px;}
+.rdkfCon em{ height:22px; display:block; padding:0 5px; margin:2px 0; color:#666;}
+.rdkfCon span{ color:#CC0000;}
+
+.newsxz h3{ padding-top:8px; font-size:16px; font-weight:bold;}
+.newsxz i{ width:275px; height:213px; padding:15px 0 0 14px;background:url(../images/twkuan.gif) no-repeat;position:relative; float:left; margin-right:5px;}
+/* 看房团流程 */
+
+.kftlb{border-top: 1px solid #ddd;}
+.listf{border-top: none;}
+.kftlc{height: 160px;background: url(../images/dy-kft.jpg) no-repeat;font-family: Microsoft yahei;margin-right: -30px;}
+.kftlc .item {display: inline;float: left;width: 237px;}
+.kftlc dl {color: #fff;font-size: 13px;line-height: 20px;padding: 70px 30px 0;}
+.kftlc dt {display: none;}
+
+/* 看房团列表 */
+.kfklx{ width:1158px; background:url(../images/xluline.gif) 0 15px repeat-x; margin-top:5px; position: relative;}
+.kftbus{ width:75px; height:30px; position: absolute;  right: 0;}
+.kfklx a{display: block;cursor: pointer;}
+.kfklx a:hover{text-decoration: none;}
+.mxl{ width:1000px;}
+.mxl b{ width:350px; height:11px; background:url(../images/bltra.gif) no-repeat 332px 0; position:absolute;  top: 127px;left: 0;}
+.mxl .rbox1 b{background-position: 58px 0px;}
+.mxl .rbox2 b{background-position: 147px 0px;}
+.mxl .rbox3 b{background-position: 238px 0px;}
+.mxl .title{width: 89px;margin: 6px auto 0;position:relative;text-align:center;padding-top:18px;line-height: 18px;background:url(../images/yd01.gif) center 0  no-repeat;}
+
+.mxl .act .title{background:url(../images/yd02.gif) center 0 no-repeat;}
+.xglpCon{ width:330px; padding:10px; height:106px; border:2px solid #e43; position:absolute; background:#FFF; top:-138px; right:30px;  display:none;}
+.rbox1{right: -243px;}
+.rbox2{right: -152px;}
+.rbox3{right: -61px;}
+.xglpCon i{ width:135px; height:100px; padding:2px; margin-right:10px; border:1px solid #DDD;float:left;}
+.xglpCon em{ display: block; height:26px; line-height:26px; overflow:hidden; text-align:left; }
+.xglpCon strong{ font-size:14px;}
+.xglpCon span{ color:#999;}
+.kfklx a.act .xglpCon{ display:block;}
+.kft-info{width: 400px; float: right;}
+.kft-info h2 {font-size: 24px;height: 26px;line-height: 26px;font-family: Microsoft yahei;}
+.kft-info .incon {font-size: 14px; line-height: 20px; margin-top:12px; height: 20px; overflow: hidden;}
+.kft-info .incon span{color: #FF3300}
+.kft-info .wybm{background-color: #e43; height: 40px; line-height: 40px;color: #fff; text-align:center;display: block;font-size: 24px; font-family: Microsoft yahei;width: 145px;border-radius: 4px;margin-top: 12px;}
+.kft-info .call{background-color: #00C0FF;color: #fff;font-size: 24px; font-family: Microsoft yahei;border-radius: 2px; height: 55px;line-height: 55px;overflow: hidden;margin-top: 12px;}
+.kft-info .call i{background: url(../images/kft-call.png) no-repeat;display: block;width: 18px; height: 25px; vertical-align: middle;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/kft-call.png");
+float: left;margin: 14px 10px 0 12px;display: inline;}
+.kft-info .end{background-color: #BDBDBD; }
+.kft-info .ljbm{background-color: #FF6600;}
+.kft-info .wybm:hover{ opacity: 0.8; text-decoration: none;}
+/* 看房团报名banner图 */
+.banner-bg{background: url(../images/bm.png) no-repeat;display: block;border: 1px solid #ddd; position: relative; height: 355px;}
+.banner-bg .lc{position: absolute;right: 0; width: 254px; top: 65px; color: #fff;}
+.banner-bg .lc ul{padding-top: 10px;}
+.banner-bg .lc h3{font-size: 16px; height: 30px; line-height: 30px; overflow: hidden;font-weight: bold;}
+.banner-bg .lc li{height: 18px; line-height: 18px;overflow: hidden; padding: 7px 0;font-size: 14px;}
+.banner-bg .lc li i{width: 18px; height: 18px; color: #000; font-weight: bold; background-color: #fff;display: block; text-align: center; float: left; margin-right: 8px;}
+
+/* 活动说明 */
+.hdsm .content{padding: 20px;}
+.hdsm .content p{text-indent: 15px; padding: 5px 0;line-height: 22px;}
+/* 购房工具 */
+.gf-tool{background: url(../images/newhouse-gftool.png) no-repeat; margin-left: 12px;}
+.gf-tool a{height: 53px; line-height: 53px; overflow: hidden; margin-left: 60px; font-size: 14px;display: block;}
+
+
+
+

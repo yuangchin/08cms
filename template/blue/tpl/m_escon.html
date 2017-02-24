@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  <title>{subject}-{$cmstitle}</title>
+  <meta name="keywords" content="{keywords}"/>
+  <meta name="description" content="{abstract}"/>
+  {tpl$m_headinner}
+  <?php
+        // 初始化房源参数
+        $fy_caid     = ($caid==4||$caid==20||$caid==9)?4:3;
+        $unit        = $fy_caid==4?'元/月':'万';// 单位
+        $fy_title    = $fy_caid==4?'出租':'二手房';//标题
+        $fy_chid     = $fy_caid==4?2:3;
+        $fy_lxtit    = $fy_caid==4?$ccid44title:$ccid43title;
+   ?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" class="innblank44 active">
+        <footer>
+            <a href="tel:{lxdh}"><i class="icon-e612"></i>打电话</a>
+            <a onclick="return popupExt('#tpl_popup_yx');"><i class="icon-f07a"></i>{if $fy_caid==4}我想租{else}我想买{/if}</a>
+            <a onclick="return publicCollect('{$aid}');"><i class="icon-f004"></i>收藏它</a>
+            <a href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=1/]}{indexurl2}{/c$caidx}"><i class="icon-e7b9"></i>计算器</a>
+        </footer>
+        <article id="up_refresh_article" class="active">
+            <div>
+                {tpl$m_header_arc}
+                <div id="slider" class="slider" style="height:200px">
+                       <div>
+                           {c$archives [tclass=archives/] [chids=121/] [chsource=2/] [limits=50/] [mode=in/] [arid=38/]}
+                            <div class='slider-item'><a href='{$arcurl3}&img_oldfang={sn_row}'><img title='{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=640/] [maxheight=400/] [thumb=1/]}{url}{/c$image}'/></a></div>
+                            {/c$archives}
+                       </div>
+                       {if $imgnum>0}<div class="zu_sell">{imgnum} 图</div>{/if}
+                </div>
+
+
+                <ul class="list detail">
+
+                    <li class="divider">
+                         房源信息
+                    </li>
+                    <li>
+                        <h1>{subject}</h1>
+                        <div class="grid item f-asbestos fz12"><div class="col-1"><span class="icon-e014"></span>{c$create_ymdhis [cname=create_ymdhis/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$create_ymdhis}(<?=u_time_format($refreshdate)?> 更新) </div><span class="icon-f007 f-alizarin"></span>{mname}</div>
+                        <div class="line"></div>
+                        <div class="grid item">
+                        <div class="grid-label-s f-asbestos">{if $fy_caid==4}月租{else}总价{/if}：</div><span class="fz20 f-alizarin">{if $zj}<i id="zj">{zj}</i>{$unit}{else}面议{/if}</span>{if !empty($dj)}({dj}元/m&sup2;){/if}
+                        </div>
+
+                        {if $fy_caid!=4 && $zj>0}<div class="grid item">
+                            <div class="grid-label-s f-asbestos">参考：</div><span class="fco arial f12">首付：<b id="sf"></b>万 月供：<b id="yg"></b>元/月(20年)</span><a href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=1/]}{indexurl2}{/c$caidx}" class="fz14 icon-f1ec f-peter-river" rel="nofollow"> 计算器</a>
+                        </div>{/if}
+
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">户型：</div>{c$shi}{c$ting}{c$wei}
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">面积：</div>{mj}平米
+                        </div>
+                        <div class="line"></div>
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">区域：</div>{ccid1title}{if $ccid2title}-{ccid2title}{/if}<span class="f-peter-river">-{lpmc}</span>
+                        </div>
+
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">地址：</div><div class="col-1">{address}</div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">类型：</div>{$fy_lxtit}
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">装修：</div>{c$zxcd}
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">楼层：</div>第{szlc}层/总{zlc}层
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">房龄：</div>{c$flfl}
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label-s f-asbestos">朝向：</div>{c$cxcx}
+                        </div>
+                        <div class="line"></div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">房源配套：</div><div class="col-1">{c$fwpt [cname=fwpt/] [tclass=field/] [tname=fwpt/] [type=archive/] [fname=fwpt/]}{/c$fwpt}</div>
+                        </div>
+                        <div class="grid item">
+                           <div class="grid-label-s f-asbestos">来源：</div>
+                           {if @$mid>0}
+                               <div>
+                                    <p>{c$imagex [tclass=member/] [chids=2/] [chsource=2/]}<a href="{$mobileurl}index.php?caid=13&mid={mid}"><img src="{c$thumb_s [tclass=image/] [tname=image/] [val=u/] [padding=0/] [thumb=2/]  [maxwidth=40/] [maxheight=50/]  [emptyurl=images/common/mlogo.gif/]}{url_s}{/c$thumb_s}" alt="{xingming}"  width="40" height="50" /></a>{/c$imagex}</p>
+
+                                    <span class="f-peter-river">
+                                     {c$bbbb [tclass=member/] [val=r/] [id=$mid/]}
+                                     {if $r['mchid']==2 || $r['mchid']==3}
+                                     <a href="{$mobileurl}index.php?caid=13&mid={mid}">{xingming}</a>
+                                     {else}
+                                     {xingming}
+                                     {/if}
+                                     </span>
+                                     ({if $r['mchid']==2}经纪人{elseif $r['mchid']==3 }经纪公司{else}个人{/if}){/c$bbbb}
+                                </div>
+                            {else}
+
+                                 {xingming}(个人)
+
+                           {/if}
+                        </div>
+                        {c$jjgsx [tclass=member/] [chids=3/] [chsource=2/] [val=b/] [id=$mid/] [arid=4/] [detail=1/]}
+                            <div class="grid item">
+                            <div class="grid-label-s f-asbestos">所属：</div><span class="f-peter-river">{c$jjgs [tclass=member/] [chids=3/] [chsource=2/] [id=$b[pid4]/] [detail=1/]}<a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=3" target="_blank">{cmane}</a>{/c$jjgs}</span>
+                            </div>
+
+                        {/c$jjgsx}
+                    </li>
+                    <li class="divider">
+                        房源描述
+                    </li>
+                    <li class="detail-img" id="detail-img">
+                      <div class="js_minh200">
+                                 {c$content [cname=房源描述/] [tclass=text/] [tname=content/] [dealhtml=clearhtml/] [dealhtml_tags=a|tbody|form|table|img|frame|tr|script|li,ul,dd,dt|td|b,strong|tab|p|br|trim|font|nbsp|iframe|div|h|sub,sup|span|hr|all/] [badword=1/] [nl2br=1/]}{/c$content}   <br/><div class="fz12">联系时请告诉我是在{$hostname}看到的信息，谢谢。</div> {if $ismob}<br/>
+                            <div class="fz12">本信息由{$hostname}手机版发布。</div>
+                          {/if}
+                            </div>
+                        <div class="house_flex"><span>展开<i class="icon-e684"></i></span></div>
+                     </li>
+
+                    {if $dt!=''}
+                    <li class="divider">
+                        位置及周边
+                    </li>
+                    <li>
+                        <div class="">
+                            {if $pid3}
+                            {c$archive [cname=所属楼盘7/] [tclass=archive/] [chid=4/] [arid=3/] [detail=1/]}
+                            <a href="{arcurl1}"><img width="100%" height="300" src="http://api.map.baidu.com/staticimage?width=320&height=300&center={dt_1},{dt_0}&zoom=13&markers={dt_1},{dt_0}&markerStyles=l,o" /></a>
+                            {/c$archive}
+                            {else}
+                            <a href="{arcurl1}"><img width="100%" height="300" src="http://api.map.baidu.com/staticimage?width=320&height=300&center={dt_1},{dt_0}&zoom=13&markers={dt_1},{dt_0}&markerStyles=l,o" /></a>
+                            {/if}
+                        </div>
+                    </li>
+                    {/if}
+                    <!-- 小区信息 -->
+                    {c$archive [cname=所属楼盘7/] [tclass=archive/] [chid=4/] [arid=3/] [detail=1/]}
+                    <li class="divider" data-icon="icon-f054">
+                        <a href="{arcurl7}">小区信息</a>
+                    </li>
+                    <li>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">小区名称：</div>{if $pid3}{subject}{else}{$lpmc}{/if}
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">小区地址：</div><div class="col-1">{address}</div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">物业公司：</div><div class="col-1">{wygs}</div>
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">物业费用：</div><div class="col-1">{wyf}</div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">小区户数：</div>{xqhs}
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">停车位：</div>{cksm}
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">容积率：</div>{yjl}
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">绿化率：</div>{lhl}
+                        </div>
+                        <div class="line"></div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">本月均价：</div>{cspjj}元/平米
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">最高价：</div>{csjgz}万元
+                        </div>
+                        <div class="grid item">
+                            <div class="grid-label f-asbestos">最低价：</div>{csjdj}万元
+                        </div>
+                    </li>
+                    <li class="divider">
+                        价格走势
+                    </li>
+                    <li>
+                        <canvas id="line_canvas"></canvas>
+                    </li>
+                    <script type="text/javascript">
+                        var _data = {
+                                labels : [{c$outinfos [tclass=outinfos/] [val=a/] [dsid=0/] [limits=6/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='0' and aid='$pid3' order by createdate DESC,cid DESC/]}{if $a['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$date}'{/c$outinfos}],
+                                datasets : [
+                                    {
+                                        name : '{subject}',
+                                        color : "#72caed",
+                                        pointColor : "#95A5A6",
+                                        pointBorderColor : "#fff",
+                                        data : [{c$outinfos [tclass=outinfos/] [val=a/] [dsid=0/] [limits=6/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='0' and aid='$pid3' order by createdate DESC,cid DESC/]}{if $a['sn_row']>1},{/if}{$a[average]}{/c$outinfos}]
+                                    }
+                                ]
+                            }
+                        _data.labels.reverse();
+                        _data.datasets[0].data.reverse();
+                    </script>
+                    {if $pid3}
+                       <li data-icon="icon-f054">
+                            <a href="{arcurl7}"><span class="f-peter-river">{subject}</span>其它<span class="f-alizarin">{if $caid==3}{lpesfsl}{elseif $caid==4}{lpczsl}{/if}</span>{if $fy_caid==4}套出租房源{else}个二手房源{/if}</a>
+                        </li>
+                    {/if}
+                    {/c$archive}
+                    <!-- /小区信息 -->
+
+                </ul>
+                {if $pid3}
+                <ul class="list list-media">
+                    {c$tjjcon [tclass=archives/] [chids=$fy_chid/] [chsource=2/] [limits=3/] [caidson=1/] [casource=1/] [caids=$fy_caid/] [mode=in/] [arid=3/] [id=$pid3/] [detail=1/] [orderstr=a.clicks DESC/] [wherestr=a.aid!='$aid'/]}
+                     <li>
+                        <a href="{arcurl}">
+                            <img class="media-object" width="85" height="65" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=85/] [maxheight=65/] [thumb=1/][emptyurl=images/common/zwtp70.png/]}{url_s}{/c$image}">
+                            <div class="grid">
+                                <div class="col-1">
+                                    <strong>{if $v['ccid9']}<span class="label fl alizarin">顶</span>{/if}{subject}</strong>
+                                </div>
+                                {if $v['zj']}<span class="f-alizarin">{zj}</span>{$unit}{else}<span class="fcb">面议</span>{/if}
+                            </div>
+                            <div class="grid"><div class="col-1"><span class="f-asbestos substr">{if $v['imgnum']}<b class="icon-e735 f-peter-river"></b>{/if}{lpmc}</span> </div>
+                            {if $v['shi']!=100}{c$shi}{/if}{if $v['ting']!=100}{c$ting}{/if}
+                            </div>
+                            <p><span class="label">{ccid1title}</span>{if $fy_caid==4}{if $v['ccid44title']}<span class="label">{ccid44title}</span>{/if}{else}{if $v['ccid43title']}<span class="label">{ccid43title}</span>{/if}{/if}{if $v['mchid'] == 2}  <span class="label">经纪人</span>{else} <span class="label">个人</span> {/if}{if $v['fl']}<span class="label">{c$flfl}</span>{/if}{if $v['zxcd']}<span class="label">{c$zxcd}</span>{/if}{if $v['cx']}<span class="label">{c$cxcx}</span>{/if}</p>
+                        </a>{if @$v['imgnum']>0}
+                            <div class="pos_num">{imgnum} 图</div>
+                            {/if}
+                    </li>
+                    {/c$tjjcon}
+                </ul>
+                {/if}
+
+                <ul class="list list-media">
+                    <li>同价位{if $fy_caid==4}出租房{else}二手房{/if}</li>
+                    {c$tjjcon [tclass=archives/] [chids=$fy_chid/] [chsource=2/] [limits=3/] [caidson=1/] [casource=1/] [caids=$fy_caid/] [ccidson1=1/] [cosource1=2/] [detail=1/] [orderstr=a.wclicks DESC/] [wherestr=a.aid!='$aid'   AND  a.zj>($zj-2) and a.zj<($zj+2)/]}
+                     <li>
+                        <a href="{arcurl}">
+                            <img class="media-object" width="85" height="65" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=85/] [maxheight=65/] [thumb=1/][emptyurl=images/common/zwtp70.png/]}{url_s}{/c$image}">
+                            <div class="grid">
+                                <div class="col-1">
+                                    <strong>{if $v['ccid9']}<span class="label fl alizarin">顶</span>{/if}{subject}</strong>
+                                </div>
+                                {if $v['zj']}<span class="f-alizarin">{zj}</span>{$unit}{else}<span class="fcb">面议</span>{/if}
+                            </div>
+                            <div class="grid"><div class="col-1"><span class="f-asbestos substr">{if $v['imgnum']}<b class="icon-e735 f-peter-river"></b>{/if}{lpmc}</span> </div>
+                            {if $v['shi']!=100}{c$shi}{/if}{if $v['ting']!=100}{c$ting}{/if}
+                            </div>
+                            <p><span class="label">{ccid1title}</span>{if $fy_caid==4}{if $v['ccid44title']}<span class="label">{ccid44title}</span>{/if}{else}{if $v['ccid43title']}<span class="label">{ccid43title}</span>{/if}{/if}{if $v['mchid'] == 2}  <span class="label">经纪人</span>{else} <span class="label">个人</span> {/if}{if $v['fl']}<span class="label">{c$flfl}</span>{/if}{if $v['zxcd']}<span class="label">{c$zxcd}</span>{/if}{if $v['cx']}<span class="label">{c$cxcx}</span>{/if}</p>
+                        </a>{if @$v['imgnum']>0}
+                            <div class="pos_num">{imgnum} 图</div>
+                            {/if}
+                    </li>{/c$tjjcon}
+                    <li>同区域{if $fy_caid==4}出租房{else}二手房{/if}</li>
+                    {c$tjjcon [tclass=archives/] [chids=$fy_chid/] [chsource=2/] [limits=3/] [caidson=1/] [casource=1/] [caids=$fy_caid/] [ccidson1=1/] [cosource1=2/] [detail=1/] [orderstr=a.wclicks DESC/] [wherestr=a.aid!='$aid'/] [forceindex=a.wclicks/]}
+                     <li>
+                        <a href="{arcurl}">
+                            <img class="media-object" width="85" height="65" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=85/] [maxheight=65/] [thumb=1/][emptyurl=images/common/zwtp70.png/]}{url_s}{/c$image}">
+                            <div class="grid">
+                                <div class="col-1">
+                                    <strong>{if $v['ccid9']}<span class="label fl alizarin">顶</span>{/if}{subject}</strong>
+                                </div>
+                                {if $v['zj']}<span class="f-alizarin">{zj}</span>{$unit}{else}<span class="fcb">面议</span>{/if}
+                            </div>
+                            <div class="grid"><div class="col-1"><span class="f-asbestos substr">{if $v['imgnum']}<b class="icon-e735 f-peter-river"></b>{/if}{lpmc}</span> </div>
+                            {if $v['shi']!=100}{c$shi}{/if}{if $v['ting']!=100}{c$ting}{/if}
+                            </div>
+                            <p><span class="label">{ccid1title}</span>{if $fy_caid==4}{if $v['ccid44title']}<span class="label">{ccid44title}</span>{/if}{else}{if $v['ccid43title']}<span class="label">{ccid43title}</span>{/if}{/if}{if $v['mchid'] == 2}  <span class="label">经纪人</span>{else} <span class="label">个人</span> {/if}{if $v['fl']}<span class="label">{c$flfl}</span>{/if}{if $v['zxcd']}<span class="label">{c$zxcd}</span>{/if}{if $v['cx']}<span class="label">{c$cxcx}</span>{/if}</p>
+                        </a>
+                            {if @$v['imgnum']>0}
+                            <div class="pos_num">{imgnum} 图</div>
+                            {/if}
+                    </li>{/c$tjjcon}
+                </ul>
+
+                <ul class="list detail">
+                    <li data-icon="icon-f054">
+                        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=fy_caid/] [cosource1=active/]}{indexurl}{/c$cnode}"><span class="f-peter-river">{ccid1title}</span>其它<span class="f-alizarin">{c$counts [tclass=acount/] [chids=$fy_chid/] [chsource=2/] [val=b/] [casource=1/] [caids=$fy_caid/] [cosource1=2/] [ttl=600/]}{counts}{/c$counts}</span>{if $caid==3}二手房源{elseif $caid==4}出租房源{/if}</a>
+                    </li>
+                </ul>
+
+                <ul class="list detail">
+                    <li class="divider">
+                      免责声明
+                    </li>
+                    <li class="divider">
+                    <span class="fz12">&nbsp;&nbsp; 信息由{$hostname}网友提供，其真实性与合法性由信息提供者负责，最终以政府部分登记备案为准，本站不声明或者保证内容的正确性和可靠性，购买该房屋时，请谨慎核查。</span>
+                    </li>
+                </ul>
+
+                {tpl$m_footer_ft}
+            </div>
+        </article>
+    </section>
+
+</div>
+<div class="dn" id="tpl_popup_yx" style="padding:10px">
+    <form name="commu46" id="commu46" method="get" onsubmit="return fyCummus(this,'意向提交',1);">
+        <input type="hidden" name="cuid" value="46" /><!--交互项目id-->
+        <input type="hidden" name="cutype" value="a" /><!--a:针对文档,m:针对,都不是就不要这项-->
+        <input type="hidden" name="aid" value="{aid}" /><!--针对文档的aid,不是针对文档就不要这项-->
+        <div class="input-group">
+            <input type="text" name="fmdata[uname]" required maxLength="20" min="0" max="20" placeholder="您的姓名">
+            <input type="text" name="fmdata[utel]" required title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" placeholder="手机号码">
+            <input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+        </div>
+       <button class="block" name="bsubmit" type="submit" data-icon="icon-e603">提交</button>
+    </form>
+</div>
+<script type="text/javascript" src="{$tplurl}mobile/js/JChart.debug.js"></script>
+{tpl$m_footer}
+<script type="text/javascript" src="{$tplurl}mobile/js/TouchSlide.js"></script>
+<script type="text/javascript">
+    TouchSlide({
+        slideCell : '#slider' ,
+        mainCell  : '#slider div',
+        switchLoad: 'title'
+    });
+</script>
+</body>
+</html>

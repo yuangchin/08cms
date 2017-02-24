@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>测试页面</title>   
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+{tpl$headinner}
+<style type="text/css">
+*{margin:0; padding:0; list-style:none; font-size:12px;}
+.wrap{width:960px; margin: 0 auto;}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+	<input type="submit" class="btn" value="关闭"/>
+</div>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript">
+	$('.btn').click(function () {
+		window.parent.$('.jqiframe').length && window.parent.$('.jqiframe').jqModal('hide')
+	});
+</script>
+</body>
+</html>

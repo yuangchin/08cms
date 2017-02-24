@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>购房能力评估-{$hostname}</title>
+{tpl$headinner}
+</head>
+<body class="calc">
+{tpl$toolshead}
+<div id="main" class="wrap main">
+<!--内容区-->    
+		<div class="calc_main_wrap">
+	  <div class="calc_main cf">
+		<div class="left fl">
+		  <div class="top cf goufang">
+			<form action="" method="" name="myform">
+			<div class="sr fl">
+			  <h2>购房能力评估</h2>
+			  <ul class="cf">
+				<li class="cf fl"><span class="fl">现可用于购房的资金：</span><input class="fl txt" type="text" value="" name="rg01" onblur="chk01()"><b class="fl">万元</b></li>
+				<li class="cf fl"><span class="fl">现家庭月收入：</span><input class="fl txt" type="text" value="" name="rg02"><b class="fl">元</b></li>
+				<li class="cf fl"><span class="fl">家庭每月用于购房支出：</span><input class="fl txt" type="text" value="" name="rg03" onblur="chk02()"><b class="fl">元/月</b></li>
+				<li class="cf fl"><span class="fl">您计划购买房屋的面积：</span><input class="fl  txt" type="text" value="" name="rg06"><b class="fl">平方米</b></li>
+				<li class="cf fl"><span class="fl">您期望偿还贷款的年限：</span>
+				  <select name="rg04" size="1" class="fl">
+					  <option value="24">2年(24期)</option>
+					  <option value="36">3年(36期)</option>
+					  <option value="48">4年(48期)</option>
+					  <option value="60">5年(60期)</option>
+					  <option value="72">6年(72期)</option>
+					  <option value="84">7年(84期)</option>
+					  <option value="96">8年(96期)</option>
+					  <option value="108">9年(108期)</option>
+					  <option value="120">10年(120期)</option>
+					  <option value="180">15年(180期)</option>
+					  <option selected="selected" value="240">20年(240期)</option>
+					  <option value="300">25年(300期)</option>
+					  <option value="360">30年(360期)</option>
+					</select>
+				</li>
+			  </ul>
+			  <p class="btn_p"><input type="button" class="btn1" value="计算" onclick="chk03()"><a href="#" title="" target="_blank" id="reset">请除数据，重新计算</a></p>
+			</div>
+			<div class="re fl">
+			  <h2>计算结果<span>(&nbsp;&nbsp;计算结果仅供参考&nbsp;&nbsp;)</span></h2>
+			  <div class="re_in">
+				<span class="sj"></span>
+				<p>您可购买的房屋总价为：<span id="rg07">0</span>元</p>
+				<p>您可购买的房屋单价为：<span id="rg08">0</span>元/平米</p>
+				<h3>购房相关税费：</h3>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;契税：<span id="rg10">0</span>元</p>
+				<p>公共维修基金：<span id="rg11">0</span>元</p>
+				<h3>银行贷款需支付的费用:</h3>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首付款：<span id="rg12">0</span>元</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保险费：<span id="rg13">0</span>元</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;律师费：<span id="rg14">0</span>元</p>
+				<p class="no_br">抵押登记费：<span id="rg15">0</span>元</p>
+			  </div>
+			</div>
+			</form>
+		  </div>
+		  <div class="bottom">
+			<h4>购房能力评估</h4>
+			<p>1.公积金贷款最高额度为80万元;</p>
+			<p>2.对已贷款购买一套住房但人均面积低于当地平均水平，再申请购买第二套普通自住房的居民，比照执行首次贷款购买普通自住房的优惠政策。</p>
+		  </div>
+		</div>
+		{tpl$tpl_jsq_right}
+	  </div>
+	</div>
+
+  <script type = "text/javascript" >
+	var rg7 = document.getElementById("rg7");
+	var rg8 = document.getElementById("rg8");
+	var rg10 = document.getElementById("rg10");
+	var rg11 = document.getElementById("rg11");
+	var rg12 = document.getElementById("rg12");
+	var rg13 = document.getElementById("rg13");
+	var rg14 = document.getElementById("rg14");
+	var rg15 = document.getElementById("rg15");
+
+	rhb = new Array(440.104, 301.103, 231.7, 190.136, 163.753, 144.08, 129.379, 117.991, 108.923, 101.542, 95.425, 90.282, 85.902, 82.133, 78.861, 75.997, 73.473, 71.236, 69.241, 67.455, 65.848, 64.397, 63.082, 61.887, 60.798, 59.802, 58.890, 58.052, 57.282)
+	yhz = new Array(1.978, 2.9344, 3.8699, 4.7847, 5.6794, 6.5544, 7.4102, 8.2472, 9.0657, 9.8662, 10.6491, 11.4148, 12.1636, 12.8959, 13.6121, 14.3126, 14.9977, 15.6677, 16.3229, 16.9637, 17.5904, 18.2034, 18.8028, 19.389, 19.9624, 20.5231, 21.0715, 21.6078, 22.1323)
+
+	function chk01() {
+		if (parseFloat(document.myform.rg01.value) < 4.7)
+			alert("--您确定是" + parseFloat(document.myform.rg01.value) + "万元?--" + "\n\n" + "那么您目前尚不具备购房能力，" + "\n\n" + "建议积攒积蓄或能筹集更多的资金。")
+		if (parseFloat(document.myform.rg01.value) > 10000)
+			alert("您确定拥有超过一亿元的购房资金？");
+
+	}
+
+	function chk02() {
+		if (parseFloat(document.myform.rg03.value) > parseFloat(document.myform.rg02.value) * 0.7) {
+			alert("您预计家庭每月可用于购房支出已超过家庭月收入的70%，" + "\n\n" + "是否确定不会影响您的正常生活消费？" + "\n\n" + "建议在40%（" + parseFloat(document.myform.rg02.value) * 0.4 + "元）左右")
+		}
+	}
+
+	function chk03() {
+		if (document.myform.rg01.value == "")
+			alert("请填写现可用于购房的资金")
+		else
+		if (document.myform.rg02.value == "")
+			alert("请填写现家庭月收入")
+		else
+		if (document.myform.rg03.value == "")
+			alert("请填写预计家庭每月可用于购房支出")
+		else
+		if (document.myform.rg06.value == "")
+			alert("请填写您计划购买房屋的面积")
+		else
+			chk04()
+	}
+
+	
+	function chk04() {
+
+		//您可购买的房屋总价=（家庭月收入-家庭月固定支出）×( (（1＋月利率）＾还款月数)－1  )÷［月利率×（1＋月利率）＾还款月数］+持有资金 
+	    var month = parseInt(document.myform.rg04.options[document.myform.rg04.selectedIndex].value);
+	    var year = parseInt(month / 12);
+	    /*var lilu = 0.00576;
+	    if (year > 5)
+	        lilu = 0.00594;*/
+	    js00_n = parseFloat(document.myform.rg01.value);//现持有
+	    js01_n = parseFloat(document.myform.rg02.value);//月收入
+	    js02_n = parseFloat(document.myform.rg03.value);//月支出
+	    js03_n = parseFloat(document.myform.rg06.value);//面积
+
+	    /*var d1 = js01_n - js02_n;
+	    var d2 = Math.pow(1 + lilu, month) - 1;
+	    var d3 = lilu * Math.pow(1 + lilu, month)
+
+	    rg07.innerHTML = Math.round(((d1 * d2) / d3) + js00_n);
+	    rg08.innerHTML = parseFloat(rg07.innerHTML) / js03_n;*/
+	    //////////////////////
+
+		js00 = js00_n * 10000 //现持有
+		js01 = js02_n // 月支出
+		js02 = Math.round(js01 / rhb[parseInt(document.myform.rg04.options[document.myform.rg04.selectedIndex].value) / 12 - 2]) * 10000
+		js03 = js03_n
+
+		if (js02 > js00 * 3.2)
+			js02 = js00 * 3.2
+		rg07.innerHTML = Math.round((js02 + 0.8 * js00) * 100) / 100
+		rg08.innerHTML = Math.round(parseFloat(rg07.innerHTML) / js03 * 100) / 100
+
+		if(js03<90){
+			rg10.value=Math.round(parseFloat(rg07.value)*1)/100
+		}else if(js03>=90 && js03<144){
+			rg10.value=Math.round(parseFloat(rg07.value)*1.5)/100
+		}else{
+			rg10.value=Math.round(parseFloat(rg07.value)*3)/100
+		}
+
+		/*if (js03 < 120)
+			rg10.innerHTML = Math.round(parseFloat(rg07.innerHTML) * 2) / 100
+		else
+			rg10.innerHTML = Math.round((parseFloat(rg07.innerHTML) - parseFloat(rg08.innerHTML) * 120) * 4 + parseFloat(rg08.innerHTML) * 120 * 2) / 100*/
+
+
+		rg11.innerHTML = Math.round(parseFloat(rg07.innerHTML) * 2) / 100
+		rg12.innerHTML = Math.round(parseFloat(rg07.innerHTML) * 20) / 100
+		rg13.innerHTML = Math.round(Math.round(parseFloat(rg07.innerHTML) * 0.05) / 100 * yhz[parseInt(document.myform.rg04.options[document.myform.rg04.selectedIndex].value) / 12 - 2] * 100) / 100
+		rg14.innerHTML = Math.round(parseFloat(rg07.innerHTML) * 0.3) / 100
+		rg15.innerHTML = "200~500"
+
+	}
+	document.getElementById("reset").onclick = function() {
+		document.getElementsByName('myform')[0].reset();
+		return false;
+	} 
+	</script>
+
+  	<script type="text/javascript">
+	  //计算器导航
+	  (function() {
+	  	var str = '';
+	  	$('#calc_nav').find('li').on({
+	  		'mouseenter': function() {
+	  			str = $(this).attr('class');
+	  			$(this).addClass(str + '_h');
+	  		},
+	  		'mouseleave': function() {
+	  			$(this).removeClass(str + '_h');
+	  		}
+	  	});
+	  })();
+	  $(".calc_dl dd:odd").css("background", "#eee");
+  	</script> 
+  </div>
+{tpl$foot}
+</body>
+</html>

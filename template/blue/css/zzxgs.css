@@ -1,0 +1,136 @@
+/* CSS Document */
+.con2B {
+    float: right;
+
+    width: 207px;
+}
+.con2A2A {
+    font-size: 14px;
+
+    float: left; padding-right: 10px; background: #fff;
+}
+.con2C1 {
+    clear: both;overflow: hidden; height: 159px; padding: 8px;
+
+    border: 1px solid #cdcdcd; border-top: 2px solid #eda822;
+}
+.con2C1B {
+    float: right; padding-top: 4px;
+}
+.conB21 {
+    line-height: 28px;
+
+    clear: both; overflow: hidden; height: 28px; padding-top: 4px; padding-left: 10px; padding-left: 18px; color: #2f2f2f; background: url(../newimages/ren.gif) no-repeat 3px 11px;
+}
+.conB22 {
+    overflow: hidden;
+
+    height: 7px; background: url(../newimages/arrow_fresh.gif?20131212) no-repeat;
+}
+.conB23 {
+    line-height: 22px; padding: 8px 10px; color: #2f2f2f;border: 1px solid #dcdcdc; border-top: 0;
+    background-color: #fff;
+}
+.conB31 {
+    padding: 8px;
+
+    border: 1px solid #dcdcdc; border-top: none;
+}
+.con3_list {
+    height: 105px; padding: 15px; cursor: pointer;border-bottom: 1px solid #dadccb;
+}
+.con3A {
+    float: left; width: 154px;
+    height: 104px; padding: 1px 0 0 1px;background: url(../newimages/zxtk_bg.gif) no-repeat;
+}
+.con3B {
+    float: right;
+
+    width: 530px;
+}
+.con3B1 {
+    line-height: 26px;
+
+    height: 26px;
+}
+.con3B1A {
+    font-size: 14px;font-weight: bold;
+
+    float: left;
+}
+.con3B1B {
+    float: right;
+}
+.con3B2 {
+    line-height: 20px;
+
+    clear: both;
+}
+.fy {
+    line-height: 22px;
+
+    height: 22px; padding-right: 10px;text-align: right;
+}
+/*new2011-4-2*/
+.title6 {
+    line-height: 24px;
+
+    height: 24px; border: 1px solid #dcdcdc; border-bottom: none;background: url(../newimages/title6_bg.gif) repeat-x;
+}
+.title6_L {
+    font-weight: bold; float: left; padding: 0 10px 0 25px; color: #414141; border-right: 1px solid #dcdcdc;
+    background: url(../newimages/arrow6.gif) 8px center no-repeat #fff;
+}
+.title6_r {
+    float: right; padding-right: 10px; color: #8a8a8a;
+}
+.title6_r span {
+    display: block; float: left; padding: 0 5px;
+}
+.title6_r span.btn {
+    padding-top: 4px;
+}
+.black {
+    color: #000;
+}
+.title6_1 {
+    line-height: 35px;
+
+    height: 35px; padding-left: 25px; color: #414141; border-right: 1px solid #dcdcdc;border-left: 1px solid #dcdcdc; background: url(../newimages/title6_bg1.gif) repeat-x;
+}
+.sj_list {
+    overflow: hidden;
+
+    height: 61px; margin: 0 5px;padding: 15px 10px; border-bottom: 1px dashed #dcdcdc;
+}
+.sjA {
+    position: relative;float: left; width: 187px;
+    height: 65px; padding: 1px 0 0 1px;background: url(../newimages/pic_bg.gif) no-repeat;
+}
+.sjA .icon {
+    position: absolute;top: -1px;left: -1px;width: 39px;height: 38px;cursor: pointer;
+
+    background: url(../images/lpzd.gif);
+}
+.sjA .icon2 {
+    font-style: normal;line-height: 16px;position: absolute;top: 40px;right: 7px;height: 16px;padding: 0 5px;cursor: pointer;text-align: center;opacity: .7;color: #fff;
+    background: red;
+}
+.sjB {
+    float: right;
+
+    width: 510px;
+}
+.sjB1 {
+    line-height: 26px;
+
+    height: 24px;
+}
+.sjB1A {
+    font-size: 14px; font-weight: bold;
+
+    float: left; color: #c70101;
+}
+.sjB1B {
+    float: right;
+}

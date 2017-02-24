@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link href="{$tplurl}css/kpyg.css?{$user_version}" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+    .banner{background:url({c$image [tclass=image/] [tname=image/] [maxheight=425/] [emptyurl=template/blue/images/kbyszt.gif/]}{url}{/c$image}) center 0 no-repeat;height:425px;}
+    body{background-color: #C5F2F9;}
+
+</style>
+</head>
+<body>
+<!-- header -->
+{tpl$head}
+<!--  头部广告信息 -->
+<div class="banner"></div>
+<div class="bza clearfix">
+    <div class="wrap"> <i></i> <em>{c$text [tclass=text/] [tname=abstract/] [trim=480/] [badword=1/] [nl2br=1/]}{/c$text}</em>
+    </div>
+</div>
+
+
+<!--  中间内容 -->
+<div class="wrap">
+        <div class="bgf plr30">
+                <!-- 开盘预告-->
+                <div class="kpyg-ct clearfix">
+                    <div class="kpyg-tit">
+                        <h2>开盘预告</h2>
+                        <div class="wqhg">
+                                {c$archives [tclass=archives/] [chids=14/] [chsource=2/] [limits=50/] [casource=1/] [caids=619/] [wherestr=a.aid<'$aid'/] [ttl=600/]}
+                                 <select id="select" class="w230">
+                                <option>往期回顾</option>
+                                [row]
+                                <option value="{arcurl}">{subject}</option>
+                                [/row]
+                                </select>
+                                {/c$archives}
+                        </div>
+                    </div>
+                <div class="hot-lp">
+                <ul class="clearfix">
+                    {c$archives [tclass=archives/] [chids=4/] [chsource=2/] [limits=6/] [caids=2/] [mode=in/] [arid=12/] [detail=1/] [ttl=600/] [wherestr=(leixing='0' OR leixing='1')/]}
+                    <li>
+                         <div class="cont">
+                         <h2><a href="{arcurl}" title="{subject}">{subject}</a></h2>
+                         <a href="{arcurl}" title=""><img src="{c$image [tclass=image/] [val=a/] [tname=thumb/] [maxwidth=296/] [maxheight=160/]}{url_s}{/c$image}"  width="296" height="160" alt="{subject}"/></a>
+                         <div class="lh"><b>开盘时间：</b>{kprq}</div>
+                         <div class="lh"><b>开盘房源：</b>{c$archives1 [tclass=archives/] [val=a/] [chids=11/] [chsource=2/] [limits=4/] [casource=1/] [caids=11/] [mode=in/] [arid=3/] [wherestr=a.zlhx = '1'/]}<a class="mr5" href="{arcurl}" target="_blank">{c$shi}{c$ting}{mj}m&sup2;</a> {/c$archives1}</div>
+                         <div class="lh"><b>开盘价格：</b><font class="arial">{dj}元/m&sup2;</font></div>
+                         <div class="lh"><b>所属区域：</b>{ccid1title}</div>
+                         <div class="lh"><b>物业类型：</b>{ccid12title}</div>
+                         <div class="lh"><b>销售电话：</b>{tel}</div>
+                         <div class="lh more"><b>最新动态：</b>{bdsm}<em class="f60">【<a href="{arcurl}" title="{title}">详情</a>】</em></div>
+                         </div>
+                         <i></i>
+                    </li>
+                    {/c$archives}
+                     </ul>
+                </div>
+        </div>
+        <div class="blank20"></div>
+                <!-- 楼盘回顾 -->
+    <div class="lphg-ct">
+        <div class="kpyg-tit">
+                <h2>楼盘回顾</h2>
+        </div>
+        <div class="blank15"></div>
+        <table class="table1">
+            <tr class="td1">
+                <td width="109">楼盘名称</td>
+                <td width="90">区域</td>
+                <td width="90">开盘日期</td>
+                <td width="350">开盘房源</td>
+                <td width="100">均价</td>
+                <td>电话</td>
+            </tr>
+        </table>
+        <table>
+             {c$archives [tclass=archives/] [chids=4/] [chsource=2/] [val=a/] [limits=20/] [casource=1/] [caids=2/] [mode=in/] [arid=12/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+            <tr class="td2">
+                <td width="109"><strong><a href="{arcurl}" title="{subject}" target="_blank">{subject}</a></strong></td>
+                <td width="90">{ccid1title}</td>
+                <td width="90">{kprq}</td>
+                <td width="350">{c$archives1 [tclass=archives/] [val=b/] [chids=11/] [chsource=2/] [limits=4/] [casource=1/] [caids=11/] [mode=in/] [arid=3/] [wherestr=a.zlhx = '1'/]}<a class="mr5" href="{arcurl}" target="_blank">{c$shi}{c$ting}{mj}m&sup2;</a> {/c$archives1}</td>
+                <td width="100"><font class="arial">{dj}元/m&sup2;</font></td>
+                <td>{tel}</td>
+            </tr>
+             {/c$archives}
+        </table>
+</div>
+<div class="blank20"></div>
+<!-- 往期回顾 -->
+<div class="wqhg clearfix">
+     <div class="kpyg-tit">
+                <h2>往期专题回顾</h2>
+        </div>
+        <ul>
+                {c$archives [tclass=archives/] [chids=14/] [chsource=2/] [limits=4/] [detail=1/] [wherestr=a.aid!=$aid/]}
+                 <li>
+                    <a href="{arcurl}" title="{subject}" target="_blank">
+                    <img src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=228/] [val=a/] [maxheight=100/]}{url_s}{/c$image}"  width="228" height="100" alt="{subject}"/>
+                    <h3>{subject}</h3>
+                    </a>
+                </li>
+                {/c$archives}
+        </ul>
+</div>
+</div>
+</div>
+
+<!-- footer -->
+{tpl$foot}
+<!--公用投票-->
+<script type="text/javascript">
+    $('#select').change(function() {
+        window.open($(this).find('option:selected').val());
+    })
+</script>
+</body>
+</html>

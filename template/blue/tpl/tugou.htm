@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}-{$hostname}</title>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$jz_headinner}
+<link rel="stylesheet" href="{$tplurl}css/basecss2010.css?{$user_version}" />
+</head>
+<body>
+<!--header begin-->
+{tpl$jz_head}
+<!--header end-->
+<div class="wrap">
+	<div class="tugcon">
+		<div class="tugbtit"> <h3>团购列表</h3> </div>
+		<div  class="tugoulist clearfix">
+			{c$archives [cname=团购列表/] [tclass=archives/] [chsource=2/] [chids=105/] [caidson=1/] [casource=1/] [caids=515/] [detail=1/] [ttl=900/] [mp=1/]}
+			<div class="jztghd clearfix">
+				<div class="jzthtit"><span class="r" data-endTime="{tgend}" data-endele=".btn-tg-{aid}" data-noend="<span class='fcr'>永久有效!</span>" data-end="<span class='fcr'>活动已经结束!</span>">离活动还有<i class="pri-txt"><em class='day'><d>0</d></em>天<em class='hour'><h>0</h></em>小时<em class='minutes'><m>0</m></em>分<em class='second'><s>0</s></em>秒</i></span>{subject} </div>
+				<div class="tuwencon clearfix">
+					<div class="tuimg l"> <a href="{arcurl}" target="_blank"><img alt="{subject}" {c$thumb  [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=400/] [maxheight=284/] [thumb=2/]}src="{url_s}" width="400" height="284"{/c$thumb}></a> </div>
+					<div class="wencon l">
+						<p><em>活动名称：</em><a href="{arcurl}"target="_blank" class="fcr">{subject} </a></p>
+						<p><em>报名开始时间：</em>{c$date [tclass=date/] [tname=tgstar/] [date=Y-m-d/]}{/c$date}</p>
+						<p><em>报名结束时间：</em>{c$date [tclass=date/] [tname=tgend/] [date=Y-m-d/]}{/c$date} </p>
+						<p><em>报名电话：</em>{tel}</p>
+						<p><em>活动地点：</em>{area}</p>
+						<p><em>活动简介：</em><span>{abstract}</span></p>
+						<div><em>活动状态：</em>{if $v['tgend']-$timestamp < 0}活动已结束{else}活动进行中{/if} 已报名:<i class="fcr"><div class="count08" id="_08_count_tug_{aid}" url-params="{type: 'cu', modid: 35, field: 'aid'}">&nbsp;</div></i>户 </div>
+						<div class="canyubtn"><a href="{arcurl}">参加团购享受优惠>></a></div>
+				  	</div>
+				</div>
+			</div>
+			{/c$archives}
+			{if $mpcount>1}
+			<div class="ptb10">{$mpnav}</div>
+			{/if}
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="{$tplurl}js/setHdTime.js"></script>
+{tpl$jz_foot}
+</body>
+</html>

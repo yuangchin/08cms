@@ -1,0 +1,466 @@
+/* ----------------------------------------------- 
+	GLOBAL RESET 
+   ----------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/* remember to define focus styles! */
+:focus { outline: 0; }
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+ol, ul { 
+	list-style: none; 
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after { 
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+
+/* ----------------------------------------------- 
+	BASIC ELEMENTS
+   ----------------------------------------------- */
+   
+   
+/* -- Text Styles ------------------------------- */
+html, 
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font: 12px/1.4em Helvetica, Arial, sans-serif;
+}
+
+a { 
+	color: #385ea2; 
+	text-decoration: none; 
+}
+a:hover { text-decoration: underline; }
+
+strong { font-weight: 700; }
+
+h1 {
+	font: 28px/1em  Arial, Helvetica, sans-serif;
+	padding: 60px 20px 20px;
+	margin-bottom: 15px;
+	color: #333;
+	text-decoration: none;
+}
+
+h1 a{
+	color: #fff;
+	text-decoration: none;
+}
+
+h2 { 
+	font-size: 22px; 
+	font-weight: 300;
+	padding-top: 1em;
+	padding-bottom: .25em;
+}
+
+
+p {
+	margin-top: 3px;
+	margin-bottom: 4px;
+}
+
+ul { padding: 4px 5px; }
+ul li { 
+	padding: 4px 5px; 
+	margin: 0 20px;
+	list-style:square; 
+}
+
+code {
+	display: block;
+	background:#edffb8 none repeat scroll 0%;
+	border-color:#b2da3a;
+	border-style:solid;
+	border-width:1px 0;
+	font-size: 1em;
+	margin: 1em 0pt;
+	overflow:auto;
+	padding: 0.3em 0.4em;
+	white-space:pre;
+}
+
+/* -- Layout ------------------------------- */
+
+#content { width: 600px;}
+#content { margin: 20px 90px; }
+
+
+
+
+/* -- Form Styles ------------------------------- */
+form {	
+	margin: 0;
+	padding: 0;
+}
+
+#divOLDUploadUI,
+#divNOMUploadUI,
+#divSWFUploadUI,
+#divZIPUploadUI,
+#divRMTUploadUI,
+#divSETUploadUI{
+}
+
+.fieldset {
+	position: relative;
+	height:344px;/*Firefox*/
+	height:349px\9;/*IE*/
+	overflow:auto;
+	border:  1px solid #afe14c;
+	padding: 10px;
+}
+
+.fieldset table {
+	width:560px;
+}
+
+span.legend {
+	position: relative;
+	background-color: #FFF;
+	padding: 3px;
+	left:15px;
+	font: 700 14px Arial, Helvetica, sans-serif;
+	color: #73b304;
+	cursor:default;
+	z-index:1;
+}
+
+.nobtn, .intable {
+	width: 580px;
+	margin: -8px 5px 7px;
+	border-color: #D9E4FF;
+
+	-moz-border-radius-topleft : 5px;
+	-webkit-border-top-left-radius : 5px;
+    -moz-border-radius-topright : 5px;
+    -webkit-border-top-right-radius : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -webkit-border-bottom-left-radius : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-bottom-right-radius : 5px;
+
+}
+
+.nobtn {
+	height:371px;/*Firefox*/
+	height:376px\9;/*IE*/
+	margin-bottom:5px;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+	/*谷歌*/
+	.fieldset {
+		height:349px;
+	}
+	.nobtn {
+		height:376px;
+	}
+}
+
+input[disabled]{ border: 1px solid #ccc } /* FF 2 Fix */
+
+#btnSubmit { margin: 0 0 0 155px ; }
+
+/* -- Table Styles ------------------------------- */
+td {
+	font: 12px Helvetica, Arial, sans-serif;
+	vertical-align: top;
+}
+input,select,button {
+	font-size:12px;
+}
+
+.progressContainer {
+	margin-top: 5px;
+	padding:5px;
+	width: 568px;
+	border: solid 1px #E8E8E8;
+	background-color: #F7F7F7;
+	overflow: hidden;
+}
+/* Message */
+.message {
+	margin: 1em 0;
+	padding: 10px 20px;
+	border: solid 1px #FFDD99;
+	background-color: #FFFFCC;
+	overflow: hidden;
+}
+/* Error */
+.red {
+	border: solid 1px #B50000;
+	background-color: #FFEBEB;
+}
+
+/* Current */
+.green {
+	border: solid 1px #DDF0DD;
+	background-color: #EBFFEB;
+}
+
+/* Complete */
+.blue {
+	border: solid 1px #CEE2F2;
+	background-color: #F0F5FF;
+}
+
+a.progressCancel {
+	float: right;
+	font-size: 0;
+	display: block;
+	height: 12px;
+	width: 12px;
+	background: url(ico.gif) -2px -52px no-repeat;
+}
+
+input.progressWatermark {
+	float: right;
+	display: block;
+	height: 14px;
+	width: 14px;
+	padding:0;
+	margin:2px 0 0;
+}
+
+label.progressWatermarkLabel {
+	float: right;
+	display: block;
+	height: 14px;
+	width: 24px;
+	line-height:20px\9;
+}
+
+a.progressCancel:hover {
+	background-position: -22px -52px;
+}
+
+
+/* -- SWFUpload Object Styles ------------------------------- */
+.swfupload {
+	vertical-align: top;
+	position: absolute;
+	z-index: 1;
+}
+
+#loading{
+	width:200px;
+	margin:50px auto;
+	text-align:center;
+}
+
+.clear{
+	clear:both;
+}
+
+.remark{
+	background-color: #FFFF66;
+	border-top: solid 4px #FF9966;
+	border-bottom: solid 4px #FF9966;
+	margin: 10px 25px;
+	padding: 10px 15px;
+}
+
+.selecttable{
+	margin:2px auto;
+}
+.selectitem{
+	background:url(ico.gif) 0 0 repeat-x;
+}
+.selectitem a{
+	display:block;
+	float:left;
+	padding:5px;
+	width:55px;
+	height:12px;
+	line-height:16px;
+	overflow:hidden;
+	color:#000;
+	background:url(ico.gif) no-repeat;
+}
+.selectitem a,a.selectitem0{
+	background-position:-70px -25px;
+}
+a.selecteditem,.selectitem a:hover{
+	background-position:0 -25px;
+	text-decoration:none;
+}
+.selectbody{
+	border:1px solid #999;
+	border-top:none;
+}
+.selectbody p{
+	margin-left:5px;
+}
+.selectbody p.button{
+	margin-top:-2px;
+	margin-bottom:5px;
+}
+.selectbody p.button input{
+	 width:60px;
+	 height:22px;
+	 margin:0 10px 0 0;
+	 padding:0 6px;
+	 border-top:1px solid #ddd;
+	 border-left:1px solid #ddd;
+	 border-right:1px solid #999;
+	 border-bottom:1px solid #999;
+}
+.oldupload div{
+	text-indent:5px;
+	margin-top:5px;
+	border:solid 1px #eee;
+}
+.oldupload .submit,.oldupload .button{
+	width:60px;
+	height:21px;
+}
+.oldupload .path,.rmturl{
+	width:350px;
+	height:15px;
+}
+.oldupload .text{
+	width:400px;
+	height:15px;
+}
+.oldupload .filename{
+	border:none;
+	width:370px;
+}
+.rmtform{
+	position:relative;
+	padding-top:8px;
+}
+#rmtpath{
+	width:450px;
+	height:200px;
+}
+.rmtnum{
+	width:50px;
+	height:15px;
+}
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0){
+	/*Opera*/
+	p{
+		margin:0;
+		padding:3px 0;
+		line-height:23px;
+	}
+	.selectbody p.button{
+		padding:0;
+		line-height:normal;
+	}
+}
+.iepadding{
+	font-size:0px;
+}
+
+
+
+
+/*  图片上传样式  */
+
+a.w_local, a.w_phone, a.w_localn, a.w_phonen, .img_selector, .img_selector.hover, a.progressCancel, .drag .img_selector, a.w_local span em { background: url('image_upload.png') no-repeat ; }
+a.w_local, a.w_phone, a.w_localn, a.w_phonen { position: relative; display: inline-block; font: 12px/29px Arial,"宋体"; color: rgb(102, 102, 102) ! important; text-align: right; padding-right: 10px; }
+.h110 { height: 110px; }
+a.w_local:hover, a.w_phone:hover { color: rgb(0, 0, 0) ! important; text-decoration: none; }
+a.w_local { width: 75px; background-position: 0 0; height: 29px; }
+a.w_local:hover { background-position: 0 -30px; }
+a.w_local span { position: absolute; width: 100px; line-height: 20px; display: block; background-color: rgb(255, 254, 224); border: 1px solid rgb(245, 228, 147); text-align: left; padding: 0 10px; left: 0; top: 35px; color: rgb(153, 153, 153) ! important; }
+a.w_local span em { display: block; width: 11px; height: 6px; position: absolute; top: -6px; left: 10px; background-position: -103px -224px; }
+.progressWrapper { float: left; display: inline; width: 94px; margin-right: 12px; font-size: 12px; position: relative; }
+.progressContainer { position: relative; width: 94px; top: -1px; background-color: #fff; }
+.item_box { display: block; width: 80px; height: 60px; padding: 6px; border: 1px solid rgb(211, 211, 211); background-color: rgb(246, 246, 246); }
+.item_box img { display: block; width: 80px; height: 60px; }
+a.progressCancel { position: absolute; display: block; width: 14px; height: 14px; background-position: -100px -182px; right: -6px; top: -6px; text-indent: -9999px; overflow: hidden; }
+a.progressCancel:hover { text-decoration: none; background-position: -100px -200px; }
+.item_input { display: block; width: 94px; }
+.item_input textarea { width: 88px; height: 20px; margin-top: 0;border: 1px solid #D3D3D3 ;border-top: none; display: block; font: 12px/20px Arial,"宋体"; overflow: hidden; padding: 0 2px; }
+.item_input .shadow { display: none; }
+.isfenmian { width: 16px; height: 19px; position: absolute; top: 0; left: 0; z-index: 2; background: url('fenmian.png') repeat ; }
+.fm_bg, .fengmian { width: 94px; height: 25px; overflow: hidden; position: absolute; top: 35px; }
+.fm_bg { background:rgb(51, 51, 51); opacity: 0.7; z-index: 1; }
+.fengmian, a.scroll_l:hover, a.scroll_r:hover, a.set_fm:hover { background: url('fengmian.png') no-repeat ; }
+.fengmian { z-index: 2; background-position: 0 0; }
+.scroll_l, .scroll_r { width: 17px; height: 25px; display: inline-block; float: left; }
+a.scroll_l:hover { background-position: 0 -26px; }
+a.scroll_r:hover { background-position: -77px -26px; }
+.set_fm { width: 58px; height: 25px; display: inline-block; float: left; margin: 0 1px; overflow: hidden; }
+a.set_fm:hover { background-position: -18px -26px; }
+.hc { display: none; }
+.shadow { display: block; clear: both; border-top: 1px solid rgb(221, 221, 221); width: 100%; background:rgb(240, 240, 240); height: 1px; line-height: 0; font-size: 0; overflow: hidden; position: absolute; left: 0; bottom: -3px; opacity: 0.4; z-index: -1; }
+.formTable { border: none; font-size: 14px; line-height: 30px; color: rgb(102, 102, 102); }
+.formTable th, .formTable td { border: 0 none; line-height: 30px; padding: 6px 0; vertical-align: middle; }
+.formTable th { padding-right: 18px; font-weight: 300; text-align: right; vertical-align: top; }
+.progressBarStatus {
+    left: 23px;
+    position: absolute;
+    top: 25px;
+}
+.progressContainer {margin-bottom: 10px;}
+.item_input.on {
+    background-color: #F6F6F6;
+    border: 1px solid #D3D3D3;
+    display: block;
+    padding: 6px;
+    position: absolute;
+    top: 67px;
+    width: 158px;
+    z-index: 98;
+}
+
+.item_input.on i.tline {
+  background-color: #F6F6F6;
+  display: block;
+  height: 1px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: -1px;
+  width: 93px;
+}
+.item_input textarea {background-color: #fff;}
+.item_input.on textarea {
+  border: 1px solid #E3E3E3;
+  height: 80px;
+  width: 152px;
+  background-color: #fff;
+}
+.c_666 { color: rgb(102, 102, 102); }
+.c_ccc { color: rgb(204, 204, 204); }

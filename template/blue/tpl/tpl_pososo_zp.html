@@ -1,0 +1,13 @@
+<!--招聘的面包屑与搜索 begin -->
+<div id="area1_path" class="clearfix">
+        <div class="n-search r w280">
+                <form  action="{$cms_abs}index.php" method="get" name="searchform">
+                <input type="text" id="searchword" name="searchword" value="" placeholder="{if @$searchword}{searchword}{else}请输入关键字{/if}" class="txt clear-txt" x-webkit-speech speech>
+                <input type="hidden" value="{$caid}" name="caid">
+                <input type="submit" class="btn" value="搜索">
+                </form>
+        </div>
+        <span class="ind-ico">您的位置：</span> <a href="{$cms_abs}">首页</a> &gt;{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/] }<a href="{if $caid==558}{indexurl}{else}{indexurl}{/if}">{title}</a>{/c$cnode}{if @$aid} &gt; {subject}{/if}
+</div>
+<div class="blank10"></div>
+<!-- 面包屑与搜索 end -->

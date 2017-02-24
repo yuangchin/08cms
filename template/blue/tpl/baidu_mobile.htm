@@ -1,0 +1,124 @@
+<?php echo '<?';?>xml version="1.0" encoding="{mcharset}"<?php echo '?>';?>
+<?php defined('IN_MOBILE') || define('IN_MOBILE', TRUE); ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:mobile="http://www.baidu.com/schemas/sitemap-mobile/1/">
+    <url>
+        <loc><?=htmlspecialchars($cms_abs).'mobile/'?></loc>
+        <mobile:mobile type="mobile"/>
+        <lastmod><?=date('Y-m-d')?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {c$baidu_zixun [cname=baidu_资讯/] [tclass=archives/] [limits=100/] [chsource=2/] [chids=1/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_zixun}
+    {c$baidu_house [cname=baidu_楼盘/] [tclass=archives/] [chids=4/] [chsource=2/] [limits=50/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_house}
+    {c$baidu_house [cname=baidu_小区/] [tclass=archives/] [chids=4/] [limits=50/] [detail=1/] [chsource=2/] [wherestr=(leixing='0' OR leixing='2')/] [chids=4/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl7'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_house}
+    {c$baidu_house [cname=baidu_看房团/] [tclass=archives/] [limits=10/] [chsource=2/] [chids=110/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_house}
+    {c$baidu_house [cname=baidu_特价房/] [tclass=archives/] [limits=10/] [chsource=2/] [chids=117/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_house}
+    {c$baidu_ersou [cname=baidu_二手房/] [tclass=archives/] [limits=100/] [chsource=2/] [chids=3/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_ersou}
+    {c$baidu_chuzu [cname=baidu_出租/] [tclass=archives/] [limits=100/] [chsource=2/] [chids=2/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_chuzu}
+    {c$baidu_huixing [cname=baidu_户型/] [tclass=archives/] [limits=30/] [chsource=2/] [chids=11/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_huixing}
+    {c$baidu_huixing [cname=baidu_相册/] [tclass=archives/] [limits=30/] [chsource=2/] [chids=7/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_huixing}
+    {c$baidu_huixing [cname=baidu_相册/] [tclass=archives/] [limits=10/] [chsource=2/] [chids=8/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_huixing}
+    {c$baidu_vedio [cname=baidu_视频/] [tclass=archives/] [limits=30/] [chsource=2/] [chids=12/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_vedio}
+    {c$baidu_zuanti [cname=baidu_专题/] [tclass=archives/] [limits=30/] [chsource=2/] [chids=14/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_zuanti}
+    {c$baidu_zuanti [cname=baidu_招聘/] [tclass=archives/] [limits=10/] [chsource=2/] [chids=108/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_zuanti}
+    {c$baidu_tg [cname=baidu_家装团购/] [tclass=archives/] [limits=30/] [chsource=2/] [chids=105/]}
+    <url>
+        <loc><?=htmlspecialchars($v['arcurl'])?></loc>
+        <lastmod><?=date('Y-m-d',$v['updatedate'])?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {/c$baidu_tg}
+</urlset>

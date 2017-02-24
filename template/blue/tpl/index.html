@@ -1,0 +1,800 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+    <title>{$cmstitle}</title>
+    <meta name="keywords" content="{cmskeyword}" />
+    <meta name="description" content="{cmsdescription}" />
+    <meta name="mobile-agent" content="format=html5; url={$mobileurl}">
+    <meta name="mobile-agent" content="format=xhtml; url={$mobileurl}">
+    <meta name="baidu-tc-verification" content="75e113393e7b65ff7d43595dcba9feaf" />
+    {tpl$headinner}
+    <base target="_blank"/>
+    {if @$enable_mobile&&empty($frommob)}
+   <script type="text/javascript">
+ //判断设备是否为手机
+(function(){var g=["iPhone","Android","Windows Phone"],b="{mobileurl}",e=window.location.pathname,f=false;for(var d=0,a;a=g[d];d++){if(navigator.userAgent.indexOf(a)!=-1){f=true;break}}function h(){location.href=b}if(f){h()}})()
+</script>
+    {/if}
+    <link rel="stylesheet" type="text/css" href="{$tplurl}css/index.css?{$user_version}"/>
+    <?php $pagetype = 'index'; ?>
+</head>
+<body>
+    {c$farchives [tclass=farchives/] [limits=10/] [validperiod=1/] [casource=fcatalog119/] [orderstr=a.vieworder ASC/]}
+    <div class="wrap">
+        [row]
+        <div class="ad mb3">
+            {if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=1200/] [maxheight=60/]} src="{url}"  height="60" width="1200"
+        {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=1200/] [height=60/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}
+        </div>
+        [/row]
+    </div>
+    {/c$farchives}
+    {tpl$head}
+    <div class="wrap clearfix">
+        <div class="w640 l ml280">
+            <div class="flash jqDuang jqDuang-mod" data-obj="li" data-cell=".inner" data-prevbtn=".prev" data-nextbtn=".next">
+                <div class="big">
+                    <ul>
+                        {c$pushs [tclass=pushs/] [paid=push_syhdp/] [limits=10/] [ttl=600/]}
+                        <li><a href="{url}" target="_blank"><img alt="{subject}" width="640" height="340" src="{c$image [tclass=image/] [tname=thumb/] [padding=1/] [val=u/]}{url}{/c$image}"/></a></li>
+                        {/c$pushs}
+                    </ul>
+                </div>
+                <div class="dot"><span class="inner"></span></div>
+                <i class="ico08 prev">&#xe68c;</i>
+                <i class="ico08 next">&#xe68f;</i>
+            </div><!-- /flash -->
+            <div class="blank13"></div>
+            <div class="scroll jqDuang jqDuang-mod" data-effect="left" data-steps="3" data-visible="3" data-prevbtn=".prev" data-nextbtn=".next">
+                <div class="big">
+                    <ul>
+                        {c$pushs [tclass=pushs/] [paid=push_gdlp/] [limits=9/] [ttl=600/]}
+                        <li><a href="{url}" target="_blank">
+                            <img alt="{subject}" width="100" height="70" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=100/] [maxheight=70/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/>
+                            <h4>{subject}</h4>
+                            <p>{c$cnode [tclass=cnode/] [listby=co1/] [val=a/] [cosource1=$v[ccid1]/]}{title}{/c$cnode}<br/>
+                                <span class="fcr">{if $v['dj']}{dj}元/m&sup2;{else}待定{/if}</span>
+                            </p>
+                        </a></li>
+                        {/c$pushs}
+                    </ul>
+                </div>
+                <i class="ico08 prev">&#xe68c;</i>
+                <i class="ico08 next">&#xe68f;</i>
+            </div>
+        </div>
+        <div class="w270 r">
+            <div class="col-tools clearfix">
+                <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=5/]}{indexurl}{/c$cnode}"><i class="ico08">&#xe757;</i>团购</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=560/]}{indexurl}{/c$cnode}"><i class="ico08">&#xe603;</i>看房团</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=555/]}{indexurl}{/c$cnode}"><i class="ico08">&#xf06b;</i>优惠活动</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl3}{/c$cnode}"><i class="ico08">&#xf203;</i>查房价</a><a href="{c$freeurl [tclass=freeurl/] [fid=5/]}{/c$freeurl}"><i class="ico08">&#xf1ec;</i>购房工具</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=559/]}{indexurl}{/c$cnode}"><i class="ico08">&#xe73c;</i>特价房</a>
+            </div>
+            <!-- ad270_145 -->
+            {c$farchives [tclass=farchives/] [limits=2/] [validperiod=1/] [casource=fcatalog175/] [orderstr=a.vieworder ASC/]}
+            <div class="ad mt10">{if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=270/] [maxheight=140/]} src="{url}"  height="140" width="270"
+            {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=270/] [height=140/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}</div>
+            {/c$farchives}
+        </div>
+        <div class="blank20"></div>
+        <!-- ad1200_60 -->
+        {c$farchives [tclass=farchives/] [limits=10/] [validperiod=1/] [casource=fcatalog120/] [orderstr=a.vieworder ASC/]}
+        <div class="ad mb3">
+            {if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=1200/] [maxheight=60/]} src="{url}"  height="60" width="1200"
+        {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=1200/] [height=60/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}
+        </div>
+        {/c$farchives}
+        <div class="blank20"></div>
+        <div class="tab jqDuang" data-cell=".tab-hd ul" data-obj=".plist" data-autoplay="0" data-speed="0">
+            <div class="tab-hd">
+                <ul class="clearfix">
+                    <li class="act"><?php echo cls_PushArea::Config('push_4','cname'); ?></li>
+                    <li><?php echo cls_PushArea::Config('push_thzq','cname'); ?></li>
+                    <li><?php echo cls_PushArea::Config('push_mxlp','cname'); ?></li>
+                    <li><?php echo cls_PushArea::Config('push_rxlp','cname'); ?></li>
+                </ul>
+            </div>
+            <div class="tab-bd">
+                <ul class="plist plist-mod clearfix">
+                    {c$pushs [tclass=pushs/] [paid=push_4/] [limits=5/] [ttl=600/]}
+                    <li>
+                       <a class="img" href="{url}" target="_blank"><img alt="{subject}" width="220" height="190" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=220/] [maxheight=190/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                       <h4><a href="{url}" target="_blank">{subject}</a></h4>
+                       <p><i class="ico08 fco mr5">&#xe611;</i>{abstract}</p>
+                    </li>
+                    {/c$pushs}
+                </ul><!-- /plist -->
+                <ul class="plist plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_thzq/] [limits=5/] [ttl=600/]}
+                    <li>
+                       <a class="img" href="{url}" target="_blank"><img alt="{subject}" width="220" height="190" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=220/] [maxheight=190/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                       <h4><a href="{url}" target="_blank">{subject}</a></h4>
+                       <p class="fcr"><i class="ico08 mr5">&#xe62f;</i>{bdsm}</p>
+                    </li>
+                    {/c$pushs}
+                </ul><!-- /plist -->
+                <ul class="plist plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_mxlp/] [limits=5/] [ttl=600/]}
+                    <li>
+                       <a class="img" href="{url}" target="_blank"><img alt="{subject}" width="220" height="190" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=220/] [maxheight=190/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                       <h4><a href="{url}" target="_blank">{subject}</a></h4>
+                       <p class="fcr"><i class="ico08 mr5">&#xe62f;</i>{bdsm}</p>
+                    </li>
+                    {/c$pushs}
+                </ul><!-- /plist -->
+                <ul class="plist plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_rxlp/] [limits=5/] [ttl=600/]}
+                    <li>
+                       <a class="img" href="{url}" target="_blank"><img alt="{subject}" width="220" height="190" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=220/] [maxheight=190/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                       <h4><a href="{url}" target="_blank">{subject}</a></h4>
+                       <p class="fcr"><i class="ico08 mr5">&#xe62f;</i>{bdsm}</p>
+                    </li>
+                    {/c$pushs}
+                </ul><!-- /plist -->
+            </div>
+        </div>
+        <div class="blank10"></div>
+        {c$farchives [tclass=farchives/] [limits=10/] [validperiod=1/] [casource=fcatalog128/] [orderstr=a.vieworder ASC/]}
+        <div class="ad mb3">
+            {if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=1200/] [maxheight=60/]} src="{url}"  height="60" width="1200"
+        {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=1200/] [height=60/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}
+        </div>
+        {/c$farchives}<!-- /ad1200_60 -->
+        <div class="blank20"></div>
+        <div id="thlp" class="jqDuang clearfix" data-cell=".col-nav" data-obj=".plist1|#thlp .col-info" data-autoplay="0" data-speed="0">
+            <div class="col-title clearfix">
+                <h2 class="l">特惠楼盘</h2>
+                <div class="col-nav col-nav-lg l">
+                    <a class="act" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=5/]}{indexurl}{/c$cnode}"><span><?php echo cls_PushArea::Config('push_5','cname'); ?></span><i class="ico08">&#xf0dc;</i></a>
+                    <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=560/]}{indexurl}{/c$cnode}
+"><span><?php echo cls_PushArea::Config('push_kfttj','cname'); ?></span><i class="ico08">&#xf0dc;</i></a>
+                    <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=559/]}{indexurl}{/c$cnode}"><span><?php echo cls_PushArea::Config('push_tjftj','cname'); ?></span><i class="ico08">&#xf0dc;</i></a>
+                    {if !cmod('fenxiao')}
+                    <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=605/]}{indexurl}{/c$cnode}"><span><?php echo cls_PushArea::Config('push_zyj','cname'); ?></span><i class="ico08">&#xf0dc;</i></a>
+                    {/if}
+                </div>
+                <div class="col-info r">
+                    共有<span>{c$counts [tclass=acount/] [chids=5/] [chsource=2/] [casource=1/] [caids=5/]}{counts}{/c$counts}</span>个<?php echo cls_PushArea::Config('push_5','cname'); ?>
+                </div>
+                <div class="col-info r dn">
+                    共有<span>{c$counts [tclass=acount/] [chids=110/] [casource=1/] [caids=560/] [chsource=2/]}{counts}{/c$counts}</span>个<?php echo cls_PushArea::Config('push_kfttj','cname'); ?>
+                </div>
+                <div class="col-info r dn">
+                    共有<span>{c$counts [tclass=acount/] [chids=107/] [chsource=2/] [casource=1/] [caids=559/]}{counts}{/c$counts}</span>个<?php echo cls_PushArea::Config('push_tjftj','cname'); ?>
+                </div>
+                {if !cmod('fenxiao')}
+                <div class="col-info r dn">
+                    共有<span>{c$counts [tclass=acount/] [chids=113/] [chsource=2/] [casource=1/] [caids=605/]}{counts}{/c$counts}</span>个<?php echo cls_PushArea::Config('push_zyj','cname'); ?>
+                </div>
+                {/if}
+            </div>
+            <div class="w270 l mr20 pt20">
+                {c$pushs [tclass=pushs/] [paid=push_120/] [limits=1/] [ttl=600/]}
+                {c$archive [tclass=archive/] [chid=110/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                <div class="form form-control form-tg mb5">
+                    <form class="jqValidate" data-tipmode="#bmtip" action="###" onsubmit="return fyCummus(this,'报名')">
+                        <h4><?php echo cls_PushArea::Config('push_120','cname'); ?></h4>
+                        <p><span class="r"><i id="bmtip"></i></span>{subject}</p>
+                        <input type="hidden" name="cuid" value="45" />
+                        <input type="hidden" name="aid" value="{aid}" />
+                        <ul>
+                            <li>
+                                <input type="text" class="txt" placeholder="您的姓名" data-type="*3-15" name="fmdata[xingming]" id="xingming" value=""/>
+                            </li>
+                            <li>
+                                <input type="text" class="txt" placeholder="您的手机号" data-type="m" name="fmdata[tel]" value=""/>
+                            </li>
+                            <li>
+                                <select data-type="*" name="fmdata[yxlp]" id="yxlp">
+                                <option value="">请选楼盘</option>
+                                {c$lpopt [tclass=archives/] [chids=4/] [chsource=2/] [val=b/] [limits=100/] [mode=in/] [arid=32/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+                                <option value="{aid}">{subject}</option>
+                                {/c$lpopt}
+                                </select>
+                            </li>
+                            <li class="reg-wrap" data-regcode="commu45">
+                            	<input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                            </li>
+                            <li>
+                                <input type="submit" class="btn" value="申请入团"/>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <div class="form-list">
+                    <div class="form-list-hd mb5">
+                        已累计<span><div id="_08_count_aa_{aid}" class="count08" url-params="{type: 'a', modid: 110, field: 'hdnum'}">&nbsp;</div></span>人报名参加
+                    </div>
+                    <div class="jqDuang form-list-bd" data-obj="li" data-effect="weibo" data-visible="6" data-steps="1">
+                        <ul>
+                            {c$kftbmls [tclass=commus/] [cuid=45/] [val=b/] [checked=1/] [wherestr=aid ='$a[aid]'/]}
+                            <li><?php echo cls_string::CutStr($b['xingming'],2,'').'**'; ?> <?php echo " ".substr($b['tel'],0,3).'*****'." "; ?>报名了{c$lpyxsub [tclass=archive/] [val=c/] [chid=4/] [id=$b[yxlp]/]}<a class="fcr" href="{arcurl}" title="{subject}" >{subject}</a>{/c$lpyxsub}</li>
+                            {/c$kftbmls}
+                        </ul>
+                    </div>
+                </div>
+                {/c$archive}
+                {/c$pushs}
+            </div>
+            <div class="w640 l">
+                 <!-- plist -->
+                <ul class="plist1 plist-mod clearfix">
+                    {c$pushs [tclass=pushs/] [paid=push_5/] [limits=6/] [ttl=600/]}
+                    {c$archive [tclass=archive/] [chid=5/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                     <li>
+                         <a class="img" href="{arcurl}"><img alt="{subject}" width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                         <h4><a href="{arcurl}">{subject}</a></h4>
+                         <h5>
+                            <span class="r">{ccid1title}</span><span class="fcr fz14">{if $a['tgj']}{tgj}{else}待定{/if}</span>
+                        </h5>
+                        <h5 class="tip fcr"><i class="ico08 mr5">&#xe73b;</i>{yhsm}</h5>
+                     </li>
+                     {/c$archive}
+                    {/c$pushs}
+                </ul>
+                <ul class="plist1 plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_kfttj/] [limits=6/] [ttl=600/]}
+                    {c$archive [tclass=archive/] [chid=110/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                     <li>
+                         <a class="img" href="{arcurl}"><img alt="{subject}" width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                         <h4><a href="{arcurl}">{subject}</a></h4>
+                         <h5><span class="fz14"><i class="ico08 mr5 fcr">&#xe612;</i>{jhdd}</span></h5>
+                         <h5 class="tip fcr"><i class="ico08 mr5">&#xe014;</i>{kfsj}</h5>
+                     </li>
+                    {/c$archive}
+                    {/c$pushs}
+                </ul>
+                <ul class="plist1 plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_tjftj/] [limits=6/] [ttl=600/]}
+                    {c$archive [tclass=archive/] [chid=107/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                     <li>
+                         <a class="img" href="{arcurl}"><img alt="{subject}" width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                         <h4><a href="{arcurl}">{subject}</a></h4>
+                         <h5><span class="r">{ccid18title}</span>{if $a['zj']}<span class="fz24 fcr">{zj}</span>万{else}<span class="fz24 fcr">待定</span>{/if}</h5>
+                         <h5 class="tip"><span class="r">{mj}m&sup2;</span><i class="ico08 mr5 fcr">&#xe004;</i>{c$shi}{c$ting}{c$wei}</h5>
+                     </li>
+                    {/c$archive}
+                    {/c$pushs}
+                </ul>
+                {if !cmod('fenxiao')}
+                <ul class="plist1 plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_zyj/] [limits=6/] [ttl=600/]}
+                    {c$archive [tclass=archive/] [chid=113/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                     <li>
+                         <a class="img" href="{arcurl}"><img alt="{subject}" width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                         <h4><a href="{arcurl}">{subject}</a></h4>
+                         <h5><span class="r">{ccid1title}</span>佣金<span class="fz24 fcr">{yj}</span>元</h5>
+                         <h5 class="tip"><i class="ico08 fcr mr5">&#xe73b;</i>{yhsm}</h5>
+                     </li>
+                    {/c$archive}
+                    {/c$pushs}
+                </ul>
+                {/if}
+            </div>
+            <div class="w270 r">
+                {c$farchives [tclass=farchives/] [limits=3/] [validperiod=1/] [casource=fcatalog176/] [orderstr=a.vieworder ASC/]}
+                <div class="ad mt20">
+                    {if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=270/] [maxheight=148/]} src="{url}"  height="148" width="270"
+                {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=270/] [height=148/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}
+                </div>
+                {/c$farchives}<!-- /ad270_148 -->
+            </div>
+        </div>
+        <div class="blank20"></div>
+        {c$farchives [tclass=farchives/] [limits=10/] [validperiod=1/] [casource=fcatalog133/] [orderstr=a.vieworder ASC/]}
+        <div class="ad mb3">
+            {if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=1200/] [maxheight=60/]} src="{url}"  height="60" width="1200"
+        {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=1200/] [height=60/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}
+        </div>
+        {/c$farchives}<!-- /ad1200_60 -->
+        <div class="blank20"></div>
+        <div id="xptj" class="jqDuang clearfix" data-cell=".col-nav" data-obj=".plist1" data-autoplay="0" data-speed="0">
+            <div class="col-title clearfix">
+                <h2 class="l">新盘推荐</h2>
+                <div class="col-nav l">
+                    <?php
+                        $ii = 0;
+                        foreach (u_field_by(4, 'tslp') as $key => $value) {
+                            echo '<a class="'.($ii==0?'act':'').'" href="'.$cms_abs.'index.php?caid=2&addno=1&tslp='.$key.'" ><span>'.$value.'</span><i class="ico08">&#xf0dc;</i></a>';
+                            $ii++;
+                            if ($ii == 7) break;
+                        }
+                    ?>
+                </div>
+                <div class="col-info r">
+
+                    这个共有<span>{c$count [tclass=acount/] [chids=4/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/] [chsource=2/]}{counts}{/c$count}</span>个楼盘
+                </div>
+            </div>
+            <div class="w270 l mr20 pt20">
+                <div class="jqDuang"  data-cell=".tab-hd1" data-obj=".tlist" data-autoplay="0" data-speed="0">
+                    <div class="tab-hd1 clearfix mb5">
+                        <a class="act" href="javascript:;"><?php echo cls_PushArea::Config('push_zxkp','cname'); ?></a>
+                        <a href="javascript:;"><?php echo cls_PushArea::Config('push_rqlp','cname'); ?></a>
+                    </div>
+                    <div class="tab-bd1">
+                        <ul class="tlist">
+                            {c$pushs [tclass=pushs/] [paid=push_zxkp/] [limits=11/] [ttl=600/]}
+                            {c$archive [tclass=archive/] [chid=4/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                            <li><span class="r fcr">{if $a['kprq']}{kprq}{else}{c$date [tclass=date/] [tname=kpsj/] [date=Y-m-d/]}{/c$date}{/if}</span><a href="{arcurl}">{subject}<span class="fcg fz12">[{ccid1title}]</span></a></li>
+                            {/c$archive}
+                            {/c$pushs}
+                        </ul><!-- /tlist -->
+                        <ul class="tlist dn">
+                            {c$pushs [tclass=pushs/] [paid=push_rqlp/] [limits=11/] [ttl=600/]}
+                            {c$archive [tclass=archive/] [chid=4/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                            <li><span class="r fcr">{if $a['dj']}{dj}元/m&sup2;{else}待定{/if}</span><a href="{arcurl}">{subject}<span class="fcg fz12">[{ccid1title}]</span></a></li>
+                            {/c$archive}
+                            {/c$pushs}
+                        </ul><!-- /tlist -->
+                    </div>
+                </div>
+            </div>
+            <div class="w640 l">
+            <!-- 特色楼盘列表 -->
+                <?php
+                    $ii = 0;
+                    foreach (u_field_by(4, 'tslp') as $key => $value) {
+                ?>
+                <ul class="plist1 plist-mod clearfix {if $ii > 0}dn{/if}">
+                    {c$archives [tclass=archives/][cname=文档列表/] [limits=6/] [chsource=2/] [chids=4/] [casource=1/] [caids=2/] [detail=1/] [wherestr=(leixing='0' OR leixing='1') and CONCAT('\t',tslp,'\t') LIKE '%\t$key\t%'/] [ttl=600/]}
+                     <li>
+                         <a class="img" href="{arcurl}"><img alt="{subject}" width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                         <h4><a href="{arcurl}">{subject}</a></h4>
+                         <h5><span class="r">{ccid1title}</span>{if $v['dj']}<span class="fz24 fcr">{dj}</span>元/m&sup2;{else}<span class="fz24 fcr">待定</span>{/if}</h5>
+                         <h5 class="tip fcr"><i class="ico08 mr5">&#xe73b;</i>{bdsm}</h5>
+
+                     </li>
+                    {/c$archives}
+                </ul><!-- /plist -->
+                <?php
+                        $ii++;
+                        if ($ii == 7) break;
+                    }
+                ?>
+            </div>
+            <div class="w270 r pt20">
+                <ul class="tlist1">
+                    {c$pushs [tclass=pushs/] [paid=push_7/] [limits=12/] [ttl=600/]}
+                    {if $v['sn_row']==7}
+                </ul><!-- /tlist -->
+                <div class="blank20"></div>
+                <ul class="tlist1">
+                    {/if}
+                    {if $v['sn_row']%6 == 1}
+                    <li class="dt"><a href="{url}">{subject}</a></li>
+                    {else}
+                    <li>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=$v[classid1]/]}<a href="{indexurl}">{title}</a> | {/c$cnode}<a href="{url}">{subject}</a></li>
+                    {/if}
+                    {/c$pushs}
+                </ul><!-- /tlist -->
+            </div>
+        </div>
+        <div class="blank20"></div>
+        {if !cmod('shangye')}
+        {c$farchives [tclass=farchives/] [limits=10/] [validperiod=1/] [casource=fcatalog134/] [orderstr=a.vieworder ASC/]}
+        <div class="ad mb3">
+            {if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=1200/] [maxheight=60/]} src="{url}"  height="60" width="1200"
+        {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=1200/] [height=60/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}
+        </div>
+        {/c$farchives}<!-- /ad1200_60 -->
+        <div class="blank20"></div>
+        <div id="sydc" class="jqDuang clearfix" data-cell=".col-nav" data-obj=".plist1|#sydc .condition" data-autoplay="0" data-speed="0">
+            <div class="col-title clearfix">
+                <h2 class="l">商业地产</h2>
+                <div class="col-nav l">
+                {c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=616/]}<a class="act" href="{indexurl}"><span>{title}</span><i class="ico08">&#xf0dc;</i></a>{/c$cnode}
+                {c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=612/]}<a href="{indexurl}"><span>{title}</span><i class="ico08">&#xf0dc;</i></a>{/c$cnode}
+                {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=614,613,617,618/] [orderstr=vieworder asc/] [ttl=3600/]}<a href="{indexurl}"><span>{title}</span><i class="ico08">&#xf0dc;</i></a>{/c$catalogs}
+                </div>
+            </div>
+            <div class="w270 l mr20 pt20">
+                <dl class="condition">
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co1/] [cainherit=616/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co1/] [cainherit=616/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>类型</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co48/] [cainherit=616/]}<a href="{$cms_abs}index.php?caid={caid}&ccid48={ccid}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有类型</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co48/] [cainherit=616/]}<a href="{$cms_abs}index.php?caid={caid}&ccid48={ccid}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="last">
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co17/] [cainherit=616/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co17/] [cainherit=616/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                </dl><!-- /商铺楼盘 -->
+                <dl class="condition dn">
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co1/] [cainherit=612/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co1/] [cainherit=612/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>类型</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co46/] [cainherit=612/]}<a href="{$cms_abs}index.php?caid={caid}&ccid46={ccid}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有类型</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co46/] [cainherit=612/]}<a href="{$cms_abs}index.php?caid={caid}&ccid46={ccid}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="last">
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co17/] [cainherit=612/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [tclass=catalogs/] [limits=20/] [listby=co17/] [cainherit=612/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                </dl><!-- /写字楼楼盘 -->
+
+                <div class="blank19"></div>
+                <!-- ad270_190 -->
+                {c$farchives [tclass=farchives/] [limits=1/] [validperiod=1/] [casource=fcatalog127/] [orderstr=a.vieworder ASC/]}
+                <div class="ad">{if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=270/] [maxheight=190/]} src="{url}"  height="190" width="270"
+                    {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=270/] [height=190/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}</div>
+                {/c$farchives}
+            </div>
+            <div class="w640 l">
+                <ul class="plist1 plist-mod clearfix">
+                    {c$pushs [tclass=pushs/] [paid=push_spcs/] [limits=6/]}
+                    {c$archive [tclass=archive/] [chid=116/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                    <li>
+                        <a class="img" href="{arcurl}"><img width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=0/] [val=u/]}{url_s}{/c$image}"/></a>
+                        <h4><a href="{arcurl}">{subject}</a></h4>
+                        <h5><span class="r">{ccid1title}</span>{if $a['dj']}<span class="fz24 fcr">{dj}</span>元/m&sup2;{else}<span class="fz24 fcr">待定</span>{/if}</h5>
+                        <h5 class="tip"><i class="ico08 mr5 fcr">&#xe73b;</i>{bdsm}</h5>
+                     </li>
+                    {/c$archive}
+                    {/c$pushs}
+                </ul><!-- /plist -->
+                <ul class="plist1 plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_xzlcs/] [limits=6/]}
+                    {c$archive [tclass=archive/] [chid=115/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                    <li>
+                        <a class="img" href="{arcurl}"><img width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=0/] [val=u/]}{url_s}{/c$image}"/></a>
+                        <h4><a href="{arcurl}">{subject}</a></h4>
+                        <h5><span class="r">{ccid1title}</span>{if $a['dj']}<span class="fz24 fcr">{dj}</span>元/m&sup2;{else}<span class="fz24 fcr">待定</span>{/if}</h5>
+                        <h5 class="tip"><i class="ico08 mr5 fcr">&#xe73b;</i>{bdsm}</h5>
+                     </li>
+                    {/c$archive}
+                    {/c$pushs}
+                </ul><!-- /plist -->
+            </div>
+            <div class="w270 r pt20">
+                <ul class="tlist1">
+                    {c$pushs [tclass=pushs/] [paid=push_sydt/] [limits=9/] [ttl=600/]}
+                    <li class="{if $v['sn_row']==1}dt{/if}"><a href="{url}" title="{subject}">{c$subject [tclass=text/] [tname=subject/] [trim=100/][color=color/]}{/c$subject}</a></li>
+                    {/c$pushs}
+                </ul><!-- /tlist -->
+                <div class="blank16"></div>
+                <!-- ad270_125 -->
+                {c$farchives [tclass=farchives/] [limits=1/] [validperiod=1/] [casource=fcatalog135/] [orderstr=a.vieworder ASC/]}
+                <div class="ad">{if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=270/] [maxheight=125/]} src="{url}"  height="125" width="270"
+                    {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=270/] [height=125/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}</div>
+                {/c$farchives}
+            </div>
+        </div>
+        <div class="blank20"></div>
+        {/if}
+
+        {c$farchives [tclass=farchives/] [limits=10/] [validperiod=1/] [casource=fcatalog165/] [orderstr=a.vieworder ASC/]}
+        <div class="ad mb3">
+            {if $v['html']}{html}{elseif $v['image']}<a href="{link}" target="_blank"><img {c$image [tclass=image/] [tname=image/] [val=u/] [maxwidth=1200/] [maxheight=60/]} src="{url}"  height="60" width="1200"
+        {/c$image}/></a>{elseif $v['flash']}{c$flash [tclass=flash/] [tname=flash/] [val=f/] [width=1200/] [height=60/]}{playbox}{if $v['link']}<a href="{$v['link']}" style="position: relative;margin-top:-{height}px;width:{width}px;height:{height}px;display:block" target="_blank"><img width="{width}" height="{height}" src="{$cms_abs}userfiles/notdel/blank.gif"/></a>{/if}{/c$flash}{/if}
+        </div>
+        {/c$farchives}<!-- /ad1200_60 -->
+        <div class="blank20"></div>
+
+        <div id="escz" class="jqDuang clearfix" data-cell=".col-nav" data-obj=".plist1|#escz .condition" data-autoplay="0" data-speed="0">
+            <div class="col-title clearfix">
+                <h2 class="l">二手房 <i class="ico08 fz12" style="vertical-align:top;_vertical-align:middle">&#xf052;</i> 出租</h2>
+                <div class="col-nav col-nav-lg l">
+                    <a class="act" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl}{/c$cnode}"><span>二手房</span><i class="ico08">&#xf0dc;</i></a>
+                    <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=4/]}{indexurl}{/c$cnode}"><span>出租房</span><i class="ico08">&#xf0dc;</i></a>
+                    <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl2}{/c$cnode}"><span>热门小区</span><i class="ico08">&#xf0dc;</i></a>
+                    <a href="{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl}{/c$jjrjd}"><span>经纪人</span><i class="ico08">&#xf0dc;</i></a>
+                    <a href="{c$jjgsurl [tclass=mcnode/] [cnsource=mcnid/] [cnid=51/]}{mcnurl}{/c$jjgsurl}"><span>经纪公司</span><i class="ico08">&#xf0dc;</i></a>
+                    <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=9/]}{indexurl}{/c$cnode}"><span>求租</span><i class="ico08">&#xf0dc;</i></a>
+                    <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=10/]}{indexurl}{/c$cnode}"><span>求购</span><i class="ico08">&#xf0dc;</i></a>
+                </div>
+            </div>
+            <div class="w270 l mr20 pt20">
+                <dl class="condition">
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房区域检索/] [tclass=catalogs/] [limits=15/] [listby=co1/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房区域检索/] [tclass=catalogs/] [limits=15/] [listby=co1/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房价格检索/] [tclass=catalogs/] [listby=co4/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房价格检索/] [tclass=catalogs/] [listby=co4/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>面积</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房面积检索/] [tclass=catalogs/] [limits=15/] [listby=co6/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有面积</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房面积检索/] [tclass=catalogs/] [limits=15/] [listby=co6/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="last">
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>房龄</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房房龄检索/] [tclass=catalogs/] [limits=15/] [listby=co34/]}<a href="{$cms_abs}index.php?caid=3&ccid34={ccid}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有房龄</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房房龄检索/] [tclass=catalogs/] [limits=15/] [listby=co34/]}<a href="{$cms_abs}index.php?caid=3&ccid34={ccid}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="condition dn">
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=出租房区域检索/] [tclass=catalogs/] [limits=15/] [listby=co1/] [cainherit=4/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=出租房区域检索/] [tclass=catalogs/] [limits=15/] [listby=co1/] [cainherit=4/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>租金</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=出租房租金检索/] [tclass=catalogs/] [listby=co5/] [cainherit=4/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有租金</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=出租房租金检索/] [tclass=catalogs/] [listby=co5/] [cainherit=4/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>户型</h4>
+                            <div class="con-cate-list">
+                               <?php
+                                    foreach (u_field_by(2, 'shi') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&shi='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有户型</h4>
+                            <div class="con-cate-list">
+                               <?php
+                                    foreach (u_field_by(2, 'shi') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&shi='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="last">
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>方式 / 装修</h4>
+                            <div class="con-cate-list">
+                               <?php
+                                    foreach (u_field_by(2, 'zlfs') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&zlfs='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                               <?php
+                                    foreach (u_field_by(2, 'zxcd') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&zxcd='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有方式</h4>
+                            <div class="con-cate-list mb20">
+                               <?php
+                                    foreach (u_field_by(2, 'zlfs') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&zlfs='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                            <h4>所有装修</h4>
+                            <div class="con-cate-list">
+                               <?php
+                                    foreach (u_field_by(2, 'zxcd') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&zxcd='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="col-tools1 clearfix">
+                    <a href="{$cms_abs}info.php?fid=111&action=chushou" rel="nofollow"><i class="ico08 mr5">&#xe635;</i>发布二手</a>
+                    <a href="{$cms_abs}info.php?fid=111&action=chuzu" rel="nofollow"><i class="ico08 mr5">&#xe632;</i>发布出租</a>
+                    <a href="{$cms_abs}info.php?fid=112&action=qiugou" rel="nofollow"><i class="ico08 mr5">&#xe62f;</i>发布求购</a>
+                    <a href="{$cms_abs}info.php?fid=112&action=qiuzu" rel="nofollow"><i class="ico08 mr5">&#xe626;</i>发布求租</a>
+                    <a href="{$cms_abs}info.php?fid=101&chid=3" rel="nofollow"><i class="ico08 mr5">&#xf15b;</i>委托出售</a>
+                    <a href="{$cms_abs}info.php?fid=101&chid=2" rel="nofollow"><i class="ico08 mr5">&#xf0f6;</i>委托出租</a>
+                    <div class="blank0"></div>
+                </div>
+            </div>
+            <div class="w640 l">
+                <ul class="plist1 plist-mod clearfix">
+                    {c$pushs [tclass=pushs/] [paid=push_18/] [limits=6/] [ttl=600/]}
+                     <li>
+                         <a class="img" href="{url}"><img alt="{subject}" width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                         <h4><a href="{url}">{subject}</a></h4>
+                         <h5><span class="r">{c$cnode [tclass=cnode/] [listby=co1/] [val=a/] [cosource1=$v[classid1]/]}{title}{/c$cnode}</span>{if $v['zj']}<span class="fz24 fcr">{zj}</span>万{else}<span class="fz24 fcr">面议</span>{/if}</h5>
+                         <h5 class="tip">{lpmc}</h5>
+                     </li>
+                    {/c$pushs}
+                </ul><!-- /plist -->
+                <ul class="plist1 plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_20/] [limits=6/][ttl=600/]}
+                    <li>
+                        <a class="img" href="{url}"><img alt="{subject}" width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                        <h4><a href="{url}">{subject}</a></h4>
+                        <h5><span class="r">{c$cnode [tclass=cnode/] [listby=co1/] [val=a/] [cosource1=$v[classid1]/]}{title}{/c$cnode}</span>{if $v['zj']}<span class="fz24 fcr">{zj}</span>元/月{else}<span class="fz24 fcr">面议</span>{/if}
+                        </h5>
+                        <h5 class="tip">{lpmc}</h5>
+                    </li>
+                    {/c$pushs}
+                </ul>
+                <ul class="plist1 plist-mod clearfix dn">
+                    {c$pushs [tclass=pushs/] [paid=push_129/] [limits=6/] [ttl=600/]}
+                    {c$archive [tclass=archive/] [chid=4/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                    <li>
+                        <a class="img" href="{arcurl7}"><img alt="{subject}" width="193" height="140" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=193/] [maxheight=140/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                        <h4><a href="{arcurl}">{subject}</a></h4>
+                        <h5><span class="r">{ccid1title}</span><span class="fz24 fcr">{dj}</span>元/m&sup2;{if $a['price_trend']==0}<i class="ico08 ico-{price_trend}">&#xe62d;</i>{elseif $a['price_trend']==1}<i class="ico08 ico-{price_trend}">&#xe62c;</i>{elseif $a['price_trend']==2}<i class="ico08 ico-{price_trend}">&#xe62b;</i>{/if}</h5>
+                        <h5 class="tip"><i class="l">售:<span class="fcr fz16">{lpesfsl}</span>套</i><i class="r">租:<span class="fcr fz16">{lpczsl}</span>套</i></h5>
+                    </li>
+                    {/c$archive}
+                    {/c$pushs}
+                </ul>
+            </div>
+            <div class="w270 r pt20">
+                <div class="plist4">
+                    <ul class="clearfix">
+                        {c$pushs [tclass=pushs/] [paid=push_tjjjr/] [limits=5/] [ttl=600/]}
+                        <li>
+                             <a href="{url}"><img width="56" height="56" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [padding=1/] [val=u/]}{url}{/c$image}"/></a>
+                             <p>
+                                <a href="{url}" class="fcr">{subject}</a><br />
+                                {c$member  [tclass=member/] [chids=2/] [chsource=2/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+                                手机:{lxdh} <br/>
+                                售<span class="fcr">{c$acount [tclass=acount/] [val=b/] [chsource=2/] [chids=3/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$acount}</span>套,租<span class="fcr">{c$acount [tclass=acount/] [val=b/] [chsource=2/] [chids=2/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$acount}</span>套
+                                {/c$member}
+                             </p>
+                         </li>
+                        {/c$pushs}
+                    </ul>
+                    <a class="more" href="{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl}{/c$jjrjd}">更多经纪人</a>
+                </div><!-- /plist -->
+            </div>
+        </div>
+        <div class="blank20"></div>
+        <ul class="plist2 plist-mod clearfix">
+            {c$pushs [tclass=pushs/] [paid=push_17/] [limits=7/] [ttl=600/]}
+             <li>
+                 <a class="img" href="{url}" target="_blank"><img alt="{subject}" width="150" height="70" src="{c$image [tclass=image/] [tname=thumb/] [thumb=1/] [padding=1/] [val=u/]}{url}{/c$image}"/></a>
+             </li>
+            {/c$pushs}
+        </ul><!-- /plist -->
+        <div class="blank20"></div>
+        <div class="scroll2 jqDuang jqDuang-mod" data-effect="leftLoop" data-steps="4" data-visible="4" data-prevbtn=".prev" data-nextbtn=".next">
+            <div class="plist3 plist-mod">
+                <ul class="clearfix">
+                    {c$pushs [tclass=pushs/] [paid=push_137/] [limits=20/] [ttl=600/]}
+                     <li>
+                         <a class="img" href="{url}"><img alt="{subject}" width="285" height="175" src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=285/] [maxheight=175/] [thumb=1/] [padding=1/] [val=u/]}{url_s}{/c$image}"/></a>
+                         <h4><a href="{url}">{subject}</a></h4>
+                     </li>
+                    {/c$pushs}
+                </ul>
+            </div>
+            <i class="ico08 prev">&#xe68c;</i>
+            <i class="ico08 next">&#xe68f;</i>
+        </div><!-- /plist -->
+        <div class="blank20"></div>
+    </div>
+    <div class="link">
+        <div class="link-hd wrap clearfix">
+            <h2>友情链接</h2>
+        </div>
+        <div class="link-bd">
+            <div class="wrap clearfix ptb20">
+                {c$farchives [cname=文字友情/] [tclass=farchives/] [limits=50/] [validperiod=1/] [casource=17/] [orderstr=a.vieworder ASC/]}<a href="{link}" >{subject}</a>{/c$farchives}
+            </div>
+        </div>
+    </div><!-- /link -->
+    {tpl$foot}
+    <script type="text/javascript" src="{$tplurl}js/jqduang.js?2015-8-26"></script>
+    <?php @include_once(M_ROOT."./template/$templatedir/_demo.php"); ?>
+</body>
+</html>

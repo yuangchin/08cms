@@ -1,0 +1,292 @@
+@charset "gb2312";
+.validator .validator_message{
+	background:url("validator.gif") no-repeat scroll -25px -75px;
+	display:inline;
+	margin-left:5px;
+	padding:2px 2px 2px 18px;
+	vertical-align:-1px;
+	white-space:nowrap;
+    line-height: 20px;
+    height: 20px;
+    *height: 16px;
+    *line-height: 18px;
+    position: absolute;
+    z-index: 1;
+}
+
+.validator .init {/*
+	display:block;
+	margin-left:0px;
+	padding:0px;
+	white-space:normal;*/
+	background-color:#E2F5FF;
+	background-position:1px 5px;
+	*background-position:1px 2px;
+	border:1px solid #00A8FF;
+}
+
+.validator .focus {
+	background-color:#E2F5FF;
+	background-position:1px 5px;
+	*background-position:1px 2px;
+	border:1px solid #00A8FF;
+}
+
+.validator .wait {
+	background-color:#E2F5FF;
+	background-position:1px 5px;
+	*background-position:1px 2px;
+	border:1px solid #00A8FF;
+}
+
+.validator .warn {
+    *clear: both;
+	background-color:#FFF2E9;
+	background-position:1px -15px;
+	*background-position:1px -18px;
+	border:1px solid #FF6600;
+}
+
+.validator .error {
+	background-color:#FFF2E9;
+	background-position:1px -38px;
+	border-color:#FF6600;
+}
+
+.validator .pass {
+	background-color:#E6FFE6;
+	background-position:1px -55px;
+	*background-position:1px -57px;
+	border:1px solid #00BE00;
+}
+
+
+.colordlg{
+	background-color:#F0FAEB;
+	border:2px dashed #749F4D;
+	line-height:160%;
+	padding:2px;
+	width:100px;
+}
+.mysource,.myauthor,.mykeyword{	
+    background-color:#f7f9fc;
+    border: 5px solid #107abf;
+    line-height: 160%;
+    padding: 2px;
+    width: 300px;
+    z-index: 10001;
+}
+.coolbg4 {
+    background-color:#e5f4fd;
+    border-bottom: 1px solid #C9CFC1;
+    height: 24px;
+    line-height: 24px;
+    text-align: right;
+	padding-right:10px;
+	cursor:move;
+}
+.wsselect{
+	padding:5px;
+	text-align:left;
+    height: 80px;
+    overflow: auto;
+}
+.wsselect a{ color:#5c93b7;}
+
+
+
+/*  图片上传样式  */
+.h95 {height: 95px}
+a.w_local, a.w_phone, a.w_localn, a.w_phonen, .img_selector, .img_selector.hover, a.progressCancel, .drag .img_selector, a.w_local span em { background: url('upload/image_upload.png') no-repeat ; }
+a.w_local, a.w_phone, a.w_localn, a.w_phonen { position: relative; display: inline-block; font: 12px/29px Arial,"宋体"; color: rgb(102, 102, 102) ! important; text-align: right; padding-right: 10px; }
+.h110 { height: 110px;}
+.h130 {height:130px;}
+a.w_local:hover, a.w_phone:hover { color: rgb(0, 0, 0) ! important; text-decoration: none; }
+a.w_local { width: 75px; background-position: 0 0; height: 29px; }
+a.w_local:hover { background-position: 0 -30px; }
+a.w_local span { position: absolute; width: 100px; line-height: 20px; display: block; background-color: rgb(255, 254, 224); border: 1px solid rgb(245, 228, 147); text-align: left; padding: 0 10px; left: 0; top: 35px; color: rgb(153, 153, 153) ! important; }
+a.w_local span em { display: block; width: 11px; height: 6px; position: absolute; top: -6px; left: 10px; background-position: -103px -224px; }
+.progressWrapper { float: left; display: inline; /*width: 94px; */margin-right: 12px; font-size: 12px; position: relative; }
+.progressContainer { /* position: relative;*/ width: 94px; top: -1px; background-color: #fff; }
+.item_box { display: block; width: 80px; height: 60px; padding: 6px; border: 1px solid rgb(211, 211, 211); background-color: rgb(246, 246, 246); }
+.item_box img { display: block; }
+a.progressCancel { position: absolute; display: block; width: 14px; height: 14px; background-position: -100px -182px; right: -6px; top: -6px; text-indent: -9999px; overflow: hidden; }
+a.progressCancel:hover { text-decoration: none; background-position: -100px -200px; }
+.item_input { display: block; width: 94px; }
+.item_input textarea { width: 88px; height: 20px; margin-top: 0;border: 1px solid #D3D3D3 ;border-top: none; display: block; font: 12px/20px Arial,"宋体"; overflow: hidden; padding: 0 2px; }
+.item_input .shadow { display: none; }
+.item_link textarea{width:88px;height:20px; margin-top: 2px;border: 1px solid #D3D3D3 ; display: block; font: 12px/20px Arial,"宋体"; overflow: hidden; padding: 0 2px;}
+.isfenmian { width: 16px; height: 19px; position: absolute; top: 0; left: 0; z-index: 2; background: url('upload/fenmian.png') repeat ; }
+.fm_bg, .fengmian { width: 94px; overflow: hidden; position: absolute; top: 15px; height: 50px;}
+.fm_bg { background:rgb(51, 51, 51); opacity: 0.7; z-index: 1; }
+.fengmian .set, a.scroll_l:hover, a.scroll_r:hover, a.set_fm:hover,a.cut_fm, a.cut_fm2 { background: url('upload/fengmian.png') no-repeat ; }
+.fengmian{z-index: 2;}
+.fengmian .set { background-position: 0 0;  height: 25px;}
+.fengmian .cut {   height: 25px;border-top: 1px solid #ddd;}
+.fengmian .cut a{display: block;height: 100%; width: 50%; float: left;}
+a.cut_fm {background-position: 0px -51px;}
+a.cut_fm:hover{background-position: 0px -77px}
+a.cut_fm2 {background-position: -48px -51px;}
+a.cut_fm2:hover{background-position: -48px -77px}
+.scroll_l, .scroll_r { width: 17px; height: 25px; display: inline-block; float: left; }
+a.scroll_l:hover { background-position: 0 -26px; }
+a.scroll_r:hover { background-position: -77px -26px; }
+.set_fm { width: 58px; height: 25px; display: inline-block; float: left; margin: 0 1px; overflow: hidden; }
+a.set_fm:hover { background-position: -18px -26px; }
+.hc { display: none; }
+.shadow { display: block; clear: both; border-top: 1px solid rgb(221, 221, 221); width: 100%; background:rgb(240, 240, 240); height: 1px; line-height: 0; font-size: 0; overflow: hidden; position: absolute; left: 0; bottom: -3px; opacity: 0.4; z-index: -1; }
+.formTable { border: none; font-size: 14px; line-height: 30px; color: rgb(102, 102, 102); }
+.formTable th, .formTable td { border: 0 none; line-height: 30px; padding: 6px 0; vertical-align: middle; }
+.formTable th { padding-right: 18px; font-weight: 300; text-align: right; vertical-align: top; }
+.progressBarStatus {
+    left: 23px;
+    position: absolute;
+    top: 25px;
+}
+.progressContainer {margin-bottom: 10px;}
+.item_input.on {
+    background-color: #F6F6F6;
+    border: 1px solid #D3D3D3;
+    display: block;
+    padding: 6px;
+    position: absolute;
+    top: 67px;
+    _margin-top:-24px;
+    width: 158px;
+    z-index: 98;
+}
+.item_link{display:none;}
+.item_link.on {
+    background-color: #F6F6F6;
+    border: 1px solid #D3D3D3;
+    display: block;
+    padding: 6px;
+    position: absolute;
+    top: 97px;
+    width: 158px;
+    z-index: 98;
+}
+
+.item_input.on i.tline,.item_link.on i.tline {
+  background-color: #F6F6F6;
+  display: block;
+  height: 1px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: -1px;
+  width: 93px;
+}
+.item_input textarea,.item_link textarea {background-color: #fff;}
+.item_input.on textarea,.item_link.on textarea {
+  border: 1px solid #E3E3E3;
+  height: 80px;
+  width: 152px;
+  background-color: #fff;
+}
+.c_666 { color: rgb(102, 102, 102); }
+.c_ccc { color: rgb(204, 204, 204); }
+
+
+
+/**
+ * jQuery lightBox plugin
+ * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
+ * and adapted to me for use like a plugin from jQuery.
+ * @name jquery-lightbox-0.5.css
+ * @author Leandro Vieira Pinho - http://leandrovieira.com
+ * @version 0.5
+ * @date April 11, 2008
+ * @category jQuery plugin
+ * @copyright (c) 2008 Leandro Vieira Pinho (leandrovieira.com)
+ * @license CCAttribution-ShareAlike 2.5 Brazil - http://creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
+ * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
+ */
+#jquery-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	width: 100%;
+	height: 500px;
+}
+#jquery-lightbox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10001;
+	text-align: center;
+	line-height: 0;
+}
+#jquery-lightbox a img { border: none; }
+#lightbox-container-image-box {
+	position: relative;
+	background-color: #fff;
+	width: 250px;
+	height: 250px;
+	margin: 0 auto;
+}
+#lightbox-container-image { padding: 10px; }
+#lightbox-loading {
+	position: absolute;
+	top: 40%;
+	left: 0%;
+	height: 25%;
+	width: 100%;
+	text-align: center;
+	line-height: 0;
+}
+#lightbox-nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+}
+#lightbox-container-image-box > #lightbox-nav { left: 0; }
+#lightbox-nav a { outline: none;}
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext {
+	width: 49%;
+	height: 100%;
+	zoom: 1;
+	display: block;
+}
+#lightbox-nav-btnPrev { 
+	left: 0; 
+	float: left;
+}
+#lightbox-nav-btnNext { 
+	right: 0; 
+	float: right;
+}
+#lightbox-container-image-data-box {
+	font: 10px Verdana, Helvetica, sans-serif;
+	background-color: #fff;
+	margin: 0 auto;
+	line-height: 1.4em;
+	overflow: auto;
+	width: 100%;
+	padding: 0 10px 0;
+}
+#lightbox-container-image-data {
+	padding: 0 10px; 
+	color: #666; 
+}
+#lightbox-container-image-data #lightbox-image-details { 
+	width: 70%; 
+	float: left; 
+	text-align: left; 
+}	
+#lightbox-image-details-caption { font-weight: bold; }
+#lightbox-image-details-currentNumber {
+	display: block; 
+	clear: left; 
+	padding-bottom: 1.0em;	
+}			
+#lightbox-secNav-btnClose {
+	width: 66px; 
+	float: right;
+	padding-bottom: 0.7em;	
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$mcharset}" />
+<title>{subject}户型{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+    {if $addno==9}
+{tpl$lptopes}
+    {else}
+{tpl$lptop}
+    {/if}
+<div class="blank10"></div>
+<div class="wrap clearfix">
+    <div id="tab" class="clearfix bor-gray-rbl2">
+        <div id="lp-coltit" class="clearfix lp-coltit1">
+            <a href="#shi=0" rel="nofollow"><span class="inner"><span class="title">全部</span><br/><span style="">(<span class="fwb fco" rev="count">{c$counts [tclass=acount/] [chids=11/] [val=b/] [caidson=1/] [casource=1/] [caids=11/] [mode=in/] [arid=3/] [chsource=2/]}{counts}{/c$counts}</span>张)</span></span></a>
+            <?php
+                $__fields = cls_field::options(cls_cache::Read('field',11,'shi'));
+                foreach ($__fields as $key => $value) {
+             ?>
+            {c$counts [tclass=acount/] [chids=11/] [chsource=2/] [val=b/] [mode=in/] [arid=3/] [wherestr=a.shi = '$key'/]}{if $b['counts']>0}<a href="#shi={$key}" rel="nofollow"><span class="inner"><span class="title">{$value}</span><br/><span style="">(<span class="fwb fco" rev="count">{counts}</span>张)</span></span></a>{/if}
+            {/c$counts}
+            <?php } ?>
+        </div>
+        <div class="lpxc-con">
+            <ul id="lp-plist" class="lp-plist1 plist-mod clearfix"></ul>
+            <i class="ico08 dn" id="loading">&#xe656;</i>
+        </div>
+        <div class="tc ptb10">
+            <button id="lp-plist-more" class="btn dn"><i class="ico08 mr5">&#xf009;</i>加载更多</button>
+        </div>
+    </div>
+    <script>
+    var opt = {
+        param : {
+            'ajax'           : 'pageload'
+            , 'aj_model'     : 'a,11' //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+            , 'aj_check'     : 1     //是否审核(0/1或不设置)
+            , 'aj_pagenum'   : 1//当前分页(数字,默认2)
+            , 'aj_pagesize'  : 18
+            //'orderby'      : 'ccid41,vieworder', //排序字段
+            //'ordermode'    : '0', //排序模式
+            , 'aj_nodemode'  : 0
+            , 'caid'         : 11
+            , 'aj_thumb'     : 'thumb,184,134' 
+        }
+        , template : function() {
+            var _url = this.arcurl{if $addno==9}1{/if};
+            return '<li>' +
+                    '<a title="'+this.subject+'-'+this.mj+'m&sup2;-'+this.shi+'室'+this.ting+'厅'+'" href="'+_url+'"><img src="'+this.thumb+'"  height="130" width="180"><em>'+this.subject+'-'+this.mj+'m&sup2;-'+this.shi+'室'+this.ting+'厅'+'</em></a>' +
+                    '</li>';
+        }
+        , loadType : null
+    }
+    //加载数据设置
+    $('#lp-coltit').on('click', 'a:not(".act")', function() {
+        $(this).addClass('act').siblings('a').removeClass('act');
+        // 注意顺序
+        opt.loadType = 'html';
+        opt.param.aj_pagenum = 1;
+        loadData()
+        // return false;
+    });
+
+    $('#lp-plist-more').on('click',function() {
+        opt.loadType = null;
+        loadData()
+    })
+    
+
+    // 获取数据
+    function loadData() {
+        $('#loading').addClass('loading1');
+        var whestr = $('#lp-coltit').find('.act').attr('href').replace('#','').replace('=',',=,');
+        opt.param.aj_whrfields = 'pid3,=,'+{$lpid}+ ';' + whestr;
+        $.getJSON(CMS_ABS + uri2MVC($.param(opt.param) + '&callback=?')
+            ,function(d){
+                if(d.length){
+                    var _html = '';
+                    $.each(d,function(a,b) {
+                        _html += opt.template.call(b);
+                    })
+                    $('#lp-plist')[opt.loadType||'append'](_html);
+                    // 下一页
+                    opt.param.aj_pagenum++;
+                    // 加载更多按钮，显示
+                    $('#lp-plist-more').css('display',d.length<opt.param.aj_pagesize?'none':'inline-block');
+                }
+                $('#loading').removeClass('loading1');
+            });
+    }
+
+    // 高亮分类
+    $('#lp-coltit').find('a[href="'+(location.hash || '#shi=0')+'"]').click();
+    </script>
+</div>
+{if $addno==9}
+{tpl$foot}
+{else}
+{tpl$tpl_lp_footer}
+{/if}
+</body>
+
+</html>

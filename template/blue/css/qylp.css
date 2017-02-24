@@ -1,0 +1,128 @@
+/* 头部广告信息 */
+#ac0 {
+    background-color: #ac0800;
+}
+#top {
+    width: auto;margin-bottom: 0;
+}
+.bgf {
+    background-color: #fcf7f4;
+}
+.plr25 {
+    padding: 0 25px;
+}
+.bza {
+    line-height: 28px;overflow: hidden;
+
+    height: 141px; color: #fff;background-color: #f07926;
+}
+.bza em {
+    font-size: 14px;
+    line-height: 28px;display: block; padding: 8px 10px 0 0;
+}
+.bza i {
+    float: left; width: 293px;
+    height: 140px;padding-right: 20px;background: url(../images/qylp-hdtj.png) no-repeat;
+}
+
+/* 最新推荐 */
+.kpyg-ct {
+    padding-top: 15px;
+}
+.kpyg-tit {
+    margin: 0 25px;
+
+    background-color: #a00;
+}
+.kpyg-tit h2 {
+    font-family: Microsoft YaHei;
+    font-size: 24px; line-height: 38px; overflow: hidden;height: 38px; padding-left: 20px;color: #fff;
+}
+.hot-lp {
+    position: relative;margin-right: -30px;
+    margin-bottom: 10px;margin-left: 25px;
+}
+.hot-lp li {
+    position: relative;float: left;width: 268px;margin: 20px 20px 16px 0;
+
+    text-align: center;border: 1px solid #e4e1e0;
+}
+.hot-lp li img {
+    width: 100%; height: auto;
+}
+.hot-lp li h3 {
+    font-size: 14px;font-weight: bold;line-height: 28px;overflow: hidden;
+
+    height: 28px;
+}
+.hot-lp li h3 a {
+    color: #099;
+}
+.hot-lp li .lh {
+    line-height: 24px;overflow: hidden;
+
+    height: 24px;
+}
+.hot-lp li i {
+    position: absolute;bottom: -16px;left: 0;display: block;width: 100%;height: 15px;
+
+    background: url(../images/qylp-li-bot.jpg) no-repeat;_margin-bottom: -1px;
+}
+.hot-lp li.hover {
+    display: block;
+}
+.hot-lp li.hover {
+    cursor: pointer;
+
+    border: 1px solid #c00;
+}
+.hot-lp li.hover a {
+    color: #c00;
+}
+
+/* 楼盘加推 */
+.lphg-ct table {
+    width: 100%;
+}
+.lphg-ct .table1 {
+    border-collapse: collapse;
+}
+.lphg-ct .table2 {
+    margin-bottom: 10px;
+
+    border-collapse: collapse;
+}
+.lphg-ct .table2 td {
+    border: 2px solid #ddd;
+}
+.lphg-ct table td {
+    padding: 5px;
+}
+.lphg-ct table .td1 {
+    font-family: Microsoft YaHei; font-size: 20px;
+
+    color: #fff; background-color: #f60;
+}
+.lphg-ct table .td2 {
+    color: #666;
+    background-color: #fff;
+}
+.lphg-ct table .td4 {
+    padding-right: 20px;text-align: right;
+
+    color: #ffc;
+}
+.lphg-ct table .td5 {
+    font-family: Microsoft YaHei;font-size: 20px;
+
+    color: #fff;
+}
+.tit1 {
+    font-family: Microsoft YaHei; font-size: 20px;margin-bottom: 10px;padding: 5px;color: #fff;
+    background-color: #099;
+}
+.tit1 span.r {
+    font-size: 12px;
+
+    color: #ffc;
+}

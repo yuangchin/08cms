@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}详情{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+{tpl$lptop}
+<!-- <div class="blank0" ></div> -->
+<div class="wrap clearfix">
+	<div class="w800 l">
+        <div class="clearfix jbxx">
+            <div class="lp-coltit"><h3 class="tit1">基本信息</h3></div>
+            <div id="lp-detail" class="p10 lp-detail lp-tabcon bd-gray clearfix">
+                <div class="item">
+                    <dl class="clearfix">
+                        <dt>物业类型：</dt>
+                        <dd>{ccid12title}&nbsp;</dd>
+                        <dt>区域所属：</dt>
+                        <dd>{ccid1title}&nbsp;{if $ccid2title}({ccid2title}){/if}&nbsp;</dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>销售电话：</dt>
+                        <dd>{tel}&nbsp;</dd>
+                        <dt>许可证号：</dt>
+                        <dd>{xkzh}&nbsp;</dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>开盘日期：</dt>
+                        <dd>{kprq}&nbsp;</dd>
+                        <dt>交房日期：</dt>
+                        <dd>{jfrq}&nbsp;</dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>得房率：</dt>
+                        <dd>{dfl}&nbsp;</dd>
+                        <dt>建筑面积：</dt>
+                        <dd>{jzmj}&nbsp;</dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>绿化率：</dt>
+                        <dd><span>{lhl}</span>&nbsp;<i class="fcg">[<a href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=597/]}{indexurl}{/c$cnode}" target="_blank">关于绿化率</a>]</i>&nbsp;</dd>
+                        <dt>占地面积：</dt>
+                        <dd>{zdmj}&nbsp;</dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>容积率：</dt>
+                        <dd><span>{yjl}</span>&nbsp;<i class="fcg">[<a href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=598/]}{indexurl}{/c$cnode}" target="_blank">关于容积率</a>]</i>&nbsp;</dd>
+                        <dt>装修状况：</dt>
+                        <dd>{c$zxcd [cname=zxcd/] [tclass=field/] [tname=zxcd/] [type=archive/] [fname=zxcd/]}{/c$zxcd}&nbsp;</dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>开发商：</dt>
+                        <dd class="fcb">{c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$lpkfs}&nbsp;</dd>
+                        <dt>特色楼盘：</dt>
+                        <dd>{c$tslp [cname=tslp/] [tclass=field/] [tname=tslp/] [type=archive/] [fname=tslp/]}{/c$tslp}&nbsp;</dd>
+                    </dl>
+                    <dl class="clearfix">
+                        {if !empty($$ccid3title)}
+                        <dt>地　　铁：</dt>
+                        <dd>{ccid3title}({ccid14title})&nbsp;</dd>
+                        {/if}
+                        {if !empty($$hxs)}
+                        <dt>环　　线：</dt>
+                        <dd>{c$hxs [cname=hxs/] [tclass=field/] [tname=hxs/] [type=archive/] [fname=hxs/]}{/c$hxs}&nbsp;</dd>
+                        {/if}
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>楼　　层：</dt>
+                        <dd>{c$lcs [cname=lcs/] [tclass=field/] [tname=lcs/] [type=archive/] [fname=lcs/]}{/c$lcs}&nbsp;</dd>
+                        <dt>车位状况：</dt>
+                        <dd>{cksm}&nbsp;</dd>
+                    </dl>
+                    <dl class="nowrap clearfix">
+                        <dt>物业费：</dt>
+                        <dd>{wyf}</dd>
+                    </dl>
+                    <dl class="nowrap clearfix">
+                        <dt>楼盘地址：</dt>
+                        <dd>{address}</dd>
+                    </dl>
+                    <dl class="nowrap clearfix">
+                        <dt>售楼地址：</dt>
+                        <dd>{sldz}</dd>
+                    </dl>
+                    <dl class="nowrap clearfix">
+                        <dt>交通线路：</dt>
+                        <dd>{c$jtxl [tclass=text/] [tname=jtxl/] [nl2br=1/] [noimgwh=0/]}{/c$jtxl}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!-- 历史价格 -->
+        <div class="clearfix info-block lsjg">
+        	<div class="lp-coltit"><h3 class="tit1">历史价格</h3></div>
+            {c$outinfos1 [tclass=outinfos/] [dsid=0/] [limits=50/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}
+            <? $k=count($_outinfos1);?>
+            <div id="lp-lsjg" class="lp-con1 lp-tabcon lp-lsjg fz12">
+            	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+					<tbody>
+						<tr bgcolor="#eeeeee">
+							<td width="70" class="lsjg_td lsjg_bor">记录时间<i class="ico08">&#xe74a;</i></td>
+							<td width="100" class="lsjg_td lsjg_bor">均价<i class="ico08">&#xe61d;</i></td>
+                            <td width="100" class="lsjg_td lsjg_bor">最低价<i class="ico08">&#xe61f;</i></td>
+                            <td width="100" class="lsjg_td lsjg_bor">最高价<i class="ico08">&#xe61b;</i></td>
+							<td align="center" class="lsjg_td lsjg_bor1">价格说明<i class="ico08">&#xf06b;</i></td>
+						</tr>
+                        [row]
+                        {if $v['sn_row']%10==0}
+                    </tbody>
+                    <tbody id="price_more" class="dn">
+                        {/if}
+                        <tr {if $v['sn_row']%2==0}class="bg"{/if}>
+                        <td class=" lsjg_bor">{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}</td>
+                        <td class=" lsjg_bor">{if $v['average']}{average}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor">{if $v['lowest']}{lowest}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor">{if $v['highest']}{highest}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor1"><div style="width:380px;float:right">{if $v['message']}{message}{else}-{/if}</div></td>
+                        </tr>
+                        [/row]
+					</tbody>
+				</table>
+            </div>
+            {if $k>10}
+            <div id="lp-lsjg-btn" class="lp-lsjg-btn">更多 <i class="ico08">&#xe68d;</i></div>
+            <script type="text/javascript">
+                var fbtn, $priceMore = $('#price_more');
+                $('#lp-lsjg-btn').click(function () {
+                    if(!fbtn){
+                       $(this).html('收起 <i class="ico08">&#xe68e;</i>');
+                       $priceMore.removeClass('dn');
+                       fbtn=!fbtn;
+                    }else{
+                       $(this).html('更多 <i class="ico08">&#xe68d;</i>');
+                       $priceMore.addClass('dn');
+                       fbtn=!fbtn;
+                    }
+                })
+            </script>
+            {/if}
+            {/c$outinfos1}
+        </div>
+        <!-- /历史价格 -->
+        <!-- 配套 -->
+        <div class="clearfix info-block xmpt">
+            <div class="lp-coltit"><h3 class="tit1">项目配套</h3></div>
+            <div class="p10 lp-con1 lp-tabcon bd-gray">
+                {c$catalogs [tclass=catalogs/] [limits=15/] [listby=ca/] [casource=3/] [wherestr=pid='12'/] [ttl=300/]}
+                {c$archives1 [tclass=archives/] [limits=100/] [val=b/][cname=文档列表/][detail=1/] [chsource=2/] [chids=8/] [casource=2/] [mode=in/] [arid=1/][ttl=600/]}
+                <?php $kk=count($_archives1); ?>
+                [row]
+                {if $b['sn_row']!=1}、{else}<b class="fs14">{$v['title']}</b> : {/if}<a href="{arcurl}" target="_blank" title="{subject}">{subject}</a>
+                [/row]{if @$kk}<br/>{/if}
+                {/c$archives1}
+                {/c$catalogs}
+                {if empty($kk)}更新中...{/if}
+            </div>
+        </div>
+        <!-- /配套 -->
+        <!-- 项目简介 -->
+        <div class="clearfix info-block xmjj">
+            <div class="lp-coltit"><h3 class="tit1">项目简介</h3></div>
+            <div class="p10 lp-tabcon bd-gray">
+                {c$content_njs [cname=content_njs/] [tclass=text/] [tname=content/] [dealhtml=safehtml/]}{/c$content_njs}
+            </div>
+        </div>
+        <!-- /项目简介 -->
+     </div>
+     {tpl$lpright}
+</div>
+{tpl$tpl_lp_footer}
+</body>
+</html>

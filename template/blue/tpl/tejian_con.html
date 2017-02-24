@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/tejiafanglist.css?{$user_version}"/>
+<?php $pagetype = 'newhouse';?>
+</head>
+<body>
+{tpl$head}
+<div class="wrap">
+		<div class="bread clearfix">
+			<span class="r ys"><a href="{c$archives [tclass=archives/] [val=abc/] [limits=1/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/]}{arcurl11}{/c$archives}"><i class="ico08 mr">&#xf03a;</i>同楼盘的特价房</a></span>
+			<span class="l">
+				<a href="{$cms_abs}"><i class="ico08 ico">&#xf015;</i>首页</a><i class="pipe">></i><a href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl}{/c$cnode}">新房</a><i class="pipe">></i>{c$cnode [tclass=cnode/] [listby=ca/] [casource=559/]}<a href="{indexurl}">{title}</a>{/c$cnode}<i class="pipe">></i><a href="{arcurl}">{subject}</a>
+			</span>
+	    </div>
+
+		<div class="lpintro clearfix">
+			<div class="lpintrot">
+				<div class="lpintrotr r">发布时间：{c$date [tclass=date/] [tname=updatedate/] [date=Y年m月d日/]}{/c$date}</div>
+				<div class="lpintrotl">
+					{if $ccid18}<i class="l">{ccid18title}</i>{/if}
+					<h2>{subject}</h2>
+				</div>
+			</div>
+			<div class="h-d-img">
+				<a href="{arcurl}"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [maxwidth=551/] [maxheight=366/] [thumb=2/] [padding=1/]} src="{url}"  height="366" width="551" {/c$image}/></a>
+           	</div>
+			<div class="lpintror r">
+				<ul>
+					<li class="clearfix">
+						<span class="r lh"><a target="_blank" href="{c$08cms [tclass=freeurl/] [fid=3/]}{/c$08cms}"><i class="ico08">&#xf1ec;</i><i class="i1">贷款计算器>></i></a></span>
+						<span class="l">参考总价:<em>{zj}</em><i class="i2">万元</i></span>
+					</li>
+					<li>
+						<i>面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积:</i>
+						<em>{mj}m&sup2;</em>
+					</li>
+					<li>
+						<i>户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型:</i>
+						<em>{c$shi}{c$ting}{c$wei}</em>
+					</li>
+					<li>
+						<i>楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层:</i>
+						<em>第{szlc}层/共{zlc}层</em>
+					</li>
+					<li>
+						<i>朝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向:</i>
+						<em>{if empty($cx)}-{else}{c$cxcx [cname=cxcx/] [tclass=field/] [tname=cx/] [type=archive/] [fname=cx/]}{/c$cxcx}{/if}</em>
+					</li>
+					{if $lh!=''}
+						<li>
+							<i>楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</i>
+							<em>{lh}</em>
+						</li>
+					{/if}
+					{if $fh!=''}
+						<li>
+							<i>房&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</i>
+							<em>{fh}</em>
+						</li>
+					{/if}
+					<li class="tel clearfix">
+						<i class="ico08 l">&#xe744;</i>
+						<p class="r"><i>{lxdh}</i>联系人：{xingming} 联系时请告知信息来自本站,谢谢。</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="blank20"></div>
+		<div class="xt">
+			<div class="xtt clearfix">
+				<div class="xttl l">这些楼盘相同居室</div>
+				<div class="xttr r"><a href="{$cms_abs}index.php?caid=559&shi={$shi}">查看更多相同户型楼盘>></a></div>
+			</div>
+			<div class="xtb">
+				<ul class="clearfix">
+					{c$archives [cname=文档列表/] [tclass=archives/] [chids=107/] [chsource=2/] [casource=1/] [caids=559/] [detail=1/] [wherestr=a.shi = '$shi'/] [ttl=600/]}
+                         <li>
+                            <a href="{arcurl}">
+                            	<img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/]} src="{url}"  height="157" width="220" {/c$image}/>
+                             	<h4>
+                                	<span class="r fz12">{ccid1title}</span>
+                                	<span>{c$08cms2 [cname=08cms2/] [tclass=archives/] [val=b/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/]}{subject}{/c$08cms2}</span>
+                             	</h4>
+                             	<h5><i>{zj}</i>万元</h5>
+                             </a>
+                         </li>
+                    {/c$archives}
+				</ul>
+			</div>
+		</div>
+		<div class="blank40"></div>
+	</div>
+{tpl$foot}
+</body>
+</html>

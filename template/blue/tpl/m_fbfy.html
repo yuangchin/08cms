@@ -1,0 +1,254 @@
+<?php
+$ismob = 1; // 网页版
+include_once M_ROOT.'./etools/gpub_func.php';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>{$actname}房源-{$hostname}</title>
+	<meta name="keywords" content="{$actname}房源" />
+	<meta name="description" content="{$actname}房源" />
+	{tpl$m_headinner}
+	<?php $notop=1; ?>
+</head>
+<body>
+	<div id="section_container">
+		<!-- 页面容器 -->
+		<form name="archive_fy" id="archive_fy" method="get" action="?caid={$caid}&addno={$addno}&aid={$aid}" onsubmit="return sendPost(this);">
+		<input type="hidden" name="actdo" value="{if $aid}edit{else}save{/if}">
+        <input type="hidden" name="aid" value="{$aid}">
+        <input type="hidden" name="fmdata[caid]" value="{$caid}">
+        <input type="hidden" name="ismob" value="1">
+        <input type="hidden" name="fxpid" value="">
+		<input type="hidden" name="agree" value="on">
+		<section id="index_section" title="{$actname}房源" data-btn="back" data-footer="false" class="active">
+			{tpl$m_header}
+			<article id="step1" class="active" style="overflow-y:scroll">
+				<ul class="list">
+					<li>
+						<div class="input-group">
+							<div class="input-group-divider">基本信息</div>
+							<div class="input-row">
+								<label>小区名称</label>
+								<input type="text" id="fmdata[subject]" name="fmdata[lpmc]" value="<?php echo @$data['lpmc']; ?>" required pattern=".{3,30}" maxlength="30" min="0" max="18" placeholder="小区名称" title="小区名称不能为空">
+							</div>
+							<div class="form-group">
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+				                                        <select name="fmdata[shi]" title="室">
+										<?php echo cls_uview::form_opt_field($fields['shi'],@$data['shi']); ?>
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[ting]" title="厅">
+										<?php echo cls_uview::form_opt_field($fields['ting'],@$data['ting']); ?>
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[wei]" title="卫">
+										<?php echo cls_uview::form_opt_field($fields['wei'],@$data['wei']); ?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[ccid1]" id="fmdata[ccid1]" required="" title="区域不能为空">
+										<option value="">-区域-</option>
+				                                            <?php echo cls_uview::form_opt_coid(1,@$data['ccid1']); ?>
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[ccid43]" id="fmdata[ccid43]" required="" title="类型">
+										<option value="">-类型-</option>
+				                                            <?php echo cls_uview::form_opt_coid(43,@$data['ccid43']); ?>
+									</select>
+								</div>
+
+				                  {if !$fcdisabled2}
+				                  <?php if(empty($f2dis)){ ?>
+									<div class="select">
+										<i class="icon icon-f0db"></i>
+										<select name="fmdata[ccid2]" id="fmdata[ccid2]" title="商圈">
+											<option value="">-商圈-</option>
+					                       </select>
+									</div>
+					                  <?php $r1js=relCcids_js(1, 2, 1, @$data['ccid1'], @$data['ccid2']); echo $r1js; ?>
+				                  <?php } ?>
+				                  {/if}
+							</div>
+
+							{if !$fcdisabled3}
+				             <?php if(empty($f2dis)){ ?>
+							<div class="form-group">
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[ccid3]" id="fmdata[ccid3]" title="地铁">
+										<option value="">-地铁-</option>
+										<?php echo cls_uview::form_opt_coid(3,@$data['ccid3']); ?>
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[ccid14]" id="fmdata[ccid14]" title="站点">
+										<option value="">-站点-</option>
+									</select>
+								</div>
+							</div>
+				             <?php $r1js=relCcids_js(3, 14, 2, @$data['ccid3'], @$data['ccid14']); echo $r1js; ?>
+				             <?php } ?>
+				             {/if}
+
+							<div class="input-row">
+								<label for="">{if $caid==3}总价{else}租价{/if}</label>
+								<input type="text" name="fmdata[zj]" id="fmdata[zj]" value="<?php echo @$data['zj']; ?>" pattern=".{2,18}" maxlength="18" title="{if $caid==3}总价{else}租价{/if}" placeholder="{if $caid==3}总价(万){else}租价{/if}">
+							</div>
+							<div class="input-row">
+								<label for="">面积</label>
+								<input type="text" name="fmdata[mj]" id="fmdata[mj]" value="<?php echo @$data['mj']; ?>" pattern=".{2,18}" maxlength="18" title="面积" placeholder="面积">
+							</div>
+				                                <?php if($caid==3){ ?>
+							<div class="input-row">
+								<label for="">单价</label>
+								<input type="text" name="fmdata[dj]" id="fmdata[dj]" value="<?php echo @$data['dj']; ?>" pattern=".{2,18}" maxlength="18" title="单价" placeholder="单价">
+							</div>
+				                                <?php } ?>
+						</div>
+						<div class="input-group">
+							<div class="input-group-divider">详情信息</div>
+							<div class="input-row">
+								<label for="">房源标题</label>
+								<input type="text" name="fmdata[subject]" value="<?php echo @$data['subject']; ?>" pattern=".{4,100}" maxlength="100" title="房源标题" required placeholder="房源标题">
+							</div>
+							<div class="input-row">
+								<label for="">地址</label>
+								<input type="text" name="fmdata[address]" value="<?php echo @$data['address']; ?>" pattern=".{6,18}" maxlength="18" title="请输入6到18字符" placeholder="地址">
+							</div>
+							<div class="form-group">
+								{if $caid==3}
+                                <div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[fwjg]" title="房屋结构">
+										<option value="">房屋结构</option>
+										<?php echo cls_uview::form_opt_field($fields['fwjg'],@$data['fwjg']); ?>
+									</select>
+								</div>
+                                {/if}
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[zxcd]" title="装修程度">
+										<option value="">装修程度</option>
+										<?php echo cls_uview::form_opt_field($fields['zxcd'],@$data['zxcd']); ?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[cx]" title="朝向">
+										<option value="">朝向</option>
+										<?php echo cls_uview::form_opt_field($fields['cx'],@$data['cx']); ?>
+									</select>
+								</div>
+								<div class="select">
+									<i class="icon icon-f0db"></i>
+									<select name="fmdata[fl]" title="房龄">
+										<option value="">房龄</option>
+										<?php echo cls_uview::form_opt_field($fields['fl'],@$data['fl']); ?>
+									</select>
+								</div>
+							</div>
+							<div class="input-row">
+								<label for="">所在楼层</label>
+								<input type="text" name="fmdata[szlc]" value="<?php echo @$data['szlc']; ?>" pattern=".{1,18}" maxlength="18" title="所在楼层" placeholder="所在楼层">
+							</div>
+							<div class="input-row">
+								<label for="">总楼层</label>
+								<input type="text" name="fmdata[zlc]" value="<?php echo @$data['zlc']; ?>" pattern=".{1,18}" maxlength="18" title="总楼层" placeholder="总楼层">
+							</div>
+
+                            {if $aid}
+                            <textarea disabled="disabled" class="f-alizarin">手机版暂不支持【房源描述/图片】编辑</textarea>
+                            {else}
+                            <div class="input-row"><label for="">房源图片</label></div>
+                            <div class="_08_upload_box" id="fythumb">
+                            <?php
+                             $fythumb = cls_cache::Read('field',121,'thumb'); $fythumb['ename'] = 'fythumb';
+                             echo cls_uview::form_btn_file($fythumb,'',array('isSingle'=>0));
+                             ?>
+                            </div>
+							<textarea name="fmdata[content]" placeholder="房源描述"></textarea>
+                            {/if}
+						</div>
+						<div class="input-group">
+							<div class="input-group-divider">联系方式</div>
+							<div class="input-row">
+								<label for="">联系电话</label>
+								<input type="text" name="fmdata[lxdh]" value="<?php echo @$data['lxdh']; ?>" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" maxlength="18" title="电话不能为空或格式不对" required placeholder="联系电话">
+							</div>
+							<div class="input-row">
+								<label for="">联系人</label>
+								<input type="text" name="fmdata[xingming]" value="<?php echo @$data['xingming']; ?>" pattern=".{2,18}" maxlength="18" title="联系人不能为空" required placeholder="联系人">
+							</div>
+							{if empty($aid) }
+							<div class="input-row">
+								<label for="">验证码</label>
+                            	<input type="text" name="regcode" required maxlength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码">
+							</div>
+                            {/if}
+						</div>
+						<button class="block small" type="submit" xtype="submit" data-icon="icon icon-f076" >提交信息 </button>
+					</li>
+				</ul>
+			</article>
+		</section>
+		</form><!-- /form -->
+	</div>
+{tpl$m_footer}
+<!-- 自动计算 单价 -->
+<script type='text/javascript'>
+var mj = $("[id='fmdata[mj]']");
+var zj = $("[id='fmdata[zj]']");
+var dj = $("[id='fmdata[dj]']");
+mj.bind('keyup',function (){
+	mjzj_kup();
+});
+zj.bind('keyup',function (){
+	mjzj_kup();
+});
+function mjzj_kup(){
+	if(zj.val()!='' && mj.val()!='' && mj.val()!='0'){
+		val = (parseFloat(zj.val()) * 10000 / parseFloat(mj.val())).toFixed(0);
+		if(!isNaN(val)) $(dj).val(val);
+	}
+}
+function sendPost(fm){
+	var data = $(fm).serialize();
+	$url = '{$cms_abs}<?php echo _08_Http_Request::uri2MVC("ajax=addarc&caid={$caid}&ismob=1&aid={$aid}&datatype=json"); ?>';
+	$.ajax({
+		type: "GET",
+		url: $url + '&callback=?',
+		data: data,
+		dataType: "jsonp",
+
+		success: function(result){
+			if(!result.error){
+				J.showToast(result.message,'success top');
+				resetFm(fm);
+			}else{
+				J.showToast(result.error,'info top');
+				resetReg(fm);
+			}
+		}
+	});
+    return false;
+}
+</script>
+<link rel="stylesheet" href="{$cms_abs}images/common/upload/upload_html5.css?{$user_version}" />
+<script type="text/javascript" src="{$cms_abs}images/common/upload/upload_html5_mobile.js"></script>
+</body>
+</html>

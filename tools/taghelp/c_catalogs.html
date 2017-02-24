@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">类目列表 catalogs</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>类目列表是系统使用的最频繁也是最重要标签之一，一般在制作子导航,类目标题时使用。</p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">参数</div>
+<div>
+	<ul>
+    <li class="bg3">标识模板<i class="FcR">(重要)</i></li>
+    <span class="blank2"></span>
+    <li class="t1">1.参考文档列表标识。<br />2.常用原始标识:<br />
+    {caid}栏目id<br />
+    {ccidn}类系分类id<i class="FcO">//n表示类系分类id</i><br />
+    {title}标题<br />
+    {indexurl}标题url（节点链接）<i class="FcO">//附加页1为{indexurl1},附加页2为{indexurl2}…</i><br />
+   </li>
+	<span class="blank2"></span>
+    </ul>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+<div>
+    <!-- exam1 -->
+	<div>
+        <span class="blank5"></span>
+        <li class="bg3">案例1</li>
+        <li class="t2">效果:</li>
+        <li><img src="img/colexam.jpg" class="pad15" /></li>
+        <span class="blank5"></span>
+        <li class="t2">html代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+        <a target="_blank" href="#">旅游资讯</a> | 
+        <a target="_blank" href="#">人文地理</a> | 
+        <a target="_blank" href="#">任选日本</a> | 
+        <a target="_blank" href="#">日本美食</a> | 
+        <a target="_blank" href="#">线路贴士</a> | 
+        <a target="_blank" href="#">游记攻略</a>
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+        {if $v['sn_row']!=1} | {/if}<a target="_blank" href="{indexurl1}">{title}</a>
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li>说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>制作子导航，列出栏目下想要显示的子栏目。例如旅游下的旅游资讯、人文地理…等。参数:作为列表项设置为栏目，栏目设置为手动指定，按住CTRL键多选想要列出的栏目,或者设置为“自定查询字串”然后筛选查询字串写上“pid='5'and level='1'”，本例采用后者，列表的父级是旅游（id为“5”）的二级分类（level='1'）。if为判断语句，以{if}开始{/if}结束，sn_row为内置标签，记录当前循环的次数。</p>
+        
+            <p><b class="FcR">整体截图如下：</b><br /><img class="img" src="img/bq2.jpg"/></p>
+        </li>
+    </div>
+    
+    <!-- exam2 -->
+    <div>
+        <span class="blank5"></span>
+        <li class="bg3">案例2</li>
+        <span class="blank5"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/colexam1.jpg" class="pad15" /></li>
+        <li class="t2">html代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+                <dl>
+                	<dt> <a href="#">娱乐</a></dt>
+                	<dd>
+                        <a href="#">电影</a>
+                        <a href="#">日剧</a>
+                        <a href="#">导演</a>
+                        <a href="#">明星</a>
+                    </dd>
+                </dl>
+                <dl>
+                	<dt> <a href="#">时尚</a></dt>
+                	<dd>
+                        <a href="#">时装</a>
+                        <a href="#">情爱</a>
+                        <a href="#">香水</a>
+                        <a href="#">玩偶</a>
+                    </dd>
+                </dl>
+                <dl>
+                	<dt> <a href="#">财经</a></dt>
+                	<dd>
+                        <a href="#">证券</a>
+                        <a href="#">银行</a>
+                        <a href="#">保险</a>
+                        <a href="#">投资</a>
+                    </dd>
+                </dl>
+                </xmp>
+            </div>
+        </li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>col_1中的代码</div>
+            <div>
+                <xmp>
+                <dl>
+                	<dt> <a href="{indexurl}">{title}</a></dt>
+                	<dd>
+                        {c$col_2}
+                    </dd>
+                </dl>
+                </xmp>
+            </div>
+            <div>col_2中的代码</div>
+            <div>
+                <xmp>
+                    <a href="{indexurl}">{title}</a>
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li>说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>
+            列出全部一级栏目以及对应的二级栏目。本例中有两个类目列表标签嵌套，第一个标签{c$col_1}列出一级栏目，并激活下级栏目，第二个标签{c$col_2}列出二级栏目<br />
+            <p><b class="FcR">整体截图如下：</b><br />
+            {c$col_1}:<br />
+            <img class="img" src="img/bq3.jpg"/><br />
+            {c$col_2}:<br />
+            <img class="img" src="img/bq4.jpg"/><br />
+            <b class="FcR">注：标识返回的数组名称不同</b>
+            </p>
+        
+        </p></li>
+    </div>
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

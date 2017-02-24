@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">交互列表 commus</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>交互列表也是系统重要标签之一，在需要使用交互的地方使用。</p>
+</div>
+<span class="blank5"></span>
+
+<div class="w1 h1 bg2">示例</div>
+<div>
+	<div>
+        <span class="blank5"></span>
+        
+        <li class="t2">效果:</li>
+        <li><img src="img/archives6.gif" class="pad15" /></li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp><?
+$floor = 0;
+?>
+[row]
+  <dl>
+     <dt>
+        <a target="_blank" href="#"><img width="50" height="50" src="{$cms_abs}{if $v['mlogo']}{mlogo}
+        {else}images/common/mlogo.gif{/if}" alt="{manme}"></a>
+        <span><?=++$floor?>楼</span>
+     </dt>
+     <dd>
+        <span class=" cGray">{mname}（{c$createdate_ymd}{if !$v['tocid']}<a onclick="return report_window(this,
+        '点评回复')" class="cBlue3" href="{$cms_abs}etools/cxcomment.php?aid={$aid}&tocid={cid}" title=
+        "点评回复">回复</a>{/if}）</span>{if !$v['tocid']}<span class="pf" style="background-position:right 
+        <?=(2-round($v['zonghepf']/2)*20)?>px">综合评分：</span>{/if}
+     </dd>
+{if $v['tocid']}
+{c$cxdpyinyongtag}
+{/if}
+     <dd>{c$dpcontent}</dd>
+     </dl>
+[/row]</xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        
+        <li class="bg3">说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>评论列表。[row][/row]之间为交互列表循环显示的部分。<br />
+        <b class="FcR">整体截图如下</b><br />
+        <img src="img/jh.jpg" class="img"/>
+            
+        </p></li>
+    </div>
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

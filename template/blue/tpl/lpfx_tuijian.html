@@ -1,0 +1,203 @@
+<?php
+include_once M_ROOT."./etools/distribution.php";
+?>
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>楼盘分销推荐-{$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/lpfx.css?{$user_version}">
+<?php $pagetype = 'money'; ?>
+</head>
+<body>
+<!--统一头部-->
+{tpl$head}
+
+<div class="wrap">
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group w300 form form-bdrs">
+                    <input type="submit" value="搜索" class="btn">
+                    <div class="txt-wrap">
+                        <input type="text" class="txt" value="{if !empty($searchword)}{searchword}{/if}"  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl}{/c$cnode}" target="_blank">新房</a><i class="pipe">/</i>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=605/]}<a href="{indexurl}" >{title}</a>{/c$cnode}<i class="pipe">/</i>推荐客户赚佣金
+        </span>
+    </div>
+    <div class="blank10"></div>
+<!--表单内容-->
+<div class="form_frame clearfix">
+<!--统一右侧-->
+{tpl$tuijian_right}
+<div class="w720 tijiao l clearfix">
+
+<form class="jqValidate" method="post" action="{$cms_abs}info.php?fid=114" name="commu491" id="commu491">
+    <table>
+        <tbody>
+            {if empty($myself)}
+            <tr>
+                <td class="inptext"><span class="label"><font color="red"> * </font>朋友姓名</span>
+                </td>
+                <td><input class="inputtext clear-txt" type="text" data-type="*4-8" value="" name="fmdata[xingming]" id="fmdata[xingming]" size="20" placeholder="请输入朋友姓名">
+                </td>
+            </tr>
+            <tr>
+                <td class="inptext"><span class="label"><font color="red"> * </font>联系电话</span>
+                </td>
+                <td class="item2"><input class="inputtext clear-txt" placeholder="请输入联系电话" type="text" data-type="m" value="" name="fmdata[dianhua]" id="fmdata[dianhua]" size="20">
+                </td>
+            </tr>
+            {else}
+            {c$member [tclass=member/] [id=-1/] [detail=1/]}
+            <tr>
+                <td class="inptext"><span class="label"><font color="red"> * </font>姓&nbsp;&nbsp;&nbsp;&nbsp;名</span>
+                </td>
+                <td><input class="inputtext clear-txt" data-type="*4-8" type="text" value="{xingming}" name="fmdata[xingming]" id="fmdata[xingming]" size="20" placeholder="请输入姓名">
+                </td>
+            </tr>
+            <tr>
+                <td class="inptext"><span class="label"><font color="red"> * </font>联系电话</span>
+                </td>
+                <td class="item2"><input class="inputtext clear-txt"  placeholder="请输入联系电话" type="text" data-type="m" value="{lxdh}" name="fmdata[dianhua]" id="fmdata[dianhua]" size="20">
+                </td>
+            </tr>
+            {/c$member}
+            {/if}
+
+            <tr>
+                <td class="inptext"><span class="label"><font color="red"> * </font>意向楼盘</span></td>
+                <td style="position:relative;z-index:10" class="item2" id="fxitems">
+                  {if !empty($fxid)} <?php $sfxids="$fxid,"; ?>
+                  <div id="ndiv{fxid}" class="mb5">
+                    {c$archive [tclass=archive/] [chid=113/] [val=a/] [id=$fxid/] [detail=1/]}
+                    <input type="text" value="[{lpmc}] 佣金({yj}元)" class="yxinput inputtext clear-txt" readonly="readonly"><input type="button" value="删除" class="re_ele" onclick="delFenxiao('{aid}')" >
+                    {/c$archive}
+                  </div>
+                  {else}
+                  <?php $sfxids=""; ?>
+                  {/if} 
+                    <div id="rowadds">
+
+                        <select id="setarea" onchange="showFenxiao(this)">
+                            <option value="">-地区-</option>
+                            {c$picarea [cname=picarea/] [tclass=catalogs/] [listby=co1/]}
+                            <option value="{ccid}">{title}</option>
+                            {/c$picarea}
+                        </select>
+                        <select id="setfenxiao" xonchange="pickFenxiao(this)">
+                            <option value="">-楼盘-</option>
+                        </select>  
+                        <input type="button" value="添加" class="re_ele" onclick="pickFenxiao()">
+                        <input name="fmdata[aids]" data-type="*2-50" data-error="请选择楼盘" id="aids" type="hidden" value=",{sfxids}" />
+                        <div class="blank10"></div>
+                    </div>
+                </td>
+            </tr>
+            
+            
+            {if empty($myself)}
+            <tr>
+                <td class="radi"><span class="label">意向总价</span>
+                </td>
+                <td class="item2">
+                <?php echo cls_uview::form_item($oA->fields['yxprice'],'','fmdata'); ?>
+                </td>
+            </tr>
+            {/if}
+            <tr class="reg-wrap" data-regcode="commu49">
+                <td class="inptext">
+                    <span class="label"><font color="red">*</font>验证码</span>
+                </td>
+                <td>
+                    <div class="yzm">
+                        <input type="text" name="regcode" data-tipmode="#tip-yzm" class="inputtext1 regcode" value=""/>
+                    </div>
+                    <span id="tip-yzm"></span>
+                </td>
+            </tr>
+            <tr><td><div class="blank10"></div></td></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="hidden" value="确定提交" name="bsubmit">
+                    <input type="submit" disabled="disabled" value="确定提交" class="tjbutton">
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</form>
+</div>
+</div>
+</div>
+<!--统一底部-->
+{tpl$foot}
+<script type="text/javascript">
+var fxmax = <?php echo $exfenxiao['num']; ?>; //json&callback=fxCallback 
+var url = 'ajax=pagepick_fenxiao&aj_model=a,113,1&searchword=&aj_unsets=abstract,content,description&datatype=js&aj_pagesize=20&aj_pagenum=1&aj_vaild=1&ccid1=';
+function showFenxiao(e) {
+	var ccid = e.value;
+	$("#setfenxiao").empty();
+	$("#setfenxiao").append("<option value=''>-请选择楼盘-</option>"); 
+	$.getScript(CMS_ABS + uri2MVC(url+ccid),function(){ 
+		var len = 0;
+		$.each(_08_m_ajax_pagepick_fenxiao,function(aid,itm) {
+			$("#setfenxiao").append("<option value='"+itm.aid+"'>"+itm.lpmc+"(佣金:"+itm.yj+"元)</option>");
+			len++;
+		});	
+		if(len==0){
+			$("#setfenxiao").append("<option value='' disabled>(此地区没有分销的楼盘)</option>");
+		}
+	});   
+}
+
+function pickFenxiao(e) {
+	var val = $("#setfenxiao").val();
+	if(val.length==0) return alert('请选择楼盘！');
+	var t = $("#aids").val(), a = t.split(',');
+	if(t.indexOf(','+val+',')>=0) return alert('不能重复添加！');
+	//if(a.length>fxmax) return alert('一次最多能推荐'+fxmax+'个楼盘！');
+	$("#aids").val(t+val+',');
+	addFenxiao(val);
+	//alert($("#aids").val());
+	if(a.length>fxmax) $('#rowadds').hide(); //检查隐藏
+	$('#nmsgid').hide();
+
+    // 表单验证
+    $('#commu491').jqValidate(function (v) {
+        v.validate('#aids');
+    })
+}
+
+function addFenxiao(id) {
+	var name = $("#setfenxiao").find("option:selected").text(); 
+	var html =  '<div id="ndiv'+id+'" class="mb5">'
+	           + '  <input type="text" value="'+name+'" class="yxinput inputtext clear-txt" readonly="readonly">'
+	           + '  <input type="button" value="删除" class="re_ele"  onclick="delFenxiao(\''+id+'\')">'
+	           + '</div>';
+	$("#rowadds").before(html); //显示                	
+}
+function delFenxiao(id){
+	//$("#fxitems").remove();	
+	$('#ndiv'+id).remove();	
+	$("#aids").val($("#aids").val().replace(','+id+',',','));
+	$('#rowadds').show();
+	if($("#aids").val()==',') $('#nmsgid').show();
+	//var t = $("#aids").val(), a = t.split(',');
+	//if(a.length>fxmax) $('#rowadds').show();
+    
+    // 表单验证
+    $('#commu491').jqValidate(function (v) {
+        v.validate('#aids');
+    }) 
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="{mcharset}">
+<title>客户端下载</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<script type="text/javascript">
+	var CMS_ABS='{$cms_abs}';
+</script>
+<style>
+
+/*css reset*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}
+body{ font-size:12px;font-family:'XinGothic-SinaWeibo','Microsoft Yahei','Simsun'; color:#333; line-height:150%;-webkit-text-size-adjust: none; min-width:320px;}
+form{display:inline}
+ul,ol{list-style:none}
+a{text-decoration:none;color:#333}
+a:hover, a:active, a:focus{color:#990000;text-decoration: none;}
+a:active{color:#9e9e9e;}
+img{vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;}
+
+body{
+background:#d9d9d9;
+background: -moz-radial-gradient(circle, #fbfbfb, #d9d9d9);
+background: -webkit-gradient(radial, center center, 0, center center, 50%, from(#fbfbfb), to(#d9d9d9));
+background: -webkit-radial-gradient(circle, #fbfbfb, #d9d9d9);
+}
+.p_wrap{ clear:both; overflow:hidden; height:480px; position:relative}
+
+.p_logoarea{ position:absolute; top:6%; left:0; z-index:100; display:inline-block; width:100%; height:30px; padding-top:133px; text-align:center;  font-size:16px; overflow:hidden; background:url({c$downico [tclass=farchives/] [casource=fcatalog177/] [limits=1/]}{image}{/c$downico}) no-repeat center 0; background-size:140px auto;}
+
+.p_btnarea{ position:absolute; bottom:4%; left:50%; margin-left:-78px;}
+.p_btnarea p{ clear:both; padding:4px 0 0 0}
+.p_btnarea a{ display:inline-block;*display:inline; *zoom:1; width:157px; height:41px; line-height:41px; text-indent:999em; overflow:hidden; background:url({$tplurl}mobile/images/downbg.png) no-repeat; background-size:157px auto;}
+.p_btnarea a.ioslink{ background-position:0 0}
+.p_btnarea a.ioslink:hover{background-position:0 -110px}
+.p_btnarea a.androidlink{ background-position:0 -51px}
+.p_btnarea a.androidlink:hover{ background-position:0 -161px}
+.p_btnarea a.winphonelink{ background-position:0 -220px}
+.p_btnarea a.winphonelink:hover{ background-position:0 -270px}
+
+.p_btnarea a.weblink{ background-position:0 -329px}
+.p_btnarea a.weblink:hover{ background-position:0 -379px}
+
+
+.p_city{ position:absolute; top:40%; left:0; width:100%; text-align:center; z-index:50}
+.p_footmate{position:absolute; bottom:20px; left:0; width:100%; text-align:center; z-index:50}
+.weixin-sm{ width: 133px; padding:8px 10px; border:1px solid #FAD04C; background: #F9FAEC;}
+</style>
+
+</head>
+
+<body>
+	<div class="p_wrap">
+		<!--logo-->
+		<div class="p_logoarea">{c$downico [tclass=farchives/] [casource=fcatalog177/] [limits=1/]}{subject}{/c$downico}</div>
+		<div class="p_city"><img width="268" alt="" src="{$tplurl}mobile/images/citybg.png"></div>
+		
+		<!--点击下载-->
+		<div class="p_btnarea">
+			
+			<p><a class="ioslink" title="iPhone下载" href="{c$kfiphdw [tclass=farchives/] [casource=fcatalog173/] [limits=1/] [validperiod=1/] [orderstr=a.vieworder DESC/]}{c$iphonexz [tclass=file/] [tname=iphdown/] [val=x/]}{url}{/c$iphonexz}{/c$kfiphdw}">iPhone 版下载</a></p>
+			<p><a class="androidlink" title="Android下载" href="{c$kfianddw [tclass=farchives/] [casource=fcatalog173/] [limits=1/] [validperiod=1/] [orderstr=a.vieworder DESC/]}{c$androidxz [tclass=file/] [tname=andrdown/] [val=x/]}{url}{/c$androidxz}{/c$kfianddw}">Android 版下载</a></p>
+			<!--<p><a class="winphonelink" title="WP下载" href="###">WP 版下载</a></p>-->
+            <p><a class="weblink" title="手机版" href="{mobileurl}">手机版</a></p>
+            <div class="weixin-sm">用微信扫描,请点击微信右上角图标，选择用浏览器打开，再点击下载。</div>
+		</div>
+		
+	</div>
+
+
+</body>
+
+</html>

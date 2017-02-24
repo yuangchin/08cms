@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/zhti.css?{$user_version}"/>
+<?php $pagetype = 'special'; ?>
+</head>
+<body>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+{tpl$head}
+<div class="wrap">
+    <div class="banner"> <img {c$image [cname=image/] [tclass=image/] [tname=image/] [val=v/]}src="{url}"{/c$image} width="1200" /></div>
+    <div class="daodu">
+        <h3>{subject}</h3>
+        <p>{content}</p>
+    </div>
+    <div class="ztgship mT10">
+        <div class="tgleft">
+            <div class="ghtit"> <span class="ztmore"><a href="{c$tgcxlj [tclass=cnode/] [listby=ca/] [casource=5/]}{indexurl}{/c$tgcxlj}" target="_blank">更多>></a></span>新房团购 </div>
+            <div class="tgcon">
+{c$ztnwd3 [tclass=archives/] [limits=3/] [chsource=2/] [chids=5/] [mode=in/] [arid=12/][detail=1/] [ttl=600/]}  <div class="tuglist clearfix"> <a href="{arcurl}" target="_blank"> <img  {c$thumb_120_90 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=120/] [maxheight=90/] [thumb=1/]}src="{url}" width="120" height="90"{/c$thumb_120_90} /></a> <em><a href="{arcurl}" target="_blank"><strong>{subject}</strong></a></em> <em>市场价：{scj}</em> <em>团购价：{tgj}</em> <em><a href="{arcurl}#bmform" target="_blank" class="baoming"></a></em> </div>{/c$ztnwd3}      </div>
+        </div>
+        <div class="spright">
+            <div class="sptit"> 十大最受关注视频 </div>
+            <div class="shipincon">
+                <ul class="spconlist clearfix">
+                 {c$ztnwd [tclass=archives/] [chsource=2/] [chids=12/] [limits=12/] [mode=in/] [arid=12/] [ttl=600/]}<li> <a href="{arcurl}" target="_blank"><img {c$thumb_150_130 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=110/] [maxheight=85/] [thumb=1/]}src="{url_s}" width="110" height="85"{/c$thumb_150_130} alt="{subject}" /></a>
+                        <p><a href="{arcurl}" target="_blank">{subject}</a></p>
+                    </li>{/c$ztnwd}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="blank10"></div>
+    <div class="kuaixlm">
+        <div class="kuxtit"> <a href="{c$tgcxlj [tclass=cnode/] [listby=ca/] [casource=1/]}{indexurl}{/c$tgcxlj}" target="_blank">资讯快报</a> </div>
+        <div class="kuxcon gray_b clearfix">
+            <ul class="knewlist clearfix">
+                {c$ztnwd [tclass=archives/] [limits=6/] [chsource=2/] [chids=1/] [mode=in/] [arid=12/] [ttl=600/]}     
+                <li>
+                    <div class="kuxbiaot"> <a href="{arcurl}" target="_blank">{subject}</a> </div>
+                    <p>{c$abstract100 [tclass=text/] [tname=abstract/] [trim=120/] [ellip=.../]}{/c$abstract100}<a href="{arcurl}" target="_blank">[详细]</a></p>
+                </li>
+                {/c$ztnwd}
+            </ul>
+        </div>
+    </div>
+    <div class="blank10"></div>
+    <div class="kuaixlm">
+        <div class="kuxtit"> <a href="{c$tgcxlj [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl}{/c$tgcxlj}">热点楼盘</a> </div>
+        <div class="kuxcon gray_b clearfix">
+            <ul class="rdilp">
+             {c$ztnwd2 [tclass=archives/] [chsource=2/] [chids=4/] [limits=12/] [mode=in/] [arid=12/] [ttl=600/]} <li> <a href="{arcurl}" target="_blank"><img {c$thumb_160_160 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=130/] [thumb=1/]}src="{url_s}" width="160" height="160"{/c$thumb_160_160}  alt="{subject}" /></a>
+                    <p><a href="{arcurl}" target="_blank">{subject}</a></p>
+                </li>{/c$ztnwd2}
+            </ul>
+        </div>
+    </div>
+    <!-- /投票 -->
+    <div class="blank10"></div>
+    <!-- 评论区块 -->
+     {tpl$tpl_plkuan}
+    <!-- /评论区块 -->
+</div>
+<div class="blank10"></div>
+ {tpl$foot}
+</body>
+</html>

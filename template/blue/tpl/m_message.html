@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$mcharset}">
+<title>系统提示-手机{$hostname}</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<style type="text/css">
+body{font:12px verdana;text-align:center;}
+.bor{border:2px solid #5a7eb0 ;}
+.message{width:100%;background:#FFF; margin:0 auto;}
+.message em{width:100%; height: 30px; line-height: 30px; background: #5A7EB0; display: block; font-style: normal; color: #FFF; font-size: 14px;  font-weight: bold;}
+.message a{ color:#3B5998; }
+.blank15{height: 15px; overflow: hidden; clear: both;}
+</style>
+</head>
+<body>
+<div class="message">
+<div class="bor">
+<em>系统提示</em>
+<div class="blank15"></div>
+<img src="{$tplurl}images/no_info.jpg"/>
+<div class="blank15"></div>
+<div class="message">{message}<a href="javascript:history.go(-1);" >返回</a></div>
+<div class="blank15"></div>
+</div>
+</div>
+</body>
+</html>

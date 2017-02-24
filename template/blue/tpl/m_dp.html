@@ -1,0 +1,72 @@
+    <!-- 点评 -->
+    <section id="comment_section"  data-btn="back" title="评论详情">
+        {tpl$m_header}
+        <article id="up_refresh_commus"  class="active">
+            <div>
+            	<ul class="list">
+            		<li>
+					<form method="get" name="commu1" id="commu1" onsubmit="return add_pl(this);">
+						<input type="hidden" name="cuid" value="1">
+						<input type="hidden" name="aid" value="{aid}">
+						<input type="hidden" name="tocid" value="">
+		        			<div class="input-group">
+		        				<textarea required min="5" maxLength="125" max="125" title="5-125个汉字" placeholder="请发表您的看法(5-125个汉字)..." name="fmdata[content]"></textarea>
+		        				<input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+		        			</div>
+		                <button class="button block" name="bsubmit" data-icon="icon-e603">提交</button>
+		            </form>
+            		</li>
+            	</ul>
+            	<ul id="comment-list" class="list comment-list"></ul>
+            </div>
+        </article>
+    </section>
+    <!-- /点评 -->
+    <?php $cucfgs = cls_cache::Read('commu',1); ?>
+    <script type="text/javascript">
+		//加载数据设置
+		var opt = {
+		    _param : {
+				'aj_model'     : 'cu,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+				'orderby'      : 'cid', //排序字段
+				'ordermode'    : 0 ,
+				'aj_pagenum'   : 1 ,
+				'aid'          : {$aid} ,
+				'jsoncallback' : '?'
+		    },
+			wrap      : '#up_refresh_commus' ,
+			dataWrap  : '#comment-list' ,
+			ajax      : 'pageload_rems' ,
+			autoCheck : <?=$cucfgs['autocheck']; ?> ,
+			template  : function(hf) {
+
+				function getHf(_d) {
+		    		if(!_d) return '';
+					var H = '';
+					for (var i = 0; i < _d.length; i++) {
+						H += getHfTpl(_d[i]);
+					};
+					return H;
+				}
+
+				function getHfTpl(_dd){
+					return '<li class="hf">'
+						+ ' 	<div class="f-peter-river mb5">'+_dd.mname+'</div>'
+						+ 		_dd.content
+						+ '</li>';
+				}
+
+				return !hf ? '<li>'
+							+ '    <div class="grid f-asbestos mb5">'
+							+ '       <div class="col-1 f-peter-river">'+this.mname+'</div>'
+							+ '       <span class="fz12">' + getLocalTime(this.createdate,1) + '</span>'
+							+ '    </div>'
+							+      this.content
+			  				+ '	   <div class="clearfix"><i class="hf-btn" data-cid="'+this.cid+'">回复</i></div>'
+							+ '</li>'
+							+  getHf(this.subitems)
+						: getHfTpl(this);
+		    }
+		}
+
+    </script>

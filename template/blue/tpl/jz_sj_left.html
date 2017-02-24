@@ -1,0 +1,73 @@
+
+<div class="left_bar">
+      <!--建材快速导航开始-->
+      <div class="title1">
+        <div class="title1_l"></div>
+        <div class="title1_m">快速导航</div>
+        <div class="title1_r"></div>
+      </div>
+      <div class="left_con">
+      	<span style="color:#C70101; font-size: 14px; font-weight: bold;">{companynm}</span>
+      	<span class="blank5"></span>
+        <div class="logo">
+        	<img {c$image [cname=image/] [tclass=image/] [tname=pic/] [maxwidth=180/] [maxheight=55/] [thumb=2/]}src="{url_s}" height="55" width="180"{/c$image}>
+          {if $grouptype32==104}<i class="vip-ico"></i>{/if}
+        </div>
+        <div class="blank10"></div>
+        <!--按钮-->
+        <div class="but"><span>{c$jz_lyurl [cname=在线留言链接/] [tclass=mcatalogs/] [limits=1/] [listby=0/] [casource=1/] [caids=5/]}<a  class="white_link" href="{indexurl}" >在线留言</a>{/c$jz_lyurl}</span><span><a class="white_link" onclick="return publicCollect('{$mid}','m');" rel="nofollow" href="javascript:void(0);">收藏本店</a></span>
+        </div>
+      </div>
+      <!--建材快速导航结束 搜索商品开始-->
+      <div class="title1">
+        <div class="title1_l_1"></div>
+        <div class="title1_m">搜索商品</div>
+        <div class="title1_r"></div>
+      </div>
+      <div class="left_con1">
+		<form method="get" action="{$cms_abs}index.php">
+		<input type="hidden" name="caid" value="513" />
+        <input type="hidden" name="addno" value="1" />
+        <div class="keywords">
+        	<span class="l">关键字:</span>
+        	<span class="l">
+                <input type="text" value="" placeholder="请输入关键字"  id="mName" name="searchword" class="txt1 clear-txt"/>
+          	</span>
+            <span class="but l"><input type="submit" value="搜索" class="searbtn1"></span>
+        </div>
+
+        </form>
+      </div>
+      <!--搜索商品结束-->
+      <!--促销活动结束  联系方式开始-->
+      <div class="title1">
+        <div class="title1_l_2"></div>
+        <div class="title1_m">联系方式</div>
+        <div class="title1_r"></div>
+      </div>
+      <div class="left_con2 lxfs">
+      		QQ在线咨询：
+        {if $qq}
+        <script> var online= [] </script>
+       <script src="http://webpresence.qq.com/getonline?Type=1&{qq}:"></script>
+       <script>document.write('<a title="点击这里给我发消息" target="_blank" href="http://wpa.qq.com/msgrd?V=1&uin={qq}&Site={companynm}&Menu=yes"><img border="0" src="{$tplurl}newimages/'+(online[0]?'pa_online.gif':'pa.gif')+'"></a>');
+       </script>
+        {else}暂无{/if}<br>
+        	电话：{if $lxdh}{lxdh}{else}暂无{/if}<br>
+        	EMail：{if $email}{email}{else}暂无{/if}<br>
+        	地址： {if $dizhi}{dizhi}{else}暂无{/if}<br>
+        <div class="blank5"></div>
+          <a id="sendtophone" onclick="return modalExt(this,'发送到手机');" class="btn-phone" style="display: none;" href="#pop-phone" rel="nofollow"><i class="ico08">&#xe74d;</i>免费发送短信到手机</a>
+        <div class="blank5"></div>
+			{if $map}
+			<div class="left_con3 line22 p_t5" style="width:240px; height:240px;"><iframe marginwidth="0" marginheight="0" src="{$cms_abs}tools/pointer.html#lat={map_0}&lng={map_1}&title={companynm}&zoom=12" frameborder="0"  height="240" width="240"   scrolling="no"></iframe></div>
+		{/if}
+      </div>
+      <!--联系方式结束-->
+    </div>
+<!-- 发送到手机短信模板 -->
+<script type="text/javascript">
+  var isOpenMob='memb0info';
+  var msgpara = 'm,{mchid},{mid}'; 
+</script>
+{tpl$smsphone}

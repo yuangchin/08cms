@@ -1,0 +1,87 @@
+<div class="blank1"></div>
+<div id="login-wrap" class="w420 modal" data-head="会员登录">
+    <form class="jqValidate" data-tipmode="#tipinfo" onsubmit="return _08Login(this)">
+        <div style="height:270px;" class="p0-10">
+            <div class="wrap-pc" data-title="账号登录">
+                <div style="height:8px">
+                    <span id="tipinfo" class="poa" style="line-height:16px;margin-top:-12px;"></span>
+                </div>
+                <ul class="form form-lg form-control bdrs form-fz16">
+                    <li>
+                        <input type="text" placeholder="用户名" class="txt user" data-type="*3-15" size="25" id="username" name="username" value=""/>
+                    </li>
+                    <li><input type="password" placeholder="密码" class="txt psd" size="25" id="password" name="password" value="" data-type="*"/></li>
+                    <li class="reg-wrap" data-regcode="login">
+                        <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                    </li>
+                    <li>
+                        <input type="submit" class="btnok btn" name="cmslogin"  value="立即登录" />
+                    </li>
+                </ul>
+            </div><!-- /普通账号登录 -->
+            <div class="wrap-wx dn tc por" data-title="微信登录" style="padding-top:20px">
+                <h3 class="mb10">手机微信扫描，安全登录</h3>
+                <img class="wx-img" width="150" height="150"> <br/>
+                <span id="wx-tag-tip" class="fcg mr10">使用帮助</span>
+                <span id="wx-refresh"><i class="ico08 mr3 fco">&#xf025;</i>重新加载</span>
+                <img id="wx-login-tip" class="wx-login-tip" src="{$tplurl}images/weixin_logintip.png">
+            </div><!-- /微信登录 -->
+        </div>
+        <div class="p0-10 login-other">
+            <a data-login="qq" data-window="600,470" href="javascript:;" title="QQ帐号登录"  class="mr10" target="_self"><i class="ico08 fz22 fcb mr5">&#xf1d6;</i>QQ登录</a><a class="mr10" data-login="sina" data-window="770,600" href="javascript:;" title="新浪微博帐号登录"  target="_self"><i class="ico08 fz22 fcr mr5">&#xf18a;</i>微博登录</a><a class="mt5" href="{$cms_abs}tools/lostpwd.php?" target="_blank"><i class="ico08 fz20 fcg">&#xf059;</i>忘记密码</a>
+        </div>
+    </form>
+    <i id="ico-login" class="ico-login" title="微信登录"></i>
+</div><!-- /登录框 -->
+
+<div class="fixed-right jqFixed jqScrollspy" data-fixed="600" data-css='{"right": 20, "bottom": 50, "display":"none"}' data-offset="140">
+    {if @$pagetype=='index'}
+    <a href="#thlp" target="_top" ><span>特惠楼盘</span><i class="ico08">&#xe73c;</i></a><a href="#xptj" target="_top" ><span>新盘推荐</span><i class="ico08">&#xe617;</i></a><a href="#sydc" target="_top" ><span>商业地产</span><i class="ico08">&#xf0fb;</i></a><a href="#escz" target="_top" ><span>二手出租</span><i class="ico08">&#xe637;</i></a>{/if}<a href="body" target="_top" class="go-top" ><span>返回顶部</span><i class="ico08">&#xe68e;</i></a>
+</div>
+
+<script type="text/javascript">window.jQuery || document.write('<script src="{$tplurl}js/jquery.js"><\/script>');</script>
+<script type="text/javascript">$.fn.jqModal || document.write('<script src="{$tplurl}js/jqmodal.js?{$user_version}"><\/script>');</script>
+<script type="text/javascript">$.fn.jqValidate || document.write('<script src="{$tplurl}js/jqvalidate.js?{$user_version}"><\/script>');</script>
+<script type="text/javascript">$.fn.jqScrollspy || document.write('<script src="{$tplurl}js/jqscrollspy.js?{$user_version}"><\/script>');</script>
+<script type="text/javascript">$.fn.jqFixed || document.write('<script src="{$tplurl}js/jqfixed.js?{$user_version}"><\/script>');</script>
+<script type="text/javascript" src="{$tplurl}js/jz_common.js?{$user_version}"></script>
+
+<script type="text/javascript">
+var urls = {
+    "qq": CMS_ABS + "tools/other_site_sdk/qqcom/oauth/qq_login.php",
+    "qq_reauth": CMS_ABS + "tools/other_site_sdk/qqcom/oauth/qq_login.php",
+    "qq_status": {qq_closed},
+    "sina": "https://api.weibo.com/oauth2/authorize?client_id={sina_appid}&redirect_uri="+ CMS_ABS +"tools/other_site_sdk/other_site_public_callback.php?type=sina&response_type=code",
+    "sina_reauth": CMS_ABS + "tools/other_site_sdk/other_site_public_callback.php?type=sina&act=sina_reauth",
+    "sina_status": {sina_closed}
+};
+var childWindow;
+$('[data-login]').each(function() {
+      var $this = $(this),
+      loginV    = $this.data('login'),
+      aWs       = $this.data('window').split(',');
+      
+      if (!urls[loginV + '_status']) {
+        $this
+        .show()
+        .click(function() {
+            childWindow = window.open(urls[loginV], loginV, "width=" + aWs[0] + ",height=" + aWs[1] + ",left=" + ((window.screen.availWidth - aWs[0]) / 2) + ",top=" + ((window.screen.availHeight - aWs[1]) / 2));
+            return false;
+        });
+      };
+});
+</script>
+
+    <div class="blank1"></div>
+    <!-- 底部 -->
+<div id="footer">
+    <div class="wrap">
+        <div class="webinfo">
+            <a href="{c$wzdt [cname=网站地图/] [tclass=freeurl/] [fid=9/]}{/c$wzdt}" target="_blank">网站地图</a>{c$wzdbcj [cname=网站底部/] [tclass=farchives/] [limits=1000/] [casource=26/] [orderstr=a.vieworder ASC/]}|<a href="{arcurl}" target="_blank" rel="nofollow">{subject}</a>{/c$wzdbcj}|<a href="{c$freeurl [cname=网站提问/] [tclass=freeurl/] [fid=102/]}{/c$freeurl}" target="_blank" rel="nofollow">网站提问</a>|<a href="{c$bzzxurl [tclass=cnode/] [listby=ca/] [casource=561/]}{indexurl}{/c$bzzxurl}" target="_blank">帮助中心</a>|<a href="{c$kfturl [tclass=freeurl/] [fid=109/]}{/c$kfturl}" target="_blank">手机版</a>
+        </div>
+        <div class="copyright">
+        {$copyright}
+        {$cms_statcode}
+        </div>
+    </div>
+</div><!-- /footer -->

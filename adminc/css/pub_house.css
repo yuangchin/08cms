@@ -1,0 +1,25 @@
+.title{height:42px; font:normal 20px/32px "黑体"; border-bottom:3px solid #f5f5f5; margin-bottom:6px;}
+.title i{padding:4px 10px; margin:0 6px 0 23px;}
+.ico_pub{background-position:-395px 0;}
+h3{display:inline-block; height:32px; padding-right:20px; background-color:#FFF; margin-bottom:-16px; margin-left:10px; _display:block; position:relative; *display:inline; zoom:1; }
+h3 i{padding:0 5px;}
+.ico_how{background-position:-345px -190px;}
+.pub_box{border:1px solid #f1f1f1; background-color:#fafafa; padding:30px; margin:18px 0 26px; overflow:hidden; zoom:1;}
+.pub_box li{float:left; display:inline; width:342px; height:118px; background:#FAFEF5 url(../images/pub1.gif) no-repeat 20px 42px; border:1px solid #DDD; padding-top:30px;}
+.pub_box li.pub_rent{margin-right:30px;}
+.pub_box li.pub_sell{background:#FAFEF5 url(../images/pub2.gif) no-repeat 17px 50px;}
+.pub_box li span{color:#a7a8aa; padding-left:117px;}
+.pub_box li a{display:block; width:178px; height:48px; font:normal 24px/48px "黑体"; text-align:center; background:url(../images/icon.gif) no-repeat 0 -285px; margin:3px 0 0 112px;}
+
+/*如何开始发房源*/
+.bor_top{border-top:1px solid #f1f1f1; overflow:hidden; zoom:1;}
+.how_pub{padding:36px 0 10px 25px; *padding-bottom:15px;}
+.how_pub li{float:left; width:108px; height:42px; line-height:42px; text-align:center; background:url(../images/icon.gif) no-repeat -190px -285px; margin:20px 0;}
+.how_pub li.li2{width:117px; height:35px; line-height:35px; background-position:-310px -285px; margin:0 0 10px;}
+.how_pub li.arr{width:20px; height:18px; background-position:-475px -146px; margin:32px 10px;}
+.how_pub li.arr2{width:19px; height:51px; background-position:-500px -120px; margin:16px 12px;}
+.how_pub li.arr3{width:19px; height:71px; background-position:-475px -120px; margin:28px 12px;}
+
+/*写字楼提升业绩攻略*/
+.gonglue{padding:30px 0 0 20px;}
+.gonglue li{float:left; width:322px; background:url(../images/dot3.gif) no-repeat 0 center; padding-left:8px;}

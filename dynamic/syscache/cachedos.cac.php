@@ -1,0 +1,196 @@
+<?php
+$cachedos = array(
+	'abrels' => array(
+		'tbl' => 'abrels',
+		'key' => 'arid',
+		'orderby' => 'vieworder,arid',
+		'varexport' => 'cfgs',
+		'unset' => 'cfgs0,content,vieworder',
+		'merge' => 'cfgs',
+	),
+	'aurls' => array(
+		'tbl' => 'aurls',
+		'key' => 'auid',
+		'orderby' => 'vieworder',
+	),
+	'cnrels' => array(
+		'tbl' => 'cnrels',
+		'key' => 'rid',
+		'orderby' => 'vieworder,rid',
+		'varexport' => 'cfgs',
+		'unset' => 'remark,vieworder',
+	),
+	'mctypes' => array(
+		'tbl' => 'mctypes',
+		'key' => 'mctid',
+		'orderby' => 'vieworder,mctid',
+	),
+	'frcatalogs' => array(
+		'tbl' => 'frcatalogs',
+		'key' => 'frcaid',
+		'orderby' => 'vieworder,frcaid',
+	),
+	'fragments' => array(
+		'tbl' => 'fragments',
+		'key' => 'ename',
+		'orderby' => 'vieworder,ename',
+	),
+	'currencys' => array(
+		'tbl' => 'currencys',
+		'key' => 'crid',
+		'orderby' => 'crid',
+		'unserialize' => 'bases',
+	),
+	'splitbls' => array(
+		'tbl' => 'splitbls',
+		'key' => 'stid',
+		'explode' => 'chids,coids',
+		'orderby' => 'vieworder,stid',
+	),
+	'static_process' => array(
+		'tbl' => 'static_process',
+		'key' => 'spid',
+		'fieldstr' => 'spid,startdate,finishdate,pause',
+		'orderby' => 'spid',
+	),
+	'mspacepaths' => array(
+		'tbl' => 'members',
+		'key' => 'mid',
+		'fieldstr' => 'mid,mspacepath',
+		'where' => "mspacepath<>''",
+	),
+	'cnconfigs' => array(//暂时保留，等全部升级完整后再删除
+		'tbl' => 'cnconfigs',
+		'key' => 'cncid',
+		'orderby' => 'vieworder',
+		'unserialize' => 'configs',
+	),
+	'bannedips' => array(
+		'tbl' => 'bannedips',
+		'key' => 'bid',
+		'fieldstr' => 'bid,ip1,ip2,ip3,ip4',
+	),
+	'dbsources' => array(
+		'tbl' => 'dbsources',
+		'key' => 'dsid',
+		'orderby' => 'dsid',
+	),
+	
+	'players' => array(
+		'tbl' => 'players',
+		'key' => 'plid',
+		'orderby' => 'vieworder,plid',
+	),
+	'gmodels' => array(
+		'tbl' => 'gmodels',
+		'key' => 'gmid',
+		'orderby' => 'gmid',
+		'unserialize' => 'gfields',
+	),
+	'gmissions' => array(
+		'tbl' => 'gmissions',
+		'key' => 'gsid',
+		'orderby' => 'gsid',
+		'unserialize' => 'fsettings,dvalues',
+	),
+	'grouptypes' => array(
+		'tbl' => 'grouptypes',
+		'key' => 'gtid',
+		'orderby' => 'gtid',
+	),
+	'usergroups' => array(
+		'tbl' => 'usergroups',
+		'key' => 'ugid',
+		'orderby' => 'currency DESC,prior,ugid',
+	),
+	'splangs' => array(
+		'tbl' => 'splangs',
+		'key' => 'ename',
+		'orderby' => 'vieworder,slid',
+	),
+	'rprojects' => array(
+		'tbl' => 'rprojects',
+		'key' => 'rpid',
+		'orderby' => 'rpid',
+		'unserialize' => 'rmfiles',
+		'explode' => 'excludes',
+	),
+	'watermarks' => array(
+		'tbl' => 'watermarks',
+		'key' => 'wmid',
+		'orderby' => 'wmid',
+	),
+	'uprojects' => array(
+		'tbl' => 'uprojects',
+		'key' => 'upid',
+		'orderby' => 'gtid,upid',
+	),
+	'permissions' => array(
+		'tbl' => 'permissions',
+		'key' => 'pmid',
+		'orderby' => 'vieworder,pmid',
+	),
+	'crprojects' => array(
+		'tbl' => 'crprojects',
+		'key' => 'crpid',
+		'orderby' => 'crpid',
+	),
+	'amconfigs' => array(
+		'tbl' => 'amconfigs',
+		'key' => 'amcid',
+		'orderby' => 'vieworder',
+	),
+	'sitemaps' => array(
+		'tbl' => 'sitemaps',
+		'key' => 'ename',
+		'orderby' => 'vieworder',
+	),
+	'mconfigs' => array(
+		'tbl' => 'mconfigs',
+		'key' => 'varname',
+		'where' => "cftype<>''",
+		'orderby' => 'cftype',
+	),
+	'localfiles' => array(
+		'tbl' => 'localfiles',
+		'key' => 'lfid',
+		'orderby' => 'lfid',
+	),
+	'crprices' => array(
+		'tbl' => 'crprices',
+		'key' => 'ename',
+		'orderby' => 'crid,crvalue',
+	),
+	'vcatalogs' => array(
+		'tbl' => 'vcatalogs',
+		'key' => 'caid',
+		'orderby' => 'vieworder,caid',
+	),
+	'usualurls' => array(
+		'tbl' => 'usualurls',
+		'key' => 'uid',
+		'orderby' => 'vieworder',
+	),
+	'cntpls' => array(//暂时保留，等全部升级完整后再删除
+		'tbl' => 'cntpls',
+		'key' => 'tid',
+		'where' => 'ism=0',
+		'orderby' => 'vieworder,tid',
+		'unserialize' => 'cfgs',
+	),
+	'mcntpls' => array(//暂时保留，等全部升级完整后再删除
+		'tbl' => 'cntpls',
+		'key' => 'tid',
+		'where' => 'ism=1',
+		'orderby' => 'vieworder,tid',
+		'unserialize' => 'cfgs',
+	),
+	'pagecaches' => array(
+		'tbl' => 'pagecaches',
+		'key' => 'pcid',
+		'where' => 'available=1 AND period>0',
+		'orderby' => 'vieworder,pcid',
+		'varexport' => 'cfgs',
+		'merge' => 'cfgs',
+	),
+);

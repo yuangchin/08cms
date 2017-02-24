@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{title}-{/c$cnode}{$cmstitle}</title>
+	<meta name="keywords" content="{listkeywords}"/>
+    <meta name="description" content="{listabstract}"/>
+    {tpl$m_headinner}
+</head>
+<? $pagelimit=6;?>
+<body>
+<div id="aside_container">
+    <aside id="menu" data-position="right" data-transition="overlay" data-show-close="true">
+        <div><!-- 表单 -->
+            <div class="clearfix">
+                <div class="bar-search">
+                    <form method="get" action="{$mobileurl}index.php">
+                        <input type="hidden" name="caid" value="{$caid}"/>
+                        <input type="text" class="txt" name="searchword" placeholder="关键词">
+                        <button type="submit" class="icon-f002"></button>
+                    </form>
+                </div>
+            </div>
+            <!-- /表单 -->
+            <dl class="conditions">
+                {c$cnodel [tclass=cnode/] [listby=ca/] [val=a/] [casource=30/]}
+                <dt><span class="icon-f009 left"></span><a href="{indexurl}">{title}</a></dt>
+                {/c$cnodel}
+                <dd>
+                    {c$catalogs [tclass=catalogs/] [limits=10/] [listby=ca/] [casource=3/] [cainherit=2/] [wherestr=pid='30'/] [ttl=300/]}
+                    <a class="{if $a['caid']==$caid}pomegranate{/if}" href="{indexurl}">{title}</a>
+                    {/c$catalogs}
+                </dd>
+            </dl>
+        </div>
+    </aside>
+</div>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" class="active" data-btn="back" title="{title}">
+        {tpl$m_header}
+        <article id="up_refresh_article" class="active">
+            <div>
+                <ul class="list list-media">
+                    <li class="divider">
+                        <div class="grid">
+                            <div class="col-1">
+                                <i class="label belize-hole mr5"></i> {title}列表
+                            </div>
+                            <div class="col-0">
+                                <a data-target="menu" href="#menu" class="icon button carrot"><span class="icon-ea5b fz12"></span>分类</a>
+                            </div>
+                        </div>
+                    </li>
+                    {c$archives [tclass=archives/] [limits=$pagelimit/] [chsource=2/] [chids=114/] [caidson=1/] [casource=2/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [detail=1/] [ttl=600/] [mp=1/]}
+                        <li>
+                        <a href="{arcurl}">
+                            <img class="media-object mt5" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=75/] [thumb=1/]}{url_s}{/c$image}" height="75"/>
+                            <strong>{subject}</strong>
+                            <p>时间：{if $v['ztsj']}{c$date [tclass=date/] [tname=ztsj/] [date=Y-m-d/] [time=H:i:s/]}{/c$date}{else}待定{/if}</p>
+                            <p>地点：{if $v['didian']}{didian}{else}待定{/if}</p>
+                            <p>主题：{abstract}</p>
+                        </a>
+                    </li>
+                    {/c$archives}
+                </ul>
+            </div>
+        </article>
+    </section>
+</div>
+<script>
+//加载数据设置
+var opt = {
+    _param : {
+        'aj_model' : 'a,114,1' ,//模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+        'aj_pagesize' :{$pagelimit},  //分页大小(数字,默认10)
+        'caid' : '{caid}' ,
+        'aj_whrfields': 'subject,like,<?=cls_Parse::Get("_da.searchword");?>',
+        'aj_thumb'    : 'thumb,100,75',
+        'aj_unsets' :'content,tuji'
+    },
+    wrap : '#up_refresh_article' ,
+    dataWrap : '#up_refresh_article .list-media' ,
+    template : function() {
+        var didian=this.didian?this.didian:'待定';
+        var ztsj=getLocalTime(this.ztsj,2);
+        return '<li>'
+               + '<a href="'+this.arcurl+'">'
+               + '<img class="media-object mt5" alt="'+this.subject+'" src="'+(this.thumb||CMS_ABS+'images/common/nopic.gif')+'" height="75"/>'
+               + '<strong>'+this.subject+'</strong>'
+               + '<p>时间：'+ztsj+'</p>'
+               + '<p>地点：'+didian+'</p>'
+               + '<p>主题：'+this.abstract+'</p>'
+               + '</a>'
+               + '</li>'
+    }
+}
+</script>
+{tpl$m_footer}
+</body>
+</html>

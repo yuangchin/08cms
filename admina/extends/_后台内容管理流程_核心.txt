@@ -1,0 +1,66 @@
+***********************************
+
+管理后台内容管理流程的脚本分布与说明
+
+1、本文档仅含核心系统内置的相关脚本
+
+2、请结合同目录下"_后台内容管理流程_本系统.txt"，查看本系统扩展的相关内容流程脚本
+
+3、调用url：(admina.php)?entry=extend&extend=xxx(脚本名称，不含文件扩展名)
+
+4、涉及以下方面的内容管理流程
+	文档
+	会员
+	副件(广告)
+	推送
+	交互
+
+
+***********************************
+
+----广告及副件-------
+farchive.php : 副件修改
+farchiveadd.php : 副件添加
+farchiveinfo.php : 副件显示(详情信息)
+farchives.php : 副件管理列表(入口)
+farchives_list.php : 副件管理列表(广告)
+adv_managements.php : 副件管理列表(附件)
+adv_management.php 广告位管理/浏览
+
+----文档-------
+archive.php.bk：文档添加或详情的示范脚本
+archives.php.bk：普通文档列表管理的示范脚本
+archives_pid.php.bk：合辑内文档列表管理的示范脚本
+archives_load.php.bk：合辑内加载已有文档的列表管理的示范脚本
+archive.info.php：文档更多信息显示
+
+
+----会员-------
+member.php：会员详情编辑
+memberadd.php：添加会员
+membergroup.php：设置会员组
+memberinfo.php：查看会员更多信息
+members.php：会员管理列表
+memberpw.php：修改本人密码
+member_staic.php：商家的静态空间操作
+mtrans.php：会员认证审核管理
+
+----推送-------
+push.php：详情及添加入口
+push_com.php：系统内置通用的详情及添加脚本
+
+pushs.php：推送信息管理入口
+pushs_com.php：系统内置通用的推送信息管理脚本
+
+push_load.php：推送加载入口
+push_load_archives.php：系统内置通用的文档加载脚本
+push_load_members.php：系统内置通用的会员加载脚本
+
+push_order.php：一键刷新排序脚本
+push_refresh.php：一键从来源更新脚本
+push_share.php：共享到其它分类脚本
+
+push_order_all.php ： 整站排序
+push_refresh_all.php ： 整站更新
+
+

@@ -1,0 +1,100 @@
+/* CSS Document */
+.F60,.F60 a{color: #FF6600;}
+.mT10{ margin-top:10px;}
+.gray_b{ border:1px solid #DCDCDC;}
+.mT8{ margin-top:8px;}
+.mR10{ margin-right:10px;}
+.pL5{ padding-left:5px;}
+
+.daodu{ background:#F3F3F3; margin-top:10px; padding:0 10px 10px;}
+.daodu h3{ text-align:center; font-size:22px; font-family:Microsoft YaHei; color:#2F2F2F; font-weight:300; text-shadow:0 0 2px #C5C5C5; height:50px; line-height:50px;}
+.daodu p{ line-height:23px; font-size:14px;}
+.daodu img{max-width:920px; _width:expression(this.width > 920 ? "920px" : this.width);}
+.spright{ float:left; width:887px; border:1px solid #CCC;}
+.sptit{ background:url(../images/tbg.gif) repeat-x; height:29px; line-height:29px; border-bottom:1px solid #ccc; color:#054B85; font-size:14px; padding-left:11px; font-weight:bold;}
+.spconlist{ padding:4px 0 17px;}
+.spconlist li{ width:118px; overflow:hidden; float:left; margin:13px 0 0 25px;display: inline;}
+.spconlist img{ padding:3px; border:1px solid #CCC;}
+.spconlist li p{ line-height:20px; height:40px; margin-top:3px;overflow: hidden;}
+.tgleft{ border:2px solid #c00; border-top:none; width:296px; float:left; margin-right:11px;}
+.ghtit{ color:#FFF; background:url(../images/zt_tgtitbg.gif) repeat-x; height:35px; line-height:30px; padding:0 9px; font-weight:bold; font-size:14px;}
+.ghtit .ztmore{ float:right; font-weight:normal; font-size:12px;}
+.ghtit .ztmore a,.ghtit .ztmore a:hover{ color:#FFF;}
+.tgcon{ padding:6px 0 0 8px;}
+.tuglist img{ border:1px solid #E6E6E6; padding:2px; float:left; margin-right:5px;}
+.tuglist em{ float:left; width:134px; overflow:hidden; height:24px; line-height:24px; color:#666}
+.baoming{ display:inline-block; background:url(../images/ztbaom.gif) no-repeat; width:58px; height:18px;}
+.tuglist{ margin-bottom:7px;}
+
+.kuxtit{ background:#397BC0 url(../images/lmtit.gif?20131212) no-repeat; height:32px; line-height:32px;}
+.kuxtit a{ color:#4694D6; font-size:22px; font-family:Microsoft YaHei; text-decoration:none; margin-left:25px;}
+
+.kuxbiaot { height:26px; line-height:26px; text-align:center; overflow:hidden;}
+.kuxbiaot a{ font-size:14px; color:#004276; font-weight:bold;}
+.kuxbiaot a:hover{color: #f00;}
+.kuxcon{ margin-top:17px;}
+
+.knewlist{ padding:15px 0;}
+.knewlist li p{ line-height:22px; height:70px; padding:5px 0; overflow:hidden;}
+.knewlist li{ width:29%; float:left; display:inline; margin:0 2%;}
+
+.knewlist li p a{ color:#004DB6;}
+.knewlist li p a:hover{ color:#F00;}
+.rdilp{ padding-left:4px;}
+.rdilp li img{ border:1px solid #ccc; padding:3px;-webkit-transition: transform .5s; -o-transition: transform .5s; transition: transform .5s;}
+.rdilp li{ float:left; display:inline; margin:14px 15px 0; width:168px;  }
+.rdilp li:hover img{transform: scale(1.1);}
+.rdilp li p{ height:29px; line-height:29px;  text-align:center;}
+.inputlist{ width:231px; float:left;}
+.inputlist dd input{vertical-align:middle; margin-top:-2px; margin-bottom:1px;}
+.toupbtn{text-align:center;}
+.toupbtn .btn{padding: 5px 9px; line-height: 16px;width: 100px;text-align: center;color: #fff;cursor: pointer;border: none;
+    background-color: #0074cc;
+    background-image: -moz-linear-gradient(top, #0088cc, #0055cc);
+    background-image: -ms-linear-gradient(top, #0088cc, #0055cc);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0055cc));
+    background-image: -webkit-linear-gradient(top, #0088cc, #0055cc);
+    background-image: -o-linear-gradient(top, #0088cc, #0055cc);
+    background-image: linear-gradient(top, #0088cc, #0055cc);
+    background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0055cc', GradientType=0);
+    border-color: #0055cc #0055cc #003580;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
+.toupiao{ padding:8px;}
+
+.mT9{ margin-top:9px;}
+.mT10{ margin-top:10px;}
+.mR10{ margin-right:10px;}
+.bRBLGray{ border:1px solid #DDD; border-top:0;}
+.lztnav,.ztnav,.rztnav input.txt,.rztnav input.ztbnt,.ztposition{ background:url(../images/zhuanti.jpg) no-repeat;}
+.ztnav{ height:40px;overflow:hidden;background-repeat:repeat-x;background-position:0 -50px;}
+.lztnav{ height:40px; width:234px; padding-left:30px; background-position:0 1px;}
+.lztnav a{ height:40px; width:200px; display:block; cursor:pointer;}
+.rztnav{ width:681px;height:40px; font-size:14px; padding-left:15px;float: right;}
+.rztnav a,.rztnav a:hover{ color:#FFF;}
+.rztnav i{ margin:0 15px; color:#5F4545;}
+.rztnav a.act{ border:1px solid #5F4545; padding:3px 10px; background:#efefef; font-weight:bold; color:#2C2C2C; }
+.rztnav a.act:hover{ color:#2C2C2C; }
+.rztnav input{ vertical-align:middle; height:24px; line-height:24px; float:left; margin-right:10px;}
+.rztnav input.txt{ height:23px; line-height:23px; padding-left:10px; border:1px solid #5F4545; width:148px;background-position:2px -98px; background-color:#FFF;padding-left:20px;}
+.rztnav input.ztbnt{ width:50px;color:#5F4545; background-position:0 -154px; border:none; cursor:pointer;}
+.ztposition{ height:36px; line-height:36px; background-position:5px -117px; padding-left:25px; background-color:#FFF; overflow:hidden;}
+.ztposition span{ color:#7E7E7E;}
+.hotzt{ width:648px;}
+.hotzt li{ height:36px; line-height:36px; overflow:hidden;}
+.hotzt li i{ color:#999;}
+.hotzt ul{ width:580px;}
+.hotzt em{ font-weight:bold;}
+
+#title { font-size:24px;line-height:35px;text-align:center; font-weight:800; padding:15px 10px 0; }
+
+/* 广告轮换 */
+.adv1 {border: 1px solid #D8D8D8; background-color: #F6F6F6;position: relative;}
+.adv1 li img{padding-right: 15px;float: left;}
+.adv1 li h2{font-size: 24px;font-family: Microsoft YaHei;height: 40px; line-height: 40px;overflow: hidden; margin-top: 5px;}
+.adv1 p{font-size:14px;line-height: 26px;padding-top: 10px; padding: 10px;}
+.adv1 .num{ position: absolute; top:270px; right:0; }
+.adv1 i {float:left; line-height:24px; width:24px; margin-right:5px; display:inline; color:orange;  text-align: center; background:#666;cursor: pointer;border-radius: 50%;color: #fff;}
+.adv1 .act{background:#DD0000;}
+

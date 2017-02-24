@@ -1,0 +1,167 @@
+/* CSS Document */
+
+.con2C3 {
+    overflow: hidden;height: 146px; padding: 2px;
+
+    border: 1px solid #cdcdcd;
+}
+.con2C31A {
+    float: left;
+}
+.txt2 {
+    line-height: 18px;
+
+    width: 115px; height: 18px; border: 1px solid #c4c4c4;
+}
+.con2C4 {
+    line-height: 22px; clear: both;height: 22px; background: url(../newimages/t_bg3.gif) repeat-x center center;
+}
+.con2A2C {
+    float: right; padding: 9px 4px 8px 10px;background: #fff;
+}
+.con2A2A {
+    float: left; padding: 0 10px 0 4px; background: #fff;
+}
+.con2A2B {
+    float: left; width: 2px;background: url(../newimages/baoliao_L.gif) no-repeat center center;
+}
+.conB31 {
+    border: 1px solid #dcdcdc; border-top: none;
+}
+.title5 {
+    color: #2f2f2f;
+    border-bottom: 1px solid #ffd89b;
+}
+.conb31-1 {
+    float: left;
+
+    width: 107px; height: 71px; margin-right: 8px;border: 1px solid #8b8f83;
+}
+.conb31-2 {
+    line-height: 25px;overflow: hidden;height: 74px;
+}
+.title6 {
+    line-height: 32px;
+
+    height: 32px; padding: 0 15px;background: url(../newimages/title5_bg.gif) repeat-x;
+}
+.con3_list {
+    clear: both;
+
+    height: 105px; padding: 15px; cursor: pointer; border-bottom: 1px solid #e8e6d3;
+}
+.con3A {
+    float: left; width: 154px;
+}
+.con3B {
+    float: left; width: 210px; padding-left: 15px;
+}
+.con3C,
+.con3D {
+    float: left; width: 70px; color: #2a2a2a;
+}
+.con3E {
+    float: left; width: 90px;
+}
+.con3F {
+    float: left; width: 100px; text-align: center;color: #2a2a2a;
+}
+.con3A_1 {
+    height: 104px; padding: 1px 0 0 1px;background: url(../newimages/zxtk_bg.gif) no-repeat;
+}
+.con3B_1 {
+    padding-top: 30px;
+}
+.con3C_1 {
+    padding-top: 45px;
+}
+.con3E_1 {
+    padding-top: 40px;
+}
+.con3F_1 {
+    padding-top: 20px;
+}
+.sjzp {
+    line-height: 24px; height: 24px; padding: 0 0 5px 13px;
+
+    color: #383838;
+}
+.list-sjzp {
+    margin-bottom: 10px;padding-bottom: 10px;
+
+    border-bottom: 1px solid #ccc;
+}
+.list-sjs {
+    line-height: 25px;padding: 10px;
+
+    border-bottom: 1px dashed  #e4e4e4; *zoom: 1;
+}
+.sjs1 {
+    position: relative;float: left;
+
+    width: 72px; height: 90px; padding-top: 3px;
+}
+.sjs1 .icon {
+    position: absolute;top: 2px;left: -1px;width: 39px;height: 38px;cursor: pointer;
+
+    background: url(../images/lpzd.gif);
+}
+.sjs2 {
+    line-height: 24px;
+
+    float: left; width: 260px; padding: 0 10px;
+}
+.sjs3 {
+    line-height: 24px;
+
+    float: left; width: 300px;
+}
+.list-sjs1-1 {
+    font-size: 14px; font-weight: bold;
+
+    float: left; color: #2f6600;
+}
+.list-sjs1-2 {
+    float: right;
+}
+.list-sjs1-2 span {
+    display: block;
+    float: left; padding-right: 15px; padding-left: 10px;background: url(../newimages/xing.gif) no-repeat right center;
+}
+.list-sjs2 {
+    clear: both; padding-right: 10px;
+}
+.list-sjs3-1 {
+    float: left; color: #cac9c9;
+}
+.list-sjs3-2 {
+    float: right; cursor: pointer; color: #ff7800;
+}
+.list-sjs4 {
+    position: relative;
+
+    clear: both; width: 660px; margin: 0 auto; padding: 10px; color: #373737; border: 1px solid #e3e3e3; background-color: #f5f5f5;
+}
+.ren2 {
+    display: block; overflow: hidden;height: 24px; margin: 0; padding: 0 0 0 18px;
+
+    background: url(../newimages/ren1.gif) no-repeat left center;
+}
+.list2-sjs {
+    padding: 10px 8px; border-bottom: 1px dashed #dcdcdc;*zoom: 1;
+}
+.con1A3 {
+    overflow: hidden;height: 70px; padding-top: 4px; border-right: 1px solid #d2d2d2; border-left: 1px solid #d2d2d2;
+    background: url(../newimages/M_bg.gif) repeat-x;
+}
+.con1A31 {
+    height: 28px;padding-left: 64px;
+
+    background: url(../newimages/zsjs.gif) no-repeat 20px center;
+}
+.con1A32 {
+    line-height: 26px; clear: both;
+
+    height: 26px; padding-left: 20px;
+}
+

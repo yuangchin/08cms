@@ -1,0 +1,31 @@
+<?php $cschid=in_array($caid,array(613,614))?117:118;?>
+<?php $czchid=in_array($caid,array(613,614))?119:120;?>
+<div class="w250 r">
+			<div class="coltit1"><a target="_blank" href="{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl}{/c$jjrjd}" class="more r">更多&gt;&gt;</a><h3 class="tit1">推荐经纪人</h3></div>
+			<ul class="plist3 p10 bd-gray clearfix">
+       {c$pushs [tclass=pushs/] [paid=push_jjr/] [limits=4/] [ttl=600/]}
+        <li>
+            <a href="{url}" target="_blank"><img {c$08cms2 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=80/] [maxheight=100/][emptyurl=images/common/mlogo.gif/]} src="{url}"  height="100" width="80" {/c$08cms2}/></a>
+            <h3><a href="{url}" target="_blank">{subject}</a></h3>
+             {c$member  [tclass=member/] [chids=2/] [chsource=2/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+            <p><i class="ico">售</i>{c$08cms2 [tclass=acount/] [val=b/] [chsource=2/] [chids=$cschid/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$08cms2}套 <i class="ico ico1">租</i>{c$08cms3 [tclass=acount/] [val=b/] [chsource=2/] [chids=$czchid/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$08cms3}套</p>
+            {c$jjrgs2 [cname=经纪人公司2/] [tclass=member/] [val=aa/] [arid=4/]}<p><i class="ico08 fcb">&#xf007;</i> <a href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a></p>{/c$jjrgs2}
+            <p><i class="ico08 fcb">&#xe63f;</i> {lxdh}</p>
+            {/c$member}
+        </li>
+        {/c$pushs}
+    </ul>
+		<div class="blank10"></div>
+		<?php $dychid=substr($chids, 1);?>
+			<div class="coltit1"><h3 class="tit1">最新房源</h3></div>
+			<div class="bd-gray">
+			<div class="blank10"></div>
+			<div class="sydc_rsider">
+				<ul class="plr10">
+					{c$zxfyinfo [tclass=archives/] [chids=$dychid/] [chsource=2/] [detail=1/]}<li>{if @$v['zj']}<span><i>{zj}</i>{if in_array($caid,array(613,617))}万元{else}元/月{/if}</span>{else}<span>面议</span>{/if}<a target="_blank" href="{arcurl}" title="{subject}">{subject}</a></li>
+					{/c$zxfyinfo}
+				</ul>
+			</div>
+			<div class="blank8"></div>
+		</div>
+		</div>

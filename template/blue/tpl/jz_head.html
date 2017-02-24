@@ -1,0 +1,156 @@
+<div id="top">
+    <div class="wrap">
+        <div class="inner clearfix">
+            <ul class="hover-list1 clearfix r">
+                {if @$head!=1}
+            <li class="lmore" style="line-height:22px"> <a class="fcr" target="_blank" href="{$cms_abs}">首页</a> </li>
+            <li class="lmore">
+                <b>{c$catalogs [cname=楼盘/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=2/]}<a target="_blank" href="{indexurl}">{title}</a>{/c$catalogs}<i class="ico08">&#xe689;</i></b>
+                <div class="items">
+                    {c$catalogs [cname=楼盘列表/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=2/]}<a target="_blank" href="{indexurl1}">所有楼盘</a>{/c$catalogs}
+                    <a target="_blank" href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=1/]}{/c$dtzf}">楼盘地图</a>
+                    <a target="_blank" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl3}{/c$cnode}">房价</a>
+                    <a target="_blank" href="{c$kfturl [tclass=cnode/] [listby=ca/] [casource=560/]}{indexurl}{/c$kfturl}">看房团</a>
+                    {c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=5,559/]}
+                    <a target="_blank" href="{indexurl}">{title}</a>
+                    {/c$catalogs}
+                    {c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=36,11/]}
+                    <a target="_blank" href="{indexurl}">{title}</a>
+                    {/c$catalogs}
+                </div>
+            </li>
+            <li class="lmore">
+                <b>{c$catalogs [cname=出售/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=3/]}<a target="_blank" href="{indexurl1}">{title}</a>{/c$catalogs}<i class="ico08">&#xe689;</i></b>
+                <div class="items">
+                    <a target="_blank" href="{$cms_abs}index.php?caid=3&mchid=1">个人房源</a>
+                    <a target="_blank" href="{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl}{/c$jjrjd}">经纪人</a>
+                    <a target="_blank" href="{c$jjgsurl [tclass=mcnode/] [cnsource=mcnid/] [cnid=51/]}{mcnurl}{/c$jjgsurl}">经纪公司</a>
+                    <a target="_blank" href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=117/]}{/c$dtzf}">二手地图</a>
+                    <a target="_blank" href="{c$xqzdlj [cname=小区节点链接/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl2}{/c$xqzdlj}">小区</a>
+                    {c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=10/]}
+                    <a target="_blank" href="{indexurl}">{title}</a>
+                    {/c$catalogs}
+                </div>
+            </li>
+            <li class="lmore">
+                <b>{c$catalogs [cname=出租/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=4/]}<a target="_blank" href="{indexurl}">{title}</a>{/c$catalogs}<i class="ico08">&#xe689;</i></b>
+                <div class="items">
+                    <a target="_blank" href="{$cms_abs}index.php?caid=4&mchid=1">个人出租</a>
+                    <a target="_blank" href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=116/]}{/c$dtzf}">租房地图</a>
+                    {c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=9/]}
+                    <a target="_blank" href="{indexurl}">{title}</a>
+                    {/c$catalogs}
+                </div>
+            </li>
+
+            {if !cmod('shangye')}
+            <li class="lmore">
+                <b><a target="_blank" href="{c$sjdcurl [tclass=cnode/] [listby=ca/] [casource=612/]}{indexurl}{/c$sjdcurl}">商业地产</a><i class="ico08">&#xe689;</i></b>
+                <div class="items">
+                    {c$cate [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=612,613,614,616,617,618/] [ttl=3600/]}
+                    <a target="_blank" href="{indexurl}">{title}</a>
+                    {/c$cate}
+                </div>
+            </li>
+            {/if}
+            <li class="lmore">
+                <b>{c$catalogs [cname=资讯/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=1/]}<a target="_blank" href="{indexurl}">{title}</a>{/c$catalogs}<i class="ico08">&#xe689;</i></b>
+                <div class="items">
+                    {c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=502,21,20,539/]}
+                    <a target="_blank" href="{indexurl}">{title}</a>
+                    {/c$catalogs}
+                </div>
+            </li>
+            {if !cmod('jiazhuang')}
+            <li class="lmore">
+                <b>{c$catalogs [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=509/]}<a target="_blank" href="{indexurl}">{title}</a>{/c$catalogs}<i class="ico08">&#xe689;</i></b>
+                <div class="items">
+                    <a target="_blank" href="{c$jz_zxgsurl [cname=装修公司/] [tclass=mcnode/] [cnsource=ugid31/] [cnid=101/]}{mcnurl1}{/c$jz_zxgsurl}" >装修公司</a>
+                    <a target="_blank" href="{c$mcnode [cname=品牌商家列表/] [tclass=mcnode/] [cnsource=ugid32/] [cnid=103/]}{mcnurl1}{/c$mcnode}">品牌商家</a>
+                    {c$catalogs [cname=设计师_案例_商品_团购_资讯/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=510,511,512,513,515/]}<a href="{indexurl1}">{title}</a>{/c$catalogs}
+                    <a target="_blank" href="{c$cnode [cname=家装快讯/] [tclass=cnode/] [listby=ca/] [casource=504/]}{indexurl}{/c$cnode}">家装快讯</a>
+                    <a target="_blank" href="{$cms_abs}info.php?fid=201">量房申请</a>
+                </div>
+            </li>
+            {/if}
+            <li class="lmore">
+                <b>{c$catalogs [cname=专题/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=37/]}<a target="_blank" href="{indexurl}">{title}</a>{/c$catalogs}<i class="ico08">&#xe689;</i></b>
+                <div class="items">
+                    {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=3/] [cainherit=2/] [wherestr=pid='37'/] [ttl=300/]}
+                    <a href="{indexurl}" target="_blank">{title}</a>
+                    {/c$catalogs}
+                </div>
+            </li>
+            <li class="lmore">
+                <b>更多信息<i class="ico08">&#xe689;</i></b>
+                <div class="items">
+                    {if !cmod('fenxiao')}
+                    {c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=605/]}<a target="_blank" href="{indexurl}">{title}</a>{/c$cnode}
+                    {/if}
+                    {c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=30,516,558,600,561/]}
+                    <a target="_blank" href="{indexurl}">{title}</a>
+                    {/c$catalogs}
+                    <a href="{c$freeurl [tclass=freeurl/] [fid=5/]}{/c$freeurl}" target="_blank" rel="nofollow">贷款计算器</a>
+                    <a href="{c$freeurl [tclass=freeurl/] [fid=102/]}{/c$freeurl}" target="_blank" rel="nofollow">网站提问</a>
+                    <a href="{c$freeurl [tclass=freeurl/] [fid=9/]}{/c$freeurl}" target="_blank">网站地图</a>
+                </div>
+            </li>
+            {/if}
+                
+            </ul>
+            <!-- 地区分站 -->
+            <ul class="qy-area hover-list1">
+                <li>
+                    <b>地区分站<i class="ico08">&#xe689;</i></b>
+                    <div class="items">
+                         {c$dqfz [cname=地区分站/] [tclass=catalogs/] [limits=100/] [listby=co1/] [orderstr=vieworder ASC/] [ttl=900/]}<a href="{indexurl}" target="_blank">{title}</a> {/c$dqfz}
+                    </div>
+                </li>
+            </ul>
+            <!-- <div id="userLogin">
+                <a onclick="return modalExt('#pop-login','会员登录');" id="login-btn" href="{$cms_abs}login.php" target="_self">登陆</a>
+                <span>|</span>
+                <a href="{$cms_abs}register.php">注册</a>
+            </div> -->
+            <div id="userLogin">
+                <a class="log-btn" onclick="$('#login-wrap').jqModal('show'); return false;" href="{$cms_abs}login.php" target="_self">登陆</a>  
+                <span>|</span>  
+                <a class="log-btn" href="{$cms_abs}register.php">注册</a>
+            </div>
+                
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{$tplurl}css/jz_head.css?{$user_version}">
+<div class="blank5"></div>
+<div id="jiazhuang">
+<div class="area mtj10">
+    <div class="topad r">
+        <!--logo右790_70--><div id="_08_adv_fcatalog144"></div>
+    </div>
+    <div class="jzmlogo l">
+    <a href="{c$jzurl [tclass=cnode/] [listby=ca/] [casource=509/]}{indexurl}{/c$jzurl}"> <img {c$image [cname=头部站点logo/] [tclass=image/] [tname=user_jz_logo/]}src="{url}" width="200" height="70" {/c$image} alt="{hostname}" />
+    </a>
+    </div>
+</div>
+<?php $mchid = empty($mchid)? '' : (int)$mchid;?>
+{if @$hidenav!=1}
+<div class="jznav mT10">
+    <div class="jznavlist">
+    <a href="{c$cnode [cname=家装链接/] [tclass=cnode/] [listby=ca/] [casource=509/]}{indexurl}{/c$cnode}" class="{if !empty($caid) && $caid==509}act{/if}">家装首页</a><em></em>
+    <a class="{if @$hd_caid==504}act{/if}" href="{c$cnode [cname=家装快讯/] [tclass=cnode/] [listby=ca/] [casource=504/]}{indexurl}{/c$cnode}">家装快讯</a><em></em>
+    <a href="{c$mcnode [cname=装修公司链接/] [tclass=mcnode/] [cnsource=ugid31/] [cnid=101/]}{mcnurl1}{/c$mcnode}" class="{if !empty($ugid31) || $mchid==11}act{/if}">装修公司</a><em></em>
+    <a href="{c$cnode [cname=设计师/] [tclass=cnode/] [listby=ca/] [casource=510/]}{indexurl1}{/c$cnode}" class="{if @$caid==510}act{/if}">设计师</a><em></em>
+    <a href="{c$cnode [cname=家装案例/] [tclass=cnode/] [listby=ca/] [casource=511/]}{indexurl1}{/c$cnode}" class="{if @$caid==511}act{/if}">家装案例</a><em></em>
+    <a href="{c$mcnode [cname=品牌商家列表/] [tclass=mcnode/] [cnsource=ugid32/] [cnid=103/]}{mcnurl1}{/c$mcnode}" class="{if !empty($ugid32) || $mchid==12 }act{/if}">品牌商家</a><em></em>
+    <a href="{c$cnode [cname=商品列表链接/] [tclass=cnode/] [listby=ca/] [casource=513/]}{indexurl1}{/c$cnode}" class="{if @$caid == 513}act{/if}">商品</a><em></em>
+    <a href="{c$cnode [cname=团购节点链接/] [tclass=cnode/] [listby=ca/] [casource=515/]}{indexurl1}{/c$cnode}" class="{if @$caid == 515}act{/if}">团购</a><em></em>
+    <a href="{c$cnode [cname=公司动态/] [tclass=cnode/] [listby=ca/] [casource=512/]}{indexurl1}{/c$cnode}" class="{if @$caid == 512}act{/if}">公司动态</a><em></em>
+    <a href="{c$freeurl [tclass=freeurl/] [fid=201/]}{/c$freeurl}" class="{if @$fid==201}act{/if}">量房申请</a>
+    <div class="blank0"></div>
+    </div>
+</div>
+{/if}
+</div>
+<div class="blank5"></div>

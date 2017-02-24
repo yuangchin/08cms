@@ -1,0 +1,121 @@
+<?php
+$mcharr = cls_mchannel::mchidsarr();
+$_da = cls_Parse::Get('_da'); //print_r($_da);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  <title>账号绑定{if empty($is_weixin)}-{$cmstitle}{/if}</title>
+  <meta name="keywords" content="{keywords}"/>
+  <meta name="description" content="{abstract}"/>
+    {tpl$m_headinner}
+
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" data-btn="back" title="账号绑定" class="active">
+
+        {tpl$m_header}
+	<article id="article_ind" class="active">
+        <ul class="list">
+        	<li>
+	<form name="cmslogin" id="cmslogin" method="post" action="{$mobileurl}wxlogin.php">
+    <input name="act08" id="act08" type="hidden" value="add">
+    
+		<!-- <p style="display:none">
+			<label>
+				快速新增帐号：
+				<input name="act08" id="act081" type="radio" value="add" onClick="setActType(this)" checked></label>
+			&nbsp;
+			<label>
+				绑定已有帐号：
+				<input name="act08" id="act082" type="radio" value="bind" onClick="setActType(this)"></label>
+		</p> -->
+		<div id="control-group" class="control-group">
+            <a href="#add" class="active">快速新增帐号</a>
+            <a href="#bind" class="">绑定已有帐号</a>
+        </div>
+
+        <div class="blank15"></div>
+		<p id="setmchid">
+			<select name="mchid" id="mchid">
+				{loop $mcharr $mch $title}
+				<option value="{$mch}">{$title}</option>
+				{/loop}
+			</select>
+			<!--input type="hidden" name="mchid"  value="1" /-->	
+		</p>
+		<p>
+			<input type="text" autocomplete="off" placeholder="请输入用户名"  id="username" name="username" value="{$mname08}" required maxLength="20" min="0" max="20" step="3"/>	
+		</p>
+		<p>
+			<input type="text" autocomplete="off" placeholder="请输入密码"  id="password" name="password" value="{$mpass08}" required title="密码不正确" />	
+		</p>
+		{loop $_da $k $v}
+		<?php if(in_array($k,array('uinfo'))){continue;} ?>	
+		<input type="hidden" name="{$k}"  value="{$v}" />	
+		{/loop}
+		<p>
+			<!-- <input type="submit" id="weixin_login" class="button block" name="weixin_login" value="操作账号"/>	 -->
+			<button type="submit" id="weixin_login" class="button block" name="weixin_login">操作账号</button>
+		</p>
+	</form>
+        	</li>
+        </ul>
+	</article>
+</section>
+</div>
+
+{tpl$m_footer}
+	<script>
+	$('#control-group a').click(function(event) {
+		/* Act on the event */
+		$(this).addClass('active').siblings().removeClass('active');
+		if ($(this).attr('href') === '#add') {
+			$('#weixin_login').html('添加账号');
+			$('#username').val('{$mname08}');
+			$('#password').val('{$mpass08}');
+			$('#act08').val('add');
+			$('#setmchid').show();
+		} else {
+			$('#weixin_login').html('绑定账号');
+			$('#username').val('');
+			$('#password').val('');	
+			$('#act08').val('bind');
+			$('#setmchid').hide();
+		}
+		return false;
+	});
+	/*function setActType(e){
+		e = e || $('#act081')[0];
+		if(e.value == 'add'){
+			$('#weixin_login').html('添加账号');
+			$('#username').val('{$mname08}');
+			$('#password').val('{$mpass08}');
+			$('#setmchid').show();
+		}else{
+			$('#weixin_login').html('绑定账号');
+			$('#username').val('');
+			$('#password').val('');	
+			$('#setmchid').hide();
+		}
+		//console.log(e.value);
+	}
+	$(document).ready(function(){
+		setActType();
+	})*/
+	//setTimeout('',500);
+	</script>
+	
+	<?php
+	/*
+	echo '<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><pre>'; 
+	echo '<br>GET:'; print_r($_GET);
+	echo '<br>res:'; print_r($res);
+	*/
+	?>
+
+</body>
+</html>

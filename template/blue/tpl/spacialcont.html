@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/zhti.css?{$user_version}"/>
+<?php $voteinfo=1?>
+</head>
+<body>
+{tpl$head}
+<div class="wrap">
+    <div class="banner"> <img {c$image [cname=image/] [tclass=image/] [tname=image/] [val=v/]}src="{url}"{/c$image} width="1200" height="230" /></div>
+    <div class="daodu">
+        <h3><a href="###" rel="nofollow">{subject}</a></h3>
+        <p>{content}</p>
+    </div>
+    <div class="blank10"></div>
+    <!-- /投票 -->
+    <!-- 评论区块 -->
+     {tpl$tpl_plkuan}
+    <!-- /评论区块 -->
+</div>
+ {tpl$foot}
+ <!--公用投票-->
+{tpl$tpl_vote}
+</body>
+</html>

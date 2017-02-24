@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{cmstitle} - {cmsname} - {hostname}</title>
+<style type="text/css">
+body, button, input, select, textarea { font: 12px/1.5 arial,helvetica,sans-serif; }
+body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p, blockquote, pre, form, fieldset, legend, input, button, textarea, hr { margin: 0; padding: 0; }
+a:hover { text-decoration: underline; }
+body { color: #646464; }
+body a, .wb_linka a, .wb_linka { color: #1582BD; text-decoration: none;}
+.wb_tipb_ok, .wb_tipb_err, .wb_tipb_warn, .wb_tipb_warn_red, .wb_tipb_ques, .wb_tips_ok, .wb_tips_err, .wb_tips_warn, .wb_tips_ques, .wb_tips_num, .wb_tips_numwarn { display: inline-block; vertical-align: middle; background: url({$tplurl}images/icon_tips.png) no-repeat ; }
+.wb_tipb_ok, .wb_tipb_err, .wb_tipb_warn, .wb_tipb_warn_red, .wb_tipb_ques, .wb_tips_num, .wb_tips_numwarn { width: 37px; height: 42px; }
+.wb_tipb_ok { background-position:0 0 ; }
+.wb_uibody { background: url({$tplurl}images/bg_wb_uibody.png) repeat-x 0 0  rgb(214, 219, 221); }
+.wb_uiplus { background: url({$tplurl}images/bg_wb_uiplus.png) repeat ; height: 285px; position: fixed; bottom:0 ; width: 100%; z-index: -1; }
+.wb_panel { border-radius: 6px; box-shadow:0 0  5px rgb(198, 198, 198); background: -moz-linear-gradient(center top , rgb(255, 255, 255) 0 , rgb(251, 251, 251) 80%, rgb(245, 245, 245) 100%) repeat ; border: 1px solid rgb(210, 210, 210); overflow: hidden; }
+
+.wb_share .wwg_wrap { width: 602px; margin: 100px 0 0 -301px;height: 261px;  position: absolute;left: 50%;text-align: center;}
+
+.wb_share .wwg_body_stat { padding: 30px; }
+.wb_share .stat_show { padding-bottom: 3px; font-size: 24px; color: #646464; }
+.wb_share .stat_txt { font-size: 24px; color: #646464; padding-bottom: 15px; font-family: "microsoft yahei"; }
+.wb_share .stat_plus { padding-bottom: 11px; }
+.wb_share .wb_panel { position: relative; background: #fcfcfc;overflow: visible;}    
+#timesec{color: #c00;font-weight: bold;font-size: 14px;}
+.stat_plus a{display: inline-block;border: 1px solid #ddd; width: 70px;height:26px;line-height:26px;margin: 0 5px;cursor: pointer;border-radius: 3px;background: #fafafa;}
+.stat_plus a:hover{text-decoration: none;}
+    </style>
+</head>
+<body class="wb_widgets wb_uibody wb_share">
+    <div class="wwg_wrap">
+        <div class="wb_panel">
+            <div class="wwg_body_stat " id="pl_share_success">
+    
+                <p class="stat_show">
+                    <span class="wb_tipb_ok"></span>
+                </p>
+                <p class="stat_txt">{message}</p>
+                
+                <p class="stat_plus" id="timeout">
+                    <span id="timesec">3</span>
+                    秒后窗口自动返回，或者 <br/> <br/>
+                    <a href="javascript:void(0);" onclick="history.go(-1);">返回</a>
+                    <a href="javascript:void(0);" onclick="window.location.href='{$cms_abs}'">整站首页</a>
+                    <a href="javascript:void(0);" onclick="window.close()">立即关闭</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+            var timesec = document.getElementById('timesec')
+            , sen = 3
+            , T;
+
+            T = setInterval(function() {
+                sen -= 1;
+                timesec.innerHTML = sen;
+                if(sen == 0){
+                    history.go(-1);
+                    clearInterval(T);
+                }
+            },1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<?php
+foreach(array('ccid1','ccid2','ccid17','ccid46','orderby','ordermode','searchword') as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+    'ntype' => 'oc', //cm,m,oc,om
+    'chid' => 115,
+    'rids' => array(1,2),
+    'nodes' => array('0'),
+    'orderbys' => array('vieworder','dj','jzmj'),
+    //'addno' => 1
+));
+extract(cls_usql::order_str(1,'a.vieworder ASC,a.refreshdate DESC'));
+$whrstr = cls_usql::where_str(array(
+    array('subject','searchword'), //,address
+),u_exsql(115)); //echo $whrstr;
+$otherdf=1;
+$pagelimit=8;
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+    <title>{c$dqtit [tclass=cnode/] [listby=co1/] [cosource1=active/]}{title}-{/c$dqtit} {c$lmtit [tclass=cnode/] [listby=ca/] [casource=active/]}{title}{/c$lmtit}-{$hostname}</title>
+    <meta name="keywords" content="{listkeywords}" />
+    <meta name="description" content="{listabstract}" />
+    {tpl$m_headinner}
+</head>
+<body>
+<div id="aside_container">
+    <aside id="menu" data-position="right" data-transition="overlay" data-show-close="true">
+        <div><!-- 表单 -->
+            <div class="clearfix">
+                <div class="bar-search">
+                    <form method="get" action="{$mobileurl}index.php">
+                        <input type="hidden" name="caid" value="{$caid}"/>
+                        <input type="text" class="txt" name="searchword" placeholder="关键词">
+                        <button type="submit" class="icon-f002"></button>
+                    </form>
+                </div>
+            </div>
+            <dl class="conditions">
+                <dt><span class="icon-f009 left"></span>区域：</dt>
+                <dd>
+                    <a {if empty($ccid1)}class='pomegranate'{/if} href="<? echo cls_uso::extra_url(1); ?>">不限</a>
+                    <? $_rows = cls_uso::caco_urls(1); ?>
+                    {loop $_rows $k $v} <a href="{$v[url]}" {if $ccid1==$k}class='pomegranate'{/if}>{$v[title]}</a> {/loop}
+                </dd>
+            </dl>
+            {if !empty($ccid1)}
+            <dl class="conditions">
+                <dt><span class="icon-f009 left"></span>商圈：</dt>
+                <dd>
+                <a {if empty($ccid2)}class='pomegranate'{/if} href="<? echo cls_uso::extra_url(2); ?>">不限</a>
+                <? $_rows = cls_uso::caco_urls(2); ?>
+                {loop $_rows $k $v} <a href="{$v[url]}" {if $ccid2==$k}class='pomegranate'{/if}>{$v[title]}</a> {/loop}
+                </dd>
+            </dl>
+            {/if}
+            <dl class="conditions">
+                <dt><span class="icon-f009 left"></span>类型：</dt>
+                <dd>
+                    <a {if empty($ccid46)}class='pomegranate'{/if} href="<? echo cls_uso::extra_url(46); ?>">不限</a>
+                    <? $_rows = cls_uso::caco_urls(46); ?>
+                    {loop $_rows $k $v} <a href="{$v[url]}" {if $ccid46==$k}class='pomegranate'{/if}>{$v[title]}</a> {/loop}
+                </dd>
+            </dl>
+            <dl class="conditions">
+                <dt><span class="icon-f009 left"></span>价格：</dt>
+                <dd>
+                    <a {if empty($ccid17)}class='pomegranate'{/if} href="<? echo cls_uso::extra_url('ccid17'); ?>">不限</a>
+                    <? $_rows = cls_uso::caco_urls(17); ?>
+                    {loop $_rows $k $v} <a href="{$v[url]}" {if $ccid17==$k}class='pomegranate'{/if}>{$v[title]}</a> {/loop}
+                </dd>
+            </dl>
+        </div>
+    </aside>
+</div>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" class="innblank44 active" data-btn="back" title="{title}">
+    <!--写字楼公用底部[手机版]-->
+    {tpl$m_office_footer}
+        <article id="up_refresh_article" class="active" >
+            <div>
+                <ul class="list list-media">
+                    <?php $pick_urls=cls_uso::pick_urls();
+                          unset($pick_urls['caid']);
+                    ?>
+                    {if $pick_urls}
+                    <li class="divider">
+                        <div class="grid">
+                            当前条件：
+                            <div class="col-1 f-asbestos">
+                            {loop $pick_urls $k $v}
+                            <a title="取消此条件" class="icon-f057 button-s" href="{$v['url']}">{$v['title']}</a>
+                            {/loop}
+                            <a class="icon-f0e2 button-s" title="取消所有" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}{indexurl}{/c$cnode}">取消</a>
+                            </div>
+                        </div>
+                    </li>
+                    {/if}
+                    <li class="divider">
+                        <div class="grid">
+                            <div class="col-1">
+                                {title}
+                            </div>
+                            <div class="col-0">
+                                <span class="f-asbestos">
+                                  <a rel="nofollow" href="<? echo cls_uso::extra_url('orderby'); ?>">默认</a>
+                                   <?=cls_uso::order_tpl('<a class="(class)" rel="nofollow" href="(url)">价格</a>', "dj",  array('icon-e62c down','icon-e62d up','icon-e62c'))?>
+                                   <?=cls_uso::order_tpl('<a class="(class)" rel="nofollow" href="(url)">面积</a>', "jzmj",  array('icon-e62c down','icon-e62d up','icon-e62c'))?>
+                                </span>&nbsp;
+                                <a data-target="menu" href="#menu" class="icon button carrot"><span class="icon-ea5b fz12"></span>筛选</a>
+                            </div>
+                        </div>
+                    </li>
+                    {c$xzlpls [tclass=archives/] [chids=115/] [chsource=2/] [ccidson46=1/] [cosource46=2/] [ccidson1=1/] [cosource1=2/] [ccidson2=1/] [cosource2=2/] [ccidson17=1/] [cosource17=2/] [detail=1/] [limits=$pagelimit/] [wherestr=$whrstr/] [orderstr=$orderstr/]}
+                    <? $allnum=count($_xzlpls);?>
+                    [row]
+                    <li>
+                        <a href="{arcurl}">
+                            <img width="100" height="75" class="media-object" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=75/] [thumb=1/]}{url_s}{/c$image}">
+                            <strong>{subject} </strong>
+                            <div class="grid mt5"><div class="col-1">{jzmj}M&sup2;</div>{if $v['dj']}<span class="f-alizarin">{dj}</span>元/M&sup2;{else}待定{/if}</div>
+                            <p class="mt5">{if $v['ccid1']}[{ccid1title}]{/if}{address}</p>
+                        </a>
+                    </li>
+                    [/row]
+                    {/c$xzlpls}
+                     {if @$allnum==0}<li class="noinfo">~ 暂无相关数据 ~</li>{/if}
+                </ul>
+                 <div id="upinfo_js" class="refresh-container f-asbestos dn"><span class="refresh-icon icon-e61c"></span><span class="refresh-label">上拉加载更多...</span></div>
+            </div>
+        </article>
+    </section>
+</div>
+<script>
+//加载数据设置
+var opt = {
+    _param : {
+        'aj_model'    : 'a,115,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+        'aj_pagesize' :{$pagelimit},
+        'aj_whrfields': 'subject,like,<?=cls_Parse::Get("_da.searchword");?>;ccid1,=;ccid2,=;ccid46,=;ccid17,auto,{$ccid17}',
+        'aj_deforder' : 'vieworder ASC,refreshdate DESC', //默认排序
+        'aj_thumb'    : 'thumb,100,75'
+    },
+    filterUrl : '&<?php echo cls_uso::$urls['fullurl']; ?>' ,//从地址获取的url参数
+    wrap : '#up_refresh_article' ,
+    dataWrap : '#up_refresh_article ul.list' ,
+    template : function() {
+        return  '<li>'
+                + '<a href="'+this.arcurl+'">'
+                + '<img width="100" height="75" class="media-object" alt="'+this.subject+'" src="'+(this.thumb||CMS_ABS+'images/common/nopic.gif')+'">'
+                + '<strong>'+this.subject+'</strong>'
+                + '<div class="grid mt5"><div class="col-1">'+(this.jzmj? this.jzmj+'M&sup2;</div>':'待定')+(this.dj!=0?' <span class="f-alizarin">'+this.dj +'</span>元/M&sup2;':'待定')+'</div>'
+                + '<p class="mt5">'+(this.ccid1title?' ['+this.ccid1title +']':'')+this.address+'</p>'
+                + '</a>'
+                + '</li>'
+    }
+}
+</script>
+{tpl$m_footer}
+</body>
+</html>

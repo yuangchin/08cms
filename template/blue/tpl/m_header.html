@@ -1,0 +1,26 @@
+<div id="fix_js" class="fix_css">
+    <header>
+        <nav class="left">
+            <a id="back" class="dn" href="#" data-target="back"><span class="icon-f053 left fz20"></span></a>
+            <a id="logo" class="dn" href="{$mobileurl}"><img src="{c$image [tclass=image/] [tname=$user_mobilogo/] [val=u/]}{url}{/c$image}" alt="{$hostname}" width="110" height="43"></a>
+        </nav>
+        <h1 id="title" class="title"></h1>
+        <nav class="right">
+            <a id="edit" class="icon dn" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}{if !empty($indexurl2)}{indexurl2}{/if}{/c$cnode}"><span class="icon-e7cc left fz17"></span></a>
+            <a class="icon" href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=11/]}{indexurl}{/c$caidx}"><span class="icon-e756 left fz19"></span></a>
+            <a class="menu icon"><span class="icon-f0ca left fz22"></span></a>
+        </nav>
+    </header>
+</div>
+
+{if empty($aid) && empty($otherdf)}
+<footer class="dn">
+    <a href="{$mobileurl}"><i class="icon-f015"></i>首页</a>
+    <a class="{if @$caid==2 &&  @$addno!=2}active{/if}" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl}{/c$cnode}"><i class="icon-e618"></i>新房</a>
+    <a class="{if @$caid==3 && empty($df_broker)}active{/if}" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl}{/c$cnode}"><i class="icon-e637"></i>二手</a>
+    <a class="{if @$caid==4}active{/if}" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=4/]}{indexurl}{/c$cnode}"><i class="icon-e635"></i>出租</a>
+    <a class="{if @$channel_t==1}active{/if}" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=1/]}{indexurl}{/c$cnode}"><i class="icon-e733"></i>资讯</a>
+    <a class="menu"><i class="icon-e634"></i>更多</a>
+</footer>
+{/if}
+

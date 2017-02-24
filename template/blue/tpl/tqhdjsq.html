@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>提前还款-{$hostname}</title>
+{tpl$headinner}
+</head>
+<body class="calc">
+{tpl$toolshead}
+<div id="main" class="main wrap">
+<!--内容区-->		
+		<div class="calc_main_wrap">
+			<div class="calc_main cf">
+				<div class="left fl">
+					<div class="top cf tiqian">
+						<form action="" method="" name="tqhdjsq">
+							<div class="sr fl">
+								<h2>提前还贷计算器</h2>
+								<ul class="cf">
+									<li class="cf fl hklx"><span class="fl">还款类型：</span><input type="radio" value="" id="dklx1" name="dklx" class="fl" checked="checked"/><label for="dklx1" class="fl">公积金贷款</label><input type="radio" value="" id="dklx2" name="dklx" class="fl"/><label class="fl" for="dklx2">商业性贷款</label>
+									</li>
+									<li class="cf fl ydk"><span class="fl">原贷款金额：</span><input class="fl txt" type="text" value="" name="dkzws"/><b class="fl">万元</b></li>
+									<li class="cf fl"><span class="fl">原贷款年限：</span>
+										<select class="fl" name="yhkqs" size="1">
+											<option value="24">2年(24期)</option>
+											<option value="36">3年(36期)</option>
+											<option value="48">4年(48期)</option>
+											<option value="60">5年(60期)</option>
+											<option value="72">6年(72期)</option>
+											<option value="84">7年(84期)</option>
+											<option value="96">8年(96期)</option>
+											<option value="108">9年(108期)</option>
+											<option value="120">10年(120期)</option>
+											<option value="132">11年(132期)</option>
+											<option value="144">12年(144期)</option>
+											<option value="156">13年(156期)</option>
+											<option value="168">14年(168期)</option>
+											<option value="180">15年(180期)</option>
+											<option selected="selected" value="240">20年(240期)</option>
+											<option value="300">25年(300期)</option>
+											<option value="360">30年(360期)</option>
+										</select>
+									</li>
+									<li class="cf fl"><span class="fl">贷款利率：</span>
+										<select class="fl" name="dklv_class" data-listdata="#lltpl" id="lilv" style="width:210px"></select>								
+									</li>
+									<li class="cf fl diyici"><span class="fl">第一次还款时间：</span>
+										<select class="fl" name="yhksjn">
+											<option value="2001">2001</option>
+											<option value="2002">2002</option>
+											<option value="2003">2003</option>
+											<option value="2004">2004</option>
+											<option value="2005">2005</option>
+											<option value="2006">2006</option>
+											<option value="2007">2007</option>
+											<option value="2008">2008</option>
+											<option value="2009">2009</option>
+											<option value="2010">2010</option>
+											<option value="2011">2011</option>
+											<option value="2012">2012</option>
+											<option value="2013">2013</option>
+											<option value="2014">2014</option>
+											<option selected="selected" value="2015">2015</option>
+										</select><b class="fl">年</b>
+										<select name="yhksjy" class="fl">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option selected="selected" value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select><b class="fl">月</b>
+									</li>
+									<li class="cf fl diyici"><span class="fl">预计提前还款时间：</span>
+										<select name="tqhksjn" class="fl">
+											<option value="2013">2013</option>
+											<option value="2014">2014</option>
+											<option selected="selected" value="2015">2015</option>
+											<option value="2016">2016</option>
+											<option value="2017">2017</option>
+											<option value="2018">2018</option>
+
+											<option value="2019">2019</option>
+											<option value="2020">2020</option>
+											<option value="2021">2021</option>
+											<option value="2022">2022</option>
+											<option value="2023">2023</option>
+											<option value="2024">2024</option>
+
+											<option value="2025">2025</option>
+											<option value="2026">2026</option>
+											<option value="2027">2027</option>
+											<option value="2028">2028</option>
+											<option value="2029">2029</option>
+											<option value="2030">2030</option>
+
+											<option value="2031">2031</option>
+											<option value="2032">2032</option>
+											<option value="2033">2033</option>
+											<option value="2034">2034</option>
+										</select><b class="fl">年</b>
+										<select name="tqhksjy" class="fl">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option selected="selected" value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select><b class="fl">月</b>
+									</li>
+									<li class="cf fl"><span class="fl">提前还贷方式：</span>
+										<div class="in_tiqian fl">
+											<input id="tqhkfs" name="tqhkfs" type="radio" value="" checked="checked"/>
+											<label for="tqhkfs">一次提前还清</label><br/>
+											<input id="tqhkfs1" name="tqhkfs" type="radio" value=""/>
+											<label for="tqhkfs1">部分提前还款</label><input class="txt" type="text" value="" name="tqhkws"/><b>万元</b>
+										</div>
+									</li>
+									<li class="cf fl" id="clfs" style="display:none"><span class="fl">处理方式：</span>
+										<div class="in_tiqian fl">
+											<input id="chuli1" name="clfs" type="radio" value="" checked="checked"/>
+											<label for="chuli1">缩短还款年限，月还款额基本不变 </label>
+											<input id="chuli" name="clfs" type="radio" value=""/>
+											<label for="chuli">减少月还款额，还款期不变</label>
+										</div>
+									</li>
+								</ul>
+								<p class="btn_p"><input class="btn1" type="button" value="计算"  onclick="play()" /><a href="#" title="" target="_blank" id="reset">请除数据，重新计算</a></p>
+							</div>
+							<div class="re fl" >
+								<h2>计算结果<span>(&nbsp;&nbsp;计算结果仅供参考&nbsp;&nbsp;)</span></h2>
+								<div class="re_in re_ti">
+									<span class="sj"></span>
+									<p><b>原月还款：</b><span id="ykhke">0</span>元</p>
+									<p><b>该月一次还款额：</b><span id="gyyihke">0</span>元</p>
+									<p><b>原最后还款期：</b><span id="yzhhkq">0</span></p>
+									<p><b>下月起月还款额：</b><span id="xyqyhke">0</span>元</p>
+									<p><b>已还款总额：</b><span id="yhkze">0</span>元</p>
+									<p><b>节省利息支出：</b><span id="jslxzc">0</span>元</p>
+									<p><b>已还利息额：</b><span id="yhlxe">0</span>元</p>
+									<p><b>新的最后还款期：</b><span id="xdzhhkq">0</span></p>
+									<p class="no_br"><b>计算结果提示：</b><span id="jsjgts">0</span></p>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="bottom">
+						<h4>提前还贷</h4>
+						<p>1.公积金贷款最高额度为80万元;</p>
+						<p>2.对已贷款购买一套住房但人均面积低于当地平均水平，再申请购买第二套普通自住房的居民，比照执行首次贷款购买普通自住房的优惠政策。</p>
+					</div>
+				</div>
+				{tpl$tpl_jsq_right}
+			</div>
+		</div>
+	<script language=JavaScript>
+		var ykhke=document.getElementById("ykhke");
+		var gyyihke=document.getElementById("gyyihke");
+		var yzhhkq=document.getElementById("yzhhkq");
+		var xyqyhke=document.getElementById("xyqyhke");
+		var yhkze=document.getElementById("yhkze");
+		var jslxzc=document.getElementById("jslxzc");
+		var yhlxe=document.getElementById("yhlxe");
+		var xdzhhkq=document.getElementById("xdzhhkq");
+		var jsjgts=document.getElementById("jsjgts");
+		document.getElementById("reset").onclick=function() {
+			document.getElementsByName('tqhdjsq')[0].reset();
+			return false;
+		}
+	</script>
+	
+	<script type="text/javascript" src="{$tplurl}js/jsq.js"></script>
+	<script type="text/javascript">
+			//计算器导航
+			(function() {
+				var str='';
+				$('#calc_nav').find('li').on({
+					'mouseenter':function() {
+						str=$(this).attr('class');
+						$(this).addClass(str+'_h');
+					},
+					'mouseleave':function() {
+						$(this).removeClass(str+'_h');
+					}
+				});
+				$("#tqhkfs1,#tqhkfs").on("click",function(){
+					if($("#tqhkfs1").prop("checked"))
+						$("#clfs").show()
+					else
+						$("#clfs").hide()
+				})
+			})();
+			$(".calc_dl dd:odd").css("background","#eee");
+	</script>	
+</div>
+{tpl$foot}
+</body>
+</html>

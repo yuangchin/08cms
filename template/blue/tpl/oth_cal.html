@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+<title>装修计算器-{$hostname}</title>
+{tpl$jz_headinner}
+<link rel="stylesheet" href="{$tplurl}css/v4_jiaz.css?{$user_version}" />
+<script>var tplurl = '{$tplurl}';</script>
+<script type="text/javascript" src="{$tplurl}js/TAdornCalcuator.js"></script>
+
+</head>
+
+<body>
+
+{tpl$jz_head} 
+<!--内容-->
+<div class="wrap mT10">
+
+	<div class="w200 l mr10">
+    <div class="gsdt ">
+        <h4>装修计算器</h4>
+        	<ul class="jisqlist clearfix">
+            	<li><a href="{$cms_abs}info.php?fid=202#imgFloorBrick">地板计算器</a></li>
+                <li><a href="{$cms_abs}info.php?fid=202#imgWallBrick">墙砖计算器</a></li>
+                <li><a href="{$cms_abs}info.php?fid=202#imgWallPaint">涂料计算器</a></li>
+                <li><a href="{$cms_abs}info.php?fid=202#imgWindowTamping">填缝剂计算器</a></li>
+                <li><a href="{$cms_abs}info.php?fid=202#imgWindowCloth">窗帘计算器</a></li>
+                <li><a href="{$cms_abs}info.php?fid=202#imgWallPaper">墙纸计算器</a></li>
+            </ul>
+        </div>
+        <div class="gsdt mT10 ">
+        <h4><span><a href="{c$v3_jzkxurl [cname=家装快讯/] [tclass=cnode/] [listby=ca/] [casource=506/]}{indexurl1}{/c$v3_jzkxurl}">更多&gt;&gt;</a></span>家装快讯</h4>
+        	<ul class="gsdtlist">
+            	 	{c$v4jz_jzkx [cname=家装快讯/] [tclass=archives/] [chsource=2/] [chids=1/] [caidson=1/] [casource=1/] [caids=506/] [detail=1/] [forceindex=a.PRIMARY/] [ttl=900/]}<li><a href="{arcurl}" target="_blank">{subject}</a></li>{/c$v4jz_jzkx} 
+                                </ul>
+        </div>
+        <div class="gsdt mT10 ">
+        <h4><span><a href="{c$zxktlj [cname=装修课堂链接/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=507/]}{indexurl1}{/c$zxktlj}">更多&gt;&gt;</a></span>装修课堂</h4>
+        	<ul class="gsdtlist">
+             	{c$v4jz_zxkt [cname=装修课堂/] [tclass=archives/] [chsource=2/] [chids=1/] [caidson=1/] [casource=1/] [caids=507/] [detail=1/] [forceindex=a.PRIMARY/] [ttl=900/]}<li><a href="{arcurl}" target="_blank">{subject}</a></li>{/c$v4jz_zxkt}
+            </ul>
+        </div>
+    </div>
+    <div class="w790 l">
+    <a id="FloorBrick" name="FloorBrick"></a>
+   	<div class="jsqTit">
+        地板计算器
+    </div>
+    
+    	<table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tbody>
+    	  <tr>
+    	    <th width="11%" align="center" valign="middle" scope="row">居室信息：</th>
+    	    <td width="89%" height="30">　长 
+    	      <input id="floorBrick_roomLong" name="floorBrick_roomLong" size="8" />
+    	     米 宽 
+    	      <input id="floorBrick_roomWidth" name="floorBrick_roomWidth" size="8" />
+    	     米</td>
+   	      </tr>
+    	  <tr>
+    	    <th height="45" align="center" valign="middle" scope="row">地板信息：</th>
+    	    <td height="30">　长 
+    	      <input value="600" id="floorBrick_floorLong" name="floorBrick_floorLong" size="8" />
+    	     毫米 宽 
+              <input value="90" id="floorBrick_floorWidth" name="floorBrick_floorWidth" size="8" />
+   	             毫米
+   	            <select name="floorBrick_bricktype" id="floorBrick_bricktype" onchange="javascript:autoInputFloorBrick();">
+   	              <option selected="selected" value="1">600x90x18</option>
+   	              <option value="2">750x90x18</option>
+   	              <option value="3">900x90x18</option>
+   	              <option value="4">1285x192x8</option>
+                </select>
+   	            毫米</td>
+  	    </tr>
+    	  <tr>
+    	    <th align="center" valign="middle" scope="row">地板类型：</th>
+    	    <td height="30">　
+    	      <select name="floorBrick_rate" id="floorBrick_rate" class="inputinset">
+    	        <option value="1.08">实木地板</option>
+    	        <option selected="selected" value="1.05">复合地板</option>
+  	        </select>
+    	    </td>
+  	    </tr>
+    	  <tr>
+    	    <td height="30" colspan="2" align="left" valign="middle" scope="row">
+            <a href="javascript:calcuator('floorBrick');" class="jibtn1">提交</a>
+   	<i class="fontr">注意：该计算器提供的结果仅供参考</i></td>
+   	      </tr>
+    	  <tr>
+    	    <th align="center" valign="middle" scope="row">所需地板：</th>
+    	    <td height="30">　
+    	      <input id="floorBrick_result" name="floorBrick_result" size="8" />
+块</td>
+  	    </tr>
+        </tbody>
+  	  </table>
+     <a id="WallBrick" name="WallBrick"></a>
+   	<div class="jsqTit mT10">
+        墙砖计算器
+      </div>
+    	 <table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tbody>
+    	  <tr>
+    	    <th width="11%" align="center" valign="middle" scope="row">房间数据：</th>
+    	    <td height="30" valign="middle">　长 
+    	      
+    	      <input name="wallBrick_roomLong" size="8" id="wallBrick_roomLong" />
+    	       米 宽 
+<input name="wallBrick_roomWidth" size="8" id="wallBrick_roomWidth" />
+ 米 高
+<input name="wallBrick_roomHeight" size="8" id="wallBrick_roomHeight" />
+米</td>
+   	      </tr>
+    	  <tr>
+    	    <th height="85" align="center" valign="middle" scope="row">室内门窗：</th>
+    	    <td><p> 　房门：长
+                
+                <input id="wallBrick_doorWidth" name="wallBrick_doorWidth" size="8" />
+                 米 宽 
+                <input id="wallBrick_doorHeight" name="wallBrick_doorHeight" size="8" />
+                 毫米　数量： 
+                <input id="wallBrick_doorNum" name="wallBrick_doorNum" size="8" />
+                 毫米</p>
+    	      <p>　窗户：长
+                
+                <input id="wallBrick_windowWidth" name="wallBrick_windowWidth" size="8" />
+                 米 宽 
+    	        <input id="wallBrick_windowHeight" name="wallBrick_windowHeight" size="8" />
+    	         毫米　数量： 
+    	        <input id="wallBrick_windowNum" name="wallBrick_windowNum" size="8" />
+             毫米</p></td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">墙砖信息：</th>
+    	    <td height="30" valign="middle">　长 
+    	      
+    	      <input value="200" id="wallBrick_brickLong" name="wallBrick_brickLong" size="8" />
+    	       毫米 宽 
+              <input value="200" id="wallBrick_brickWidth" name="wallBrick_brickWidth" size="8" />
+               毫米  　
+<select name="wallBrick_bricktype" id="wallBrick_bricktype" onchange="javascript:autoInputWallBrick();">
+  <option selected="selected" value="0">200x200</option>
+  <option value="1">300x300</option>
+  <option value="2">400x400</option>
+  <option value="3">500x500</option>
+  <option value="4">600x600</option>
+  <option value="5">300x200</option>
+  <option value="6">250x330</option>
+  <option value="7">300x450</option>
+</select>
+ 毫米</td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">墙砖单价：</th>
+    	    <td height="30" valign="middle">　
+    	      
+    	      <input id="wallBrick_unitPrice" name="wallBrick_unitPrice" size="5" />
+    	       元/块</td>
+   	      </tr>
+    	  <tr>
+    	    <td height="30" colspan="2" align="left" valign="middle" scope="row"><a href="javascript:calcuator('wallBrick');" class="jibtn1">提交</a>
+   	        <i class="fontr">注意：该计算器提供的结果仅供参考</i></td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">所需地板：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="wallBrick_result" name="wallBrick_result" size="8" />
+块 </td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">费用：</th>
+    	    <td height="30" valign="middle">　
+    	      
+    	      <input id="wallBrick_totalPrice" name="wallBrick_totalPrice" size="8" />
+   	         元 </td>
+  	      </tr>
+        </tbody>
+  	  </table>
+       <a id="WallPaint" name="WallPaint"></a>
+      <div class="jsqTit mT10">
+        涂料计算器
+      </div>
+    	<table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tbody>
+    	  <tr>
+    	    <th width="11%" align="center" valign="middle" scope="row">房间数据：</th>
+    	    <td height="30" valign="middle">　长 
+    	      <input name="wallPaint_roomLong" size="8" id="wallPaint_roomLong" />
+    	     米 宽 
+   	          <input name="wallPaint_roomWidth" size="8" id="wallPaint_roomWidth" />
+    	         米
+                 高
+                 <input name="wallPaint_roomHeight" size="8" id="wallPaint_roomHeight" />
+                 米</td>
+   	      </tr>
+    	  <tr>
+    	    <th height="85" align="center" valign="middle" scope="row">室内门窗：</th>
+    	    <td><p> 　房门：长
+                
+                <input name="wallPaint_doorWidth2" size="8" id="wallPaint_doorWidth2" />
+                 米 宽 
+                <input name="wallPaint_doorHeight" size="8" id="wallPaint_doorHeight" />
+                 米　数量： 
+                <input name="wallPaint_doorNum" size="8" id="wallPaint_doorNum" />
+                 扇 </p>
+    	      <p>　窗户：长
+                
+                <input name="wallPaint_windowWidth" size="8" id="wallPaint_windowWidth" />
+                 米 宽 
+    	        <input name="wallPaint_windowHeight" size="8" id="wallPaint_windowHeight" />
+    	         米　数量： 
+    	        <input name="wallPaint_windowNum" size="8" id="wallPaint_windowNum" />
+             扇 </p></td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">覆盖率：</th>
+    	    <td height="30" valign="middle">　底漆： 
+    	      
+    	      <input name="wallPaint_rate" size="8" id="wallPaint_rate" />
+    	       平方米/升</td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">墙砖单价：</th>
+    	    <td height="30" valign="middle">　
+    	      
+    	      <input name="wallPaint_unitPrice" size="5" id="wallPaint_unitPrice" />
+    	       元/桶</td>
+   	      </tr>
+    	  <tr>
+    	    <td height="30" colspan="2" align="left" valign="middle" scope="row"><a href="javascript:calcuator('wallPaint');" class="jibtn1">提交</a>
+   	        <i class="fontr">注意：该计算器提供的结果仅供参考</i></td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">所需油漆量：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="wallPaint_result" name="wallPaint_result" size="8" />
+升 </td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">费用：</th>
+    	    <td height="30" valign="middle">　
+    	      
+    	      <input id="wallPaint_totalPrice" name="wallPaint_totalPrice" size="8" />
+   	         元 </td>
+  	      </tr>
+        </tbody>
+  	  </table>
+       <a id="WindowTamping" name="WindowTamping"></a>
+       <div class="jsqTit mT10">
+        填缝剂计算器
+      </div>
+    
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tbody>
+    	  <tr>
+    	    <th width="11%" height="28" align="center" valign="middle" scope="row">瓷砖信息：</th>
+    	    <td width="89%" height="30" valign="middle">　长 
+    	      <input id="windowTamping_brickLong" name="windowTamping_brickLong" size="8" />
+毫米 宽
+<input id="windowTamping_brickWidth" name="windowTamping_brickWidth" size="8" />
+毫米</td>
+   	      </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">缝的信息：</th>
+    	    <td height="30" valign="middle">　宽 
+    	      <input id="windowTamping_tampingWidth" name="windowTamping_tampingWidth" size="8" />
+毫米 高
+<input id="windowTamping_tampingHeight" name="windowTamping_tampingHeight" size="8" />
+毫米</td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">墙砖单价：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="windowTamping_unitPrice" name="windowTamping_unitPrice" size="5" />
+元/千克</td>
+   	      </tr>
+    	  <tr>
+    	    <td height="30" colspan="2" align="left" valign="middle" scope="row"><a href="javascript:calcuator('windowTamping');" class="jibtn1">提交</a>
+   	        <i class="fontr">注意：该计算器提供的结果仅供参考</i></td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">所需油漆量：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="windowTamping_result" name="windowTamping_result" size="8" />
+千克 </td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">费用：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="windowTamping_totalPrice" name="windowTamping_totalPrice" size="8" />
+元 </td>
+  	      </tr>
+        </tbody>
+  	  </table>
+ <a id="WindowCloth" name="WindowCloth"></a>
+        <div class="jsqTit mT10">
+        窗帘计算器
+      </div>
+    	
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tbody>
+    	  <tr>
+    	    <th width="11%" align="center" valign="middle" scope="row">窗户信息：</th>
+    	    <td width="89%" height="30" valign="middle">　宽 
+    	      <input id="windowCloth_windowWidth" name="windowCloth_windowWidth" size="8" />
+米  高
+<input id="windowCloth_windowHeight" name="windowCloth_windowHeight" size="8" />
+    	        米</td>
+   	      </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">布料宽度：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="windowCloth_clothWidth" name="windowCloth_clothWidth" value="1.5" size="8" />
+　平方米/卷（默认值1.5）</td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">布料单价：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="windowCloth_unitPrice" name="windowCloth_unitPrice" size="5" />
+元/米</td>
+   	      </tr>
+    	  <tr>
+    	    <td height="30" colspan="2" align="left" valign="middle" scope="row"><a href="javascript:calcuator('windowCloth');" class="jibtn1">提交</a>
+   	        <i class="fontr">注意：该计算器提供的结果仅供参考</i></td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">所需布料：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="windowCloth_result" name="windowCloth_result" size="8" />
+米 </td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">费用：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="windowCloth_totalPrice" name="windowCloth_totalPrice" size="8" />
+              
+元 </td>
+  	      </tr>
+        </tbody>
+  	  </table>
+ <a id="WallPaper" name="WallPaper"></a>
+        <div class="jsqTit mT10">
+        墙纸计算器
+      </div>
+    	
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tbody>
+    	  <tr>
+    	    <th width="11%" align="center" valign="middle" scope="row">房间数据：</th>
+    	    <td width="89%" height="30" valign="middle">　长 
+    	      <input id="wallPaper_roomLong" name="wallPaper_roomLong" size="8" />
+米 宽
+<input id="wallPaper_roomWidth" name="wallPaper_roomWidth" size="8" />
+米　高
+<input id="wallPaper_roomHeight" name="wallPaper_roomHeight" size="8" />
+米</td>
+   	      </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">每卷米数：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="wallPaper_perMeter" name="wallPaper_perMeter" value="5.2" size="8" />
+　平方米/卷（默认值5.2）</td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">壁纸单价：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="wallPaper_unitPrice" name="wallPaper_unitPrice" size="5" />
+元/米</td>
+   	      </tr>
+    	  <tr>
+    	    <td height="30" colspan="2" align="left" valign="middle" scope="row"><a href="javascript:calcuator('wallPaper');" class="jibtn1">提交</a>
+   	        <i class="fontr">注意：该计算器提供的结果仅供参考</i></td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">所需墙纸：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="wallPaper_result" name="wallPaper_result" size="8" />
+米 </td>
+  	    </tr>
+    	  <tr>
+    	    <th height="27" align="center" valign="middle" scope="row">费用：</th>
+    	    <td height="30" valign="middle">　
+    	      <input id="wallPaper_totalPrice" name="wallPaper_totalPrice" size="8" />
+元 </td>
+  	      </tr>
+        </tbody>
+  	  </table>
+    </div>
+
+</div>
+
+<!--内容结束-->
+	{tpl$jz_foot}
+</body>
+</html>

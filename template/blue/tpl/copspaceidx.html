@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if $cmane}{cmane}{else}经纪公司{/if}-{$hostname}</title>
+<meta content="{cmane}" name="keywords">
+<meta content="{cmane}{if $caddress},公司地址是{caddress}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$headinner}
+</head>
+<body>
+{tpl$comtop}
+<script type="text/javascript">
+  $('#spaceid_0').addClass('cur');
+</script>
+<div class="blank10"></div>
+<div class="wrap">
+  <!-- 楼盘检索 -->
+    <div class="lp-janshuo">
+  <div class="blank10"></div>
+  <!-- 检索 -->
+  <div class="js-list">
+        <dl class="list-1">
+          <dt class="l fw6">户型：</dt>
+          <dd>
+            <a class="act" href="#">不限</a>
+                        <a href="#">一室</a>
+                        <a href="#">二室</a>
+                        <a href="#">三室</a>
+                        <a href="#">四室</a>
+                        <a href="#">五室</a>
+                        <a href="#">五室以上</a>
+                         </dd>
+        </dl>
+        <dl class="list-17">
+          <dt class="l fw6">总价：</dt>
+          <dd>
+            <a class="act" href="#">不限</a>
+                        <a href="#">5000以下</a>
+                        <a href="#">5000-7000</a>
+                        <a href="#">7000-10000</a>
+                        <a href="#">10000-15000</a>
+                        <a href="#">15000以上</a>
+          </dd>
+        </dl>
+        <dl class="list-12">
+          <dt class="l fw6">面积：</dt>
+          <dd>
+            <a class="act" href="#">不限</a>
+                        <a href="#">50平以下</a>
+                        <a href="#">50-70平米</a>
+                        <a href="#">70-90</a>
+                        <a href="#">90-130</a>
+                        <a href="#">130-150</a>
+                        <a href="#">150-200</a>
+                        <a href="#">200-300</a>
+                        <a href="#">300平以上</a>
+          </dd>
+
+        </dl>
+<div class="blank5"></div>
+  </div>
+  <!-- 当前条件 -->
+   <div class="morefjj clearfix">
+<input type="text" onfocus="focusAction('addressSec');" onblur="blurAction('addressSec');" placeholder="请输入小区名或地址" name="addressSec" id="addressSec" class="in3 vm w_c_4 l">
+<input type="hidden" alue="" name="floorId" id="floorId">
+<input type="hidden" value="" name="oldFloorId" id="oldFloorId">
+<input type="hidden" value="" name="oldFloor" id="oldFloor">
+<input type="hidden" value="" name="agencyId" id="agencyId">
+<input type="submit" value=" " id="fr2submit" name="fr2submit" class="vm b2">
+<input type="submit" value=" " id="some_name" name="some_name" class="vm b2 b3">
+   </div>
+     </div>
+     <div class="blank10"></div>
+    <!-- 左栏开始 -->
+{tpl$comleft}
+    <!-- 左栏结束 -->
+    <!-- 右栏开始 -->
+<!-- 店铺热推二手房 标题-->
+<div class="inMain">
+    <div class="inMain_tab">
+       <span>二手房</span>
+    </div>
+<div class="moreSelect">
+    <div class="l pl5">共<em class="fwb w_c_1">{vesfys}</em>套符合要求的房子</div>
+        <span class="r">
+                    <i class="act def"><a href="#">默认</a></i>
+                    <i class="act bldown"><a rel="nofollow" href="#">面积</a></i>
+                    <i class=""><a rel="nofollow" href="#">总价</a></i>
+                    <i class=""><a rel="nofollow" href="#">单价</a></i>
+        </span>
+</div>
+
+<!-- 列表内容 -->
+            <div class="esfylist clearfix">
+                <div class="pic">
+                    <a title="" href="#" target="_blank"><img alt="" width="120" height="90" data-original="" src="pic/1.jpg" />
+                    </a>
+                </div>
+                <div class="info">
+                    <h2><a href="#" target="_blank">高租约业主着急用钱急售 低市场价格400</a></h2>
+                    <em>
+                        <span class="c0"><a target="_blank" href="#">[东莞]中桥大厦</a></span>
+                        顺义区天竺镇丽苑街
+                    </em>
+                    <em> <span>普通住宅</span>|<span class="w_c_1">3室2厅2卫</span>|<span>5/16层</span>|<span>毛坯</span>|<span>朝南</span>
+                    </em>
+                    <em>李小姐(经纪人)
+                    <img src="http://192.168.1.101/house/userfiles/notdel/ico_10.gif" alt="">
+                    <span>48个月前更新</span>
+                    </em>
+                </div>
+                <div class="info2">
+                    <em class="fz16 fwb">1150m&sup2;</em>
+                </div>
+                <div class="info3 arial">
+                    <em class="w_c_1"><i class="fz22">1600</i>万</em>
+                    <em class="fz14">约1150元/m&sup2;</em>
+                </div>
+
+            </div>
+            <div class="esfylist clearfix">
+                <div class="pic">
+                    <a title="" href="#" target="_blank"><img alt="" width="120" height="90" data-original="" src="pic/1.jpg" />
+                    </a>
+                </div>
+                <div class="info">
+                    <h2><a href="#" target="_blank">高租约业主着急用钱急售 低市场价格400</a></h2>
+                    <em>
+                        <span class="c0"><a target="_blank" href="#">[东莞]中桥大厦</a></span>
+                        顺义区天竺镇丽苑街
+                    </em>
+                    <em> <span>普通住宅</span>|<span class="w_c_1">3室2厅2卫</span>|<span>5/16层</span>|<span>毛坯</span>|<span>朝南</span>
+                    </em>
+                    <em>李小姐(经纪人)
+                    <img src="http://192.168.1.101/house/userfiles/notdel/ico_10.gif" alt="">
+                    <span>48个月前更新</span>
+                    </em>
+                </div>
+                <div class="info2">
+                    <em class="fz16 fwb">1150m&sup2;</em>
+                </div>
+                <div class="info3">
+                    <em class="w_c_1 arial"><i class="fz22">1600</i>万</em>
+                    <em class="fz14">约1150元/m&sup2;</em>
+                </div>
+
+            </div>
+            <div class="esfylist clearfix">
+                <div class="pic">
+                    <a title="" href="#" target="_blank"><img alt="" width="120" height="90" data-original="" src="pic/1.jpg" />
+                    </a>
+                </div>
+                <div class="info">
+                    <h2><a href="#" target="_blank">高租约业主着急用钱急售 低市场价格400</a></h2>
+                    <em>
+                        <span class="c0"><a target="_blank" href="#">[东莞]中桥大厦</a></span>
+                        顺义区天竺镇丽苑街
+                    </em>
+                    <em> <span>普通住宅</span>|<span class="w_c_1">3室2厅2卫</span>|<span>5/16层</span>|<span>毛坯</span>|<span>朝南</span>
+                    </em>
+                    <em>李小姐(经纪人)
+                    <img src="http://192.168.1.101/house/userfiles/notdel/ico_10.gif" alt="">
+                    <span>48个月前更新</span>
+                    </em>
+                </div>
+                <div class="info2">
+                    <em class="fz16 fwb">1150m&sup2;</em>
+                </div>
+                <div class="info3 arial">
+                    <em class="w_c_1"><i class="fz22">1600</i>万</em>
+                    <em class="fz14">约1150元/m&sup2;</em>
+                </div>
+                </div>
+            <div class="blank10"></div>
+            <div class="p_bar"><a class="p_curpage">1</a><a target="_self" class="p_num" href="#">2</a><a target="_self" class="p_num" href="#">3</a><a target="_self" class="p_num" href="#">4</a><a target="_self" class="p_redirect" href="#">&gt;&gt;</a><a target="_self" class="p_redirect" href="#">&gt;|</a></div>
+</div>
+{tpl$foot}
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</body>
+</html>

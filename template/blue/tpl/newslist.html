@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+{c$cnode [cname=激活栏目关键词/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<title>{listtitle}-{$hostname}</title>
+<meta name="keywords" Content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/qxzxy.css?{$user_version}"/>
+<?php $pagetype = 'news'; ?>
+</head>
+<body>
+{tpl$head}
+<!-- end begin -->
+<div class="wrap clearfix">
+  <!--当前位置+搜索-->
+    {tpl$tpl_pososo}
+    <div class="blank20"></div>
+    {if $caid == 1 && empty($searchword)}
+    <div class="wordbanner">
+      <!-- 新闻 -->
+      <div class="word">
+        <ul>
+           {c$pushs [tclass=pushs/] [paid=push_61/] [limits=14/] [ttl=600/]}
+           {if $v['sn_row']%7 == 1}
+           {if $v['sn_row'] != 1}
+            </ul>
+                <div class="blank25"></div>
+                <div class="line blank0"></div>
+                <div class="blank25"></div>
+            <ul>
+            {/if}
+                <li class="dt"><a href="{url}" target="_blank">{subject}</a></li>
+            {else}
+                <li><a href="{url} " target="_blank">{subject}</a></li>
+            {/if}
+            {/c$pushs}
+        </ul>
+      </div>
+      <!-- /新闻 -->
+      <!-- banner切换 -->
+      <div id="focus2" class="focus jqDuang" data-obj="li" data-prevbtn=".focusBtnL" data-nextbtn=".focusBtnR" data-effect="left" data-cell=".foucsTit" data-actclass="on">
+        <div class="">
+            <ul style="width: 4760px; margin-left: 0;" class="focusImgs">
+               {c$pushs [tclass=pushs/] [paid=push_114/] [limits=10/] [ttl=600/]}
+                <li class="on">
+                  <a href="{url}"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/]} src="{url}"  height="380" width="680" {/c$image}/></a>
+                  <h3 class="tit yh f18"><a href="{url}" target="_blank">{subject}</a></h3>
+                  <div class="bg"></div>
+                </li>
+                {/c$pushs}
+            </ul>
+        </div>
+        <div class="foucsTit"></div>
+
+        <!-- 编辑不需要修改 -->
+        <div class="focusBtnL"><span></span><img src="" alt="" height="56" width="100"></div>
+        <div class="focusBtnR"><span></span><img src="" alt="" height="56" width="100"></div>
+        <!-- 编辑不需要修改 -->
+      </div>
+      <!-- /banner切换 -->
+    </div>
+    <div class="blank20"></div>
+    {/if}
+    <!-- body -->
+    <!-- banner图 -->
+    <!--ad_1200_60--><div id="_08_adv_fcatalog1111"></div>
+    <div class="blank10"></div>
+    <!-- /banner图 -->
+    <div id="area2_body" class="clearfix">
+        <!-- 新闻中心 -->
+        <div class="w890 l">
+          <div class="xwzx">
+            {if @$searchword}
+                   以下是关于“{$searchword}”的信息
+            {else}
+            <div class="xwzxl">
+              <h3>{if $caid == 1 && empty($searchword)}资讯列表{else}{title}{/if}</h3>
+            </div>
+            <div class="xwzxr" onmouseover="this.className='xwzxr xwzxr-hover'" onmouseout="this.className='xwzxr'"> <span class="xwzxrnav">新闻中心</span>
+              <div class="ac_menu">
+                <div class="ac_menu_pop">
+                    {c$catalogs [tclass=catalogs/] [limits=10/] [listby=ca/] [casource=3/] [cainherit=2/] [wherestr=pid='1' and caid!=607/] [ttl=300/]}
+                  <dl class="clearfix {if $v['sn_row']%2 == 0}even{/if}">
+                    <dt><a href="{indexurl}">{title}</a>:</dt>
+                    <dd>
+                        {c$catalogs2 [tclass=catalogs/] [listby=ca/] [val=a/] [limits=100/] [casource=3/] [wherestr=pid=$v[caid]/]}<a href="{indexurl}">{title}</a>{/c$catalogs2}
+                    </dd>
+                  </dl>
+                    {/c$catalogs}
+                    {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=539/] [ttl=300/]}
+                    <dl class="clearfix {if $v['sn_row']%2 == 0}even{/if}">
+                        <dt><a href="{indexurl}">{title}</a>:</dt>
+                        <dd>
+                            {c$catalogs2 [tclass=catalogs/] [listby=ca/] [val=a/] [casource=3/] [wherestr=pid=$v[caid]/]}<a href="{indexurl}">{title}</a>{/c$catalogs2}
+                        </dd>
+                      </dl>
+                    {/c$catalogs}
+                </div>
+              </div>
+            </div>
+                 {/if}
+          </div>
+          {c$archives [tclass=archives/] [limits=10/] [chsource=2/] [chids=1/] [caidson=1/] [casource=2/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [ttl=600/] [mp=1/] [length=6/] }
+          <div class="xwzxlist clearfix">
+          <span class="listl"><a href="{arcurl}" target="_blank"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=180/] [maxheight=120/] [thumb=1/]} src="{url_s}"  height="120" width="180" {/c$image}/></a></span>
+          <h3><a href="{arcurl}" target="_blank">{subject}</a></h3>
+          <p>{c$abstract306 [tclass=text/] [tname=abstract/] [trim=188/] [ellip=.../] [badword=1/]}{/c$abstract306} <a href="{arcurl}" target="_blank">阅读原文</a></p>
+          </div>
+          {/c$archives}
+          {if $mpacount>0}
+            <div class='ptb20'>
+            {$mpnav}
+            </div>
+            {else}
+             <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}的相关信息</div>
+            {/if}
+        </div>
+        <!-- /新闻中心 -->
+        <!--区块标识：资讯右侧栏-->
+        {tpl$tpl_zxside}
+        <!--/区块标识：资讯右侧栏-->
+  </div>
+</div>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="{$tplurl}js/jqduang.js?{$user_version}"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#focus2').length && $('#focus2').on('afterFun', function () {
+            var _jqDuang = $(this).data('jqDuang');
+            var pages = _jqDuang.pages;
+            var index = _jqDuang.index;
+            var $obj = _jqDuang.$obj;
+            $(this).find('.focusBtnL img')[0].src = $obj.eq((index-1 + pages) % pages).find('img')[0].src;
+            $(this).find('.focusBtnR img')[0].src = $obj.eq((index + 1) % pages).find('img')[0].src;
+        })
+        .trigger('afterFun')
+        .on('mouseenter mouseleave', '.focusBtnL', function () {
+            $(this).toggleClass('focusBtnLHover')
+        })
+        .on('mouseenter mouseleave', '.focusBtnR', function () {
+            $(this).toggleClass('focusBtnRHover')
+        })
+    });
+</script>
+{tpl$foot}
+</body>
+</html>

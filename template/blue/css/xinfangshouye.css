@@ -1,0 +1,673 @@
+/**
+ * @name xinfangshouye.css
+ * @author ahuing
+ * @link 08cms.com
+ * @date 2015-11-24 09:50:11
+ */
+
+/*search*/
+.searchbg {
+  padding: 15px 0;
+  background-color: #f4f4f4;
+}
+
+.search {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.searcht {
+  height: 38px;
+  padding: 13px 0;
+}
+
+.searchtl {
+  float: left;
+  width: 550px;
+  margin-right: 41px;
+}
+
+.searchtl input {
+  float: left;
+}
+
+.searchtl .sotxt {
+  line-height: 36px;
+  width: 448px;
+  height: 36px;
+  padding-left: 10px;
+  color: #666;
+  border: 1px solid #d2d2d2;
+}
+
+.searchtl .sobtn {
+  font-family: Microsoft Yahei;
+  font-size: 16px;
+  font-weight: bolder;
+  width: 90px;
+  height: 38px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  color: #fff;
+  border: none;
+  background-color: #df0303;
+}
+
+.searchtr,
+.searchbc {
+  float: left;
+}
+
+.searchtr li {
+  font-size: 14px;
+  line-height: 38px;
+  float: left;
+  padding: 0 11px;
+}
+
+.searchtr li i {
+  color: #c00;
+}
+
+.searchb {
+  height: 40px;
+}
+
+.searchbl {
+  position: relative;
+  z-index: 999;
+  float: left;
+  width: 742px;
+  height: 40px;
+  margin-right: 24px;
+  _margin-right: 18px;
+}
+
+.searchbl > ul > li {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 38px;
+  margin-right: 6px;
+  background-color: #fff;
+}
+
+.searchbl li a.searchbl1 {
+  font-size: 14px;
+  line-height: 38px;
+  display: block;
+  height: 38px;
+  text-decoration: none;
+  text-indent: 10px;
+  vertical-align: top;
+  color: #666;
+  border: 1px solid #d2d2d2;
+}
+
+.searchbl li i {
+  position: absolute;
+  bottom: 0;
+  left: 70px;
+}
+
+.searchbl .searchbl2 {
+  position: absolute;
+  left: 0;
+  background-color: #fff;
+}
+
+.searchbl .searchbl3 {
+  display: none;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.searchbl li.hover .searchbl3 {
+  display: block;
+}
+
+.searchbl3 ul {
+  width: 100%;
+}
+
+.searchbl3 li {
+  line-height: 29px;
+  height: 29px;
+  margin-top: -1px;
+  color: #666;
+  vertical-align: top;
+  border: 1px solid #e5e5e5;
+}
+
+.searchbl3 li a {
+  font-size: 12px;
+  display: block;
+  padding-left: 10px;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.searchbl3 li a:hover {
+  text-decoration: none;
+  background: #f4f4f4;
+}
+
+.searchbc {
+  float: left;
+  overflow: hidden;
+  width: 350px;
+  height: 38px;
+}
+
+.searchbr {
+  float: right;
+}
+
+.searchbr a {
+  line-height: 38px;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  margin-left: -1px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.searchbr i {
+  font-size: 24px;
+  color: #999;
+}
+
+.searchbr a:hover,
+.searchbr a.act {
+  background-color: #fff;
+}
+
+.searchbr a:hover i,
+.searchbr a.act i {
+  color: #e43;
+}
+
+/*searchend*/
+/*focus*/
+.focus {
+  height: 476px;
+}
+
+.focusl {
+  float: left;
+  width: 888px;
+}
+
+.big {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  width: 665px;
+  height: 476px;
+}
+
+.big li {
+  position: relative;
+}
+
+.big .text {
+  position: absolute;
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  padding: 15px 25px;
+}
+
+.big .text i {
+  font-size: 18px;
+}
+
+.big .bg {
+  line-height: 100px;
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: rgba(51, 51, 51, 0.6);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');
+}
+
+.big a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.big p {
+  line-height: 24px;
+  overflow: hidden;
+  height: 24px;
+}
+
+.big .anniu {
+  font-family: sumsun;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 100px;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 0;
+  overflow: hidden;
+  width: 40px;
+  height: 100px;
+  margin-top: -50px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');
+}
+
+.big .next {
+  right: 0;
+  left: auto;
+}
+
+.big .yuan {
+  position: absolute;
+  z-index: 200;
+  bottom: 15px;
+  right: 10px;
+  color: #fff;
+}
+
+.big .yuan i {
+  line-height: 100;
+  float: left;
+  overflow: hidden;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.big .yuan i.act {
+  background-color: #c00;
+}
+
+.small {
+  position: relative;
+  float: right;
+  overflow: hidden;
+  width: 220px;
+  height: 158px;
+  margin-bottom: 1px;
+}
+
+.small img {
+  transition: transform .3s;
+  transition: -webkit-transform .3s;
+}
+
+.small:hover img {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.small .text {
+  position: absolute;
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.small .text a {
+  padding: 7px 5px;
+}
+
+.small .bg {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  background: rgba(51, 51, 51, 0.6);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');
+}
+
+.small a {
+  font-size: 12px;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.small p {
+  line-height: 22px;
+  overflow: hidden;
+  height: 22px;
+}
+
+.focusr {
+  float: right;
+  width: 298px;
+  height: 474px;
+  border: 1px solid #e5e5e5;
+}
+
+.focusrt {
+  padding: 25px 12px 17px 12px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.focusrt li {
+  line-height: 27px;
+  overflow: hidden;
+  height: 27px;
+}
+
+.focusrt .title {
+  font-size: 20px;
+  font-weight: bolder;
+  height: 27px;
+  margin-bottom: 8px;
+  color: #c00;
+}
+
+.focusrt .title a {
+  color: #c00;
+}
+
+.focusrb .focusrbt {
+  padding-top: 27px;
+  text-align: center;
+  color: #666;
+}
+
+/*focus end*/
+/*12345loupan*/
+.gyt {
+  height: 63px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.gytl {
+  float: left;
+  width: 300px;
+  height: 63px;
+  background: url(../images/lcengbg.gif) no-repeat;
+}
+
+.gytl span {
+  font-size: 24px;
+  line-height: 63px;
+  float: left;
+  padding-right: 22px;
+}
+
+.gytl span.one {
+  color: #099;
+}
+
+.gytl h3 {
+  font-size: 26px;
+  line-height: 63px;
+  float: left;
+  color: #fff;
+}
+
+.gytc {
+  float: left;
+  margin-left: 13px;
+}
+
+.gytc li {
+  font-size: 18px;
+  line-height: 63px;
+  float: left;
+  height: 63px;
+  text-align: center;
+}
+
+.gytc li a {
+  display: block;
+  width: 68px;
+  text-decoration: none;
+}
+
+.gytc li a:hover {
+  transition: none;
+  background: url(../images/lphover.png) no-repeat center bottom;
+}
+
+.gytr {
+  font-size: 14px;
+  line-height: 63px;
+  float: right;
+}
+
+.gytr a {
+  color: #999;
+}
+
+.gyb {
+  margin-right: -50px;
+}
+
+.gyb li {
+  float: left;
+  width: 220px;
+  height: 257px;
+  margin-top: 25px;
+  margin-right: 24px;
+}
+
+.gyb li a {
+  display: block;
+  overflow: hidden;
+}
+
+.gyb li img {
+  transition: transform .3s;
+}
+
+.gyb li .bg47 {
+  z-index: 1;
+  bottom: 125px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background-color: #474747;
+}
+
+.gyb li:hover img {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.gyb li:hover .bg47 {
+  background-color: #f60;
+}
+
+.bg47 a {
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.bg47 p {
+  line-height: 35px;
+  overflow: hidden;
+  height: 35px;
+  padding: 0 10px;
+}
+
+.gyb li .intro {
+  font-size: 12px;
+  padding: 4px 5px;
+  border: 1px solid #eee;
+}
+
+.gyb li:hover .intro {
+  border: 1px solid #f60;
+}
+
+.intro p {
+  line-height: 28px;
+  overflow: hidden;
+  height: 28px;
+}
+
+.intro p .oh,
+.intro p .oh1 {
+  overflow: hidden;
+  height: 28px;
+}
+
+.intro p .oh1 {
+  width: 140px;
+}
+
+.intro p i {
+  font-size: 14px;
+  color: #f40;
+}
+
+.intro p em {
+  color: #e43;
+}
+
+.gyt .tg {
+  background-position: 0 -68px;
+}
+
+.gyt .rm {
+  background-position: 0 -136px;
+}
+
+.gyt .ts {
+  background-position: 0 -204px;
+}
+
+.gyt .sydc {
+  background-position: 0 -272px;
+}
+
+.gyt .gytl .two {
+  color: #309b03;
+}
+
+.gyt .gytl .three {
+  color: #c00;
+}
+
+.gyt .gytl .four {
+  color: #c0f;
+}
+
+.gyt .gytl .five {
+  color: #0bf;
+}
+
+/*12345loupanend*/
+/*tool*/
+.gj {
+  height: 115px;
+}
+
+.gj dl dt {
+  position: relative;
+  padding-right: 23px;
+  padding-left: 24px;
+}
+
+.gj dl dd {
+  padding: 0 28px;
+}
+
+.gj dl a {
+  display: block;
+  width: 90px;
+  height: 90px;
+  transition: all .3s;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+}
+
+.gj dt,
+.gj dd {
+  font-size: 13px;
+  float: left;
+  text-align: center;
+}
+
+.gj dt i {
+  position: absolute;
+  bottom: 79px;
+  left: 25px;
+  width: 37px;
+  height: 38px;
+  background: url(../images/newtub.gif) no-repeat;
+}
+
+.gj dt a:hover {
+  background-color: #e43;
+  background-position: 0 -86px;
+}
+
+.gj dd a:hover {
+  border: 1px solid #4ec61b;
+  -webkit-box-shadow: 0 0 3px #4ec61b inset;
+  box-shadow: 0 0 3px #4ec61b inset;
+}
+
+.gj dt a {
+  background: url(../images/peizitb1.gif) no-repeat 0 17px;
+  background-color: #4ec61b;
+}
+
+.gj dd a {
+  background: url(../images/peizitb1.gif) no-repeat 0 -195px;
+}
+
+.gj .gjjdk {
+  background-position: 0 -267px;
+  _background-position: 0 -267px;
+}
+
+.gj .esjyys {
+  background-position: 0 -348px;
+}
+
+.gj .debjjs {
+  background-position: 0 -440px;
+}
+
+.gj .tqhk {
+  background-position: 0 -532px;
+}
+
+.gj .debxjs {
+  background-position: 0 -628px;
+}
+
+.gj .sfjsq {
+  background-position: 0 -713px;
+}
+
+.gj .jspc {
+  background-position: 0 -801px;
+}

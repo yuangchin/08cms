@@ -1,0 +1,13 @@
+<div class="svlmnav l mR15">
+        <i class="traico2"></i>
+        	<ul class="pL15 mT15">
+            	{c$ejlm [tclass=catalogs/] [val=v/] [limits=20/] [listby=ca/] [casource=4/] [orderstr=vieworder ASC/] [wherestr=pid='561'/] [ttl=900/]}
+                <li class="dlm {if $caid==$v['caid']}act{/if}"><a href="{indexurl}" target="_self">{title}</a><i></i></li>
+                {if $ks==$v['caid']}
+                {c$jhejlm [tclass=catalogs/] [val=f/] [limits=50/] [listby=ca/] [casource=2/] [orderstr=vieworder ASC/] [ttl=900/]}
+                   <li {if $caid==$f['caid']}class="act"{/if}>&middot;<a href="{indexurl}" target="_self">{title}</a><i></i></li>
+                {/c$jhejlm}
+                {/if}
+                {/c$ejlm}
+            </ul>
+        </div>

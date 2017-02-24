@@ -1,0 +1,15 @@
+<!-- 360用极速模式 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<link rel="shortcut icon" type="image/ico" href="{c$image [tclass=image/] [tname=$user_favicon/] [val=u/]}{url}{/c$image}"/>
+<script type="text/javascript">
+	var CMS_ABS = '{$cms_abs}'
+	, hostname  = '{$hostname}'
+	, tplurl    = '{$tplurl}'
+    , vcodes    = '{$cms_regcode}';
+	var originDomain = originDomain || document.domain;
+	document.domain = '{$cms_top}' || document.domain;
+</script>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/global.css?{$user_version}"/>
+<!-- 类型 index | newhouse | money | business | oldhouse | rent | news | special | mobile | tools -->
+<?php $pagetype = null; ?>

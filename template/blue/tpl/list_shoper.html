@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+<title>品牌商家-{$hostname}</title>
+{tpl$jz_headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/common_front.css?{$user_version}">
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/zzxgs.css?{$user_version}">
+</head><body>
+<!--header begin--> 
+{tpl$jz_head} 
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script> 
+<!--header end--> 
+<?php
+foreach(array('ccid31','orderby','ordermode','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+    'ntype' => 'm', 
+    'chid' => 12, 
+    'nodes' => array('ugid32'), //('ugid32','mcnid'), ,'ccid1'
+    //'orderbys' => array('mid','msclicks','grouptype16'),
+));
+$whrstr = cls_usql::where_str(array(
+	array('companynm',0,'like'), 
+    array('zycp','ccid31'),
+)); 
+?>
+<!-- 内容开始 -->
+<div class="area">
+  <div class="con1A"> 
+    <!-- 检索开始 -->
+    <div class="con1A fl">
+      <div class="con1A1 oh h5">
+        <div class="h5 w5 fl"><img src="{$tplurl}newimages/j1.gif"></div>
+        <div class="h5 w5 fr"><img src="{$tplurl}newimages/j2.gif"></div>
+      </div>
+      <div class="con1A3">
+        <div class="con1A31">
+          <form method="get" action="{$cms_abs}member/index.php">
+            <input type="hidden" name="ugid32" value="103" />
+            <input type="hidden" name="addno" value="1" />
+            <label><strong class="font14">找商家</strong></label>
+            <label>
+              <input value="" class="input txt1 clear-txt" placeholder="请输入关键字" name="companynm" id="searchShopName">
+            </label>
+            <label>
+              <input type="submit" value="搜索" class="searbtn1">
+            </label>
+          </form>
+        </div>
+        <span class="blank5"></span>
+        <div class="con1A32">
+          <div class="con1A32A fl bold white tc">商家分类</div>
+          <div class="con1A32B fl p_l10"> 
+            <a href="<?php echo cls_uso::extra_url("31"); ?>" class="{if empty($ccid31)}active{/if}">全部</a> 
+            {c$sjzycplb [cname=商家主营产品列表/] [tclass=catalogs/] [limits=20/] [listby=co31/] [cosource31=4/]} 
+            &nbsp; <a class="{if $v['ccid']==@$ccid31}active{/if}" href="<?php echo cls_uso::extra_url("ccid31","&ccid31=$v[ccid]"); ?>">{title}</a>
+            {/c$sjzycplb} 
+          </div>
+          <div class="blank0"></div>
+        </div>
+        <div class="cl"></div>
+      </div>
+      <div class="con1A2 oh h5">
+        <div class="h5 w5 fl"><img src="{$tplurl}newimages/j4.gif"></div>
+        <div class="h5 w5 fr"><img src="{$tplurl}newimages/j3.gif"></div>
+      </div>
+    </div>
+    <span class="blank10"></span>
+    <div class="title6">
+      <div class="title6_L">所有商家</div>
+      <div class="title6_r"></div>
+    </div>
+    <!-- 列表开始 -->
+    <div id="title6_1" class="title6_1"></div>
+    <div class="con3"> {c$jz_sjlb [cname=商家会员列表/] [tclass=members/] [val=vv/] [chsource=2/] [chids=12/] [wherestr=$whrstr/] [orderstr=m.grouptype16 DESC,m.grouptype32 DESC,m.lastvisit DESC/] [ttl=900/] [detail=1/] [mp=1/]} 
+      <!--商家列表--> 
+      <script type="text/javascript">
+        $('#title6_1').html('共有<strong class="red">{$mpacount}</strong>个商家')
+      </script> 
+      [row]
+      <div onMouseOut="this.style.backgroundColor=&quot;#fff&quot;" onMouseOver="this.style.backgroundColor=&quot;#FAFAFA&quot;" class="sj_list" >
+        <div class="sjA"> <a rel="nofollow" target="_blank" href="{mspacehome}"> <img  {c$pic180_55 [cname=pic180_55/] [tclass=image/] [tname=pic/] [maxwidth=180/] [maxheight=55/] [thumb=2/]}src="{url_s}" height="55" width="180"{/c$pic180_55}/>{if $vv['grouptype16name']}<i class="icon"></i>{/if}{if $vv['grouptype32']==104}<i class="icon2">VIP</i>{/if}</a> </div>
+        <div class="sjB">
+          <div class="sjB1">
+            <div class="sjB1A"><a class="redlink" target="_blank" href="{mspacehome}">{companynm}</a></div>
+            <div class="sjB1B">联系人：<span class="red1"><strong>{if $vv['conactor']}{$vv['conactor']}{else}暂无{/if}</strong></span> 人气：<span class="red1"><strong>{msclicks}</strong></span> 次</div>
+          </div>
+          <div class="con3B2 gray_2f">联系电话：{if $vv['lxdh']}{$vv['lxdh']}{else}暂无{/if}<br>
+            地址：{if $vv['dizhi']}{$vv['dizhi']}{else}暂无{/if}</div>
+        </div>
+      </div>
+      [/row]
+      <div class="ptb10"> {$mpnav} </div>
+      {/c$jz_sjlb}
+      
+      {if $mpacount<=0}
+      <div class="noinfo">很抱歉！暂无{if @$companynm}<span>"{companynm}"</span>的{/if}信息</div>
+      {/if}
+      <div class="blank0"></div>
+    </div>
+  </div>
+  <div class="con1B"> 
+    <!--装修公司207_172-->
+    <div id="_08_adv_fcatalog109"></div>
+    <span class="blank10"></span>
+    <div class="title4">
+      <div class="title4_L"></div>
+      <div class="title4_M">最新留言</div>
+      <div class="title4_R"></div>
+      <div class="title4_R1"></div>
+    </div>
+    <div class="conB31 P_T0"> {c$brandzxly [cname=品牌商家列表页的最新留言/] [tclass=commus/] [val=m/] [limits=5/] [cuid=34/]}
+      <?
+$u = new cls_userbase;
+?>
+      [row]
+      <?
+$u->activeuser($m['tomid'],1);
+?>
+      <div class="conB21"><span class="redlink">{mname}</span> 留言：<strong><a target="_blank" href="<?=$u->info['mspacehome']?>">
+        <?=cls_string::CutStr($u->info['companynm'],16)?>
+        </a></strong></div>
+      <div class="conB22"></div>
+      <div class="conB23">{c$texttop [cname=处理多行文本/] [tclass=text/] [tname=content/] [nl2br=1/]}{/c$texttop}</div>
+      [/row]
+      {/c$brandzxly} </div>
+  </div>
+</div>
+{tpl$jz_foot} 
+<!--footer end-->
+</body>
+</html>

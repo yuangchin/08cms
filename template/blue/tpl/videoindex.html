@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}-{$hostname}</title>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+</head>
+<body>
+ {tpl$tpl_vid_head}
+ {if empty($searchword)}
+<div class="wrap">
+    <!--视频导航+搜索+面包屑-->
+	<div class="imgbox">
+        <!--推送位 视频幻灯_1-->
+            <div id="bigimg">
+            <ul>
+                {c$pushs [tclass=pushs/] [paid=push_118/] [limits=5/] [ttl=1200/]}<li><a target="_blank" href="{url}"><img {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=308/] [maxheight=232/] [thumb=1/] }src="{url_s}" width="308" height="232"{/c$thumb} alt="{subject}" data-url="{url}" /></a> </li>{/c$pushs}
+            </ul>
+            </div>
+            <div class="num" id="num">
+            {c$pushs [tclass=pushs/] [paid=push_118/] [limits=5/] [ttl=1200/]}<i>{sn_row}</i>{/c$pushs}
+            </div>
+    </div>
+    <!---推送位 视频头条_1-->
+    <div class="area30_3">
+        <ul class="splmlist clearfix">
+            {c$vdtt [tclass=pushs/] [paid=push_95/] [limits=8/] [ttl=1200/]}<li><a href="{url}" target="_blank"><img {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=100/] [thumb=2/]}src="{url_s}" width="{width}" height="{height}"{/c$thumb} alt="{subject}" /><em></em></a><span><a target="_blank" href="{url}" title="{subject}">{c$subject20 [cname=subject20/] [tclass=text/] [tname=subject/] [trim=20/]}{/c$subject20}</a></span>
+            </li>{/c$vdtt}
+        </ul>
+    </div>
+	<!--推送位 推荐视频_1-->
+    {c$antjvd [tclass=catalogs/] [listby=ca/] [casource=3/] [wherestr=pid=30 AND level=1/] [ttl=900/]}
+    {c$almfvd [tclass=pushs/] [paid=push_96/] [val=f/] [limits=6/] [classid1=$v[caid]/]}
+    <div class="blank10"></div>
+    <div class="t_m5">
+        <div class="menu_t">{title}</div>
+        <div class="menu_r"><a target="_blank" href="{indexurl}">更多&gt;&gt;</a></div>
+    </div>
+    <div class="area13_lm clearfix">
+    <ul class="splmlist">
+     [row]
+       <li><a href="{url}" target="_blank"><img {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=100/] [thumb=2/]}src="{url_s}" width="{width}" height="{height}"{/c$thumb} alt="{subject}" /><em></em></a><span><a target="_blank" href="{url}" title="{subject}">{c$subject20 [cname=subject20/] [tclass=text/] [tname=subject/] [trim=20/]}{/c$subject20}</a></span>
+        </li>
+    [/row]
+    </ul>
+    </div>
+    {/c$almfvd}
+    {/c$antjvd}
+</div>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="{$tplurl}js/jq.imgchange.js"></script>
+<script type="text/javascript">
+         $('#bigimg li').imgChange({thumbObj:'#num i',showTxt:1})
+</script>
+{else}
+<div class="wrap"> 
+     <!--视频导航+搜索+面包屑-->
+    {c$archives [cname=视频列表/] [tclass=archives/] [limits=30/] [chsource=2/] [chids=12/] [caidson=1/] [casource=2/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [ttl=600/] [mp=1/]}
+    <div class="t_m5">
+        {if @$searchword}<i>搜索关键字<span>"{$searchword}"</span>，共搜索到<span>{mpacount}</span>个视频</i> {else}<i>共有<span>{mpacount}</span>个视频</i>{/if}
+        <div class="menu_t">{c$jhvdlm [tclass=cnode/] [val=f/] [listby=ca/] [casource=active/]}{title}{/c$jhvdlm} </div>
+    </div>
+    <div class="area13_lm">
+    <ul class="splmlist clearfix">
+    [row]
+       <li><a href="{arcurl}" target="_blank"><img {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=100/] [thumb=2/]}src="{url_s}" width="{width}" height="{height}"{/c$thumb} alt="{subject}" /><em></em></a><span><a target="_blank" href="{arcurl}" title="{subject}">{c$subject20 [cname=subject20/] [tclass=text/] [tname=subject/] [trim=20/]}{/c$subject20}</a></span>
+        </li>
+    [/row]
+    </ul>
+    </div>
+   {/c$archives}
+    <div class="blank8"></div>
+    {if $mpacount>0}
+    {$mpnav}
+    {else}
+    <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+    <div class="blank8"></div>
+    {/if}
+</div>
+{/if}
+{tpl$foot}
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?php $hidenav=1;$ismem=1;?>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/common_front.css?{$user_version}">
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/jzgs_index.css?{$user_version}">
+{tpl$jz_head}
+	{if $banner}
+<div class="wrap"><!--header end--> 
+	<!--家装图片广告开始-->
+	<div class="area companyThemeBanner">
+	<img {c$image [tclass=image/] [tname=banner/] [val=p/]} width="1000" height="135" src="{url}"{/c$image}/>
+	</div><!--家装图片广告结束--> 
+	<span class="blank10"></span> 
+</div>
+	{/if}
+<!-- bread -->
+<div class="area green line30"><a href="{$cms_abs}">首页</a> &gt; <a href="{c$jz_url [cname=家装链接/] [tclass=cnode/] [listby=ca/] [casource=509/]}{indexurl}{/c$jz_url}">家装 </a> &gt; <a href="{c$jz_securl [cname=二级类目链接/] [tclass=mcnode/] [cnsource=ugid31/] [cnid=101/]}{mcnurl1}{/c$jz_securl}">装修公司</a> &gt; <span class="red2 f24 bold">
+{c$jz_m_comname [cname=装修公司名称/] [tclass=member/] [val=v/] [ttl=900/] [detail=1/]}{companynm}{/c$jz_m_comname}
+</span></div>
+<!-- /bread -->
+<!-- nav -->
+<span class="blank10"></span> 
+<div class="wrap">
+<div class="menu">
+	<em class="r scinfo" onclick="return publicCollect('{$mid}','m');"><i class="ico08">&#xf004;</i>店铺收藏</em>
+  <ul>
+    <li{if $mid&&$mcaid==""} class="menu_bg1"{/if}><a href="{mspacehome}">首页</a></li>
+    {c$m_nav [cname=装修空间列表/] [tclass=mcatalogs/] [listby=0/] [casource=1/] [caids=6,7,8,10,11,12,13,14,5/]}<li {if $v['mcaid']==$mcaid }class="menu_bg1 bg1"{/if}><a href="{indexurl}" >{title}</a></li>{/c$m_nav}
+    {if $grouptype31 == 102}<li><a href="{$cms_abs}info.php?fid=201{if !empty($mid)}&mid={$mid}{/if}" target="_blank">我要装修</a></li>{/if}
+  </ul>
+ </div>
+</div>
+<!-- /nav -->
+<span class="blank10"></span> 

@@ -1,0 +1,22 @@
+<?php $pagetype = 'tuku'; ?>
+ {tpl$head}
+ <div class="wrap">
+     <!--图库搜索--> 
+    <div class="bread clearfix">
+        <div class="nav-tk">
+             <ul>
+                 <li>
+                     <a class="{if $caid == 600}act{/if}" href="{c$tkindurl [tclass=cnode/] [listby=ca/] [casource=600/]}{indexurl}{/c$tkindurl}" target="_self">图库频道</a>
+                 </li>
+                 {c$catalogs [tclass=catalogs/] [limits=6/] [listby=ca/] [casource=4/] [orderstr=vieworder ASC/] [wherestr=pid='600'/] [ttl=1200/]}
+                 <li>
+                     <a class="{if $caid == $v['caid']}act{/if}" href="{indexurl}" target="_self">{title}</a>
+                 </li>
+                 {/c$catalogs}
+             </ul>
+         </div>
+        <div class="l mt5"><a href="{$cms_abs}" target="_blank"><i class="ico08 fcr mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$deefd [tclass=cnode/] [listby=ca/] [casource=600/]}{indexurl}{/c$deefd}">图库频道</a><i class="pipe">/</i>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}{title}{/c$cnode}</div>
+    </div>
+     <div class="blank5"></div>
+     
+ </div>

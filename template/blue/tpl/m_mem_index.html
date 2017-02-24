@@ -1,0 +1,243 @@
+<?php
+defined('IN_MOBILE') || define('IN_MOBILE', TRUE);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+    <title>会员中心-{$hostname}</title>
+    <meta name="keywords" content="会员中心" />
+    <meta name="description" content="会员中心" />
+    {tpl$m_headinner}
+    <?php $mid=0; ?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="会员中心" data-footer="false" class="active">
+        {tpl$m_header}
+        <article id="up_refresh_article"  class="active">
+            <div>
+                <div class="p5"></div>
+                <ul class="list inset">
+                    <li id="userLogin">
+                        {c$member [tclass=member/] [id=-1/] [detail=1/]}
+                        {if empty($v['mid'])}
+                        <div class="grid">
+                            <div class="col-0">
+                                <div class="mem-img">
+                                    <i class="icon-e63e"></i>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <div class="col-1 p5">
+                                    <button class="small block" onclick="return isLogin();" data-icon="icon-e603">会员登录</button>
+                                </div>
+                                <div class="grid fz14">
+                                    <div class="col-1 p5"><a href="#zhmm" data-target="section" class="button carrot small block" data-icon="icon-f059">忘记密码</a></div>
+                                    <div class="col-1 p5"><a href="{$mobileurl}register.php" class="button alizarin small block" data-icon="icon-e641">会员注册</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        {else}
+                        <?php $mid = $v['mid']; ?>
+                        <div class="grid">
+                           <div class="col-0">
+                               <div class="mem-img">
+                                   <img src="{c$image [tclass=image/] [tname=image/] [val=u/]}{url}{/c$image}"  height="71" width="71"/>
+                               </div>
+                           </div>
+                           <div class="col-1">
+                               <div class="grid fz14 p10">
+                                   <div class="col-1">欢迎,{if empty($v['qq_nickname'])}{mname}{else}{qq_nickname}{/if}</div>
+                                   <div class="col-0"><a onclick="logout()" class="block"><i class="icon icon-e762 left f-pomegranate"></i>退出</a></div>
+                               </div>
+                               <div class="fz14 p5">
+                                   <a href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=11/]}{indexurl1}{/c$caidx}" class="button alizarin small block"><i class="icon-e641"></i>修改资料</a>
+                               </div>
+                           </div>
+                        </div>
+                        {/if}
+                        {/c$member}
+                    </li>
+                </ul>
+                <div class="grid fz14 p5">
+                    <div class="col-1 p5"><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl2}{/c$cnode}" class="asbestos button small block" data-icon="icon-e610">发布二手</a></div>
+                    <div class="col-1 p5"><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=4/]}{indexurl2}{/c$cnode}" class="concrete button small block" data-icon="icon-e60f">发布出租</a></div>
+                </div>
+                <!-- <ul class="list inset f-asbestos">
+                    <li data-icon="icon-f054"><a href="#cart" data-target="section"><i class="icon-e73c left"></i>我的订单</a><div class="tag">100</div></li>
+                </ul> -->
+                <div class="p5"></div>
+                <ul class="list inset f-asbestos">
+                    <li data-icon="icon-f054"><a href="#browser" data-target="section"><i class="icon-e014 left"></i>浏览历史</a><div class="tag"></div></li>
+                    <li data-icon="icon-f054"><a href="#favorite" data-target="section"><i class="icon-f005 left"></i>我的收藏</a><!-- <div class="tag">1</div> --></li>
+                    <li data-icon="icon-f054"><a href="#esfsection" data-target="section"><i class="icon-e637 left"></i>我的二手房</a>{if !empty($mid)}{c$archives [tclass=acount/] [chids=3/] [chsource=2/] [casource=1/] [caids=3/] [wherestr=mid=$mid/] [validperiod=1/]}<div class="tag"><? echo $v['counts']?$v['counts']:0;?></div>{/c$archives}{/if}</li>
+                    <li data-icon="icon-f054"><a href="#czsection" data-target="section"><i class="icon-e635 left"></i>我的租房</a>{if !empty($mid)}{c$archives [tclass=acount/] [chids=2/] [chsource=2/] [wherestr=mid=$mid/] [validperiod=1/]}{/if}<div class="tag"><? echo $v['counts']?$v['counts']:0;?></div>{/c$archives}</li>
+                </ul>
+                <div class="p5"></div>
+                <ul class="list inset f-asbestos">
+                    <li data-icon="icon-f054"><a href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=1/]}{indexurl1}{/c$caidx}" ><i class="icon-e7cc left"></i>意见反馈</a></li>
+                </ul>
+                <div class="p10"><a href="{c$freeurl [tclass=freeurl/] [fid=113/]}{/c$freeurl}" data-icon="icon-e9c5" class="button block">客户端下载</a></div>
+                {tpl$m_footer_ft}
+            </div>
+        </article>
+    </section>
+    <section id="browser" title="浏览历史" data-footer="false" data-btn="back">
+        {tpl$m_header}
+        <nav class="header-secondary inset">
+            <div class="control-group">
+                <a href="#bxf" class="active" data-target="article" >新房</a>
+                <a href="#bes" data-target="article" >二手</a>
+                <a href="#bcz" data-target="article" >出租</a>
+                <a href="#bzx" data-target="article" >资讯</a>
+            </div>
+        </nav>
+        <article id="bxf" data-chid="4" class="active">
+            <div>
+                <ul class="list inset f-asbestos"></ul>
+                <div class="p10">
+                    <a href="#" class="button block pomegranate"><i class="icon-f014 fz16"></i>清空浏览历史</a>
+                </div>
+            </div>
+        </article>
+        <article id="bes" data-chid="3">
+            <div>
+                <ul class="list inset f-asbestos"></ul>
+                <div class="p10">
+                    <a href="#" class="button block pomegranate"><i class="icon-f014 fz16"></i>清空浏览历史</a>
+                </div>
+            </div>
+        </article>
+        <article id="bcz" data-chid="2">
+            <div>
+                <ul class="list inset f-asbestos"></ul>
+                <div class="p10">
+                    <a href="#" class="button block pomegranate"><i class="icon-f014 fz16"></i>清空浏览历史</a>
+                </div>
+            </div>
+        </article>
+        <article id="bzx" data-chid="1">
+            <div>
+                <ul class="list inset f-asbestos"></ul>
+                <div class="p10">
+                    <a href="#" class="button block pomegranate"><i class="icon-f014 fz16"></i>清空浏览历史</a>
+                </div>
+            </div>
+        </article>
+    </section><!-- /浏览历史 -->
+    <section id="favorite" title="我的收藏" data-footer="false" data-btn="back">
+        {tpl$m_header}
+        <nav class="header-secondary inset">
+            <div class="control-group">
+                <a href="#fxf" class="active" data-target="article" >新房</a>
+                <a href="#fes" data-target="article" >二手</a>
+                <a href="#fcz" data-target="article" >出租</a>
+            </div>
+        </nav>
+        <article id="fxf" data-chid="4" class="active">
+            <div>
+                <ul class="list inset f-asbestos"></ul>
+            </div>
+        </article>
+        <article id="fes" data-chid="3">
+            <div>
+                <ul class="list inset f-asbestos"></ul>
+            </div>
+        </article>
+        <article id="fcz" data-chid="2">
+            <div>
+                <ul class="list inset f-asbestos"></ul>
+            </div>
+        </article>
+    </section><!-- /我的收藏 -->
+    <section id="esfsection" title="我的二手房" data-footer="false" data-btn="back">
+        {tpl$m_header}
+        <article id="esf-article"  class="active">
+            <div>
+                <ul class="list f-asbestos"></ul>
+            </div>
+        </article>
+    </section><!-- /我的二手房 -->
+    <section id="czsection" title="我的租房" data-footer="false" data-btn="back">
+        {tpl$m_header}
+        <article id="cz-article"  class="active">
+            <div>
+                <ul class="list f-asbestos"></ul>
+            </div>
+        </article>
+    </section><!-- /我的租房 -->
+    <section id="zhmm" title="找回密码" data-footer="false" data-btn="back">
+        {tpl$m_header}
+        <article id="cz-article" class="active" style="overflow:auto">
+            <div>
+            <ul class="list">
+                <li>
+                    <form name="cmsregister" id="register" method="post" action="{$cms_abs}tools/lostpwd.php?">
+                        <input type="hidden" name="forward" value="{c$freeurl [tclass=freeurl/] [fid=122/]}{/c$freeurl}"/>
+                        <div class="input-group">
+                            <input type="text" id="mname" name="mname" required pattern=".{3,15}" maxLength="15" min="0" max="18" placeholder="用户名" title="用户名不能为空">
+                            <input type="email" name="email" required placeholder="安全邮箱">
+                            <input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+                        </div>
+                        <input type="hidden" name="blostpwd" value="reg"/>
+                        <button class="block" type="submit" data-icon="icon icon-e641">马上找回</button>
+                    </form>
+                </li>
+            </ul>
+            </div>
+        </article>
+    </section><!-- /我的租房 -->
+
+</div>
+<script type="text/javascript">
+// 二手房
+var esfOpt = {
+    _param : {
+        'aj_model'     : 'a,3,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+        'aj_pagenum'   : 1 ,
+        'aj_vaild'     : 1 ,
+        'aj_deforder'  : 'ccid19 DESC,refreshdate DESC',
+        'aj_thumb'     : 'thumb,85,65'
+    } ,
+    wrap : '#esf-article' ,
+    dataWrap : '#esf-article ul.list' ,
+    template : function() {
+        return '<li>'
+            + '     <div class="grid">'
+               + '         <div class="col-1">'+this.subject+'</div>'
+               + '         <div class="col-0"><a class="icon-f14b fz22" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl2}{/c$cnode}&aid='+this.aid+'" ></a><a class="icon-e000 fz22" href="'+this.arcurl+'"></a></div>'
+            + '     </div>'
+            + '</li>';
+    }
+}
+// 租房
+var czOpt = {
+    _param : {
+        'aj_model'     : 'a,2,1', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+        'aj_pagenum'   : 1 ,
+        'aj_vaild'     : 1 ,
+        'aj_deforder'  : 'ccid19 DESC,refreshdate DESC',
+        'aj_thumb'     : 'thumb,85,65'
+    } ,
+    wrap : '#cz-article' ,
+    dataWrap : '#cz-article ul.list' ,
+    template : function() {
+        return '<li>'
+            + '     <div class="grid">'
+               + '         <div class="col-1">'+this.subject+'</div>'
+               + '         <div class="col-0"><a class="icon-f14b fz22" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=4/]}{indexurl2}{/c$cnode}&aid='+this.aid+'" ></a><a class="icon-e000  fz22" href="'+this.arcurl+'"></a></div>'
+            + '     </div>'
+            + '</li>';
+    }
+}
+</script>
+{tpl$m_footer}
+<script type="text/javascript">
+loginfo&&(loginfo.user_info.mid = {if empty($mid)}0{else}{$mid}{/if});
+</script>
+<script type="text/javascript" src="{$tplurl}mobile/js/member.js?20150208"></script>
+
+</body>
+</html>

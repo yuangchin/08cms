@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>{subject}-{$hostname}</title>
+	<meta name="keywords" content="{keywords}"/>
+	<meta name="description" content="{abstract}"/>
+    {tpl$m_headinner}
+    <?php
+    $pagelimit=10;
+    $notop=1;
+    ?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" data-btn="back" title="历史价格" class="active">
+        {tpl$m_header}
+        <article id="up_refresh_news" class="active" >
+            <div>
+                <ul class="list detail">
+                    <li class="divider">价格走势</li>
+                    <li>
+                        <canvas id="line_canvas"></canvas>
+                    </li>
+                    <li class="divider">历史价格（以下价格单位均以“<span class="f-alizarin">元/平方米</span>”）</li>
+                </ul>
+                <div class="grid-price clearfix">
+                    <dl>
+                        <dt>
+                            <span>记录时间</span>
+                            <span>均价</span>
+                            <span>最低价</span>
+                            <span>最高价</span>
+                        </dt>
+                        {c$outinfos [tclass=outinfos/] [dsid=0/] [limits=50/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}
+                        <dd>
+                            <span>{c$date [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$date}</span>
+                            <span>{average}</span>
+                            <span>{lowest}</span>
+                            <span>{highest}</span>
+                        </dd>
+                        {/c$outinfos}
+                    </dl>
+                 </div>
+                 {tpl$m_footer_ft}
+            </div>
+        </article>
+    </section>
+</div>
+<!-- 走势图 -->
+<script type="text/javascript" src="{$tplurl}mobile/js/JChart.debug.js"></script>
+<script type="text/javascript">
+    var _data = {
+            labels : [{c$outinfos [tclass=outinfos/] [dsid=0/] [limits=6/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=m-d/]}{/c$date}'{/c$outinfos}],
+            datasets : [
+                {
+                    name : '{subject}',
+                    color : "#72caed",
+                    pointColor : "#95A5A6",
+                    pointBorderColor : "#fff",
+                    data : [{c$outinfos [tclass=outinfos/] [dsid=0/] [limits=6/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}{$v[average]}{/c$outinfos}]
+                }
+            ]
+        }
+    _data.labels.reverse();
+    _data.datasets[0].data.reverse();
+</script>
+{tpl$m_footer}
+</body>
+</html>

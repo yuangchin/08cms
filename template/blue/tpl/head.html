@@ -1,0 +1,391 @@
+<div class="{if empty($navNoFixed)}fixed{/if} clearfix" data-resize="1" data-fixed="{if @$pagetype == 'index'}700{else}95{/if}">
+    <div class="wrap logo-sea-man">
+        <div class="blank15"></div>
+        <div class="w270 l">
+            <h2 class="logo l"><a title="{hostname}" href="{$cms_abs}"><img width="175" height="63" src="{c$image [tclass=image/] [tname=cmslogo/] [padding=1/] [val=u/]}{url}{/c$image}"/></a></h2>
+            {tpl$tpl_area}
+        </div><!-- /logo-substate -->
+        <div class="col-search l ptb8">
+            <div class="s-detail l">
+                <form action="{$cms_abs}index.php" target="_blank" class="clearfix">
+                    <div id="s-cate" class="s-cate">
+                        <i class="ico08 arrow">&#xe68d;</i>
+                        <span class="s-tit">新房</span>
+                        <div class="s-cate-list">
+                            <ul>
+                                <li class="{if empty($pagetype) || @$pagetype == 'index' || @$pagetype == 'newhouse'}act{/if}" data-param='{"caid":"2","searchword":"请输入楼盘名称/地址/拼音","addno":"1"}'> 新房 </li>
+                                <li class="{if @$pagetype == 'oldhouse'}act{/if}" data-param='{"caid":"3","searchword":"请输入二手/小区","addno":""}'> 二手 </li>
+                                <li class="{if @$pagetype == 'rent'}act{/if}" data-param='{"caid":"4","searchword":"请输入出租/小区","addno":""}'> 出租 </li>
+                                <li class="{if @$pagetype == 'news'}act{/if}" data-param='{"caid":"1","searchword":"请输入资讯关键字","addno":""}'> 资讯 </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="s-txt"><input type="text" class="jqAutocomplete" name="searchword" x-webkit-speech speech value="{if @$searchword}{$searchword}{/if}"/></div>
+                    <input type="submit" class="s-btn ico08" value="&#xe607;"/>
+                    <input type="hidden" name="caid" value=""/>
+                    <input type="hidden" name="addno" value=""/>
+                </form>
+            </div>
+            <div class="s-menu r">
+                <a href="{c$freeurl [tclass=freeurl/] [fid=109/]}{/c$freeurl}" ><i class="ico08 mr5">&#xe74d;</i>手机找房</a><br/>
+                <a href="{c$freeurl [tclass=freeurl/] [fid=1/]}{/c$freeurl}" ><i class="ico08 mr5">&#xe613;</i>地图找房</a>
+            </div>
+        </div><!-- /col-search -->
+        <div class="w270 r">
+            <div class="col-login ptb8">
+                <span id="userLogin">
+                    <a id="login-btn" data-head="会员登录" class="btn-jqModal log-btn" data-target="#login-wrap" href="{$cms_abs}login.php" target="_self"><i class="ico08 mr5">&#xf007;</i>登陆</a>
+                    <a class="log-btn" href="{$cms_abs}register.php" ><i class="ico08 mr5">&#xf14b;</i>注册</a>
+                </span>
+                <a class="log-btn" href="{$cms_abs}adminm.php?action=guanzus" ><i class="ico08 mr5">&#xf005;</i>收藏</a>
+            </div>
+        </div>
+        <div class="blank15"></div>
+        <i class="close dn ico08">&#xe774;</i>
+    </div>
+    <!-- nav -->
+    <div id="nav" class="nav clearfix">
+        <ul class="wrap clearfix">
+            <li class="w270 nav-dt {if @$pagetype == 'index'}keep{/if}">
+                {if @$pagetype == 'oldhouse'}
+                <h3><i class="ico08 r">&#xf039;</i>二手房检索</h3>
+                <dl class="condition">
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房区域检索/] [tclass=catalogs/] [limits=15/] [listby=co1/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房区域检索/] [tclass=catalogs/] [limits=15/] [listby=co1/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房价格检索/] [tclass=catalogs/] [listby=co4/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房价格检索/] [tclass=catalogs/] [listby=co4/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>面积</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房面积检索/] [tclass=catalogs/] [limits=15/] [listby=co6/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有面积</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房面积检索/] [tclass=catalogs/] [limits=15/] [listby=co6/] [cainherit=3/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="last">
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>房龄</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房房龄检索/] [tclass=catalogs/] [limits=15/] [listby=co34/]}<a href="{$cms_abs}index.php?caid=3&addno=1&ccid34={ccid}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有房龄</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=二手房房龄检索/] [tclass=catalogs/] [limits=15/] [listby=co34/]}<a href="{$cms_abs}index.php?caid=3&ccid34={ccid}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                {elseif @$pagetype == 'rent'}
+                <h3><i class="ico08 r">&#xf039;</i>出租检索</h3>
+                <dl class="condition">
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=出租房区域检索/] [tclass=catalogs/] [limits=15/] [listby=co1/] [cainherit=4/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=出租房区域检索/] [tclass=catalogs/] [limits=15/] [listby=co1/] [cainherit=4/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>租金</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=出租房租金检索/] [tclass=catalogs/] [listby=co5/] [cainherit=4/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有租金</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=出租房租金检索/] [tclass=catalogs/] [listby=co5/] [cainherit=4/]}<a href="{indexurl}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>户型</h4>
+                            <div class="con-cate-list">
+                               <?php
+                                    foreach (u_field_by(2, 'shi') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&shi='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有户型</h4>
+                            <div class="con-cate-list">
+                               <?php
+                                    foreach (u_field_by(2, 'shi') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&shi='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="last">
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>方式 / 装修</h4>
+                            <div class="con-cate-list">
+                               <?php
+                                    foreach (u_field_by(2, 'zlfs') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&zlfs='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                               <?php
+                                    foreach (u_field_by(2, 'zxcd') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&zxcd='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有方式</h4>
+                            <div class="con-cate-list mb20">
+                               <?php
+                                    foreach (u_field_by(2, 'zlfs') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&zlfs='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                            <h4>所有装修</h4>
+                            <div class="con-cate-list">
+                               <?php
+                                    foreach (u_field_by(2, 'zxcd') as $key => $value) {
+                                        echo '<a href="'.$cms_abs.'index.php?caid=4&zxcd='.$key.'" >'.$value.'</a>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                {else}
+                <h3><i class="ico08 r">&#xf039;</i>楼盘检索</h3>
+                <dl class="condition">
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=楼盘区域检索/] [tclass=catalogs/] [limits=30/] [listby=co1/] [cainherit=2/]}<a href="{indexurl1}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有区域</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=楼盘区域检索/] [tclass=catalogs/] [limits=30/] [listby=co1/] [cainherit=2/]}<a href="{indexurl1}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=楼盘价格检索/] [tclass=catalogs/] [listby=co17/] [cainherit=2/]}<a href="{indexurl1}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有价格</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=楼盘价格检索/] [tclass=catalogs/] [listby=co17/] [cainherit=2/]}<a href="{indexurl1}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>类别</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=物业类型检索/] [tclass=catalogs/] [listby=co12/] [cainherit=2/]}<a href="{indexurl1}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有类别</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=物业类型检索/] [tclass=catalogs/] [listby=co12/] [cainherit=2/]}<a href="{indexurl1}" >{title}</a>{/c$catalogs}
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>特色</h4>
+                            <div class="con-cate-list">
+								<?php
+									foreach (u_field_by(4, 'tslp') as $key => $value) {
+										echo '<a href="'.$cms_abs.'index.php?caid=2&addno=1&tslp='.$key.'" >'.$value.'</a>';
+									}
+								?>
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有特色</h4>
+                            <div class="con-cate-list">
+								<?php
+									foreach (u_field_by(4, 'tslp') as $key => $value) {
+										echo '<a href="'.$cms_abs.'index.php?caid=2&addno=1&tslp='.$key.'" >'.$value.'</a>';
+									}
+								?>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="last">
+                        <div class="con-cate">
+                            <h4><i class="ico08 r fcg">&#xe68f;</i>状态 / 楼层</h4>
+                            <div class="con-cate-list">
+                                {c$catalogs [cname=楼盘区域检索/] [tclass=catalogs/] [limits=4/] [listby=co18/] [cainherit=2/]}<a href="{indexurl1}" >{title}</a>{/c$catalogs}
+								<?php
+									foreach (u_field_by(4, 'lcs') as $key => $value) {
+										echo '<a href="'.$cms_abs.'index.php?caid=2&addno=1&lcs='.$key.'" >'.$value.'</a>';
+									}
+								?>
+                            </div>
+                        </div>
+                        <div class="con-cate-more">
+                            <h4>所有状态</h4>
+                            <div class="con-cate-list mb20">
+                                {c$catalogs [cname=楼盘区域检索/] [tclass=catalogs/] [limits=4/] [listby=co18/] [cainherit=2/]}<a href="{indexurl1}" >{title}</a>{/c$catalogs}
+                            </div>
+                            <h4>所有楼层</h4>
+                            <div class="con-cate-list">
+								<?php
+									foreach (u_field_by(4, 'lcs') as $key => $value) {
+										echo '<a href="'.$cms_abs.'index.php?caid=2&addno=1&lcs='.$key.'" >'.$value.'</a>';
+									}
+								?>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                {/if}
+            </li><!-- /楼盘检索 -->
+            <li class="{if @$pagetype == 'index'}act{/if}">
+                <a class="tit" href="{$cms_abs}">首页</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+            </li>
+            <li class="{if @$pagetype == 'newhouse'}act{/if}">
+                <a class="tit" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl}{/c$cnode}">新房</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+                <span class="d-list">
+                    {c$catalogs [cname=楼盘列表/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=2/]}<a href="{indexurl1}">所有楼盘</a>{/c$catalogs}<a href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=1/]}{/c$dtzf}">楼盘地图</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl3}{/c$cnode}">房价</a><a href="{c$kfturl [tclass=cnode/] [listby=ca/] [casource=560/]}{indexurl}{/c$kfturl}">看房团</a>{c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=5,559/]}<a href="{indexurl}">{title}</a>{/c$catalogs}{c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=36,11/]}<a href="{indexurl}">{title}</a>{/c$catalogs}</span>
+                </li>
+            {if !cmod('fenxiao')}
+            <li class="{if @$pagetype == 'money'}act{/if}">
+                <a class="tit" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=605/]}{indexurl}{/c$cnode}">赚佣金</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+                <span class="d-list">
+                    <a href="{c$freeurl [tclass=freeurl/] [fid=114/]}{/c$freeurl}">赚佣金</a><a href="{$cms_abs}adminm.php?action=fxmy_fxtuijian">我的分销</a>
+                </span>
+            </li>
+            {/if}
+            <li class="{if @$pagetype == 'oldhouse'}act{/if}">
+                <a class="tit" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl}{/c$cnode}">二手</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+                <span class="d-list">
+                    <a href="{$cms_abs}index.php?caid=3&mchid=1">个人房源</a><a href="{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl}{/c$jjrjd}">经纪人</a><a href="{c$jjgsurl [tclass=mcnode/] [cnsource=mcnid/] [cnid=51/]}{mcnurl}{/c$jjgsurl}">经纪公司</a><a href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=117/]}{/c$dtzf}">二手地图</a><a href="{c$xqzdlj [cname=小区节点链接/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl2}{/c$xqzdlj}">小区</a>{c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=10/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                </span>
+            </li>
+            <li class="{if @$pagetype == 'rent'}act{/if}">
+                <a class="tit" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=4/]}{indexurl}{/c$cnode}">租房</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+                <span class="d-list">
+                    <a href="{$cms_abs}index.php?caid=4&mchid=1">个人出租</a><a href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=116/]}{/c$dtzf}">租房地图</a>{c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=9/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                </span>
+            </li>
+            {if !cmod('shangye')}
+            <li class="{if @$pagetype == 'business'}act{/if}"><a class="tit" href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=612/]}{indexurl}{/c$cnode}">商业</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+                {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=612,613,614,616,617,618/] [ttl=3600/]}
+                <span class="d-list">
+                    [row]<a href="{indexurl}">{title}</a>[/row]
+                </span>
+                {/c$catalogs}
+            </li>
+            {/if}
+            <li class="{if @$pagetype == 'special'}act{/if}">
+                <a class="tit" href="{c$catalogs [cname=专题/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=37/]}{indexurl}{/c$catalogs}">专题</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+                <span class="d-list">
+                    {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=3/] [cainherit=2/] [wherestr=pid='37'/] [ttl=300/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                </span>
+            </li>
+            <li class="{if @$pagetype == 'news'}act{/if}">
+                <a class="tit" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=1/]}{indexurl}{/c$cnode}">资讯</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+                {c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=502,21,20/]}
+                <span class="d-list">
+                    [row]<a href="{indexurl}">{title}</a>[/row]
+                </span>
+                {/c$catalogs}
+            </li>
+            <li class="{if @$pagetype == 'mobile'}act{/if}"><a class="tit" href="{c$freeurl [tclass=freeurl/] [fid=109/]}{/c$freeurl}">客户端</a>
+                <i class="ico08 arrow">&#xf0dc;</i></li>
+            {if @$user_bbsurl}<li><a class="tit" href="{$user_bbsurl}">论坛</a>
+                <i class="ico08 arrow">&#xf0dc;</i></li>{/if}
+            <li class="{if @$pagetype == 'tools'}act{/if}"><a class="tit" href="{c$freeurl [tclass=freeurl/] [fid=5/]}{/c$freeurl}">购房工具</a>
+                <i class="ico08 arrow">&#xf0dc;</i></li>
+            <li class="more">
+                <a class="tit" href="###">更多</a>
+                <i class="ico08 arrow">&#xf0dc;</i>
+                <span class="d-list">
+                    {c$catalogs [cname=catalogs/] [tclass=catalogs/] [listby=ca/] [casource=1/] [caids=30,516,600,561/]}<a href="{indexurl}">{title}</a>{/c$catalogs}
+                </span>
+            </li>
+        </ul>
+    </div><!-- /nav -->
+</div>
+<div class="blank10"></div>
+<div class="wrap">
+{if @$pagetype == 'newhouse'}
+     <!--新房导航下广告位--><div id="_08_adv_fcatalogxf"></div>
+{elseif @$pagetype == 'money'}
+     <!--赚佣金导航下广告位--><div id="_08_adv_fcatalogzyj"></div>
+{elseif @$pagetype == 'oldhouse' || @$pagetype == 'rent'}
+     <!--二手出租导航下广告位--><div id="_08_adv_fcatalog31"></div>
+{elseif @$pagetype == 'business'}
+     <!--商业地产导航下广告位--><div id="_08_adv_fcatalogsydc"></div>
+{elseif @$pagetype == 'special'}
+     <!--专题导航下广告位--><div id="_08_adv_fcatalogspecial"></div>
+{elseif @$pagetype == 'news'}
+     <!--资讯导航下广告位--><div id="_08_adv_fcatalognews"></div>
+{elseif @$pagetype == 'ask'}
+       <!--问答导航下广告位--><div id="_08_adv_fcatalog137"></div>
+{elseif @$pagetype == 'tuku'}
+       <!--图库导航下广告位--><div id="_08_adv_fcatalog179"></div>
+{elseif @$pagetype != 'index'}
+{/if}
+</div>

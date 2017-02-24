@@ -1,0 +1,28 @@
+<!--楼盘相册pid36-->
+{if (empty($pid36))}
+    <?php $dycaid=$caid;?>
+{else}
+    {c$lpxginfo2 [tclass=archive/] [id=$lpid/]}
+            <?php $dycaid=$v['caid'];?>
+    {/c$lpxginfo2}
+{/if}
+{tpl$head}
+{c$jhlm [tclass=cnode/] [listby=ca/] [casource=active/] [level=2/]}<?php $ejlm=$v['caid'];?>{/c$jhlm}
+<div class="wrap">
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form w300">
+                    <button type="submit" class="btn"><i class="ico08 mr5">&#xe607;</i>搜索</button> 
+                    <div class="txt-wrap">
+                        <input type="text" class="txt" value=""  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <div class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<i class="pipe">/</i><a href="{indexurl}">{title}</a>{/c$cnode}{if !empty($subject)}<i class="pipe">/</i>{subject}{/if}
+        </div>
+    </div>
+</div>

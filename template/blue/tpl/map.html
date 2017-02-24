@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{$hostname}-网站地图</title>
+{tpl$headinner}
+<link href="{$tplurl}css/mapcss.css?{$user_version}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- header begin -->
+{tpl$head}
+<!-- end begin -->
+<div class="wrap">
+	<div class="com">
+        <div class="mlist">
+        	<dl><b>&nbsp;</b>
+    			<dt><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}">新房中心</a></dt>
+    			<dd><a href="{c$loupanliebiao [cname=楼盘列表/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl1}{/c$loupanliebiao}" target="_blank">楼盘大全</a>、<a href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=559/]}{indexurl}{/c$cnode}" target="_blank">特价房</a>、<a href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=1/]}{/c$dtzf}" target="_blank">地图找房</a>、<a href="{c$dinggouhuodongliebiao [cname=订购活动首页/] [tclass=cnode/] [listby=ca/] [casource=5/]}{indexurl}{/c$dinggouhuodongliebiao}" target="_blank">团购</a>、<a href="{c$huxingtuliebiao [cname=户型图列表/] [tclass=cnode/] [listby=ca/] [casource=11/]}{indexurl}{/c$huxingtuliebiao}" target="_blank">户型图库</a>、<a href="{c$kfsjdlj [cname=开发商节点链接/] [tclass=cnode/] [listby=ca/] [casource=36/]}{indexurl}{/c$kfsjdlj}">开发商</a>、<a href="{c$kfturl [tclass=cnode/] [listby=ca/] [casource=560/]}{indexurl}{/c$kfturl}">看房团</a>、<a href="{c$tjfurl [tclass=cnode/] [listby=ca/] [casource=559/]}{indexurl}{/c$tjfurl}">特价房</a>{if !cmod('fenxiao')}、<a href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=605/]}{indexurl}{/c$cnode}">赚佣金</a>{/if}</li>
+                </dd>
+    		</dl>
+        </div>
+        <div class="mlist">
+        	<dl><b>&nbsp;</b>
+    			<dt><a href="{c$esfsy [cname=二手房首页/] [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$esfsy}">二手</a></dt>
+    			<dd><a href="{c$esfsy2 [cname=二手房首页2/] [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$esfsy2}" target="_blank">出售房源</a>、<a href="{$cms_abs}index.php?caid=3&mchid=1&addno=1" target="_blank">个人出售房源</a>、<a href="{c$xqzdlj [cname=小区节点链接/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl2}{/c$xqzdlj}" target="_blank">小 区</a>、<a href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=1/]}{/c$dtzf}#mode=mai" target="_blank">地图找二手房</a>、<a href="{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl1}{/c$jjrjd}" target="_blank">经纪人</a>、<a href="{c$jjgsurl [tclass=mcnode/] [cnsource=mcnid/] [cnid=51/]}{mcnurl}{/c$jjgsurl}" target="_blank">经纪公司</a>、<a href="{c$xqlz [cname=需求链接/] [tclass=cnode/] [listby=ca/] [casource=10/]}{indexurl}{/c$xqlz}" target="_blank">求购信息</a>、<a href="{c$fywt [cname=房源委托/] [tclass=freeurl/] [fid=101/]}{/c$fywt}&chid=3" target="_blank">委托出售</a></dd>
+    		</dl>
+        </div>
+        <div class="mlist">
+        	<dl><b>&nbsp;</b>
+    			<dt><a href="{c$czsy [cname=出租首页/] [tclass=cnode/] [listby=ca/] [casource=4/]}{indexurl}{/c$czsy}">出租</a></dt>
+    			<dd><a href="{c$czsy2 [cname=出租首页2/] [tclass=cnode/] [listby=ca/] [casource=4/]}{indexurl}{/c$czsy2}" target="_blank">出租房源</a>、<a href="{$cms_abs}index.php?caid=4&mchid=1&addno=1" target="_blank">个人出租房源</a>、<a href="{$cms_abs}index.php?caid=4&shi=1&addno=1" target="_blank">一室出租</a>、<a href="{$cms_abs}index.php?caid=4&shi=2&addno=1" target="_blank">二室出租</a>、<a href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=1/]}{/c$dtzf}#mode=zhu" target="_blank">地图找租房</a>、<a href="{c$xqlz2 [cname=需求链接2/] [tclass=cnode/] [listby=ca/] [casource=9/]}{indexurl}{/c$xqlz2}" target="_blank">求租信息</a>、<a href="{c$fywt [cname=房源委托/] [tclass=freeurl/] [fid=101/]}{/c$fywt}&chid=2" target="_blank">委托出租</a></dd>
+    		</dl>
+        </div>
+        {if !cmod('shangye')}
+        <div class="mlist">
+            <dl><b>&nbsp;</b>
+                <dt><a href="{c$sydcurl [tclass=cnode/] [listby=ca/] [casource=611/]}{indexurl}{/c$sydcurl}">商业地产</a></dt>
+                <dd>{c$oflmls [tclass=catalogs/] [listby=ca/] [casource=3/] [limits=3/] [wherestr=pid=611 AND level=1/]}{if $v['sn_row']>1}、{/if}<a href="{indexurl}" target="_blank">{title}</a>{/c$oflmls}{c$shoplmls [tclass=catalogs/] [listby=ca/] [casource=3/] [limits=3/] [wherestr=pid=615 AND level=1/]}、<a href="{indexurl}" target="_blank">{title}</a>{/c$shoplmls}</dd>
+            </dl>
+        </div>
+        {/if}
+        <div class="mlist">
+    		<dl><b>&nbsp;</b>
+    			<dt><a href="{c$zxsy [cname=资讯首页/] [tclass=cnode/] [listby=ca/] [casource=1/]}{indexurl}{/c$zxsy}">资讯中心</a></dt>
+    			<dd>
+                {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=3/] [cainherit=2/] [wherestr=pid='1' AND level='1'/] [ttl=300/]}
+                    {c$catalogs2 [tclass=catalogs/] [listby=ca/][val=b/] [casource=3/] [cainherit=2/] [wherestr=pid=$v[caid] AND level='2'/] [ttl=300/]}
+                    {if $v['sn_row']!=1||$b['sn_row']!=1}、{/if}<a href="{indexurl}" target="_blank">{title}</a>
+                    {/c$catalogs2}
+                {/c$catalogs}
+                </dd>
+    		</dl>
+        </div>
+        <div class="mlist">
+        	<dl><b>&nbsp;</b>
+    			<dt><a href="{c$08cms [tclass=cnode/] [listby=ca/] [casource=30/]}{indexurl}{/c$08cms}">视频</a></dt>
+    			<dd>
+                {c$08cms [tclass=catalogs/] [val=a/] [limits=100/] [listby=ca/] [casource=3/] [wherestr=pid='30'/] [ttl=300/]}
+                {if $a['sn_row'] != 1}、{/if}<a href="{indexurl}" target="_blank">{title}</a>
+                {/c$08cms}
+                </dd>
+    		</dl>
+        </div>
+        <div class="mlist">
+        	<dl><b>&nbsp;</b>
+    			<dt><a href="{c$08cms [tclass=cnode/] [listby=ca/] [casource=516/]}{indexurl}{/c$08cms}">问答</a></dt>
+    			<dd>
+                {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=3/] [cainherit=2/] [wherestr=pid='516' AND level='1'/] [ttl=300/]}
+                    {c$catalogs2 [tclass=catalogs/] [listby=ca/][val=b/] [casource=3/] [cainherit=2/] [wherestr=pid=$v[caid] AND level='2'/] [ttl=300/]}
+                    {if $v['sn_row']!=1||$b['sn_row']!=1}、{/if}<a href="{indexurl}" target="_blank">{title}</a>
+                    {/c$catalogs2}
+                {/c$catalogs}
+                </dd>
+    		</dl>
+        </div>
+        <div class="mlist">
+            <dl><b>&nbsp;</b>
+                <dt><a href="{c$08cms [tclass=cnode/] [listby=ca/] [casource=37/]}{indexurl}{/c$08cms}">专题</a></dt>
+                <dd>{c$08cms [tclass=catalogs/] [val=a/] [limits=100/] [listby=ca/] [casource=3/] [wherestr=pid='37'/] [ttl=300/]}
+                {if $a['sn_row'] != 1}、{/if}<a href="{indexurl}" target="_blank">{title}</a>
+                {/c$08cms}</dd>
+            </dl>
+        </div>
+        <div class="mlist">
+            <dl><b>&nbsp;</b>
+                <dt><a href="{c$08cms [tclass=cnode/] [listby=ca/] [casource=600/]}{indexurl}{/c$08cms}">图库</a></dt>
+                <dd>{c$08cms [tclass=catalogs/] [val=a/] [limits=100/] [listby=ca/] [casource=3/] [wherestr=pid='600'/] [ttl=300/]}
+                {if $a['sn_row'] != 1}、{/if}<a href="{indexurl}" target="_blank">{title}</a>
+                {/c$08cms}</dd>
+            </dl>
+        </div>
+        <div class="mlist">
+        	<dl><b>&nbsp;</b>
+    			<dt><a href="{c$08cms [tclass=cnode/] [listby=ca/] [casource=561/]}{indexurl}{/c$08cms}">帮助中心</a></dt>
+    			<dd>{c$08cms [tclass=catalogs/] [val=a/] [limits=100/] [listby=ca/] [casource=3/] [wherestr=pid='561'/] [ttl=300/]}
+                {if $a['sn_row'] != 1}、{/if}<a href="{indexurl}" target="_blank">{title}</a>
+                {/c$08cms}</dd>
+    		</dl>
+        </div>
+        <div class="mlist">
+            <dl><b>&nbsp;</b>
+                <dt><a>购房工具</a></dt>
+                <dd><a href="{c$freeurl [tclass=freeurl/] [fid=5/]}{/c$freeurl}" target="_blank">购房能力评估</a>、<a href="{c$freeurl [tclass=freeurl/] [fid=6/]}{/c$freeurl}" target="_blank">公积金贷款</a>、<a href="{c$freeurl [tclass=freeurl/] [fid=3/]}{/c$freeurl}" target="_blank">贷款计算器</a>、<a href="{c$freeurl [tclass=freeurl/] [fid=108/]}{/c$freeurl}" target="_blank">税费计算</a>、<a href="{c$freeurl [tclass=freeurl/] [fid=4/]}{/c$freeurl}" target="_blank">提前还款计算器</a></dd> </dl>
+        </div>
+        <div class="mlist">
+        	<dl><b>&nbsp;</b>
+    			<dt><a>地区分站</a></dt>
+    			<dd>{c$catalogs [tclass=catalogs/] [listby=co1/] [limits=30/]}
+                {if $v['sn_row']!=1}、{/if}<a href="{indexurl}" target="_blank">{title}</a>
+                {/c$catalogs}</dd>
+    		</dl>
+        </div>
+	</div>	
+</div>
+<div class="blank10"></div>
+{tpl$foot}
+</body>
+</html>

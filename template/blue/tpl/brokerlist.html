@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>经纪人网上店铺 - 经纪人系统 - {hostname}</title>
+<meta name="keywords" content="经纪人积分榜,经纪人人气榜,经纪人房源榜,{hostname}" />
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/companycss.css?{$user_version}">
+</head>
+<body>
+{tpl$fy_head}
+<?php
+foreach(array('ccid1','orderby','ordermode','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+    'ntype' => 'm', 
+    'chid' => 2, 
+    'nodes' => array('mcnid','ccid1'), //('ugid32','mcnid'),
+    'orderbys' => array('mid','msclicks','grouptype16'),
+));
+extract(cls_usql::order_str(1,'m.grouptype16 DESC,m.lastactive DESC'));
+$whrstr = cls_usql::where_str(array(
+    array('xingming,lxdh','searchword'),
+    array('szqy','ccid1'),
+)); // [orderstr=m.grouptype16 DESC,m.lastactive DESC/] [isfunc=1/] [wherestr=u_sql_mem_p4(3)/] 
+?>
+<div class="wrap clearfix">
+    <div class="bread clearfix">
+        <div class="r w300">
+            <form method="get" action="{$cms_abs}member/index.php">
+                <div class="search-group form">
+                    <input type="submit" class="btn" value="搜 索" />
+                    <div class="txt-wrap">
+                      <input name="searchword" placeholder="经纪人姓名/电话" value="{if !empty($searchword)}{searchword}{/if}" class="txt" type="text" id="lxdh">
+                    </div>
+                    <input type="hidden" name="ccid1" value="{ccid1}" />
+                    <input type="hidden" name="mcnid" value="14" />
+                </div>
+            </form>
+        </div>
+        <div class="l mt5"><a href="{$cms_abs}" target="_blank"><i class="ico08 fcr mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$deefd [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$deefd}" target="_blank">二手房</a><i class="pipe">/</i>经纪人列表</div>
+    </div>
+    <div class="search-box clearfix">
+        <div class="area"><em class="td1">区域：</em>
+            <a class="{if empty($ccid1)}act{/if}" href='{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl}{/c$jjrjd}'>全部</a>
+            {c$mccatalogs [cname=地区会员节点列表/] [tclass=mccatalogs/] [limits=1000/] [listby=co1/]}
+            <a class="{if $ccid1 == $v['ccid']}act{/if}" href="{mcnurl}">{title}</a>
+            {/c$mccatalogs}
+        </div>
+    </div>
+    <div class="mian1">
+        <div class="Agent">
+            <div class="bar-sort clearfix">
+                <div class="title1">
+                    <em class="r">
+                        <a href="<? echo cls_uso::extra_url('orderby|ordermode'); ?>" class="btn-sort {if empty($orderby)}act{else}mr{/if}">默认</a>
+                        <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">人气<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "msclicks", array("act bldown","act blup",""))?>
+                        <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">等级<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "grouptype16", array("act bldown","act blup",""))?>
+                    </em>
+                    <span id="title6_1" class="l mt5"></span>
+                </div>
+            </div>
+            <div class="jjr">
+            {c$members [tclass=members/] [limits=10/] [chsource=2/] [chids=2/] [wherestr=$whrstr/] [orderstr=$orderstr/] [mp=1/]}
+            [row]
+            <div class="jjr-liebiao">
+              <div class="jjr-bk clearfix">
+                <div class="pic"> <a href='{mspacehome}' target="_blank"> <img alt="{xingming}" width="100" height="130" src="{c$image100_130_url [cname=image100_130_url/] [tclass=image/] [tname=image/] [val=u/] [maxwidth=100/] [maxheight=130/] [emptyurl=images/common/mlogo.gif/]}{url_s}{/c$image100_130_url}"/> {if $v['grouptype16']==5}<i class="ico1">推荐</i>{/if} </a> 
+                </div>
+                <div class="info">
+                <em><i class="fcg">姓名：</i><a href='{mspacehome}' target="_blank"><b class="fcr">{if $v['xingming']}{xingming}{else}{mname}{/if}</b></a>
+                  {c$fromid [cname=经纪人身份认证2/] [tclass=fromid/] [val=aa/] [type=mctid/] [id=$v[mctid2]/]}<img {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="{cname}通过" alt="身份认证"/>{/c$fromid}{c$fromid [cname=经纪人执照认证2/] [tclass=fromid/] [val=bb/] [type=mctid/] [id=$v[mctid3]/]}<img {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="{cname}通过" alt="执照认证"/>{/c$fromid}</em>
+                  <em><i class="fcg">服务等级：</i>{c$xytb2 [cname=信用图标2/] [tclass=fromid/] [val=d/] [type=grouptype17/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} title="{cname}" alt="服务等级"/>{/c$xytb2}</em>
+                  <em><i class="fcg">联系电话：</i><b>{if $v['lxdh']}{lxdh}{else}暂无{/if}</b></em>
+                  <em><i class="fcg">服务区域：</i>{if $v['szqy']}{c$field [tclass=field/] [tname=szqy/] [type=member/] [fname=szqy/]}{/c$field}{else}-{/if}</em>
+                  {if $v['incheck4']}
+                  <em><i class="fcg">所属公司：</i>{c$member [cname=经纪人公司2/] [tclass=member/] [val=a/] [arid=4/]}<a href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a>{/c$member}</em>
+                  {/if} 
+                  <em><a class="r fcr" href="{mspacehome}">进入店铺</a><i class="icon">售</i>{c$acount [tclass=acount/] [val=b/] [chsource=2/] [chids=3/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$acount}套
+                    <i class="icon icon1">租</i>{c$acount [tclass=acount/] [val=b/] [chsource=2/] [chids=2/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$acount}套
+                    </em> 
+              </div>
+                <div class="info3 l">
+                  <p><a class="c99 r" href="{mspacehome}" target="_blank">更多>></a><b>推荐房源</b></p>
+                  {c$archives [cname=空间推荐房源/] [tclass=archives/] [chids=3/] [chsource=2/] [val=a/] [limits=3/] [orderstr=a.ccid19 DESC,a.refreshdate DESC/] [ttl=600/] [validperiod=1/] [cosource1=2/] [cosource4=2/] [cosource6=2/] [space=1/]}
+                  <p><em><i class="icon">售</i><a href="{arcurl}" target="_blank">【{ccid1title}】{subject}</a></em> <em>{c$shi}{c$ting}{c$wei}/{mj}平米{if $a['zj']}/{zj}万{/if}</em></p>
+                  {/c$archives} 
+              </div>
+              </div>
+            </div>
+            [/row]
+            {/c$members} 
+          </div>
+          <!-- 经纪人列表 end -->
+          <div class="pnav p15 clearfix"> {if $mpacount>0}
+            {$mpnav}
+            {else}
+            <div class="noinfo">很抱歉！暂无{if @$xingming}<span>"{xingming}"</span>{/if} {if @$lxdh}<span>"{lxdh}"</span>{/if}信息</div>
+            {/if} </div>
+        </div>
+    </div>
+
+    <!-- 侧栏 -->
+    {tpl$fy_right}
+    <div class="blank0"></div>
+</div>
+{tpl$foot}
+<script type="text/javascript">
+    $('#title6_1').html('<span><i class="ico08 fcr mr5">&#xe757;</i>已找到<strong class="fco">{$mpacount}</strong>个经纪人</span>')
+</script>
+</body>
+</html>

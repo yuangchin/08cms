@@ -1,0 +1,32 @@
+<div class="sptop">
+        <div class="logosearch wrap clearfix">
+            <div class="logo l">
+                <a title="{hostname}" href="{$cms_abs}">
+                    <img width="230" height="88" src="{c$image [tclass=image/] [tname=cmslogo/] [padding=1/] [val=u/]}{url}{/c$image}"/>
+                </a>
+            </div>
+            <div class="search r">
+                <form action="{$cms_abs}index.php" method="get" name="searchform">
+                    <input type="text" class="sotxt" id="searchword" name="searchword" placeholder="{if @$searchword}{searchword}{else}请输入关键字{/if}" value='' x-webkit-speech speech>
+                    <input type="hidden" value="{$caid}" name="caid">
+                    <input type="submit" class="sobtn" {if @$hd_caid=="504"}style="background:#A01C17;"{/if} value="搜索">
+                </form>
+            </div>
+        </div>
+        {c$cnode [tclass=cnode/] [listby=ca/] [casource=active/] [level=2/]}
+        <? @$zblb=$v['caid']?>
+        {/c$cnode}
+        <div class="spnav">
+            <div class="wrap">
+                <ul class="clearfix">
+                    <li><a href="{c$vedurl [tclass=cnode/] [listby=ca/] [casource=30/]}{indexurl}{/c$vedurl}" target="_blank" class="{if $caid==30}hover{/if}">视频首页</a></li>
+                    {c$catalogs [tclass=catalogs/] [listby=ca/] [casource=3/] [limits=8/] [wherestr=pid=30 AND level=1/] [ttl=900/]}
+                    <li><a href="{indexurl}" target="_blank" class="{if $v['caid']==@$zblb}hover{/if}">{title}</a></li>{/c$catalogs}
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="wrap">
+            <!--首页导航下1200_60--><div id="_08_adv_fcatalog35"></div>
+        </div>
+    </div>

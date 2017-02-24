@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if $companynm}{companynm}{else}{mname}{/if}-{$hostname}</title>
+<meta content="{companynm}" name="keywords"> 
+<meta content="{companynm}{if $dizhi},地址是{dizhi}{/if}{if $lxdh},电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+</head>
+<body>
+<!--header begin-->
+ {tpl$jz_sj_head}
+<div class="container">
+  <div class="con">
+    <!--左侧栏开始-->
+    {tpl$jz_sj_left}
+    <!--左侧栏结束  右侧栏开始-->
+    <div class="right_bar">
+      <div class="title3">
+        <div class="title3_l"></div>
+        <div class="title3_m">店铺介绍</div>
+        <div class="title3_r"></div>
+        <div class="title3_m2"></div>
+      </div>
+      <div class="dpxq right_con2 fs14 clearfix">
+        <div class="dpxq1_l">
+            <img {c$image [tclass=image/] [tname=pic/] [val=u/] [maxwidth=270/] [maxheight=210/] [thumb=2/]} src="{url_s}"  height="210" width="270" {/c$image}/>
+          </div>
+          {c$cpyintro [cname=cpyintro/] [tclass=text/] [tname=cpyintro/] [dealhtml=safehtml/]}{/c$cpyintro}
+        </div>
+        <div class="right_b">
+          <div class="right_b_l">&nbsp;</div>
+          <div class="right_b_r">&nbsp;</div>
+        </div>
+      <span class="blank10"></span>
+
+      <div class="title3">
+        <div class="title3_l"></div>
+        <div class="title3_m">公司动态</div>
+        <div class="title3_r"></div>
+        <div class="title3_m2"></div>
+      </div>
+      <!--所有商品结束 特价商品开始-->
+      <div class="right_con2 sysp">
+        <!--公司列表开始-->
+        {c$jz_m_gsdt1 [cname=公司动态列表/] [tclass=archives/] [chsource=2/] [chids=104/] [caidson=1/] [casource=1/] [caids=512/] [space=1/] [detail=1/] [ttl=900/] [mp=1/]}
+        <div class="gsdt-title">
+          <a target="_blank" href="{marcurl}">{subject}</a>
+          <span class="nom gray79">
+            ({c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd})
+          </span>
+        </div>
+        <div class="gsdt-con">
+          <span class="f12 orange clear">
+            ［ <a class="greenlink1" target="_blank" href="{marcurl}">查看全文</a> ］
+          </span>
+        </div>
+        {/c$jz_m_gsdt1}
+        <div class="blank0"></div>
+        <!--公列表结束--> </div>
+      <div class="right_b">
+        <div class="right_b_l"></div>
+        <div class="right_b_r"></div>
+      </div>
+      <div>
+        <span class="blank10"></span>
+
+        <div class="title3">
+          <div class="title3_l"></div>
+          <div class="title3_m">所有商品</div>
+          <div class="title3_r"></div>
+          <div class="title3_m2"></div>
+        </div>
+        <!--所有商品结束 特价商品开始-->
+        <div class="right_con2 sysp">
+          <!--特价商品列表开始-->
+          {c$archives [cname=所有商品/] [tclass=archives/] [limits=8/] [chsource=2/] [chids=103/] [caidson=1/] [casource=1/] [caids=513/] [space=1/] [detail=1/] [ttl=900/] [mp=1/]}
+          <div class="list">
+            <div class="list1">
+              <a target="_blank" href="{marcurl}">
+                <img alt="{subject}"  {c$thumb_139_139 [cname=thumb_139_139/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=139/] [maxheight=139/] [thumb=2/]}src="{url_s}" width="139" height="139"{/c$thumb_139_139}></a>
+            </div>
+            <div style="text-align: center;" class="list2">
+              <a rel="nofollow" target="_blank" href="{marcurl}">
+                {c$subject18 [cname=subject18/] [tclass=text/] [tname=subject/] [trim=18/]}{/c$subject18}
+                <br></a>
+            </div>
+            <div class="list4">价格：{if $v['zj']}{zj}元{else}待定{/if}</div>
+          </div>
+          {/c$archives}
+          <div class="cl"></div>
+          <!--特价商品列表结束--> </div>
+        <div class="right_b">
+          <div class="right_b_l"></div>
+          <div class="right_b_r"></div>
+        </div>
+        <div class="pnav">
+          <div class="r pages-nav">
+            {$mpnav}
+          </div>
+          <div class="blank0"></div>
+        </div>
+        <!--右侧栏结束-->
+      </div>
+
+      </div>
+  </div>
+</div>
+{tpl$jz_foot}
+</body>
+</html>

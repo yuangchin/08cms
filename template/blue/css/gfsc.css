@@ -1,0 +1,250 @@
+/* 头部广告信息 */
+#top {
+    width: auto;margin-bottom: 0;
+}
+.bgF1 {
+    background: #f1f1f1;
+}
+.bza {
+    padding: 10px 0; background-color: #f1f1f1;
+}
+.bza em {
+    font-size: 14px;
+    line-height: 28px;padding-right: 10px;
+}
+.bza i {
+    float: left;width: 105px;height: 106px;padding-right: 10px;
+
+    background: url(../images/gfsc-bza.gif) no-repeat;
+}
+
+/* 导航内容 */
+.red-tit {
+    background: url(../images/gfsc-red.gif) no-repeat;
+}
+.red-tit .tab {
+    width: 1000px;
+
+    border-spacing: 0;border-collapse: collapse;
+}
+.red-tit .td1 {
+    font-size: 14px;font-weight: bold;line-height: 40px; overflow: hidden;
+
+    height: 40px; text-align: center;
+}
+.red-tit .td2 {
+    height: 66px; padding: 0 20px;color: #fff;
+    background-position: -40px 0;
+}
+.red-tit .td2 .l {
+    font-family: Microsoft YaHei;font-size: 20px;
+
+    float: left;padding-left: 100px;
+}
+.red-tit .td2 .r {
+    font-size: 14px;
+
+    float: right;padding-right: 100px;
+}
+.red-tit .td3 {
+    display: block;height: 16px;
+
+    background: url(../images/gfsc-nav-bot.gif) no-repeat;
+}
+
+.blow-tit {
+    background: url(../images/gfsc-blow.gif) no-repeat;
+}
+.blow-tit .tab {
+    width: 1000px;
+
+    border-spacing: 0;border-collapse: collapse;
+}
+.blow-tit .td1 {
+    font-size: 14px;font-weight: bold;line-height: 40px; overflow: hidden;
+
+    height: 40px; text-align: center;
+}
+.blow-tit .td2 {
+    height: 66px; padding: 0 20px;color: #fff;
+    background-position: -40px 0;
+}
+.blow-tit .td2 span {
+    font-size: 24px;padding-left: 15px;
+}
+.blow-tit .td2 .l {
+    font-family: Microsoft YaHei;font-size: 20px;
+
+    float: left;padding-left: 100px;
+}
+.blow-tit .td2 .r {
+    font-size: 14px;
+
+    float: right;padding-right: 100px;
+}
+.blow-tit .td3 {
+    display: block;height: 16px;
+
+    background: url(../images/gfsc-nav-bot.gif) no-repeat;
+}
+
+/* 热销楼盘 */
+.hot-lp {
+    position: relative;margin-right: -60px;
+    margin-bottom: 10px;
+}
+.hot-lp li {
+    display: inline;float: left;width: 273px;margin: 0 20px 20px 0; padding: 5px; text-align: center;
+
+    border: 1px solid #7dd1df;
+}
+.hot-lp li img {
+    -webkit-transition: transform .5s;         -o-transition: transform .5s;            transition: transform .5s;
+}
+.hot-lp li .lh {
+    line-height: 24px;overflow: hidden;
+
+    height: 24px;
+}
+.hot-lp li.hover {
+    display: block;cursor: pointer;border: 1px solid #c00;
+}
+.hot-lp li.hover a {
+    color: #c00;
+}
+.hot-lp li img:hover {
+    transform: scale(1.03);
+}
+.hot-lp li a:hover {
+    text-decoration: none;
+
+    color: #c00;
+}
+.hot-lp li h3 a {
+    font-size: 14px;font-weight: bold;line-height: 28px; overflow: hidden;
+
+    height: 28px; color: #099;
+}
+
+/* 各地区在售楼盘 */
+.content1 {
+    margin: 0 auto;
+}
+.tab-tit {
+    position: relative; top: 1px;
+
+    height: 42px;padding: 0 5px; background: url(../images/gfsc-navbg.gif) repeat-x;
+}
+.tab-tit span {
+    font-size: 14px;font-weight: bold;line-height: 42px;
+
+    float: left; height: 42px; padding: 0 20px;cursor: pointer;  text-align: center; color: #fff;
+}
+.tab-tit .act {
+    height: 41px;
+    padding: 0 20px;color: #000;border: 1px solid #38a3b7;border-bottom: none;border-radius: 4px 4px 0 0;background-color: #e1f0f3;
+}
+.tab-con {
+    overflow: hidden; zoom: 1;
+
+    border: 1px solid #7dd1df; border-top: none;
+}
+.tab-con ul {
+    padding: 8px;
+}
+.tab-con li table {
+    border-collapse: collapse;
+}
+.tab-con li table td {
+    padding: 5px;
+}
+.tab-con li .td1 {
+    background-color: #ace1ea;
+}
+
+/* 购房工具箱 */
+.toolx .titbg {
+    line-height: 42px;height: 42px;
+
+    background: url(../images/gfsc-navbg.gif) repeat-x;
+}
+.toolx h2 {
+    font-family: Microsoft yahei;
+    font-size: 24px;padding-left: 30px;color: #fff;
+}
+.toolx li {
+    display: inline;float: left;
+
+    width: 144px;height: 144px;margin: 28px;cursor: pointer;text-align: center; opacity: .6;background: url(../images/gfsc-tool.gif) no-repeat;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+}
+.toolx li .cont {
+    width: 80px;
+    padding: 28px 32px;text-align: center;
+}
+.toolx li .cont a {
+    cursor: pointer;
+    text-decoration: none;color: #000;
+}
+.toolx li span {
+    font-size: 14px;
+    font-weight: bold;line-height: 24px;
+}
+.toolx li i {
+    display: block;width: 52px;height: 46px;margin: 0 auto;background: url(../images/newhouse-gftool.png) no-repeat;
+}
+.toolx .tool0 {
+    background-position: 0 -10px;
+}
+.toolx .tool1 {
+    background-position: 0 -58px;
+}
+.toolx .tool2 {
+    background-position: 0 -112px;
+}
+.toolx .tool3 {
+    background-position: 0 -162px;
+}
+.toolx .tool4 {
+    background-position: 0 -215px;
+}
+.toolx .tool5 {
+    background-position: 0 -270px;
+}
+.toolx li.hover {
+    opacity: 1;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+/* 往期回顾 */
+
+.wqhg .titbg {
+    line-height: 42px;height: 42px;
+
+    background: url(../images/gfsc-navbg.gif) repeat-x;
+}
+.wqhg h2 {
+    font-family: Microsoft yahei;
+    font-size: 24px;padding-left: 30px;color: #fff;
+}
+.wqhg .m-s {
+    position: relative;
+
+    margin-right: -36px;
+}
+.wqhg li {
+    float: left;width: 230px;margin: 10px 13px 0 0;
+}
+.wqhg li img {
+    padding: 3px;
+
+    border: 1px solid #ddd;
+}
+.wqhg li a {
+    cursor: pointer;
+}
+.wqhg li.fd {
+    float: right; margin-right: 0;
+}
+.wqhg li h3 {
+    font-size: 14px;font-weight: bold;line-height: 28px; overflow: hidden;
+
+    height: 28px; text-align: center; color: #666;
+}

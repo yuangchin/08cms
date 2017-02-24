@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{title}-{companynm}-{$hostname}</title>
+ <meta content="{companynm}" name="keywords"> 
+ <meta content="{companynm}{if $dizhi},公司地址是{dizhi}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+</head>
+<body>
+{tpl$jz_m_head}
+<!--内容开始-->
+<div class="area"> 
+  <!--左侧栏开始-->
+  {tpl$jz_m_left}
+  <!--右侧栏开始-->
+  <div class="right_bar">
+    <div class="R_title">
+        <div class="R_title_L">公司基本信息</div>
+    </div>
+    <div class="R_con1 wzxx">
+      <strong>公司名称：</strong>{companynm}<br>
+      <strong>公司公告：</strong>{comgonggao}<br>
+      <strong>公司介绍：</strong>
+      <p align="center">
+        {if $cpyintro}{cpyintro}{else}暂无介绍！{/if}
+    </div>
+    
+    <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+    <span class="blank10"></span>
+    <div class="R_title">
+    	<div class="R_title_L">联系方式</div>
+    </div>
+    <div class="wzxx R_con1">
+      <strong>联系电话：</strong>{if $lxdh}{lxdh}{else}暂无！{/if}<br>
+      <strong>公司网址：</strong>{if $internet}<a href="{internet}" target="_blank" rel="no-follow">{internet}</a>{else}暂无！{/if}<br>
+      <strong>公司地址：</strong>{if $dizhi}{dizhi}{else}暂无！{/if}<br>
+    </div>
+    <div class="R_B">
+    	<div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+  </div>
+  <!--右侧栏结束--> 
+</div>
+<!--内容结束--> 
+<!--footer begin--> 
+	{tpl$jz_foot}
+<!--footer end-->
+
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">指定ID资料 fromid</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>指定ID资料是根据栏目、类系、模型、会员组及相关验证的ID 调出相关信息。</p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+<div>
+    
+        <span class="blank5"></span>
+        <li class="bg3">示例1：信用图标调用</li>
+        <li class="t2">效果:</li>
+        <li><img src="img/jxhylb.jpg" class="pad50" /></li>
+        
+        <li class="t2">html代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+                
+<dl class="tjjinji">
+    <dt><a target="_blank" href="#"> <img width="53" height="65" border="0" src="7916.jpg"> </a></dt>
+    <dd class="h23">&nbsp;<a target="_blank" href="#"><span class="font_12Green"> 枷困轲</span></a></dd>
+    <dd>&nbsp;<img title="十级" src="ico_10.gif"></dd>
+    <dd>&nbsp;出售房源4905套</dd>
+    <dd>&nbsp;出租房源5900套</dd>
+</dl>
+<dl class="tjjinji">
+    <dt><a target="_blank" href="#"> <img width="53" height="65" border="0" src="076.jpg"> </a></dt>
+    <dd class="h23">&nbsp;<a target="_blank" href="#"><span class="font_12Green"> eeeeeeee</span></a></dd>
+    <dd>&nbsp;<img title="十级" src="ico_10.gif"></dd>
+    <dd>&nbsp;出售房源4893套</dd>
+    <dd>&nbsp;出租房源5670套</dd>
+</dl>
+<dl class="tjjinji">
+    <dt><a target="_blank" href="#"> <img width="53" height="65" border="0" src="7916.jpg"> </a></dt>
+    <dd class="h23">&nbsp;<a target="_blank" href="#"><span class="font_12Green"> 姓名姓名</span></a></dd>
+    <dd>&nbsp;<img title="十级" src="ico_10.gif"></dd>
+    <dd>&nbsp;出售房源4997套</dd>
+    <dd>&nbsp;出租房源5881套</dd>
+</dl>
+
+                </xmp>
+            </div>
+        </li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+<dl class="tjjinji">
+    <dt><a href='{mspacehome}' target="_blank"> <img {c$image53_65} border="0"/> </a></dt>
+    <dd class="h23">&nbsp;<a href='{mspacehome}' target="_blank"><span class="font_12Green">{xingming}</span>
+    </a></dd>
+    <dd>&nbsp;{c$xytb2}</dd>
+    <dd>&nbsp;出售房源{c$jingjirenchushoufangyuanshuliang}套</dd>
+    <dd>&nbsp;出租房源{c$jingjirenchuzufangyuanshuliang}套</dd>
+</dl>
+
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li>说明</li>
+        <span class="blank3"></span>
+        <li class="t3">
+        <p>
+        {c$image53_65}:<i class="FcB">图片模块</i>;<br />
+        {c$xytb2}:<i class="FcB">指定id资料</i>;<br />
+        {c$jingjirenchushoufangyuanshuliang},{c$jingjirenchuzufangyuanshuliang}:<i class="FcB">文档数量</i>;<br />
+        <b class="FcR">整体截图如下</b><br />
+        <img src="img/zdid.jpg" class="img" />
+        </p></li>
+        <span class="blank3"></span>
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

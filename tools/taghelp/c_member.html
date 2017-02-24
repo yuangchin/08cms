@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">单个会员 member</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>单个会员类似单个文档，是调用单个会员的相关信息。</p>
+    <p>该标识是的"指定来源id"有两类值：激活会员$_a[mid]，浏览者-1(仅用于动态页或JS调用),输入为空默认为激活会员。</p>
+</div>
+
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+<div>
+	<div>
+        <span class="blank5"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/archives8.gif" class="pad50" /></li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>{if $v['mchid'] == 2}
+<div class="photo">
+  <div style="width:100px;height:130px"><a href="{$mspaceurl}?mid={mid}"><img {c$image100_130} alt="{xingming}
+  店铺" border="0" /></a></div>
+</div>
+<div class="name tc">{xingming}</div>
+<div class="shop"> <a href="{$mspaceurl}?mid={mid}" target="_blank"><img src="{$tplurl}images/main_36.jpg" 
+width="135" height="26" border="0" /></a> </div>
+<div class="detail">
+  <div> 服务等级：{c$xytb2} </div>
+  <div> 认 证： {c$jjrsfrz2}{c$jjrzzrz2}</div>
+  {c$jjrgs1}
+  <div> QQ：{qq} </div>
+  <div> 注册时间：{c$regdate_ymd} </div>
+  <div>
+    <div style='width:180px;'></div>
+  </div>
+</div>
+{else}
+<div class="photo">
+  <div style="width:100px;height:130px"><img {c$image100_130} alt="{xingming}" border="0" /></div>
+</div>
+<div class="name tc">{xingming}</div>
+<div class="detail">
+  <div> QQ：{qq} </div>
+  <div> 注册时间：{c$regdate_ymd} </div>
+</div>{/if}</xmp>
+            </div>
+        </li>
+        <li class="bg3">说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>显示有关出售二手房的会员的有关信息。<br />
+        <b class="FcR">整体截图如下：</b><br />
+        <img src="img/dghy.jpg" class="img"/>
+            
+        </p></li>
+        <span class="blank3"></span>
+    </div>
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

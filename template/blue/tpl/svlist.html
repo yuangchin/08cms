@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$yjlmtit3 [tclass=cnode/] [listby=ca/] [casource=active/] [level=3/]}{title} {/c$yjlmtit3}{c$yjlmtit2 [tclass=cnode/] [listby=ca/] [casource=active/] [level=2/]}{title} {/c$yjlmtit2}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] [level=1/]}{title}{/c$yjlmtit}-{hostname}</title>
+<meta content="{c$jhkeywords [tclass=cnode/] [listby=ca/] [casource=active/]}{listkeywords}{/c$jhkeywords}" name='keywords'>
+<meta content="{c$jhdescription [tclass=cnode/] [listby=ca/] [casource=active/]}{listabstract}{/c$jhdescription}" name='description'>
+{tpl$headinner}
+<base target="_blank"/>
+</head>
+<body>
+ <!--服务中心通用头部-->
+ {tpl$tpl_svhead}
+  <div class="blank15"></div>
+  <div class="wrap">
+    <!--帮助中心新手入门流程-->
+    {tpl$tpl_liucheng}
+    <div class="blank15"></div>
+      <div class="fgbg2 clearfix">
+      <!--帮助中统一左栏信息 导航-->
+      {tpl$tpl_svleft}
+      <div class="w945 l">
+      <div class="blank7"></div>
+      <div  class="zxList bgFF clearfix h612">
+      <div class="blank20"></div>
+         <ul>
+            {c$bzzxls [tclass=archives/] [limits=40/] [chsource=2/] [chids=109/] [caidson=1/] [casource=2/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [ttl=1200/] [mp=1/]}
+            <li {if $v['sn_row']%8==0}class="line"{/if}><span>{c$createdate [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate}</span>&middot;<a href="{arcurl}" target="_self">{subject}</a>
+            </li>
+            {/c$bzzxls}
+         </ul>
+      {if $mpacount>0}
+         {$mpnav}
+       {else}
+       <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+       {/if}
+        <div class="blank15"></div>
+        </div>
+        </div>
+      </div>
+</div>
+<!--公用底部-->
+{tpl$foot}
+</body>
+</html>

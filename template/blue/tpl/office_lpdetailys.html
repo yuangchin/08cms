@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}详情{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+<!--写字楼与商铺楼盘内页公用导航-->
+{tpl$office_lpnav}
+<div class="wrap clearfix">
+	<div class="w900 l">
+        <div class="clearfix jbxx">
+            <div class="lp-coltit "><h3 class="tit1">基本信息</h3></div>
+            <div class="bd-gray lp-jbcs">
+            <div class="blank15"></div>
+            <ul class="plr15">
+                <li><span>楼盘均价 </span>{if $dj}<i>{dj}</i>元/m&sup2;{else}售价待定{/if}</li>
+                <li><span>区域 </span>{ccid1title}-{ccid2title}</li>
+                <li><span>开盘日期 </span>{if $kprq}{kprq}{else}待定{/if}</li>
+                <li><span>交房日期  </span>{if $jfrq}{jfrq}{else}待定{/if}</li>
+                <li><span>开盘说明  </span>{kprq}</li>
+                <li><span>装修程度  </span>{c$zxcd2 [tclass=field/] [tname=zxcd/] [type=archive/] [fname=zxcd/]}{/c$zxcd2}</li>
+                <li class="wb"><span>特色楼盘 </span>{c$tslp2 [tclass=field/] [tname=tslp/] [type=archive/] [fname=tslp/]}{/c$tslp2}</li>
+                <li class="wb"><span>地铁 </span>{ccid3title}{if $ccid14}-{ccid14title}{/if}</li>
+                <li class="wb"><span>项目地址 </span>{address}</li>
+            </ul>
+            <div class="blank15"></div>
+        </div>
+        </div>
+        <div class="clearfix jbxx">
+            <div class="lp-coltit "><h3 class="tit1">物业信息</h3></div>
+            <div class="bd-gray lp-jbcs">
+            <div class="blank15"></div>
+            <ul class="plr15">
+                <li><span>销售电话 </span>{tel}</li>
+                <li><span>物业费 </span>{wyf}</li>
+                <li class="wb"><span>售楼地址 </span>{sldz}</li>
+                <liclass="wb"><span>物业公司  </span>{wygs}</li>
+                <li class="wb"><span>楼盘开发商  </span>{c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$lpkfs}</li>
+                <li class="wb"><span>许可证号  </span>{xkzh}</li>
+            </ul>
+            <div class="blank15"></div>
+        </div>
+        </div>
+        <div class="clearfix jbxx">
+            <div class="lp-coltit "><h3 class="tit1">楼层设备</h3></div>
+            <div class="bd-gray lp-jbcs">
+            <div class="blank15"></div>
+            <ul class="plr15">
+                <li><span>办公面积 </span>{if $bgmj}{bgmj}M&sup2;{/if}</li>
+                <li><span>商业面积 </span>{if $symj}{symj}M&sup2;{/if}</li>
+                <li><span>开间面积 </span>{if $kjmj}{kjmj}M&sup2;{/if}</li>
+                <li><span>标准层层高  </span>{if $bzccg}{bzccg}m{/if}</li>
+                <li><span>标准层面积  </span>{if $bzcmj}{bzcmj}M&sup2;{/if}</li>
+                <li><span>大堂层高  </span>{if $dtcg}{dtcg}m{/if}</li>
+                <li><span>大堂面积  </span>{if $dtmj}{dtmj}M&sup2;{/if}</li>
+                <li><span>电梯数  </span>{dts}</li>
+                <li><span>电梯分区  </span>{dtfq}</li>
+                <li><span>空调开放时间  </span>{ktkfsj}</li>
+                <li><span>网络通讯  </span>{c$wltx2 [tclass=field/] [tname=wltx/] [type=archive/] [fname=wltx/]}{/c$wltx2}</li>
+                <li><span>卫生间  </span>{wsj}</li>
+                <li><span>安防系统  </span>{afxt}</li>
+                <li><span>供水方式  </span>{c$gsfs2 [tclass=field/] [tname=gsfs/] [type=archive/] [fname=gsfs/]}{/c$gsfs2}</li>
+                <li><span>供电系统  </span>{c$gdxt2 [tclass=field/] [tname=gdxt/] [type=archive/] [fname=gdxt/]}{/c$gdxt2}</li>
+                <li><span>排风系统  </span>{c$pfxt2 [tclass=field/] [tname=pfxt/] [type=archive/] [fname=pfxt/]}{/c$pfxt2}</li>
+                <li><span>排污系统  </span>{c$pwxt2 [tclass=field/] [tname=pwxt/] [type=archive/] [fname=pwxt/]}{/c$pwxt2}</li>
+                <li class="wb"><span>楼内配套  </span>{c$lnpt2 [tclass=field/] [tname=lnpt/] [type=archive/] [fname=lnpt/]}{/c$lnpt2}</li>
+            </ul>
+            <div class="blank15"></div>
+        </div>
+        </div>
+        <div class="clearfix jbxx">
+            <div class="lp-coltit "><h3 class="tit1">其它方面</h3></div>
+            <div class="bd-gray lp-jbcs">
+            <div class="blank15"></div>
+            <ul class="plr15">
+                <li><span>写字楼类型 </span>{$ccid46title}</li>
+                <li><span>写字楼级别 </span>{$ccid47title}</li>
+                <li><span>车位数 </span>{cksm}</li>
+                <li><span>车位价格  </span>{cwjg}</li>
+                <li><span>占地面积  </span>{if $zdmj}{zdmj}M&sup2;{/if}</li>
+                <li><span>建筑面积  </span>{if $jzmj}{jzmj}M&sup2;{/if}</li>
+                <li><span>绿化率  </span>{lhl}</li>
+                <li><span>容积率  </span>{yjl}</li>
+                <li><span>得房率  </span>{dfl}</li>
+                <li><span>产权年限 </span>{if $cqnx}{cqnx}年{/if}</li>
+                <li class="wb"><span>工程进度  </span>{gcjd}</li>
+            </ul>
+            <div class="blank15"></div>
+        </div>
+        </div>
+        {c$outinfos1 [tclass=outinfos/] [dsid=0/] [limits=50/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}
+        <!-- 历史价格 -->
+        <div class="clearfix info-block lsjg">
+        	<div class="lp-coltit "><h3 class="tit1">历史价格</h3></div>
+            <? $k=count($_outinfos1);?>
+            <div id="lp-lsjg" class="lp-con1 lp-tabcon lp-lsjg">
+            	<table cellspacing="0" cellpadding="0" border="0" width="100%" id="price_list">
+					<tbody>
+						<tr bgcolor="#eeeeee">
+							<td width="70" class="lsjg_td lsjg_bor">记录时间<i class="ico08">&#xe74a;</i></td>
+							<td width="100" class="lsjg_td lsjg_bor">均价<i class="ico08">&#xe61d;</i></td>
+                            <td width="100" class="lsjg_td lsjg_bor">最低价<i class="ico08">&#xe61f;</i></td>
+                            <td width="100" class="lsjg_td lsjg_bor">最高价<i class="ico08">&#xe61b;</i></td>
+							<td align="center" class="lsjg_td lsjg_bor1">价格说明<i class="ico08">&#xf06b;</i></td>
+						</tr>
+                        [row]
+                        <tr {if $v['sn_row']%2==0}class="bg"{/if}>
+                        <td class=" lsjg_bor">{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}</td>
+                        <td class=" lsjg_bor">{if $v['average']}{average}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor">{if $v['lowest']}{lowest}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor">{if $v['highest']}{highest}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor1">{if $v['message']}{message}{else}-{/if}</td>
+                        </tr>
+                        [/row]
+					</tbody>
+				</table>
+            </div>
+            {if $k>10}
+            <div id="lp-lsjg-btn" class="lp-lsjg-btn">更多 <i class="ico08">&#xe68d;</i></div>
+            <script type="text/javascript">
+                var fbtn,oH = 0;
+                $('#lp-lsjg').find('tr').slice(0,9).each(function() {
+                    oH += $(this).height()*1;
+                });
+                $('#lp-lsjg').height(oH);
+                $('#lp-lsjg-btn').click(function () {
+                    if(!fbtn){
+                       $(this).html('收起 <i class="ico08">&#xe68e;</i>').prev().css('height','auto');
+                       fbtn=!fbtn;
+                    }else{
+                       $(this).html('更多 <i class="ico08">&#xe68d;</i>').prev().css('height',oH);
+                       fbtn=!fbtn;
+                    }
+                })
+            </script>
+            {/if}
+        </div>
+        {/c$outinfos1}
+        {if $content}
+        <!-- 楼盘介绍 -->
+        <div class="clearfix info-block xmjj">
+            <div class="lp-coltit "><h3 class="tit1">楼盘介绍</h3></div>
+            <div class="p10 lp-tabcon bd-gray">
+                    {c$content_njs [cname=content_njs/] [tclass=text/] [tname=content/]}{/c$content_njs}
+            </div>
+        </div>
+        {/if}
+     </div>
+     <!-- 写字楼与商铺楼盘右侧 -->
+    {tpl$office_lpright}
+</div>
+{tpl$tpl_lp_footer}
+</body>
+</html>

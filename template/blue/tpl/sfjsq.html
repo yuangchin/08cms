@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>税费计算器-{$hostname}</title>
+{tpl$headinner}
+</head>
+<body class="calc">
+{tpl$toolshead}
+
+<div id="main" class="main wrap">
+<!--内容区-->		
+		<div class="calc_main_wrap">
+			<div class="calc_main cf">
+				<div class="left fl">
+					<form action="" method="" name="formt3">
+						<div class="top cf goufang  shuifei">
+							<div class="sr fl">
+								<h2>税费计算器</h2>
+								<ul class="cf">
+									<li class="cf fl"><span class="fl">单价：</span><input class="fl txt" type="text" value="" name="dj3"/><b class="fl">元/平米</b></li>
+									<li class="cf fl"><span class="fl">面积：</span><input class="fl txt" type="text" value="" name="mj3" /><b class="fl">平方米</b></li>
+								</ul>
+								<p class="btn_p"><input type="button" value="计算" class="btn1" onclick="runjs3(this.form)"/><a id="reset" href="#" title="" target="_blank">请除数据，重新计算</a></p>
+							</div>
+							<div class="re fl" >
+								<h2>计算结果<span>(&nbsp;&nbsp;计算结果仅供参考&nbsp;&nbsp;)</span></h2>
+								<div class="re_in re_sf">
+									<span class="sj"></span>
+									<p><b>房屋总价：</b><span id="fkz3">0</span>元</p>
+									<p><b>契税：</b><span id="q">0</span>元</p>
+									<p><b>印花税：</b><span id="yh">0</span>元</p>
+									<p><b>公证费：</b><span id="gzh">0</span>元</p>
+									<p><b>房屋买卖手续费：</b><span id="fw">0</span>元</p>
+									<p><b>委托办理产权：</b><span id="wt">0</span>元</p>
+									<div class="shouxuf">
+										手续费：<br/>
+										购房税费用 银行贷款需要支付的费用
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="bottom">
+						<h4>税费计算器</h4>
+						<p>1.公积金贷款最高额度为80万元;</p>
+						<p>2.对已贷款购买一套住房但人均面积低于当地平均水平，再申请购买第二套普通自住房的居民，比照执行首次贷款购买普通自住房的优惠政策。</p>
+					</div>
+				</div>
+				
+				{tpl$tpl_jsq_right}
+			</div>
+		</div>
+	<script>
+		var _fkz3 = document.getElementById("fkz3");
+		var _q = document.getElementById("q");
+		var _yh = document.getElementById("yh");
+		var _gzh = document.getElementById("gzh");
+		var _fw = document.getElementById("fw");
+		var _wt = document.getElementById("wt");
+
+		function runjs3(obj) {
+			if (!obj.dj3.value) {
+				alert('单价不能为空！');
+				return false;
+			} else if (!obj.mj3.value) {
+				alert('面积不能为空！');
+				return false;
+			}
+			var dj3 = parseFloat(obj.dj3.value);
+			var mj3 = parseFloat(obj.mj3.value);
+			var fir=1;
+			var fkz3 = dj3 * mj3;
+			var yh = fkz3 * 0.0005;
+			if (dj3 <= 9432) {
+				var q = fkz3 * 0.015;
+			} else if (dj3 > 9432) {
+				var q = fkz3 * 0.03;
+			}
+			if (mj3 <= 120) {
+				var fw = 500;
+			} else if (120 < mj3 && mj3 <= 5000) {
+			  var fw = 1500;
+			}
+			if (mj3 > 5000) {
+				var	fw = 5000;
+			}
+
+			if (fir == 1 && mj3 <= 90) {
+				q = fkz3 * 0.01
+			} else if (fir == 1 && mj3 > 90) {
+				q = fkz3 * 0.015
+			}
+			if (fir == 2 && mj3 <= 90) {
+				q = fkz3 * 0.01
+			} else if (fir == 2 && mj3 > 90) {
+				q = fkz3 * 0.02
+			}
+
+			var gzh = fkz3 * 0.003;
+			_yh.innerHTML = Math.round(yh * 100, 5) / 100;
+			_q.innerHTML = Math.round(q*100,5)/100;
+			_fkz3.innerHTML = Math.round(fkz3 * 100, 5) / 100;
+			_gzh.innerHTML = Math.round(gzh * 100, 5) / 100;
+			_wt.innerHTML = Math.round(gzh * 100, 5) / 100;
+			_fw.innerHTML = Math.round(fw * 100, 5) / 100;
+		}
+		document.getElementById("reset").onclick = function() {
+			document.getElementsByName('formt3')[0].reset();
+			return false;
+		}
+	</script>
+	<script type="text/javascript">
+			//计算器导航
+			(function() {
+				var str='';
+				$('#calc_nav').find('li').on({
+					'mouseenter':function() {
+						str=$(this).attr('class');
+						$(this).addClass(str+'_h');
+					},
+					'mouseleave':function() {
+						$(this).removeClass(str+'_h');
+					}
+				});
+			})();
+			$(".calc_dl dd:odd").css("background","#eee");
+	</script>	
+</div>
+{tpl$foot}
+</body>
+</html>

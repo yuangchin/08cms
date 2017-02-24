@@ -1,0 +1,104 @@
+
+通过adminm.php?action=xxxxx的方式来调用
+
+----文档管理-------
+
+chushouadd.inc.php ： 出售(二手)房源添加/修改
+chushouarchives.inc.php ： 出售(二手)房源列表
+chuzuadd.inc.php ： 出租房源添加/修改
+chuzuarchives.inc.php ： 出租房源列表
+
+lpadd.inc.php ： (发布房源时)添加小区
+loupans.inc.php ： (售楼公司)管理楼盘
+loupane.inc.php ： (售楼公司)楼盘修改
+jiagearchive.inc.php ： (售楼公司)楼盘价格修改
+
+zixunadd.inc.php ： (售楼公司)添加/修改 资讯
+zixuns.inc.php ： (售楼公司)资讯管理
+zixuns_load.inc.php ： (售楼公司)加载内容
+zixuns_pid.inc.php ： (售楼公司)楼盘内的资讯 管理
+loupanhd.inc.php ： (售楼公司)楼盘内的活动 管理
+hdinfo.inc.php ： (售楼公司)楼盘内的活动 相关信息
+
+xiangceadd.inc.php ： (售楼公司)添加/修改 相册
+xiangces.inc.php ： (售楼公司)相册管理
+xiangces_pid.inc.php ： (售楼公司)楼盘内的相册 管理
+
+huxingadd.inc.php ： (售楼公司)添加/修改 户型
+huxings.inc.php ： (售楼公司)户型管理
+huxings_pid.inc.php ：(售楼公司)楼盘内的户型 管理
+
+xuqiuarchive.inc.php ： 需求添加/修改 
+xuqiuarchives.inc.php ： 需求管理
+xuqiuinfo.inc.php ： 需求 相关信息 (需求关注交互-查看信息)
+
+designCase_a.inc.php ：装修案例 添加/修改 
+designCase_s.inc.php ： 装修案例管理
+designGoods_a.inc.php ： 商品 添加/修改
+designGoods_s.inc.php ： 商品管理
+designNews_a.inc.php ： 公司动态 添加/修改
+designNews_s.inc.php ：公司动态管理 
+design_a.inc.php ： 设计师 添加/修改
+design_s.inc.php ： 设计师管理
+
+zhaopinadd.inc.php ： 招聘添加/修改 
+zhaopinarchives.inc.php ：招聘管理 
+tuijianarchives.inc.php ： 房源 推荐位管理
+dc_pid.inc.php ： 设计师 内的 装修案例 管理
+zhoubianadd.inc.php ： 周边添加(前台入口)
+
+tejiaarchive.inc.php ：特价房编辑
+tejiaarchives.inc.php ：特价房管理 
+
+customer_add.inc.php ：??? (后续删除) 
+fxmy_customers.inc.php ：??? (后续删除)  
+fxmy_brokerage.inc.php ：分销-我的佣金
+fxmy_fxtuijian.inc.php ：分销-我的推荐
+fxmy_invlinks.inc.php ：分销-推广链接
+
+----会员资料-------
+
+wjindex.inc.php ： 会员中心入口
+agents.inc.php ： 经纪人管理(经纪公司)
+zhuanjia_manage.inc.php ： 问答专家 资料管理
+tocomp.inc.php ： 经纪人 查看 自己的经纪公司 信息 
+gaoji.inc.php ： 经纪人升级
+vip.inc.php ： 装修公司升级
+upuser.inc.php ： 普通会员转为 : 经纪人/经纪公司/装修公司/品牌商家
+
+----我发起的交互-------
+
+scangs.inc.php ： 房源收藏 
+guanzus.inc.php ： 关注楼盘
+xuqiugzs.inc.php ： 关注需求
+dscangs.inc.php ： 店铺收藏
+scask.inc.php ： 问答收藏
+mydelegations.inc.php ： 我委托的房源
+yyshuaxin.inc.php ： 房源 预约刷新 
+zding.inc.php ： 房源置顶
+
+---- 交互 管理 -----------
+
+?入口 commu_brandbuy.inc.php ： 品牌建材 商品购买 管理
+commu_brandsjly.inc.php ： 商家品牌空间 我要留言 管理
+commu_housemeasure_src.inc.php ： (发布者)预约量房,未启用
+commu_housemeasure_tag.inc.php ： 免费量房 竞标管理 
+commu_huodongbm.inc.php ： 我的团购(商品团购报名) 管理
+
+commu_yezhupl.inc.php ： (装修公司)业主评论 管理
+commu_yixiang.inc.php ： (接收)房源意向 管理
+
+delegations.inc.php ： 用户委托的房源(经纪人)
+louyx.inc.php ： 楼盘意向 
+loupandp.inc.php ： 楼盘点评 
+dfangs.inc.php ：(售楼公司)新房团购 报名管理
+
+export_excel_content.inc.php ： 房源导出excel（导出数据）
+export_excel_items.inc.php：房源导出excel（显示可导项目供选择）
+wenda_manage.inc.php ： 我的快问(含交互,文档) 给我的问题/我的提问/我的回答
+zijing.inc.php ：(经纪人)查看公司资金状况 
+liuyans.inc.php ： 店铺留言
+
+
+=== end ================================================
+

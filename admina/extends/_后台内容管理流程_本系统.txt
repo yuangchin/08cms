@@ -1,0 +1,176 @@
+
+
+-------------------------------------------------广告及副件----------------------------------------
+areafarchives.php ：地区广告管理列表
+adv_area_managements.php ：地区分站广告管理
+farchives_area_list.php ：地区分站广告管理
+
+-------------------------------------------------文档相关-------------------------------------------
+
+chuzuarchive.php ：出租房源详情编辑
+chuzuarchives.php ：出租房源管理列表
+chuzuheji.php ：小区内的出租房源列表
+cmshelp_a.php ：帮助添加、帮助详情修改
+cmshelp_s.php ：帮助管理列表
+designCase_a.php ：装修案例详情编辑
+designCase_pid.php ：设计师下的装修案例列表
+designCase_s.php ：装修案例管理列表
+designGoods_a.php ：商品详情编辑
+designGoods_s.php ：商品管理列表
+designNews_a.php ：公司动态详情编辑
+designNews_s.php ：公司动态管理列表
+designTuangou_a.php ：家装团购添加、修改
+designTuangou_s.php ：家装团购管理
+design_a.php ：设计师详情编辑	
+design_s.php ：设计师管理列表
+huodongarchive.php ：新房活动添加、详情修改
+huodongs_pid.php ：楼盘下的新房团购列表
+huxingarchive.php ：户型添加、详情编辑
+huxingarchives.php ：户型列表
+huxings_load.php ：楼盘下加载户型
+huxings_pid.php ：楼盘下户型合辑
+huxing_load.php ：新房团购下户型加载
+huxing_pid.php ：新房团购下户型列表
+jiagearchive.php ：楼盘价格
+kfarchive.php ：看房团添加、详情编辑
+kfarchives.php ：看房团列表
+kfsadd.php ：开发商添加、详情编辑
+kfsarchives.php ：开发商管理列表
+kfsloupans.php ：楼盘内开发商
+kf_pid.php ：看房团下的楼盘
+dinggouarchives.php ：新房团购管理列表
+loupanadd.php ：楼盘添加，详情编辑
+loupanarchives.php ：楼盘管理列表
+loupans_load.php ：看房团楼盘合辑内加载楼盘
+peitaoadd.php ：周边配套添加、详情编辑
+peitaoarchives.php ：周边配套列表
+peitaosharchives.php ：周边配套审核列表
+peitaos_init.php ：周边配套 初始化(与 楼盘/小区 关联)
+peitaos_load.php ：楼盘下周边配套加载
+peitaos_pid.php ：楼盘下周边配套合辑列表
+qa_a.php ：问答添加、详情编辑
+qa_s.php ：问答列表
+qiugouarchive.php ：求购详情编辑
+qiugouarchives.php ：求购管理列表
+qiuzuarchive.php ：求租详情编辑
+qiuzuarchives.php ：求租管理列表
+rel_lp1.php ：楼盘关联开发商列表
+shipinadd.php ：视频添加、详情编辑
+shipinarchives.php ：视频管理列表		
+tejiaarchive.php ：特价房添加、详情编辑	
+tejiaarchives.php ：特价房管理列表
+tejias_pid.php ：楼盘下特价房
+usedhousearchive.php ：二手房详情编辑
+usedhousearchives.php ：二手房管理列表	
+usedhouseheji.php ：小区内二手房源
+wendas_load.php ：楼盘内问答加载
+wendas_pid.php ：楼盘内问答合辑
+xiangcearchive.php ：楼盘相册添加、详情编辑
+xiangcearchives.php ：楼盘相册管理列表	
+xiangces_pid.php ：楼盘内相册合辑
+xiaoquadd.php ：添加小区、小区详情编辑
+xiaoquarchives.php ：小区管理列表
+xiaoqutemp.php ：临时小区管理列表
+zhaopinadd.php ：招聘添加、详情编辑
+zhaopinarchives.php ：招聘管理列表
+zhuanjia_manage.php ：专家团管理列表
+zixunadd.php ：资讯添加、详情编辑
+zixunarchives.php ：资讯管理列表	
+zixuns_load.php ：楼盘内资讯加载
+zixuns_pid.php ：楼盘内资讯合辑
+ztadd.php ：专题添加、详情编辑
+ztarchives.php ：专题管理列表
+zt_load.php ：专题内资讯、楼盘、活动、视频、开发商加载
+zt_pid.php ：专题内资讯、楼盘、活动、视频、开发商合辑
+
+bus_chuzuarchive.php ：商业地产-出租编辑 
+bus_chuzuarchives.php ：商业地产-出租管理
+bus_loupanadd.php ：商业地产-楼盘-编辑 
+bus_loupanarchives.php ：商业地产-楼盘-管理
+bus_usedhousearchive.php ：商业地产-二手房-编辑 
+bus_usedhousearchives.php ：商业地产-二手房-管理
+
+distribution.php ：分销编辑
+distributions.php ：分销管理
+distribution_fxtikuan.php ：佣金提取(分销提款)
+distribution_tjs.php ：(分销)管理推荐【交互】
+
+loudong_huxing.php ：楼栋下的户型
+loudong_pid.php ：沙盘下楼栋
+
+imgarchive.php ：图库编辑 
+imgarchives.php ：图库管理
+imgcomment.php ：图库评论 ? 
+img_reply.php ：图库评论-回复 ? 
+
+ldarchive.php ：楼栋编辑 
+ldarchives.php ：楼栋管理
+
+liveadd.php ：直播编辑 
+livearchives.php ：直播管理
+liveinfo_add.php ：直播信息添加(交互)
+liveinfo_list.php ：直播信息管理(交互)
+live_load.php ：直播-楼盘 加载
+live_pid.php ：直播-关联楼盘 
+
+-------------------------------------------------会员相关-------------------------------------
+memberadd2.php ：添加会员
+memberedit.php ：会员详情编辑
+memberexpert.php ：专家详情编辑
+membersales.php ：售楼公司列表
+membersales2.php ：售楼公司详情编辑
+membersjr.php ：经纪人管理列表
+membersjs.php ：经纪公司管理列表
+memberspt.php ：用户会员管理列表
+memberstatic.php ：会员空间静态
+memberszx.php ：装修公司会员管理列表
+employees_pid.php ：经纪公司下-经纪人
+
+------------------------------------------------推送相关------------------------------------------
+pushs_huxing.php ：推送新房频道户型图_3管理列表
+push_load_mem.php ：地区分站>经纪人、经纪公司加载信息管理列表
+push_load_mems.php ：除地区分站外，会员加载信息管理列表
+
+
+------------------------------------------------交互相关-------------------------------------------
+comments.php ：资讯评论管理列表
+commu_answers.php ：问答答案列表
+commu_brandbuy.php ：家装>>商品>>订单管理、商品购买列表
+commu_brandsjly.php ：商家品牌空间我要留言
+commu_housemeasure.php ：免费量房列表
+commu_huodongbm.php ：家装团购下的活动报名列表
+commu_jbask.php ：问答举报列表
+commu_kanfangbm.php ：看房团活动报名列表
+commu_yixiang.php ：二手房,出租的意向列表
+dfangs.php ：新房团购报名列表
+dianping.php ：业主评论
+jubaos.php ：房源举报列表
+dingyues.php ：楼盘订阅
+weituo.php ：房源委托管理列表、房源委托详情编辑
+liuyans.php ：店铺留言列表、店铺留言详情编辑
+webtw.php ：网站提问管理列表、网站提问详情编辑
+yinxiangheji.php ：楼盘内印象
+yx_manage.php ：印象管理列表
+yixiangs.php ：楼盘内意向
+zhuanjia_sq.php ：专家团申请
+lp_pingfen.php ：楼盘评分
+liuyans.php ：商家留言
+
+DELETE 
+lpliuyans.php ：楼盘留言详情编辑
+dianpins.php ：楼盘留言
+comment_zhuanti.php ：专题评论列表
+commu_kanfang.php ：看房团活动评论列表
+zx_reply.php ： 资讯评论回复
+lply_replays.php
+
+----------------------------------------------其它/杂项------------------------------------------
+exconfigs.php ：房产参数
+fccotype.php ：房产参数其他参数
+readme.txt ：阅读文本
+
+pricetrends.php ：价格趋势 
+export_excel.php ：EXCEL导出(房源等) 
+
+sandtable.php ：楼盘下沙盘
+sppicarchive.php ：添加沙盘图片

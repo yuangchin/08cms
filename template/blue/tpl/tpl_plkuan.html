@@ -1,0 +1,57 @@
+<?php
+	$plcode = block_open('user_plcode');//判断区块标识是否开启
+	$commu = cls_cache::Read('commu',1);//交互设置
+?>
+{if $plcode}
+{tpl$user_plcode}
+{elseif @$commu['available']==1}
+<link rel="stylesheet" href="{$tplurl}css/comment.css?{$user_version}" />
+<div id="comment" class="comment">
+	<div class="wyxzTit1"> <em><i class="ico08 mr5">&#xf039;</i>网友参与评论</em><a class="num-info"><i class="ico08 mr5">&#xf0e6;</i><div id="_08_count_cu_{aid}" class="count08" url-params="{type: 'cu', modid: 1, field: 'aid',_and:'tocid_0'}">&nbsp;</div>条评论</a></div>
+		<!--评论表单-->
+	<div class="mlr10 ptb10 clearfix">
+		<div class="comment-form form">
+			<form method="get" class="jqValidate" data-tipmode=".tipwrap" onsubmit="return add_pl(this);">
+	            <input type="hidden" name="cuid" value="1" />
+	            <input type="hidden" name="aid" value="{aid}" />
+	            <input type="hidden" name="tocid" value="" />
+				<div class="textarea" >
+					<textarea name="fmdata[content]"  data-monitor=".numtip" data-type="*5-125" placeholder="请发表您的看法(至少5个汉字)..."></textarea>
+				</div>
+				<div class="clearfix comment-sub por">
+					<div class="btn-face"><i class="ico08">&#xf11b;</i>表情</div>
+					<div class="l">
+						<div class="l w240 reg-wrap" data-regcode="commu1">
+							<input type="text" name="regcode" data-type="*0-4" class="yzm txt" size="4" placeholder="验证码" value=""/>
+						</div>
+						<span class="tipwrap"></span>
+					</div>
+					<div class="r">
+						<span class="numtip"></span>
+						<button type="submit" name="bsubmit" class="btn"><i class="ico08 mr5">&#xe7cc;</i>评论</button>
+					</div>
+				</div>
+			</form>
+			<div class="blank1"></div>
+		</div>
+		<!--评论列表-->
+		<div id="pl-list" class="pl-list"></div>
+	    <div class="load-more" id="load-more">点击加载更多</div>
+	</div>
+	<!--//评论列表-->
+</div>
+	<script type="text/javascript">window.jQuery || document.write('<script src="{$tplurl}js/jquery.js"><\/script>');</script>
+	<script type="text/javascript">$.fn.jqModal || document.write('<script src="{$tplurl}js/jqmodal.js?{$user_version}"><\/script>');</script>
+	<script type="text/javascript">
+		var cmtOptCustom = {
+		    loadOpt : {
+				'aid' : {aid}
+		    }
+		    , zcOpt : {
+				'aid' : {aid}
+		    }
+		    , dataWrap : '#pl-list'
+		}
+	</script>
+	<script type="text/javascript" src="{$tplurl}js/news_comment.js?{$user_version}"></script>
+{/if}

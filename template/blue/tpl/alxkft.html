@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/axlkft.css?{$user_version}" />
+<?php $pagetype = 'newhouse';?>
+</head>
+<body>
+{tpl$head}
+<div class="wrap">
+<div class="bread clearfix">
+    <div class="r">
+        <form name="searchform" method="get" action="{$cms_abs}index.php" >
+            <div class="search-group form w300">
+                <button type="submit" class="btn"><i class="ico08 mr5">搜索</i></button>
+                <div class="txt-wrap">
+                    <input type="text" class="txt" value=""  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                </div>
+                <input type="hidden" name="caid" value="{caid}">
+            </div>
+        </form>
+    </div>
+    <span class="l mt5">
+        <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a><i class="pipe">/</i>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}" >{title}</a>{/c$cnode}<i class="pipe">/</i>{subject}
+    </span>
+</div>
+<img width="1200" src="{c$banner [tclass=image/] [tname=image/] [emptyurl=images/common/banner.jpg/]}{url}{/c$banner}">
+<div class="blank10"></div>
+<div class="borTLR">
+    <div class="p10">
+     <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+    <div class="blank15"></div>
+    <div class="kfklx clearfix">
+        <div class="kftbus"></div>
+        <div class="mxl" id="mxl">
+            <table width="100%">
+                <tr>
+                {c$kftgxlp [tclass=archives/] [chids=4/] [chsource=2/] [limits=10/] [mode=in/] [arid=32/] [detail=1/]  [orderstr=b.inorder ASC/] [ttl=1200/]}<td valign='top'><a href="{arcurl}" title="{subject}" target="_blank">
+                <div class="title">
+                    {subject}
+                    <div class="xglpCon {if $v['sn_row']<=3}rbox{sn_row}{/if}">
+                         <i><img alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=135/] [maxheight=100/] [thumb=1/]} src="{url_s}" height="100" width="135"
+        {/c$thumb}/></i>
+                         <em><strong>{subject}</strong></em>
+                         <em><span>均价：</span>{if $v['dj']}{dj}元/㎡{else}面议{/if}</em>
+                         <em><span>电话：</span>{if $v['tel']}{tel}{else}暂无{/if}</em>
+                         <em><span>地址：</span>{address}</em>
+                        <b></b>
+                    </div>
+                </div>
+                </a></td>
+                {/c$kftgxlp}
+                </tr>
+            </table>
+         </div>
+    </div>
+    <div class="blank10"></div>
+</div>
+<div class="w920 l">
+    <div class="bd-gray">
+        <div class="plr15">
+            <div class="blank15"></div>
+            <div class="borDD clearfix">
+                <div class="kftintro">
+                    <img class="img" {c$image [tclass=image/] [tname=thumb/] [maxwidth=300/] [maxheight=210/] [thumb=1/]}src="{url_s}" width="300" height="210"{/c$image}/>
+                    <h3>{subject}</h3>
+                    <ul>
+                        <li><span>优惠说明：</span><i class="fcr">{yhsm}</i></li>
+                        <li><span>参团楼盘数：</span><em>{c$lpgxztcont [tclass=acount/] [chids=4/] [chsource=2/] [mode=in/] [arid=32/] [ttl=1200/]}{if $v['counts']}{counts}{else}{/if}{/c$lpgxztcont}个</em></li>
+                        <li><span>报名热线：</span>{if $bmtel}{bmtel}{else}暂无{/if}</li>
+                        <li class="bmLi"><span>报名人数：</span><em><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 110, field: 'hdnum'}">&nbsp;</div>人</em>{if $enddate > $timestamp || $enddate == 0}<a class="btn btn-sm ml5" href="#ztmbm"><i class="ico08 mr5">&#xf14b;</i>我要报名</a>{/if}</li>
+                        <li><span>报名截止：</span><span>{if $enddate==0}不限{else}{c$startdate [tclass=date/] [tname=startdate/] [date=Y-m-d/]}{/c$startdate}至{c$enddate [tclass=date/] [tname=enddate/] [date=Y-m-d/]}{/c$enddate}{/if}</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="blank15"></div>
+            <div class="ftrTit">房团简介</div>
+            <div class="ftmCon">{c$content [tclass=text/] [tname=content/] [badword=1/] [wordlink=1/] [mp=1/]}{/c$content}
+            {if $mpcount>1}
+            <div class="blank10"></div>
+            {$mpnav}
+            {/if}
+            </div>
+            <div class="blank15"></div>
+        </div>
+        <div class="lpTit"><i></i><span>已有<b>{c$lpgxztcont [tclass=acount/] [chids=4/] [chsource=2/] [mode=in/] [arid=32/] [ttl=1200/]}{if $v['counts']}{counts}{else}0{/if}{/c$lpgxztcont}</b>个楼盘参与组团</span><em>主线楼盘介绍</em></div>
+        <div class="blank5"></div>
+        {c$ztgxlpmcon [tclass=archives/] [chids=4/] [chsource=2/] [limits=30/] [mode=in/] [arid=32/] [detail=1/] [orderstr=b.inorder ASC/] [ttl=1200/]}<div class="houselist{if $v['sn_row']==1} listF{/if}">
+        <div class="pic"><a href='{arcurl}' target="_blank"><img alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=135/] [maxheight=100/] [thumb=1/]} src="{url_s}" height="100" width="135"
+{/c$thumb}/></a></div>
+        <div class="info">
+                    <h3><a href='{arcurl}' target="_blank" class="lv2"><span>{subject}</span></a><span class="icon1">{c$sszt2 [tclass=catalogs/] [val=b/] [listby=co18/] [cosource18=1/] [ccids18=$v[ccid18]/] [ttl=1800/]}
+{c$lptb [tclass=image/] [tname=lptb/] [val=u/]}<img src="{url}"/>{/c$lptb}
+{/c$sszt2}</span></h3>
+                    <p><span class="l">{address}</span><a class="icon2" href='{$cms_abs}etools/pointer.html#lat={dt_0}&lng={dt_1}&zoom=11&title=<?=htmlspecialchars($v['subject'])?>' target="_blank">查看地图</a></p>
+                    <p><span>{ccid12title}</span></p>
+                    <p>开发商：{c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$lpkfs} </p>
+                    <p class="item">{c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=11/] [mode=in/] [arid=3/]}{if $n['counts']}<a href='{$v[arcurl4]}' target="_blank">户型<i>({counts})</i></a>{/if}{/c$num}{c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=7/] [mode=in/] [arid=3/]}{if $n['counts']}<a href='{$v[arcurl3]}' target="_blank">相册<i>({counts})</i></a>{/if}{/c$num}{c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=1/] [mode=in/] [arid=1/]}{if $n['counts']}<a href='{$v[arcurl1]}' target="_blank">动态<i>({counts})</i></a>{/if}{/c$num}{c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=106/] [mode=in/] [arid=1/]}{if $n['counts']}<a href='{$v[arcurl6]}' target="_blank">问答<i>({counts})</i></a>{/if}{/c$num}{if $v['adps']}<a href='{arcurl5}' target="_blank">点评<i>({adps})</i></a>{/if}{c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=107/] [mode=in/] [arid=1/]}{if $n['counts']}<a href='{$v[arcurl11]}' target="_blank">特价房<i>({counts})</i></a>{/if}{/c$num}</p>
+            </div>
+            <div class="other tr">
+                    <p class="tel">电话：<span>{if $v['tel']}{tel}{else}暂无{/if}</span></p>
+                    <p class="pri">{if $v['ccid18']==198 && $v['leixing']==0}<a class="msg fco" href="{arcurl8}&fang=mai" target="_blank">已售完查看二手房源</a>{else} <a href='{arcurl2}' target="_blank" id="average-price-{aid}">均价：{if $v['dj']==0}待定{else}<span class="dj fco">{dj}</span>元/m&sup2;{/if}</a>{/if}</p>
+            </div>
+            <div class="blank0"></div>
+        </div>
+        {/c$ztgxlpmcon}
+        <div style="{if $enddate<$timestamp && $enddate!=0} display:none;{/if}">
+            <div class="lpTit"><i></i><em id="ztmbm">看房团报名</em></div>
+            <div class="blank5"></div>
+            <div class="w50p">
+                <div class="ml10">
+                    <form id="kftbm" data-tipmode="#kf-formtip" class="jqValidate" onsubmit="return fyCummus(this,'报名')">
+                        <div class="form form-control bdrs">
+                            <div class="blank20"><div id="kf-formtip"></div></div>
+                            <input type="hidden" name="cuid" value="45" />
+                            <input type="hidden" name="aid" value="{aid}" />
+                            <ul>
+                                <li><input type="text" class="txt" data-type="*3-15" placeholder="请输入姓名" name="fmdata[xingming]" value=""></li>
+                                <li><input type="text" class="txt" data-type="/^\s*\d{3,4}[-]?\d{7,8}\s*$/" data-init="请输入电话" data-error="请输入正确的电话" placeholder="请输入电话" name="fmdata[tel]" value=""></li>
+
+                                <li><select data-type="*" name="fmdata[yxlp]">
+                                    <option value="">请选意向楼盘</option>
+                                     {c$lpopt [tclass=archives/] [chids=4/] [chsource=2/] [limits=100/] [mode=in/] [arid=32/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+                                     <option value="{aid}">{subject}</option>
+                                    {/c$lpopt}
+                                </select></li>
+                                <li class="reg-wrap" data-regcode="commu45">
+                                    <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                                </li>
+                                <li><input name="bsubmit" type="submit" class="btn" value="立即报名"></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {c$kftbmls [tclass=commus/] [cuid=45/] [limits=20/] [js=1/] [checked=1/] [wherestr=aid ='$aid'/]}
+            <div class="w50p">
+                <div class="plr15">
+                <div class="tab_baoming clearfix">
+                    <ul>
+                        <li class="dt"><i class="td1">登记时间</i><i class="td2">姓 名</i><i class="td3">联系方式</i><i class="td4">楼盘意向</i></li>
+                    </ul>
+                    <div class="blank1"></div>
+                    <div class="jqDuang oh" data-obj="li" data-effect='weibo' data-visible="6" style="height:198px;">
+                        <ul>
+                            [row]
+                            <li><i class="td1">{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}</i><i class="td2"><?php echo cls_string::CutStr($v['xingming'],2,'').'**'; ?></i><i class="td3"><?php echo " ".substr($v['tel'],0,3).'*****'." "; ?></i><i class="td4">{c$lpyxsub [tclass=archive/] [chid=4/] [id=$v[yxlp]/]}<a href="{arcurl}" title="{subject}" target="_blank">{subject}</a>{/c$lpyxsub}</i></li>
+                            [/row]
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {/c$kftbmls}
+            <div class="blank5"></div>
+        </div>
+    </div>
+    <div class="blank10"></div>
+    <!-- 评论区块 -->
+     {tpl$tpl_plkuan}
+    <!-- /评论区块 -->
+</div>
+<!--看房团公用右侧栏-->
+{tpl$tpl_kftrside}
+<div class="blank10"></div>
+</div>
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+<script type="text/javascript">
+    // 投票的表单验证
+    $('#toupiao').find('input[type="radio"]')
+    .attr('data-option', 'radio')
+    .eq(0).attr('data-type', 1);
+    //按路线的js
+    $("#mxl a").hover(function(){
+        $(this).addClass("act");
+        },function(){
+            $(this).removeClass("act");
+        })
+
+</script>
+</body>
+</html>

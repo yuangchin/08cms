@@ -1,0 +1,152 @@
+.w750 {
+    width: 660px; padding: 0 30px;
+}
+.bgFF {
+    background: #fff;
+}
+.pos {
+    position: relative;
+}
+.fgline {
+    height: 15px; margin-top: 15px;  border-top: 1px solid #ddd;
+}
+.infobg {
+    padding: 15px;border: 1px solid #fda99a;
+    background: #fffcfc;
+}
+.loading {
+    height: 200px; background: url(../images/page_loading.gif) no-repeat center center;
+}
+.tabline {
+    background: url(../images/hline2.gif) 249px 0 repeat-y;
+}
+.tabinfo {
+    width: 250px;
+}
+.tabinfo li {
+    padding: 15px; border-top: 1px solid #ddd; border-left: 1px solid #fff;
+}
+.tabinfo li.act {
+    border-left-color: #ddd;
+    background: #fff;
+}
+.tabinfo i {
+    font-size: 40px; line-height: 70px; float: left;
+
+    width: 70px; height: 70px; margin-right: 10px; text-align: center; color: #ec8631;background: #f5f5f5;
+}
+.tabinfo a {
+    display: block;
+}
+.tabinfo a:hover {
+    text-decoration: none;
+}
+.tabinfo b {
+    font-size: 14px;
+}
+.tabinfo p {
+    color: #777;
+}
+.helptips {
+    padding: 15px; border: 1px solid #fae7ad;background: #fdfdf7;
+}
+.helptips a,
+.selectinfo p a {
+    color: #1a5bb2;
+}
+.helptips i {
+    font-size: 20px; line-height: 30px; float: left;
+
+    width: 30px; height: 30px; color: #d89337;
+}
+.helptips p {
+    margin-left: 30px;
+}
+.selectinfo li {
+    padding: 10px 0; color: #666;
+}
+.selectinfo input,
+.delbnt {
+    font-size: 14px;line-height: 34px;
+
+    width: 250px; height: 34px; border: 1px solid #ddd; background: url(../images/help_search.gif) 6px 3px no-repeat;
+}
+.pl40 {
+    padding-left: 40px;
+}
+.selectinfo input.code {
+    width: 112px; padding: 0 5px;  background: none;  background: #fff;
+}
+.selectinfo button {
+    line-height: 34px;
+
+    width: 164px; height: 36px; cursor: pointer;text-align: center;border: 1px solid #ccc; background: #e2e2e2;
+}
+.selectinfo input.btn {
+    margin-left: 62px;
+}
+.selectinfo input.btn,
+.delbnt {
+    font-family: 'Microsoft YaHei';  font-size: 16px;line-height: 42px;
+
+    width: 125px; height: 42px; color: #fff; border: 0; background-position: 0 -34px;
+}
+.delbnt {
+    margin-left: 10px;
+}
+.sel-tit {
+    font-size: 14px; line-height: 40px; display: block;
+
+    height: 40px; padding: 0 10px;background: #fafafa;
+}
+.sel-tit i {
+    font-size: 14px; margin-right: 10px;
+
+    color: #f60;
+}
+.sel-tit span {
+    font-family: 'arial';font-size: 18px; font-weight: bold;
+
+    color: #c00;
+}
+.sel-result li,
+.allselTit {
+    font-size: 14px;
+
+    padding: 5px 10px;
+}
+.allselTit {
+    border-bottom: 1px solid #ddd; background: #fafafa;
+}
+.allselTit b {
+    color: #c00;
+}
+.sel-result input {
+    float: left; margin: 5px 5px 0 0; *margin: 1px 3px 0 0;
+}
+.sel-result span {
+    color: #666;
+}
+.sel-result span.bl {
+    color: #207fc3;
+}
+.allsel {
+    display: inline;
+
+    margin: 16px 5px 0 11px; *margin: 25px 0 0 11px;
+}
+.delinfo {
+    padding: 0 10px;
+
+    border-top: 1px solid #ddd;
+}
+.delinfo label {
+    padding: 0 20px 0 8px;
+}
+.colorbl {
+    color: #1a5bb2;
+}
+.validator .dzvalid .validator_message {
+    position: absolute; top: 38px;
+    left: 50px;
+}

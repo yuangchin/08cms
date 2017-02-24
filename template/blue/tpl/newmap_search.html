@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$mcharset}" />
+<title>地图二手房找房 - {$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}newmap/css/mapcss.css?{$user_version}"/>
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden" scroll=no>
+<div class="box">
+	{tpl$tpl_map_header}
+	<!-- 主体 begin -->
+	<div class="mainbox">
+		<div id="leftwrapper">
+			<!--左侧筛选条件与提示信息区块 begin-->
+			<div id="leftwrapperTips">
+				<div class="clear"></div>
+				<div class="search-box02" id="conditionDiv" style="display:none;">
+					<div class="floatl jg" id="conditionDiv_tip"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--左侧筛选条件与提示信息区块 end-->
+			<!--动态输出结果区块 begin-->
+			<div  class="listbox13 rposition" id="resultcontainer">
+				<div class="listbox03" id="house_transitListDiv" style="display:none;">
+					<div class="newlist01" id="div_ProjInfo" style="display:none;"> </div>
+					<div class="clear"></div>   
+					<div style="" id="houseListDiv" class="">
+						<div id="divProjectHouse" class=""> </div>
+					</div>
+				</div>
+				<div class="mt10" id="projListDiv" style="display:none;"> </div>
+				<div class="page01" id="bottomcountDiv" style="display:none;">
+				<p class="ownnum pl10" id="count_P" style="display:none;">共<strong class="num01" id="spnHouseCount">148109</strong>套房源</p>
+					<p class="fy" id="fanye_P"></p>
+				</div>
+				<div class="clear"></div>
+				<!--动态输出结果区块 end-->
+			</div>
+		</div>
+		<div id="mapouterdiv" class="rightbar" style="position: relative;">
+			<div id="divMap"> </div>
+			<div id="projturndiv" class="info-box" style="display:none;">
+				<div id="projturndivbg" class="info-bg"></div>
+				<p class="txt" id="esfmap_B03_01">当前显示<span id="ViewVolume">50</span>个小区，[<a id="change100proj" href="javascript:void(0)">换一批</a>]</p>
+			</div>
+			<div class="close03" id="closeprojturndiv" style="display:none;"></div>
+		</div>
+		<div class="clear"></div>  
+	</div>
+	<!-- 主体 end -->
+</div>
+<script src="{$tplurl}js/jquery.js"></script>
+ <?php
+    $chid = cls_Parse::Get('_da.fid') == '117' ? 3 : 2;
+    $dt = cls_cache::Read('field',$chid,'dt');
+    $centerPoint = empty($mconfigs['init_map']) ? (empty($dt['vdefault']) ? '39.909074,116.403591' : $dt['vdefault']) : $mconfigs['init_map'];
+    $centerPoint_x = substr($centerPoint,strpos($centerPoint,',')+1);
+    $centerPoint_y = substr($centerPoint,0,strpos($centerPoint,','));
+    $centerZoom = empty($mconfigs['init_map_zoom']) ? 12 : $mconfigs['init_map_zoom'];
+?>
+<?php
+if($chid==3){
+$allCondition = array('price'=>4,'district'=>1,'ditie'=>3,'price'=>4,'area'=>6,'wuye'=>43,'shi'=>'shi','ting'=>'ting','wei'=>'wei','chu'=>'chu','yangtai'=>'yangtai','fangling'=>34,'cx'=>'cx','fwpt'=>'fwpt','fl'=>'fl','zxcd'=>'zxcd','fwjg'=>'fwjg');//筛选条件配置项
+$ConditionConfig = conditionFilter($allCondition,3);
+$ConditionData = getConditions($ConditionConfig,'chid_3');
+$ConditionData =_08_Documents_JSON::encode($ConditionData,true);
+}else{
+$allCondition = array('price'=>5,'district'=>1,'ditie'=>3,'price'=>4,'area'=>6,'wuye'=>44,'shi'=>'shi','ting'=>'ting','wei'=>'wei','chu'=>'chu','yangtai'=>'yangtai','fangling'=>34,'cx'=>'cx','fwpt'=>'fwpt','fl'=>'fl','zxcd'=>'zxcd','fwjg'=>'fwjg','zlfs'=>'zlfs','fkfs'=>'fkfs');//筛选条件配置项
+$ConditionConfig = conditionFilter($allCondition,2);
+$ConditionData = getConditions($ConditionConfig,'chid_2');
+$ConditionData =_08_Documents_JSON::encode($ConditionData,true);
+}
+
+?>
+<script type="text/javascript">
+Conditions = <?php echo $ConditionData;?>;
+Conditions['publisher'] = {'text':['个人','经纪人'],'value':[1,2]};
+</script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript">
+		var FileVision=<?php echo $FileVision='20141010';?>;
+		var mapInfo={
+			initZoom:<?php echo $centerZoom;?>,//地图初始缩放级别
+			//mapZoom:12,
+			//communityVeiwZoom:12,//小区显示
+			singleDistrictZoom:13,//单个地区Marker时地图zoom
+			px:'<?php echo $centerPoint_x;?>',
+			py:'<?php echo $centerPoint_y;?>',
+			maptype:'<?php echo $chid==3 ? "chushou" : "chuzu";?>',//出售
+						defaultKeyword:'请输入小区名称搜索',//默认搜索框显示
+						ViewVolume:50 //小区页面最大数量
+			};
+		var searchInfo={
+			district:'',
+			publisher:"",//发布人
+			keyword:"",//关键字搜索	
+			projcode:"",//小区
+			pageIndex:1,//左侧信息列表当前页码
+			px:"",//经纬
+			py:"" //经纬
+			};
+		var searchHouseInfo={
+			district:'',
+			keyword:'',//关键字搜索				
+			projcode:"",//小区
+			publisher:"",//发布人
+			pageIndex:1,//左侧信息列表页码
+			px:"",//经纬
+			py:"",//经纬
+			x1:"",//地图边界
+			y1:"",//地图边界
+			x2:"",//地图边界
+			y2:"",//地图边界		
+			projpageindex:1//小区展示100翻面页码
+			};
+		</script>
+<script type="text/javascript" src="{$tplurl}newmap/js/Map.Init.js?v={$FileVision}"></script>
+<script type="text/javascript" src="{$tplurl}newmap/js/Map.House.js?v={$FileVision}"></script>
+<div style="display:none;">{$cms_statcode}</div>
+</body>
+</html>

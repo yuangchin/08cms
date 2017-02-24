@@ -1,0 +1,1939 @@
+/**
+ * @name World
+ * @author ahuing
+ * @link 08cms.com
+ * @date 2015-11-12 09:06:25
+ */
+
+@charset 'UTF-8';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.w250 {
+    width: 250px;
+}
+
+.w260 {
+    width: 260px;
+}
+
+.w270 {
+    width: 270px;
+}
+
+.w300 {
+    width: 300px;
+}
+
+.w340 {
+    width: 340px;
+}
+
+.w380 {
+    width: 380px;
+}
+
+.w420 {
+    width: 420px;
+}
+
+.w530 {
+    width: 530px;
+}
+
+.w565 {
+    width: 565px;
+}
+
+.w605 {
+    width: 605px;
+}
+
+.w610 {
+    width: 610px;
+}
+
+.w680 {
+    width: 680px;
+}
+
+.w690 {
+    width: 690px;
+}
+
+.w720 {
+    width: 720px;
+}
+
+.w730 {
+    width: 730px;
+}
+
+.w700 {
+    width: 700px;
+}
+
+.h192 {
+    height: 192px;
+}
+
+.tab-nav .noribd {
+    border-left: none;
+}
+
+/*** nav
+--------------------- ***/
+.mainnav {
+    font-size: 14px;
+    line-height: 45px;
+
+    height: 45px;
+
+    border-radius: 3px;
+    background: linear-gradient(#2069d6, #327acf);
+    background: #2069d6;
+}
+
+.mainnav li {
+    float: left;
+}
+
+.mainnav li:nth-child(1) a {
+    -webkit-border-radius: 3px 0 0 3px;
+       -moz-border-radius: 3px 0 0 3px;
+            border-radius: 3px 0 0 3px;
+}
+
+.mainnav a {
+    font-family: arial;
+    font-weight: bold;
+
+    float: left;
+
+    padding: 0 18px;
+
+    color: #fff;
+}
+
+.mainnav .act a,
+.mainnav a:hover {
+    text-decoration: none;
+
+    color: #fff;
+    background: #387de7;
+}
+
+.mainnav .fcy a,
+.mainnav .fcy a:hover {
+    color: yellow;
+}
+
+.mainnav .nobg {
+    background: none;
+}
+
+/*** jianshou
+--------------------- ***/
+.lp-janshuo {
+    position: relative;
+    z-index: 10;
+
+    border: 1px solid #ddd;
+}
+
+/*** sea ***/
+.lp-sea {
+    line-height: 36px;
+
+    position: relative;
+    z-index: 100;
+    bottom: -1px;
+
+    height: 36px;
+
+    vertical-align: top;
+}
+
+.lp-title {
+    font-size: 14px;
+    line-height: 35px;
+
+    position: relative;
+    left: 1px;
+
+    float: left;
+
+    height: 35px;
+}
+
+.lp-title a {
+    float: left;
+
+    margin-left: -1px;
+    padding: 0 22px;
+
+    color: #666;
+    border: 1px solid #ddd;
+    border-bottom: none;
+}
+
+.lp-title a:hover {
+    text-decoration: none;
+
+    color: #e43;
+}
+
+.lp-title a:nth-child(1) {
+    border-radius: 3px 0 0 0;
+}
+
+.lp-title a:last-child {
+    border-radius: 0 3px 0 0;
+}
+
+.lp-title .ico08 {
+    font-size: 18px;
+
+    float: left;
+
+    margin-right: 5px;
+
+    opacity: .8;
+
+    filter: alpha(opacity=80);
+}
+
+.lp-title .act {
+    font-weight: bold;
+
+    position: relative;
+
+    color: #e43;
+    background-color: #fff;
+}
+
+/*** 检索条件 ***/
+.js-list dl {
+    line-height: 24px;
+
+    overflow: hidden;
+
+    padding-left: 10px;
+
+    vertical-align: top;
+
+    *zoom: 1;
+}
+
+.js-list dt.r {
+    line-height: 25px;
+
+    float: left;
+
+    width: 40px;
+    height: 25px;
+}
+
+.js-list dd {
+    margin-left: 38px;
+}
+
+.js-list dd a {
+    line-height: 28px;
+
+    display: inline-block;
+
+    margin-right: 2px;
+    margin-bottom: 10px;
+    padding: 0 5px;
+
+    color: #666;
+    border-radius: 2px;
+}
+
+.js-list dd .act,
+.js-list dd a:hover {
+    text-decoration: none;
+
+    color: #fff;
+    background: #e43;
+}
+
+.js-list .set {
+    position: absolute;
+
+    margin-top: -7px;
+    padding: 7px 5px;
+}
+
+.js-list .set i {
+    display: inline-block;
+}
+
+.js-list .list-letters a {
+    font: 100 12px/22px Arial;
+    line-height: 24px\0;
+
+    overflow: hidden\0;
+
+    width: 32px;
+    height: 22px;
+    padding: 0;
+
+    text-align: center;
+
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    background: #fff;
+}
+
+.js-list .list-letters .all {
+    font-family: SimSun;
+    line-height: 24px;
+
+    float: left;
+
+    width: auto;
+    height: 24px;
+    padding: 0 5px;
+
+    border: none;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+    background: none;
+
+    _margin-right: 0;
+}
+
+.js-list .list-letters a:hover,
+.js-list .list-letters .act {
+    border-color: #327acf;
+    background: #327acf;
+}
+
+.list-shi dt {
+    padding-left: 14px;
+}
+
+/*** 更多 ***/
+.morefjj {
+    padding: 0 0 5px 10px;
+
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+}
+
+.morefjj li {
+    line-height: 28px;
+
+    float: left;
+    float: left;
+
+    height: 28px;
+    margin: 5px 0 0;
+
+    border: 1px solid #f6fbfe;
+}
+
+.morefjj .droplist {
+    position: relative;
+
+    width: 102px;
+    margin-right: 10px;
+
+    cursor: pointer;
+
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.morefjj .droplist .ico08 {
+    position: absolute;
+    top: 0;
+    right: 10px;
+
+    color: #999;
+}
+
+.morefjj .hover {
+    z-index: 10;
+
+    border: 1px solid #ff8d81;
+}
+
+.morefjj .hover .items,
+.morefjj .hover .msg {
+    display: block;
+}
+
+.morefjj .hover .ico08 {
+    color: #ff8d81;
+}
+
+.morefjj li em {
+    line-height: 28px;
+
+    display: block;
+    overflow: hidden;
+
+    height: 28px;
+    padding-left: 10px;
+}
+
+.morefjj .items {
+    position: absolute;
+    z-index: 10;
+    top: 28px;
+    left: -1px;
+
+    display: none;
+
+    width: 102px;
+
+    border: 1px solid #ff8d81;
+    background: #fff;
+}
+
+.morefjj .items a {
+    line-height: 25px;
+
+    display: block;
+    overflow: hidden;
+
+    height: 25px;
+    padding-left: 10px;
+}
+
+.morefjj .items a:hover,
+.morefjj .items .act,
+.morefjj .items .hover {
+    text-decoration: none;
+
+    color: #fff;
+    border: none;
+    background: #ff8d81;
+}
+
+.morefjj .msg {
+    font-size: 12px;
+
+    position: absolute;
+    top: -102px;
+    left: -1px;
+
+    display: none;
+
+    width: 200px;
+    padding: 5px;
+
+    border: 1px solid #ff8d81;
+    border-radius: 3px;
+    background: #fcd6d2;
+}
+
+.morefjj .msg i,
+.morefjj .msg b {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+
+    overflow: hidden;
+
+    width: 0;
+    height: 0;
+
+    border-width: 6px;
+    border-style: solid dashed dashed;
+    border-color: #ff8d81 transparent transparent;
+}
+
+.morefjj .msg b {
+    bottom: -10px;
+
+    border-color: #fcd6d2 transparent transparent;
+}
+
+.morefjj .list-tslp,
+.morefjj .list-tslp .items {
+    width: 106px;
+}
+
+.morefjj .list-17,
+.morefjj .list-17 .items {
+    width: 106px;
+}
+
+.morefjj .tip {
+    border: none;
+}
+
+/*** 当前条件 ***/
+.lp-dqtj {
+    line-height: 20px;
+
+    padding: 10px;
+
+    border-top: 1px solid #ddd;
+    background: #fff;
+}
+
+.lp-dqtj a {
+    float: left;
+
+    margin-right: 5px;
+    padding: 0 5px;
+
+    text-decoration: none;
+
+    border: 1px solid #c2c2c2;
+}
+
+.lp-dqtj a .ico08 {
+    vertical-align: bottom;
+
+    color: #e43;
+}
+
+.lp-dqtj a:hover {
+    text-decoration: none;
+}
+
+.lp-dqtj .tip {
+    line-height: 22px;
+}
+
+/*** ad ***/
+.lp-janshuo .lp-ad {
+    position: absolute;
+    top: 8px;
+    right: 0;
+
+    width: 180px;
+
+    border-left: 1px solid #cecece;
+}
+
+.lp-janshuo .lp-ad li {
+    line-height: 24px;
+
+    overflow: hidden;
+
+    height: 24px;
+    padding: 0 10px;
+}
+
+/*** 特价房列表
+--------------------- ***/
+.tejia-list {
+    line-height: 20px;
+
+    padding: 10px;
+
+    vertical-align: top;
+
+    border-bottom: 1px dashed #ddd;
+
+    *zoom: 1;
+}
+
+.tejia-list:hover {
+    background: #f6fbfe;
+}
+
+.tejia-list .info {
+    width: 470px;
+}
+
+.tejia-list .lv2 {
+    font-size: 14px;
+    font-weight: bold;
+
+    margin-right: 5px;
+
+    color: #049;
+}
+
+.tejia-list .mj {
+    width: 70px;
+}
+
+.tejia-list .mj span {
+    float: left;
+
+    padding-top: 10px;
+}
+
+.tejia-list .other {
+    width: 100px;
+}
+
+/*coltit*/
+.coltit3 {
+    line-height: 45px;
+
+    position: relative;
+
+    height: 46px;
+    margin-bottom: -1px;
+}
+
+.coltit3 h3 {
+    float: left;
+
+    border-bottom: 1px solid #e43;
+}
+
+.coltit3 .tit1 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.coltit3 .more {
+    float: right;
+}
+
+.fca,
+.fca a {
+    color: #008fca;
+}
+
+.w910 {
+    width: 910px;
+}
+
+.w930 {
+    width: 930px;
+}
+
+.conMid {
+    display: inline;
+
+    width: 570px;
+    padding: 0 10px;
+}
+
+.conRight {
+    float: right;
+
+    width: 278px;
+}
+
+.tlist1 li {
+    line-height: 26px;
+
+    overflow: hidden;
+
+    height: 26px;
+
+    text-indent: 11px;
+
+    background: url(../images/bgv3-ahuing.png) no-repeat -320px -304px;
+}
+
+.tlist1 span a,
+.tlist1 span {
+    color: #0076d5;
+}
+
+.tlist1 span {
+    margin-right: 5px;
+}
+
+.tlist1 .dashed {
+    margin-top: 5px;
+    padding-top: 5px;
+
+    border-top: 1px dashed #ddd;
+}
+
+.tlist3 li {
+    line-height: 24px;
+
+    overflow: hidden;
+
+    height: 24px;
+}
+
+.tlist3 em {
+    float: right;
+
+    color: #bd2928;
+}
+
+.tlist4 {
+    *zoom: 1;
+}
+
+.tlist4 li {
+    line-height: 26px;
+
+    overflow: hidden;
+
+    height: 26px;
+
+    color: #888;
+}
+
+.tlist4 .a {
+    margin-top: 5px;
+    padding-top: 5px;
+
+    border-top: 1px dashed #ccc;
+}
+
+.tlist4 span a {
+    font-weight: bold;
+
+    margin-left: 8px;
+}
+
+.tlist4 em {
+    color: #888;
+}
+
+.tlist4 .icon,
+.tlist4 .icon1 {
+    font-family: simsun;
+    font-size: 12px;
+    line-height: 16px;
+
+    float: left;
+    overflow: hidden;
+
+    height: 16px;
+    margin: 5px 5px 0 0;
+    padding: 0 2px;
+
+    color: #fff;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+    background: #6caefd;
+}
+
+.tlist4 .icon1 {
+    background: #f60;
+}
+
+.conMidpart1 {
+    padding: 5px 0;
+
+    border-bottom: 1px dotted #ddd;
+}
+
+.conMidpart1 h2 {
+    line-height: 30px;
+
+    overflow: hidden;
+
+    height: 30px;
+
+    text-align: center;
+}
+
+.conMidpart1 h2 a {
+    font-family: Microsoft YaHei;
+    font-size: 16px;
+    font-weight: bold;
+
+    color: #c00;
+}
+
+.conMidpart1 p {
+    font-size: 12px;
+    line-height: 24px;
+
+    overflow: hidden;
+
+    height: 24px;
+
+    color: #888;
+}
+
+.conRightpart1 {
+    padding: 5px 10px;
+}
+
+.conRightpart1 .tlist1 li {
+    line-height: 32px;
+
+    overflow: hidden;
+
+    height: 32px;
+
+    border-top: 1px dotted #cbcbcb;
+}
+
+.conRightpart1 .tlist1 .n-tbd {
+    border: none;
+}
+
+.conRightpart1 .tj li {
+    line-height: 32px;
+
+    overflow: hidden;
+
+    height: 32px;
+    padding-left: 24px;
+
+    border-top: 1px dotted #cbcbcb;
+}
+
+.conRightpart1 .tj .n-tbd {
+    border: none;
+}
+
+.conRbott ul {
+    background: url(../images/nhbg.png) no-repeat -943px -54px;
+
+    *zoom: 1;
+}
+
+.conRbott li {
+    line-height: 32px;
+
+    overflow: hidden;
+
+    height: 32px;
+    padding-left: 24px;
+
+    vertical-align: top;
+
+    border-top: 1px dotted #cbcbcb;
+}
+
+.conRbott .n-tbd {
+    border: none;
+}
+
+.queyuTop {
+    line-height: 34px;
+
+    height: 34px;
+
+    vertical-align: top;
+
+    border-bottom: 1px solid #e1e1e1;
+    background: #f7f7f7;
+}
+
+.queyuTop .tab {
+    position: relative;
+    top: 1px;
+
+    float: left;
+}
+
+.queyuTop .tab li {
+    float: left;
+
+    border-left: 1px solid #e1e1e1;
+}
+
+.queyuTop .tab li:last-child {
+    border-right: 1px solid #e1e1e1;
+}
+
+.queyuTop .tab a {
+    float: left;
+
+    padding: 0 20px;
+
+    cursor: pointer;
+
+    color: #2c2c2c;
+}
+
+.queyuTop .tab .act a {
+    color: #327acf;
+    background: #fff;
+}
+
+.queyuTop .tit1 {
+    float: left;
+
+    padding: 0 10px;
+}
+
+.queyuTop .tit1 a {
+    font-size: 14px;
+    font-weight: bold;
+
+    color: #327acf;
+}
+
+.quyuCon .icon {
+    position: absolute;
+    right: 1px;
+    bottom: 4px;
+
+    border-top: 1px solid #e00;
+    border-bottom: 1px solid #fd5858;
+    background: #fd5858;
+}
+
+.quyuCon .icon a {
+    line-height: 16px;
+    line-height: 17px\9;
+
+    position: relative;
+
+    float: left;
+    overflow: hidden;
+
+    height: 16px;
+    margin: 0 -1px;
+    padding: 0 5px;
+
+    color: #fff;
+    border-right: 1px solid #fd5858;
+    border-left: 1px solid #e00;
+    background: #f00;
+}
+
+.quyuCon .icon a:hover {
+    color: #fff;
+}
+
+.zhu2 em {
+    text-decoration: line-through;
+}
+
+.zhu2 span {
+    margin-right: 8px;
+}
+
+.zhu3 em {
+    font-family: arial;
+    font-size: 24px;
+    font-weight: bold;
+
+    color: #fd1664;
+}
+
+.zhufLeftList {
+    margin-top: 5px;
+}
+
+.zhufLeftList li {
+    line-height: 26px;
+
+    overflow: hidden;
+
+    height: 26px;
+
+    background-position: 0 -470px;
+}
+
+.zhufLeftList li span a {
+    color: #0076d5;
+}
+
+.jingxuan {
+    overflow: hidden;
+
+    padding-bottom: 10px;
+
+    *zoom: 1;
+}
+
+.plist-mod img {
+    margin-bottom: 3px;
+    padding: 1px;
+
+    border: 1px solid #e1e1db;
+}
+
+.plist-mod em {
+    line-height: 21px;
+
+    display: block;
+    overflow: hidden;
+
+    height: 21px;
+
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.plist-mod .icon {
+    line-height: 16px;
+    line-height: 17px9;
+
+    position: absolute;
+    right: 1px;
+    bottom: 4px;
+
+    overflow: hidden;
+
+    height: 16px;
+    padding: 0 5px;
+
+    color: #fff;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+    background: #f00;
+}
+
+.plist-mod .icon:hover {
+    text-decoration: none;
+
+    color: #fff;
+}
+
+.plist6 li {
+    float: left;
+
+    width: 204px;
+    padding: 10px 0 0 29px;
+}
+
+.plist7 li {
+    display: inline;
+    float: left;
+
+    width: 150px;
+    height: 132px;
+    margin: 10px 0 0 14px;
+
+    border: 1px solid #ddd;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+}
+
+.plist7 dt {
+    font-weight: bold;
+
+    margin: 5px 10px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.plist7 dd {
+    line-height: 22px;
+
+    overflow: hidden;
+
+    height: 22px;
+    margin: 0 12px;
+
+    text-align: center;
+}
+
+.plist8 {
+    padding-bottom: 10px;
+}
+
+.plist8 li {
+    position: relative;
+
+    float: left;
+
+    width: 206px;
+    padding: 10px 0 0 13px;
+}
+
+.plist8 li b {
+    font-weight: bold;
+
+    color: #c00;
+}
+
+.coltit1 {
+    line-height: 24px;
+
+    position: relative;
+    z-index: 100;
+
+    height: 24px;
+    padding: 10px 10px 0 15px;
+
+    background: url(../images/xfbg.png) repeat-x 0 0;
+}
+
+.coltit1 .tit1 {
+    font-size: 14px;
+    font-weight: bold;
+
+    float: left;
+
+    color: #327acf;
+}
+
+.coltit1 span {
+    float: right;
+}
+
+.coltit1 span a {
+    color: #848484;
+}
+
+.content4 .tool {
+    line-height: 35px;
+
+    height: 35px;
+}
+
+.content4 .tool strong {
+    margin: 0 0 0 20px;
+}
+
+.content4 .tool a {
+    margin: 0 5px;
+}
+
+.content4 .plist7 {
+    padding-bottom: 10px;
+}
+
+/*** 团购
+--------------------- ***/
+.slide {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 296px;
+
+    border: 2px solid #f01f1f;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+
+    *zoom: 1;
+}
+
+.slide .remen {
+    position: absolute;
+    z-index: 99;
+    top: -2px;
+    left: -2px;
+
+    width: 61px;
+    height: 55px;
+
+    background: url(../images/nhbg.png) no-repeat -764px -73px;
+}
+
+.slide ul {
+    width: 9999px;
+}
+
+.slide li {
+    float: left;
+
+    width: 296px;
+}
+
+.slide .tgBtn {
+    font-family: microsoft YaHei;
+    font-size: 14px;
+    line-height: 24px;
+
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    height: 24px;
+    padding: 0 10px;
+
+    color: #fff;
+    border-radius: 2px;
+    background: #c00;
+}
+
+.slide .tgBtn:hover {
+    text-decoration: none;
+
+    opacity: .8;
+    color: #fff;
+
+    filter: alpha(opacity=80);
+}
+
+.slide .qihuan .tit1 {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 24px;
+
+    overflow: hidden;
+
+    height: 24px;
+    padding: 4px 8px 0;
+}
+
+.slide .sanniu {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 0 0 5px 10px;
+
+    *zoom: 1;
+}
+
+.slide .sanniu .zhu2 {
+    line-height: 24px;
+
+    overflow: hidden;
+
+    height: 24px;
+}
+
+.slide .prev,
+.slide .next {
+    font: bold 34px/60px simsun;
+
+    position: absolute;
+    z-index: 10;
+    top: 90px;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 30px;
+    height: 60px;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: #fff;
+    background: rgba(0, 0, 0, .5);
+
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');
+}
+
+.slide .next {
+    right: 0;
+    left: auto;
+}
+
+.slide .prev:hover,
+.slide .next:hover {
+    text-decoration: none;
+
+    color: #c00;
+    background: #000;
+}
+
+:root .slide .prev,
+:root .slide .next {
+    filter: none\9;
+}
+
+/*** flash
+---------------- ****/
+.flash {
+    position: relative;
+
+    width: 290px;
+    height: 231px;
+}
+
+.flash .txt {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+
+    position: absolute;
+    z-index: 20;
+    top: 201px;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 280px;
+    height: 30px;
+    padding: 0 5px;
+
+    color: #fff;
+    border-top: 2px solid #1486de;
+    background: rgba(0, 0, 0, .5);
+
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');
+}
+
+.flash .num {
+    position: absolute;
+    z-index: 20;
+    top: 175px;
+    right: 0;
+}
+
+.flash .num i {
+    font-family: arial;
+    line-height: 24px;
+
+    display: inline;
+    float: left;
+
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+
+    cursor: pointer;
+    text-align: center;
+
+    color: #fff;
+    background: #676767;
+}
+
+.flash .num .act {
+    font-weight: bold;
+
+    padding-bottom: 2px;
+
+    background: #1486de;
+}
+
+.flash .btn {
+    font-size: 32px;
+    line-height: 60px;
+
+    position: absolute;
+    z-index: 10;
+    top: 90px;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 30px;
+    height: 60px;
+
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+
+    color: #fff;
+}
+
+.flash .next {
+    right: 0;
+    left: auto;
+}
+
+.flash:hover .prev,
+.flash:hover .next {
+    background: rgba(0, 0, 0, .5);
+
+    filter: alpha(opacity=50);
+}
+
+/*** tab
+--------------------- ***/
+.tab-tit li {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 36px;
+
+    float: left;
+
+    height: 36px;
+    padding: 0 9px;
+
+    cursor: pointer;
+}
+
+.tab-tit li.act {
+    font-size: 14px;
+    font-weight: bold;
+
+    color: #327acf;
+    border-right: 1px solid #ebebeb;
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #ebebeb;
+}
+
+/*** -----------------------------------------------------------楼盘列表--------------------------------------------------------------- ***/
+.r-border {
+    border-bottom: 1px solid #ebebeb;
+    background: url(../images/nf-rigbg.gif) no-repeat;
+}
+
+.tlist2 li {
+    line-height: 32px;
+
+    overflow: hidden;
+
+    height: 32px;
+}
+
+.tlist2 span {
+    color: #666;
+}
+
+.tlist2 a {
+    color: #049;
+}
+
+.tlist2 a:hover,
+.tlist2 a:hover span {
+    color: #f00;
+}
+
+.tlist2 .more {
+    font-weight: normal;
+
+    float: right;
+
+    padding: 0 5px;
+}
+
+.coltit2 {
+    line-height: 36px;
+
+    height: 36px;
+
+    *zoom: 1;
+}
+
+.coltit2 .tit1 {
+    font-size: 14px;
+    font-weight: bold;
+
+    position: relative;
+
+    float: left;
+
+    margin-bottom: -2px;
+    padding: 0 10px;
+}
+
+.coltit6 {
+    line-height: 36px;
+
+    height: 36px;
+    margin: 0 2px;
+
+    border-bottom: 1px solid #ebebeb;
+
+    *zoom: 1;
+}
+
+.tit1 a {
+    color: #327acf;
+}
+
+/* 最新、即将开盘 */
+.content4 {
+    border: 1px solid #ebebeb;
+}
+
+.tab-tit li.first {
+    border-left: none;
+}
+
+/*** lp-kuan
+--------------------- ***/
+.w750 {
+    width: 750px;
+}
+
+.lp-kuan .tab-nav {
+    position: relative;
+
+    float: left;
+
+    border-right: 1px solid #ebebeb;
+}
+
+.tab-nav .item {
+    font-family: Microsoft yahei;
+    font-size: 18px;
+
+    float: left;
+
+    padding: 5px 20px;
+}
+
+.tab-nav .item:hover {
+    text-decoration: none;
+}
+
+.tab-nav .act {
+    position: relative;
+
+    color: #fff;
+    border-bottom: none;
+    border-radius: 2px 2px 0 0;
+    background: #e43;
+}
+
+.tab-nav .map {
+    padding-left: 40px;
+
+    background: url(../images/map_ms.gif) no-repeat 5px center;
+}
+
+.tab-page span {
+    float: left;
+
+    margin-right: 5px;
+}
+
+.tab-page .prev,
+.tab-page .next {
+    line-height: 18px;
+
+    height: 18px;
+
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab-page .prev a,
+.tab-page .next a {
+    line-height: 18px;
+
+    position: relative;
+
+    float: left;
+
+    height: 18px;
+    margin: 0 -1px;
+    padding: 0 5px;
+
+    text-decoration: none;
+
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    background: #fff;
+}
+
+.lp-kuan .info {
+    line-height: 24px;
+
+    padding: 10px;
+
+    border: 1px solid #ebebeb;
+    border-top: 2px solid #e43;
+    background: #fafafa;
+}
+
+.lp-kuan .info .sort-btn {
+    line-height: 1.5;
+
+    float: left;
+
+    margin-left: 10px;
+    padding: 3px 8px;
+
+    color: #888;
+    border: 1px solid #ddd;
+}
+
+.lp-kuan .info .sort-btn:hover {
+    text-decoration: none;
+}
+
+.lp-kuan .info .sort-btn .ico08 {
+    position: relative;
+    top: 4px;
+
+    *zoom: 1;
+}
+
+.lp-kuan .info .sort-btn .u {
+    top: -4px;
+    right: -8px;
+}
+
+.lp-kuan .info .act {
+    color: #e43;
+    border-color: #e43;
+}
+
+.lp-kuan .info .bldown .u {
+    color: #888;
+}
+
+.lp-kuan .info .blup .d {
+    color: #888;
+}
+
+/*** 楼盘列表
+--------------------- ***/
+.houselist {
+    font-size: 14px;
+
+    position: relative;
+
+    padding: 15px;
+
+    vertical-align: top;
+
+    border-bottom: 1px dashed #ddd;
+
+    *zoom: 1;
+}
+
+.houselist:hover {
+    background: #f9f9f9;
+}
+
+.houselist .pic {
+    position: relative;
+    z-index: 1;
+
+    float: left;
+
+    margin-right: 15px;
+}
+
+.houselist .pic img {
+    background: #eee;
+}
+
+.houselist .pic .btn {
+    font-family: simsun;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: auto;
+}
+
+.houselist .info {
+    float: left;
+
+    width: 470px;
+}
+
+.houselist .info h3 {
+    line-height: 36px;
+
+    overflow: hidden;
+
+    height: 36px;
+}
+
+.houselist .info h3 a {
+    font-size: 18px;
+
+    float: left;
+}
+
+.houselist .info h3 img {
+    float: left;
+}
+
+.houselist .info p {
+    overflow: hidden;
+
+    height: 24px;
+}
+
+.houselist .icon3 {
+    margin-left: 10px;
+    padding: 3px 0;
+}
+
+.houselist h3 .btn {
+    position: relative;
+
+    float: left;
+
+    height: auto;
+    margin: 8px 8px 0;
+
+    border: none;
+}
+
+.houselist .dais-194 {
+    background-color: #06a897;
+}
+
+.houselist .dais-195 {
+    background-color: #1cbaff;
+}
+
+.houselist .dais-196 {
+    background-color: #f60;
+}
+
+.houselist .dais-197 {
+    background-color: #ce9b86;
+}
+
+.houselist .dais-198 {
+    background-color: #afafaf;
+}
+
+.houselist .tags span {
+    line-height: 22px;
+
+    display: inline-block;
+    overflow: hidden;
+
+    height: 22px;
+    margin-right: 5px;
+    padding: 0 5px;
+
+    color: #666;
+    border: 1px solid #ccc;
+
+    *line-height: 24px;
+}
+
+.houselist .item {
+    position: absolute;
+
+    white-space: nowrap;
+}
+
+.houselist .item a {
+    margin-right: 6px;
+}
+
+.houselist .item i {
+    font-family: arial;
+
+    color: #c00;
+}
+
+.houselist .other {
+    float: right;
+    overflow: hidden;
+
+    width: 240px;
+
+    text-align: right;
+    white-space: nowrap;
+}
+
+.houselist .dj {
+    line-height: 36px;
+
+    height: 36px;
+}
+
+.houselist .dj em {
+    font-size: 30px;
+
+    color: #f50;
+}
+
+.houselist .db {
+    cursor: pointer;
+}
+
+.houselist .db:hover {
+    color: #c00;
+}
+
+.houselist .db input {
+    position: absolute;
+    left: -999999px;
+}
+
+.houselist .ico08 {
+    font-size: 14px;
+
+    margin-right: 5px;
+
+    opacity: .8;
+    color: #e43;
+
+    filter: alpha(opacity=80);
+}
+
+.houselist a {
+    text-decoration: none;
+
+    color: #666;
+}
+
+.houselist a:hover {
+    text-decoration: none;
+
+    color: #f00;
+}
+
+.houselist .btn {
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+
+        -ms-border-radius: 3px;
+         -o-border-radius: 3px;
+}
+
+.houselist .info2 {
+    clear: both;
+
+    padding-top: 5px;
+}
+
+.section {
+    margin-bottom: 10px;
+
+    border: 1px solid #e6e6e6;
+    border-top: 2px solid #1f6db9;
+}
+
+.section-last {
+    margin-bottom: 0;
+}
+
+/* 看房团 */
+.kft .tit1 {
+    line-height: 30px;
+
+    overflow: hidden;
+
+    height: 30px;
+}
+
+.tit1 h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.kft span,
+.kft span a {
+    color: #999;
+}
+
+.tit1 h3,
+.tit1 h3 a {
+    color: #327acf;
+}
+
+.kft .ad {
+    width: 258px;
+}
+
+.zhaomu {
+    padding-bottom: 5px;
+
+    border-bottom: 1px dashed #e2e2e2;
+}
+
+.kft p {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+/* 报名滚动 */
+.baoming {
+    position: relative;
+
+    padding: 0 25px 0 8px;
+
+    border: 1px solid #e2e2e2;
+}
+
+.baoming .prev,
+.baoming .next {
+    line-height: 28px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 25px;
+    height: 28px;
+
+    cursor: pointer;
+    text-align: center;
+
+    color: #fff;
+    background: #ddd;
+}
+
+.baoming .next {
+    top: auto;
+    bottom: 0;
+}
+
+.baoming li {
+    line-height: 30px;
+
+    overflow: hidden;
+
+    height: 30px;
+}
+
+.baoming li span {
+    padding-right: 8px;
+}
+
+/* 购房工具  */
+.gf-tools .img {
+    display: block;
+
+    width: 53px;
+    height: 53px;
+    margin: 0 auto 5px;
+
+    text-align: center;
+
+    border: 2px solid #e6e6e6;
+    border-radius: 10px;
+    background: url(../images/newhouse-gftool.png) no-repeat;
+    background-color: #fff;
+}
+
+.gf-tools li {
+    line-height: 26px;
+
+    display: inline;
+    float: left;
+
+    width: 85px;
+    padding: 5px 0 5px 0;
+
+    text-align: center;
+}
+.gf-tools li a:hover {
+    cursor: pointer;
+    text-decoration: none;
+
+    color: #3472b4;
+}
+.gf-tools li.hover {
+    display: block;
+}
+.gf-tools li.hover .img {
+    border: 2px solid #f60;
+}
+.gf-tools li.hover a {
+    color: #f60;
+}
+
+.gf-tools .tool1 {
+    background-position: 0 -54px;
+}
+
+.gf-tools .tool2 {
+    background-position: 0 -108px;
+}
+
+.gf-tools .tool3 {
+    background-position: 0 -158px;
+}
+
+.gf-tools .tool4 {
+    background-position: 0 -210px;
+}
+
+.gf-tools .tool5 {
+    background-position: 0 -265px;
+}
+
+/*# sourceMappingURL=houseindex.css.map */

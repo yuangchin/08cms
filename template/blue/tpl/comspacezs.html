@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if $cmane}{cmane}{else}经纪公司{/if}-公司介绍-{$hostname}</title>
+<meta content="{cmane}" name="keywords"> 
+<meta content="{cmane}{if $caddress},公司地址是{caddress}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$headinner}
+</head>
+<body>
+{tpl$comtop}
+<div class="blank10"></div>
+<div class="wrap">
+    <!-- 左栏开始 -->
+{tpl$comleft}
+    <!-- 左栏结束 -->
+    <!-- 右栏开始 -->
+  <div class="inMain">
+<div class="subT1">
+<div class="l h">公司介绍</div>
+<div class="cb0"></div>
+</div>
+<div class="mdjsList-main p10">
+{c$dpgg_br [cname=dpgg_br/] [tclass=text/] [tname=dpgg/] [dealhtml=safehtml/] [nl2br=1/]}{/c$dpgg_br}
+</div>
+</div>
+    <!-- 右栏开始 -->
+</div>
+{tpl$foot}
+</body>
+</html>

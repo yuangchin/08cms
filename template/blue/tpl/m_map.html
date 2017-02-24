@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+<title>{subject}-{$cmstitle}</title>
+<meta name="keywords" content="{subject}-{$cmstitle}"/>
+<meta name="description" content="{subject}-{$cmstitle}"/>
+  {tpl$m_headinner}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<style>
+body{height:100%;}
+html{ height:100%;}
+#map_canvas{ height:100%;}
+</style>
+<?php $notop=1; ?>
+</head>
+<body>
+
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" class="active" style="position: absolute;">
+        <article id="up_refresh_article" class="active"  >
+        	{tpl$m_header_arc}
+			<div id="map_canvas" style="position: absolute;width: 100%">
+			{if @$dt}
+			 <script type="text/javascript">
+			 var html;
+				{if in_array($caid,array(2,612,616))}
+			html = "<div>{subject}</div><div>销售地址：{address}</div>";
+			   {elseif in_array($caid,array(3,4,613,614,617,618))}
+			html = "<div>{subject}</div><div>联系电话：{c$fyhydh [cname=房源会员电话/] [tclass=member/] [detail=1/]}{if $lxdh}{$lxdh}{else}{lxdh}{/if}{/c$fyhydh}</div><div>地址：{address}</div>";
+			   {/if}
+
+			  	var map = new BMap.Map('map_canvas');
+				latlng = '{dt}';
+				latlng = latlng.split(',');
+				var lat = latlng[0], lng = latlng[1];
+				var point = new BMap.Point(lng, lat);    // 创建点坐标
+				map.centerAndZoom(point,15);             // 初始化地图,设置中心点坐标和地图级别。
+				map.enableScrollWheelZoom();
+				map.enableContinuousZoom();
+				var point = new BMap.Point(lng, lat);
+				var myIcon = new BMap.Icon("{$tplurl}mobile/images/dian.png", new BMap.Size(21, 30), {imageSize:new BMap.Size(21, 30)});
+				var marker = new BMap.Marker(point, {icon:myIcon});
+				map.addOverlay(marker);
+				var setcontent = html;
+				var infoWindow = new BMap.InfoWindow(setcontent);
+				marker.addEventListener("click", function(){this.openInfoWindow(infoWindow);});
+			</script>
+			{else}
+			地图坐标不存在
+			{/if}
+			</div>
+        </article>
+        <div class="blank0"></div>
+    </section>
+</div>
+{tpl$m_footer}
+</body>
+</html>

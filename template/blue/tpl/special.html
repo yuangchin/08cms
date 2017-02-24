@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}-{$hostname}</title>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/zhti.css?{$user_version}"/>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/newslist.css?{$user_version}"/>
+<?php $pagetype = 'special'; ?>
+</head>
+<body>
+<!--通用专题导航+搜索-->
+{tpl$head}
+<div class="wrap">
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form w300">
+                    <button type="submit" class="btn"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+                    <div class="txt-wrap">
+                        <input type="text" class="txt" value=""  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i>{title}
+        </span>
+    </div>
+</div>
+{if $caid==37}
+<div class="wrap">
+    <div class="adv1 clearfix jqDuang" data-cell="#num2">
+        <div id="bigimg2">
+            <ul>
+                {c$push_hdp [tclass=pushs/] [paid=push_hdp/] [limits=6/]}
+                <li class="clearfix {if $v['sn_row'] > 1}dn{/if}">
+                    <a href="{url}" target="_blank" title="{subject}">
+                 <img alt="{subject}"  src="{c$image [tclass=image/] [tname=thumb/] [val=a/] [thumb=1/]}{url_s}{/c$image}"  height="300" width="710" />
+                    <h2>{subject}</h2>
+                    <p>{c$text [tclass=text/] [tname=abstract/] [trim=190/] [ellip=.../] [color=color/]}{/c$text}</p>
+                    </a>
+               </li>
+               {/c$push_hdp}
+            </ul>
+        </div>
+        <div id="num2" class="num"> </div>
+    </div>
+</div>
+<div class="blank10"></div>
+{/if}
+<div class="wrap">
+	<!-- begin 1 -->
+    <div class="w890 l">
+        <div id="xqy" style="position:relative;">
+            {c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}
+            <div class="feilei" onmouseover="$('#fl').css('display','block')" onmouseout="$('#fl').css('display','none')">
+                <div class="feilei1">分类</div>
+                <ul id="fl" class="otherfelei" style="display:none;">
+                    {c$ztjd [cname=专题节点/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=37/]}{c$jtlb [cname=专题列表/] [tclass=catalogs/] [ttl=1800/] [val=b/] [limits=100/] [listby=ca/] [casource=2/]}
+                    <li>
+                        <a href="{indexurl}">{title}</a>
+                    </li>
+                    {/c$jtlb}{/c$ztjd}
+                </ul>
+            </div>
+        </div>
+        <div id="xqy_con">
+            <ul id="ztList" class="ztList">
+                {c$jhztlb [tclass=archives/] [limits=0/] [chsource=2/] [chids=14/] [caidson=1/] [casource=2/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [ttl=600/] [mp=1/]}
+                <li>
+                    <a href="{arcurl}" target="_blank"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=235/] [maxheight=100/] [thumb=1/]} src="{url_s}"  height="100" width="235" {/c$image}/></a>
+                    <h2> {c$jhdqlm [tclass=cnode/] [listby=ca/] [val=f/] [casource=active/]}
+                    <span class="F60">[<a href="{indexurl}">{title}</a>]</span>
+                    {/c$jhdqlm} <a href='{arcurl}' target="_blank">{subject}</a> </h2>
+                    <p>{c$text [tclass=text/] [tname=abstract/] [trim=190/] [ellip=.../] [color=color/]}{/c$text}<a href="{arcurl}" target="_blank">[查看全文]</a></p>
+                </li>
+                {/c$jhztlb}
+            </ul>
+        </div>
+        {if $mpacount>0}
+        <div class='ptb10'>{$mpnav}</div>
+        {else}
+         <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+        {/if}
+    </div>
+            <!--通用专题右侧栏-->
+    <div id="area2_2">
+        <!--专题右侧250_300--><div id="_08_adv_fcatalog171"></div>    
+        <!-- hot news begin -->        
+        <div class="blank10"></div>
+        <div class="bd-gray clearfix">
+            <div class="area2_3">热门专题排行</div>
+            <div class="area2_4">
+                <ul class="phicon">
+                    {c$jhztwdlb [tclass=archives/] [chsource=2/] [chids=14/] [caidson=1/] [casource=2/] [orderstr=a.wclicks DESC/] [forceindex=a.wclicks/] [ttl=600/]}
+                    <li>
+                        <a href="{arcurl}" target="_blank">{c$subject40 [cname=subject40/] [tclass=text/] [tname=subject/] [trim=40/]}{/c$subject40}</a>
+                    </li>
+                    {/c$jhztwdlb}
+                </ul>
+            </div>
+        </div>
+        <div class="blank10"></div>
+        <div class="bd-gray clearfix">
+            <div class="area2_3">推荐图文</div>
+            <div class="area2_10">
+            <!--推送位 推荐图文-->
+                <ul class="tjtuw clearfix">
+                    {c$tjtwcon [tclass=pushs/] [paid=push_116/] [limits=6/]}<li>
+                        <a target="_blank" href="{url}">
+                            <img {c$thumb_100_70 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=120/] [maxheight=90/] [thumb=1/]}src="{url_s}" width="120" height="90"{/c$thumb_100_70} border="0" alt="{subject}" />        
+                        </a>
+                        <p><a href="{url}" title="{subject}">{subject}</a></p>
+                    </li>
+                    {/c$tjtwcon}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blank10"></div>
+{tpl$foot} 
+<script type="text/javascript" src="{$tplurl}js/jqduang.js?{$user_version}"></script>
+</body>
+</html>

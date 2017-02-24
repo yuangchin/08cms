@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{title}-{companynm}-{$hostname}</title>
+ <meta content="{companynm}" name="keywords">
+ <meta content="{companynm}{if $dizhi},公司地址是{dizhi}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+</head>
+<body>
+<!--header begin-->
+{tpl$jz_m_head}
+<!--内容开始-->
+<div class="area">
+  <!--左侧栏开始-->
+  {tpl$jz_m_left}
+  <!--右侧栏开始-->
+  <div class="right_bar">
+    <div class="R_title">
+        <div class="R_title_L">公司动态</div>
+    </div>
+    <div class="R_con1 wzxx">
+      <!--lsit begin-->
+      {c$archives [cname=公司动态列表/] [tclass=archives/] [chsource=2/] [chids=104/] [caidson=1/] [casource=1/] [caids=512/] [space=1/] [detail=1/] [ttl=900/] [mp=1/]}
+      <div class="gsdt-title">
+        <a target="_blank" href="{marcurl}">{subject}</a> <span class="nom gray79"> ({c$date [cname=date/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}) </span>
+      </div>
+      <div class="gsdt-con fs12">
+        {c$text [tclass=text/] [tname=abstract/] [trim=200/] [ellip=.../]}{/c$text}
+        <span> ［<a target="_blank" href="{marcurl}">查看全文</a>］ </span>
+      </div>
+      {/c$archives}
+      <!--lsit end-->
+      <div class="ptb10">{$mpnav}</div>
+    </div>
+
+    <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+    <div class="blank10"></div>
+  </div>
+  <!--右侧栏结束-->
+</div>
+<!--内容结束-->
+<!--footer begin-->
+	{tpl$jz_foot}
+<!--footer end-->
+
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+    <title>楼盘地图-{$hostname}</title>
+    <meta name="keywords" content="{cmskeyword}" />
+    <meta name="description" content="{cmsdescription}" />
+    {tpl$m_headinner}
+    <link rel="stylesheet" type="text/css" href="{$tplurl}mobile/css/map.css?{$user_version}">
+     <?php
+    cls_Parse::Set('_da.letter',cls_env::GetG('letter'));
+foreach(array('ccid1','ccid2','ccid12','ccid17','ccid18','orderby','ordermode','searchword','letter', 'tslp') as $k) $$k = cls_Parse::Get("_da.$k");
+$sfields = array('1' => '区域', '2' => '商圈', '17' => '价格', '12' => '类型', '18' => '状态', 'tslp' =>'特色楼盘');
+cls_uso::init(array(
+    'ntype' => 'oc', //cm,m,oc,om
+    'chid' => 4,
+    'rids' => array(1,2),
+    'nodes' => array('0','0,1','0,2','0,12','0,17','0,18','0,1,17'),
+));
+extract(cls_usql::order_str(1,'a.ccid41 DESC,a.vieworder ASC'));
+$whrstr = cls_usql::where_str(array(
+    array('subject,address','searchword'),
+    array('tslp',0,'inlike',1),
+),u_exsql(4,1)); //echo "$whrstr";
+?>
+<!-- 隐藏top -->
+<?php $notop=1; ?>
+</head>
+<body>
+<div id="aside_container">
+    <aside id="menu" data-position="right" data-transition="overlay" data-show-close="true">
+        <div><!-- 表单 -->
+            <div class="clearfix">
+                <div class="bar-search">
+                    <form method="get" action="index.php">
+                        <input type="hidden" name="caid" value="{$caid}"/>
+                        <input type="text" class="txt" name="searchword" placeholder="关键词">
+                        <button type="submit" class="icon-f002"></button>
+                    </form>
+                </div>
+            </div>
+            <!-- /表单 -->
+            {loop $sfields $f $fn}
+                <?php
+                    $_rows = !is_numeric($f) ? cls_uso::field_urls($f) : cls_uso::caco_urls($f);$key = is_numeric($f) ? ($f ? "ccid$f" : 'caid') : $f;
+                    if($f == 2 && (empty($ccid1) || $fcdisabled2)) continue;
+                    if($fcdisabled3 && in_array($f,array(3,14)) || empty($ccid3) && $f == 14) continue;
+                    $ccid_field = is_numeric($f)?'ccid'.$f:$f;
+                ?>
+                <dl class="conditions">
+                    <dt><span class="icon-f009 left"></span>{$fn}：</dt>
+                    <dd><a class="{if empty($$key)}pomegranate{/if}" href='<? echo cls_uso::extra_url($key); ?>'>不限</a>{loop $_rows $k $v}<a class="{if $$key==$k}pomegranate{/if}" href="{$v['url']}">{$v['title']}</a>{/loop}</dd>
+                </dl>
+                {/loop}
+            </div>
+    </aside>
+</div>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" data-btn="back" data-footer="false" title="新房地图" class="active">
+        <article class="active" data-btn="menu">
+            <div>
+                {tpl$m_header_arc}
+                <div id="map"></div>
+                <div id="zb" class="zb">
+                    <span class="icon-e748 right"></span>
+                    <a class="icon-e608"></a>
+                    <a class="icon-e6f9"></a>
+                    <a class="icon-f0fe"></a>
+                    <a class="icon-e630"></a>
+                    <a class="icon-f07a"></a>
+                    <a class="icon-e611"></a>
+                </div>
+                <div id="tip" class="tip"></div>
+            </div>
+        </article>
+    </section>
+
+</div>
+
+<script>
+//加载数据设置
+var dtopt = {
+    _param : {
+        'aj_model'    : 'a,4,4', //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+        'aj_whrfields': 'leixing,in,0-1;subject-address,like,;ccid1, =;ccid2,=;ccid12,=,;ccid18,=,;ccid17,auto;letter,=;dt,notnull;',
+        'aj_check'    : 1 ,     //是否审核(0/1或不设置)
+        'aj_pagesize' : 10 ,
+        'aj_pagenum'  : 1 , //当前分页(数字,默认2)
+        'aj_deforder' : 'ccid41 DESC,vieworder ASC', //默认排序
+        'datatype'    : 'json',
+        'ordermode'   : 0 ,
+        'aj_thumb'    : 'thumb,100,80'
+    },
+    ajax  : 'pageload' ,
+    filterUrl : '&<?php echo cls_uso::$urls['fullurl']; ?>' ,//从地址获取的url参数
+    defDt : ('{c$cnode [tclass=cnode/] [listby=co1/] [cosource1=active/]}{dt}{/c$cnode}'||'{$init_map}').split(',') ,
+    zoom : {$init_map_zoom} || 12,
+    mapWrap :'#map' ,
+    dataWrap : '#up_refresh_article ul.list' ,
+    dttemplate : function() {
+        return this.subject
+    } ,
+    template : function() {
+        return '<ul class="list list-media">'
+                + '<li>'
+                + '    <a href="'+this.arcurl+'">'
+                + '        <img class="media-object" width="100" height="80" alt="'+this.subject+'" src="'+(this.thumb||CMS_ABS+'images/common/nopic.gif')+'">'
+                +'<div class="grid">'
+                +'<div class="col-1">'
+                + '<strong>'+(this.ccid41==0?'':'<span class="label pumpkin fl">顶</span>')+this.subject+'</strong></div>'
+                +         (this.dj&&'<span class="f-alizarin">'+this.dj+'</span>元/m&sup2;')
+                +'</div>'
+                +         (this.bdsm&&'<p class="f-belize-hole">'+this.bdsm+'</p>')
+                + '        <p>'+this.address+'</p>'
+                + '        <p><span class="label">'+this.ccid1title+'</span>'+(this.ccid2title&&'<span class="label peter-river">'+this.ccid2title+'</span>')+'<span class="label amethyst">'+this.ccid12title+'</span><span class="label alizarin">'+this.ccid18title+'</span>'
+                + '        </p>'
+                + '    </a>'
+                + '</li>'
+                + '</ul>'
+    }
+
+}
+
+
+var itemClick = function() {
+    J.popup({
+        pos : 'bottom'
+        , html : dtopt.template.call(this)
+        , showCloseBtn : 1
+    })
+};
+</script>
+
+{tpl$m_footer}
+<script type="text/javascript" src="http://api.map.baidu.com/api?{if empty($bmapkey)}v=1.0{else}type=quick&ak={$bmapkey}&v=1.4{/if}"></script>
+<script type="text/javascript" src="{$tplurl}mobile/js/map.js?20150126"></script>
+</body>
+</html>

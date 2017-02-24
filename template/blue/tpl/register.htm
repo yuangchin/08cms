@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>会员注册 - {$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/login.css?{$user_version}"/>
+</head>
+<body>
+<!-- header begin -->
+{tpl$head}
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<div class="blank20"></div>
+<div class="wrap">
+    <!-- body -->
+    <div class="coltit1"><h3 class="tit">会员注册</h3></div>
+    <div class="content1">
+        <div class="info-form info-form-reg">
+            <form class="jqValidate" data-tipmode="1" id="register" method="post" enctype="multipart/form-data" action="{$cms_abs}register.php?forward=">
+            <div class="inner1 form">
+                <ul>
+                    <li id="mchids" class="inputBox mchids clearfix">
+                        <!-- <span class="red">*</span><span>会员类型：</span> -->
+                        <input class="rad" type="radio"  data-error="请选择会员类型" data-type="1" data-offset="1" data-init="请选择会员类型" data-option="mchid1" id="mchid1" name="mchid" value="1" /><label for="mchid1"><span class="ico08 fz16 mr5">&#xe756;</span>用户会员</label>
+                        <input class="rad" type="radio" data-option="mchid1" name="mchid" value="2" id="mchid2" /><label for="mchid2"><span class="ico08 fz16 mr5">&#xe63e;</span>经纪人</label>
+                        <input class="rad" type="radio" data-option="mchid1" name="mchid" value="3" id="mchid3" /><label for="mchid3"><span class="ico08 fz16 mr5">&#xe733;</span>经纪公司</label>
+                        <!-- <input class="rad" type="radio" data-option="mchid1" name="mchid" value="11" id="mchid11" /><label for="mchid11">装修公司</label>
+                        <input class="rad" type="radio" data-option="mchid1" name="mchid" value="12" id="mchid12"/><label for="mchid12">品牌商家</label> -->
+                        {if !empty($fxpid)}
+                        <input type="hidden" name="fxpid" value="{$fxpid}"/>
+                        {/if}
+                    </li>
+                    <li class="inputBox inlinle clearfix">
+                        <label><span class="red">*</span><span>用 户 名：</span><input type="text" class="txt" id="mname" name="mname" value="" data-type="s3-15"/>
+                        </label>
+                    </li>
+                    <li class="inputBox inlinle clearfix">
+                        <label><span class="red">*</span><span>密 　 码：</span><input type="password" class="txt" id="password" name="password" value="" data-type="*6-18"/>
+                        </label>
+                    </li>
+                    <li class="inputBox inlinle clearfix">
+                        <label><span class="red">*</span><span>确认密码：</span><input type="password" class="txt" id="password2" name="password2"  data-type="*" data-recheck="password"/>
+                        </label>
+                    </li>
+                    <li class="inputBox inlinle clearfix">
+                        <label><span class="red">*</span><span>安全邮箱：</span><input type="text" class="txt" id="email" name="email" value="" data-type="e" />
+                        </label>
+                    </li>
+                    <li class="inputBox inlinle clearfix dn m-yzm">
+                        <span class="red">*</span><span>手机号码：</span><input id="lxdh" name="lxdh" type="text" ype="text" value="" class="txt" data-type="m">
+                        <input type="hidden" name="smstelfield"  value="lxdh" />
+                    </li>
+                    <li class="inputBox inlinle clearfix yzm m-yzm dn">
+                        <span class="red">*</span><span>确 认 码：</span><input type="text" data-offset="1" data-type="*" id="msgcode" name="msgcode" size="4" class="txt mr5">
+                        <button type="button" style="font-size:12px;width:140px;vertical-align:top;height:34px;padding:0" class="txt" data-btn="#lxdh" >获取手机确认码</button>
+                    </li>
+                    <li class="reg-wrap inputBox inlinle clearfix yzm y-yzm" data-regcode="register">
+                        <span class="red">*</span><span>验 证 码：</span><span style="display:inline-block;vertical-align:middle;width:242px"><input type="text" name="regcode" data-tipmode="#tip-yzm" data-type="*" class="code-input txt ajaxurl" size="6" value="" style="width:100%"/>
+                        </span>
+                        <span style="display:inline-block;vertical-align:middle;height:16px;"><span id="tip-yzm" style="line-height:16px"></span></span>
+                    </li>
+                    <li><div class="articleCheck" >
+                            <div class="msg">
+                                <input type="checkbox" id="agree" name="agree" checked="checked" data-type="1" data-offset="1" data-option="agree" data-init="必选" data-error="必选"/>
+                                <label for="agree"> 我已经看过并同意《<a style="color:#1e50a2; cursor:pointer;" onclick="$('#divagree').toggle();return false;" >网站服务条款</a>》</label>
+                            </div>
+                            <div id="divagree" class="text_articleCheck" style="display:none ">
+                                {tpl$wzfwtk}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="log-btn tc ptb10">
+                        <input type="hidden" name="register"  value="reg" />
+                        <input type="submit" name="register" class="btnok" value="免费注册" />
+                    </li>
+                </ul>
+            </div>
+
+            </form>
+        </div>
+        <div class="info-right">
+            <div class="info-right-inner">
+                <h3>我有帐号</h3>
+                <a class="btn" href='{$cms_abs}login.php'>立即登录</a>
+                <?php
+                // 快捷登录模块，如果所有外站登录都关闭的情况下隐藏该模块
+                if( @in_array(0, array_map("intval", array($qq_closed, $sina_closed))) ) {
+                ?>
+                <h4>使用合作网站账号登录</h4>
+                <?php cls_phpToJavascript::showOtherBind();?>
+                     <?php if(empty($qq_closed)) {?>
+                     <a class="QQ_login" title="QQ登陆" href="javascript:;" onclick="OtherWebSiteLogin('qq', 600, 470);">QQ账号登录</a>
+                     <?php } ?>
+                     <?php if(empty($sina_closed)) {?>
+                     <a class="weibo_login" title="新浪微博" href="javascript:;" onclick="OtherWebSiteLogin('sina', 600, 400);">微博账号登录</a>
+                     <?php } ?>
+              <?php
+                } // 快捷登录模块结束
+               ?>
+            </div>
+        </div>
+        <div class="blank20"></div>
+    </div>
+ </div>
+<script type="text/javascript">
+$('#mname, #email').each(function(i, el) {
+    $(el)
+    .attr('data-alias', 'val')
+    .attr('data-url', '{$cms_abs}index.php?/ajax/Check_Member_Info_Base/filed/' + el.name + '/datatype/json/domain/' + document.domain)
+    .on('ajaxDone', function (e,res,fn) {
+        res ? fn('error', res) : fn('pass');
+    })
+});
+
+var $mchids=$('#mchids'),
+    aTips=[
+        '用户会员<br/>可发布房源,需求,委托,招聘',
+        '经纪人<br/>可发布房源,需求,置顶,预约,招聘,管理委托',
+        '经纪公司<br/>可管理房源,经纪人,招聘',
+        '装修公司<br/>可发布案例,设计师,招聘',
+        '品牌商家<br/>可发布商品,招聘'
+    ];
+
+    $mchids.find('.rad')
+    .prop('checked',false)
+
+    $mchids.find('label').click(function() {
+        $mchids.find('label').removeClass("acted");
+        $(this).prev('input').prop('checked', 'checked');
+        // document.title = $(this).prev('input').prop('checked');
+        $(this).addClass("acted");
+    })
+    .eq({if empty($fxpid)}0{else}1{/if}).trigger('click');
+
+    $mchids
+    .on('mouseover','label',function () {
+        $(this).addClass("act")
+    })
+    .on('mouseout','label',function () {
+        $mchids.find('label').removeClass("act");
+    })
+    .find('label').each(function (n) {
+        var oI=document.createElement('i');
+        oI.innerHTML=aTips[n]+'<b></b><s></s>';
+        this.appendChild(oI);
+    })
+
+    // 手机短信
+
+    var isOpenMob = 'register';
+    var $dataBtn = $('[data-btn]');
+    var mobObj = $($dataBtn.data('btn'));
+
+    // 点击验证手机号码
+    $dataBtn.click(function(e) {
+        $('#register').jqValidate(function (v) {
+            v.validate(mobObj[0]) && sendverCode(60, e.target);
+        })
+    });
+
+    $.getJSON(CMS_ABS + uri2MVC("ajax=sms_msend&mod="+isOpenMob+"&act=init&datatype=json") + '&callback=?', function(info){
+        if(info.error=='close'){
+            $('.y-yzm').show();
+            $(".m-yzm").remove();
+        }else{
+            $(".m-yzm").show();
+            $(".y-yzm").remove();
+        }
+    });
+
+    var open=1;
+    // os 时间秒，btn 按钮
+    function sendverCode(os,btn){
+        var telphone = mobObj.val();
+        if(open){
+             $.getJSON(CMS_ABS + uri2MVC("ajax=checkUserPhone&act=code&val="+telphone+"&datatype=json") + '&callback=?', function(info){
+
+                if( info == "号码已经存在于系统会员中，不能使用！" || info == "号码错误！"){
+                     open=1;
+                    $.jqModal.tip(info,'error');
+                }
+                else{
+                    $.getJSON(CMS_ABS + uri2MVC("ajax=sms_msend&mod="+isOpenMob+"&act=code&tel="+telphone+"&datatype=json") + '&callback=?', function(info){
+                         open=1;
+                        if(info.error){
+                            $.jqModal.tip(info.message,'error');
+                        }else{
+                            countdown(os,btn);
+                            mobObj.prop("readonly","readonly");
+                        }
+                    });
+                }
+            });
+        }
+        open=0;
+    }
+
+    function countdown(senconds,btn1){
+        if(senconds>1){
+            $(btn1).html('重新发送(<i class="fcr" id="getminut">'+senconds--+'</i>)').prop("disabled","disabled").css("cursor","no-drop");
+            setTimeout(function() {
+                countdown(senconds,btn1);
+            },1000);
+        }else{
+            $(btn1).html("点击获取确认码").prop("disabled","").css("cursor","pointer");
+            mobObj.prop("readonly","");
+        }
+    }
+
+</script>
+<div class="blank20"></div>
+{tpl$foot}
+</body>
+</html>

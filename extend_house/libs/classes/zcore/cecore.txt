@@ -1,0 +1,86 @@
+function achid($id)
+# 根据文档aid，返回这个文档的文档模型chid
+
+
+function ArchiveStaticFormat(&$r,$kp = 1)
+# 返回文档的静态保存格式，此格式保留了{$page}与附加页{$addno}的变量符。
+# $kp是否保持文件已保存的格式,1为保持
+# $r为文档所在主表的资料数组，需要包含aid,caid,initdate,chid,customurl等资料
+# $r中资料不完整或含不正确的资料，则返回结果为''
+# 定义文档静态格式可以使用的变量有：{$topdir},{$spdir},{$cadir},{$chid},{$aid},{$y},{$m},{$d},{$h},{$i},{$s}等
+
+
+function atbl($id = 0,$mode = 0)
+# 获取文档分表表名
+# $mode指定$id输入模式：0为按文档模型chiid，1为按分表stid，2为按文档aid
+# 返回文档分表名如：archives,archvies1……等结果，如指定分表不存在则返回''。
+
+
+function caccsql($fname,$ids,$smode=0)
+# 用于类目字段根据条件组合查询字串，支持单选及多选。
+# $fname：字段名称，需要包含查询表别名。如：m.pinpai
+# $ids：有关的id，可为单个id或数组：如：9,array(1,2,5,9)。
+# $smode：类目字段的选择模式，可为0,2,3,4,5，0为单选，5为最多选择5个。
+# 结果样例：
+# m.pinpai IN (1,2,5,9)
+# m.pinpai = 9
+
+
+function cnsql($coid,$ccids,$pre = '')
+# 用于生成有关类目的查询字串。支持条件类系，单选类系，多选类系的查询。
+# $coid-类系id，如：10
+# $ccids-有关的分类id，可为单个id或数组：如：9,array(1,2,5,9)。
+# $pre-分类表在字串中的别名前缀，如:c.或空。
+# 结果样例：
+# c.ccid10 IN (1,2,5,9)
+# c.ccid10 = 9
+
+
+function cnstr($arr)
+# 根据$arr数组中传入的变量，返回节点的识别字串
+# $arr变量数组，如array('caid' => 5,'ccid1' => 3,'ccid2' => 4)
+# 返回结果示例：caid=5&ccid1=3&ccid2=4
+
+
+function GetExtendCache($key,$ttl)
+# 返回sql缓存结果，如缓存不存在或过期，返回false。
+# $key：缓存Key，$ttl：缓存周期(s)
+# 缓存存在时，返回一个结果数组。
+
+function CnodeFormatDirArray($cnstr)
+# 返回节点生成静态或组成url所需要的变量数组
+# $cnstr为节点识别字串,如caid=2，caid=2&ccid1=3
+# 返回一个变量数组，如:array('cndir' => *,'pc' => *,'p' => *,'d0' => *,'d1' => *)等。
+# 可能包含的变量有:cndir,pc,p,s,d(*)等
+# 变量cndir是由系统默认的节点静态文件保存路径，
+# 格式如：html/顶级栏目目录/当前栏目目录/分类目录/，具体视节点组合及系统设置不同而异。
+# p为节点首序分类的顶级分类目录
+# pc为节点首序分类的组合目录，包含了顶级分类目录，如：顶级分类目录/当前分类目录，如分类本身为顶级，则为当前分类目录
+# d(*)，为节点交叉各级分类的当前分类目录。
+
+
+function mapsql($x,$y,$diff = 0,$mode = 1,$fname = '')
+# 用于地图字段根据条件组合查询字串，支持实际距离与经纬度差值。
+# $x：当前点的纬度
+# $y：当前点的经度
+# $diff：范围值
+# $mode：搜索模式，0为经纬度，1为距离
+# $fname：$fname：字段名称，需要包含查询表别名。如：m.didu
+# 结果样例：
+# m.didu_0>=22.456 AND m.didu_0<=52.456 AND m.didu_1>=50.33 AND m.didu_1<=150.33
+
+
+function sonbycoid($id = 0,$coid = 0,$self = 1)
+# 根据指定类系及分类id来得到所有子分类id的数组，递归所有子分类
+# $coid为类系id，栏目为0。$id为分类或栏目id。$self返回结果中是否包含当前id。
+# 返回结果示例：array(11,12,13)
+
+
+function MspaceIndexFormat(&$info,$params = array(),$dforce = 0)
+# 返回会员空间的相关url
+# $info为会员主表的相关资料数组
+# params为指定传入的页面参数,格式如array('mid' => *,'mcaid' => *,'ucid' => *,'addno' => *,)
+# $dforce 强制为动态url格式
+
+function idstr_mode($mode,$limit,$nids,$oids,$both = 0)
+# 批量设置时，使用重设、增补、去除三种模式，得到设置的多个ccid组成的字串

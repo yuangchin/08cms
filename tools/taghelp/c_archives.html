@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">文档列表 archives</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2" >概述</div>
+<div class="t2">
+	<p>文档列表是系统使用的最频繁也是最重要的标签之一，在调用文档时使用。</p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">参数</div>
+<div>
+	<ul>
+    <li class="t1">标识模板，调用标识所运行的内容，由html代码、其它标识、原始标识、模型字段组成。
+        <p>列表中常用的标识说明：<br />
+            {aid}文档id;
+            {arcurl}文档的链接地址;<i class="FcO">//附加页1为{arcurl1},附加页2为{arcurl2}…</i><br />
+            {subject}文档的标题;<i class="FcO">//可[文本处理]标识信息处理，例如截取文字数量</i><br />
+            {thumb}文档的缩略图;<i class="FcO">//须用[图片模块]标识调出图片信息</i><br />
+            {createdate}文档的添加时间;<i class="FcO">//可用[时间日期]标识改变日期格式</i><br />
+            {abstract}文档的摘要;<i class="FcO">//可用[文本处理]标识进行信息处理，例如截取文字数量</i><br />
+            {clicks}文档的点击量;<br />
+            {$v['sn_row']}文档的序号<i class="FcO">//默认以1开头序号，v对应的是“标识返回的数组名称”</i>;
+        </p>
+    </li>
+	<span class="blank2"></span>
+    <li class="bg3">需要模型字段表的内容</li>
+    <li class="t1">在模型字段中存在两种字段，一个是<i class="FcB">通用字段</i>，另一种则是<i class="FcB">自定义字段</i>。若要在标识模板(template)中使用非通用字段时，需勾选此设置(需要模型字段表的内容)方能在标识模板中正常使用自定义字段，比较耗资源。</li>
+    <span class="blank2"></span>
+   
+   
+    </ul>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2 title">示例</div>
+<div class="con">
+    <!-- exm1 -->
+	<div>
+        <span class="blank5"></span>
+        <li class="bg3">案例一</li>
+        <span class="blank3"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/ptwdlb.jpg"  class="pad50" /></li>
+        
+        <li class="t2">原html代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp> 
+        <li><a title="" target="_blank" href="#">2011中国重庆LED暨照明展-开展如火</a></li>
+        <li><a title="" target="_blank" href="#">招商银行袁晓懋：创新应用新媒体传播</a></li>
+        <li><a title="" target="_blank" href="#">东至重大项目招商引资步伐加快上半个</a></li>
+        <li><a title="" target="_blank" href="#">长治县招商引资瞄准大市场</a></li>
+        <li><a title="" target="_blank" href="#">招商置业联动颁奖大会隆重举行</a></li>
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span> <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+        <li><a title="{subject}" target="_blank" href="{arcurl}">{c$subject32}</a></li>
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li class="t3">
+            说明：
+            <p>{c$subject32}为文本处理后的标识。</p>
+            <p>推荐)：调用推荐列表，点推荐一般选择“手动指定”，如图<img src="img/tj.jpg"/></p>
+            <p>排序)：给列表排序，点排序生成排序字段，如图<img src="img/bx.jpg"/></p>
+            <p>点击率的降序如下图：<br /><img src="img/bx1.jpg"/></p>
+            <p><b class="FcR">整体截图如下：</b><br /><img class="img" src="img/bq1.jpg"/></p>
+        </li>
+       
+    </div>
+    <!-- exm2 -->
+	<div>
+        <span class="blank5"></span>
+        <li class="bg3">案例二(图文)</li>
+        <span class="blank3"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/ptwdlb2.jpg" class="pad50" /></li>
+        
+        <li class="t2">原html代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp> 
+<li>
+     <a title=" " target="_blank" href="#"><img width="100" height="75" src="../image/5.jpg" alt=""/></a>
+     <h4><a title="" target="_blank" href="#">视频: 山东肥霸王化工</a></h4>
+ </li>                         
+ <li>
+     <a title="" target="_blank" href="#"><img width="100" height="75" src="../image/5.jpg" alt=""/></a>
+     <h4><a title=" " target="_blank" href="#">视频: 济南淘宝摄影</a></h4>
+ </li>                         
+ <li>
+     <a title="" target="_blank" href="#"><img width="100" height="75" src="../image/5.jpg" alt=""/></a>
+     <h4><a title="" target="_blank" href="#">视频: 期末考试</a></h4>
+ </li>                         
+ <li>
+     <a title="" target="_blank" href="#"><img width="100" height="75" src="../image/5.jpg" alt=""/></a>
+     <h4><a title="" target="_blank" href="">视频: 高清 大众 </a></h4>
+ </li>
+
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span> <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+<li>
+     <a title="{subject}" target="_blank" href="{arcurl}"><img {c$thumb100_75} alt="{subject}"/></a>
+     <h4><a title="{subject}" target="_blank" href="">{c$subject10}</a></h4>
+ </li>
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li class="t3">
+            说明：<p>{c$thumb100_75}为图片模块标识，文档的缩略图（详细可见<i class="FcB">图片模块</i>）。
+            <b class="FcR">整体截图如下</b><br />
+            <img src="img/twlb.jpg" class="img"/>
+            </p></li>
+       
+    </div>
+    <!-- exm3 -->
+	<div>
+        <span class="blank5"></span>
+        <li class="bg3">案例3(图文+标题列表)</li>
+        <span class="blank3"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/twdy.jpg" class="pad50" /></li>
+        
+        <li class="t2">原html代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp> 
+<li class="pTxt clearfix">
+     <a title=" " target="_blank" href="#"><img width="120" height="90" src="../image/5.jpg" alt=""/></a>
+     <h4><a title="" target="_blank" href="#">标题标题标题</a></h4>
+     <p>摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要<a href="#">…[详细]</a></p>
+ </li>                         
+ <li> <a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>                        
+ <li> <a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>                        
+ <li> <a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>                        
+ <li> <a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>    
+
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span> <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+{if $v['sn_row']==1} 
+<li class="pTxt clearfix">
+     <a title="{subject}" target="_blank" href="{arcurl}"><img {c$thumb120_90} alt="{subject}"/></a>
+     <h4><a title="{subject}" target="_blank" href="">{c$subject10}</a></h4>
+     <p>{c$abstract40}<a href="{arcurl}">…[详细]</a></p>
+ </li>
+{else}
+<li> <a title="{subject}" target="_blank" href="{arcurl}">{c$subject32}</a></li>
+{/if}  
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li class="t3">
+            说明：<p>{{c$abstract40}是文本处理后的摘要，本例中加了一个判断语句，第一条显示图文，后面5条为列表，共循环6条信息;$v['sn_row']为以1开头的序号，当调用第一条时$v['sn_row']为1，第二条为2，…</p></li>
+       
+    </div>
+    
+    
+    <!-- exm4 -->
+	<div>
+        <span class="blank5"></span>
+        <li class="bg3">案例4(带栏目的标题列表)</li>
+        <span class="blank3"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/lmbtlb.jpg" class="pad50" /></li>
+        
+        <li class="t2">原html代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp> 
+                         
+ <li><i class="time">2010-10-10</i>栏目<a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>   
+ <li><i class="time">2010-10-10</i>栏目<a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>   
+ <li><i class="time">2010-10-10</i>栏目<a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>   
+ <li><i class="time">2010-10-10</i>栏目<a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>   
+ <li><i class="time">2010-10-10</i>栏目<a title=" " target="_blank" href="#">标题标题标题标题标题标</a></li>       
+
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span> <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>
+ <li><i class="time">{c$createdate_ymd}</i>{c$cate}<a title="{subject}" href="{arcurl}">{c$subject32}</a></li>      
+                </xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li class="t3">
+            说明：<p>{c$createdate_ymd}是<i class="FcB">时间日期</i>（详细可见时间日期）;{c$cate}为<i class="FcB">类目结点</i>(详细可见类目结点，需要注意的是追塑选择“<i class="FcR">二级类目</i>”选项)</p></li>
+       
+    </div>
+    
+    
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{tpl$lp_msg}
+{tpl$head}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/xiaoqu.css?{$user_version}"/>
+<script type="text/javascript">window.jQuery || document.write('<script src="{$tplurl}js/jquery.js"><\/script>');</script>
+{if $chid==7 || $chid==11}
+	<?php $lpid=$pid3; ?>
+{else}
+	<?php $lpid=$aid; ?>
+{/if}
+
+<div class="wrap">
+    <div class="bread clearfix">
+        <span class="l mt5"><a href="{$cms_abs}"><i class="ico08 ico">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$loupanliebiao [cname=楼盘列表/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl2}{/c$loupanliebiao}">小区列表</a><i class="pipe">/</i>{c$jhlpqy [cname=激活楼盘区域/] [tclass=cnode/] [val=v/] [casource=2/] [listby=co1/] [cosource1=active/]}<a href="{indexurl2}">{title}</a>{/c$jhlpqy}<i class="pipe">/</i><a href="{arcurl}">{subject}</a></span>
+        
+        <div class="w300 r">
+            <form class="search-group form form-bdrs" method="get" action="{$cms_abs}index.php" target="_blank" >
+                <input type="hidden" name="caid" value="2" />
+                <input type="hidden" name="addno" value="2" />
+                <button type="submit" class="btn"><i class="ico08 mr3">&#xe607;</i>搜索</button>
+                <div class="txt-wrap">
+                    <input type="text" id="searchword" name="searchword" class="txt" placeholder="请输入小区名称或地址" value='' />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{c$08cmsabc [tclass=archive/] [val=abc/] [id=$lpid/][detail=1/]}
+<div class="wrap">
+    <div class="bd-gray clearfix mb10">
+        <div class="lptit p15">
+            {if $abc['loupanlogo']}
+            {c$loupanlogo80_60 [cname=loupanlogo80_60/] [tclass=image/] [tname=loupanlogo/] [maxwidth=80/] [maxheight=60/]}
+                <img class="logo" width="80" height="60" src="{url}" />
+            {/c$loupanlogo80_60}
+            {/if}
+            <div class="lpother">
+               <h1>{subject}</h1>
+               更新时间：{c$08cms [tclass=date/] [tname=updatedate/] [date=Y年m月d日/]}{/c$08cms}&nbsp;&nbsp;<i><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 4, field: 'clicks'}">&nbsp;</div></i>次浏览
+            </div>
+        </div>
+    </div>
+    <!-- nav -->
+    <div class="navwrap">
+    	<div id="lpcon-nav" class="lpcon-nav clearfix">
+    		<div class="wrap clearfix">
+    			<ul class="lp-main-nav">
+                    <li id="fmn7"><a href="{arcurl7}">小区总览</a></li>
+                    <li id="fmn8mai"><a href="{arcurl8}">出售房源</a></li>
+                    <li id="fmn8zhu"><a href="{arcurl8}">出租房源</a></li>
+                    <li id="fmn10"><a href="{arcurl10}">小区图库</a></li>
+                    <li id="fmn9"><a href="{arcurl9}">户型图</a></li>
+                </ul>
+                <div class="r lp-gz">
+    		    <a  onclick="return publicCollect('{$aid}','',7,'old');" href="javascript:void(0)" ><i class="ico08 mr3">&#xf004;</i>有新二手房通知我</a><a onclick="return publicCollect('{$aid}','',7,'rent');" href="javascript:void(0)"><i class="ico08 mr3">&#xf08a;</i>有新出租通知我</a>
+               </div>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="blank10"></div>
+<!-- 下面js兼容户型图内页 -->
+<script type="text/javascript">
+// virtualurl 是否启用伪静态
+var virtualurl={$virtualurl},fangUrl='{arcurl8}';    
+</script>
+{/c$08cmsabc}
+<script type="text/javascript">
+replaceUrl('mai');
+replaceUrl('zhu');
+function replaceUrl (t) {
+    $('#fmn8'+t).find('a').attr('href',virtualurl?fangUrl.replace('/addno','/fang-'+t+'/addno'):fangUrl+'&fang='+t);
+}
+
+$("#fmn{addno}").addClass('act');
+
+<?php $fang = empty($fang) ? "" : $fang; ?>
+$("#fmn{addno}{fang}").addClass('act');
+</script>

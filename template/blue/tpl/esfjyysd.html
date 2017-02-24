@@ -1,0 +1,996 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>二手房交易验算单-{hostname}</title>
+<link href="{$tplurl}css/calculator.css?{$user_version}" rel="stylesheet" type="text/css"/>
+{tpl$headinner}
+<script type="text/javascript">
+	$aaaatpl = "{$tplurl}";
+</script>
+<script language="JavaScript" src="{$tplurl}js/9.js"></script>
+<script src="{$tplurl}js/jx.js"></script>
+<script src="{$tplurl}js/tad.js"></script>
+</head>
+<body>
+{tpl$head}
+{tpl$toolshead}
+<div class="c_all">
+	<div class="esjycon">
+        <table width="100%" height="48" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td width="60" height="47" align="center"><img src="{$tplurl}images/jy_tb.gif" width="32" height="33"></td>
+                <td width="840" class="title_b">二手房交易验算单</td>
+            </tr>
+        </tbody></table>
+        <form id="calculator" action="count.action" method="post" target="_blank">
+            <input type="hidden" name="calName" id="calName" value="未命名">
+            <table width="100%" height="34" border="0" align="center" cellpadding="0" cellspacing="0" class="sj_k">
+                <tbody><tr>
+
+                    <td width="14" align="center"></td>
+                    <td width="90" align="left"><span class="green_14_cu">房屋基本信息</span></td>
+                    <td width="611" align="left" class="sm1">( <span class="STYLE2">* </span>为必填项 )</td>
+                    <td width="48" align="left">&nbsp;</td>
+                    <td width="15" class="title_b">&nbsp;</td>
+                </tr>
+            </tbody></table>
+            <table width="100%" border="0" align="center" cellpadding="4" cellspacing="2" class="tabox">
+                <tbody>
+                    <tr>
+                        <td width="115" align="right" bgcolor="#F9F9F9"><span class="STYLE2">* </span><span class="sm1">合同总金额</span></td>
+                        <td width="248" valign="middle" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="totalPrice" id="totalPrice" type="text" onblur="javascript:countPrice();en(this);CNB('totalCNB',this.value)" onfocus="javascript:de(this);" tabindex="1">
+                            元</span> <br>
+                            <span id="totalCNB" class="white_12_green"></span></td>
+                        <td width="117" align="right" bgcolor="#F9F9F9"><span class="sm1">均价</span></td>
+                        <td width="264" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="averagePrice" type="text" id="averagePrice" readonly="readonly" class="input_bg">
+                            元/平方米</span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" bgcolor="#F9F9F9"><span class="STYLE2">*</span><span class="sm1"> 建筑面积</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="buildArea" id="buildArea" type="text" onblur="javascript:areaChange(this.value);" tabindex="2">
+                            平方米</span></td>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">附属车库棚面积</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="carbarnArea" id="car_area" value="0" size="10" type="text" onblur="javascript:areaTurn(this.value);" tabindex="7">
+                            平方米</span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" bgcolor="#F9F9F9"><span class="STYLE2">*</span><span class="sm1"> 房屋性质</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="houseType" id="houseType" onchange="javascript:onChangeHouseType(this.value);" tabindex="3">
+                                <option value="1" selected="">普通住宅(面积小于90平方)</option>
+                                <option value="2">普通住宅(面积大于90平方，小于144平方)</option>
+                                <option value="3">非普通住宅(面积大于144平方)</option>
+                                <option value="4">商用房（非住宅）</option>
+                            </select>
+                            </span></td>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">建筑年份</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1" style="width:150px">
+                            <input type="text" name="houseAge" id="build_tile" tabindex="8">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" bgcolor="#F9F9F9"><span class="STYLE2">* </span><span class="sm1">房屋购买年数</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="houseYear" id="houseYear" onchange="javascript:onChangeHouseType(this.value);" tabindex="4">
+                                <option value="2">5年及以下</option>
+                                <option value="3">5年以上</option>
+                            </select>
+                            </span></td>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">卖方剩余房贷</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="sellerBalance" type="text" id="sellerBalance" onblur="javascript:en(this)" ;="" onfocus="javascript:de(this);" tabindex="9">
+                            元</span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" bgcolor="#F9F9F9"><span class="STYLE2">*</span><span class="sm1"> 房屋评估金额<br>
+                            </span></td>
+                        <td valign="middle" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="evaluationPrice" type="text" id="evaluationPrice" tabindex="5" onfocus="javascript:de(this);" onblur="javascript:onChangeAboutPrice(this.value);en(this);CNB('evaluationCNB',this.value)" value="0">
+                            元</span> <br>
+                            <span id="evaluationCNB" class="white_12_green"></span></td>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">卖方购买时金额</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="sellerPay" type="text" id="saler_price" tabindex="10" onfocus="javascript:de(this);" onblur="javascript:taxTrade();taxGet();en(this);" value="0">
+                            元</span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">买方所需房贷</span></td>
+                        <td valign="middle" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="buyerPay" type="text" id="buyerPay" tabindex="6" onfocus="javascript:de(this);computeLoan(this.form);" onblur="javascript:buyerLoanChange();computeLoan(this.form);en(this);CNB('buyerPayCNB',this.value)" value="0">
+                            元</span> <br>
+                            <span id="buyerPayCNB" class="white_12_green"></span></td>
+                        <td align="right" bgcolor="#F9F9F9"><p><span class="sm1">商业贷款利率 </span></p></td>
+                        <td bgcolor="#F9F9F9">
+                            <select id="lilv" name="lilv" onchange="javascript:computeLoan(this.form);">
+                                <option value="67">12年06月08日后1.1倍</option>
+                                <option value="64" selected="">12年06月08日后基准</option>
+                                <option value="66">12年06月08日后9折</option>
+                                <option value="63">11年07月08日后1.1倍</option>
+                                <option value="60">11年07月07日后基准</option>
+                                <option value="62">11年07月07日后9折</option>
+                                <option value="61">11年07月07日后85折</option>
+                                <option value="59">11年04月06日后1.1倍</option>
+                                <option value="56">11年04月06日后基准</option>
+                                <option value="58">11年04月06日后9折</option>
+                                <option value="57">11年04月06日后85折</option>
+                                <option value="55">11年02月09日后1.1倍</option>
+                                <option value="52">11年02月09日后基准</option>
+                                <option value="54">11年02月09日后9折</option>
+                                <option value="53">11年02月09日后85折</option>
+                            </select>
+                            <span class="sm1"><a href="http://192.168.1.7/house/info.php?fid=6" target="_blank">公积金贷款计算器</a></span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">期数</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="years" id="years" onchange="javascript:computeLoan(this.form);">
+                                <option value="1">1年（12期）</option>
+                                <option value="2">2年（24期）</option>
+                                <option value="3">3年（36期）</option>
+                                <option value="4">4年（48期）</option>
+                                <option value="5">5年（60期）</option>
+                                <option value="6">6年（72期）</option>
+                                <option value="7">7年（84期）</option>
+                                <option value="8">8年（96期）</option>
+                                <option value="9">9年（108期）</option>
+                                <option value="10">10年（120期）</option>
+                                <option value="11">11年（132期）</option>
+                                <option value="12">12年（144期）</option>
+                                <option value="13">13年（156期）</option>
+                                <option value="14">14年（168期）</option>
+                                <option value="15">15年（180期）</option>
+                                <option value="16">16年（192期）</option>
+                                <option value="17">17年（204期）</option>
+                                <option value="18">18年（216期）</option>
+                                <option value="19">19年（228期）</option>
+                                <option value="20" selected="">20年（240期）</option>
+                                <option value="25">25年（300期）</option>
+                                <option value="30">30年（360期）</option>
+                            </select>
+                            </span></td>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">还款总额</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="all_total1" type="text" class="input_bg" onblur="javascript:en(this)" onfocus="javascript:de(this);">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">利息总额</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="accrual1" type="text" class="input_bg" onblur="javascript:en(this)" onfocus="javascript:de(this);">
+                            </span></td>
+                        <td align="right" bgcolor="#F9F9F9"><span class="sm1">月还款额</span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="month_money1" type="text" class="input_bg" onblur="javascript:en(this)" onfocus="javascript:de(this);">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="center" bgcolor="#F9F9F9"><span class="sm1">
+                            <input class="btn-js" type="button" onclick="javascript:compute();computeLoan(this.form);" value="计算" tabindex="11">
+                            <input name="total_gjj" type="hidden">
+                            <input name="total_sy" type="hidden">
+                            <input name="daikuan_total000" id="daikuan_total000" type="hidden">
+                            <input name="anjie" type="hidden" value="7">
+                            <input type="hidden" name="fangkuan_total1">
+                            <input type="hidden" name="daikuan_total1">
+                            <input type="hidden" name="money_first1">
+                            <input type="hidden" name="month1">
+                            <input type="hidden" name="fangkuan_total2">
+                            <input type="hidden" name="daikuan_total2">
+                            <input type="hidden" name="all_total2">
+                            <input type="hidden" name="accrual2">
+                            <input type="hidden" name="money_first2">
+                            <input type="hidden" name="month2">
+                            <input type="hidden" name="month_money2">
+                            <input type="hidden" name="type" value="3">
+                            </span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table width="100%" height="34" border="0" align="center" cellpadding="0" onclick="oc('tt01')" cellspacing="0" class="sj_k">
+                <tbody><tr>
+
+                    <td width="23" align="center"><a><img src="{$tplurl}images/down_tb.gif" name="icontt01" width="15" height="15" border="0" id="icontt01"></a></td>
+                    <td width="631" align="left"><a><span class="green_14_cu">合同信息</span></a></td>
+                    <td width="97" align="right"><a><span class="green12">点击查看详情&gt;&gt;</span></a></td>
+                    <td width="15" class="title_b"><a></a></td>
+                </tr>
+            </tbody></table>
+            <table width="100%" border="0" align="center" cellpadding="4" cellspacing="2" id="tt01" class="tabox" style="display: none;">
+                <tbody>
+                    <tr class="green_14">
+                        <td width="200" height="26" align="center" class="white_12_bold" bgcolor="#DDDDDD">支付项</td>
+                        <td width="200" align="center" class="white_12_bold" bgcolor="#DDDDDD">支付金额</td>
+                        <td width="200" align="center" class="white_12_bold" bgcolor="#DDDDDD">余额</td>
+                        <td width="200" align="center" class="white_12_bold" bgcolor="#DDDDDD">支付方</td>
+                        <td width="200" align="center" class="white_12_bold" bgcolor="#DDDDDD">帮助</td>
+                    </tr>
+                    <tr>
+                        <td width="200" align="center" bgcolor="#F9F9F9"><span class="sm1">定金
+                            <input type="hidden" name="ag_payName" value="定金">
+                            <input type="hidden" name="ag_payNameID" value="19">
+                            </span></td>
+                        <td width="200" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="ag_paySum" type="text" id="ag_paySum" size="20" onblur="javascript:payforDeposit();en(this)" onfocus="javascript:de(this);">
+                            </span></td>
+                        <td width="200" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="ag_payBalance" type="text" class="input_bg" id="ag_payBalance" size="20" onblur="javascript:en(this)" onfocus="javascript:de(this);">
+                            </span></td>
+                        <td width="200" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="ag_payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td width="200" bgcolor="#F9F9F9"><span class="sm1"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="200" align="center" bgcolor="#F9F9F9"><span class="sm1">首付
+                            <input type="hidden" name="ag_payName" value="首付">
+                            <input type="hidden" name="ag_payNameID" value="20">
+                            </span></td>
+                        <td width="200" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="ag_paySum" type="text" id="payfor_first" size="20" onblur="javascript:payforDeposit();en(this)" onfocus="javascript:de(this);">
+                            </span></td>
+                        <td width="200" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="ag_payBalance" type="text" class="input_bg" id="surplus_first" size="20" onblur="javascript:en(this)" onfocus="javascript:de(this);">
+                            </span></td>
+                        <td width="200" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="ag_payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table width="100%" height="34" border="0" align="center" cellpadding="0" onclick="oc('tt02')" cellspacing="0" class="sj_k">
+                <tbody><tr>
+
+                    <td width="23" align="center" valign="middle"><a><img src="{$tplurl}images/down_tb.gif" width="15" height="15" border="0" id="icontt02"></a></td>
+                    <td width="117" align="left"><a><span class="green_14_cu">中介 评估 </span></a></td>
+                    <td width="513" align="right" class="green_12"><div id="st04" style="display:none">
+                            <table width="428" height="21" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr>
+                                    <td width="5" align="left"></td>
+                                    <td width="416" class="green_12"><a><span class="green_12_bold">总:</span><span class="catotal" id="cost4T">0</span>元 ( <span class="green_12_bold">买方:</span><span class="catotal" id="cost4B">0</span>元 <span class="green_12_bold">卖方:</span><span class="catotal" id="cost4S">0</span>元 )</a></td>
+                                    <td width="5" align="right"></td>
+                                </tr>
+                            </tbody></table>
+                        </div></td>
+                    <td width="97" align="right" class="green12"><a><span class="green12">点击查看详情&gt;&gt;</span></a></td>
+                    <td width="15" class="title_b"><a></a></td>
+                </tr>
+            </tbody></table>
+            <table width="100%" border="0" align="center" cellpadding="4" cellspacing="2" id="tt02" class="tabox" style="display: none;">
+                <tbody>
+                    <tr>
+                        <td align="center" height="26" bgcolor="#DDDDDD" class="white_12_bold">费用名称</td>
+                        <td align="center" bgcolor="#DDDDDD" class="white_12_bold">标准</td>
+                        <td align="center" bgcolor="#DDDDDD" class="white_12_bold">比例</td>
+                        <td align="center" bgcolor="#DDDDDD" class="white_12_bold">金额</td>
+                        <td align="center" bgcolor="#DDDDDD" class="white_12_bold">承担方</td>
+                        <td align="center" bgcolor="#DDDDDD" class="white_12_bold">收款方</td>
+                    </tr>
+                    <tr>
+                        <td width="150" align="center" bgcolor="#F9F9F9"><span class="sm1">买方佣金</span>
+                            <input type="hidden" name="costType" value="4">
+                            <input type="hidden" name="payName" value="买方佣金">
+                            <input type="hidden" name="payNameID" value="1"></td>
+                        <td width="250" bgcolor="#F9F9F9" class="sm1">成交价×1%</td>
+                        <td width="150" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="buyerProportion" size="1" id="buyerProportion" onchange="setValue(this.value*dev(document.getElementById('totalPrice').value),'buyerBrokerage');c()">
+                                <option value="0">0.0%</option>
+                                <option value="0.005">0.5%</option>
+                                <option value="0.01" selected="">1.0%</option>
+                                <option value="0.015">1.5%</option>
+                                <option value="0.02">2.0%</option>
+                                <option value="0.025">2.5%</option>
+                                <option>其它</option>
+                            </select>
+                            </span></td>
+                        <td width="150" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" id="buyerBrokerage" onblur="javascript:c();" value="0">
+                            </span></td>
+                        <td width="150" bgcolor="#F9F9F9" class="sm1"><select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select></td>
+                        <td width="150" bgcolor="#F9F9F9" class="sm1">中介公司
+                            <input type="hidden" name="payee" value="中介公司">
+                            <input type="hidden" name="payeeID" value="11"></td>
+                    </tr>
+                    <tr>
+                        <td width="118" align="center" bgcolor="#F9F9F9"><span class="sm1">卖方佣金</span>
+                            <input type="hidden" name="costType" value="4">
+                            <input type="hidden" name="payName" value="卖方佣金">
+                            <input type="hidden" name="payNameID" value="2"></td>
+                        <td width="250" bgcolor="#F9F9F9" class="sm1">0</td>
+                        <td width="150" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="sellerProportion" size="1" id="sellerProportion" onchange="setValue(this.value*dev(document.getElementById('totalPrice').value),'sellerBrokerage');c()">
+                                <option value="0" selected="">0.0%</option>
+                                <option value="0.005">0.5%</option>
+                                <option value="0.01">1.0%</option>
+                                <option value="0.015">1.5%</option>
+                                <option value="0.02">2.0%</option>
+                                <option value="0.025">2.5%</option>
+                                <option>其它</option>
+                            </select>
+                            </span></td>
+                        <td width="150" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" id="sellerBrokerage" onblur="javascript:c();" value="0">
+                            </span></td>
+                        <td width="150" bgcolor="#F9F9F9" class="sm1"><select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方" selected="">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select></td>
+                        <td width="150" bgcolor="#F9F9F9" class="sm1">中介公司
+                            <input type="hidden" name="payee" value="中介公司">
+                            <input type="hidden" name="payeeID" value="11"></td>
+                    </tr>
+                    <!--//2010年政策，删除该项
+              <tr>
+                <td align="center" bgcolor="#F9F9F9"><span class="sm1">贷款担保费</span>
+                  <input type="hidden" name="costType" value="4"/>
+                  <input type="hidden" name="payName" value="贷款担保费"/>
+                  <input type="hidden" name="payNameID" value="3"/></td>
+                <td bgcolor="#F9F9F9" class="sm1">买方贷款金额&times;0.6％<br>
+                  银行提前放贷给卖方的担保费用</td>
+                <td bgcolor="#F9F9F9"><span class="sm1">
+                  <select name="guaranteeProportion" size="1" id="guaranteeProportion" onChange="loanDan()">
+                    <option value="0">0.0%</option>
+                    <option value="0.006" selected>0.6%</option>
+                  </select>
+                  </span></td>
+                <td bgcolor="#F9F9F9"><span class="sm1">
+                  <input name="paySum" type="text" id="loanGuarantee" onBlur="javascript:c();" value="0">
+                  </span></td>
+                <td bgcolor="#F9F9F9" class="sm1"><select name="payer">
+                    <option value="1-买方">买方</option>
+                    <option value="2-卖方">卖方</option>
+                    <option value="3-中介">中介</option>
+                    <option value="0-其它">其它</option>
+                  </select></td>
+                <td bgcolor="#F9F9F9" class="sm1">中介公司
+                  <input type="hidden" name="payee" value="中介公司"/>
+                  <input type="hidden" name="payeeID" value="11" /></td>
+              </tr>
+              -->
+                    <tr>
+                        <td align="center" bgcolor="#F9F9F9"><span class="sm1">贷款评估费</span>
+                            <input type="hidden" name="costType" value="4">
+                            <input type="hidden" name="payName" value="贷款评估费">
+                            <input type="hidden" name="payNameID" value="4"></td>
+                        <td bgcolor="#F9F9F9" class="sm1">评估价×0.35％</td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="evaluationProportion" size="1" id="evaluationProportion" onchange="setValue(this.value*dev(document.getElementById('evaluationPrice').value),'loanEvaluation');c()">
+                                <option value="0">0.0%</option>
+                                <option value="0.001">0.1%</option>
+                                <option value="0.002">0.2%</option>
+                                <option value="0.003">0.3%</option>
+                                <option value="0.0035" selected="selected">0.35%</option>
+                                <option value="0.004">0.4%</option>
+                                <option value="0.005">0.5%</option>
+                                <option>其它</option>
+                            </select>
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" id="loanEvaluation" onblur="javascript:c();" value="0">
+                            </span></td>
+                        <td bgcolor="#F9F9F9" class="sm1"><select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select></td>
+                        <td bgcolor="#F9F9F9" class="sm1">评估公司
+                            <input type="hidden" name="payee" value="评估公司">
+                            <input type="hidden" name="payeeID" value="12"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table width="100%" height="34" border="0" align="center" cellpadding="0" onclick="oc('tt04')" cellspacing="0" class="sj_k">
+                <tbody><tr>
+
+                  <td width="23" align="center" valign="middle"><a><img src="{$tplurl}images/down_tb.gif" width="15" height="15" border="0" id="icontt04"></a></td>
+                    <td width="118" align="left" valign="middle"><a><span class="green_14_cu">政府相关费用</span></a></td>
+                    <td width="513" align="right" class="green_12"><div id="st03" style="display:none">
+                            <table width="428" height="21" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr>
+                                    <td width="5" align="left"></td>
+                                    <td width="416" class="green_12"><a><span class="green_12_bold">总:</span><span class="catotal" id="cost2T">0</span>元 ( <span class="green_12_bold">买方:</span><span class="catotal" id="cost2B">0</span>元 <span class="green_12_bold">卖方:</span><span class="catotal" id="cost2S">0</span>元 )</a></td>
+                                    <td width="5" align="right"></td>
+                                </tr>
+                            </tbody></table>
+                  </div></td>
+                    <td width="97" align="right"><a><span class="green12">点击查看详情&gt;&gt;</span></a></td>
+                    <td width="15" class="title_b">&nbsp;</td>
+                </tr>
+            </tbody></table>
+            <table width="100%" border="0" align="center" cellpadding="4" cellspacing="2" id="tt04" class="tabox" style="display: none;">
+                <tbody>
+                    <tr>
+                        <td width="150" height="26" align="center" bgcolor="#DDDDDD" class="white_12_bold">费用名称</td>
+                        <td colspan="2" align="center" bgcolor="#DDDDDD" class="white_12_bold">标准</td>
+                        <td width="150" align="center" bgcolor="#DDDDDD" class="white_12_bold">费用金额</td>
+                        <td width="150" align="center" bgcolor="#DDDDDD" class="white_12_bold">承担方</td>
+                        <td width="150" align="center" bgcolor="#DDDDDD" class="white_12_bold">收款方</td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">交易费
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="交易费">
+                            <input type="hidden" name="payNameID" value="11">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1">住宅：6元/M2<br>
+                            商用房：12元/M2</td>
+                        <td bgcolor="#F9F9F9" class="sm1">&nbsp;</td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="jiao_yi" value="0" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="4-双方各半" selected="">双方各半</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">房屋交易管理机构
+                            <input type="hidden" name="payee" value="房屋交易管理机构">
+                            <input type="hidden" name="payeeID" value="3">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">印花税
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="印花税">
+                            <input type="hidden" name="payNameID" value="12">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1"> 总金额(评估金额与合同总金额两者取其高)*0.1% </td>
+                        <td bgcolor="#F9F9F9" class="sm1">&nbsp;</td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="tax_yin" value="0" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="4-双方各半" selected="">双方各半</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">财政局
+                            <input type="hidden" name="payee" value="财政局">
+                            <input type="hidden" name="payeeID" value="1">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">契税
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="契税">
+                            <input type="hidden" name="payNameID" value="13">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1"><p>总金额(评估金额与合同总金额两者取其高)的<br>
+                                普通住宅(&lt;90平米，首次购房)：1%；<br>
+                                普通住宅(&lt;90平米，非首次购房)：1.5%；<br>
+                                普通住宅(90－144平米)：1.5%； <br>
+                                非普通住宅(&gt;144平米)：3%；<br>
+                                商用房：3%。<br>
+                            </p></td>
+                        <td bgcolor="#F9F9F9" class="sm1"><select name="scgf" id="scgf" onchange="javascript:taxQI()">
+                                <option value="0">非首次购房</option>
+                                <option value="1" selected="">首次购房</option>
+                            </select></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="tax_qi" onblur="javascript:taxQI();" value="0" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">财政局
+                            <input type="hidden" name="payee" value="财政局">
+                            <input type="hidden" name="payeeID" value="1">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">房屋所有权工本费
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="房屋所有权工本费">
+                            <input type="hidden" name="payNameID" value="14">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1">每件10元</td>
+                        <td bgcolor="#F9F9F9" class="sm1"><select name="syqgbj" id="syqgbj" onchange="javascript:feeAA()">
+                                <option value="1" selected="">一件</option>
+                                <option value="2">两件</option>
+                            </select></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="feeA" value="10" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">房屋交易管理机构
+                            <input type="hidden" name="payee" value="房屋交易管理机构">
+                            <input type="hidden" name="payeeID" value="0">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">房屋所有权登记费
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="房屋所有权登记费">
+                            <input type="hidden" name="payNameID" value="15">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1">每件80元</td>
+                        <td bgcolor="#F9F9F9" class="sm1">&nbsp;</td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="paySum" value="80" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">房屋交易管理机构
+                            <input type="hidden" name="payee" value="房屋交易管理机构">
+                            <input type="hidden" name="payeeID" value="3">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9" class="sm1">他项权证费用（有贷款）
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="他项权证费用">
+                            <input type="hidden" name="payNameID" value="16"></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1">每件80元</td>
+                        <td bgcolor="#F9F9F9" class="sm1">&nbsp;</td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="feeC" value="0" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1">房屋交易管理机构
+                            <input type="hidden" name="payee" value="房屋交易管理机构">
+                            <input type="hidden" name="payeeID" value="3"></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">土地权属调查、<br>
+                            地籍测绘费
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="土地权属调查、地籍测绘费">
+                            <input type="hidden" name="payNameID" value="17">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1">每件13元</td>
+                        <td bgcolor="#F9F9F9" class="sm1">&nbsp;</td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="paySum" value="13" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">房屋交易管理机构
+                            <input type="hidden" name="payee" value="房屋交易管理机构">
+                            <input type="hidden" name="payeeID" value="3">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">土地证工本费
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="土地证工本费">
+                            <input type="hidden" name="payNameID" value="18">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1">每件20元</td>
+                        <td bgcolor="#F9F9F9" class="sm1"><select name="tdzsyj" id="tdzsyj" onchange="javascript:feeBB()">
+                                <option value="1">一件</option>
+                                <option value="2">两件</option>
+                            </select></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="feeB" value="20" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">房屋交易管理机构
+                            <input type="hidden" name="payee" value="房屋交易管理机构">
+                            <input type="hidden" name="payeeID" value="3">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1"> 营业税(附加)
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="营业税">
+                            <input type="hidden" name="payNameID" value="19">
+                            </span></td>
+                        <td width="260" height="26" bgcolor="#F9F9F9" class="sm1">全额：评估金额与合同总金额两者取其高<br>
+                            差额：全额 - 卖方购买时金额<br>
+                            5年内普通住宅(&lt;144平米)：5.6%(差额)；<br>
+                            5年外普通住宅(&lt;144平米)：无；<br>
+                            5年内非普通住宅(&gt;144平米)：5.6%(全额)；<br>
+                            5年外非普通住宅(&gt;144平米)：5.6%(差额)；<br>
+                            商用房：5.6%(差额)。<br></td>
+                        <td width="96" bgcolor="#F9F9F9" class="sm1">&nbsp;</td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="tax_trade" value="0" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方" selected="">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">财政局
+                            <input type="hidden" name="payee" value="财政局">
+                            <input type="hidden" name="payeeID" value="1">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">个人所得税
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="个人所得税">
+                            <input type="hidden" name="payNameID" value="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1">全额：评估金额与合同总金额两者取其高<br>
+                            差额：全额 - 卖方购买时金额<br>
+                            5年内普通住宅(&lt;144平米)：1%(全额)；<br>
+                            5年外普通住宅(&lt;144平米)：1%(全额),
+                            唯一住房免征；<br>
+                            5年内非普通住宅(&gt;144平米)：1.5%(全额)；<br>
+                            5年外非普通住宅(&gt;144平米)：1.5%(全额),
+                            唯一住房免征；<br>
+                            商用房：1%(全额)；<br>
+                            差额征收计算方式为：(总价-原先交的契税、原先银行交的利息、维修基金)*20% <br></td>
+                        <td bgcolor="#F9F9F9" class="sm1"><select name="wyzf" id="wyzf" onchange="javascript:taxGet()">
+                                <option value="0" selected="">非唯一住房</option>
+                                <option value="1">唯一住房</option>
+                            </select></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="tax_get" value="0" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方" selected="">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">财政局
+                            <input type="hidden" name="payee" value="财政局">
+                            <input type="hidden" name="payeeID" value="1">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">土地出让金</span><span class="sm1">
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="土地出让金">
+                            <input type="hidden" name="payNameID" value="21">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1"><p><span class="STYLE2">收费对象：房改房</span><br>
+                                18-25
+
+                                元/M2、车库5.4-7.5元/M2。(视所处位置不同);</p></td>
+                        <td bgcolor="#F9F9F9" class="sm1"><select name="tddj" id="tddj" onchange="javascript:areaTurn()">
+                                <option value="0" selected="">0</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                            </select>
+                            <input name="ckdj" type="text" id="ckdj" style="width:40px" onblur="javascript:areaTurn()" value="5.4"></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="area_turn" value="0" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">房屋交易管理机构
+                            <input type="hidden" name="payee" value="房屋交易管理机构">
+                            <input type="hidden" name="payeeID" value="3">
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td height="26" align="center" bgcolor="#F9F9F9"><span class="sm1">土地增值税
+                            <input type="hidden" name="costType" value="2">
+                            <input type="hidden" name="payName" value="土地增殖税">
+                            <input type="hidden" name="payNameID" value="22">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9" class="sm1"><p><span class="STYLE2">2009年免征。</span><br>
+                            </p></td>
+                        <td bgcolor="#F9F9F9" class="sm1"><select name="tdzjbl" id="tdzjbl" onchange="javascript:taxArea()">
+                                <option value="0.01">1%</option>
+                                <option value="0.005">0.5%</option>
+                                <option value="0" selected="">0%</option>
+                            </select></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" class="input_bg" id="tax_area" onblur="javascript:taxArea();" value="0" size="20">
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            </span></td>
+                        <td height="26" bgcolor="#F9F9F9"><span class="sm1">房屋交易管理机构
+                            <input type="hidden" name="payee" value="房屋交易管理机构">
+                            <input type="hidden" name="payeeID" value="3">
+                            </span></td>
+                    </tr>
+                    <!--
+            <tr>
+              <td height="26" colspan="6" bgcolor="#F9F9F9"><span class="sm1"> </span>
+                <div id="zf_cs"></div>
+                <span class="sm1">
+                  <input value="添加政府相关费用" type="button" onClick="javascript:zf_new();">
+                </span></td>
+            </tr>
+            -->
+            </tbody></table>
+            <table width="100%" height="34" border="0" align="center" cellpadding="0" onclick="oc('tt03')" cellspacing="0" class="sj_k">
+                <tbody><tr>
+
+                    <td width="23" align="center"><a><img src="{$tplurl}images/down_tb.gif" width="15" height="15" border="0" id="icontt03"></a></td>
+                    <td width="200" align="left"><a><span class="green_14_cu">贷款基本信息/贷款相关费用</span></a></td>
+                    <td width="430" align="right" class="green_12"><div style="display:none" id="st02">
+                            <table width="428" height="21" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr>
+                                    <td width="5" align="left"></td>
+                                    <td width="416" class="green_12"><a><span class="green_12_bold">总:</span><span class="catotal" id="cost1T">0</span>元, ( <span class="green_12_bold">买方:</span><span class="catotal" id="cost1B">0</span>元 <span class="green_12_bold">卖方:</span><span class="catotal" id="cost1S">0</span>元 )</a></td>
+                                    <td width="5" align="right"></td>
+                                </tr>
+                            </tbody></table>
+                        </div></td>
+                    <td width="97" align="right"><a><span class="green12">点击查看详情&gt;&gt;</span></a></td>
+                    <td width="15" class="title_b"><a></a></td>
+                </tr>
+            </tbody></table>
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="tt03" class="tabox" style="display: none;">
+                <tbody><tr>
+                    <td><table width="100%" border="0" align="center" cellpadding="4" cellspacing="2">
+                            <tbody>
+                                <tr>
+                                    <td width="190" height="26" align="center" bgcolor="#DDDDDD" class="white_12_bold">贷款项</td>
+                                    <td width="200" align="center" bgcolor="#DDDDDD" class="white_12_bold">标准</td>
+                                    <td width="150" align="center" bgcolor="#DDDDDD" class="white_12_bold">费用金额</td>
+                                    <td width="150" align="center" bgcolor="#DDDDDD" class="white_12_bold">承担方</td>
+                                    <td width="150" align="center" bgcolor="#DDDDDD" class="white_12_bold">收款方</td>
+                                    <td width="150" align="center" bgcolor="#DDDDDD" class="white_12_bold">备注</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" bgcolor="#F9F9F9"><span class="sm1">贷款印花税
+                                        <input type="hidden" name="costType" value="1">
+                                        <input type="hidden" name="payName" value="贷款印花税">
+                                        <input type="hidden" name="payNameID" value="30">
+                                        </span></td>
+                                    <td bgcolor="#F9F9F9" class="sm">贷款总额×0.005%</td>
+                                    <td bgcolor="#F9F9F9"><span class="sm1">
+                                        <input name="paySum" type="text" class="input_bg" id="daikuan_yinhua" value="0" size="20">
+                                        </span></td>
+                                    <td bgcolor="#F9F9F9"><span class="sm1">
+                                        <select name="payer">
+                                            <option value="1-买方">买方</option>
+                                            <option value="2-卖方">卖方</option>
+                                            <option value="3-中介">中介</option>
+                                            <option value="0-其它">其它</option>
+                                        </select>
+                                        </span></td>
+                                    <td bgcolor="#F9F9F9"><span class="sm1">财政局
+                                        <input type="hidden" name="payee" value="财政局">
+                                        <input type="hidden" name="payeeID" value="1">
+                                        </span></td>
+                                    <td bgcolor="#F9F9F9"><span class="sm1"><a href="#">贷款印花税收费标准</a></span></td>
+                                </tr>
+                                <!--
+                    <tr>
+                      <td colspan="6" bgcolor="#F9F9F9"><div id="dk_cs"></div>
+                        <span class="sm1">
+                        <input value="添加贷款项" type="button" onClick="javascript:dk_new();">
+                        </span></td>
+                    </tr>
+                    -->
+                        </tbody></table></td>
+                </tr>
+            </tbody></table>
+            <table width="100%" height="34" border="0" align="center" cellpadding="0" onclick="oc('tt06')" cellspacing="0" class="sj_k">
+                <tbody><tr>
+
+                    <td width="23" align="center" valign="middle"><a><img src="{$tplurl}images/down_tb.gif" width="15" height="15" border="0" id="icontt06"></a></td>
+                    <td width="117" align="left" valign="middle"><a><span class="green_14_cu">杂项费用</span></a></td>
+                    <td width="513" align="right" class="green_12"><div id="st01" style="display:none">
+                            <table width="428" height="21" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr>
+                                    <td width="5" align="left"></td>
+                                    <td width="416" class="green_12"><a><span class="green_12_bold">总:</span><span class="catotal" id="cost3T">0</span>元 ( <span class="green_12_bold">买方:</span><span class="catotal" id="cost3B">0</span>元 <span class="green_12_bold">卖方:</span><span class="catotal" id="cost3S">0</span>元 )</a></td>
+                                    <td width="5" align="right"></td>
+                                </tr>
+                            </tbody></table>
+                        </div></td>
+                    <td width="97" align="right"><a><span class="green12">点击查看详情&gt;&gt;</span></a></td>
+                    <td width="15" class="title_b"><a></a></td>
+                </tr>
+            </tbody></table>
+            <table width="100%" border="0" align="center" cellpadding="4" cellspacing="2" id="tt06" class="tabox" style="display: none;">
+                <tbody>
+                    <tr>
+                        <td width="250" height="26" align="center" bgcolor="#DDDDDD" class="white_12_bold">费用名称</td>
+                        <td width="250" align="center" bgcolor="#DDDDDD" class="white_12_bold">费用金额</td>
+                        <td width="250" align="center" bgcolor="#DDDDDD" class="white_12_bold">承担方</td>
+                        <td width="250" align="center" bgcolor="#DDDDDD">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td height="25" align="center" bgcolor="#F9F9F9"><span class="sm1">水费
+                            <input type="hidden" name="costType" value="3">
+                            <input type="hidden" name="payName" value="水费">
+                            <input type="hidden" name="payNameID" value="40">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" id="paySum" value="0" size="20" onblur="javascript:caTotal()">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            <input type="hidden" name="payee" value="">
+                            <input type="hidden" name="payeeID" value="0">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1"></span></td>
+                    </tr>
+                    <tr>
+                        <td height="25" align="center" bgcolor="#F9F9F9"><span class="sm1">电费
+                            <input type="hidden" name="costType" value="3">
+                            <input type="hidden" name="payName" value="电费">
+                            <input type="hidden" name="payNameID" value="41">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" id="paySum" value="0" size="20" onblur="javascript:caTotal()">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            <input type="hidden" name="payee" value="">
+                            <input type="hidden" name="payeeID" value="0">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1"></span></td>
+                    </tr>
+                    <tr>
+                        <td height="25" align="center" bgcolor="#F9F9F9"><span class="sm1">有线电视费
+                            <input type="hidden" name="costType" value="3">
+                            <input type="hidden" name="payName" value="电视费">
+                            <input type="hidden" name="payNameID" value="42">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" id="paySum" value="0" size="20" onblur="javascript:caTotal()">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            <input type="hidden" name="payee" value="">
+                            <input type="hidden" name="payeeID" value="0">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1"></span></td>
+                    </tr>
+                    <tr>
+                        <td height="25" align="center" bgcolor="#F9F9F9"><span class="sm1">宽带费
+                            <input type="hidden" name="costType" value="3">
+                            <input type="hidden" name="payName" value="宽带费">
+                            <input type="hidden" name="payNameID" value="43">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" id="paySum" value="0" size="20" onblur="javascript:caTotal()">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            <input type="hidden" name="payee" value="">
+                            <input type="hidden" name="payeeID" value="0">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1"></span></td>
+                    </tr>
+                    <tr>
+                        <td height="25" align="center" bgcolor="#F9F9F9"><span class="sm1">户口迁移费
+                            <input type="hidden" name="costType" value="3">
+                            <input type="hidden" name="payName" value="户口迁移费">
+                            <input type="hidden" name="payNameID" value="44">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <input name="paySum" type="text" id="paySum" value="0" size="20" onblur="javascript:caTotal()">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1">
+                            <select name="payer">
+                                <option value="1-买方">买方</option>
+                                <option value="2-卖方">卖方</option>
+                                <option value="3-中介">中介</option>
+                                <option value="0-其它">其它</option>
+                            </select>
+                            <input type="hidden" name="payee" value="">
+                            <input type="hidden" name="payeeID" value="0">
+                            </span></td>
+                        <td bgcolor="#F9F9F9"><span class="sm1"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table width="800" height="24" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tbody><tr class="green_14">
+                    <td width="165"><span class="green_14_cu">总计：</span><span class="catotal" id="costTT">0</span>元</td>
+                    <td width="159"><span class="green_14_cu">买方：</span><span class="catotal" id="costBT">0</span>元</td>
+                    <td width="159"><span class="green_14_cu">卖方：</span><span class="catotal" id="costST">0</span>元</td>
+                    <td width="157"><span class="green_14_cu">中介：</span><span class="catotal" id="costAT">0</span>元</td>
+                    <td width="160"><span class="green_14_cu">其他：</span><span class="catotal" id="costOT">0</span>元</td>
+                </tr>
+            </tbody></table>
+        </form>
+
+     </div>
+</div>
+{tpl$foot}
+</body>
+</html>

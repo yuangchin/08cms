@@ -1,0 +1,159 @@
+<?php
+foreach(array('ccid1','ccid2','ccid17','ccid46','djfrom','djto','orderby','ordermode','searchword') as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+    'ntype' => 'c', //cm,m,oc,om
+    'chid' => 115, 
+    'rids' => array(1,2), 
+    'nodes' => array('0','0,1'),
+    'orderbys' => array('dj','jzmj','kpsj'),
+));
+extract(cls_usql::order_str(1,'a.vieworder ASC,a.refreshdate DESC'));
+$whrstr = cls_usql::where_str(array(
+	array('subject,address','searchword'), //,address
+),u_exsql(115)); //echo $whrstr;
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}{c$lpdh1 [tclass=nownav/] [coids=ccid1,ccid2,ccid3,ccid4,ccid5,ccid6,ccid8,ccid12,ccid14,ccid17,ccid18/]}-{title}{/c$lpdh1}-{$hostname}</title>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<?php $pagetype = 'business'; ?>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/realestate.css?{$user_version}"/>
+</head>
+<body>
+
+<!--商业地产公用导航与搜索--> 
+{tpl$realestate_sonav}
+<div class="wrap"> 
+  <!--写字楼楼盘检索条件-->
+  <div class="fysearch clearfix">
+    <ul class="fyjiansuo clearfix">
+      <li class="list-1"> <b>区域：</b> 
+        <a {if empty($ccid1)}class='act'{/if} href="<? echo cls_uso::extra_url(1); ?>">不限</a>
+        <? $_rows = cls_uso::caco_urls(1); ?>
+        {loop $_rows $k $v} <a href="{$v[url]}" {if $ccid1==$k}class='act'{/if}>{$v[title]}</a> {/loop} 
+      </li>
+      {if !empty($ccid1)}
+      <li class="list-1"> <b>商圈：</b> 
+        <a {if empty($ccid2)}class='act'{/if} href="<? echo cls_uso::extra_url(2); ?>">不限</a>
+        <? $_rows = cls_uso::caco_urls(2); ?>
+        {loop $_rows $k $v} <a href="{$v[url]}" {if $ccid2==$k}class='act'{/if}>{$v[title]}</a> {/loop}
+      </li>
+      {/if}
+      <li class="list-1"><b>类型：</b>
+        <a {if empty($ccid46)}class='act'{/if} href="<? echo cls_uso::extra_url(46); ?>">不限</a>
+        <? $_rows = cls_uso::caco_urls(46); ?>
+        {loop $_rows $k $v} <a href="{$v[url]}" {if $ccid46==$k}class='act'{/if}>{$v[title]}</a> {/loop} 
+      </li>
+      <li class="list-4"><b>价格：</b>
+        <a {if empty($ccid17)&&empty($djfrom)&&empty($djto)}class='act'{/if} href="<? echo cls_uso::extra_url('ccid17|djfrom|djto'); ?>">不限</a>
+        <? $_rows = cls_uso::caco_urls(17); ?>
+        {loop $_rows $k $v} <a href="<? echo cls_uso::extra_url('ccid17|djfrom|djto',"&ccid17=$k"); ?>" {if $ccid17==$k}class='act'{/if}>{$v[title]}</a> {/loop} 
+        <span class="set">
+        <form action="{$cms_abs}index.php" method="get">
+            <input type="hidden" name="caid" value="{$caid}">
+            <input type="hidden" name="ccid1" value="{$ccid1}">
+            <input type="hidden" name="ccid46" value="{$ccid46}">
+            <input type="text" class="txt1" pattern="^[0-9]+.?[0-9]*$" title="请输入最低价格" name="djfrom" value="<?php echo(empty($djfrom) ? '' : $djfrom); ?>" size="4">
+            -
+            <input class="txt1" type="text" pattern="^[0-9]+.?[0-9]*$" title="请输入最高价格" name="djto" value="<?php echo(empty($djto) ? '' : $djto); ?>" size="4">
+            万
+            <input class="btn1" type="submit" value="确定">
+        </form>
+        </span>
+      </li>
+    </ul>
+    <div class="blank5"></div>
+  </div>
+  <div class="blank10"></div>
+  <div class="w940 l">
+    <div class="fsTil clearfix">
+      <div class="r sxpage" id="sxpage"><a href="###" class="blprev ico08">&#xf0dd;</a><span>0/0</span><a href="###" class="rnext blnext ico08">&#xf0de;</a></div>
+      <strong>全部楼盘</strong> 
+    </div>
+    <div class="bar-sort clearfix">
+        <div class="l">共有<span class="fcr fz16" id="lpcount">0</span>个结果符合您的需求</div>
+        <em class="r"> 
+            <a class="btn-sort {if empty($_da['orderby'])}act{/if}" href="<?=cls_uso::extra_url('orderby|ordermode')?>">默认</a>
+            <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">价格<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "dj", array("act bldown","act blup",""))?>
+            <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">面积<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "jzmj", array("act bldown","act blup",""))?>
+            <?=cls_uso::order_tpl('<a class="btn-sort (class)" rel="nofollow" href="(url)">开盘日期<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "kpsj", array("act bldown","act blup",""))?>
+        </em>
+    </div>
+    <div class="blank0"></div>
+    {c$xzlpls [tclass=archives/] [chids=115/] [chsource=2/] [ccidson46=1/] [cosource46=2/] [ccidson1=1/] [cosource1=2/] [ccidson2=1/] [cosource2=2/] [ccidson17=1/] [cosource17=2/] [detail=1/] [wherestr=$whrstr/] [orderstr=$orderstr/] [mp=1/]}
+    <div class="sydclist">
+      <div class="pic"><a title="{subject}" href="{arcurl}" target="_blank"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=130/] [maxheight=100/] [thumb=1/] [padding=0/]} src="{url_s}"{/c$image} width="130" height="100"/></a></div>
+      <div class="info"> <em class="fs"><a class="fz14 fwb" href="{arcurl}" target="_blank">{subject}</a></em> <em>{if $v['ccid1']}[{ccid1title}-{ccid2title}]{/if}{address}</em> <em><span>类型：</span>{ccid46title}{if $v['ccid47']}({ccid47title}){/if}</em> <em><span>电话：</span>{if $v['tel']}{tel}{else}-{/if}</em> </div>
+      <div class="info3 arial"> <em>{if $v['dj']}<i class="zj">{dj}</i>元/m&sup2;{else}<i class="zj">待定</i>{/if}</em> {if $v['jzmj']}<em><span>建筑面积：</span><i>{jzmj}</i>m&sup2;</em>{/if} <em><span>开盘日期：</span>{if $v['kpsj']}{c$kpsj [tclass=date/] [tname=kpsj/] [date=Y-m-d/]}{/c$kpsj}{else}待定{/if}</em> </div>
+      <div class="blank0"></div>
+    </div>
+    {/c$xzlpls}
+    {if $mpacount>0}
+    <div class="blank10"></div>
+    {$mpnav}
+    {else}
+    <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$cnode}信息</div>
+    {/if} </div>
+  <div class="w250 r">
+    <div class="coltit1">
+      <h3 class="tit1">推荐楼盘</h3>
+    </div>
+    <div class="bd-gray">
+      <div class="blank10"></div>
+      <div class="sydc_rsider"> 
+        <!--推送位：推荐楼盘-->
+        <ul class="plr10">
+          {c$tjlp [tclass=pushs/] [paid=push_tjlp/]}
+          <li>{c$dgwd [tclass=archive/] [chid=115/] [val=u/] [id=$v[fromid]/]}<span class="arial">{if $u['dj']}<i>{dj}</i>元/m&sup2;{else}<i class="zj">待定</i>{/if}</span><a target="_blank" href="{$v['url']}" title="{$v['subject']}">{if $u['ccid1']}<i class="gray">[{ccid1title}]</i>{/if}{$v['subject']}</a>{/c$dgwd}</li>
+          {/c$tjlp}
+        </ul>
+      </div>
+      <div class="blank8"></div>
+    </div>
+    <div class="blank10"></div>
+    <div class="coltit1">
+      <h3 class="tit1">最新开盘</h3>
+    </div>
+    <div class="bd-gray">
+      <div class="blank10"></div>
+      <div class="sydc_rsider"> 
+        <!--推送位：最新开盘-->
+        <ul class="plr10">
+          {c$zxlp [tclass=pushs/] [paid=push_zxlp/]}
+          <li>{c$dgwd [tclass=archive/] [chid=115/] [val=u/] [id=$v[fromid]/]}<span class="arial">{if $u['dj']}<i>{dj}</i>元/m&sup2;{else}<i class="zj">待定</i>{/if}</span><a target="_blank" href="{$v['url']}" title="{$v['subject']}">{if $u['ccid1']}<i class="gray">[{ccid1title}]</i>{/if}{$v['subject']}</a>{/c$dgwd}</li>
+          {/c$zxlp}
+        </ul>
+      </div>
+      <div class="blank8"></div>
+    </div>
+    <div class="blank10"></div>
+    <div class="coltit1">
+      <h3 class="tit1">即将开盘</h3>
+    </div>
+    <div class="bd-gray">
+      <div class="blank10"></div>
+      <div class="sydc_rsider"> 
+        <!--推送位：即将开盘-->
+        <ul class="plr10">
+          {c$jjkp [tclass=pushs/] [paid=push_jjkp/]}
+          <li>{c$dgwd [tclass=archive/] [chid=115/] [val=u/] [id=$v[fromid]/]}<span class="arial">{if $u['dj']}<i>{dj}</i>元/m&sup2;{else}<i class="zj">待定</i>{/if}</span><a target="_blank" href="{$v['url']}" title="{$v['subject']}">{if $u['ccid1']}<i class="gray">[{ccid1title}]</i>{/if}{$v['subject']}</a>{/c$dgwd}</li>
+          {/c$jjkp}
+        </ul>
+      </div>
+      <div class="blank8"></div>
+    </div>
+  </div>
+</div>
+{tpl$foot} 
+<script type="text/javascript">
+$('#sxpage').html('<a href="{$mppre}" class="blprev ico08">&#xf0dd;</a><span>{$mppage}/{$mpcount}</span><a href="{$mpnext}" class="rnext blnext ico08">&#xf0de;</a>');
+$('#lpcount').html('{$mpacount}');
+</script>
+</body>
+</html>

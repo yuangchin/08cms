@@ -1,0 +1,121 @@
+<div class="fy-siderbar">
+    <div class="content1 clearfix">
+        {if @$caid==4}
+        <a class="icon1 l" href="{$cms_abs}info.php?fid=111&action=chuzu" rel="nofollow" target="_blank">免费发布信息</a>
+        <a class="icon3 r" href="{$cms_abs}info.php?fid=101&chid=2" rel="nofollow" target="_blank">免费委托信息</a>
+        {elseif @$caid==10}
+        <a class="icon1" href="{$cms_abs}info.php?fid=112&action=qiugou" rel="nofollow" target="_blank">发布求购信息</a>
+        {elseif @$caid==9}
+        <a class="icon3" href="{$cms_abs}info.php?fid=112&action=qiuzu" rel="nofollow" target="_blank">发布求租信息</a>
+        {else}
+        <a class="icon1 l" href="{$cms_abs}info.php?fid=111&action=chushou" rel="nofollow" target="_blank"> 免费发布信息</a>
+        <a class="icon3 r" href="{$cms_abs}info.php?fid=101&chid=3" rel="nofollow" target="_blank">免费委托信息</a>
+        {/if}
+        <a class="icon4" href="{c$dfdfd [tclass=freeurl/] [fid=121/]}{/c$dfdfd}" rel="nofollow" target="_blank"><i class="ico08 fz16">&#xe7cc;</i>查询/删除信息</a>
+    </div>
+    <div id='list_{$fy_caid}' class="blank0"></div>
+    <div class="coltit1"><a target="_blank" href="{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl}{/c$jjrjd}" class="more r">更多&gt;&gt;</a><h3 class="tit1">推荐经纪人</h3></div>
+    <ul class="plist3 p10 bd-gray clearfix">
+       {c$pushs [tclass=pushs/] [paid=push_82/] [limits=4/] [ttl=600/]}
+        <li>
+            <a href="{url}" target="_blank"><img {c$08cms2 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=80/] [maxheight=100/][emptyurl=images/common/mlogo.gif/]} src="{url}"  height="100" width="80" {/c$08cms2}/></a>
+            <h3><a href="{url}" target="_blank">{subject}</a></h3>
+             {c$member  [tclass=member/] [chids=2/] [chsource=2/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+            <p><i class="ico">售</i>{c$08cms2 [tclass=acount/] [val=b/] [chsource=2/] [chids=3/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$08cms2}套 <i class="ico ico1">租</i>{c$08cms3 [tclass=acount/] [val=b/] [chsource=2/] [chids=2/] [space=1/] [validperiod=1/]}{if $b['counts']}{counts}{else}0{/if}{/c$08cms3}套</p>
+            {c$jjrgs2 [cname=经纪人公司2/] [tclass=member/] [val=aa/] [arid=4/]}<p><i class="ico08 fcr">&#xf007;</i> <a href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a></p>{/c$jjrgs2}
+            <p><i class="ico08 fcr">&#xe63f;</i> {lxdh}</p>
+            {/c$member}
+        </li>
+        {/c$pushs}
+    </ul>
+    <div class="blank15"></div>
+    <!-- 最新二手房 -->
+    {c$08cms [tclass=cnode/] [listby=ca/] [casource=$fy_caid/]}
+    <div class="coltit1"><a target="_blank" href="{indexurl}" class="more r">更多&gt;&gt;</a><h3 class="tit1">最新{$fy_title}</h3></div>
+    {/c$08cms}
+    <div class="tlist2 bd-gray mb10">
+        <ul class="p10">
+            {c$archives [tclass=archives/] [chids=$fy_chid/] [chsource=2/] [limits=8/] [cosource4=2/] [cosource6=2/]}
+            <li><span class="td1"><a target="_blank" href="{arcurl}">{subject}</a></span><span class="td2">{mj}m&sup2;</span><span class="td3 fco">{if $v['zj']}{zj}{$unit}{else}面议{/if}</span></li>{/c$archives}
+        </ul>
+    </div>
+
+    <div class="coltit1"><a target="_blank" href="{c$08cms [tclass=cnode/] [listby=ca/] [casource=$wd_caid/]}{indexurl}{/c$08cms}" class="more r">更多&gt;&gt;</a><h3 class="tit1">{$fy_title}问答</h3></div>
+    <div class="content3 p10 bd-gray">
+        <div class=" clearfix mb5">
+           <form action="{$cms_abs}index.php" method="get"  target="_blank">
+                <div class="search-group form form-bdrs">
+                    <input type="hidden" name="caid" value="{$wd_caid}" />
+                    <button type="submit" class="btn"><i class="ico08">&#xf002;</i></button>
+                    <div class="txt-wrap">
+                        <input type="text" class="txt" placeholder="请输入关键字" name="searchword"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <ul class="tlist3">
+            {c$08cms [tclass=archives/] [chsource=2/] [chids=106/][caidson=1/] [casource=1/] [caids=$wd_caid/] [cosource35=1/] [ccids35=3036/] [ttl=600/]}
+            <li><a href="{arcurl}" target="_blank" title="{subject}">{c$subject [tclass=text/] [tname=subject/] [trim=24/] [color=color/]}{/c$subject}</a></li>
+            {/c$08cms}
+        </ul>
+    </div>
+    <div class="blank10"></div>
+    <?php $unit1 = $fy_caid == 4 ? '元/月' : '元/平米';// 单位 ?>
+    <!-- 走势图 -->
+    <div class="bd-gray clearfix">
+        <div class="pri-count" style="width:235px; padding-top:10px;">
+            <div class="pl10"><b>根据{$hostname}统计：</b><br/>
+            本月{$fy_title}价格：<b class="fcr">{c$commus [tclass=commus/] [cuid=47/] [limits=1/] [wherestr=chid='{$fy_chid}'/]}{price}{/c$commus}</b>{$unit1}
+            </div>
+            <div class="blank10"></div>
+        </div>
+        <div id="zst2" style="height:160px;width:242px;float:left;"></div>
+    </div>
+        <!-- /走势图 -->
+</div>
+
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+
+<script type="text/javascript">
+    $.getScript("{$tplurl}js/jq.cookie.js",function () {
+        $.getScript(CMS_ABS + uri2MVC("ajax=fangyuan&caid={$fy_caid}&domain="+document.domain+"&aids="+$.cookie('list_{$fy_caid}')),function (){
+                var rs    = fangyuan
+                , len     = rs.length
+                , newhtml = ''
+                , caid    = '{$fy_caid}'
+                , dw      = '{$unit}'// 单位
+                , liClass ;
+
+                for(var i=0;i<len;i++) {
+                    liClass = i>0?'':'potbord';
+                    newhtml += "<li class='"+liClass+"'>"
+                                    + "<span class='td1'><a href='" + rs[i]['arcurl'] + "' target='_blank'>" + rs[i]['subject'] + "</a></span><span class='td2'>"+rs[i]['mj']+"m&sup2;</span><span class='td3 fco'>" + (rs[i]['zj']!=0 ? rs[i]['zj']+dw:'面议')+"</span>"
+                                + "</li>";
+                }
+
+                if (newhtml) $('#list_{$fy_caid}').after('<div class="coltit1"><h3 class="tit1">最近浏览过的房子</h3></div><ul class="tlist2 p10 bd-gray">'+newhtml+'</ul> <div class="blank5"></div> </div><div class="blank10">');
+        })
+    })
+</script>
+<script type="text/javascript" src="{$tplurl}js/highcharts.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var last12Month = [{c$commus [tclass=commus/] [cuid=47/] [limits=6/] [wherestr=chid='{$fy_chid}' and area=0/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=month/] [date=m月/]}{/c$date}'{/c$commus}],
+            MonthPrice = [{c$commus [tclass=commus/] [cuid=47/] [limits=6/] [wherestr=chid='{$fy_chid}' and area=0/]}{if $v['sn_row']>1},{/if}{price}{/c$commus}];
+
+        $('#zst2').highcharts({
+            title: {text: '单位:{$unit1}', style:{color:'#999',fontSize:'12px'}, margin:5, align:'left', x:40 },
+            colors:[ "#ee4433", "#F8CE5D", "#339966" ],
+            xAxis: {categories: last12Month, tickPosition: 'inside', reversed:true, gridLineColor: '#eee', gridLineWidth:1, lineWidth:1 ,labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {fontSize: '12px', fontFamily: 'arial'}
+                }},
+            yAxis: {title: {text: ''}, gridLineColor: '#eee', lineWidth:1 },
+            tooltip: {valueSuffix: '{$unit1}'},
+            legend: {enabled:false },
+            series: [{name: '价格', data:MonthPrice }],
+            credits: {enabled: false }
+        });
+    });
+</script>

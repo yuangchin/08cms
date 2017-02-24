@@ -1,0 +1,48 @@
+{tpl$head}
+<div class="area mtj10">
+	<div class="jzmlogo l">
+    <a href="{$cms_abs}">
+    	<img {c$toubuzhandianlogo [cname=头部站点logo/] [tclass=image/] [tname=cmslogo/]}src="{url}" height="50"{/c$toubuzhandianlogo} alt="{hostname}" />
+        <div class="slogo" ><img src="{$tplurl}images/jzlogo.gif" width="137" height="29" /></div>
+    </a>
+    </div>
+    <div class="topad l">
+    	{c$v4_jzlogoy792_70 [cname=家装logo右792_70/] [tclass=farchives/] [limits=1/] [casource=143/] [validperiod=1/]}{if $v['html']}{html}{elseif $v['image']}<a target="_blank" href="{link}"> {c$jzad_image792_70 [cname=jzad_image792_70/] [tclass=image/] [tname=image/] [val=u/] [maxwidth=792/] [maxheight=70/]}<img src="{url}" width="792" height="70" border="0" />{/c$jzad_image792_70}</a>{elseif $v[flash]}{c $flash_792_70}{/if}{/c$v4_jzlogoy792_70}
+    </div>
+
+</div>
+<div class="jznav mT10">
+	<div class="jznavlist">
+	<em></em><a href="{c$jz_url [cname=家装链接/] [tclass=cnode/] [listby=ca/] [casource=509/]}{indexurl}{/c$jz_url}" class="{if !empty($caid) && $caid==509}act{/if}">家装首页</a><em></em>
+    <a href="{c$jz_zxgsurl [cname=装修公司链接/] [tclass=mcnode/] [cnsource=ugid31/] [cnid=101/]}{mcnurl1}{/c$jz_zxgsurl}" class="{if !empty($ugid31)}act{/if}">装修公司</a><em></em>
+    <a href="{c$jz_sjs [cname=设计师/] [tclass=cnode/] [listby=ca/] [casource=510/]}{indexurl1}{/c$jz_sjs}" class="{if !empty($caid) && $caid==510}act{/if}">设计师</a><em></em>
+    <a href="{c$jz_jzal [cname=家装案例/] [tclass=cnode/] [listby=ca/] [casource=511/]}{indexurl1}{/c$jz_jzal}" class="{if !empty($caid) && $caid==511}act{/if}">家装案例</a><em></em>
+    <a href="{c$jz_ppxjlist [cname=品牌商家列表/] [tclass=mcnode/] [val=v/] [cnsource=ugid32/] [cnid=103/]}{mcnurl1}{/c$jz_ppxjlist}" class="{if !empty($ugid32)}act{/if}">品牌商家</a><em></em>
+    <a href="{c$jz_splburl [cname=商品列表链接/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=513/]}{indexurl1}{/c$jz_splburl}" class="{if !empty($zoutwoid) && $zoutwoid == 513}act{/if}">商品</a><em></em>
+    <a href="{c$tgjdlj [cname=团购节点链接/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=515/]}{indexurl1}{/c$tgjdlj}" class="{if !empty($zoutwoid) && $zoutwoid == 515}act{/if}">团购</a><em></em>
+    <a href="{$cms_abs}info.php?fid=201">量房申请</a><em></em>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

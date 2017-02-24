@@ -1,0 +1,35 @@
+.rater-star {
+    position: relative;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+
+.rater-star-item,
+.rater-star-item-current,
+.rater-star-item-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-repeat: repeat-x;
+}
+
+.rater-star-item {
+    background-position: -100% -100%;
+}
+
+.rater-star-item-hover {
+    cursor: pointer;
+
+    background-position: left bottom;
+}
+
+.rater-star-item-current {
+    background-position: left center;
+}

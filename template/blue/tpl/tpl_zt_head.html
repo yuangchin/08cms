@@ -1,0 +1,25 @@
+{tpl$head}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/zhti.css?{$user_version}"/>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/newslist.css?{$user_version}"/>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="{$tplurl}js/jq.imgchange.js"></script>
+<div class="wrap">
+  <!--导航上960_70-->
+  <div id="_08_adv_fcatalog170"></div>
+  <div class="blank10"></div>
+  <div class="ztnav">
+      <div class="lztnav l"><a href="{c$zturl [tclass=cnode/] [listby=ca/] [casource=37/]}{indexurl}{/c$zturl}"></a></div>
+      <div class="rztnav">
+        <div class="mT9">
+            <form class="r" action="{$cms_abs}index.php" method="get" name="searchform">
+              <input type="text" id="searchword" name="searchword" placeholder="请输入的关键字" value="" class="txt clear-txt" x-webkit-speech speech>
+              <input type="hidden" value="{$caid}" name="caid">
+              <input type="submit" class="ztbnt" value=" ">
+            </form>
+            {c$ztmlm [tclass=catalogs/] [listby=ca/] [casource=3/] [limits=4/] [wherestr=pid=37 AND level=1/] [ttl=1200/]}{if $v['sn_row']>1}<i>|</i>{/if}<a href="{indexurl}" {if $caid==$v['caid']}class="act"{/if}>{title}</a>{/c$ztmlm}
+        </div> 
+       
+      </div>
+  </div>
+</div>
+<div class="blank10"></div>

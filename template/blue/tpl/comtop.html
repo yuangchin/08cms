@@ -1,0 +1,47 @@
+<?php $ismem=1;?>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/comsycss.css?{$user_version}"/>
+<div class="banner banner_zj banner_old">
+<div class="wrap">
+	<div class="banner_pic">
+		<img {c$image [cname=image/] [tclass=image/] [tname=banner/] [val=u/]}src='{url}' width="1200" height="125"{/c$image} />
+	</div>
+	<div class="btn">
+		<a class="collect l" onclick="return publicCollect('{$mid}','m');" rel="nofollow" href="javascript:void(0);">店铺收藏</a>
+		<div class="share l">
+		     <div class="bdsharebuttonbox" data-tag="share_1"><a class="bds_more" data-cmd="more">更多</a></div>
+		     <script> window._bd_share_config = {
+		      "common": {
+		        "bdSnsKey": {},
+		        "bdText": "",
+		        "bdMini": "1",
+		        "bdMiniList": false,
+		        "bdPic": "",
+		        "bdStyle": "0",
+		        "bdSize": "16"
+		      },
+		      "share": {
+		        "bdSize": 16
+		      }
+		    };
+		    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+		    </script>
+		</div>
+	</div>
+</div>
+</div>
+<!--面包屑 导航-->
+<div class="nav_main nav_main_old">
+     <div class="wrap">
+        <div class="bread clearfix">
+        	<div class="l mt5 pl10">
+        		<a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$jjgsurl [tclass=mcnode/] [cnsource=mcnid/] [cnid=51/]}{mcnurl}{/c$jjgsurl}">经纪公司列表</a><i class="pipe">/</i>{cmane}
+        	</div>
+	        <ul class="r">
+		        <li id="spaceid_0"><a href="{mspacehome}">二手房</a></li>{c$jjkjkjlb [cname=经纪空间空间列表/] [tclass=mcatalogs/] [listby=0/] [casource=1/] [caids=1,2,3,4,7/]}<li id="spaceid_{mcaid}"><a href="{indexurl}">{title}</a></li>{/c$jjkjkjlb}
+	        </ul>
+        </div>
+     </div>
+<script type="text/javascript">
+document.getElementById("spaceid_{mcaid}").className = "cur";
+</script>
+</div>

@@ -1,0 +1,164 @@
+<?php
+$_da = cls_Parse::Get("_da"); 
+foreach(array('fang','orderby','ordermode','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+$gchid = $fang == 'mai' ? 3 : 2;
+$gords = array('aid','mj','zj','dj',); if($fang!='mai') unset($gords[3]);
+cls_uso::init(array(
+    'ntype' => 'c', //cm,m,oc,om
+    'chid' => $gchid, 
+    'nodes' => array('aid'), 
+    'orderbys' => array('aid','mj','zj','dj',),
+    'csname' => "archive.php",
+    'cnstr' => 'aid='.$aid,
+));
+extract(cls_usql::order_str(1,'a.ccid9 DESC,a.refreshdate DESC'));
+$whrstr = cls_usql::where_str(array(
+	array('subject'), 
+    array('shi',), 
+    array('ccid6','ccid6','auto','6'), //这两个不能放标签中,否则会与小区资料冲突
+    array('ccid12','ccid12','inlike','12'),
+)); 
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}房源{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-小区{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+{tpl$lptopes}
+<div class="wrap">
+	<div class="bd-gray plr10">
+		<div class="blank15"></div>
+		<div class="js-list">
+			<dl> 
+	        {if $fang == 'mai'}
+	        <dt>价格：</dt> 
+	        <dd><a rel="nofollow" href="<? echo cls_uso::extra_url(4); ?>" {if empty($_da['ccid4'])}class='act'{/if}>不限</a> 
+	          <? $_rows = cls_uso::caco_urls(4); ?> 
+	          {loop $_rows $k $v}
+	          <a rel="nofollow" href="{$v[url]}" {if @$_da['ccid4']==$k}class='act'{/if}>{$v[title]}</a> 
+	          {/loop}
+	        </dd>
+			{else}
+	        <dt>租金：</dt> 
+	        <dd><a rel="nofollow" href="<? echo cls_uso::extra_url(5); ?>" {if empty($_da['ccid5'])}class='act'{/if}>不限</a> 
+	          <? $_rows = cls_uso::caco_urls(5); ?> 
+	          {loop $_rows $k $v}
+	          <a rel="nofollow" href="{$v[url]}" {if @$_da['ccid5']==$k}class='act'{/if}>{$v[title]}</a> 
+	          {/loop}
+	        </dd>
+			{/if}
+			</dl>
+			<dl>
+			<dt>面积：</dt> 
+	        <dd>
+	          <a rel="nofollow" href="<? echo cls_uso::extra_url(6); ?>" {if empty($_da['ccid6'])}class='act'{/if}>不限</a> 
+	          <? $_rows = cls_uso::caco_urls(6); ?> 
+	          {loop $_rows $k $v}
+	          <a rel="nofollow" href="{$v[url]}" {if @$_da['ccid6']==$k}class='act'{/if}>{$v[title]}</a> 
+	          {/loop}
+	         </dd>
+	      </dl>
+			<dl> 
+			  <dt>用途：</dt>
+	          <dd><a rel="nofollow" href="<? echo cls_uso::extra_url(12); ?>" {if empty($_da['ccid12'])}class='act'{/if}>不限</a> 
+	          <? $_rows = cls_uso::caco_urls(12); ?> 
+	          {loop $_rows $k $v}
+	          <a rel="nofollow" href="{$v[url]}" {if @$_da['ccid12']==$k}class='act'{/if}>{$v[title]}</a> 
+	          {/loop}
+	      	  </dd>
+	        </dl>
+			<dl> <dt>户型：</dt> 
+			<dd><a rel="nofollow" href='<? echo cls_uso::extra_url('shi'); ?>'{if empty($_da['shi'])}class='act'{/if}>不限</a>
+	          <? $_rows = cls_uso::field_urls('shi'); ?> 
+	          {loop $_rows $k $v}
+	          {if $k != 100}<a rel="nofollow" href="{$v[url]}" {if @$_da['shi']==$k}class='act'{/if}>{$v[title]}</a>{/if}
+	          {/loop}
+	        </dd>
+	      </dl>
+	      <div class="blank10"></div>
+	  </div>
+		<!--
+<p> <b>来源：</b> <a class="act" href='###'>不限</a>&nbsp;<a class="" href="###">经纪人</a>&nbsp;<a class="" href="###">个人</a>&nbsp; <span class='gray f12'></span> </p>
+-->
+		<div class="blank0"></div>
+	</div>
+	<div class="w800 l">
+		<div class="lp-coltit">
+			<a target="_blank" class="more" href="{if $fang == "mai"}{c$esflb3 [cname=二手房列表3/] [tclass=cnode/] [val=b/] [listby=ca/] [casource=3/]}{indexurl}{/c$esflb3}{else}{c$czlb3 [cname=出租列表/] [tclass=cnode/] [val=c/] [listby=ca/] [casource=4/]}{indexurl}{/c$czlb3}{/if}">更多&gt;&gt;</a>
+			<h3 class="tit1">{if $fang == "mai"}出售{else}出租{/if}房源</h3>
+		</div>
+		<div class="bd-gray clearfix">
+			<div class="fy-js p10 clearfix">
+				<span id="mpacount" class="l mpacount"></span>
+				<em class="r">
+				<a class="sort-btn {if !in_array($orderby,array('mj','zj','dj'))}act{/if}" rel="nofollow" href="{arcurl8}&fang={$fang}">默认</a>
+	            <?php
+	             echo cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">面积<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "mj", array("act bldown","act blup",""));
+				 if($fang == 'mai'){
+	              		echo cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">总价<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "zj", array("act bldown","act blup",""));
+	              		echo cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">单价<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "dj", array("act bldown","act blup",""));
+				  }elseif($fang == 'zhu'){
+					  	echo cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">单价<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "zj", array("act bldown","act blup",""));
+				  }
+				?>
+	            </em>
+	            <div class="blank5"></div>
+			</div>
+			<div class="blank0"></div>
+			<!-- [isfunc=1/] [wherestr=u_sql_h2mz()/] [ccidson4=1/] [cosource4=2/] [ccidson5=1/] [cosource5=2/] [ccidson6=1/] [cosource6=2/] [ccidson12=1/] [cosource12=2/]  -->
+            {c$h2mz [cname=楼盘内房源/] [tclass=archives/] [val=aa/] [limits=10/] [chsource=2/] [chids=$gchid/] [ccidson4=1/] [cosource4=2/] [ccidson5=1/] [cosource5=2/] [mode=in/] [arid=3/] [validperiod=1/] [detail=1/] [wherestr=$whrstr/] [orderstr=$orderstr/] [ttl=600/] [mp=1/]}
+				<script type="text/javascript">
+					$('#mpacount').html('共有<b class="fcr fw6">{$mpacount}</b>套房子符合要求')	
+				</script>
+				[row]
+				<div class="esfylist">
+		            <div class="pic fy"><a title="{subject}" href="{arcurl}" target="_blank"><img  alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=120/] [maxheight=90/] [thumb=1/]} width="120" height="90" src="{$cms_abs}images/common/nopic.gif" data-original="{url_s}" {/c$thumb}></a></div>
+		            <div class="info">
+		            	<strong><a href="{arcurl}" target="_blank">{subject}</a><span class="icons">{if $aa['ccid9']}<b class="icon"><i>置顶</i></b>{/if}{if $aa['imgnum']}<b class="icon2"><i>多图</i></b>{/if}</span></strong>
+		                <em>{if $aa['pid3']}{c$sslp11 [tclass=archive/] [val=a/] [arid=3/] [chid=4/] [detail=1/]}<span>[<a target='_blank' href='{arcurl7}'>{subject}</a>]</span> {c$address20 [cname=address20/] [tclass=text/] [tname=address/] [trim=18/]}{/c$address20}{/c$sslp11}{else}{lpmc}{/if}</em>
+		                <em><span><a>{c$shi [cname=shi/] [tclass=field/] [tname=shi/] [type=archive/] [fname=shi/]}{/c$shi}{c$ting [cname=ting/] [tclass=field/] [tname=ting/] [type=archive/] [fname=ting/]}{/c$ting}{c$wei [cname=wei/] [tclass=field/] [tname=wei/] [type=archive/] [fname=wei/]}{/c$wei}</a></span>| {ccid12title}</em>
+		                <em>
+		                {if $aa['mid']!=0}
+		                {c$fyhy1 [tclass=member/] [val=c/] [detail=1/]}
+		                {if $c['grouptype13']}
+		                    <span> {if $c['xingming']}{xingming}{else}{mname}{/if}</span>(个人) <span><?=u_time_format($aa['refreshdate'])?>更新</span>
+		                {else}
+		                    {c$jjrgs2 [tclass=member/] [val=a/] [arid=4/]}<a href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a>{/c$jjrgs2}<span> <a href="{mspacehome}">{if $c['xingming']}{xingming}{else}{mname}{/if}</a></span>(经纪人) {c$xytb [cname=信用图标/] [tclass=fromid/] [val=d/] [type=grouptype17/] [id=$c[grouptype17]/] [idsoruce=0/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} />{/c$xytb} <span><?=u_time_format($aa['refreshdate'])?>更新</span>
+		                {/if}     
+		                {/c$fyhy1}
+		                {else}游客{/if}
+		                </em>
+		            </div>
+		            <div class="info2">{mj}平米</div>
+		            <div class="info3"><em>{if !empty($aa['zj'])}{zj}{if $fang == "mai"}万元{else}元/月{/if}{else}面议{/if}</em>
+		                {if $fang == "mai" || !empty($aa['dj'])}<i class="arial">单价：{dj}元/m&sup2;</i>{/if}
+		            </div>
+		            <div class="blank0"></div>
+		        </div>
+				[/row]
+			{/c$h2mz}
+	<!-- 分页 -->
+         <div class="blank10"></div>
+          {if $mpacount>0}
+			{$mpnav}
+          <div class="blank10"></div> 
+          <script src="{$tplurl}js/jquery.lazyload.min.js" type="text/javascript"></script>
+          <script type="text/javascript">
+              $('.pic img').lazyload({effect : "fadeIn"});
+          </script>
+          {else} 
+          <div class="noinfo">很抱歉！暂无出售房源信息</div>
+          {/if}
+		</div>
+	</div>
+	{tpl$lprightes}
+	<div class="blank0"></div>
+</div>
+{tpl$foot}
+</body>
+</html>

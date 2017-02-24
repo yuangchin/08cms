@@ -1,0 +1,66 @@
+
+<div class="side">
+<!-- 基本信息 -->
+    <div class="ui-box1 col1 jbxx">
+         <div class="con fl">
+            <img alt="{cmane}" {c$image [cname=image/] [tclass=image/] [tname=image/] [val=u/]}src='{url}' width="160" height="70"{/c$image} class="logo"/>
+            <div class="blank5"></div>
+              <span class="fwb w_c_1">{cmane}</span><br>
+              电话：{if $lxdh}{lxdh}{else}-{/if}<br/>
+              地址：{if $caddress}{caddress}{/if}<br/>
+              {if $qq}
+              &nbsp;&nbsp;QQ：<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={qq}&site=qq&menu=yes">
+          <img border="0" src="http://wpa.qq.com/pa?p=2:{qq}:41" alt="点击这里给我发消息" title="点击这里给我发消息">
+         </a>{/if}
+              <div class="blank15"></div>
+                <a id="sendtophone" data-head="发送到手机" data-css='{"width":"400"}' data-bodycss='{"padding":"20"}' class="btn form-bdrs btn-dark-blue btn-jqModal dn" href="#pop-phone" rel="nofollow"><i class="ico08 mr5">&#xe74d;</i>免费发送短信到手机</a>
+         </div>
+         <div class="blank0"></div>
+    </div>
+<!-- 店铺公告 -->
+    <div class="ui-box1">
+        <div class="subT">
+            <div class="l h">店铺公告</div>
+        </div>
+        <div class="Notice">
+            {dpgg}
+        </div>
+    </div>
+{if @$mcaid!=4}
+<!-- 团队精英 -->
+    <div class="ui-box1">
+        <div class="subT clearfix">
+             <div class="l h">经纪人</div>
+        </div>
+<!-- 列表 -->
+    {c$members [tclass=members/] [chids=2/] [limits=3/] [mode=in/] [arid=4/]}
+        <div class="tdjyList-side">
+             <ul>
+                [row]
+                <li>
+                    <a href="{mspacehome}" target="_blank">
+                    <div class="photo tc">
+                        <img alt="xingming" {c$image [cname=image/] [tclass=image/] [tname=image/] [val=u/] [emptyurl=images/common/mlogo.gif/]}src='{url}' width="100" height="130"{/c$image} />
+                    </div>
+                    <div class="name tc fwb">{xingming}</div>
+                    <div class="info">
+                         电话：{lxdh}<br>
+                         积分：<span class="fwb w_c_1">{currency2}</span>
+                    </div>
+                    </a>
+                </li>
+                [/row]
+             </ul>
+        </div>
+     {/c$members}
+    </div>
+    {/if}
+</div>
+<script src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript">
+ // 是否开启了该项短信功能
+var isOpenMob='memb0info';
+var msgpara = 'm,{mchid},{mid}';  
+</script>
+<!-- 发送到手机短信模板 -->
+{tpl$smsphone}

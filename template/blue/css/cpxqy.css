@@ -1,0 +1,116 @@
+/* CSS Document */
+.title {
+    font-size: 14px; font-weight: bold; line-height: 30px; height: 30px; padding-left: 5px; color: #c70101;
+}
+.spjj_l {
+    float: left;
+
+    width: 312px;
+}
+.spjj_l_1 {
+    border: 1px solid #cdcdcd;
+}
+.spjj_l_2 li {
+    float: left;
+
+    width: 44px; height: 44px; padding: 8px 8px 0 0;
+}
+.spjj_l_2 li img {
+    padding: 2px;
+
+    border: 1px solid #ccc;
+}
+.spjj_l_2 li .zoomThumbActive img {
+    border-color: #e61818;background: #e61818;
+}
+.spjj_r {
+    float: right;
+
+    width: 390px;
+}
+.spjj_r1 {
+    line-height: 28px;
+}
+.spjj_r2 {
+    line-height: 25px; padding: 20px 0 5px; border-bottom: 1px solid #e1e1e1;
+}
+.spjj_r3 {
+    padding: 10px 0 20px;
+}
+.spjj_r4 {
+    line-height: 30px;
+
+    height: 30px;
+}
+.spjj_r4 span {
+    float: left;
+}
+.spjj_r4 span.pic {
+    padding-top: 5px;
+}
+.spjj_r4 span.txt {
+    font-size: 14px; font-weight: bold; padding-right: 30px; padding-left: 8px;
+}
+.spxq,
+.gmxz {
+    font-size: 14px; line-height: 25px; padding: 10px 30px;
+}
+.spxq img {
+    border: 1px solid #cdcdcd;
+}
+.wycj {
+    line-height: 29px;
+
+    height: 29px; background: url(../newimages/mid1.gif) repeat-x bottom;
+}
+.wycj span {
+    float: left;  height: 29px;
+}
+.wycj span.wycj1 {
+    background: url(../newimages/x1.gif) repeat-x;
+}
+.wycj span.wycj2 {
+    font-size: 14px; font-weight: bold;
+
+    padding: 0 10px; color: #c70101; background: url(../newimages/x1.gif) repeat-x;
+}
+.wycj span.wycj4 {
+    color: #898989;
+}
+.wycj span.txt input {
+    line-height: 20px;width: 70px;
+    height: 20px; border: 1px solid #bebebe;
+}
+.wycj span.name {
+    padding-left: 10px;
+}
+.form_wyly1 {
+    padding-top: 10px;
+}
+
+/* CSS Document */
+.required {
+    color: #c00;
+}
+.form_wycj .txt1 {
+    line-height: 22px;width: 175px;
+    height: 22px; border: 1px solid #bebebe;
+}
+.form_wycj .txt2 {
+    width: 512px;
+}
+.form_wycj .yzmtxt {
+    width: 60px; margin-right: 5px;
+}
+.form_wycj3 {
+    width: 536px; height: 92px; padding: 2px; border: 0;background: url(../newimages/form_txt_bg.gif) no-repeat;
+}
+.form_wycj3 textarea {
+    width: 534px; height: 90px; border: 0;
+}
+.form_wycj {
+    padding-top: 5px;
+}
+.but_wycj {
+    padding-top: 10px;
+}

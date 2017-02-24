@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link href="{$tplurl}css/gfsc.css?{$user_version}" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+.banner{background:url({c$image [tclass=image/] [tname=image/] [maxheight=425/] [emptyurl=template/blue/images/ztbg.jpg/]}{url}{/c$image}) center 0 no-repeat;height:425px;}
+</style>
+<?php $pagetype = 'special'; ?>
+<!-- 专题模板 -->
+</head>
+<body>
+<!-- header -->
+{tpl$head}
+<!--  头部广告信息 -->
+<div class="banner"></div>
+<div class="bgF1 clearfix">
+    <div class="wrap">
+    <div class="bza clearfix">
+        <i></i>
+        <em>{c$text [tclass=text/] [tname=abstract/] [trim=480/] [badword=1/] [nl2br=1/]}{/c$text}</em>
+    </div>
+   </div>
+</div>
+<!--  中间内容 -->
+<div class="wrap">
+    <div class="red-tit clearfix">
+        <table class="tab">
+            <tr class="td1">
+               <td></td>
+            </tr>
+            <tr class="td2">
+               <td>
+                <i class="l">本月热销楼盘</i>
+                </td>
+            </tr>
+            <tr class="td3">
+               <td></td>
+            </tr>
+        </table>
+    </div>
+    <!-- 热销楼盘 -->
+    <div class="hot-lp hover-list1 clearfix">
+        <ul>
+            {c$archives [tclass=archives/] [chids=4/] [chsource=2/] [limits=8/] [mode=in/] [arid=12/] [detail=1/] [ttl=600/] [wherestr=(leixing='0' OR leixing='1')/]}            <li>
+                <a href="{arcurl}" title="{subject}"><img src="{c$image [tclass=image/] [val=a/][tname=thumb/] [maxwidth=273/] [maxheight=180/]}{url_s}{/c$image}"  width="273" height="180" alt="{subject}"/></a>
+                <h3><a href="{arcurl}" title="{subject}">{subject}</a></h3>
+                <div class="lh">均价：{dj}元/㎡</div>
+                <div class="lh">地址：{address}</div>
+                <div class="lh">热线：{if $v['tel']}{tel}{else}暂无{/if}</div>
+                <small></small>
+            </li>{/c$archives}
+           </ul>
+
+    </div>
+    
+        <!-- 在售楼盘 -->
+       <div class="blow-tit">
+        <table class="tab">
+            <tr class="td1"><td></td></tr>
+            <tr class="td2">
+               <td><i class="l">在售楼盘<span>最新报价 优惠集萃</span></i></td>
+            </tr>
+            <tr class="td3"><td></td></tr>
+        </table>
+    </div>
+    <!-- 各地区在售楼盘 -->
+    <div class="content1 center jqDuang" data-cell=".tab-tit" data-obj="ul" data-autoplay="0" data-speed="0">
+    <div class="tab-tit">
+        {c$cond [tclass=catalogs/] [listby=co1/] [cainherit=2/]}<span>{title}</span>{/c$cond}
+    </div>
+    <div class="tab-con">
+    {c$cond [tclass=catalogs/] [listby=co1/] [cainherit=2/]}
+    <ul>
+         <li>
+            <table border="1" width="100%" cellspacing="0" bordercolor="#5FBECE">
+              <tr align="center" class="td1">
+                <td width="40">序号</td>
+                <td width="120">楼盘名称</td>
+                <td width="80">物业类型</td>
+                <td width="100">户型</td>
+                <td width="80">价格</td>
+                <td width="180">优惠（实际以售楼处为准）</td>
+                <td width="80">售楼电话</td>
+                <td width="280">楼盘位置</td>
+              </tr>
+                {c$archives [tclass=archives/] [chids=4/] [val=a/][chsource=2/] [limits=20/] [casource=1/] [caids=2/] [cosource1=2/] [mode=in/] [arid=12/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+               <tr>
+                <td>{sn_row}</td>
+                <td><a href="{arcurl}" title="{subject}" target="_blank">{subject}</a></td>
+                <td>{ccid12title}</td>
+                <td>{c$dsdd [tclass=archives/] [chids=11/] [chsource=2/] [val=q/] [limits=1/] [mode=in/] [arid=3/]}{c$shi}{c$ting}{c$wei}({mj}m&sup2;){/c$dsdd}</td>
+                <td>{dj}元/㎡</td>
+                <td>{if $a['bdsm']}{bdsm}{else}暂无优惠{/if}</td>
+                <td>{if $a['tel']}{tel}{else}-{/if}</td>
+                <td>{if $a['address']}{address}{else}-{/if}</td>
+              </tr>
+               {/c$archives}
+            </table>
+        </li>
+    </ul>
+    {/c$cond}
+    </div>
+  </div>
+<div class="blank15"></div>
+<!-- 购房工具箱 -->
+<div class="toolx hover-list1 clearfix">
+    <div class="titbg">
+        <h2>购房工具箱</h2>
+    </div>
+    <ul>
+        <li>
+            <div class="cont">
+            <a href="{c$freeurl [tclass=freeurl/] [fid=5/]}{/c$freeurl}" target="_blank"><i class="tool0"></i></a>
+            <span><a href="{c$freeurl [tclass=freeurl/] [fid=5/]}{/c$freeurl}" target="_blank">能力评估</a></span>
+            </div>
+        </li>
+        <li>
+            <div class="cont">
+            <a href="{c$freeurl [tclass=freeurl/] [fid=6/]}{/c$freeurl}" target="_blank"><i class="tool1"></i></a>
+            <span><a href="{c$freeurl [tclass=freeurl/] [fid=6/]}{/c$freeurl}" target="_blank">公积金贷款</a></span>
+            </div>
+        </li>
+        <li>
+            <div class="cont">
+            <a href="{c$freeurl [tclass=freeurl/] [fid=3/]}{/c$freeurl}" target="_blank"><i class="tool2"></i></a>
+            <span><a href="{c$freeurl [tclass=freeurl/] [fid=3/]}{/c$freeurl}" target="_blank">贷款计算器</a></span>
+            </div>
+        </li>
+        <li>
+            <div class="cont">
+            <a href="{c$freeurl [tclass=freeurl/] [fid=108/]}{/c$freeurl}" target="_blank"><i class="tool3"></i></a>
+            <span><a href="{c$freeurl [tclass=freeurl/] [fid=108/]}{/c$freeurl}" target="_blank">税费计算</a></span>
+            </div>
+        </li>
+        <li>
+            <div class="cont">
+            <a href="{c$freeurl [tclass=freeurl/] [fid=4/]}{/c$freeurl}" target="_blank"><i class="tool4"></i></a>
+            <span><a href="{c$freeurl [tclass=freeurl/] [fid=4/]}{/c$freeurl}" target="_blank">提前还款</a></span>
+            </div>
+        </li>
+        <li>
+            <div class="cont">
+            <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl1}{/c$cnode}" target="_blank"><i class="tool5"></i></a>
+            <span><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl1}{/c$cnode}" target="_blank">楼盘大全</a></span>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="blank15"></div>
+<!-- 往期回顾 -->
+<div class="wqhg">
+    <div class="titbg">
+        <h2>往期回顾</h2>
+    </div>
+    <ul class="m-s clearfix">
+        {c$archives [tclass=archives/] [chids=14/] [chsource=2/] [limits=5/] [detail=1/] [wherestr=a.aid!=$aid/]} 
+         <li>
+            <a href="{arcurl}" title="{subject}" target="_blank">
+            <img src="{c$image [tclass=image/] [tname=thumb/] [maxwidth=228/] [val=a/] [maxheight=100/]}{url_s}{/c$image}"  width="220" height="100" alt="{subject}"/>
+            <h3>{subject}</h3>
+            </a>
+        </li>
+        {/c$archives}
+    </ul>
+</div>
+</div>
+<!-- footer -->
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+</body>
+</html>

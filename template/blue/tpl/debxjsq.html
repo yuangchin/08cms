@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>贷款计算器-{$hostname}</title>
+{tpl$headinner}
+</head>
+<body class="calc">
+{tpl$toolshead}
+<div id="main" class="main wrap">
+<!--内容区-->      
+    <div class="calc_main_wrap">
+        <div class="calc_main cf">
+            <div class="left fl">
+                <form action="" method="" name="calc2">
+                    <div class="top cf daikuan">
+                        <div class="sr fl">
+                            <h2>贷款计算器</h2>
+                            <ul class="cf">
+                                <li class="cf fl"><span class="fl">货款类别：</span>
+                                    <select onchange="exc_zuhe(this.form,this.value);" name="type" class="fl">
+                                        <option selected="" value="1">商业贷款</option>
+                                        <option value="2">公积金</option>
+                                        <option value="3">组合型</option>
+                                    </select>
+                                </li>
+                                <li id="calc22" class="cf fl"><span class="fl">计算方法：</span>
+                                    <div class="jsff fl">
+                                        <p><input class="radio" id="calc2_radio1" type="radio"  checked="true" onclick="exc_js(this.form,1);" value="1" name="jisuan_radio"/><label for="calc2_radio1">根据面积、单价计算</label></p>
+                                        <div class="jsff_in" id="calc2_js_div1">
+                                            <span>单价：</span><input type="text" value="" name="price"/><b>元/平米</b><br/>
+                                            <span>面积：</span><input type="text" value="" name="sqm"/><b>平方米</b><br/>
+                                            <span>按揭成数：</span>
+                                            <select name="anjie" size="1">
+                                                <option value="9">9成</option>
+                                                <option value="8">8成</option>
+                                                <option value="7" selected="">7成</option>
+                                                <option value="6">6成</option>
+                                                <option value="5">5成</option>
+                                                <option value="4">4成</option>
+                                                <option value="3">3成</option>
+                                                <option value="2">2成</option>
+                                            </select>
+                                        </div>
+                                        <input class="radio"  id="calc2_radio2" type="radio" onclick="exc_js(this.form,2);" value="2" name="jisuan_radio" /><label for="calc2_radio2">根据贷款总额计算</label>
+                                        <div class="jsff_in" id="calc2_js_div2">
+                                            <span>贷款总额：</span><input type="text" value="" name="daikuan_total000"/><b>万</b>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="cf" id="calc2_zuhe"><span class="fl">商业性：</span><input class="fl txt" type="text" value="" name="total_sy"/><b class="fl">万元</b>
+                                <span class="fl">公积金：</span><input class="fl txt" type="text" value="" name="total_gjj"/><b class="fl">万元</b></li>
+                                <li class="cf"><span class="fl">按揭年数：</span>
+                                    <select name="years" size="1" id="years" class="fl">
+                                        <option value="1">1年（12期）</option>
+                                        <option value="2">2年（24期）</option>
+                                        <option value="3">3年（36期）</option>
+                                        <option value="4">4年（48期）</option>
+                                        <option value="5">5年（60期）</option>
+                                        <option value="6">6年（72期）</option>
+                                        <option value="7">7年（84期）</option>
+                                        <option value="8">8年（96期）</option>
+                                        <option value="9">9年（108期）</option>
+                                        <option value="10">10年（120期）</option>
+                                        <option value="11">11年（132期）</option>
+                                        <option value="12">12年（124期）</option>
+                                        <option value="13">13年（156期）</option>
+                                        <option value="14">14年（168期）</option>
+                                        <option value="15">15年（180期）</option>
+                                        <option value="16">16年（192期）</option>
+                                        <option value="17">17年（204期）</option>
+                                        <option value="18">18年（216期）</option>
+                                        <option value="19">19年（228期）</option>
+                                        <option value="20" selected="">20年（240期）</option>
+                                        <option value="25">25年（300期）</option>
+                                        <option value="30">30年（360期）</option>
+                                    </select>
+                                </li>
+                                <li class="cf"><span class="fl">银行利率：</span>
+                                    <select class="fl" data-listdata="#lltpl" name="lilv"></select>
+                                </li>
+                                <li class="cf xy_hdfs"><span class="fl">还贷方式：</span><input type="radio"  onclick="showR(1)" checked="" name="htype" id="hdfs1" class="radio fl"/><label for="hdfs1" class="fl">等额本息还款法</label><input type="radio"  onclick="showR(2)" name="htype" id="hdfs2" class="radio fl"/><label class="fl" for="hdfs2">等额本金还款法</label></li>
+                            </ul>
+                            <p class="btn_p"><input type="button" value="计算" class="btn1"  onclick="ext_total(document.calc2); return false;"/><a href="#" title="" target="_blank" id="reset" onclick="exc_js(document.calc2,1);">清除数据，重新计算</a></p>
+                        </div>
+                        <div class="re fl" >
+                            <h2>计算结果<span>(&nbsp;&nbsp;计算结果仅供参考&nbsp;&nbsp;)</span></h2>
+                            <div class="re_in re_dk" id="divr1">
+                                <span class="sj"></span>
+                                <p><b>房屋总价：</b><span id="fangkuan_total1">0</span>元</p>
+                                <p><b>贷款总额：</b><span id="daikuan_total1">0</span>元</p>
+                                <p><b>还款总额：</b><span id="all_total1">0</span>元</p>
+                                <p><b>支付利息：</b><span id="accrual1">0</span>元</p>
+                                <p><b>首期付款：</b><span id="money_first1">0</span>元</p>
+                                <p><b>贷款月数：</b><span id="month1">0</span>元</p>
+                                <p class="no_br"><b>月均还款：</b><span id="month_money1">0</span>元</p>
+                            </div>
+                            <div class="re_in" id="divr2">
+                                <span class="sj"></span>
+                                <p>房款总价：<span id="fangkuan_total2">0</span>元</p>
+                                <p>贷款总额：<span id="daikuan_total2">0</span>元</p>
+                                <p>还款总额：<span id="all_total2">0</span>元</p>
+                                <p>支付利息：<span id="accrual2">0</span>元</p>
+                                <p>首期付款：<span id="money_first2">0</span>元</p>
+                                <p>贷款月数：<span id="month2">0</span>元</p>
+                                <div class="text_area">每月还款：<textarea id="month_money2" name="month_money2"></textarea></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="bottom">
+                    <h4>贷款计算器</h4>
+                    <p>1.公积金贷款最高额度为80万元;</p>
+                    <p>2.对已贷款购买一套住房但人均面积低于当地平均水平，再申请购买第二套普通自住房的居民，比照执行首次贷款购买普通自住房的优惠政策。</p>
+                </div>
+            </div>
+            {tpl$tpl_jsq_right}
+        </div>
+    </div>
+
+    
+    <script type="text/javascript" src="{$tplurl}js/jsq.js"></script>
+    <script language=JavaScript>
+        var fangkuan_total1=document.getElementById("fangkuan_total1");
+        var daikuan_total1=document.getElementById("daikuan_total1");
+        var _all_total1=document.getElementById("all_total1");
+        var accrual1=document.getElementById("accrual1");
+        var money_first1=document.getElementById("money_first1");
+        var month1=document.getElementById("month1");
+        var _month_money1=document.getElementById("month_money1");
+        var daikuan_total2=document.getElementById("daikuan_total2");
+        var _all_total2=document.getElementById("all_total2");
+        var fangkuan_total2=document.getElementById("fangkuan_total2");
+        var accrual2=document.getElementById("accrual2");
+        var money_first2=document.getElementById("money_first2");
+        var month2=document.getElementById("month2");
+        var _month_money2=document.getElementById("month_money2");
+
+        document.getElementById("reset").onclick=function() {
+            document.getElementsByName('calc2')[0].reset();
+            return false;
+        }
+    </script>
+    <script type="text/javascript">
+        //计算器导航
+        (function() {
+            var str='';
+            $('#calc_nav').find('li').on({
+                'mouseenter':function() {
+                    str=$(this).attr('class');
+                    $(this).addClass(str+'_h');
+                },
+                'mouseleave':function() {
+                    $(this).removeClass(str+'_h');
+                }
+            });
+        })();
+        $(".calc_dl dd:odd").css("background","#eee");
+    </script>   
+</div>
+{tpl$foot}
+</body>
+</html>

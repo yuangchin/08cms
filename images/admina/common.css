@@ -1,0 +1,119 @@
+a:link {color: #333; text-decoration:none;}
+a:hover {color: #134d9d; text-decoration:underline;}
+a:active {color: #103d7c;}
+a:visited {color: #333;text-decoration:none;}
+
+.cRed,a.cRed:link,a.cRed:visited{ color:#f00; }
+.cBlue,a.cBlue:link,a.cBlue:visited,a.cBlue:active{color:#1f3a87;}
+.cDRed,a.cDRed:link,a.cDRed:visited{ color:#bc2931;}
+.cGray,a.cGray:link,a.cGray:visited{ color: #4F544D;}
+.csGray,a.csGray:link,a.csGray:visited{ color: #999;}
+.cDGray,a.cDGray:link,a.cDGray:visited{ color: #666;}
+.cWhite,a.cWhite:link,a.cWhite:visited{ color:#fff;}
+.cBlack,a.cBlack:link,a.cBlack:visited{color:#000;}a.cBlack:hover{color:#bc2931;}
+.cYellow,a.cYellow:link,a.cYellow:visited{color:#ff0;}
+.cGreen,a.cGreen:link,a.cGreen:visited{color:#008000;}
+.cDYellow,a.cDYellow:link,a.cDYellow:visited{color:#f57e20;}
+
+.fn{font-weight:normal;}
+.fB{font-weight:bold;}
+.f12px{font-size:12px;}
+.f14px{font-size:14px;}
+.f16px{font-size:16px;}
+.f18px{font-size:18px;}
+.f24px{font-size:24px;}
+
+.left{ float: left;}
+.right{ float: right;}
+.clear{ clear: both; font-size:1px; width:1px; height:0; visibility: hidden; }
+.clearfix:after{content:"."; display:block; height: 0; clear: both; visibility: hidden;}
+.hidden {display: none;}
+.unLine ,.unLine a{text-decoration: none;}
+.noBorder{border:none;}
+.txtleft{text-align:left;}
+.txtright{text-align:right;}
+.txtcenter{ text-align:center;}
+.nobg { background:none;}
+.txtindent12 {text-indent:12px;}
+.txtindent24 {text-indent:24px;}
+.lineheight24{line-height:24px;}
+.lineheight20{line-height:20px;}
+.lineheight16{line-height:16px;}
+.lineheight200{line-height:200%;}
+.blank1{ height:1px; clear:both;display:block; font-size:1px;overflow:hidden;}
+.blank3{ height:3px; clear:both;display:block; font-size:1px;overflow:hidden;}
+.blank9{ height:9px; font-size:1px;display:block; clear:both;overflow:hidden;}
+.blank6{height:6px; font-size:1px; display:block;clear:both;overflow:hidden;}
+.blankW6{ height:6px; display:block;background:#fff; clear:both;overflow:hidden;}
+.blankW9{ height:9px; display:block;background:#fff; clear:both;overflow:hidden;}
+.blank12{ height:12px; font-size:1px;clear:both;overflow:hidden;}
+.blank15h{ height:0; font-size:1px;clear:both;overflow:hidden;}
+.blank18{ height:18px; font-size:1px;clear:both;overflow:hidden;}
+.blank36{ height:36px; font-size:1px;clear:both;overflow:hidden;}
+
+.borderall {border:1px #CCCCCC solid;}
+.borderall2 {border:1px #CCCCCC solid; border-right:1px #666 solid; border-bottom:1px #666 solid; }
+.borderleft {border-left:1px #CCC solid;}
+.borderright {border-right:1px #CCC solid;}
+.bordertop {border-top:1px #CCC solid;}
+.borderbottom {border-bottom:1px #CCC solid;}
+.borderno {border:none;}
+.borderbottom_no {border-bottom:none;}
+
+.h117{ height:117px;}
+#header{ margin:0; clear:both; width:100%; height:75px; background:#134d9d;}
+#header .logo{ float:left;width:165px; height:75px; text-align:left;}
+#header .logo img { width:165px; height:75px; overflow:hidden;}
+#header .version { float:left; width:60px; height:25px; text-align:left; color:#efefef; margin-top:45px; font-size:14px; font-weight:600; padding-left:5px;}
+#header .headTxt { width:auto; min-width:740px; color:#efefef; font-size:14px; text-align:right;}
+#header .headTxt h1{ height:33px; line-height:33px; text-align:right; padding-right:12px;}
+#header .headTxt h1 font { color:#efefef; padding-right:12px; font-size:12px; }
+#header .headTxt .commonActions{ line-height:38px; text-align:right; padding-right:12px; overflow:hidden;}
+#header .headTxt .commonActions ul { float:right;}
+#header .headTxt .commonActions ul li { float:left; padding:0 5px;}
+#header .headTxt .commonActions h2 { float:right; width:100px; height:22px; padding-top:9px; display:block;}
+#header .headTxt .commonActions div { float:right; width: 630px; height:42px; overflow:hidden}
+#header .headTxt .commonActions a:link,#header .headTxt h1 a:link {color: #efefef;}
+#header .headTxt .commonActions a:hover,#header .headTxt h1 a:hover {color: #efefef; text-decoration:underline;}
+#header .headTxt .commonActions a:active,#header .headTxt h1 a:active {color: #efefef;}
+#header .headTxt .commonActions a:visited,#header .headTxt h1 a:visited {color: #CCC; font-weight:600;text-decoration:none;}
+#globalNav{ float:left; width:100%; height:42px; clear:both; background:url(globalNav_right.png) repeat-x; min-width:974px;
+			_width:expression((document.documentElement.clientWidth||document.body.clientWidth)<974?"974px":"100%");}
+#globalNav h1{ float:left; width:186px; height:42px; line-height:42px; text-align:left; padding:0 0 0 38px; background:url(globalNav_left.png) no-repeat;}
+#globalNav h1 div { width:120px; overflow:hidden;}
+#globalNav h1 select { width:120px; height:23px; padding-top:2px; border:0; background:url(select_bg.gif) no-repeat; margin:8px 0 0 0;}
+#globalNav ul { float:left; margin-top:6px; text-align:center}
+#globalNav ul li{ float:left; margin:0 2px; width:71px; height:36px; line-height:36px; color:#666; background:url(nav_link.gif) no-repeat;}
+#globalNav ul li.s1{ float:left; width:71px; height:36px; line-height:36px; color:#134d9d; font-weight:600; background:url(nav_visited.gif) no-repeat;}
+#globalNav ul li a:hover { padding:10px 11px 13px; *padding:10px 11px 13px; _padding:11px 11px 12px; background:url(nav_hover.gif) no-repeat; text-decoration:none; white-space:nowrap; overflow:hidden}
+#globalNav ul li.s1 a:hover {text-decoration:none; background:none; padding:0;}
+
+/* 文本集中,这些不能在一个通用的css里面定死.
+.textArray{width:100%;}
+.textArray .td0{width:100px;}
+.textArray .label0{width:30px; overflow:hidden}
+.textArray .field0{width:60px;}
+.textArray .td1{width:80px;}
+.textArray .td3{width:30px;}
+*/
+
+.mainBox .btnmap{
+	border:none;
+	width:108px;
+	height:27px;
+	cursor:default;
+	background:url(btnmap.gif);
+}
+.mainBox .btnmaphover{
+	border:none;
+	width:108px;
+	height:27px;
+	cursor:default;
+	background:url(btnmap.gif) 0 -30px;
+}
+.mainBox .maplab{
+	line-height:27px;
+}
+.mainBox .maptxt{
+	width:150px
+}

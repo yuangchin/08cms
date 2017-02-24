@@ -1,0 +1,42 @@
+<div id="pop-phone" class="dn pop modal">
+    <div class="phlayer">
+        <div class="p5">
+            <div class="popphone_info">
+                <div id="sendm_msg">
+                    {if empty($ismem)}
+                        {if in_array($chid,array(4,115,116))}
+                        {subject}{if $address}，地址：{address}{/if}{if $tel}，电话:<?= str_replace('-', '', $tel); ?>{/if}{if $dj}，均价：{dj}元{/if}【{hostname}】
+                        {else}
+                        {subject}{if $address}，地址：{address}{/if}{if $lxdh}，联系电话:{lxdh}{/if}{if $xingming}，联系人：{xingming}{/if}【{hostname}】
+                        {/if}
+                    {else}
+                        {if $mchid==2}
+                        姓名：{xingming}{if $lxdh}，联系方式：{lxdh}{/if}，电子邮件：{email}【{hostname}】
+                        {elseif $mchid==3}
+                        {cmane}{if $lxdh}，联系方式：{lxdh}{/if}{if $caddress}，地址：{caddress}{/if}，电子邮件：{email}【{hostname}】
+                        {else}
+                        {companynm}{if $lxdh}，联系方式：{lxdh}{/if}{if $dizhi}，地址:{dizhi}{/if}，电子邮件：{email}
+                        {/if}
+                    {/if}
+                </div>
+                <i class="ico08">&#xe64b;</i>
+            </div>
+        </div>
+        <div class="blank10"></div>
+        <form name="semdm_form" class="jqValidate" id="semdm_form" data-tipmode="#smstip"  onsubmit="return sendSMSphone(this)">
+            <ul class="form form-control">
+                <li>
+                    <div class="blank20 mt-15"><span id="smstip"></span></div>
+                    <input type="text" class="txt form-control" placeholder="您的手机号" data-type="m" name="tel" id="mobinfo"/>
+                </li>
+                <li class="reg-wrap" data-regcode="freesms">
+                    <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                </li>
+                <li>
+                    <input type="submit" class="btn" id="subsmsbnt" value="立即发送"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="{$tplurl}js/smsmessage.js"></script>

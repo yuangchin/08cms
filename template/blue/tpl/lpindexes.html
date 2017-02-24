@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-小区{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+<script type="text/javascript">
+ var sys_distance = <?php echo !empty($circum_km)?$circum_km:3;?>;
+</script>
+{tpl$headinner}
+</head>
+<body>
+{tpl$lptopes}
+<div class="wrap clearfix">
+    <div class="xq-thumb l">
+    <img src="{c$thumb [tclass=image/] [tname=loupanlogo/] [val=u/] [maxwidth=290/] [maxheight=205/] [padding=0/] [thumb=1/]}{url_s}{/c$thumb}" width="290" height="205" />
+    </div>
+    <div class="r">
+        <div id="zst" style="height:200px;width:870px;"></div>
+        <div class="xq-zs tc">
+            <span class="item1">均价：<span class="fs16 fcr fw6">{dj}</span>元/m&sup2;&nbsp;&nbsp;</span>
+            <span class="item2">最高价：<span class="fs16 fcr fw6">{csjgz}</span>万元&nbsp;&nbsp;</span>
+            <span class="item3">最低价：<span class="fs16 fcr fw6">{csjdj}</span>万元&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <div class="blank10"></div>
+    <!-- 右侧 -->
+    {tpl$lprightes}
+    <!-- 左侧 -->
+    <div class="w800 l">
+        <div class="lp-coltit"><h3 class="tit1 l">详细信息</h3></div>
+        <div class="blank1"></div>
+        <div class="bd-gray bdrs lp-jbcs">
+            <div class="blank15"></div>
+            <ul class="plr15">
+                <li><span>物业类型：</span>{ccid12title}</li>
+                <li><span>区域所属：</span>{ccid1title}&nbsp;{if $ccid2title}({ccid2title}){/if}</li>
+                <li><span>竣工日期：</span>{c$date [tclass=date/] [tname=jgdate/] [date=Y-m-d/]}{/c$date}</li>
+                <li><span>建筑面积：</span>{jzmj}</li>
+                <li><span>绿 化 率：</span>{lhl}</li>
+                <li><span>占地面积：</span>{zdmj}</li>
+                <li><span>容 积 率：</span>{yjl}</li>
+                <li><span>物 业 费：</span>{wyf}</li>
+                <li class="wb"><span>物业公司：</span>{wygs}</li>
+                <li class="wb"><span>小区地址：</span>{address}</li>
+                <li class="wb"><span class="l">交通线路：</span><em>{jtxl}</em></li>
+            </ul>
+            <div class="blank15"></div>
+        </div>
+        <div class="blank5"></div>
+        {if $xqjs}
+        <div class="lp-coltit"><h3 class="tit1 l">小区介绍</h3></div>
+        <div class="blank1"></div>
+        <div class="plr15 bd-gray bdrs">
+                    <div class="blank10"></div>
+        {c$content_njs [cname=content_njs/] [tclass=text/] [tname=xqjs/] [dealhtml=safehtml/]}{/c$content_njs}
+                    <div class="blank10"></div>
+                    </div>
+                    {/if}
+        <div class="lp-coltit">
+            <a target="_blank" href="{arcurl8}&fang=mai" class="more">更多&gt;&gt;</a>
+            <h3 class="tit1">出售房源</h3>
+        </div>
+        <div class="blank1"></div>
+        <div class="clearfix bd-gray bdrs oh">
+            {c$lpnresf [cname=楼盘内容二手房/] [tclass=archives/] [val=aa/] [limits=5/] [chsource=2/] [chids=3/] [mode=in/] [arid=3/] [validperiod=1/] [orderstr=a.ccid9 DESC,a.refreshdate DESC/][detail=1/] [ttl=600/]}
+            <div class="esfylist{if $aa['sn_row']==1} esffirst{/if}">
+                            <div class="pic fy"><a title="{subject}" href="{arcurl}" target="_blank"><img  alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=120/] [maxheight=90/] [thumb=1/]} width="120" height="90" src="{$cms_abs}images/common/nopic.gif" data-original="{url_s}" {/c$thumb}></a></div>
+                            <div class="info">
+                                <strong><a href="{arcurl}" target="_blank">{subject}</a><span class="icons">{if $aa['ccid9']}<b class="icon"><i>置顶</i></b>{/if}{if $aa['imgnum']}<b class="icon2"><i>多图</i></b>{/if}</span></strong>
+                                <em>{if $aa['pid3']}{c$sslp11 [tclass=archive/] [val=a/] [arid=3/] [chid=4/] [detail=1/]}<span>[<a target='_blank' href='{arcurl7}'>{subject}</a>]</span> {c$address20 [cname=address20/] [tclass=text/] [tname=address/] [trim=18/]}{/c$address20}{/c$sslp11}{else}{lpmc}{/if}</em>
+                                <em><span><a>{c$shi [cname=shi/] [tclass=field/] [tname=shi/] [type=archive/] [fname=shi/]}{/c$shi}{c$ting [cname=ting/] [tclass=field/] [tname=ting/] [type=archive/] [fname=ting/]}{/c$ting}{c$wei [cname=wei/] [tclass=field/] [tname=wei/] [type=archive/] [fname=wei/]}{/c$wei}</a></span>| {ccid12title}</em>
+                                <em>
+                                {if $aa['mid']!=0}
+                                {c$fyhy1 [tclass=member/] [val=c/] [detail=1/]}
+                                {if $c['grouptype13']}
+                                    <span> {if $c['xingming']}{xingming}{else}{mname}{/if}</span>(个人) <span><?=u_time_format($aa['refreshdate'])?>更新</span>
+                                {else}
+                                    {c$jjrgs2 [tclass=member/] [val=a/] [arid=4/]}<a href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a>{/c$jjrgs2}<span> <a href="{mspacehome}">{if $c['xingming']}{xingming}{else}{mname}{/if}</a></span>(经纪人) {c$xytb [cname=信用图标/] [tclass=fromid/] [val=d/] [type=grouptype17/] [id=$c[grouptype17]/] [idsoruce=0/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} />{/c$xytb} <span><?=u_time_format($aa['refreshdate'])?>更新</span>
+                                {/if}
+                                {/c$fyhy1}
+                                {else}{xingming}{/if}
+                                </em>
+                            </div>
+                            <div class="info2">{if $aa['mj']}{mj}平米{else}面议{/if}</div>
+                            <div class="info3"><em>{if $aa['zj']}{zj}万元{else}面议{/if}</em>
+                                <i class="arial">{if $aa['dj']}单价：{dj}元/m&sup2;{/if}</i>
+                            </div>
+                            <div class="blank0"></div>
+                        </div>
+            {/c$lpnresf}
+        </div>
+        <div class="lp-coltit">
+            <a target="_blank" href="{arcurl8}&fang=zhu" class="r mr8">更多&gt;&gt;</a>
+            <h3 class="tit1">出租房源</h3>
+        </div>
+        <div class="blank1"></div>
+        <div id="esfy" class="clearfix bd-gray bdrs oh">
+            {c$lpnrcz [cname=楼盘内容出租/] [tclass=archives/] [val=aa/] [limits=5/] [chsource=2/] [chids=2/] [mode=in/] [arid=3/] [validperiod=1/] [orderstr=a.ccid9 DESC,a.refreshdate DESC/][detail=1/] [ttl=600/]}
+            <div class="esfylist {if $aa['sn_row']==1} esffirst{/if}">
+                <div class="pic fy"><a title="{subject}" href="{arcurl}" target="_blank"><img  alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=120/] [maxheight=90/] [thumb=1/]} width="120" height="90" src="{$cms_abs}images/common/nopic.gif" data-original="{url_s}" {/c$thumb}></a></div>
+                <div class="info">
+                    <strong><a href="{arcurl}" target="_blank">{subject}</a><span class="icons">{if $aa['ccid9']}<b class="icon"><i>置顶</i></b>{/if}{if $aa['imgnum']}<b class="icon2"><i>多图</i></b>{/if}</span></strong>
+                    <em>{if $aa['pid3']}{c$sslp11 [tclass=archive/] [val=a/] [arid=3/] [chid=4/] [detail=1/]}<span>[<a target='_blank' href='{arcurl7}'>{subject}</a>]</span> {c$address20 [cname=address20/] [tclass=text/] [tname=address/] [trim=18/]}{/c$address20}{/c$sslp11}{else}{lpmc}{/if}</em>
+                    <em><span><a>{c$shi [cname=shi/] [tclass=field/] [tname=shi/] [type=archive/] [fname=shi/]}{/c$shi}{c$ting [cname=ting/] [tclass=field/] [tname=ting/] [type=archive/] [fname=ting/]}{/c$ting}{c$wei [cname=wei/] [tclass=field/] [tname=wei/] [type=archive/] [fname=wei/]}{/c$wei}</a></span>| {ccid12title}</em>
+                    <em>
+                    {if $aa['mid']!=0}
+                    {c$fyhy1 [tclass=member/] [val=c/] [detail=1/]}
+                    {if $c['grouptype13']}
+                        <span> {if $c['xingming']}{xingming}{else}{mname}{/if}</span>(个人) <span><?=u_time_format($aa['refreshdate'])?>更新</span>
+                    {else}
+                        {c$jjrgs2 [tclass=member/] [val=a/] [arid=4/]}<a href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a>{/c$jjrgs2}<span> <a href="{mspacehome}">{if $c['xingming']}{xingming}{else}{mname}{/if}</a></span>(经纪人) {c$xytb [cname=信用图标/] [tclass=fromid/] [val=d/] [type=grouptype17/] [id=$c[grouptype17]/] [idsoruce=0/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} />{/c$xytb} <span><?=u_time_format($aa['refreshdate'])?>更新</span>
+                    {/if}
+                    {/c$fyhy1}
+                    {else}{xingming}{/if}
+                    </em>
+                </div>
+                <div class="info2">{if $aa['mj']}{mj}平米{else}面议{/if}</div>
+                <div class="info3"><em>{if $aa['zj']}{zj}元/月{else}面议{/if}</em></div>
+                <div class="blank0"></div>
+            </div>
+            {/c$lpnrcz}
+        </div>
+    </div>
+    {if $dt}
+    <div class="blank10"></div>
+    <div id="mapdiv"></div>
+    {/if}
+</div>
+
+<script src="{$tplurl}js/jquery.lazyload.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('.pic img').lazyload({effect : "fadeIn"});
+    $(".esfylist").hover(function () {
+        $(this).css('background', '#EEF6FD')
+    },function () {
+        $(this).css('background', '')
+    });
+</script>
+<script type="text/javascript" src="{$tplurl}js/highcharts.js"></script>
+<script type="text/javascript">
+    var jsonData = {
+        "title": "",
+        "series": [{
+            "name": "\u672c\u9879\u76ee\u623f\u4ef7",
+            "datatype": "house",
+            "data": [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='0' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}['{c$date [tclass=date/] [tname=createdate/] [date=y-m-d/]}{/c$date}',{$v[average]}]{/c$outinfos}].reverse()
+        }],
+        "month_s": [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='0' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=y.m.d/]}{/c$date}'{/c$outinfos}].reverse()
+    };
+    $.each(jsonData.series[0].data, function (i, b) {
+        jsonData.min = i == 0 ? b[1] : Math.min(b[1],jsonData.min);
+    })
+
+    $('#zst').highcharts({
+        colors:[ "#ee4433", "#F8CE5D", "#339966" ],
+        chart:{
+            renderTo:'zst',
+            type:"line"
+        },
+        title:{
+            text:""
+        },
+        subtitle:{
+            text:""
+        },
+        xAxis:{
+            categories:jsonData.month_s,
+            tickmarkPlacement:"on",
+            labels:{
+                style:{
+                    fontSize:"14px",
+                    fontFamily:"Microsoft YaHei"
+                },
+                y:25
+            }
+        },
+        yAxis:{
+            title:"",
+            gridLineColor:"#ddd",
+            opposite:true,
+            labels:{
+                formatter:function() {
+                    if (this.value == 0) {
+                        return "待定";
+                    } else {
+                        return this.value + "元";
+                    }
+                },
+                style:{
+                    fontSize:"14px",
+                    fontFamily:"Microsoft YaHei"
+                },
+                y:3
+            },
+            min:jsonData.min
+        },
+        tooltip:{
+            crosshairs:true,
+            useHTML:true,
+            borderWidth:1,
+            borderColor:"#999999",
+            borderRadius:3,
+            backgroundColor:"#FFFFFF",
+            style:{
+                padding:"8px"
+            },
+            shared:true,
+            formatter:function() {
+                if (this.y == 0) {
+                    return "待定"
+                } else {
+                    return jsonData.series[0].name + '<br/>' + this.y + "元/m&sup2;"
+                }
+            }
+        },
+        legend:{
+            enabled:false
+        },
+        plotOptions:{
+            line:{
+                fillOpacity:.4,
+                marker:{
+                    symbol:"circle",
+                    radius:5,
+                    lineWidth:1
+                }
+            }
+        },
+        series:jsonData.series
+    });
+</script>
+<div class="blank10"></div>
+{tpl$foot}
+<!-- 调用地图 -->
+{if $dt}
+<script type="text/javascript">
+    $('#mapdiv').replaceWith('<iframe id="iframe" width="100%" height="393" scrolling="no" allowtransparency="true" frameborder="0" src="{$cms_abs}info.php?fid=115&lp={aid}&chid=4" ></iframe>');
+</script>
+{/if}
+<!-- /调用地图 -->
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>店铺留言_{if $xingming}{xingming}{else}{mname}{/if}的网店-{$hostname}</title>
+<meta content="{xingming}" name="keywords">
+<meta content="{xingming}{if !empty($address)},地址是{address}{/if}{if $lxdh},电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$headinner}
+</head>
+<body>
+{tpl$brokertop}
+<div class="blank10"></div>
+<div class="wrap">
+	<!-- 左栏开始 -->
+		{tpl$brokerleft}
+	<!-- 左栏结束 -->
+	<!-- 右栏开始 -->
+	<div class="inMain">
+	<div class="subT1"><span class="l h">店铺留言</span></div>
+		<div class="Recommend_content">
+		<div class="blank1"></div>
+			<div class="p10">
+				<ul>
+				{c$dply [cname=店铺留言/] [tclass=commus/] [cuid=5/] [wherestr=tomid = '$mid'/] [mp=1/]}
+				<li class="lynr"><strong>留言内容</strong>：{content}<span>[{c$createdate [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate}]</span>
+				{if $v['reply']}<div class="dzhf"><strong>店主回复</strong>：{reply}<span>[{c$replydate [tclass=date/] [tname=replydate/] [date=Y-m-d/]}{/c$replydate}]</span></div>{/if}
+				</li>
+				{/c$dply}
+				</ul>
+				{if $mpcount>1}
+				<div class="ptb10">
+				    {$mpnav}
+				</div>
+				{/if}
+				<div class="liuyanbiao">
+				<form class="jqValidate" onsubmit="return fyCummus(this,'我要留言');">
+					<input type="hidden" name="cuid" value="5" />
+					<input type="hidden" name="tomid" value="{mid}" />
+					<font color="#FFF">*</font><em class="prech">○</em>联系人：<input type="text" class="txt1" data-type="*0-8" size="60" id="fmdata[lxren]" name="fmdata[lxren]" value="" rule="text" must="1" regx="" rev="联系人">
+					<div class="blank5"></div>
+					<font color="#FFF">*</font>联系电话：<input type="text" class="txt1" size="60" id="fmdata[lxdh]" name="fmdata[lxdh]" value="" data-type="m" data-ignore="1" >
+					<div class="blank5"></div>
+					<font color="#FF0000">*</font>联系内容：<textarea rows="5" id="fmdata[content]" name="fmdata[content]" cols="70" data-type="*10-150" data-monitor="#tip-textarea" rev="联系内容"></textarea>
+					<div class="blank20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="tip-textarea"></span> </div>
+					<div class="blank5"></div>
+					<dd class="reg-wrap dn" data-regcode="commu5"><font color="#FF0000">*</font><em class="prech">○</em>验证码：<input type="text" data-offset="1" placeholder="验证码" name="regcode" class="txt1 regcode yzm" placeholder="" value=""/></dd>
+					<div class="blank5"></div>
+					<span style="color:#999;">注意：联系人与联系电话，只有该经纪人才能看见</span>
+					<input type="hidden" name="bsubmit" value="提&nbsp;交">
+					<input class="button" disabled="disabled" type="submit" name="btn" value="提&nbsp;交">
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 右栏开始 -->
+</div>
+{tpl$foot}
+</body>
+</html>

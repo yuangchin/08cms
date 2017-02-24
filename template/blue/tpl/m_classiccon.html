@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+<title>{subject}-装修案例-{companynm}-{$hostname}</title>
+ <meta content="{companynm}" name="keywords"> 
+ <meta content="{companynm}{if $dizhi},公司地址是{dizhi}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+</head>
+<body>
+<?php $mcaid=8; ?>
+<!--header begin-->
+ {tpl$jz_m_head}  
+<!--内容开始-->
+<div class="area"> 
+  <!--左侧栏开始-->
+  {tpl$jz_m_left}
+  <!--右侧栏开始-->
+  <div class="right_bar">
+    <div class="R_title">
+        <div class="R_title_L">{c$jz_m_comname [cname=装修公司名称/] [tclass=member/] [val=v/] [ttl=900/] [detail=1/]}{companynm}{/c$jz_m_comname}案例</div>
+        
+    </div>
+    <div class="R_con1 wzxx">
+        <!--大图-->
+      <div  class="cgal-pic">
+          <div class="bigpic" id="bigpic">
+            <div id="biglist" class="biglist">
+              <div class="tip" id="tip"></div>
+            </div>
+          </div>
+          <!--大图结束-->
+          <div class="blank10"></div>
+          <div id="slider-code">
+              <a class="buttons prev" href="javascript:;">left</a>
+              <div class="viewport">
+                  <ul class="overview">
+                      {c$anlituji [cname=案例图集/] [tclass=images/] [tname=tuji/] [val=t/] [maxwidth=150/] [maxheight=100/] [thumb=2/]}<li data-url="{url}" data-title="{title}"><img width="150" height="100" src="{url_s}" class="ccbbaa" id="imgid_{sn_row}"></li>{/c$anlituji}
+                  </ul>
+              </div>
+              <a class="buttons next" href="javascript:;">right</a>
+          </div>
+      <!--小图结束-->
+      </div>
+      <span class="blank10"></span>
+      <div class="cgal-table">
+        <table width="100%" cellspacing="1" cellpadding="0" border="0" class="cgal-table-bg">
+          <tbody><tr>
+            <td class="cgal-table-bg2">小区名称：</td>
+            <td class="cgal-table-bg1">{partname}</td>
+            <td class="cgal-table-bg2">设 计 师：</td>
+            <td class="cgal-table-bg1">{c$jz_shejishi [cname=设计师/] [tclass=archives/] [val=b/] [limits=1/] [chsource=2/] [chids=101/] [caidson=1/] [casource=1/] [caids=510/] [mode=belong/] [arid=31/] [detail=1/] [ttl=900/]}{subject}{/c$jz_shejishi}</td>
+          </tr>
+          <tr>
+            <td class="cgal-table-bg2">房屋户型：</td>
+            <td class="cgal-table-bg1">{c$shi}{c$ting}{c$wei}</td>
+            <td class="cgal-table-bg2">建筑面积：</td>
+            <td width="220" class="cgal-table-bg1">
+                    {mj}&nbsp;M<sup>2</sup>
+            </td>
+          </tr>
+          <tr>
+            <td class="cgal-table-bg2">设计风格：</td>
+            <td class="cgal-table-bg1">{c$sjsfg [cname=设计师风格/] [tclass=catalogs/] [listby=co32/] [cosource32=1/] [ccids32=$ccid32/]}{title},{/c$sjsfg}</td>   
+            <td class="cgal-table-bg2">合同报价：</td>
+            <td width="131" class="cgal-table-bg1">
+                    {zj}&nbsp;元
+            </td>
+          </tr>          
+        </tbody></table>
+      </div>
+    </div>
+    <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+    <span class="blank10"></span>
+    <div class="R_title">
+      <div class="R_title_L">成功案例</div>
+    </div>
+    <div class="R_con1">
+        <span class="blank10"></span>
+        {c$jz_m_qtal [cname=其它案例/] [tclass=archives/] [limits=4/] [chsource=2/] [chids=102/] [caidson=1/] [casource=1/] [caids=511/] [space=1/] [detail=1/] [wherestr=a.aid != '{aid}'/] [ttl=900/] [mp=1/]}
+        <div class="R_con_list">
+          <div class="R_con2">
+            <a href="{marcurl}">
+              <img alt={subject} {c$thumb_150_100 [cname=thumb_150_100/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=100/] [thumb=2/]}src="{url_s}" width="150" height="100"{/c$thumb_150_100}></a>
+          </div>
+          <div class="R_con3"> <strong><a class="greenlink1" href="{marcurl}">{c$subject20 [cname=subject20/] [tclass=text/] [tname=subject/] [trim=20/]}{/c$subject20}</a></strong> 
+            <br>        
+            {c$shi}{c$ting}{c$wei}{mj}&nbsp;平方
+            <br></div>
+        </div>
+    {/c$jz_m_qtal}
+        <div class="cl"></div>
+    </div>
+        <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+
+  </div>
+  <!--右侧栏结束--> 
+</div>
+<!--内容结束--> 
+<!--footer begin--> 
+{tpl$jz_foot}
+<script type="text/javascript" src="{$tplurl}js/gallery.js"></script>
+<script type="text/javascript">
+        $.gallery({
+            big:'#biglist',
+            small:'#slider-code ul',
+            botPrev:'#slider-code .prev',
+            botNext:'#slider-code .next',
+            visible:3,
+            maxW:620,
+            maxH:390,
+            oImg:'#view-pic',
+            title:'#tip',
+            showBigBot:1
+        })
+    </script>
+</body>
+</html>

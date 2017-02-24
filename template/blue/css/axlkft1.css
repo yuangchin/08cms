@@ -1,0 +1,464 @@
+/***看房团内容页***/
+.m9 {
+    margin: 9px;
+}
+.sline {
+    border: 1px solid #ddd;
+}
+.w770 {
+    width: 770px;
+}
+.w220 {
+    width: 220px;
+}
+.w640 {
+    width: 640px;
+}
+.w320 {
+    width: 320px;
+}
+.kftbus,
+.lpTit i,
+.hdLCon i,
+.rkftTit em {
+    background: url(../images/axlfkbg.gif) no-repeat;
+}
+/* 面包屑 */
+.kfbread {
+    line-height: 36px;
+
+    height: 36px;
+}
+.kfbread span {
+    margin: 0 5px;
+
+    color: #e55414;
+}
+.kfbread em {
+    color: #a9a9a9;
+}
+
+/* 看房团报名banner图 */
+.banner-bg {
+    position: relative; display: block;height: 355px;border: 1px solid #ddd;
+    background: url(../images/bm.png) no-repeat;
+}
+.banner-bg .lc {
+    position: absolute;top: 65px; right: 0; width: 254px; color: #fff;
+}
+.banner-bg .lc ul {
+    padding-top: 10px;
+}
+.banner-bg .lc h3 {
+    font-size: 16px; font-weight: bold;line-height: 30px; overflow: hidden;height: 30px;
+}
+.banner-bg .lc li {
+    font-size: 14px;line-height: 18px;overflow: hidden;
+
+    height: 18px; padding: 7px 0;
+}
+.banner-bg .lc li i {
+    font-weight: bold; display: block; float: left;
+
+    width: 18px; height: 18px; margin-right: 8px;text-align: center; color: #000; background-color: #fff;
+}
+
+/* 参团楼盘介绍 */
+
+.houselist {
+    padding: 15px 8px;  vertical-align: top;
+
+    border-bottom: 1px dashed #ddd; *zoom: 1;
+}
+.houselist:hover {
+    background: #f6fbfe;
+}
+
+.houselist .pic {
+    position: relative; z-index: 1;
+
+    float: left; margin-right: 15px;
+}
+.houselist .pic img {
+    background: #eee;
+}
+.houselist .pic i {
+    line-height: 18px;position: absolute;top: 0;right: 0;height: 18px;padding: 0 5px;cursor: pointer;
+
+    color: #fff;border-radius: 0 0 0 3px;background: #c00;
+}
+
+.houselist .info {
+    float: left; width: 414px;
+}
+.houselist .info h3 {
+    line-height: 24px; overflow: hidden;
+
+    height: 24px;
+}
+.houselist .info h3 a {
+    font-size: 14px;
+    font-weight: bold; float: left;
+}
+.houselist .info h3 img {
+    float: left;
+}
+.houselist .info p {
+    overflow: hidden;
+
+    height: 24px;
+}
+.houselist .info a {
+    color: #049;
+}
+.houselist .info em {
+    color: #999;
+}
+.houselist .info b {
+    font-family: arial;
+    font-size: 20px;color: #f0372b;
+}
+.houselist .info .icon2 {
+    margin-left: 10px;
+    padding: 3px 0;
+}
+.houselist .info .icon2 .ico08 {
+    font-size: 14px;
+
+    color: #f10000;
+}
+.houselist .info .icon5 {
+    line-height: 18px;position: relative;float: left;margin: 2px 10px 0 10px;padding: 0 5px;
+
+    color: #fff;
+}
+.houselist .info .dais-194 {
+    background-color: #06a897;
+}
+.houselist .info .dais-195 {
+    background-color: #1cbaff;
+}
+.houselist .info .dais-196 {
+    background-color: #fe9805;
+}
+.houselist .info .dais-197 {
+    background-color: #ce9b86;
+}
+.houselist .info .dais-198 {
+    background-color: #afafaf;
+}
+.houselist .item {
+    position: absolute; white-space: nowrap;
+}
+.houselist .item a {
+    margin-right: 6px;
+}
+.houselist .item i {
+    font-family: arial;
+
+    color: #c00;
+}
+
+.houselist .other {
+    float: right; overflow: hidden;width: 145px; text-align: right;
+}
+.houselist .other p {
+    padding: 2px 0;
+}
+.houselist .other .duibi {
+    padding: 3px 5px;
+
+    cursor: pointer;border: 1px solid #ddd;background: #eee;
+}
+.houselist .other .duibi i {
+    font-family: Arial, sans-serif;
+    font-size: 14px;font-weight: bold;margin-right: 3px;color: #0076d5;
+}
+.houselist .other .dj {
+    font-family: arial;
+    font-size: 30px;line-height: 32px;height: 32px;color: #f50;
+}
+.houselist .other .icon {
+    line-height: 20px; display: inline-block;overflow: hidden;height: 20px;padding: 0 5px;
+
+    color: #fff; border-radius: 3px;*margin-top: 5px;
+}
+.houselist .other .icon-start {
+    background-color: #0b8ee6;
+}
+.houselist .other .icon-end {
+    background-color: #afafaf;
+}
+.houselist .other a {
+    cursor: pointer;
+}
+.houselist .other .icon a {
+    overflow: hidden;text-align: center;  color: #fff;
+}
+.houselist .other .icon a:hover {
+    text-decoration: none;
+}
+
+.houselist .yh-info {
+    background-color: #fe9805;
+}
+
+/* 看房团流程 */
+.kftlb {
+    border-top: 1px solid #ddd;
+}
+.listf {
+    border-top: none;
+}
+.kftlc {
+    font-family: Microsoft yahei;
+
+    height: 160px;margin-right: -30px;background: url('../images/dy-kft.jpg') no-repeat;
+}
+.kftlc .item {
+    display: inline;float: left;width: 199px;
+}
+.kftlc dl {
+    font-size: 13px;line-height: 20px;padding: 71px 30px 0;
+
+    color: #fff;
+}
+.kftlc dt {
+    display: none;
+}
+
+/* 看房团列表 */
+.kftTit h1 {
+    font-family: 'Microsoft YaHei'; font-size: 24px; font-weight: bold; margin-top: 15px; text-align: left;
+}
+.kfklx {
+    position: relative;
+
+    width: 958px; margin-top: 5px; background: url(../images/xluline.gif) 0 15px repeat-x;
+}
+.kftbus {
+    position: absolute;  right: 0;
+
+    width: 75px; height: 30px;
+}
+.kfklx a {
+    display: block;cursor: pointer;
+}
+.kfklx a:hover {
+    text-decoration: none;
+
+    color: #049;
+}
+.mxl {
+    width: 800px;
+}
+.mxl b {
+    position: absolute;  top: 127px;left: 0;
+
+    width: 350px; height: 11px; background: url(../images/bltra.gif) no-repeat 332px 0;
+}
+.mxl .rbox1 b {
+    background-position: 58px 0;
+}
+.mxl .rbox2 b {
+    background-position: 147px 0;
+}
+.mxl .rbox3 b {
+    background-position: 238px 0;
+}
+.mxl .title {
+    line-height: 18px;position: relative;
+
+    width: 89px;margin: 6px auto 0;padding-top: 18px;text-align: center;background: url(../images/yd01.gif) center 0  no-repeat;
+}
+
+.mxl .act .title {
+    background: url(../images/yd02.gif) center 0 no-repeat;
+}
+.xglpCon {
+    position: absolute; top: -138px; right: 30px;  display: none;
+
+    width: 330px; height: 106px; padding: 10px; border: 2px solid #0053f0; background: #fff;
+}
+.rbox1 {
+    right: -243px;
+}
+.rbox2 {
+    right: -152px;
+}
+.rbox3 {
+    right: -61px;
+}
+.xglpCon i {
+    float: left;
+
+    width: 135px; height: 100px; margin-right: 10px; padding: 2px; border: 1px solid #ddd;
+}
+.xglpCon em {
+    line-height: 26px;
+
+    display: block; overflow: hidden; height: 26px; text-align: left;
+}
+.xglpCon strong {
+    font-size: 14px;
+}
+.xglpCon span {
+    color: #999;
+}
+.kfklx a.act .xglpCon {
+    display: block;
+}
+.kft-info {
+    float: right;
+
+    width: 300px;
+}
+.kft-info h2 {
+    font-family: Microsoft yahei;
+    font-size: 24px;line-height: 26px;height: 26px;
+}
+.kft-info .incon {
+    font-size: 14px; line-height: 20px; overflow: hidden;height: 20px; margin-top: 12px;
+}
+.kft-info .incon span {
+    color: #f30;
+}
+.kft-info .wybm {
+    font-family: Microsoft yahei;font-size: 24px; line-height: 40px;display: block;width: 145px;height: 40px; margin-top: 12px;text-align: center;color: #fff; border-radius: 4px;
+    background-color: #0072cc;
+}
+.kft-info .call {
+    font-family: Microsoft yahei;font-size: 24px; line-height: 55px;overflow: hidden;height: 55px;margin-top: 12px;color: #fff;border-radius: 2px;
+    background-color: #00c0ff;
+}
+.kft-info .call i {
+    display: block                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;display: inline;
+    float: left;width: 18px; height: 25px; margin: 14px 10px 0 12px;vertical-align: middle;
+
+    background: url(../images/kft-call.png) no-repeat;_background: none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/kft-call.png");
+}
+.kft-info .end {
+    background-color: #bdbdbd;
+}
+.kft-info .ljbm {
+    background-color: #f60;
+}
+.kft-info .wybm:hover {
+    text-decoration: none;
+
+    opacity: .8;
+}
+
+/* 活动说明 */
+.tit {
+    line-height: 36px;overflow: hidden;height: 36px;padding: 0 15px;
+
+    border-bottom: 1px solid #ddd;
+}
+.tit h2 {
+    font-family: Microsoft yahei;
+    font-size: 18px;
+}
+.tit .more {
+    font-size: 14px;
+}
+.hdsm .content {
+    min-height: 278px;
+    padding: 20px; _height: 278px;
+}
+.hdsm .content p {
+    line-height: 22px;padding: 5px 0;
+
+    text-indent: 15px;
+}
+/* 购房工具 */
+.gf-tool {
+    margin-left: 12px;
+
+    background: url(../images/newhouse-gftool.png) no-repeat;
+}
+.gf-tool a {
+    font-size: 14px;line-height: 53px; display: block;overflow: hidden;
+
+    height: 53px; margin-left: 60px;
+}
+
+.win_formenroll {
+    width: 550px;
+}
+.win_formenroll dl {
+    clear: both;
+}
+.win_formenroll dt {
+    font-size: 14px; line-height: 28px; float: left;
+
+    width: 100px; height: 28px; margin-right: 15px;  padding: 10px 10px 10px 0; text-align: right; color: #777; background: #fafafa;
+}
+.win_formenroll dd {
+    padding-top: 10px;
+}
+.win_formenroll dd.tit {
+    font-size: 14px; line-height: 24px; overflow: hidden;  height: 24px;
+    padding-top: 17px;
+}
+.win_formenroll span {
+    padding-right: 2px;
+
+    color: #c00;
+}
+.win_formenroll input,
+.win_formenroll select {
+    line-height: 28px;
+
+    height: 28px; border: 1px solid #e2e2e2;
+}
+.win_formenroll select {
+    width: 227px;
+}
+.win_formenroll input {
+    width: 220px; padding-left: 5px;
+}
+.win_formenroll input.qrcode {
+    width: 120px;
+}
+.win_bnt {
+    padding: 10px 0 15px 126px;
+}
+.win_bnt input {
+    font-size: 16px; line-height: 34px;
+
+    width: 120px; height: 34px; padding: 0; cursor: pointer; color: #fff; border: 0; background: #f60;
+}
+
+.tab_baoming {
+    width: 600px;
+}
+.tab_bmtit {
+    font-family: 'Microsoft YaHei'; font-size: 14px;line-height: 40px;
+
+    height: 40px; color: #666; background: #fafafa;
+}
+.tab_baoming li {
+    line-height: 34px; overflow: hidden;
+
+    height: 34px; border-bottom: 1px dotted #eee;
+}
+.tab_baoming i {
+    float: left;
+
+    width: 96px;  padding: 0 5px; text-align: center; _display: inline;
+}
+.tab_baoming i.w250 {
+    width: 250px;
+}
+.tab_baoming i.gray {
+    color: #777;
+}
+.tab_baoming a {
+    color: #226799;
+}
+.tab_baoming ul {
+    overflow-y: auto;
+
+    height: 275px;
+}

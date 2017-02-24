@@ -1,0 +1,17 @@
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/fy_head.css?{$user_version}"/>
+<?php
+$_da = cls_Parse::Get('_da');
+// 初始化房源参数
+$fy_caid     = (@$caid == 4 ||@$caid == 20||@$caid == 9)?4 : 3;
+$unit        = $fy_caid == 4 ? '元/月' : '万';// 单位
+$fy_title    = $fy_caid == 4 ? '出租' : '二手房';//标题
+$fy_chid     = $fy_caid == 4 ? 2 : 3;
+$wd_caid     = $fy_caid == 4 ? 519 : 518;//问答
+$fy_newscaid = $fy_caid == 4 ? 20 : 21;//资讯
+$fy_needcaid = $fy_caid == 4 ? 9 : 10;//需求
+$fy_dtfid    = $fy_caid == 4 ? 116 : 117;//地图
+$pagetype    = $fy_caid == 4 ? 'rent' : 'oldhouse';
+?>
+{tpl$head}
+
+

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+{c$cnode [cname=激活栏目标题/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<title>{listtitle}-{$hostname}</title>
+<meta name="keywords" Content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/houseindex.css?{$user_version}"/>
+<?php $pagetype = 'newhouse'; ?>
+</head>
+<body>
+{tpl$head} 
+<?php
+foreach(array('ccid1','ccid6','ccid12','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+$sfields = getsearchfields(11);
+cls_uso::init(array(
+    'ntype' => 'c', //cm,m,oc,om
+    'chid' => 11, 
+    'nodes' => array('0','0,1','0,6','0,12','0,15','0,1,6'), 
+    'orderbys' => array('aid','mj','clicks'),
+    //'cnstr' => 'caid=1',
+));
+extract(cls_usql::order_str(1,'refreshdate DESC'));
+$whrstr = cls_usql::where_str(array(
+	array('subject'), //array('biaoti',0,'like'),
+  array('shi'),array('ting'),array('wei'),array('chu'),
+)); 
+?>
+<div class="wrap"> 
+<!-- 面包屑 -->
+<div class="bread">
+    <div class="r w300">
+        <form method="get" action="{$cms_abs}index.php">
+            <div class="search-group form">
+                <button type="submit" class="btn"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+                <div class="txt-wrap">
+                  <input type="text" name="searchword" class="txt" placeholder="请输入关键字" value='' x-webkit-speech speech/>
+                </div>
+            </div>
+            <input type="hidden" name="caid" value="11" />
+        </form>
+    </div>
+    <a href="{$cms_abs}" target="_blank"><i class="ico08 fcr mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a><i class="pipe">/</i><a class="ls" href="{c$loupanliebiao [cname=户型列表/] [tclass=cnode/] [listby=ca/] [casource=11/]}{indexurl}{/c$loupanliebiao}" target="_blank">户型列表</a>
+</div>
+
+<!-- tab -->
+<div class="lp-sea clearfix">
+  <div class="lp-title"><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl1}{/c$cnode}"><i class="ico08">&#xf0ca;</i>区域找房</a><a class="act" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=11/]}{indexurl}{/c$cnode}"><i class="ico08" style="font-size:16px">&#xe004;</i>户型找房</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl3}{/c$cnode}"><i class="ico08">&#xe637;</i>房价找房</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=559/]}{indexurl}{/c$cnode}"><i class="ico08">&#xe635;</i>特价房</a><a href="{c$freeurl [tclass=freeurl/] [fid=1/]}{/c$freeurl}" target="_blank"><i class="ico08">&#xe613;</i>地图找房</a></div>
+</div>
+<!-- /tab -->
+  <div class="lp-janshuo">
+    <div class="blank10"></div>
+    
+
+    <div class="js-list">
+      <? $dlnum = 0; ?>
+      {loop $sfields $f $fn}
+      <? $key = is_numeric($f) ? ($f ? "ccid$f" : 'caid') : $f; $$key= empty($$key)?'':$$key; $_rows = !is_numeric($f) ? cls_uso::field_urls($f) : cls_uso::caco_urls($f); ?>
+      <? if($f == 2 && (empty($ccid1) || $fcdisabled2)) continue;?>
+      <? if($fcdisabled3 && in_array($f,array(3,14)) || empty($ccid3) && $f == 14) continue;$dlnum++;?>
+      {if $dlnum > 4}
+      {if $dlnum == 5}
+      <div class="blank5"></div>
+      <div class="morefjj clearfix hover-list1" id="moretj">
+        <ul>
+          <li class="tip fw6">更多：</li>
+          {/if}
+          <li class="list-{$f} droplist"> <i class="ico08">&#xe684;</i><em>{if empty($$key)}{$fn}{else}{loop $_rows $k $v}{if $$key==$k}{$v['title']}{/if}{/loop}{/if}</em>
+            <div class="items"> <a class="{if empty($$key)}act{/if}" href='<? echo cls_uso::extra_url($key); ?>'>不限</a> {loop $_rows $k $v} <a class="{if $$key==$k}act{/if}" href="{$v['url']}">{$v['title']}</a> {/loop} </div>
+            {if $f == 'louxing'}<span class="msg"><i></i><b></b>1~3层为低层，4~7层为多层，<br/>
+            12层为小高层，13~25层为高层，<br/>
+            26层（楼高100米）以上为超高层。</span>{/if} </li>
+          {else}
+          <dl class="list-{$f}">
+            <dt class="l fw6">{$fn}：</dt>
+            <dd> <a {if empty($$key)} class="act"{/if} href='<? echo cls_uso::extra_url($key); ?>'>不限</a> {loop $_rows $k $v} <a {if $$key==$k} class="act"{/if} href="{$v['url']}">{$v['title']}</a> {/loop} </dd>
+          </dl>
+          {/if}
+          {/loop}
+          {if $dlnum > 4}
+        </ul>
+      </div>
+      {/if}
+      <div class="blank0"></div>
+    </div>
+
+  <!-- 当前条件 -->
+  <?
+    $pick_urls=cls_uso::pick_urls();
+    unset($pick_urls['caid']);
+  ?>
+  {if $pick_urls}
+  <div class="lp-dqtj clearfix"> <span class="tip l fw6">当前条件：</span> <?php echo u_sch_now_area(array('mjfrom','mjto'),'平'); ?> <?php echo u_sch_now_area(array('djfrom','djto'),'元'); ?> {loop $pick_urls $k $v}
+    <?php if(in_array($k,array('mjfrom','mjto','djfrom','djto'))) continue; ?>
+    <a title="取消此条件" href="{$v['url']}">{$v['title']} <i class="ico08">&#xf057;</i></a> {/loop} <a class="cancel" title="取消所有" href="{c$loupanliebiao [cname=楼盘列表/] [tclass=cnode/] [listby=ca/] [casource=11/]}{indexurl}{/c$loupanliebiao}"><i class="ico08">&#xf0e2;</i>取消所有</a> </div>
+  {/if} 
+  <!-- /当前条件 -->
+  </div>
+  <div class="blank10"></div>
+  
+  <!-- /检索区块 -->
+  <div class="w930 l">
+    <div class="lp-kuan clearfix">
+      <div class="tab-nav"> <a class="item act">所有户型</a> </div>
+      <div class="blank0"></div>
+      <div class="info clearfix"> 
+        <span id="tab-page" class="l tab-page"></span> 
+        <span class="r"> 
+            <a class="sort-btn {if !in_array($orderby,array('dj','mj','clicks'))}act{/if}" href="<?=cls_uso::extra_url('orderby|ordermode')?>">默认</a>
+            <?=cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">面积<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "mj", array("act bldown","act blup",""))?>
+            <?=cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">人气<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "clicks", array("act bldown","act blup",""))?>
+        </span> 
+    </div>
+    </div>
+    {c$hxlb [cname=户型列表/] [tclass=archives/] [limits=12/] [chsource=2/] [chids=11/] [ccidson1=1/] [cosource1=2/] [ccidson6=1/] [cosource6=2/] [ccidson12=1/] [cosource12=2/] [wherestr=$whrstr/] [orderstr=$orderstr/] [ttl=600/] [mp=1/]} 
+    [row]
+    <div class="houselist">
+      <div class="pic"> <a href="{if $v['pid3']}{arcurl}{else}{c$thumb_url [cname=thumb_url/] [tclass=image/] [tname=thumb/] [val=u/]}{url}{/c$thumb_url}{/if}" target="_blank"><img alt="{subject}" {c$thumb [cname=thumb/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=135/] [maxheight=100/] [thumb=1/] }src="{url_s}" width="135" height="100"{/c$thumb} border="0"/></a> </div>
+      <div class="info">
+        <h3><a href="{if $v['pid3']}{arcurl}{else}{c$thumb_url [cname=thumb_url/] [tclass=image/] [tname=thumb/] [val=u/]}{url}{/c$thumb_url}{/if}" target="_blank"><span id='floor_8392'>{subject}</span></a> </h3>
+        {c$sslp10 [cname=所属楼盘10/] [tclass=archive/] [val=a/] [arid=3/] [chid=4/] [detail=1/]}
+        <p>{subject}</p>
+        <p> {address}</p>
+        {/c$sslp10}
+        <p>{ccid12title}</p>
+      </div>
+      <div class="other tr"> <a href="{if $v['pid3']}{arcurl}{else}{c$thumb_url [cname=thumb_url/] [tclass=image/] [tname=thumb/] [val=u/]}{url}{/c$thumb_url}{/if}" target="_blank">
+        <p>{c$shi}{c$ting}{c$wei}</p>
+        {if $v['mj']}<p class="fco fw6 dj">{mj}M&sup2;</p>{/if}
+        </a> </div>
+      <div class="blank0"></div>
+    </div>
+    [/row]
+    {/c$hxlb}
+    {if $mpacount>0}
+    <div class="ptb10">{mpnav}</div>
+    {else}
+    <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+    {/if} </div>
+  {tpl$houselist_right}
+  <div class="blank0"></div>
+</div>
+<script src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript">
+    $('#tab-page').html('<span class="msg l">共有<b class="fco">{$mpacount}</b>个结果</span>')
+</script>
+<!-- 底部 --> 
+{tpl$foot}
+</body>
+</html>

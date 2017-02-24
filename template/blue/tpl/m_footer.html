@@ -1,0 +1,69 @@
+<div id="tpl_popup_menu" class="dn">
+    <ul class="list">
+        <li class="divider"><span class="f-peter-river left icon-f009"></span>导航栏</li>
+    </ul>
+    <div class="panel-menu clearfix">
+        <a href="{$mobileurl}">首页</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl}{/c$cnode}">新房</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl3}{/c$cnode}">房价</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl}{/c$cnode}">二手</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=4/]}{indexurl}{/c$cnode}">出租</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl3}{/c$cnode}">经纪人</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl4}{/c$cnode}">经纪公司</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl2}{/c$cnode}">小区</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=612/]}{indexurl}{/c$cnode}">写字楼</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=616/]}{indexurl}{/c$cnode}">商铺</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=560/]}{indexurl}{/c$cnode}">看房团</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=5/]}{indexurl}{/c$cnode}">团购</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=1/]}{indexurl}{/c$cnode}">资讯</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=30/]}{indexurl}{/c$cnode}">视频</a>
+        <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=600/]}{indexurl}{/c$cnode}">图库</a>
+    </div>
+    <ul class="list">
+        <li class="divider"><span class="f-peter-river left icon-f0b2"></span>工具栏</li>
+    </ul>
+    <div class="panel-menu clearfix">
+        <a class="col-1-2" href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=1/]}{indexurl2}{/c$caidx}"><span class="f-sliver left icon-e077"></span>购房工具</a>
+        <a class="col-1-2" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl1}{/c$cnode}"><span class="f-sliver left icon-e616"></span>新房地图</a>
+        <a class="col-1-2" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl1}{/c$cnode}"><span class="f-sliver left icon-e615"></span>二手房地图</a>
+        <a class="col-1-2" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=4/]}{indexurl1}{/c$cnode}"><span class="f-sliver left icon-f05b"></span>租房地图</a>
+    </div>
+    <ul class="list">
+        <li class="divider"><span class="f-peter-river left icon-e9c5"></span><a href="{c$fid [tclass=freeurl/] [fid=113/]}{/c$fid}">客户端</a></li>
+    </ul>
+</div>
+
+
+<a href="#" id="gotop"></a>
+
+<script type="text/javascript" src="{$tplurl}mobile/js/zepto.js?{$user_version}"></script>
+<script type="text/javascript" src="{$tplurl}mobile/js/Jingle.debug.js?{$user_version}"></script>
+{if empty($m_index)}
+<div class="dn" id="tpl_popup_login" style="padding:10px">
+    <form name="login" id="login" method="get" onsubmit="return _08Login(this);">
+        <div class="input-group">
+            <input type="hidden" name="subdata" value="1"/>
+            <input type="text" name="username" required maxLength="20" min="0" max="20" step="3" placeholder="用户名">
+            <input type="password" name="password" required title="密码不正确" placeholder="密码">
+            <input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+        </div>
+        <input name="cmslogin" type="hidden" value=" "/>
+        <button class="block" name="bsubmit" type="submit" data-icon="icon-e603">会员登录</button>
+        <div class="grid mt5 f-asbestos fz12">
+            {if @$caid==11}
+            <div class="col-1"><a class="icon fl" href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=11/]}{indexurl}{/c$caidx}#zhmm" data-target="section" onclick="J.closePopup();" data-icon="icon-f059">忘记密码</a></div>
+            {else}
+            <div class="col-1"><a class="icon fl" href="{c$caidx [tclass=cnode/] [listby=ca/] [casource=11/]}{indexurl}{/c$caidx}#zhmm" data-icon="icon-f059">忘记密码</a></div>
+            {/if}
+            <div class="col-1"><a class="icon fr" href="{$mobileurl}/register.php" data-icon="icon-e641">会员注册</a></div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="{$tplurl}mobile/js/mobile.js?20150202"></script>
+{/if}
+<!-- custom -->
+{if !empty($aid) && !empty($chid)}
+<script type="text/javascript">
+    _08cms.locStore.setGroup('chid_{chid}','{$aid}',10);
+</script>
+{/if}

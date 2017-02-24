@@ -1,0 +1,8 @@
+/* CSS Document */
+._08_upload_box{margin:5px;}
+._08_upload_list{list-style:none;margin:0;padding:0;width:100%;}
+._08_upload_list li{width:23%;height:125px;margin:1%;overflow:hidden;float:left;}
+._08_upload_itembox a{position:absolute;width:30px;height:30px;right:0px;top:0px;background:url(upimg_x.png);}
+._08_upload_action{background:#FFF url('add.png') no-repeat 50% 50%;background-size: cover;}
+._08_upload_action input{width:100%;height:100%;opacity:0;position:absolute;top:0px;left:0px;}
+

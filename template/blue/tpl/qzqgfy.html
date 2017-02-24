@@ -1,0 +1,97 @@
+<?php
+//session_start();
+include_once M_ROOT."./include/general.inc.php";
+include_once M_ROOT."./include/common.fun.php";
+include_once M_ROOT."./include/adminm.fun.php";
+ include_once M_ROOT.'./etools/qzqgfy.php';
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>发布房源-{$hostname}</title>
+{tpl$headinner}
+{tpl$kuayujs}
+<script type="text/javascript">
+    var tipm_ckkey = '<?=$ckpre?>mTips_List';</script>
+<script type="text/javascript" src="{$cms_abs}include/js/common.js"></script>
+<script type="text/javascript" src="{$cms_abs}include/js/adminm.js"></script>
+<script type="text/javascript" src="{$cms_abs}include/js/setlist.js"></script>
+<script type="text/javascript" src="{$cms_abs}include/js/My97DatePicker/WdatePicker.js"></script>
+<!-- ueditor -->
+<script type="text/javascript" src="<?=$cmsurl?>static/ueditor1_4_3/ueditor.config.js"></script>
+<script type="text/javascript" src="<?=$cmsurl?>static/ueditor1_4_3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="<?=$cmsurl?>static/ueditor1_4_3/lang/zh-cn/zh-cn.js"></script>
+<!-- ueditor end -->
+<script type="text/javascript" src="{$cms_abs}include/js/tree.js"></script>
+<script type="text/javascript" src="{$cms_abs}include/js/_08cms.js"></script>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"> </script>
+<!--<script type='text/javascript' src='<?php echo $cms_abs; ?>include/sms/cer_code.js'></script>-->
+
+<!-- 验证 -->
+<link rel="stylesheet" href="{$cms_abs}images/common/validator.css" />
+<script type="text/javascript" src="{$cms_abs}include/js/validator.js"></script>
+<!-- /验证 -->
+<!-- 弹出层 -->
+<script type="text/javascript" src="{$cms_abs}include/js/floatwin.js"></script>
+<script type="text/javascript">var isOpenMob='arcxqpub';</script>
+<link type="text/css" rel="stylesheet" href="{$tplurl}css/window.css?{$user_version}" />
+<!-- /弹出层 -->
+</head>
+<body>
+{tpl$fb_head}
+<link type="text/css" rel="stylesheet" href="{$tplurl}css/fbfy.css?{$user_version}" />
+<div class="wrap">
+    <div class='x_tip x_arial'> 
+    	发布提示<br/>
+        一、目前您是以游客身份发布需求，您发布的信息只能通过网站管理修改删除。 <br>
+        二、<span style="color:#FF0000;">推荐</span>：注册会员发布求租求购信息，您可以随时修改删除需求信息。
+        <span style="display:inline-block; padding:2px; border:1px solid #CCC; background:#FFF;">&nbsp;
+        <a href="../register.php" target="_parent">点击注册&gt;&gt;</a>&nbsp;</span>
+   </div>
+   
+  <script type="text/javascript">var _08cms_validator = _08cms.validator('archivedetial');</script>
+  <form name="archivedetial" id="archivedetial" method="post" enctype="multipart/form-data" action="{$cms_abs}info.php?fid=112&action={$action}&chid=$chid">
+  <!--input type="hidden" name="_08_hash" value="f127bcef792571e4961b7885de7588c1" /-->
+  <table border="0" cellpadding="0" cellspacing="1" class="black tabmain marb10">
+  <tr class="header"><td colspan="2"><b>{$channel[cname]} - 基本属性</b></td></tr>
+  <input type='hidden' name='fmsend_reload_flag' value='1420678619_0EbEjI' />
+  
+	<?php
+        if(!submitcheck('bsubmit')){
+            addqzqg($oA,$caid,$chid,$action,$sms,$channel);
+        }
+	?>
+  <!--短信可用-->
+  {if $sms->smsEnable('arcxqpub')}
+  <!--短信可用-->
+    <tr id="sendtophone">
+    <td width="150px" class="item1"><b><font color="red"> * </font>验证码</b></td>
+    <td class="item2">
+      <input type="hidden" name="stamp" id="stampinfo" value=""/>
+      <input  type="text" size="20" id="msgcode" name="msgcode" value="" rule="text" must="1" mode="" regx="/^\s*\d{4,8}\s*$/" min="" max="" rev="确认码" ajaxpara2="fmdata[lxdh]"/>
+      <div class="blank8"></div>
+      <button type="button" onclick="sendverCode(60)" class="vcode" id="vcode">点击获取确认码</button>
+    </td>
+    </tr>
+    {else}
+    {c$regcode [tclass=regcode/] [type=archive_xq/]}
+    <tr>
+    <td width="150px" class="item1"><b><font color="red"> * </font>验证码</b></td>
+    <td class="item2">
+     <?php echo _08_HTML::getCode('archivedetial2', 'archivedetial', 'txt');?>
+    </td>
+    </tr>
+    {/c$regcode}
+    {/if}
+  </table>
+  <div align="center" class="ptb20"><input class="btn btn-lg form-bdrs" type="submit" name="bsubmit" value="确定并发布"></div>
+  </form>
+</div>
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/smsverif.js"></script>
+<script type="text/javascript">
+_08cms_validator.init("ajax","msgcode",{ url: '{$cms_abs}<?php echo _08_Http_Request::uri2MVC("ajax=sms_msend&mod=arcxqpub&act=check&isjs=1&_rnd_=v01&code=%1&tel=%2"); ?>' });
+</script>
+</body>
+</html>

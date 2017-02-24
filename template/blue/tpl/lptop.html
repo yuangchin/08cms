@@ -1,0 +1,80 @@
+<?php $pagetype = 'newhouse'; ?>
+{tpl$lp_msg}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/lpindexys.css?{$user_version}"/>
+{tpl$head}
+<!-- 判断是否为楼盘文档 -->
+{if $chid==107}
+	{c$08cmsabc [cname=资讯特价房激活楼盘/] [tclass=archives/] [val=abc/] [limits=1/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/]} <?php $lpid=$abc['aid']; ?> {/c$08cmsabc}
+{elseif $chid==7 || $chid==11}
+	<?php $lpid=$pid3; ?>
+{else}
+	<?php $lpid=$aid; ?>
+{/if}
+{c$08cmsabc [tclass=archive/] [val=abc/] [id=$lpid/][detail=1/]}
+{if $abc['lphf']}
+{c$image [cname=image/] [tclass=image/] [tname=lphf/]}
+<div class="clearfix wrap">
+	<img src="{url}" width="1200" height="120" />
+</div>
+<div class="blank10"></div>
+{/c$image}
+{/if}
+<div class="wrap">
+	<div class="bread clearfix">
+		<span class="l"><a href="{$cms_abs}"><i class="ico08 ico">&#xf015;</i>首页</a>{c$nav [tclass=nownav/] [coids=,caid,ccid1,ccid2,ccid3,ccid14,ccid4,ccid17,ccid12,ccid18/]}<i class="pipe">/</i>{if $v['indexurl'] != '#'}<a href="{indexurl1}">{title}</a>{else}{title}{/if}{/c$nav}<i class="pipe">/</i>{subject}</span>
+		<span class="r"><i class="pipe">更新时间：</i>{c$date [tclass=date/] [tname=updatedate/] [date=Y年m月d日/]}{/c$date}<i class="pipe">/</i><span class="fcr"><div id="_08_count_a_{$abc['aid']}" class="count08" url-params="{type: 'a', modid: 4, field: 'clicks'}">&nbsp;</div></span>次浏览<i class="pipe">/</i><a href="{arcurl5}"><span class="fcr"><div id="_08_count_cu_{$abc['aid']}" class="count08" url-params="{type: 'cu', modid: 1, field: 'aid',_and:'tocid_0'}">&nbsp;</div></span>条评论</a><i class="pipe">/</i><a class="{arcurl}#commuadd2"><span class="fcr"><div id="_08_count_cu-yx_{aid}" class="count08" url-params="{type: 'cu', modid: 3, field: 'aid'}">&nbsp;</div></span>人有意向</a><i class="pipe">/</i><a href="{$cms_abs}index.php?caid=516&lpid={$aid}"><span class="fcr"><div id="_08_count_cu-wd_{aid}" class="count08" url-params="{type: 'a', modid: 4, field: 'awds'}">&nbsp;</div></span>人提问</a></span>
+	</div>
+	<div class="clearfix lptit">
+	<!-- 调用楼盘二维码 -->
+	    <div class="ewmurl">
+	    	<!--内页扫描微信/查看手机-->
+			{tpl$qrcode}
+	    	<div class="qqqun">{if @$qqqun}{qqqun}{else}{$user_qq_qun}{/if}</div>
+	    </div>
+		<h1 class="title">{subject}</h1>
+		<div class="items">
+			<span class='tag'>{ccid18title}</span>{c$catalogs [tclass=catalogs/] [listby=co12/] [cosource12=1/] [ccids12=$abc[ccid12]/]}<span class='tag'>{title}</span>{/c$catalogs}{if @$abc['tslp']}<?php echo cls_uview::field_value($abc['tslp'], 'tslp', 4, "<span class='tag'>(title)</span>"); ?>
+        	{/if}
+        </div>
+	</div>
+</div>
+
+<!-- nav -->
+<div class="center">
+	<div id="lpcon-nav" class="lpcon-nav clearfix">
+		<div class="lp-inner clearfix">
+			<ul class="lp-main-nav">
+				<li id="fmn0"><a href="{arcurl}">楼盘首页</a></li>
+				<li id="fmn12"><a href="{arcurl12}">楼盘详情</a></li>
+				<li id="fmn1"><a href="{arcurl1}">楼盘动态</a></li>
+				<li id="fmn2"><a href="{arcurl2}">历史价格</a></li>
+				<li id="fmn3"><a href="{arcurl3}">图库</a></li>
+				<li id="fmn4"><a href="{arcurl4}">户型图</a></li>
+				<li id="fmn5"><a href="{arcurl5}">楼盘点评</a></li>
+				<li id="fmn6"><a target="_blank" href="{$cms_abs}index.php?caid=516&lpid={$lpid}">问答</a></li>
+		        {c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=107/] [mode=in/] [arid=1/]}
+		        {if $n['counts']}<li id="fmn11"><a href="{$abc[arcurl11]}">特价房</a></li>{/if}
+		        {/c$num}
+
+				{if !empty($abc['ltbk'])}<li><a href="{$abc['ltbk']}" target="_blank">业主论坛</a></li>{/if}
+		        <li id="gzlp" class="gzlp dn"><span class="kft-lbl dn">看房</span><i class="ico08">&#xf052;</i><span class="tg-lbl dn">团购</span> <i class="ico08 fz18">&#xe684;</i></li>
+			</ul>
+
+		</div>
+	</div>
+</div>
+<!-- /nav -->
+<div class="blank0"></div>
+<?php
+	$lpdj = $abc['dj'];
+	$lpsubject = $abc['subject'];
+?>
+{/c$08cmsabc}
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript">
+var lpid = {$lpid};
+$("#fmn{addno}").addClass('act');
+$('#kft,#tg').on('validatePass', function () {
+	fyCummus(this,'报名');
+})
+</script>

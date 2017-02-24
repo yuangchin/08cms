@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">架构资料列表 fromids</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>架构资料列表是系统标签之一，不常用。</p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">参数</div>
+<div>
+	<ul>
+    <li class="bg3">cname 标识名称</li>
+    <li class="t1">方便查看标识的用法，不在模版中调用。</li>
+    <span class="blank2"></span>
+    <li class="bg3">ename 英文ID</li>
+    <li class="t1">标识ID由字母,数字及下划线组成,开头字符必为字母。</li>
+    <span class="blank2"></span>
+    <li class="bg3">template 标识模板(重要)</li>
+    <span class="blank2"></span>
+    <li class="t1">参考文档列表标识。</li>
+	<span class="blank2"></span>
+    <li class="bg3">val 标识返回的数组名称(重要)</li>
+    <span class="blank2"></span>
+    <li class="t1">标识返回的数组名称，系统默认为v，当标识存在嵌套时，该参数需设为不同于上下级标识。在当前标识内可用{英文标识名称}或{$v[英文标识名称]}调用信息，跨标识调用信息只能使用{$v[英文标示名称]}。<br /><p>注意同一类型的不同层次标签返回的数组名不能一样，冲突，系统会找不到返回的位置。例如在一个文档列表标签中包含了另一个文档列表，两者的返回数组名不能同时为v。我们一般把最外层的返回数组定义为v，里层定义为u。</p></li>
+	<span class="blank2"></span>
+    <li class="bg3">limits 列表中显示多少条内容</li>
+    <li class="t1">例如当其为10时，列表显示10条内容。</li>
+    <span class="blank2"></span>
+    <li class="bg3">listby 作为列表项</li>
+    <li class="t1">参考其他标识。</li>
+    <span class="blank2"></span>
+    <li class="bg3">ids1 会员模型</li>
+    <li class="t1">[ids1=1/]:全部，[ids1=2/]:手动指定。</li>
+    <span class="blank2"></span>
+    </ul>
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

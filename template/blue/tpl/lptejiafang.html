@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}特价房{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+{tpl$lptop}
+<div class="wrap clearfix">
+	<div class="w800 l">
+        <div class="lp-coltit"><h3 class="tit1">{subject}特价房</h3></div>
+        <div class="bd-gray p15">
+            <ul class="arial tejia-list">
+            {c$lpdtlb [cname=特价房列表/] [tclass=archives/] [ttl=600/] [chsource=2/][detail=1/][chids=107/] [mode=in/] [arid=1/] [mp=1/]}
+                <li>
+                    <div class="info l">
+                        <h3><a class="fz14 fwb mr5" href='{arcurl}' target="_blank" class="lv2"><span>{subject}</span></a>{c$08cms2 [cname=08cms2/] [tclass=archives/] [val=b/] [limits=1/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/]}<a class="fcg" href="{arcurl}">{subject}</a>{/c$08cms2}</h3>
+                        <div>{c$shi}{c$ting}{c$wei} | <span class="mr5">第{szlc}层(共{zlc}层)</span> 面积：<span class="fcr ">{mj}</span>m&sup2;</div>
+                    </div>
+                    <div class="other tr r">
+                        {if $v['zj']}<b class="fs18 fcr">{zj}</b>万{else}<b class="fs18 fcr">待定</b>{/if}<br />
+                        {if $v['dj']}单价:<i class="fcr">{dj}</i>元/m&sup2;{/if}
+                    </div>
+                </li>
+            {/c$lpdtlb}
+            </ul>
+            <!-- 分页 -->
+            {$mpnav}
+        </div>
+     </div>
+     {tpl$lpright}
+</div>
+{tpl$tpl_lp_footer}
+</body>
+</html>

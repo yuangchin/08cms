@@ -1,0 +1,59 @@
+<!-- 左边信息 -->
+<div class="side">
+<!-- 用户信息 -->
+<div class="ui-box1 col1">
+     <div class="subT">
+          <div class="l h">{if $xingming}{xingming}{else}{mname}{/if}</div>
+     <div class="l rz">
+{c$jjrsfrz [cname=经纪人身份认证/] [tclass=fromid/] [type=mctid/] [id=$mctid2/]}<a href="javascript:void(0)"><img border=0 {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="{cname}通过"/></a>{/c$jjrsfrz}{c$jjrzzrz [cname=经纪人执照认证/] [tclass=fromid/] [type=mctid/] [id=$mctid3/]}<a href="javascript:void(0)">&nbsp;<img border=0 {c$icon [cname=icon/] [tclass=image/] [tname=icon/] [val=u/]}src="{url}"{/c$icon} title="{cname}通过"/></a>{/c$jjrzzrz}<br />
+     </div>
+     </div>
+     <div class="con">
+     <label for="">服务等级：</label> {c$xytb2 [cname=信用图标2/] [tclass=fromid/] [val=d/] [type=grouptype17/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} title="{cname}" class="vm"/>{/c$xytb2}<br>
+     注册时间：{c$regdate_ymd [cname=regdate_ymd/] [tclass=date/] [tname=regdate/] [date=Y-m-d/]}{/c$regdate_ymd}<br>
+     积&nbsp;&nbsp;&nbsp;&nbsp;分：<span class="fcr">{currency2}</span>分<br>
+     上次登录：{c$lastvisit_ymd [cname=lastvisit_ymd/] [tclass=date/] [tname=lastvisit/] [date=Y-m-d/]}{/c$lastvisit_ymd}<br>
+     访&nbsp;问&nbsp;量：<span class="fcr"><div id="_08_count_m_{mid}" class="count08" url-params="{type: 'm', modid: 2, field: 'msclicks'}">&nbsp;</div></span>
+        <div class="blank15"></div>
+        <a id="sendtophone" data-head="发送到手机" data-css='{"width":"400"}' data-bodycss='{"padding":"20"}' class="btn form-bdrs btn-dark-blue btn-jqModal dn" href="#pop-phone" rel="nofollow"><i class="ico08 mr5">&#xe74d;</i>免费发送短信到手机</a>
+     </div>
+</div>
+{if $dpgg}
+<!-- 店铺公告 -->
+<div class="ui-box1 col1">
+     <div class="subT">
+          <span class="l h">店铺公告 </span>
+     </div>
+     <div class="con">{dpgg}</div>
+</div>
+{/if}
+<!-- 基本信息 -->
+<div class="ui-box1 col1">
+     <div class="subT">
+          <span class="l h">基本信息</span>
+     </div>
+     <div class="con">
+        {c$member  [tclass=member/] [chsource=2/] [detail=1/]}
+            {if $v['incheck4']}
+                 {c$jjrgs2 [cname=经纪人公司2/] [tclass=member/] [val=a/] [arid=4/]}<a class="fcr" href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a>{/c$jjrgs2}<br>
+             {/if}
+        {/c$member}
+          服务区域：{c$jhjjrqy [cname=激活经纪人区域/] [tclass=mcnode/] [val=v/] [cnsource=ccid1/] [cnid=$szqy/]}<a href='{mcnurl1}' target="_blank">{title}</a>{/c$jhjjrqy}<br/>
+          {if $qq}
+              &nbsp;&nbsp;QQ：<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={qq}&site=qq&menu=yes">
+          <img border="0" src="http://wpa.qq.com/pa?p=2:{qq}:41" alt="点击这里给我发消息" title="点击这里给我发消息">
+         </a><br/>{/if}
+          <div class="emall clearfix">
+               <p class="l">电子邮箱：</p><i><a href='mailto:{email}'>{email}</a></i>
+          </div>
+     </div>
+     <div class="tel fwb arial"><i class="ico08 mr3 fz18">&#xe60e;</i>{if $lxdh}{lxdh}{else}更新中...{/if}</div>
+</div>
+</div>
+<!-- 发送到手机短信模板 -->
+<script src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript">
+var isOpenMob='memb0info';
+var msgpara = 'm,{mchid},{mid}'; 
+</script>
+{tpl$smsphone}

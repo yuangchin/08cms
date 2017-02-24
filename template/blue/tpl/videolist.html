@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}-{$hostname}</title>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/shipin.css?{$user_version}" />
+</head>
+<body>
+    {tpl$tpl_vid_head}
+    <div class="wrap">
+        <div class="w900 l">
+            {if $caid == 30 && empty($searchword)}
+            <div class="spqhfour clearfix">
+                <div class="spqh l jqDuang" data-obj="li" data-cell=".thumb" data-effect="leftLoop">
+                    <div>
+                        <ul>
+                            {c$pushs [tclass=pushs/] [paid=push_118/] [limits=5/][ttl=600/]}
+                            <li>
+                                <a href="{$v['url']}" target="_blank">
+                                    {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=425/] [maxheight=320/]}<img src="{url}" width="425" height="320" alt="{$v['subject']}" data-url="{$v['url']}"/>{/c$image}
+                                    <div class="wenben clearfix">
+                                        <div class="bf l"><i class="ico08">&#xf0de;</i></div>
+                                        <div class="bt l">{subject}</div>
+                                    </div>
+                                </a>    
+                            </li>
+                            {/c$pushs}
+                        </ul>
+                    </div>
+                    <div class="thumb">
+                    </div>
+                </div>
+                <div class="four l">
+                    <ul class="clearfix">
+                        {c$pushs [tclass=pushs/] [paid=push_95/] [limits=4/][ttl=600/]}
+                        <li>
+                            <a href="{$v['url']}" target="_blank">
+                                {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=195/] [maxheight=130/]}<img src="{url}" width="195" height="130" alt="{$v['subject']}" data-url="{$v['url']}"/>{/c$image}
+                                <div class="wenben">{subject}</div>
+                            </a>
+                            <p>更新日期：{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}</p>
+                        </li>
+                        {/c$pushs}
+                    </ul>                  
+                </div>
+            </div>
+            <div class="blank30"></div>
+            {/if}
+            {c$archives [cname=视频列表/] [tclass=archives/] [limits=30/] [chsource=2/] [chids=12/] [caidson=1/] [casource=2/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [ttl=600/] [mp=1/]}
+            <div class="lpsp">
+                <h2>{c$jhvdlm [tclass=cnode/] [val=f/] [listby=ca/] [casource=active/]}{title}{/c$jhvdlm}</h2>
+                <div class="lpspnr clearfix">
+                    <ul  class="clearfix">
+                        [row]
+                        <li>
+                            <a href="{arcurl}" target="_blank">
+                                {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=195/] [maxheight=130/]}<img src="{url}" width="195" height="130" alt="{$v['subject']}" data-url="{$v['arcurl']}"/>{/c$image}
+                                <div class="wenben">{subject}</div>
+                            </a>
+                            <div class="ys">更新日期：{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}</div>
+                            <div class="dujia"></div>
+                        </li>  
+                        [/row]   
+                    </ul>
+                </div>
+            </div>
+            {/c$archives}
+            <div class="blank20"></div>
+            {if $mpacount>0}
+            {$mpnav}
+            {else}
+            <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+            <div class="blank8"></div>
+            {/if}
+            <div class="blank20"></div>
+        </div>
+        <div class="w300 r">
+            <h2 class="tjph">推荐视频</h2>
+            <div class="blank15"></div>
+            <ul class="tjphall">
+                {c$pushs [tclass=pushs/] [paid=push_96/] [limits=5/][ttl=600/]}
+                <li href="{url}" class="tjspnr {if $v['sn_row']==5}pb20{/if} clearfix">
+                        <a href="{$v['url']}" target="_blank">
+                                {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=67/]}<img src="{url}" width="100" height="67" alt="{$v['subject']}" data-url="{$v['url']}"/>{/c$image}
+                            </a>
+                        <h4><a href="{url}" target="_blank">{subject}</a></h4>
+                        <div class="gxdj">更新：{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}</div>                       
+                </li>   
+                {/c$pushs}
+                
+            </ul>
+            <div class="blank20"></div>
+            <h2 class="tjph">热播排行</h2>
+            <div class="blank15"></div>
+            <ul class="tjphall">
+                {c$jhsplb [cname=激活视频列表/] [tclass=archives/] [chsource=2/] [chids=12/] [orderstr=a.clicks DESC/] [ttl=600/] [caidson=1/] [casource=2/]}
+                {if $v['sn_row']==1}
+                <li class="rbphnrno1 clearfix">
+                    <div class="no1 l">
+                        NO.1
+                    </div>
+                    <h4><a href="{arcurl}" target="_blank">{subject}</a></h4>
+                    <div class="gxdj">点击：<div id="_08_count_xxx_{aid}" class="count08" url-params="{type: 'a', modid: 12, field: 'clicks'}"></div>    
+                </li>
+                {else}
+                
+                <li class="rbphnrno clearfix">
+                    <div class="{if $v['sn_row']<4}no23{else}no{/if}">
+                        {$v['sn_row']}
+                    </div>
+                    <a href="{arcurl}" target="_blank">
+                        {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=67/]}<img src="{url}" width="100" height="67" alt="{$v['subject']}" data-url="{$v['arcurl']}"/>{/c$image}
+                    </a>
+                    <h4><a href="{arcurl}" target="_blank">{subject}</a></h4>
+                    <div class="gxdj">点击：<div id="_08_count_xxx_{aid}" class="count08" url-params="{type: 'a', modid: 12, field: 'clicks'}"></div>    
+                </li>
+                {/if}
+                {/c$jhsplb}
+                
+            </ul>
+        </div>
+        <div class="blank15"></div>
+    </div>
+
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+    <script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+</body>
+</html>

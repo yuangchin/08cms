@@ -1,0 +1,54 @@
+<?php $ismem=1;?>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/sycss.css?v=20140404"/>
+<div class="banner banner_old">
+<div class="wrap">
+<div class="u_i">
+     <div class="p">
+          <img class="vm" {c$image100_130 [cname=image100_130/] [tclass=image/] [tname=image/] [val=u/] [emptyurl=images/common/mlogo.gif/]}src='{url}' width="100" height="130"{/c$image100_130} alt="{xingming}" border="0" />
+     </div>
+     <div class="n">{xingming}</div>
+     <div class="tel">{if $lxdh}{lxdh}{else}-{/if}</div>
+</div>
+<div class="btn">
+<a class="collect l" onclick="return publicCollect('{$mid}','m');" rel="nofollow" href="javascript:void(0);"><i class="ico08">&#xf004;</i> 店铺收藏</a>
+<div class="share l">
+     <div class="bdsharebuttonbox" data-tag="share_1"><a class="bds_more" data-cmd="more">更多</a></div>
+     <script> window._bd_share_config = {
+      "common": {
+        "bdSnsKey": {},
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": "",
+        "bdStyle": "0",
+        "bdSize": "16"
+      },
+      "share": {
+        "bdSize": 16
+      }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+</div>
+</div>
+</div>
+<!--面包屑 导航-->
+<div class="nav_main">
+   <div class="wrap">
+        <div class="bread clearfix">
+            <ul class="nav_main1 r">
+                <li id="spaceid_0"><a href="{mspacehome}">二手房</a></li>
+                {c$jjrkjlb [cname=经纪人空间列表/] [tclass=mcatalogs/] [listby=0/] [casource=1/] [caids=1,2,3,5/]}
+                <li id="spaceid_{mcaid}"><a href="{indexurl}">{title}</a></li>
+                {/c$jjrkjlb}
+            </ul>
+            <span class="l mt5"><a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href='{c$jjrjd [cname=经纪人节点/] [tclass=mcnode/] [cnsource=mcnid/] [cnid=14/]}{mcnurl}{/c$jjrjd}'>经纪人列表</a><i class="pipe">/</i>{xingming}的店铺</span>
+        </div>
+   </div>
+<script type="text/javascript">
+document.getElementById("spaceid_{mcaid}").className = "cur";
+</script>
+</div>
+
+

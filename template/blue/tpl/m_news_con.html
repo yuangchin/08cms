@@ -1,0 +1,162 @@
+<?
+// 处理ajax分页调用
+$page = intval(cls_Parse::Get('_da.page'));
+$inajax = intval(cls_Parse::Get('_da.inajax'));
+if($page>1 && $inajax>0){
+?>
+{c$content [cname=content/] [tclass=text/] [tname=content/] [dealhtml=safehtml/] [badword=1/] [mp=1/]}{/c$content}
+<?php
+die(); //cls_Parse::Message('');
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  	<title>{subject}-{$cmstitle}</title>
+  	<meta name="keywords" content="{keywords}"/>
+	<meta name="description" content="{abstract}"/>
+	{tpl$m_headinner}
+	<?php $channel_t = 1; ?>
+</head>
+<body>
+<div id="section_container">
+	<!-- 页面容器 -->
+	<section id="index_section" data-btn="back" title="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}{title}{/c$cnode}" class="innblank44 active">
+        {tpl$m_header}
+		<footer>
+		    {c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}"><i class="icon-f03a"></i>{title}</a>{/c$cnode}
+		    <a id="btn_actionsheet" href="#"><i class="icon-f1e0"></i>分享</a>
+		    <a href="#comment_section" data-target="section"><i class="icon-e755"></i>在线点评 <span class="count ">{c$num [tclass=outinfos/] [limits=1/] [dsid=0/] [wherestr=SELECT COUNT(*) num FROM {$tblprefix }commu_zixun c where checked=1 and aid='$aid' and tocid=''/]}{num}{/c$num}</span></a>
+		</footer>
+		<article id="up_refresh_article" class="active" >
+			<div>
+				<ul class="list detail">
+					<li>
+						<h1>{subject} </h1>
+						<div class="item fz12 grid">
+							<span class="col-1"><span class="f-asbestos"><span class="icon-e014"></span>{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$date} <span class="icon-e000"></span>{clicks} </span></span>
+							<span class="col-0"><a class="f-peter-river" href="#comment_section" data-target="section"><span class="icon-e755"></span>{c$num [tclass=outinfos/] [limits=1/] [dsid=0/] [wherestr=SELECT COUNT(*) num FROM {$tblprefix }commu_zixun c where checked=1 and aid='$aid' and tocid=''/]}{num}{/c$num}</a></span>
+						</div>
+					</li>
+					{if $tuji}
+					<li>
+						<div id="slider1" class="slider" style="height:200px">
+		                    <div>
+						{c$tuji [tclass=images/] [tname=tuji/] [limits=30/] [maxwidth=640/] [thumb=2/] [padding=0/]}
+		                        <div class="slider-item"><a href="{$arcurl1}&img_tj={$v['sn_row']}"><img   title="{url_s}" src="{$cms_abs}userfiles/notdel/blank.gif"/>
+		                         <span class="slider-text">{title}</span></a></div>
+						{/c$tuji}
+
+		                    </div>
+		                    <span id="number" class="number"></span>
+		                </div>
+					</li>
+					{/if}
+					<li class="detail-con detail-img" id="load_content">
+					  	{c$content [cname=content/] [tclass=text/] [tname=content/] [dealhtml=safehtml/] [badword=1/] [mp=1/]}{/c$content}
+					</li>
+				</ul>
+				<div class="refresh-container f-asbestos" {if $mpcount<=1}style="display:none;"{/if}>点击加载更多...</div>
+				<ul class="list list-media">
+					{c$archives [tclass=archives/] [limits=1/] [chsource=2/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/] [ttl=3600/]}
+					<li class="divider"><i class="icon icon-f054"></i><a href="{arcurl}">相关楼盘</a></li>
+					<li>
+                        <a href="{arcurl}">
+                            <img class="media-object" height="80" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=80/] [thumb=1/]}{url_s}{/c$image}">
+                            {if $v['ccid41']}<div class="tag">顶</div>{/if}
+                            <strong>{$v[subject]} </strong>
+                            {if $v['dj']}<p class="tar"><span class="fcr fz18">{dj}</span>元/m&sup2;</p>{/if}
+                            <p class="f-alizarin">{bdsm}</p>
+                            <p>{address}</p>
+                            <p><span class="label">{ccid1title}</span>{if $v['ccid2title']}<span class="label peter-river">{ccid2title}</span>{/if}<span class="label amethyst">{ccid12title}</span><span class="label alizarin">{ccid18title}</span>
+                            </p>
+                        </a>
+                    </li>
+					{/c$archives}
+                    {c$jhtjzx [tclass=archives/] [chids=1/] [chsource=2/] [limits=3/] [mode=relate/] [ttl=600/]}
+					<li class="divider">相关新闻</li>
+                    <li>
+					[row]
+                    	<div class="list-item"><a href="{arcurl}">{subject}</a></div>
+					[/row]
+                    </li>
+                    {/c$jhtjzx}
+					{c$archives [tclass=archives/] [chids=1/] [chsource=2/] [limits=3/] [caidson=1/] [casource=2/]  [orderstr=a.mclicks DESC/] [forceindex=a.mclicks/] [ttl=600/] [detail=1/]}
+					<li class="divider">资讯排行</li>
+					<li>
+					[row]
+                    	<div class="list-item"><a href="{arcurl}">{subject}</a></div>
+					[/row]
+                    </li>
+                    {/c$archives}
+					{c$commus [tclass=commus/] [cuid=1/] [limits=3/] [wherestr=aid=$aid and tocid=''/]}
+					<li class="divider" data-icon="icon-f054">
+						<a href="#comment_section" data-target="section">最新点评</a>
+					</li>
+					[row]
+					<li class="comment-list">
+						<div class="grid f-asbestos mb5">
+							<div class="col-1 f-peter-river">{mname}</div>
+							<span class="fz12"><?=u_time_format($v['createdate'])?></span>
+						</div>
+					  	{content}
+					</li>
+					[/row]
+					{/c$commus}
+				</ul>
+    			{tpl$m_footer_ft}
+			</div>
+		</article>
+	</section><!-- /主框架 -->
+
+    {tpl$m_dp}<!-- /点评 -->
+</div>
+{tpl$m_footer}
+<script type="text/javascript">
+	//点击加载内页
+	var loadopt={
+		'url'       : '{$arcurl}',
+		'aj_page'   : 1,
+		'aj_pmax'   : '{$mpcount}',
+		'loadObj'   : '#load_content',//加载内容的对象
+		'scrollObj' : '#up_refresh_article',//滚动对象
+		'moreObj'   : '.refresh-container'//点击对象
+	}
+	$(loadopt.moreObj).click(function(){
+	    morePage(loadopt);
+	});
+</script>
+<script type="text/javascript" src="{$tplurl}mobile/js/TouchSlide.js"></script>
+<script type="text/javascript">
+var $arcImgs = $('.detail-img').find('img');
+	$arcImgs.click(function() {
+		location.href = '{$arcurl1}&img='+($arcImgs.index(this)+1);
+		return false;
+	})
+    TouchSlide({
+		slideCell     : '#slider1' ,
+		mainCell      : '#slider1 div' ,
+		switchLoad    : "title" ,
+		pageStateCell : "#number",
+		showDot       : false
+    });
+
+	//分享
+	$('#btn_actionsheet').click(function(){
+	    J.Popup.actionsheet([{
+			text    : '告诉QQ好友',
+			handler : function(){
+	            window.location.href = 'http://share.v.t.qq.com/index.php?c=share&a=index&title='+encodeURIComponent('{subject}')+'&url={arcurl}';
+	        }
+	    },{
+			text    : '告诉新浪好友',
+			handler : function(){
+	            window.location.href = 'http://service.weibo.com/share/share.php?title='+encodeURIComponent('{subject}')+'&url={arcurl}';
+	        }
+	    }
+	    ]);
+	});
+</script>
+</body>
+</html>

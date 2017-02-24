@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{title}-{/c$cnode}{$cmstitle}</title>
+	<meta name="keywords" content="{keywords}"/>
+	<meta name="description" content="{abstract}"/>
+    {tpl$m_headinner}
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="{subject}" data-btn="back" class="innblank44 active">
+        {tpl$m_header}
+        <footer>
+            {c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}"><i class="icon-f03a"></i>{title}</a>{/c$cnode}
+            <a id="btn_actionsheet" href="#"><i class="icon-f1e0"></i>分享</a>
+        </footer>
+        <article id="up_refresh_article" class="active">
+            <div>
+                <div id="video" class="m8">
+                    {if $scsp}
+                        <video width="100%" height="160" controls>
+                          {c$flash [tclass=flash/] [val=a/] [tname=scsp/]}
+                                <source src="{url}" type="video/mp4" />
+                                <source src="{url}" type="video/webm" />
+                                <source src="{url}" type="video/ogg" />
+                          {/c$flash}
+                           抱歉！您的浏览不支持该视频格式
+                        </video>
+                    {else}
+                        <div style="display:none;">{html}</div>
+                    {/if}
+                </div>
+                <ul class="list detail">
+                    <li class="borN">
+                        <h1>{subject}</h1>
+                        <div class="item fz12"><span class="f-asbestos">
+                            <span class="icon-e014"></span>{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$date} <span class="icon-e000"></span>{clicks}</span></div>
+                    </li>
+                    {if $content}
+                    <li class="divider">视频简介</li>
+                    <li class="detail-con detail-img">
+                        {c$content [tclass=text/] [tname=content/]}{/c$content}
+                    </li>
+                    {/if}
+
+                    {c$xgship [tclass=archives/] [chids=12/] [chsource=2/] [limits=6/] [mode=relate/] [ttl=600/]}
+                    <li class="divider">相关视频</li>
+                    [row]
+                    <li><a href="{arcurl}">{subject}</a></li>
+                    [/row]
+                     {/c$xgship}
+                </ul>
+                {tpl$m_footer_ft}
+            </div>
+        </article>
+    </section>
+</div>
+{tpl$m_footer}
+<script type="text/javascript">
+    //分享
+    $('#btn_actionsheet').click(function(){
+        J.Popup.actionsheet([{
+            text : '告诉QQ好友',
+            handler : function(){
+                window.location.href = 'http://share.v.t.qq.com/index.php?c=share&a=index&title={subject}&url={arcurl}';
+            }
+        },{
+            text : '告诉新浪好友',
+            handler : function(){
+                window.location.href = 'http://service.weibo.com/share/share.php?title={subject}&url={arcurl}';
+            }
+        }
+        ]);
+    });
+</script>
+{if empty($scsp)&&$html}
+<script type="text/javascript">
+if($("#video").html().indexOf("iframe")==-1){
+   $("#video").html('<embed src="{html}" quality="high" width="100%" height="160" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="sameDomain"/>');
+}else{
+    $("#video").html('{html}');
+}
+</script>
+{/if}
+</body>
+</html>

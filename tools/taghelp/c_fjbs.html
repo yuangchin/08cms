@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>副件标识调用</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+
+</head>
+
+<body>
+<div class="w1 h1 bg1">副件标识调用</div>
+<a name="top"></a>
+<span class="blank5"></span>
+
+<div class="w1 h1 bg2">标识说明</div>
+<div>
+<span class="blank5"></span>
+	副件用于对副件模型内的数据输出。
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">标识用途</div>
+<div>
+<span class="blank5"></span>
+	副件主要是指广告、友情链接、一些网站附属信息（如：关于我们，版权申明等）。。
+</div>
+
+<span class="blank5"></span>
+<div class="w1 h1 bg2">副件标识调用</div>
+<div>
+	<ul>
+        <li class="bg3">副件模块标识的添加</li>
+        <li class="t3">
+        在添加标识之前，先添加好副件（这一过程已在架构手册->副件手册中说明，请阅读）。<br/>
+        假设用户在前台页面要添加一个950X60广告。<br/>
+        副件模块标识的添加有以下几步骤：<br/>
+        第一、假设该广告是图片，则添加图片模块{c$image950_90}，模板风格->复合标识->图片模块->添加，弹出设置图片模块的窗口，如图-01所示。<br/>
+        <img src="img/fjdy01.gif"/><br/>
+         第二、假设该广告是flash，则添加flash模块{c$flash960_50}，模板风格->复合标识->flash模块->添加，弹出设置flash<br/>模块的窗口，如图-01所示。
+        <img src="img/fjdy02.gif"/><br/>
+        第三、添加副件标识	{c$top_950_90}，主要用来输出广告，模板风格->复合标识->图片模块->添加，弹出设置副件列表的窗口。<br/>
+        
+        <img src="img/fjdy03.gif"/><br/>
+        添加好之后，就将{c$top_950_90}放到html代码相应位置。<br/>
+      
+        </li>
+        
+</ul>
+
+        </div>
+<a href="#top" class="ltop"></a>
+</body>
+</html>

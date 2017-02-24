@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if $cmane}{cmane}{else}经纪公司{/if}-经纪人-{$hostname}</title>
+<meta content="{cmane}" name="keywords"> 
+<meta content="{cmane}{if $caddress},公司地址是{caddress}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$headinner}
+</head>
+<body>
+{tpl$comtop}
+<div class="blank10"></div>
+<div class="wrap">
+    <!-- 左栏开始 -->
+{tpl$comleft}
+    <!-- 左栏结束 -->
+    <!-- 右栏开始 -->
+  <div class="inMain" style="overflow:hidden">
+<div class="subT1">
+<div class="l h">经纪人</div>
+<div class="cb0"></div>
+</div>
+{c$jjgskjjjr [cname=经纪公司空经纪人/] [tclass=members/] [limits=9/] [chsource=2/] [chids=2/] [mode=in/] [arid=4/] [wherestr=m.pid4 = '$mid' and m.incheck4=1/] [mp=1/]}
+<? $tjlp=count($_jjgskjjjr);?>
+<div class="col4 tdjyList-main mt10">
+<ul>
+    [row]
+<li>
+<a href="{mspacehome}" target="_blank" title="{xingming}">
+<div class="ui-box1 clearfix">
+<div class="pic l">
+<img class="vm" alt="xingming" {c$image [cname=image/] [tclass=image/] [tname=image/] [val=u/] [emptyurl=images/common/mlogo.gif/]}src='{url}' width="100" height="130"{/c$image} />
+</div>
+<div class="info r">
+<div class="n"><label for="">{xingming}</label>
+{c$xytb2 [cname=信用图标2/] [tclass=fromid/] [val=d/] [type=grouptype17/]}<img {c$ico [cname=ico/] [tclass=image/] [tname=ico/] [val=u/]}src="{url}"{/c$ico} title="{cname}" class="vm"/>{/c$xytb2}
+</div>
+<div class="txt1">
+{c$member  [tclass=member/] [chsource=2/][val=c/] [detail=1/]}
+所属公司：{c$jjrgs2 [cname=经纪人公司2/] [tclass=member/] [val=a/] [arid=4/]}<a class="fcr" href="{mspacehome}" target="_blank" title="{cmane}">{c$cmane12 [cname=cmane12/] [tclass=text/] [tname=cmane/] [trim=12/]}{/c$cmane12}</a>{/c$jjrgs2}<br>
+服务区域：{if $v['szqy']}{c$field [tclass=field/] [tname=szqy/] [type=member/] [fname=szqy/]}{/c$field}{else}-{/if}<br>
+手机：{if $c['lxdh']}{lxdh}{else}-{/if}
+<div class="ns">
+从业年限：{if $c['cynx']}{cynx}{else}-{/if}
+</div>
+{/c$member}
+</div>
+</div>
+</div>
+</a>
+</li>
+[/row]
+</ul>
+</div>
+{/c$jjgskjjjr}
+</div>
+{if @$tjlp<=0}
+<div class="noinfo">很抱歉！暂无经纪人信息</div>
+{/if}
+<div class="ptb10"> {$mpnav} </div>
+    <!-- 右栏开始 -->
+</div>
+{tpl$foot}
+</body>
+</html>

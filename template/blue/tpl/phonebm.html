@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>手机客户端-{$hostname}</title>
+{tpl$headinner}
+<?php $pagetype = 'mobile'; ?>
+</head>
+<body>
+<!--手机App头部-->
+{tpl$phonehead}
+<div class="overbg">
+<div class="blank10"></div>
+    <div class="wrap1 phdetail">
+        <div class="ewmdown r">
+            {c$kfianddw [tclass=farchives/] [casource=fcatalog173/] [limits=1/] [validperiod=1/] [orderstr=a.vieworder DESC/]}{c$androidxz [tclass=file/] [tname=andrdown/] [val=x/]}<a class="first" title="Android二维码下载"><img src="<?=cls_tpl::QRcodeImage($x['url'])?>" width="110" height="110" /></a>{/c$androidxz}{/c$kfianddw}
+            <a href="{$mobileurl}" class="sed" target="_blank"></a>
+            {c$kfiphdw [tclass=farchives/] [casource=fcatalog173/] [limits=1/] [validperiod=1/] [orderstr=a.vieworder DESC/]}{c$iphonexz [tclass=file/] [tname=iphdown/] [val=x/]}<a title="iphone二维码下载"><img src="<?=cls_tpl::QRcodeImage(cls_url::view_url('info.php?fid=113'))?>" width="110" height="110" /></a>{/c$iphonexz}{/c$kfiphdw}
+        </div>
+        <div class="blank10"></div>
+        <div class="bntdown r">
+        <a href="{c$kfianddw [tclass=farchives/] [casource=fcatalog173/] [limits=1/] [validperiod=1/] [orderstr=a.vieworder DESC/]}{c$androidxz [tclass=file/] [tname=andrdown/] [val=x/]}{url}{/c$androidxz}{/c$kfianddw}" title="Android版下载" class="first"></a>
+        <a href="{c$kfiphdw [tclass=farchives/] [casource=fcatalog173/] [limits=1/] [validperiod=1/] [orderstr=a.vieworder DESC/]}{c$iphonexz [tclass=file/] [tname=iphdown/] [val=x/]}{url}{/c$iphonexz}{/c$kfiphdw}" title="iphone版下载"></a>
+        </div>
+    </div>
+    <div class="linebg2"></div>
+</div>
+<div class="bgD7 clearfix">
+<div class="wrap1">
+<div class="phmintro">
+   <ul>
+    {c$sjkhdtj [tclass=farchives/] [casource=fcatalog173/] [val=x/] [limits=1/] [validperiod=1/] [orderstr=a.vieworder DESC/]}
+      {c$pictj [tclass=images/] [tname=images/] [limits=8/] [thumb=1/]}      
+      <li>
+      <img src="{url}" alt="{title}" title="{title}" width="215" height="310"/>
+      </li>
+      {/c$pictj}
+    {/c$sjkhdtj}
+   </ul>
+</div>
+<div class="blank15"></div>
+</div>
+</div>
+{tpl$foot}
+</body>
+</html>

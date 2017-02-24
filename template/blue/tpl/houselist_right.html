@@ -1,0 +1,80 @@
+<div class="w250 r">
+    <div class="coltit3">
+        <h3><a class="tit1">最受关注</a></h3>
+    </div>
+    <div class="bd-gray p10 clearfix">
+        <ul class="tlist2">
+            {c$08cms [tclass=archives/] [limits=8/] [chsource=2/] [chids=4/] [ccidson1=1/] [cosource1=2/] [detail=1/] [orderstr=a.wclicks DESC/] [wherestr=(leixing='0' OR leixing='1')/] [forceindex=a.wclicks/] [ttl=600/]}
+            <li><span class="more arial">{if $v['dj']}<i class="fcr">{dj}</i>元/m&sup2{else}待定{/if}</span><a href='{arcurl}' target="_blank" title='{subject}'><span>[{ccid1title}]</span>{c$subject16 [cname=subject16/] [tclass=text/] [tname=subject/] [trim=16/]}{/c$subject16}</a></li>
+            {/c$08cms}
+        </ul>
+    </div>
+    <div class="blank5"></div>
+    <div class="coltit3">
+        <h3><a class="tit1">推荐楼盘</a></h3>
+    </div>
+    <div class="bd-gray p10 clearfix">
+        <!--推送位 推荐楼盘_1_2-->
+        <ul class="tlist2">
+            {c$pushs [tclass=pushs/] [paid=push_58/][limits=8/] [ttl=600/]}
+            {c$archive [tclass=archive/] [chid=4/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+            <li><span class="more arial">{if $a['dj']}<i class="fcr">{dj}</i>元/m&sup2{else}待定{/if}</span><a href="{$v['url']}" title="{$v['subject']}" target="_blank"><span>[{ccid1title}]</span>{c$subject16 [cname=subject16/] [tclass=text/] [tname=$v[subject]/] [trim=16/]}{/c$subject16}</a></li>
+           {/c$archive}
+           {/c$pushs}
+        </ul>
+    </div>
+    <div class="blank5"></div>
+    <div class="coltit3">
+        <h3><a class="tit1">最新开盘</a></h3>
+    </div>
+    <div class="bd-gray p10 clearfix">
+        <!--推送位 最新开盘_1_2-->
+        <ul class="tlist2">
+            {c$pushs [tclass=pushs/] [paid=push_56/][limits=8/] [ttl=600/]}
+            {c$archive [tclass=archive/] [chid=4/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+            <li><span class="more arial">{if $a['dj']}<i class="fcr">{dj}</i>元/m&sup2{else}待定{/if}</span><a href="{$v['url']}" title="{$v['subject']}" target="_blank"><span>[{ccid1title}]</span>{c$subject16 [cname=subject16/] [tclass=text/] [tname=$v[subject]/] [trim=16/]}{/c$subject16}</a></li>
+           {/c$archive}
+           {/c$pushs}
+        </ul>
+    </div>
+    <div class="blank5"></div>
+    <div class="coltit3">
+        <h3><a class="tit1">即将开盘</a></h3>
+    </div>
+    <div class="bd-gray p10 clearfix">
+        <!--推送位 即将开盘_1_2-->
+        <ul class="tlist2">
+            {c$pushs [tclass=pushs/] [paid=push_57/][limits=8/] [ttl=600/]}
+            {c$archive [tclass=archive/] [chid=4/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+            <li><span class="more arial">{if $a['dj']}<i class="fcr">{dj}</i>元/m&sup2{else}待定{/if}</span><a href="{$v['url']}" title="{$v['subject']}" target="_blank"><span>[{ccid1title}]</span>{c$subject16 [cname=subject16/] [tclass=text/] [tname=$v[subject]/] [trim=16/]}{/c$subject16}</a></li>
+           {/c$archive}
+           {/c$pushs}
+        </ul>
+    </div>
+    <div class="blank5"></div>
+    <!-- 问答 -->
+    {c$cnode [tclass=cnode/] [listby=ca/] [casource=517/]}
+    <div class="coltit3"><a class="more" href="{indexurl}" target="_blank">更多>></a><h3><a class="tit1" href="{indexurl}" target="_blank">新房问答</a></h3></div>
+    {/c$cnode}
+    <div class="bd-gray p10 clearfix">
+        <form action="{cms_abs}index.php" method="get" target="_blank">
+        <div class="search-group form form-bdrs form-sm">
+            <input type="hidden" name="caid" value="517" />
+            <button class="btn"><i class="ico08">&#xf002;</i></button>
+            <div class="txt-wrap">
+                <input type="text" class="txt mr5" name="searchword"  value="" placeholder="请输入关键字"/>
+            </div>
+        </div>
+        </form>
+        <div class="blank10"></div>
+        <div class="tlist4">
+            <ul>
+                {c$archives [cname=问答列表/] [tclass=archives/] [limits=6/] [chsource=2/] [chids=106/] [caidson=1/] [casource=1/] [caids=517/] [ccidson35=1/] [cosource35=1/] [ccids35=3036/] [detail=1/] [ttl=1800/]} 
+                <li class="a"><span class="icon">问</span>{c$archive [tclass=archive/] [chid=4/] [val=f/] [arid=1/]}<a class="fcb" href="{arcurl}" target="_blank">[{subject}]</a> {/c$archive}<a href="{arcurl}" target="_blank">{c$subject12 [tclass=text/] [tname=subject/] [trim=30/]}{/c$subject12}</a></li>
+                <li><span class="icon1">答</span>{c$commus [cname=最佳答案2/] [tclass=commus/] [val=b/] [limits=1/] [cuid=37/] [checked=1/] [wherestr=isanswer and aid='$v[aid]'/]}{c$texttop56 [cname=处理多行文本/] [tclass=text/] [tname=content/] [trim=56/] [nl2br=1/]}{/c$texttop56} {/c$commus}
+                </li>{/c$archives}
+            </ul>
+        </div>
+        <div class="blank5"></div>
+    </div>
+</div>

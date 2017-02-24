@@ -1,0 +1,15 @@
+<?php
+$leixingarr = array(
+	'loupan' => array(1,2,3,4,5,11,12),
+	'xiaoqu' => array(7,8,9,10),
+);
+
+if(@$leixing==2&&in_array($addno,$leixingarr['loupan'])){
+	// 小区
+	cls_Parse::Message('<meta http-equiv="expires" content="-1"><meta http-equiv="refresh" content="0;url='.$arcurl7.'">');
+
+}else if(@$leixing==1&&in_array($addno,$leixingarr['xiaoqu'])){
+	// 楼盘
+	cls_Parse::Message('<meta http-equiv="expires" content="-1"><meta http-equiv="refresh" content="0;url='.$arcurl.'">');
+}
+?>

@@ -1,0 +1,228 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>&#x5730;&#x56fe;&#x6807;&#x8bb0;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<script type="text/javascript">
+	!(function getDoMain(url) {
+		datas = url.split("?")[1].split("&");
+		data = {};
+		for(var i = 0;i<datas.length;i++){
+			var t = datas[i].split("=");
+			data[t[0]] = decodeURIComponent(t[1]);
+		}
+		document.domain = data.domain || document.domain;
+		window.stack = data.stack;
+	})(document.URL);
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+<style type="text/css">
+body{margin:0; padding:0; font-size:12px;}
+.btn_area {margin-top:15px; text-align:center}
+div.button {margin:5px;padding:0 10px;background:#eee;border-right:1px solid #aaa;border-bottom:1px solid #aaa;}
+div.button:hover {background:#ddd}
+.determine {float:left}
+.cancel {float:left;margin-left:70px}
+.center {float:left;margin-left:120px}
+
+#map_search{
+	position:absolute;
+	top:5px;
+	left:100px;
+	padding:1px;
+	z-index:999;
+	overflow:hidden;
+	background-color:white
+}
+#map_search .label{
+	color:red;
+	font-weight:bold;
+}
+</style>
+</head> 
+<body scroll="no">
+<div id="map_search">
+	<span class="label">&#x5f53;&#x524d;&#x89c6;&#x91ce;&#xff1a;</span>
+	<input id="keyword" type="text" style="width:200px" onKeyPress="codeKeypress(event)">
+	<input id="keyword_search" type="button" style="width:60px; line-height:17px; line-height:15px\9; border-width:2px" value=" &#x641c; &#x7d22; " onClick="localsearch()">
+</div>
+<div id="map_canvas" style="width:100%; height:100%"></div>
+<script type="text/javascript">
+var coord, stack, object, _top = (window.opener ? opener.top : top), point = '39.915051360673,116.40387796329', params = location.hash || location.search, parser = /[?&]([^=]+)(?:=([^&]*))?/g;
+	while(query = parser.exec(params))window[query[1]] = decodeURIComponent(query[2]);
+	try{object = _top._08cms.stack.object[stack]}catch(x){}
+	if(!object || !object.field)window.close();
+	coord = coord || object.coord;
+var win, wid, map, old, _tiner, latLng, marker, undefined,
+	canvas = document.getElementById("map_canvas"),
+	window_title = window.opener ? function(title){document.title = title} : function(title){win && object.window.floatwin_title(win, title)};
+if(!window.opener)_tiner = setInterval(function(){if(!(wid = document.CWindow_wid))return;clearInterval(_tiner);win = object.window.CWindow.getWindow(wid)}, 13);
+
+if(old = object.lat != undefined && object.lng != undefined) latLng = new BMap.Point(object.lng,object.lat);
+if(!coord)coord = old ? [object.lat,object.lng] : point;
+if(typeof coord == 'string')coord = coord.split(',');
+coord = new BMap.Point(coord[1],coord[0]);
+function doane(e){
+	try{
+		e.stopPropagation();
+		e.preventDefault();
+	}catch(x){
+		e.returnValue=false;
+		e.cancelBubble=true;
+	}
+}
+function marker_dragend(e){
+	this.disableDragging();
+	map.panTo(this.getPosition());
+	map.openInfoWindow(infowindow,this.getPosition());
+}
+function determine_marker(){
+	infowindow.close();
+	marker._08cms_click = 0;
+	latLng = marker.getPosition();
+	marker.enableDragging();
+	return_latlng(latLng);
+}
+function cancel_marker(e){
+	doane(e || arguments.callee.caller.arguments[0] || event);
+	infowindow.close();
+	marker._08cms_click || map.setCenter(latLng);
+	marker._08cms_click = 0;
+	marker.enableDragging();
+	if(old){
+		marker.setPosition(latLng);
+	}else{
+		map.removeOverlay(marker);
+	}
+}
+function determine_byWindow(index){
+	return_latlng(local._infowindows[index].getPosition());
+}
+function setcenter_byWindow(index){
+	map.setCenter(local._infowindows[index].getPosition());
+}
+function return_latlng(latLng){
+	old = 1;
+	try{
+		object.window._08cms.stack;
+		object.lat = latLng.lat.toString();
+		object.lng = latLng.lng.toString();
+		try{object.field.focus()}catch(e){try{object.btn.focus()}catch(e){}}
+		object.field.value = object.lat.slice(0, object.lat.indexOf('.') + 7) + ',' + object.lng.slice(0, object.lng.indexOf('.') + 7);
+	}catch(e){}
+	window_close();
+}
+BMap.Point.prototype.toString = function(){
+	var y = this.lng.toString(), x = this.lat.toString();
+	y = y.slice(0, y.indexOf('.') + 7);
+	x = x.slice(0, x.indexOf('.') + 7);
+	return '[' + y + ',' + x + ']';
+};
+var infowindow = new BMap.InfoWindow('<div class="info">\u786e\u5b9a\u6807\u8bb0\u5728\u8fd9\u4e2a\u4f4d\u7f6e\u5417\uff1f</div><div class="btn_area"><div class="button determine" onclick="determine_marker()">\u786e\u5b9a</div><div class="button cancel" onclick="cancel_marker()">' + '\u53d6\u6d88'+ '</div></div>');
+infowindow.addEventListener('closeclick', cancel_marker);
+
+map = new BMap.Map(canvas,{
+	maptype:BMAP_PERSPECTIVE_MAP,
+	minZoom:3,
+	maxZoom:19
+});
+map.enableScrollWheelZoom();
+map.centerAndZoom(coord,object.zoom && object.zoom.match(/^[3-9]$|^1\d$/) ? parseInt(object.zoom) : 13);
+map.addControl(new BMap.MapTypeControl({type:BMAP_MAPTYPE_CONTROL_DROPDOWN,mapTypes:[BMAP_NORMAL_MAP ,BMAP_SATELLITE_MAP]}));
+map.addControl(new BMap.NavigationControl());
+
+
+marker = new BMap.Marker(old ? latLng : new BMap.Point(),{
+	enableDragging : true
+});
+old && map.addOverlay(marker);
+marker.addEventListener("dragend", marker_dragend);
+map.addEventListener("click", function(e){
+	if(!marker.clickTimer){
+		marker.clickTimer = setTimeout(function(){
+			map.addOverlay(marker);
+			marker._08cms_click = 1;
+			marker.setPosition(e.point);
+			marker_dragend.call(marker, e);
+			marker.clickTimer = null;
+		}, 300);
+	}
+});
+map.addEventListener("dblclick", function(e){
+	clearTimeout(marker.clickTimer);
+	marker.clickTimer = null;
+});
+var isIE6= /msie 6/i.test(navigator.userAgent);
+!isIE6 && map.addEventListener("mousemove", function(e){
+	window_title('\u5730\u56fe\u6807\u8bb0 - \u5750\u6807' + e.point.toString());
+});
+
+var i,count,_infowindow,_marker,repoi,local = new BMap.LocalSearch(map);
+local.setSearchCompleteCallback(function(results){
+    count = 0;
+	if(local._infowindows)
+		while(i = local._infowindows.pop()) map.removeOverlay(i);
+    if(local._markers)
+		while(i = local._markers.pop()) map.removeOverlay(i);
+	local._infowindows =[],local._markers = [];
+	if(local.getStatus() == BMAP_STATUS_SUCCESS){
+		for(i = 0;i< results.getCurrentNumPois();i++){
+			repoi = results.getPoi(i);
+			_marker = new BMap.Marker(repoi.point,{title:repoi.title});
+			_marker.addEventListener('mouseover',function(i){
+				return function(){this.openInfoWindow(local._infowindows[i]);};
+			}(i));
+			local._markers.push(_marker);			
+			map.addOverlay(_marker);
+			_infowindow = new BMap.InfoWindow(
+			'<div style="width:280px;height:50px">' +
+			repoi.address +
+			'</div>' +
+			'<div class="btn_area">' +
+			'<div class="button determine" onclick="determine_byWindow(' + i + ')">\u4f7f\u7528\u6b64\u4f4d\u7f6e</div>' +
+			'<div class="button center" onclick="setcenter_byWindow(' + i + ')">\u5c45\u4e2d\u5730\u56fe</div>' +
+			'</div>',{title:repoi.title});			
+			_marker.openInfoWindow(_infowindow);
+			local._infowindows.push(_infowindow);
+			count++;
+		}
+	}
+	if(count){
+		local._markers[0].openInfoWindow(local._infowindows[0]);map.panTo(local._markers[0].getPosition());
+	}else alert('\u6ca1\u6709\u627e\u5230\u60a8\u67e5\u627e\u7684\u5730\u65b9');
+});
+function localsearch(){
+	var i, count, infowindow, bounds = map.getBounds(), keyword = document.getElementById('keyword').value;
+	local.searchInBounds(keyword,map.getBounds());
+}
+
+function codeKeypress(e){
+//	e = e ? e : window.event;
+	actualCode = e.keyCode ? e.keyCode : e.charCode;
+	actualCode == 13 && localsearch();
+}
+function window_close(){
+	var t, _window = object.window;
+	window.opener && window.close();
+	t = setInterval(function(){
+		// IE6 bug, \u5237\u65b0iframe\u7684\u65f6\u5019top\u4e5f\u4e0d\u53ef\u7528\uff0c\u6240\u4ee5\u7528\u4e2a\u5b9a\u65f6\u5668\u91cd\u590d\u6267\u884c
+		try{
+			delete _top._08cms.stack.object[stack];
+			delete _window._08cms.stack.object[stack]
+		}catch(e){}
+		try{
+			_window && _window.floatwin('close_' + wid)
+		}catch(e){
+			try{_top.floatwin && _top.floatwin('close_' + wid)}catch(x){}
+			var f, i = 0;
+			while(f =_top.frames[i++])
+			try{f.floatwin && f.floatwin('close_' + wid)}catch(x){}
+		}
+	}, 13);
+	setTimeout(function(){clearInterval(t)}, 540);
+};
+setInterval(function(){try{object.window._08cms.stack.object}catch(e){window_close()}}, 50);//When the field owner window refresh
+
+</script> 
+</body> 
+</html>

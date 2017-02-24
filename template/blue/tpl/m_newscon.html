@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+<title>{subject}-公司动态-{companynm}-{$hostname}</title>
+ <meta content="{companynm}" name="keywords"> 
+ <meta content="{companynm}{if $dizhi},公司地址是{dizhi}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description"> 
+{tpl$jz_headinner}
+<?php $mcaid=7; ?>
+</head>
+<body>
+<!--header begin-->
+ {tpl$jz_m_head}
+<!--内容开始-->
+<div class="area"> 
+  <!--左侧栏开始-->
+  {tpl$jz_m_left}
+  <!--右侧栏开始-->
+  <div class="right_bar">
+    <div class="con-subject">{subject}</div>
+    <div class="R_con1 wzxx">
+    <div class="con-yfd"><span>发布时间：</span>{c$createdate [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$createdate} <span>点击率：</span><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 104, field: 'clicks'}">&nbsp;</div></div>
+      <div class="blank10"></div>
+           {content}
+    </div>
+    <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+    <span class="blank10"></span>
+  </div>
+  <!--右侧栏结束--> 
+</div>
+<!--内容结束--> 
+<!--footer begin--> 
+	{tpl$jz_foot}
+<!--footer end-->
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  <title>{subject}-{$cmstitle}</title>
+  <meta name="keywords" content="{keywords}" />
+  <meta name="description" content="{abstract}" />
+  {tpl$m_headinner}
+<body>
+  <div id="section_container">
+    <section id="index_section" class="active" data-btn="back" title="{subject}">
+      {tpl$m_header}
+      <footer>
+        <a href="tel:{hdtel}"><i class="icon-e612"></i>打电话</a>
+        {if $enddate<$timestamp&&$enddate!=0}
+        <a><i class="icon-e60f"></i>报名结束</a>
+        {else}
+        <a onclick="return popupExt('#tpl_popup');"><i class="icon-e60f"></i>我要报名</a>
+        {/if}
+    </footer>
+    <article id="up_refresh_article" class="active" >
+        <div>
+          {if $thumb}
+            <div class="list-media-big mt8">
+              <img {c$thumb [tclass=image/] [tname=thumb/] [val=u/]} src="{url}"{/c$thumb} alt="{subject}"/>
+            </div>
+          {/if}
+            <ul class="list detail">
+              <li>
+                <h1>{subject}</h1>
+                <div class="grid item">
+                    <div class="col-0 f-asbestos"></div>
+                </div>
+                <div class="grid item">
+                    <div class="col-0 f-asbestos">市场价：</div><del>{if $scj}{scj}{else}待定{/if}</del>
+                </div>
+                <div class="grid item">
+                    <div class="col-0 f-asbestos">团购价：</div><span class="f-pomegranate">{if $tgj}{tgj}{else}待定{/if}</span>
+                </div>
+                {if $hdadr}
+                <div class="grid item">
+                    <div class="col-0 f-asbestos">楼盘地址：</div>{hdadr}
+                </div>
+                {/if}
+                <div class="grid item">
+                    <p>{if $enddate<$timestamp&&$enddate!=0}团购已结束{else}{if $enddate==0}永久有效{else}还剩<?= floor(($enddate-$timestamp)/(60*60*24)) ?>天结束{/if}{/if},已有{hdnum}人报名
+                </p>
+                </div>
+              </li>
+          {if $content}
+          <li class="divider">
+             活动详情
+          </li>
+          <li class="list-media-big">
+            {c$content [tclass=text/] [tname=content/]}{/c$content}
+          </li>
+          {/if}
+          {c$archive [tclass=archive/] [chid=4/] [arid=3/] [detail=1/]}
+          <li class="divider">
+             项目简介
+          </li>
+          <li>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">楼盘名称：</div><a href="{arcurl}">{subject}</a>
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">建筑面积：</div>{zdmj}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">可售套数：</div>{if $ksnum}{$ksnum}{/if}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">咨询电话：</div>{if $hdtel}{$hdtel}{else}{tel}{/if}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">物业类别：</div>{ccid12title}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">开盘时间：</div>{kprq}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">交房日期：</div>{jfrq}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">许可证号：</div>{xkzh}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">售楼地址：</div>{if $hdadr}{$hdadr}{else}{sldz}{/if}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">物业地址：</div>{wydz}
+            </div>
+            <div class="grid item">
+                <div class="col-0 f-asbestos">开 发 商：</div>{c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}<a href="{arcurl}" target="_blank">{subject}</a>{/c$lpkfs}
+            </div>
+          </li>
+          {/c$archive}
+          {c$commus [cname=房团报名实况/] [tclass=commus/] [cuid=8/] [checked=1/] [wherestr=aid ='$aid'/]}
+          <li class="divider">
+             报名实况
+          </li>
+          [row]
+           <li>
+            <div class="grid demo-grid">
+                <div class="col-1"><?php echo cls_string::CutStr($v['lxren'],2,'').'**'; ?></div>
+                <div class="col-1 f-pumpkin"><?php echo " ".substr($v['lxdh'],0,3).'*****'.substr($v['lxdh'],-3)." "; ?></div>
+            </div>
+           </li>
+           [/row]
+           {/c$commus}
+        </ul>
+        {tpl$m_footer_ft}
+        </div>
+    </article>
+    </section>
+  </div>
+  <div class="dn" id="tpl_popup" style="padding:10px;">
+        <form name="commu8" id="commu8" method="get" onsubmit="return fyCummus(this,'我要报名');">
+            <input type="hidden" name="cuid" value="8" /><!--交互项目id-->
+            <input type="hidden" name="aid" value="{$aid}" /><!--针对文档的aid,不是针对文档就不要这项-->
+            <div class="input-group">
+                <input type="text"  name="fmdata[lxren]" required maxLength="20" min="0" max="20" placeholder="您的姓名">
+                <input type="text"  name="fmdata[lxdh]" required title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$"placeholder="手机号码">
+                <input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+            </div>
+            <button class="block" name="bsubmit" type="submit" data-icon="icon-e603">提交</button>
+        </form>
+    </div>
+  {tpl$m_footer}
+</body>
+</html>

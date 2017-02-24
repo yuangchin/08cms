@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link href="browser.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="js/common.js"></script>
+		<script language="javascript">
+
+function SetResourceType( type )
+{
+	window.parent.frames["frmResourcesList"].SetResourceType( type ) ;
+}
+
+function SetCurrentFolder( FolderName )
+{
+	document.getElementById('currentfolder').innerHTML = FolderName;
+}
+
+var aTypes = [
+	['file','file'],
+	['image','image'],
+	['flash','flash'],
+	['media','media']
+] ;
+
+window.onload = function()
+{
+	for ( var i = 0 ; i < aTypes.length ; i++ )
+	{
+		if ( oConnector.ShowAllTypes || aTypes[i][0] == oConnector.ResourceType )
+			AddSelectOption( document.getElementById('cmbType'), aTypes[i][1], aTypes[i][0] ) ;
+	}
+	document.getElementById('currentfolder').innerHTML = oConnector.CurrentFolder;
+}
+
+		</script>
+	</head>
+	<body bottomMargin="0" topMargin="0">
+		<table height="100%" cellSpacing="0" cellPadding="0" width="100%" border="0">
+			<tr>
+				<td width="250">文件类型&nbsp;&nbsp;<select id="cmbType" style="WIDTH: 150" onChange="SetResourceType(this.value);"></select></td>
+				<td width="100">当前位置：</td>
+				<td id="currentfolder">/</td>
+			</tr>
+		</table>
+	</body>
+</html>
+

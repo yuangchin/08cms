@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+{c$cnode [cname=激活栏目关键词/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<title>{listtitle}-{$hostname}</title>
+<meta name="keywords" content="{if !empty($listkeyword) }{listkeyword}{/if}" />
+<meta name="description" content="{listabstract}" />
+{/c$cnode}
+{tpl$jz_headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/common_front.css?{$user_version}">
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/zsjs.css?{$user_version}">
+</head><body>
+<!--header begin--> 
+{tpl$jz_head} 
+<!--header end--> 
+<?
+cls_uso::init(array(
+    'ntype' => 'c',
+    'chid' => 101, 
+    'nodes' => array('caid'), 
+));
+$whrstr = cls_usql::where_str(array(
+	array('subject'), 
+)); 
+?>
+<!--搜索框开始-->
+<div class="area">
+  <div class="con1A1 oh h5">
+    <div class="h5 w5 fl"><img src="{$tplurl}newimages/j1.gif"></div>
+    <div class="h5 w5 fr"><img src="{$tplurl}newimages/j2.gif"></div>
+  </div>
+  <div class="con1A3">
+    <div class="con1A31">
+      <form method="get" action="{$cms_abs}index.php">
+        <input type="hidden" name="caid" value="510" />
+        <input type="hidden" name="addno" value="1" />
+        <input  name="searchword" id="name" class="input txt1 clear-txt" placeholder="请输入关键字" type="text">
+        <input id="sb"  class="searbtn1" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="con1A32" style="margin-top: 5px;">
+      <div class="con1A32A fl bold white tc">装修风格</div>
+      <div class="con1A32B fl p_l10"> <a class="{if empty($ccid32)} redlink{/if}" href='{c$jz_sjs [cname=设计师/] [tclass=cnode/] [listby=ca/] [casource=510/]}{indexurl1}{/c$jz_sjs}'>全部</a>
+        <?php $_rows = cls_uso::caco_urls(32);?>
+        {loop $_rows $k $v}<a class="{if @$ccid32==$k} active{/if}" href="{$v['url']}">{$v['title']}</a>&nbsp; {/loop} </div>
+    </div>
+    <div class="blank0"></div>
+  </div>
+  <div class="con1A2 oh h5">
+    <div class="h5 w5 fl"><img src="{$tplurl}newimages/j4.gif"></div>
+    <div class="h5 w5 fr"><img src="{$tplurl}newimages/j3.gif"></div>
+  </div>
+</div>
+<!--搜索框结束--> 
+<!--内容开始--> 
+<span class="blank10"></span>
+<div class="area"> 
+  <!--左侧栏开始-->
+  <div class="con1A">
+    <div class="title7">
+      <div class="title7_L">设计师</div>
+    </div>
+    <div class="con3 ieHack"> <span class="blank10"> </span> 
+      <!--设计师列表开始--> 
+      {c$archives [cname=设计师列表/] [tclass=archives/] [val=vv/] [chsource=2/] [chids=101/] [ccidson32=1/] [cosource32=2/] [validperiod=1/] [detail=1/] [orderstr=a.ccid42 DESC,a.refreshdate DESC/] [wherestr=$whrstr/] [ttl=900/] [mp=1/]}
+      <div class="list-sjs">
+        <div class="sjs1"> <a href="{marcurl}" target="_blank"> <img alt="{subject}" {c$thumb_72_90 [cname=thumb_72_90/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=72/] [maxheight=90/] [thumb=1/]}src="{url_s}" width="72" height="90"{/c$thumb_72_90}> {if $vv['ccid42']}<i class="icon"></i>{/if} </a> </div>
+        <div class="sjs2"> <strong>姓&nbsp;&nbsp;&nbsp;&nbsp;名：<a href="{marcurl}" target="_blank" class="redlink">{subject}</a></strong><br>
+          <strong>从业时间：</strong>{c$jobtime [cname=jobtime/] [tclass=field/] [tname=jobtime/] [type=archive/] [limits=1/] [fname=jobtime/]}{/c$jobtime}<br>
+          <strong>毕业院校：</strong>{school}<br>
+          <strong>擅长风格：</strong>{c$sjsfg2 [cname=设计师风格2/] [tclass=catalogs/] [val=vvv/] [listby=co32/] [cosource32=1/] [ccids32=$vv[ccid32]/]}{title},{/c$sjsfg2} </div>
+        <div class="sjs3"> <strong>就职公司：</strong>{c$jz_gsmc [cname=装修公司名称/] [tclass=member/] [detail=1/]}<a href="{mspacehome}" target="_blank">{companynm}</a>{/c$jz_gsmc}<br>
+          <strong>设计理念：</strong>{shejiln}<br>
+          <div class="blank0"></div>
+        </div>
+        <div class="blank0"></div>
+      </div>
+      {/c$archives} 
+      <!--设计师列表结束--> 
+      
+      {if $mpacount<=0}
+      <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>的{/if}信息</div>
+      {/if} 
+      <!-- 分页 -->
+      <div class="ptb10"> {$mpnav} </div>
+      <div class="blank0"></div>
+    </div>
+  </div>
+  <!--左侧栏结束--> 
+  <!--右侧栏开始-->
+  <div class="con1B"> {c$jz_sjsurl [cname=设计师链接/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=510/]}
+    <div class="title4">
+      <div class="title4_L"></div>
+      <div class="title4_M"><a href="{indexurl1}" target="_blank" class="redlink">设计师作品</a></div>
+      <div class="title4_R"></div>
+      <div class="title4_R1"><a href="{indexurl1}" target="_blank"><img src="{$tplurl}newimages/more3.gif"></a></div>
+    </div>
+    {/c$jz_sjsurl}
+    <div class="conB31"> 
+      <!--右侧设计师作品列表开始--> 
+      {c$jz_sjszplist [cname=设计师作品列表/] [tclass=archives/] [val=a/] [chsource=2/] [chids=102/] [caidson=1/] [casource=1/] [caids=511/] [detail=1/] [ttl=900/]}
+      <div class="list2-sjs">
+        <div class="conb31-1"> <a href="{marcurl}" target="_blank"> <img alt="{subject}" {c$thumb_107_71 [cname=thumb_107_71/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=107/] [maxheight=71/] [thumb=2/]}src="{url_s}" width="107" height="71"{/c$thumb_107_71}> </a> </div>
+        <div class="conb31-2"> <a href="{marcurl}" target="_blank"> <span class="bold ren2">{c$jz_shejishi [cname=设计师/] [tclass=archives/] [val=b/] [limits=1/] [chsource=2/] [chids=101/] [caidson=1/] [casource=1/] [caids=510/] [mode=belong/] [arid=31/] [detail=1/] [ttl=900/]}{subject}{/c$jz_shejishi}</span> </a> {c$jz_gsmc [cname=装修公司名称/] [tclass=member/] [detail=1/]}<a href="{mspacehome}" target="_blank">{companynm}</a>{/c$jz_gsmc}<br>
+          {c$sjsfg4 [cname=设计师风格4/] [tclass=catalogs/] [val=vvv/] [listby=co32/] [cosource32=1/] [ccids32=$a[ccid32]/]}{title},{/c$sjsfg4} </div>
+        <div class="blank0"></div>
+      </div>
+      {/c$jz_sjszplist} 
+      
+      <!--右侧设计师列表结束--> 
+    </div>
+  </div>
+  <!--右侧栏结束--> 
+</div>
+<!--内容结束--> 
+{tpl$jz_foot}
+</body>
+</html>

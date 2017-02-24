@@ -1,0 +1,199 @@
+<html>
+<head>
+<style type="text/css">
+body,form,td,div{
+	font-size: 12px;
+	font-family:宋体;
+	line-height:150%;
+	margin:0px;
+	padding:0px;
+}
+body{
+	position:relative;
+	width:200px;
+	margin:0px auto;
+	overflow-x:hidden;
+}
+div{
+	position:relative;
+}
+ul,li{ list-style-type:none; }
+a { outline:none; }
+div{
+	padding:5px;
+}
+.tbsOff{
+	color:white;
+	background-color:#2982ad;
+	cursor:pointer;
+	border-bottom:#03C solid 1px;
+}
+div.i0{
+	width:150px;
+	height:auto;
+}
+div.i0 a{
+	display:block;
+	width:100px;
+	color:black;
+	text-decoration:none;
+}
+div.i0 a:link,a:visited{
+}
+div.i0 a:hover{
+	text-decoration:underline;
+}
+div.w1{
+	width:105px;
+}
+div.w2{
+	width:150px;
+}
+.sel{ background-color:#FC3; }
+.sel a:hover{ color:#F00; }
+.vis{}
+.vis a:visited{ color:#F00; }
+.blank3{
+	clear:both;
+	display:block;
+	font-size:0;
+	line-height:0;
+	height:3px;
+}
+</style>
+<script type="text/javascript" language="javascript" src="jquery.js"></script>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+//function $(id){return document.getElementById(id)}
+function showTable(it){
+	if($("#"+it).css('display')=='block'){
+			$("#"+it).css('display','none');
+		}else{
+			$("#"+it).css('display','block');
+		}
+} 
+function showUrl(path){
+	var url=parent.window.location.href.substr(0,location.href.lastIndexOf('taghelp'));
+	parent.window.location=url+'taghelp.html#'+path;	
+}
+function onnavchangecss(it){
+	$(it).siblings(".sel").removeClass("sel");	
+	$(it).addClass("sel");	
+}
+function outnavchangecss(it){
+	$(it).siblings(".sel").removeClass("sel");	
+	$(it).removeClass("sel");	
+}
+function clicknav(it){
+	$(it).siblings(".vis").removeClass("vis");	
+	$(it).parent().siblings().find(".vis").removeClass("vis");	
+	$(it).addClass("vis");
+}
+$(document).ready(function(){
+  var url=parent.window.location.href.substr(parent.window.location.href.lastIndexOf('#')+1);
+  //alert(url);
+  $("#"+url).addClass("vis");
+});
+var nav=['系统概述','环境搭配','安装手册','模板制作','菜单手册','架构手册','采集手册','会员整合手册','静态手册','系统优化','常见问题'];
+var tpl=[
+ ['s','cmsCore','08cms核心目录'],
+ ['s','speintro','专业术语简介'],
+ ['s','houseSys','房产门户系统'],
+ ['s','autoSys','汽车门户系统'],
+ ['e','envLinux','Linux+Apache+PHP+MySQL服务器环境(CentOS篇)'],
+ ['e','envW2003','windows server 2003 php 环境搭建'],
+ ['e','envW2008','windows server 2008 php 环境搭建'],
+ ['e','envPhpnow','phpnow一键安装'],
+ ['i','install','安装实例教程'],
+ 
+ ['c','archives','文档列表'],
+ ['c','catalogs','类目列表'],
+ ['c','members','会员列表'],
+ ['c','commus','交互列表'],
+ ['c','farchives','副件列表'],
+ ['c','pushs','推送列表☆'],
+ ['c','mccatalogs','会员节点列表'],
+ ['c','outinfos','自由调用列表'],
+ ['c','functions','自定函数列表'],
+ ['c','searchs','文档搜索列表'],
+ ['c','msearchs','会员搜索列表'],
+ ['c','keywords','关键词列表'],
+// ['c','fromids','架构资料列表'],
+ ['c','nownav','类目导航'],
+ ['c','mcatalogs','空间类目列表'],
+ ['c','mnownav','空间类目导航'],
+ ['c','archive','单个文档'],
+ ['c','member','单个会员'],
+ ['c','farchive','单个副件'],
+ ['c','commu','单条交互'],
+ ['c','cnode','类目节点'],
+ ['c','mcnode','会员节点'],
+ ['c','acount','文档数量'],
+ ['c','mcount','会员数量'],
+ ['c','text','文本处理'],
+ ['c','images','图集列表'],
+ ['c','files','下载列表'],
+ ['c','file','下载模块'],
+ ['c','flashs','Flash列表'],
+ ['c','flash','Flash模块'],
+ ['c','medias','视频列表'],
+ ['c','media','视频模块'],
+ ['c','texts','文本集列表'],
+ ['c','fromid','指定ID资料'],
+ ['c','date','时间日期'],
+ ['c','field','字段标题值'],
+ ['c','freeurl','独立页URL'],
+ ['c','votes','投票列表'],
+ ['c','vote','投票选项列表'],
+ ['c','fjbs','副件标识调用'],
+ ['c','kzsp','碎片调用'],
+ ['c','bsdy','综合标识调用'],
+  
+ ['l','lmenu','熟悉后台菜单'],
+ ['f','modelFrame','模型管理'],
+ ['f','columnFrame','栏目管理'],
+ ['f','pushFrame','推送管理☆'],
+ ['f','fuFrame','副件管理'],
+ ['f','tplFrame','模板管理'],
+ ['f','manageFrame','管理员设置'],
+ ['f','qxFrame','权限方案设置'],
+ ['f','centerFrame','会员中心菜单管理'],
+ ['f','spaceFrame','空间模板方案制作'],
+ ['g','collection','采集实例教程'],
+ ['z','inteDiscuz','08cms与Discuz会员整合'],
+ ['z','intePhpwind','08CMS与phpwind会员整合'],
+ ['p','jtscsm','静态生成篇☆'],
+ ['p','indexjt','首页静态'],
+ ['p','columnjt','类目节点静态'],
+ ['p','contentjt','文档页面静态'],
+ ['p','otherjt','其他页面静态'],
+ ['o','servSet','系统优化手册'],
+ ['o','memcached','memcache安装'],
+ ['q','comQue','通用常见问题'],
+ ['q','autoQue','汽车系统常见问题'],
+ ['q','houseQue','房产系统常见问题']
+
+ 
+] ,i,k=0,str='',p='',h=location.hash,oShowItem;
+
+str='<div class="tb w2">';
+for(i=0;i<tpl.length;i++){
+	if(p!=tpl[i][0]){
+		p=tpl[i][0];
+		if(i==0) str+='<div class="tr">';
+		if(i!=0) str+='</div><span class="blank3"></span>';
+		str+='<div id="flag['+p+']" class="th w1 tbsoff" onclick=showTable("item'+p+'")>'+nav[k++]+'</div>\n\
+	<div id="item'+p+'" class="i0" style="display:block">';
+	}
+	str+='<li id="c_'+tpl[i][1]+'" onmouseover="onnavchangecss(this)" onMouseOut="outnavchangecss(this)" onclick="clicknav(this)"><a href="'+p+'_'+tpl[i][1]+'.html" target="right" onclick=showUrl("'+p+'_'+tpl[i][1]+'")>'+tpl[i][2]+'</a></li>';
+	
+	
+}
+str+='</div></div>'
+
+
+document.write(str);
+</script>
+</body>
+</html>

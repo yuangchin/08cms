@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link href="{$tplurl}css/qylp.css?{$user_version}" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+    .banner{background:url({c$image [tclass=image/] [tname=image/] [maxheight=425/] [emptyurl=template/blue/images/dqlpzt.jpg/]}{url}{/c$image}) center 0 no-repeat;height:425px;}
+</style>
+<?php $pagetype = 'special'; ?>
+</head>
+<body>
+<!-- header -->
+{tpl$head}
+<!--  头部广告信息 -->
+<div id="ac0">
+    <div class="banner"></div>
+     <div class="wrap">
+         <div class="bza clearfix"> <i></i> <em>{c$text [tclass=text/] [tname=abstract/] [trim=480/] [badword=1/] [nl2br=1/]}{/c$text}</em> 
+         </div>
+     </div>
+<!--  中间内容 -->
+<div class="wrap">
+    <div class="bgf plr5">
+        <!-- 最新推荐-->
+        <div class="kpyg-ct clearfix">
+          <div class="kpyg-tit">
+              <h2>开盘预告</h2>
+          </div>
+          <div id="container" class="hot-lp hover-list1 clearfix">
+               <ul class="clearfix">
+            {c$archives [tclass=archives/] [chids=4/] [chsource=2/] [limits=12/] [ttl=600/] [casource=1/] [caids=2/] [mode=in/] [arid=12/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+                   <li>
+                      <a href="{arcurl}" title="{subject}"><img src="{c$image [tclass=image/] [tname=thumb/] [val=a/] [maxwidth=250/]}{url_s}{/c$image}" alt="{subject}"/></a>
+                      <h3><a href="{arcurl}" title="{subject}">{subject}</a></h3>
+                      <div class="lh">均价：<font class="arial">{dj}元/m&sup2;</font></div>
+                      <div class="lh">地址：{address}</div>
+                      <div class="lh">热线：{tel}</div>
+                      <i></i>
+                   </li>
+            {/c$archives}
+               </ul>
+           </div>
+        </div>
+    <div class="blank20"></div>
+        <!-- 楼盘加推 -->
+        <div class="lphg-ct">
+    <div class="kpyg-tit">
+        <h2>楼盘加推</h2>
+    </div>
+     <div class="plr25">
+          <div class="blank15"></div>
+              <table class="table1">
+                  <tr class="td1">
+                     <td width="109">楼盘名称</td>
+                     <td width="100">开盘时间</td>
+                     <td width="90">价格</td>
+                     <td width="150">主推户型</td>
+                     <td width="120">售楼电话</td>
+                     <td>最新动态</td>
+                  </tr>
+              </table>
+ {c$cond [tclass=catalogs/] [listby=co1/] [cainherit=2/]}
+ {c$archives [tclass=archives/] [chids=4/] [val=a/][chsource=2/] [limits=20/] [casource=1/] [caids=2/] [cosource1=2/] [mode=in/] [arid=12/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+    <div class="tit1 clearfix">
+        <span class="l">{title}</span>
+        
+    </div>
+  <table class="table2">
+        [row]
+        <tr class="td2">
+            <td width="109"><strong><a href="{arcurl}" title="{subject}" target="_blank">{subject}</a></strong></td>
+            <td width="100">{kprq}</td>
+            <td width="90">{dj}</td>
+            <td width="150">{c$dsdd [tclass=archives/] [chids=11/] [chsource=2/] [val=q/] [limits=1/] [mode=in/] [arid=3/]}{c$shi}{c$ting}{c$wei}({mj}m&sup2;){/c$dsdd}</td>
+            <td width="120">{tel}</td>
+            <td>{bdsm}</td>
+        </tr>
+        [/row]
+   </table>
+   {/c$archives}
+  {/c$cond}
+    <div class="blank0"></div>
+    </div>
+</div>
+</div>
+</div>
+<!-- footer -->
+</div>
+<script src="{$tplurl}js/jquery.js" type="text/javascript"></script>
+<script src="{$tplurl}js/jquery.masonry.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+        var $container = $('#container');
+        $container.imagesLoaded(function(){
+          $container.masonry({
+            itemSelector : 'li',
+            // columnWidth : 240
+          });
+        });
+</script>
+{tpl$foot}
+</body>
+</html>

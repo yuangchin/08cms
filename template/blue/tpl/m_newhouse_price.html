@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+	<title>房价-{$hostname}</title>
+    {tpl$m_headinner}
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="房价" data-btn="back" class="active">
+        {tpl$m_header}
+        <article class="active" data-scroll="false">
+            <div>
+            <ul class="list detail ">
+                <li class="divider">
+                        价格走势
+                </li>
+                <li>
+                    <canvas id="line_canvas"></canvas>
+                </li>
+            </ul>
+            {c$catalogs [tclass=catalogs/] [limits=30/] [listby=co1/] [ttl=300/]}
+            {c$archives [tclass=archives/] [chids=4/] [chsource=2/] [val=p/] [casource=1/] [caids=2/] [cosource1=2/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/]}
+            <ul class="list inset detail fz14 mt10">
+                <li class="divider" data-icon="icon-f054">
+                    <a href="{$mobileurl}index.php?caid=2&ccid1={ccid}"><b>{title}</b></a>
+                </li>
+                [row]
+                <li>
+                    <div class="grid"><div class="col-1"><a title="{subject}" alt="{subject}" href="{arcurl}">{subject}</a>{c$archives1 [tclass=archives/] [chids=5/] [val=r/] [limits=1/] [mode=in/] [arid=3/] [chsource=2/]}<span class="f-nephritis"> [优惠]</span>{/c$archives1}</div>
+                    {if $p['dj']}<span class="f-alizarin">{dj}</span>元/m&sup2;{else}待定{/if}{if $p['price_trend']==0}<span class="icon-e62e f-peter-river"></span>{elseif $p['price_trend']==1}<span class="icon-e62d f-alizarin"></span>{elseif $p['price_trend']==2}<span class="icon-e62c f-nephritis"></span>{/if}
+                    </div>
+                </li>
+                [/row]
+                {/c$archives}
+            </ul>
+            {/c$catalogs}
+        </div>
+        </article>
+    </section>
+
+</div>
+<script type="text/javascript" src="{$tplurl}mobile/js/JChart.debug.js"></script>
+<script type="text/javascript">
+    var _data = {
+            labels : [{c$commus [tclass=commus/] [cuid=47/] [limits=6/] [wherestr=chid=4 and area=0/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=month/] [date=y-m/]}{/c$date}'{/c$commus}],
+            datasets : [
+                {
+                    name : '价格',
+                    color : "#72caed",
+                    pointColor : "#95A5A6",
+                    pointBorderColor : "#fff",
+                    data : [{c$commus [tclass=commus/] [cuid=47/] [limits=6/] [wherestr=chid=4 and area=0/]}{if $v['sn_row']>1},{/if}{price}{/c$commus}]
+                }
+            ]
+        }
+    _data.labels.reverse();
+    _data.datasets[0].data.reverse();
+</script>
+{tpl$m_footer}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?php echo '<?';?>xml version="1.0" encoding="{$mcharset}"<?php echo '?>';?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+    <url> 
+        <loc><?=htmlspecialchars($cms_abs)?></loc> 
+        <lastmod><?=date('Y-m-d')?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>1.0</priority> 
+    </url> 
+    {c$col09 [cname=gogle地图_一级栏目/] [tclass=catalogs/] [val=v/] [limits=1000/] [listby=ca/]}<url> 
+        <loc><?=htmlspecialchars($v['indexurl'])?></loc> 
+        <lastmod><?=date('Y-m-d')?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.9</priority> 
+    </url> {/c$col09}
+    {c$qichezx [cname=gogle地图_全部二级栏目/] [tclass=catalogs/] [val=v/] [limits=10000/] [listby=ca/] [casource=4/]}<url> 
+        <loc><?=htmlspecialchars($v['indexurl1'])?></loc> 
+        <lastmod><?=date('Y-m-d')?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.8</priority> 
+ </url> {/c$qichezx}
+    {c$qichezx3 [cname=gogle地图_全部三级栏目/] [tclass=catalogs/] [limits=10000/] [listby=ca/] [casource=5/]}<url> 
+        <loc><?=htmlspecialchars($v['indexurl1'])?></loc> 
+        <lastmod><?=date('Y-m-d')?></lastmod> 
+        <changefreq>daily</changefreq> 
+        <priority>0.7</priority> 
+ </url> {/c$qichezx3}
+</urlset>

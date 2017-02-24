@@ -1,0 +1,336 @@
+/* CSS Document */
+body,
+td,
+th {
+    font-size: 12px;
+}
+body {
+    margin: 0;
+}
+/***表单元素****/
+label {
+    vertical-align: middle;
+}
+.input {
+    vertical-align: middle;
+}
+/****布局****/
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td,
+img {
+    margin: 0;padding: 0; list-style: none;
+
+    border: 0;
+}
+.area {
+    clear: both;width: 1000px; margin: 0 auto; text-align: left;
+
+    *zoom: 1;
+}
+.p_l10 {
+    padding-left: 10px;
+}
+.p_l_r4 {
+    padding: 0 4px;
+}
+.p_l_r15 {
+    padding: 0 15px;
+}
+.p_l4 {
+    padding-left: 4px;
+}
+.p_r4 {
+    padding-left: 4px;
+}
+.p1_t5 {
+    padding-top: 5px; *padding-top: 0 !important; *padding-top: 0;
+}
+.p_t5 {
+    padding-top: 5px;
+}
+.P5 {
+    padding: 5px;
+}
+.p8 {
+    padding: 8px;
+}
+/*****字的大小*****/
+.f10 {
+    font-size: 10px;
+}
+.f12 {
+    font-size: 12px;
+}
+.f14 {
+    font-size: 14px;
+}
+.f18 {
+    font-size: 18px;
+}
+.bold {
+    font-weight: bold;
+}
+/*****行间距*****/
+.line22 {
+    line-height: 22px;
+}
+.line23 {
+    line-height: 23px;
+}
+.line24 {
+    line-height: 24px;
+}
+.line25 {
+    line-height: 25px;
+}
+/*****颜色*****/
+.white {
+    color: #fff;
+}
+.red {
+    color: red;
+}
+.red1 {
+    color: #c70101;
+}
+.blue {
+    color: #004fb0;
+}
+.orange {
+    color: #ff6c00;
+}
+.gray_8a {
+    color: #8a8a8a;
+}
+.underline {
+    text-decoration: underline;
+}
+/*****链接样式*****/
+a {
+    text-decoration: none;
+
+    color: #414141;
+}
+a:hover {
+    text-decoration: underline;color: #f60;
+}
+.graylink:link {
+    text-decoration: none;
+
+    color: #696969;
+}
+.graylink:visited {
+    text-decoration: none; color: #696969;
+}
+.graylink:hover {
+    text-decoration: underline;color: #f60;
+}
+.graylink:active {
+    text-decoration: none; color: #696969;
+}
+.redlink:link {
+    text-decoration: none;
+
+    color: #c70101;
+}
+.redlink:visited {
+    text-decoration: none; color: #c70101;
+}
+.redlink:hover {
+    text-decoration: underline;color: #f60;
+}
+.redlink:active {
+    text-decoration: none; color: #c70101;
+}
+.whitelink:link {
+    text-decoration: none;
+
+    color: white;
+}
+.whitelink:visited {
+    text-decoration: none; color: white;
+}
+.whitelink:hover {
+    text-decoration: underline;color: black;
+}
+.whitelink:active {
+    text-decoration: none; color: white;
+}
+.coffelink:link {
+    text-decoration: none;
+
+    color: #9e4f04;
+}
+.coffelink:visited {
+    text-decoration: none; color: #9e4f04;
+}
+.coffelink:hover {
+    text-decoration: underline;color: #f60;
+}
+.coffelink:active {
+    text-decoration: none; color: #9e4f04;
+}
+/*****浮动*****/
+.center {
+    text-align: center;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+/*****清除浮动*****/
+.cl {
+    line-height: 0;
+
+    clear: both; overflow: hidden; height: 0;
+}
+.blank10 {
+    display: block;
+    clear: both;overflow: hidden;height: 10px;
+}
+.blank8 {
+    display: block;
+    clear: both;overflow: hidden;height: 8px;
+}
+.blank7 {
+    display: block;
+    clear: both;overflow: hidden;height: 7px;
+}
+.blank6 {
+    display: block;
+    clear: both;overflow: hidden;height: 6px;
+}
+.blank5 {
+    display: block;
+    clear: both;overflow: hidden;height: 5px;
+}
+.blank9 {
+    display: block;
+    clear: both;overflow: hidden;height: 9px;
+}
+.blank4 {
+    display: block;
+    clear: both;overflow: hidden;height: 4px;
+}
+.blank3 {
+    display: block;
+    clear: both;overflow: hidden;height: 3px;
+}
+.blank2 {
+    display: block;
+    clear: both;overflow: hidden;height: 2px;
+}
+.blank1 {
+    display: block;
+    clear: both;overflow: hidden;height: 1px;
+}
+.cl1 {
+    clear: both;
+}
+/*****定义高度*****/
+.h5 {
+    height: 5px;
+}
+.h7 {
+    height: 7px;
+}
+/*****定义宽度*****/
+.w5 {
+    width: 5px;
+}
+.w7 {
+    width: 7px;
+}
+/*****隐藏内容*****/
+.oh {
+    overflow: hidden;
+}
+.con1A32B span,
+.con1A32B a {
+    padding: 0;
+}
+/*****建材*****/
+#area5 {
+    clear: both;
+}
+.con1 {
+    border-right: 1px solid #dfdfdf;
+    border-left: 1px solid #dfdfdf;
+}
+.con11 {
+    float: left;	width: 180px;margin-top: 8px;margin-right: 3px;margin-bottom: 3px;margin-left: 8px !important;margin-left: 6px;
+}
+.txt {
+    overflow: hidden;width: 180px;
+}
+.recommend_floorInfo {
+    float: left;width: 70px;height: 19px;margin-top: 3px;margin-left: 1px;
+
+    background-image: url(../newimages/lpjs_an.gif);background-repeat: no-repeat;
+}
+.recommend_floorPoint {
+    float: left;width: 10px;height: 15px;margin-top: 5px;margin-left: 3px;text-align: left;
+}
+.recommend_floorMessage {
+    float: left;width: 50px;height: 15px;margin-top: 3px;text-align: left;
+}
+.recommend_show2out {
+    float: right;width: 104px;height: 19px;margin-top: 3px;
+
+    background-image: url(../newimages/yxrs_bj1.gif);
+}
+.recommend_show21 {
+    float: left;height: auto;margin-top: 3px;padding-left: 9px;
+}
+.bot {
+    clear: both;height: 5px;
+}
+.bot_1 {
+    float: left;width: 5px;height: 5px;
+}
+.bot_2 {
+    float: left;overflow: hidden;width: 950px;height: 5px;
+
+    border-bottom: 1px solid #dfdfdf;
+}
+.con1 {
+    border-right: 1px solid #dfdfdf;
+    border-left: 1px solid #dfdfdf;
+}
+.con12 {
+    float: left;	width: 172px;margin-top: 8px;margin-right: 3px;margin-bottom: 3px;	margin-left: 8px !important;	margin-left: 6px;padding: 0 4px 7px;
+}
+.pic2 {
+    padding: 8px;border: 1px solid #c4c4c4;
+    background: #f3f3f3;
+}
+.cl {
+    clear: both;overflow: hidden;height: 0;
+}
+.ieHack {
+    *height: 1%;
+}
+.con1A31 #sb {
+    width: 79px;height: 24px; cursor: pointer; border: 0 none;
+    background: url(../newimages/but_search.gif) repeat 0 0;
+}

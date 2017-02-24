@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+<style type="text/css">
+body{margin:0; padding:0}
+.btn_area {margin-top:15px; text-align:center}
+div.button {margin:5px;padding:0 5px;background:#eee;border-right:1px solid #aaa;border-bottom:1px solid #aaa;}
+div.button:hover {background:#ddd}
+.determine {float:left}
+.cancel {float:left;margin-left:70px}
+</style>
+</head> 
+<body>
+<div id="map_canvas" style="width:100%; height:100%"></div>
+<script type="text/javascript">
+//variable = {lat, lng, zoom, zbar, link, title, message}
+var map, old, point, marker, undefined, variable = {};
+var parser = /[#&]([^=]+)(?:=([^&]*))?/g;
+while(query = parser.exec(location.hash)){
+	variable[query[1]] = decodeURIComponent(query[2]);
+}
+document.title = (variable.title ? variable.title + '\u7684' : '') + '\u5730\u7406\u4f4d\u7f6e';
+if(typeof $cms_abs == 'undefined')window.$cms_abs = '../';
+var canvas = document.getElementById("map_canvas");
+old = variable.lat != undefined && variable.lng != undefined;
+point = old ? new BMap.Point(variable.lng,variable.lat) : new BMap.Point(113.33127548857,23.143680171285);
+
+map = new BMap.Map(canvas,{
+	maptype:BMAP_PERSPECTIVE_MAP,
+	minZoom:3,
+	maxZoom:19
+});
+map.enableScrollWheelZoom();
+map.centerAndZoom(point,variable.zoom && variable.zoom.match(/^[3-9]$|^1\d$/) ? parseInt(variable.zoom) : 13);
+map.addControl(new BMap.MapTypeControl({type:BMAP_MAPTYPE_CONTROL_DROPDOWN,mapTypes:[BMAP_NORMAL_MAP ,BMAP_SATELLITE_MAP]}));
+map.addControl(new BMap.NavigationControl());
+if(old){
+	marker = new BMap.Marker(point,{title : variable.title ? variable.title : ''});
+	map.addOverlay(marker);
+	variable.link && marker.addEventListener('click', function(){window.open(variable.link == '_self' ? location.href.replace(/[?#&]link=_self\b/g, '') : variable.link)});
+}
+
+if(variable.message){
+	var infowindow = new BMap.InfoWindow(variable.message,{
+		title : variable.title ? variable.title : ''
+	});
+	marker.addEventListener('click', function(){map.openInfoWindow(infowindow,point);});
+	map.openInfoWindow(infowindow,point);
+}
+
+</script> 
+</body> 
+</html>

@@ -1,0 +1,9 @@
+<footer id="footer">
+  <ul class="footbar">
+    <li><a href="{$mobileurl}" class="inhome {if !$caid}act{/if}">首页</a></li>
+    <li><a href="{c$xinfurl [tclass=cnode/] [listby=ca/] [casource=502/]}{indexurl}{/c$xinfurl}" class="news {if $caid==502 || $caid==503 || $caid==504 || $caid==20 || $chid==1}act{/if}">资讯</a></li>
+    <li><a href="{c$xfurl [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl}{/c$xfurl}" class="nhouse {if $caid==2}act{/if}">新房</a></li>
+    <li><a href="{c$esurl [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$esurl}" class="old {if $caid==3}act{/if}">二手房</a></li>
+     <li><a href="{c$esurl [tclass=cnode/] [listby=ca/] [casource=4/]}{indexurl}{/c$esurl}" class="zuf {if $caid==4}act{/if}">租房</a></li>
+  </ul>
+</footer> 

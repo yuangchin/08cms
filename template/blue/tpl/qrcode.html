@@ -1,0 +1,9 @@
+<ul class="elist">
+	<li><img src="<?=cls_tpl::QRcodeImage($mobileurl."archive.php?aid=".$lpid)?>" width="80" height="80" />
+<span>用手机看</span></li>
+	{c$qrcode [tclass=outinfos/] [limits=1/] [dsid=0/] [wherestr=SELECT weixin_qrcode  FROM {$tblprefix }weixin_config where weixin_fromid='$lpid'/]}
+	{if $v['weixin_qrcode']}
+	<li><img {c$weixin_qrcode [tclass=image/] [tname=weixin_qrcode/] [val=u/]}src="{url}" width="80" height="80"{/c$weixin_qrcode}/>
+	{/if}
+    {/c$qrcode}
+</ul>

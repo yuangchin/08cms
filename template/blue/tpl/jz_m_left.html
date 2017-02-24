@@ -1,0 +1,113 @@
+
+<div class="left_bar">
+    <div class="name">
+      <div class="name_L"><img src="{$tplurl}newimages/jzgs_L_title_L.gif"></div>
+      <div class="name_M">{c$jz_m_comname [cname=装修公司名称/] [tclass=member/] [val=v/] [ttl=900/] [detail=1/]}{companynm}{/c$jz_m_comname}</div>
+      <div class="name_R"><img src="{$tplurl}newimages/jzgs_L_title_R.gif"></div>
+    </div>
+    <div class="left_con"> <span class="blank10"></span>
+      <div class="left_con1">
+			<img {c$jz_m_pic [cname=装修公司左侧图片/] [tclass=image/] [tname=pic/] [val=p/] [maxwidth=180/] [maxheight=55/] [thumb=2/]}src="{url_s}" height="55" width="180"{/c$jz_m_pic}>
+      {if $grouptype31==102}<i class="vip-ico"></i>{/if}
+      </div>
+      <span class="blank8"></span>
+      <div class="left_con2 line25">
+      {if $grouptype31 == 102}免费量房：<span class="orange">提供</span> <a href="{$cms_abs}info.php?fid=201{if !empty($mid)}&mid={$mid}{/if}" class="redlink">[立即申请]</a><br>{/if}
+        浏 览 量：<span class="orange"><strong><div class="count08" id="_08_count_xxx_{mid}" url-params="{type: 'm', modid: 11, field: 'msclicks'}">&nbsp;</div></strong></span>人次
+        <div class="blank0"></div>
+            <a id="sendtophone" onclick="return modalExt(this,'发送到手机');" class="btn-phone" style="display: none;" href="#pop-phone" rel="nofollow"><i class="ico08">&#xe74d;</i>免费发送短信到手机</a>
+        <div class="blank5"></div>
+      </div>
+      <div class="left_con3 line25">
+        <span class="red font14 bold">用户评分：</span>
+        <span class="wryh f24 red">{zonghepf}</span>
+        <span class="font14 xing_bg1">
+        <img src="{$tplurl}newimages/level_{zonghepf}.gif" style="vertical-align: baseline ;">
+        </span>
+<?
+$commu = cls_cache::Read('commu',31);
+$tjarr = $db->fetch_one("SELECT COUNT(*) num,SUM(service) service,SUM(price) price,SUM(design) design,SUM(process) process,SUM(aftersale) aftersale FROM {$tblprefix }$commu[tbl] WHERE tomid='$mid' AND checked=1");
+$temparr = array('service','price','design','process','aftersale','num');
+foreach($temparr as $k) $$k=$tjarr['num']?round($tjarr[$k]/$tjarr['num']):0;
+$num = $tjarr['num'] ? $tjarr['num'] : 0;
+//print_r($tjarr);
+//$num = $db->result_one("SELECT COUNT(*) as num FROM {$tblprefix }$commu[tbl] WHERE tomid='$mid' AND checked=1");
+?>
+        <br>服务：<strong class="green xing_bg">{$service}</strong> 设计：<strong class="green xing_bg">{$design}</strong> 价格：<strong class="green xing_bg">{$price}</strong>
+        <br>施工：<strong class="green xing_bg">{$process}</strong> 售后：<strong class="green xing_bg">{$aftersale}</strong>
+      </div>
+      <div class="left_con4 line22">以上五项，每项满分为5颗星。目前已经有{$num}位网友进行了评价。</div>
+      <span class="blank8"></span>
+{if $grouptype31 == 102}<div class="left_con5"><a href="{$cms_abs}info.php?fid=201{if !empty($mid)}&mid={$mid}{/if}"><img src="{$tplurl}newimages/sqmflf.gif"></a></div>
+      <span class="blank8"></span>
+      <div class="left_con5"><img src="{$tplurl}newimages/jzgs_cglf_T.gif" style="*vertical-align: bottom;"></div>
+      <div class="left_con5 left_con6">
+        <ul>
+			{c$lftellist [cname=量房电话尾号/] [tclass=commus/] [limits=5/] [cuid=32/] [checked=1/] [orderstr=cid desc/] [wherestr=tomid='$mid'/]}          <li>尾号<strong class="red1"><?=substr($v['tel'],-4) ?></strong>的网友已经申请成功</li>{/c$lftellist}
+        </ul>
+      </div>
+      <div class="left_con5"><img src="{$tplurl}newimages/jzgs_cglf_B.gif"></div>
+    {/if}
+
+      <span class="blank8"></span>
+      <!-- 公司动态链接 -->
+      {c$jz_m_gsdturl [cname=公司动态链接/] [tclass=mcatalogs/] [val=v/] [limits=1/] [listby=0/] [casource=1/] [caids=7/]}<div class="left_title">
+        <div class="left_title_L">公司动态</div>
+        <div class="left_title_R"><a href="{indexurl}"><img src="{$tplurl}newimages/jzgs_more.gif"></a></div>
+      </div>{/c$jz_m_gsdturl}
+      <div class="left_con7">
+        <ul>
+         {c$jz_m_gsdt [cname=公司动态2/] [tclass=archives/] [limits=8/] [chsource=2/] [chids=104/] [detail=1/] [caidson=1/] [casource=1/] [caids=512/] [space=1/]}<li>·<a href="{marcurl}" target="_blank">{c$subject26 [cname=subject26/] [tclass=text/] [tname=subject/] [trim=26/]}{/c$subject26}</a></li>{/c$jz_m_gsdt}
+        </ul>
+      </div>
+
+      <span class="blank8"></span>
+      <!-- 设计师链接 -->
+      {c$jz_m_sjsurl [cname=设计师链接/] [tclass=mcatalogs/] [limits=1/] [listby=0/] [casource=1/] [caids=10/]}<div class="left_title">
+        <div class="left_title_L">推荐设计师</div>
+        <div class="left_title_R"><a href="{indexurl}"><img src="{$tplurl}newimages/jzgs_more.gif"></a></div>
+      </div>{/c$jz_m_sjsurl}
+      <span class="blank8"></span>
+         {c$jz_m_sjs [cname=推荐设计师/] [tclass=archives/] [limits=4/] [chsource=2/] [chids=101/] [caidson=1/] [casource=1/] [caids=510/] [ccidson19=1/] [cosource19=1/] [ccids19=203/] [detail=1/] [orderstr=a.refreshdate DESC/] [wherestr=a.mid='$mid'/] [ttl=1/]} <div class="left_con8">
+        <div class="left_con8A">
+            <a href="{marcurl}" target="_blank">
+        <img alt="{subject}" class="sjs_pic" {c$thumb_72_90 [cname=thumb_72_90/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=72/] [maxheight=90/] [thumb=1/] [emptyurl=images/common/nopic.gif/]}src="{url_s}" width="72" height="90"{/c$thumb_72_90}>
+            </a>
+        </div>
+        <div class="left_con8B1">
+            <strong class="red1"><a href="{marcurl}" class="redlink" target="_blank">{subject}</a></strong><br>
+              <strong>从业时间</strong>：{c$jobtime [cname=jobtime/] [tclass=field/] [tname=jobtime/] [type=archive/] [limits=1/] [fname=jobtime/]}{/c$jobtime}<br>
+              <strong>设计理念</strong>：{shejiln} </div>
+        <div class="cl"></div>
+      </div>{/c$jz_m_sjs}
+      <span class="blank8"></span>
+      <div class="left_title">
+        <div class="left_title_L">联系方式</div>
+
+      </div>
+      <div class="left_con3 line22 p_t5">
+                    地  址：{if $dizhi}{dizhi}{else}暂无！{/if}<br>
+                    电  话：{if $lxdh}{lxdh}{else}暂无！{/if} <br>
+                    网  址：<span style="">{if $internet}<a href="{internet}" target="_blank" rel="no-follow">{internet}</a>{else}暂无！{/if}</span><br>
+            QQ：{if $qq}<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={qq}&site=qq&menu=yes"><img src="{$tplurl}newimages/pa.gif" alt="点击这里给我发消息" title="点击这里给我发消息" border="0"></a> {else}暂无！{/if}
+      </div>
+      {if $map}
+		<div class="left_con3 line22 p_t5" style="width:230px; height:200px;"><iframe marginwidth="0" marginheight="0" src="{$cms_abs}tools/pointer.html#lat={map_0}&lng={map_1}&title={companynm}&zoom=12&zbar=1" frameborder="0"  height="200" width="230"   scrolling="no"></iframe></div>
+		<span class="blank8"></span>
+		{/if}
+  </div>
+    <!--左侧栏结束-->
+</div>
+<script src="{$tplurl}js/jquery.js"></script>
+    <!-- 发送到手机短信模板 -->
+    <script type="text/javascript">
+    var isOpenMob='memb0info';
+    
+    var msgpara = 'm,{mchid},{mid}'; 
+    </script>
+{tpl$smsphone}
+
+
+
+
+

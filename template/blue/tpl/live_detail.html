@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-直播-{$hostname}</title>
+{tpl$headinner}
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/live.css?{$user_version}"/>
+</head>
+<body>
+	<!--视频内容头部-->
+	<div class="all">
+	<!-- {tpl$head-} -->
+	<div class="blank1"></div>
+	<div class="wrap wrap-detail">
+		<div class="view-warp clearfix">
+			<img width="960" height="180" alt="{subject}" src="{c$image [tclass=image/] [tname=image/] [val=u/]}{url}{/c$image}"/>
+			<div class="blank50"></div>
+			<div id="video" class="video">
+				{c$archives [tclass=archives/] [chids=12/] [chsource=2/] [val=a/] [limits=1/] [caidson=1/] [casource=1/] [caids=30/] [mode=in/] [arid=34/] [detail=1/]}
+				{if $a['html']}
+				<div style="display:none;">
+				{html}
+				</div>
+				{else}
+				{c$video [tclass=flash/] [tname=scsp/] [height=445/]}{playbox}{/c$video}
+                {c$videomk [tclass=media/] [tname=scsp/] [height=445/]}{playbox}{/c$videomk}
+				{/if}
+				{/c$archives}
+			    </div>
+			<div class="video-txt">
+				<strong>活动主题：</strong>{subject}<br/>
+				<strong>活动时间</strong>：{c$date [tclass=date/] [tname=ztsj/] [date=Y年m月d日/] [time=H:i:s/]}{/c$date}<br/>
+				<strong>活动地点</strong>：{if $didian}{didian}{else}待定{/if}<br/>
+				<strong>主题内容</strong>：
+				<span class="video-txt-con">
+					{content}
+				</span>
+			</div>
+		</div>
+
+	 <!--文字直播-->
+		<div class="warps" id="text-live">
+			<div class="hd">
+				<div class="r r-t">
+					<span>
+						 自动刷新：
+						<select id="refresh">
+							<option selected="selected" value="1">1分钟</option>
+							<option value="5">5分钟</option>
+							<option value="10">10分钟</option>
+							<option value="15">15分钟</option>
+							<option value="30">30分钟</option>
+							<option value="0">手动刷新</option>
+						</select>
+						<a class="refresh-btn" href="javascript:;" rel="nofollow">刷新</a>
+						 排序：
+						<select id="orderby">
+							<option value="0">倒序</option>
+							<option value="1">正序</option>
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="bd clearfix">
+				<div class="text-txt">
+					  <div class="text-live"></div>
+					  <div id="text-btn" class="text-btn">显示更多>></div>
+					  <div id="loading" class="loading"></div>
+				</div>
+		 	</div>
+	 	</div>
+		<!--图片直播-->
+		<div class="warps" id="pic-live">
+			<div class="hd"></div>
+			<div class="bd clearfix">
+				<div id="G-Scroll" class="jqDuang" data-obj="dl" data-cell=".pages" data-effect="leftLoop" data-prevbtn=".prevBtn" data-nextbtn=".nextBtn" data-visible="3" data-speed="600" data-steps="3">
+					<div class="pages"></div>
+					<a class="prevBtn" href="javascript:void(0)"></a>
+					<div class="scrollWarp clearfix">
+						<div class="moveBox">
+							{c$tuji [tclass=images/] [tname=tuji/] [limits=30/] [maxwidth=252/] [maxheight=188/] [thumb=2/]}<dl>
+								<dt><a href="{url}" data-lightbox="1" target="_blank"><img width="252" height="188" src="{url_s}" alt="{title}"></a></dt>
+								<dd>{title}</dd>
+							</dl>{/c$tuji}
+						</div>
+					</div>
+					<a class="nextBtn" href="javascript:void(0)"></a>
+				</div>
+			</div>
+		</div>
+		<!--图片滚动JS-->
+
+		<!-- 往期回顾 -->
+		<div class="warps" id="over-live">
+		 	<div class="hd">
+				<div class="r r-t"><!--<a href="#">更多直播&gt;&gt;</a>--></div>
+		 	</div>
+			<div class="bd clearfix">
+				<ul>
+				{c$archives [tclass=archives/] [chids=114/] [chsource=2/] [limits=8/] [detail=1/] [wherestr=a.ztsj < '$timestamp' and a.aid!=$aid/]}<li>
+				<a target="_blank" href="{arcurl}"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=200/] [maxheight=150/] [thumb=1/]} src="{url_s}"  height="150" width="200" {/c$image}/></a>
+				<p><a target="_blank" href="{arcurl}">{subject}</a></p>
+				</li>{/c$archives}
+				</ul>
+			</div>
+		</div>
+		<!-- /往期回顾 -->
+	</div>
+
+<link rel="stylesheet" href="{$tplurl}css/lightbox.css" />
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="{$tplurl}js/lightbox.js"></script>
+<script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+<script type="text/javascript">
+// 变量定义
+var liveTimer ,
+waitTime = 1000*60 , //一分钟
+$wrap = $('#text-live').find('.text-live') ,
+$loadDiv =  $('#text-live').find('#loading') ,
+opt = {
+    param : {
+    	'ajax' : 'pageload_toaid' ,
+		'aj_model'   : 'cu,101' , //模型信息(a-文档/m-会员/cu-交互/co-类目,3,1-模型表; 如:a,3,1)
+		'aj_check'   : 1 ,     //是否审核(0/1或不设置)
+		'aj_pagenum' : 1 , //当前分页(数字,默认2)
+		'aid'        : '{$aid}' ,
+		'orderby'    : 'cid', //排序字段
+		'ordermode'  : 0 ,
+		'datatype' : 'json'
+    },
+    template : function() {
+        return '<dl>'+
+					'<dd>'+
+						'<span>[<em class="u-s">'+this.speeker+'</em>]</span>'+
+						'<p>'+this.content+'</p>'+
+						'<em class="u-s">('+getLocalTime(this.zhiboshijian)+')</em>'+
+					'</dd>'+
+				'</dl>';
+    } 
+} ;
+
+// 设置间隔时间
+$('#refresh').change(function() {
+	waitTime = $(this).find('option:selected').val()*1000*60;
+	if(!waitTime){
+		clearInterval(liveTimer);
+		$(this).next().css('visibility', 'visible').click(function() {//手动刷新
+			loadData();
+		});
+	}else{
+		liveTimer = setInterval(loadData,waitTime);
+		$(this).next().css('visibility', 'hidden');
+	}
+});
+// 设置排序
+$('#orderby').change(function() {
+	opt.param.ordermode = $(this).find('option:selected').val();
+	opt.param.aj_pagenum = 1;//重置从第一页开始浏览
+	opt.loadType = 'html';
+	loadData();
+});
+// 加载更多
+$('#text-btn').click(function() {
+	loadData();
+});
+// 正常载入
+$(window).load(function() {
+	loadData();
+})
+liveTimer = setInterval(loadData,waitTime);
+
+// 格式化时间
+function getLocalTime(nS) {
+	var myDate = new Date(parseInt(nS) * 1000);
+   	return myDate.getFullYear()+'-'+myDate.getMonth()+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds()
+}
+
+function loadData() {
+	$loadDiv.css('display', 'block');
+    // 获取数据
+    $.getJSON(CMS_ABS + uri2MVC($.param(opt.param) + '&callback=?')
+        ,function(d){
+            if(d.length){
+                var _html = '';
+                $.each(d,function(a,b) {
+                    _html += opt.template.call(b);
+                })
+                $wrap[opt.loadType||'append'](_html);
+                opt.param.aj_pagenum++;
+            }else{
+            	$('#text-btn').html('暂无数据');
+            }
+			$loadDiv.css('display', 'none');
+        });
+}
+
+</script>
+<!-- 视频 -->
+{c$archives [tclass=archives/] [chids=12/] [chsource=2/] [val=a/] [limits=1/] [caidson=1/] [casource=1/] [caids=30/] [mode=in/] [arid=34/] [detail=1/]}
+{if $a['html']}
+<!-- 自动播放{html}?isAutoPlay=true -->
+<script type="text/javascript">
+if($("#video").html().indexOf("iframe")==-1){
+   $("#video").html('<embed src="{html}" quality="high" width="100%" height="445" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="sameDomain"/>');
+}else{
+    $("#video").html('{html}');
+   	$("#video iframe").css({"width":"100%","height":445}); 
+}
+</script>
+{/if}
+{/c$archives}
+<!-- /视频 -->
+	{tpl$foot}
+	</div>
+	</body>
+</html>

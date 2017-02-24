@@ -1,0 +1,130 @@
+﻿/***------------------
+common
+-----------------------------------------------***/
+body {background: #F7F7F7;}
+/***---------
+百科 图库 搜索与导航公用----------------------------------------------------***/
+/***search***/
+.nav-tk {float: right;}
+.nav-tk li {float: left;}
+.nav-tk a {font-size: 16px;margin-left: 10px;padding: 5px 10px;border-radius: 3px;}
+.nav-tk .act, .nav-tk a:hover {background: #e43;color: #fff;text-decoration: none;}
+/***------------------
+图库列表 css
+-----------------------------------------------***/
+
+.plist {margin-right: -50px;position: relative;}
+.plist li {width: 200px;background: #fff;border: 1px solid #eee;padding: 10px;float: left;margin: 0 22px 22px 0;-webkit-box-shadow: 1px 1px 10px rgba(0,0,0,.3); box-shadow: 1px 1px 10px rgba(0,0,0,.3);}
+.plist li h3 {line-height: 24px;height: 48px;overflow: hidden;padding-top: 5px;}
+.plist li h4 {font-size: 12px;color: #999;}
+.plist li > a {overflow: hidden;display: block;background: #eee;}
+.plist li img {-webkit-transition: -webkit-transform .5s; -moz-transition: transform .5s; -ms-transition: -ms-transform .5s; -o-transition: -o-transform .5s; transition: transform .5s;}
+.plist li:hover img {-webkit-transform: rotateY(180deg); -ms-transform: rotateY(180deg); -o-transform: rotateY(180deg); transform: rotateY(180deg);}
+/* .plist li:hover img {-webkit-transform: scale(1.1); -ms-transform: scale(1.1); -o-transform: scale(1.1); transform: scale(1.1);} */
+
+
+/***------------------
+图库内容页 css
+-----------------------------------------------***/
+.bgimg{ background:url(../images/chanpinzt.gif);}
+.content5{color: #666;}
+.content5 h2{ padding:20px 0 8px; font-size:26px; font-family: Microsoft yahei;color: #333;}
+.content5 .pic .big{position:relative;*zoom:1;}
+.content5 .pic .biglist{padding: 5px;border: 1px solid #ddd;background: #fff;-webkit-box-shadow: 0 0 3px #ddd; -moz-box-shadow: 0 0 3px #ddd; box-shadow: 0 0 3px #ddd;}
+
+.content5 .pic .loading {  width: 32px; height: 32px; background: transparent url(../images/loading1.gif) no-repeat center center; position: absolute;left: 50%;top: 50%;margin: -16px 0 0 -16px;z-index: 1;}
+
+.content5 .pic .big-prev ,
+.content5 .pic .big-next  {  position: absolute; display: none; width: 45px; height: 100px; margin-top: -50px; top: 50%; outline: none; overflow: hidden; text-indent: -9999em; }
+.content5 .pic .big-prev  { left: 35px; background-image: url(../images/prev_off.png); }
+.content5 .pic .big-next  { right: 35px; background-image: url(../images/next_off.png); }
+
+.content5 .blank1{margin:15px 0;}
+.content5 .info{ font-size: 12px;color: #999;padding-left: 10px;}
+.content5 .info span{background:url(../images/btnbg2.png) -58px -50px no-repeat; padding-left:16px;}
+.content5 .info  b{ font-weight:normal;}
+.content5 .info  b,.content5 .info span b a{ color:#CC0000;}
+.content5 .info span.yt{ background-position: -54px -23px;padding-left:20px;}
+.content5 .info span.yt a{ color:#666;}
+.content5 .info span.all{ background-position:0 -82px;}
+.content5 .pList{position:relative;	height:110px;width: 920px;margin: 0 auto;}
+.content5 .pList ul{overflow:hidden;height:96px;}
+.content5 .pList li{float: left; margin:0 8px; display: inline;position: relative;border:1px solid #CCC;padding:2px; background:#FFF;cursor: pointer;width:120px;height:90px;}
+.content5 .pList li tt{position: absolute;background: #888;right:2px;bottom:2px;height:16px;line-height:16px;padding: 0 5px;font-family: Arial;color: #fff;}
+.content5 .pList .hover {border-color: #c00;}
+.content5 ul li p{ margin:0; line-height:21px;}
+.content5 .btnL,.content5 .btnR{background:url(../images/btnbg2.png) no-repeat;width:20px;height:65px;position:absolute;top:15px;left:0;}
+.content5 .btnR{left:auto;right: 0;background-position:-27px 0;}
+.content5 .plr20{padding: 0 20px;}
+.tjpn{ width:124px;}
+.tjpn em{ height:22px; line-height:22px; display:block; text-align:center;}
+.tjpn em a{ color:#999;}
+.tjpn div,.tjpn i{ width:120px; height:90px; padding:2px; border:1px solid #CCC; background:#FFF;}
+.tjpn div{ position:relative; z-index:100;}
+.tjpn i{ position:absolute; top:-4px; left:4px;}
+.prevtj{ position:absolute; left:25px; bottom:28px;}
+.nexttj{ position:absolute; right:35px; bottom:28px;}
+.detail-title{height: 48px;overflow: hidden;margin-top: -58px;background:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ');padding:5px 10px;color: #fff;position: relative;display: none;}
+.detail-title .count{float: left;margin-right: 10px;height:50px;}
+.detail-title .count span{ font-family: Georgia, 'Monotype Corsiva', Arial, sans-serif; line-height: 1;}
+.detail-title .count .numerator{float: left; color: #CC191B; font-size: 36px;}
+.detail-title .count .denominator{float: left; padding: 30px 0 0 8px; font-size: 14px; background: url(../images/splash_white.png) no-repeat 0 18px;}
+
+/*** 浏览结束
+--------------------- ***/
+.endLayer{width:600px;height:240px;background:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7f000000 ', endColorstr='#7f000000 ');position: absolute;margin: -131px 0 0 -311px;left: 50%;top: 50%;text-align: center;padding: 10px;border: 1px solid #8A8A8A;}
+.endLayer .close{position: absolute;right: 1px;top: 1px;cursor: pointer;color: #fff;border: 1px solid #fff; height: 17px; overflow: hidden; line-height: 19px; font-family: simsun; padding: 0 2px;}
+.endLayer .tip{color: #fff;font-size: 14px;margin-bottom: 20px;}
+.rel-plist li{margin: 0 10px;width: 120px;display: inline-block;*display:inline;*zoom:1;vertical-align:top;}
+.rel-plist li em{display: block;color: #fff;height:24px;line-height:24px;overflow: hidden;}
+.btn-group {margin-bottom: 20px;}
+.btn-group a{display: inline-block;height:24px;line-height:24px;padding: 0 8px;color: #fff;text-decoration: none;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;border: 1px solid #ddd;margin: 0 5px;cursor: pointer;}
+.btn-group a:hover{text-decoration: none;}
+
+/***------------------推荐图集
+-----------------------------------------------***/
+
+.bgFF{ background:#FFF;}
+.tjtjLS{ padding:8px 8px 0 45px;_padding:8px 8px 8px 45px; height:144px; background:url(../images/tjtj.gif) 0 21px no-repeat;}
+.tjtjLS ul{ height:136px; overflow:hidden;}
+.tjtjLS li{ width:126px; margin:15px 0 5px 26px; display:inline; float:left; position:relative;}
+.tjtjLS li div,.tjtjLS li i{ width:120px; height:90px; border:1px solid #CCC; padding:2px; background:#FFF;}
+.tjtjLS li i{ position:absolute; top:-4px; left:4px;}
+.tjtjLS li div{ position:relative; z-index:100;}
+.tjtjLS li em{ height:25px; line-height:25px; overflow:hidden; display:block; text-align:center;}
+.hd{padding-top: 10px;}
+.hd h1 { font-size: 26px;line-height: 40px; height:40px; overflow:hidden; font-weight:bold; margin-bottom:5px; text-align: center;}
+.zhaiyao { border-top: 1px solid #D9D7D7;font-size: 14px; line-height: 24px; padding: 18px 14px; text-align: left; text-indent: 2em; }
+.zhaiyao p a { color:#AB2329; }
+/*red*/
+body #footer .wrap{ border-color:#C70101}
+body .p_bar a:hover,body .p_bar .p_curpage{background: #c00;color: #fff;border-color: #c00;}
+body .feilei1 a{color: #c00;}
+body .fixed-div li .ico-4 ,
+body .comment .wyxzTit1 em,
+body .comment-form .btn{background-color: #C52D2D; }
+
+.biglist img{width: 100%;height: 100%;}
+
+.flash {position: relative;}
+.flash, .flash .bigimg li {height: 600px;overflow: hidden;}
+.flash .bigimg img {width: 100%;}
+
+.flash .control {position: absolute;right: 10px;bottom: 10px;padding: 0 40px;}
+.flash .control .thumb {width: 696px;height: 56px;overflow: hidden;position: relative;}
+.flash .control li {float: left;margin: 0 5px;width: 100px;height: 50px;overflow: hidden;background: #fff;border: 3px solid #fff;}
+.flash .control li img {width: 100%;}
+.flash .control li.act {border-color: #e43;}
+
+.flash .prev, .flash .next {position: absolute;width: 40px;height:56px;line-height:56px;text-align: center;top: 0;color: #ccc;;left: 0;cursor: pointer;font-size: 40px;-webkit-transition: left .3s, opacity .5s, right .3s; -o-transition: left .3s, opacity .5s, right .3s; transition: left .3s, opacity .5s, right .3s;border-radius: 5px;}
+.flash .next {left: auto;right: 0;}
+.flash .next:hover, .flash .prev:hover {color: #fff;}
+.flash .tit-duang {position: absolute;overflow: hidden;bottom: 0;text-indent: 20px;color: #fff;font-size: 16px;width: 100%;height:200px;line-height:320px; 
+background: -ms-linear-gradient(rgba(0,0,0,0), #000);   
+background:-moz-linear-gradient(rgba(0,0,0,0), #000);
+background:-webkit-linear-gradient(top,rgba(0,0,0,0), #000);
+background: -o-linear-gradient(rgba(0,0,0,0), #000);
+ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000 ', endColorstr='#77000000 ')\9;
+height:76px\9;line-height:76px\9; 
+}
+.flash .tit-duang:hover {text-decoration: none;}

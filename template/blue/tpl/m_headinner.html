@@ -1,0 +1,14 @@
+    <meta name="mobile-agent"content="format=html5; url={$cms_abs}">
+    <meta name="mobile-agent"content="format=xhtml; url={$cms_abs}">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript">
+        var CMS_ABS = '{$cms_abs}'
+        , hostname  = '{$hostname}'
+        , tplurl    = '{$tplurl}'
+        , mobileurl = '{$mobileurl}'
+        , vcodes    = '{$cms_regcode}';
+		var originDomain = originDomain || document.domain;document.domain = '{$cms_top}' || document.domain;
+    </script>
+    <link rel="stylesheet" href="{$tplurl}mobile/css/Jingle.css?{$user_version}" />

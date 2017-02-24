@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>手机浏览版-{$hostname}</title>
+{tpl$headinner}
+<?php $pagetype = 'mobile'; ?>
+</head>
+<body>
+<!--手机App头部-->
+{tpl$phonehead}
+<div class="overbg clearfix">
+	<div class="wrap bgFF clearfix">
+    <div class="blank15"></div>
+    	<div class="phwpshow l">
+        <iframe width="321" height="480" src="{$mobileurl}">
+        </iframe>
+        </div>
+        <div class="w535 l">
+        	<div class="blank20"></div>
+        	<div class="wapTit l"></div>
+            <div class="waperm l"><img src="<?=cls_tpl::QRcodeImage($mobileurl)?>" width="120" height="120" /></div>
+            <div class="blank20"></div>
+            <div class="wapadr mT10"><a></a><input type="text" value="{$mobileurl}"/></div>
+            <div class="blank20"></div>
+            <div class="wapintro mT10">
+            	<ul>
+                 {c$wapintro [tclass=farchives/] [casource=fcatalog174/] [limits=4/] [validperiod=1/] [orderstr=a.vieworder ASC/]}<li>
+                  <a href="javascript:void(0);">
+                  <i class="ico{$v['sn_row']}"></i>
+                  <div>
+                      <b>{subject}</b>
+                      <p>{wbintro}</p>
+                  </div>
+                  </a>
+                  </li>{/c$wapintro}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{tpl$foot}	
+</body>
+</html>

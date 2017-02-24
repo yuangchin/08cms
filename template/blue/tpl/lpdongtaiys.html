@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}动态{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+{tpl$lptop}
+<div class="wrap clearfix">
+	<div class="w800 l">
+        <div class="lp-coltit"><h3 class="tit1">楼盘动态</h3></div>
+        <div class="bd-gray p15">
+            <ul class="lp-tlist2">
+            {c$lpdtlb [cname=楼盘动态列表/] [tclass=archives/][limits=15/] [ttl=600/] [chsource=2/] [chids=1/] [mode=in/] [arid=1/] [mp=1/]}
+            <li>
+                <h2><span class="fcg mlr5 r"><i class="ico08">&#xe014;</i>{c$time [cname=time/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$time} <i class="ico08">&#xe000;</i>{clicks}</span>{c$cnode [tclass=cnode/][val=a/] [listby=ca/] [casource=active/]}<strong><i class="ico08">&#xe73c;</i>{title}</strong>{/c$cnode}<a target="_blank" title="{subject}" href="{arcurl}">{subject}</a></h2>
+                <p>{c$text [tclass=text/] [tname=abstract/] [trim=180/] [color=color/]}{/c$text}...<a href="{arcurl}">[查看全文]</a></p>
+            </li>
+            {/c$lpdtlb}
+            </ul>
+            {if $mpacount>0}
+            <!-- 分页 -->
+            <div class="blank5"></div>
+            {$mpnav}
+            <div class="blank10"></div>
+            {else}
+             <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}的信息</div>
+            {/if}
+        </div>
+     </div>
+     {tpl$lpright}
+</div> 
+{tpl$tpl_lp_footer}
+</body>
+</html>

@@ -1,0 +1,48 @@
+<div class="w260 r">
+    <div class="bd-gray">
+    <div class="borB clearfix"> 
+          <div class="rkftTit"><em class="tp">投票调查</em></div>
+          <div class="blank5"></div>
+          <div class="kftzttp" id="toupiao">
+      <div class="plr10 clearfix">
+         {c$tpzt [tclass=votes/] [type=archives/] [fname=toupiao/] [id=$aid/]}
+        <form class="jqValidate" data-tipmode=".tip-tp" action="{$cms_abs}tools/vote.php?action=vote&amp;fname=toupiao&amp;id={$aid}" method="post" name="vote" target="_self">
+          [row]
+           {if $v['sn_row']>1}<div class="tpline"></div>{/if}
+           <em>{sn_row}、{subject}</em>
+           {c$pstp [tclass=vote/] [val=x/] [type=archives/] [id=$aid/] [fname=toupiao/] [js=1/]}<p><label>{input} {title}<span>({votenum})个</span></label></p>{/c$pstp}
+          [/row]
+          <div class="blank5"></div>
+          <button type="submit" class="btn form-control btn-sm fcr"><i class="ico08 mr5">&#xe641;</i>投票</button><span class="tip-tp"></span>
+      </form>
+      {/c$tpzt}
+      <div class="blank10"></div>
+      </div>
+    </div>
+   </div>
+   <div class="blank10"></div>
+    <div class="clearfix"> 
+        <div class="rkftTit"><em>活动流程</em></div>
+          <ul class="hdLCon">
+            <li><i></i><em><span>报名登记</span> 对今天的看房团有兴趣？快报名吧! 只要点击报名按钮，按照提示步 骤执行就OK！</em></li>
+            <li><i class="num2"></i><em><span>电话确认</span> 在活动前2-3天，工作人员会电话通知集合时间及地点。</em></li>
+            <li><i class="num3"></i><em><span>短信确认</span> 发团前一天，发送短信告知及提醒集合时间及地点。</em></li>
+            <li><i class="num4"></i><em><span>当天看房</span> 在规定时间内到达指定地点签到上车→按照该看房团安排线路参观项目→返回集合地点。</em></li>
+            <li><i class="num5"></i><em><span>疑问咨询</span> 请在报名前或看房前致电咨询。</em></li>
+           </ul>
+           <div class="blank8"></div>
+        </div>
+    <div class="blank10"></div>
+    <div class="rkftTit"><em>热门看房团</em></div>
+    <div class="rdkfCon">
+        <ul>
+         {c$anqykft [tclass=archives/] [chids=110/] [chsource=2/] [limits=2/] [caidson=1/] [casource=1/] [caids=560/] [detail=1/] [orderstr=a.mclicks DESC/] [wherestr=".(empty($aid) ? '' : "a.aid!=''")."/] [ttl=1200/]}          <li>
+          <a href="{arcurl}" target="_blank" title="{subject}"><img {c$thumb_225_170 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=225/] [maxheight=170/] [thumb=1/]}src="{url_s}" width="225" height="170"{/c$thumb_225_170}/></a>
+          <em><a href="{arcurl}" target="_blank" title="{subject}"><strong>{subject}</strong></a></em>
+          <em><span class="r"><a href="{arcurl}#ztmbm" class="btn btn-sm fcr" target="_blank"><i class="ico08 mr5">&#xf14b;</i>报名</a></span>已有<span><div id="_08_count_a2_{aid}" class="count08" url-params="{type: 'a', modid: 110, field: 'hdnum'}">&nbsp;</div></span>人成功报名</em>
+          </li>
+          {/c$anqykft}
+        </ul>
+    </div>
+</div>
+</div>

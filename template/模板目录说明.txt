@@ -1,0 +1,58 @@
+template：系统内置的模板总目录(不可更改)
+
+---- 单套模板目录 ------------------------------
+如：template/default_v50
+
+在template下可以新增多套模板(对应不同的目录)
+通过 管理后台->模板设置 进行单套模板目录绑定：模板目录=default_v50
+
+配备以下子目录：
+	config：模板架构配置
+	css：CSS文件，可在后台设置
+	js：JS文件，可在后台设置
+	tag：模板标签
+	tpl：页面模板，区块标识的模板
+
+--------- config目录说明 -----------------------
+
+	副件模型：fchannels.cac.php
+	副件分类：fcatalogs.cac.php
+	副件字段应用缓存：ffields*.cac.php (*为副件模型ID)	
+	副件字段完全数据源：_ffields*.cac.php (*为副件模型ID)
+
+	推送分类：pushtypes.cac.php
+	推送位配置：pushareas.cac.php
+	推送位字段应用缓存：pafields*.cac.php (*为推送位ID)
+	推送位字段完全数据源：_pafields*.cac.php (*为推送位ID)
+
+	常规模板库：mtpls.cac.php
+	功能模板库：sptpls.cac.php
+	模板JS文件：jstpls.cac.php
+	模板CSS文件：csstpls.cac.php
+
+	会员及副件模板绑定：tplcfgs.cac.php
+	类目节点组成方案：cnconfigs.cac.php
+	类目节点配置：cntpls.cac.php
+	会员节点配置：mcntpls.cac.php
+	文档模板按模型绑定：arc_tpl_cfgs.cac.php
+	文档模板按栏目绑定：ca_tpl_cfgs.cac.php
+	文档模板方案：arc_tpls.cac.php
+
+	模板自定变量设置：tpl_mconfigs.cac.php
+	模板自定变量字段：tpl_fields.cac.php
+
+	手机-系统模板绑定：o_sptpls.cac.php
+	手机-副件模板绑定：o_tplcfgs.cac.php
+	手机-类目节点组成方案：o_cnconfigs.cac.php
+	手机-类目节点配置：o_cntpls.cac.php
+	手机-文档模板按模型绑定：o_arc_tpl_cfgs.cac.php
+	手机-文档模板方案：o_arc_tpls.cac.php
+
+
+
+
+
+
+
+
+

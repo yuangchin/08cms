@@ -1,0 +1,58 @@
+<?php
+defined('M_COM') || exit('No Permission');
+$mctypes = array (
+  1 => 
+  array (
+    'mctid' => '1',
+    'cname' => '手机认证',
+    'icon' => 'userfiles/notdel/icon_renzheng3.gif',
+    'remark' => '会员手机认证',
+    'mchids' => ',2',
+    'mode' => '1',
+    'field' => 'lxdh',
+    'vieworder' => '0',
+    'available' => '1',
+    'crid' => '2',
+    'award' => '50',
+    'autocheck' => '0',
+    'uncheck' => '1',
+    'isunique' => '1',
+    'msg' => '',
+  ),
+  2 => 
+  array (
+    'mctid' => '2',
+    'cname' => '身份认证',
+    'icon' => 'userfiles/notdel/icon_renzheng.gif',
+    'remark' => '经纪人身份证认证',
+    'mchids' => ',2',
+    'mode' => '0',
+    'field' => 'sfz',
+    'vieworder' => '0',
+    'available' => '1',
+    'crid' => '2',
+    'award' => '100',
+    'autocheck' => '0',
+    'uncheck' => '0',
+    'isunique' => '0',
+    'msg' => '',
+  ),
+  3 => 
+  array (
+    'mctid' => '3',
+    'cname' => '执照认证',
+    'icon' => 'userfiles/notdel/icon_renzheng2.gif',
+    'remark' => '经纪人执照认证',
+    'mchids' => ',2',
+    'mode' => '0',
+    'field' => 'jjrzz',
+    'vieworder' => '0',
+    'available' => '1',
+    'crid' => '2',
+    'award' => '100',
+    'autocheck' => '0',
+    'uncheck' => '0',
+    'isunique' => '0',
+    'msg' => '',
+  ),
+) ;

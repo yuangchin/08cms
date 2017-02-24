@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$jz_headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/basecss2010.css?{$user_version}">
+<script type="text/javascript" src="{$cms_abs}include/js/validator.js"></script>
+</head>
+<body>
+<!--header begin-->
+{tpl$jz_head}
+<!--header end-->
+<div class="wrap">
+	<div class="tit-img mb10">
+		<div class="tit-img-inner">
+			<h1 class="title">{subject}</h1>
+			{c$image [cname=image/] [tclass=image/] [tname=tgimage/] [val=u/] [maxwidth=950/] [maxheight=500/]}<img src="{url}" width="950" height="500" border="0" />{/c$image}
+			<div class="blank10"></div>
+		</div>
+	</div>
+
+	<!-- 报名表单 -->
+	<div class="yeBox mb10" id="tgbm">
+		<div class="nav">
+		<div class="left">团购报名<a id="bm" name="bm"></a></div>
+		<div class="right"></div>
+		</div>
+		<div class="cont">
+		<form name="actionForm" id="actionForm" method="post" onsubmit="return fyCummus(this,'我要报名');">
+					<input type="hidden" name="cuid" value="35" />
+					<input type="hidden" name="aid" value="{aid}" />
+					<table width="95%" cellspacing="0" cellpadding="0" border="0" align="center">
+						<tbody><tr>
+							<td width="41%" class="newstext14" rowspan="7">
+							<table width="100%" cellspacing="0" cellpadding="2" border="0" class="bmtab">
+								<tbody>
+								<tr>
+									<td class="newstext14" align="right">姓名：</td>
+									<td> <input type="text" id="xingming" size="20" class="context required validation-failed" name="fmdata[xingming]" rule="text" must="1" rev="姓名"> <span class="reqiure">*</span></td>
+		                        </tr>
+								<tr>
+									<td class="newstext14" align="right">手机：</td>
+									<td> <input type="text" id="tel" size="20" class="context required validation-failed" name="fmdata[tel]" rule="text" must="1" regx="/^\s*\d{3,4}[-]?\d{7,8}\s*$/"> <span class="reqiure">*</span></td>
+								</tr>
+								<tr>
+									<td class="newstext14" align="right">所在楼盘：</td>
+									<td> <input type="text" id="szloupan" size="20" class="context required validation-failed" name="fmdata[szloupan]" rule="text" must="1"> <span class="reqiure">*</span></td>
+								</tr>
+								<tr>
+									<td class="newstext14" align="right">Q Q：</td>
+									<td> <input type="text" id="qq" size="20" class="context validation-passed" name="fmdata[qq]"> </td>
+								</tr>
+								<tr>
+									<td class="newstext14" align="right">人数：</td>
+									<td> <input type="text" id="bmnum" value="1" size="20" class="context required validate-pattern-/^\d*$/ validation-passed" name="fmdata[bmnum]" rule="text" must="1" rev="人数">
+										<span class="reqiure">*</span></td>
+								</tr>
+							</tbody></table>
+
+							</td>
+					<td width="59%" class="newstext14"><strong class="hese14">报名日期：</strong>{c$tgstar [cname=tgstar/] [tclass=date/] [tname=tgstar/] [date=Y-m-d/]}{/c$tgstar}至{c$tgend [cname=tgend/] [tclass=date/] [tname=tgend/] [date=Y-m-d/]}{/c$tgend}
+							<span class="heiti16" id="pad" data-endTime="{tgend}" data-endele=".btn-tg-{aid}" data-noend="<span class='fcr'>永久有效!</span>" data-end="<span class='fcr'>活动已经结束!</span>"> 离活动还有<span class="pri-txt"><em class='day'><d>0</d></em>天<em class='hour'><h>0</h></em>小时<em class='minutes'><m>0</m></em>分<em class='second'><s>0</s></em>秒</span></span>
+
+				</td>
+			</tr>
+			<tr>
+
+			</tr>
+			<tr>
+				<td class="newstext14"><span class="news14"><strong class="hese14">报名电话：</strong></span>{tel}</td>
+			</tr>
+			<tr>
+				<td class="newstext14"><span class="hese14">团购qq群：</span><span class="newstext14">{qq}</span></td>
+			</tr>
+			<tr>
+				<td class="newstext14"><span class="wen3"><strong class="hese14">活动地点：</strong></span>{area}</td>
+			</tr>
+			<tr>
+				<td>{if $tgend>$timestamp}<input type="submit" value="免费报名" class="an1" name="bsubmit">{c$jztgbm [tclass=regcode/] [type=commu35/] [js=1/]}
+					<?php echo _08_HTML::getCode('actionForm11', 'actionForm', 'yzmtxt');?>
+				{/c$jztgbm}{else}<input type="button" value="报名结束" class="an1 gray">{/if}
+			</td>
+			</tr>
+		</tbody></table>
+		</form>
+	    <div class="blank5"></div>
+		</div>
+	</div>
+<!-- 报名表单结束 -->
+	<div class="yeBox mb10">
+		<div class="nav">
+			<div class="left">活动简介及亮点</div>
+			<div class="right">
+				<a href="#tgbm"class="black12">我要报名&gt;&gt;&gt;</a>
+			</div>
+		</div>
+		<div class="cont">
+			<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td align="left">
+							<table border="0" cellpadding="0" cellspacing="0" width="95%">
+								<tbody>
+									<tr>
+										<td height="10"></td>
+									</tr>
+								</tbody>
+							</table>
+							<table align="center" border="0" cellpadding="5" cellspacing="0" width="95%">
+								<tbody>
+									<tr>
+										<td class="hese14" bgcolor="#FAFAFA"> <strong>活动主题及时间：</strong>
+										</td>
+									</tr>
+									<tr>
+										<td class="newstext14">
+											<p>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="STYLE28">
+													<span class="STYLE29">活动主题：</span>
+													{subject}
+												</span>
+											</p>
+
+											<p>
+												&nbsp;&nbsp;&nbsp;&nbsp; <strong>时间：</strong>
+												{c$tgstar [cname=tgstar/] [tclass=date/] [tname=tgstar/] [date=Y-m-d/]}{/c$tgstar}至{c$tgend [cname=tgend/] [tclass=date/] [tname=tgend/] [date=Y-m-d/]}{/c$tgend}
+											</p>
+										</td>
+									</tr>
+									<tr>
+										<td class="hese14" bgcolor="#FAFAFA">
+											<strong>活动内容：</strong>
+										</td>
+									</tr>
+									<tr>
+										<td class="newstext14">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%">
+												<tbody>
+													<tr>
+														<td class="newstext14"></td>
+													</tr>
+													<tr>
+														<td class="newstext14">{content}</td>
+													</tr>
+
+													<tr></tr>
+												</tbody>
+											</table>
+											<table align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+												<tbody>
+													<tr></tr>
+												</tbody>
+											</table>
+											<table align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+												<tbody>
+													<tr></tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div id="bottom_mask"></div>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+	</div>
+		<!-- 乘车路线及地图 -->
+	<div class="yeBox mb10">
+		<div class="nav">
+			<div class="left">乘车路线及地图</div>
+			<div class="right">
+				<a href="#tgbm"class="black12">我要报名&gt;&gt;&gt;</a>
+			</div>
+		</div>
+		<div class="cont">
+			{if $dt}
+			<div style="width: 400px ; height: 300px;float: left;margin-right:20px">
+				<iframe marginwidth="0" marginheight="0" src="{$cms_abs}tools/pointer.html#lat={dt_0}&lng={dt_1}&title={subject}&zoom=12" frameborder="0"  height="300" width="400" scrolling="no"></iframe>
+			</div>
+			{/if}
+			乘车路线：{gongjiao}
+			<div class="blank0"></div>
+		</div>
+	</div>
+<!-- 报名列表及人数 -->
+	<div id="bmlb" class="yeBox mb10">
+		<div class="nav">
+			<div class="left"> 报名列表及人数 <a name="md" id="md"></a> </div>
+			<div class="right">
+				<span class="hese14">
+					<a name="md" id="md">
+						已经有 <div class="count08" id="_08_count_tug_{aid}" url-params="{type: 'cu', modid: 35, field: 'hdnum'}">&nbsp;</div> 组网友报名参加 </a>
+				</span>
+				<a name="md" id="md">&nbsp;&nbsp;</a>
+				<a href="#tgbm"class="black12">我要报名&gt;&gt;&gt;</a>
+			</div>
+		</div>
+		<div class="cont">
+			<div id="signupDataList">
+				<table id="signdataTable" align="center" cellpadding="0" cellspacing="0" width="100%">
+					<tbody>
+						<tr>
+							<td class="hui14" align="middle" width="29%"> <strong>姓名</strong>
+							</td>
+							<td class="hui14" align="middle" width="27%"> <strong>报名人数</strong>
+							</td>
+							<td class="hui14" align="middle" width="24%">
+								<strong>报名日期</strong>
+							</td>
+						</tr>
+						{c$tglist [cname=团购列表/] [tclass=commus/] [cuid=35/] [checked=1/] [wherestr=aid='$aid'/] [mp=1/]}
+						<tr>
+							<td bgcolor="#ffffff" align="center" class="wen3">{xingming}</td>
+							<td bgcolor="#ffffff" align="center" class="wen3">{bmnum}</td>
+							<td bgcolor="#ffffff" align="center" class="wen3">
+								{c$createdate_ymdhms [cname=createdate_ymdhms/] [tclass=date/] [tname=createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$createdate_ymdhms}
+							</td>
+						</tr>
+						{/c$tglist}
+					</tbody>
+				</table>
+			</div>
+			<div class="ptb10">
+			{$mpnav}
+			</div>
+		</div>
+	</div>
+</div>
+{tpl$jz_foot}
+<script type="text/javascript" src="{$tplurl}js/setHdTime.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}-{$hostname}</title>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/axlkft.css?{$user_version}" />
+<?php $pagetype = 'newhouse'; ?>
+</head>
+<body>
+{tpl$head}
+<div class="wrap">
+    <!--看房团面包屑-->
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form w300">
+                    <button type="submit" class="btn"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+                    <div class="txt-wrap">
+                        <input type="text" class="txt" value=""  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a><i class="pipe">/</i>看房团
+        </span>
+    </div>
+    {tpl$kftlc}
+    <div class="blank10"></div>
+	<div class="bd-gray clearfix">
+		{c$archives [tclass=archives/] [chids=110/] [chsource=2/] [limits=8/] [caidson=1/] [val=a/] [casource=2/] [detail=1/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [ttl=1200/] [mp=1/]}
+		<div class="kftlb {if $a['sn_row']==1}listf{/if}">
+            <div class="p20 clearfix">
+                    <div class="kfklx">
+                         <div class="kftbus"></div>
+                             <div id="mxl" class="mxl">
+                                  <table width="100%">
+                                      <tbody>
+                                        <tr>
+                                        	{c$kftgxlp [tclass=archives/] [chids=4/] [chsource=2/] [limits=10/] [mode=in/] [arid=32/] [detail=1/]  [orderstr=b.inorder ASC/] [ttl=1200/]}
+                                        <td valign="top">
+                                        <a target="_blank" title="{subject}" href="{arcurl}">
+                                        <div class="title">{sn_row}
+                                            <div class="xglpCon{if $v['sn_row']<4} rbox{sn_row}{/if}">
+                                                <i><img alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=135/] [maxheight=100/] [thumb=1/]} src="{url_s}" height="100" width="135"{/c$thumb}/></i>
+                                                <em><strong>{subject}</strong></em>
+                                                <em><span>均价：</span>{if $v['dj']}{dj}元/m&sup2;{else}面议{/if}</em>
+                                                <em><span>电话：</span>{if $v['tel']}{tel}{else}暂无{/if}</em>
+                                                <em><span>地址：</span>{address}</em>
+                                                <b></b>
+                                            </div>
+                                        </div>
+                                        </a>
+                                        </td>
+                                        {/c$kftgxlp}
+                        </tr>
+                    </tbody></table>
+                 </div>
+            </div>
+            <div class="blank10"></div>
+            <a class="l" href="{arcurl}" title="{subject}" target="_blank"><img alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [maxwidth=720/] [maxheight=280/]} src="{url_s}" height="280" width="720"{/c$thumb}/></a>
+            <div class="kft-info">
+                <h2><a class="fcr" href="{arcurl}" title="{subject}" target="_blank">{subject}</a></h2>
+                <div class="incon">优惠说明：<span>{if $a['yhsm']}{yhsm}{else}暂无优惠{/if}</span></div>
+                <div class="incon">参团楼盘数：<span>{c$acount [tclass=acount/] [chids=4/] [chsource=2/] [mode=in/] [arid=32/] [ttl=1200/]}{counts}{/c$acount}</span>个</div>
+                <div class="incon">报名截止：{c$startdate [tclass=date/] [tname=startdate/] [date=Y-m-d/]}{/c$startdate}至{c$enddate [tclass=date/] [tname=enddate/] [date=Y-m-d/]}{/c$enddate}</div>
+                <div class="incon">已报名：<span><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 110, field: 'hdnum'}">&nbsp;</div></span>人</div>
+                {if $a['enddate']<$timestamp&&$a['enddate']!=0}<a href="{arcurl}" class="wybm end">报名结束</a>{else}<a class="wybm" href="{arcurl}#ztmbm" target="_blank">我要报名</a>{/if}
+                <div class="call"><i></i>{if $a['bmtel']}{bmtel}{else}暂无电话{/if}</div>
+            </div>
+            </div>
+        </div>
+        {/c$archives}
+	    <div class="blank12"></div>
+				{if $mpacount>0}
+				{$mpnav}
+				<div class="blank12"></div>
+				{else}
+				 <div class="noinfo">很抱歉！暂无{if @$searchword}<span>关键字："{searchword}"</span>{/if}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$cnode}信息</div>
+				{/if}
+	</div>
+</div>
+<div class="blank10"></div>
+{tpl$foot}
+ <script type="text/javascript">
+		$('#kft').html('(共有<span><b id="mpacount">{$mpacount}</b></span>条看房团线路)')
+</script>
+
+<script type="text/javascript">
+		//按路线的js
+		$("#mxl a").hover(function(){
+		    $(this).addClass("act");
+		},function(){
+			$(this).removeClass("act");
+		})
+
+</script>
+</body>
+</html>

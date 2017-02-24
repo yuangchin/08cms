@@ -1,0 +1,185 @@
+<?php
+$radius = empty($radius) ? 2 : $radius;
+$type = empty($type) ? 'newcorp' : $type;
+$map = cls_Parse::Get('_da.map'); 
+$map = empty($map) ? '0,0' : $map;
+$maps = cls_wmpUser::convMap($map); //print_r($map); //坐标转化
+$mapsql = cls_DbOther::MapSql($maps['y'],$maps['x'],$radius,1,'dt'); 
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  <title>我的附近{if empty($is_weixin)}-{$cmstitle}{/if}</title>
+  <meta name="keywords" content="{keywords}"/>
+  <meta name="description" content="{abstract}"/>
+    {tpl$m_headinner}
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+	<script type="text/javascript">
+        var CMS_ABS=cms_abs = CMS_URL = '{$cms_abs}'
+        , hostname  = '{$hostname}'
+        , tplurl    = '{$tplurl}'
+        ,memberurl='{$memberurl}'
+        ,MC_ROOTURL = "{$cms_abs}adminm/";
+        var originDomain = originDomain || document.domain;
+        document.domain = '{$cms_top}' || document.domain;
+    </script>
+        <style type="text/css">
+        .targetSelect {
+            padding: 15px;
+            text-align: center;
+        }
+        .targetSelect a {
+            display: block;
+            line-height: 3;
+        } 
+        .targetSelect a.active {
+            background-color: #E43;
+            color: #fff;
+        }    
+    </style>
+</head>
+<body>
+
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" data-btn="back" title="我的附近" class="innblank44 active">
+        {tpl$m_header}
+        <div id="targetSelect" class="dn targetSelect">
+            <a class="{if $radius == '2'}active{/if}" href="{$cms_abs}info.php?fid=203&map={$map}&type={$type}&radius=2">附近2公里</a>
+            <a class="{if $radius == '3'}active{/if}" href="{$cms_abs}info.php?fid=203&map={$map}&type={$type}&radius=3">附近3公里</a>
+            <a class="{if $radius == '5'}active{/if}" href="{$cms_abs}info.php?fid=203&map={$map}&type={$type}&radius=5">附近5公里</a>
+        </div>
+        <article id="up_refresh_article" class="active" >
+            <div>
+                <div class="blank15"></div>
+                <div class="control-group">
+                    <a href='{$cms_abs}info.php?fid=203&map={$map}&type=newcorp&radius={$radius}' class="{if $type == 'newcorp'}active{/if}">附近楼盘</a>
+                    <a href='{$cms_abs}info.php?fid=203&map={$map}&type=2ndcorp&radius={$radius}' class="{if $type == '2ndcorp'}active{/if}">附近二手</a>
+                    <a href='{$cms_abs}info.php?fid=203&map={$map}&type=sevcorp&radius={$radius}' class="{if $type == 'sevcorp'}active{/if}">附近出租</a>
+                    <a onclick="return popupExt(this);" href="#targetSelect">{$radius}公里<i class="icon icon-e689"></i></a>
+                </div>
+                <ul class="list list-media">
+                    
+                    {if $type == 'newcorp'}
+
+                    <?php $whrstr = "(leixing='0' OR leixing='1') and " . $mapsql; ?>
+                    {c$yslplb [tclass=archives/] [chsource=2/] [chids=4/] [caidson=1/] [casource=2/] [ccidson1=1/] [detail=1/] [limits=100/] [wherestr=$whrstr/] [ttl=600/]}
+                    <? $allnum=count($_yslplb);?>
+                   [row]
+                        <li>
+                            <a href="{$mobileurl}archive.php?aid={aid}">
+                                <img class="media-object" width="100" height="80" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=80/] [thumb=1/]}{url_s}{/c$image}">
+                                <div class="grid">
+                                    <div class="col-1">
+                                        <strong>{if $v['ccid41']}<span class="label pumpkin fl">顶</span>{/if}{$v[subject]} </strong>
+                                    </div>
+                                    {if $v['dj']}<span class="f-alizarin">{dj}</span>元/m&sup2;{/if}
+                                </div>
+                                <p class="f-belize-hole">{bdsm}</p>
+                                <p>{address}</p>
+                                <p><span class="label">{ccid1title}</span>{if $v['ccid2title']}<span class="label peter-river">{ccid2title}</span>{/if}<span class="label amethyst">{ccid12title}</span><span class="label alizarin">{ccid18title}</span>
+                                </p>
+                            </a>
+                        </li>
+                    [/row]
+                    {/c$yslplb}
+                    {elseif $type == '2ndcorp'}
+                    <?php $whrstr = $mapsql; ?>
+
+                    {c$fylb [tclass=archives/] [chsource=2/] [chids=3/]  [validperiod=1/] [detail=1/] [limits=100/] [wherestr=$whrstr/] [ttl=600/]}
+                        <? $allnum=count($_fylb);?>
+                        [row]
+                        <li>
+                            <a href="{$mobileurl}archive.php?aid={aid}">
+                                <img class="media-object" width="85" height="65" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=85/] [maxheight=65/] [thumb=1/]}{url_s}{/c$image}">
+                                <div class="grid">
+                                    <div class="col-1">
+                                        <strong>{if $v['ccid9']}<span class="label fl alizarin">顶</span>{/if}{subject}</strong>
+                                    </div>
+                                    {if $v['zj']}<span class="f-alizarin">{zj}</span>万元{else}<span class="fcb">面议</span>{/if}
+                                </div>
+                                <div class="grid"><div class="col-1"><span class="f-asbestos substr">{if $v['imgnum']}<b class="icon-e735 f-peter-river"></b>{/if}{lpmc}</span> </div>
+                                {if $v['shi']!=100}{c$shi}{/if}{if $v['ting']!=100}{c$ting}{/if}
+                                </div>
+                                <p><span class="label">{ccid1title}</span>{if $v['ccid43title']}<span class="label">{ccid43title}</span>{/if}{if $v['mchid'] == 2}  <span class="label">经纪人</span>{else} <span class="label">个人</span> {/if}{if $v['fl']}<span class="label">{c$flfl}</span>{/if}{if $v['zxcd']}<span class="label">{c$zxcd}</span>{/if}{if $v['cx']}<span class="label">{c$cxcx}</span>{/if}</p>
+                                {if @$v['imgnum']>0}
+                                <div class="pos_num">{imgnum} 图</div>
+                                {/if}
+                            </a>
+                        </li>
+                        [/row]
+                        {/c$fylb}
+                    {elseif $type == 'sevcorp'}
+                    <?php $whrstr = $mapsql; ?>
+
+                    {c$fylb [tclass=archives/] [chsource=2/] [chids=2/] [ttl=600/] [validperiod=1/] [detail=1/] [limits=100/] [wherestr=$whrstr/] [mp=1/]}
+                        <? $allnum=count($_fylb);?>
+                        [row]
+                        <li>
+                            <a href="{arcurl}">
+                                <img class="media-object" width="85" height="65" alt="{subject}" src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=85/] [maxheight=65/] [thumb=1/]}{url_s}{/c$image}">
+                                <div class="grid">
+                                    <div class="col-1">
+                                        <strong>{if $v['ccid9']}<span class="label fl alizarin">顶</span>{/if}{subject}</strong>
+                                    </div>
+                                    {if $v['zj']}<span class="f-alizarin">{zj}</span>元/月{else}<span class="fcb">面议</span>{/if}
+                                </div>
+                                <div class="grid"><div class="col-1"><span class="f-asbestos substr">{if $v['imgnum']}<b class="icon-e735 f-peter-river"></b>{/if}{lpmc}</span></div>{if $v['shi']!=100}{c$shi}{/if}{if $v['ting']!=100}{c$ting}{/if}</div>
+                                <p><span class="label">{ccid1title}</span>{if $v['ccid44title']}<span class="label">{ccid44title}</span>{/if}{if $v['mchid'] == 2}  <span class="label">经纪人</span>{else} <span class="label">个人</span> {/if}{if $v['fl']}<span class="label">{c$flfl}</span>{/if}{if $v['zxcd']}<span class="label">{c$zxcd}</span>{/if}{if $v['cx']}<span class="label">{c$cxcx}</span>{/if}</p>
+                                {if @$v['imgnum']>0}
+                                <div class="pos_num">{imgnum} 图</div>
+                                {/if}
+                            </a>
+                        </li>
+                        [/row]
+                        {/c$fylb}
+                    {/if}
+                </ul>
+
+
+            <!-- <p>坐标：{$maps[0]}</p>
+            <p>
+                地址： <i id="map_address"></i>
+            </p>
+            <p>2公里范围sql：{$mapsql}</p>
+
+            <div>标签调用</div> -->
+
+            <!--不显示地图,就不要此行-->
+            <!-- <div id="mapObj" style=" width:100%; height:360px;"></div> -->
+        </div>
+        </article>
+    </section>
+</div>
+{tpl$m_footer}
+<script type="text/javascript">
+    
+/*
+var point = new BMap.Point(<?php echo $maps[0]; ?>);
+// 把坐标转化成地址
+var geoc = new BMap.Geocoder();  
+var pt = point;
+geoc.getLocation(pt, function(rs){
+    var addComp = rs.addressComponents;
+    var address = addComp.province + ", " + addComp.city + ", " + addComp.district;
+    if(addComp.street){ address += ", " + addComp.street; }
+    if(addComp.streetNumber){ address += ", " + addComp.streetNumber; }
+    address += '(附近)';
+    document.getElementById('map_address').innerHTML = address;
+    //alert(address);
+});
+// 显示地图(不显示地图,就不要以下代码)
+var map = new BMap.Map('mapObj');
+map.centerAndZoom(point,12);
+var marker = new BMap.Marker(point);  
+map.addOverlay(marker); 
+map.addControl(new BMap.NavigationControl({type:BMAP_NAVIGATION_CONTROL_ZOOM})); //缩放
+map.addControl(new BMap.ScaleControl()); // 比例尺
+map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+map.enableScrollWheelZoom();
+*/</script>
+
+</body>
+</html>

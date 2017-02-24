@@ -1,0 +1,1052 @@
+
+/**
+ * @name World
+ * @author ahuing
+ * @link 08cms.com
+ * @date 2015-11-12 09:06:25
+ */
+
+@charset "UTF-8";
+/***-------------
+common----------------------------------------------------------------------------------***/
+select {
+  padding: 2px;
+}
+
+body {
+  background: url(../images/bzzxbg.gif);
+}
+
+.bgFF {
+  background: #FFF;
+}
+
+.qqico, .wbico, .bzsobnt, .twbnt, .bzfl, .bzsoso .act, .bztxt, .svctnav, .svctnav li.bzico, .traico, .traico2, .overnav em, .overnav i, .zxQQ i, .zxtel i, .rmlcCon em, .rmlcCon b, .hlTit i, .adhlCon li span, .adhlCon li i, .svlmnav li.dlm, .svlmnav li.act i, .conml p i {
+  background: url(../images/fwcenter.gif) no-repeat;
+}
+
+.fgbg, .fgbg2 {
+  background: url(../images/bzzxgx.gif) repeat-y;
+  position: relative;
+}
+
+.fgbg2 {
+  background-position: 240px 0;
+}
+
+.traico {
+  width: 15px;
+  height: 7px;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.traico2 {
+  width: 15px;
+  height: 7px;
+  overflow: hidden;
+  position: absolute;
+  left: 240px;
+  top: 0;
+}
+
+.borTRB {
+  border: 1px solid #E4BABC;
+  border-left: none;
+}
+
+.w945 {
+  width: 945px;
+}
+
+#footer .wrap {
+  border-top-color: #A92328;
+}
+
+.fixed-div li .ico {
+  background: #A92328;
+}
+
+/***-------------
+head-----------------------------------------***/
+/***login***/
+.loginbg {
+  height: 28px;
+  line-height: 28px;
+  background: #F7F7F7;
+}
+
+.loginbg a, .loginbg i {
+  float: left;
+  margin-right: 10px;
+}
+
+.qqico {
+  background-position: -171px -39px;
+  padding-left: 20px;
+}
+
+.wbico {
+  background-position: -172px -66px;
+  padding-left: 22px;
+}
+
+/***logo***/
+.svctlogo {
+  float: left;
+  padding-left: 20px;
+}
+
+.svctlogo p {
+  height: 30px;
+  line-height: 30px;
+  color: #9E9C9C;
+  overflow: hidden;
+}
+
+/***soso***/
+.w500 {
+  width: 500px;
+}
+
+.bzsoso {
+  margin: 1px;
+  padding: 5px;
+  background: #f3f3f1;
+  *zoom: 1;
+}
+.bzsoso .placeholder {
+  position: absolute;
+  margin-left: 25px;
+  color: #999;
+  left: 0;
+}
+.bzsoso .bRbr1 {
+  width: 298px;
+  border: 1px solid #ae0001;
+  border-right: none;
+  background: #fff;
+  position: relative;
+}
+
+.bzfl {
+  width: 65px;
+  padding: 0 12px 0 10px;
+  height: 28px;
+  line-height: 28px;
+  border-right: 1px solid #AE0001;
+  background-position: -98px 12px;
+  background-color: #FFF;
+  cursor: pointer;
+}
+
+.bzfl i {
+  display: block;
+}
+
+.bzsoso .act {
+  background-position: -98px -10px;
+  background-color: #FFF;
+}
+
+.bzfl ul {
+  width: 87px;
+  position: absolute;
+  top: 26px;
+  left: -1px;
+  background: #FFF;
+  border: 1px solid #AE0001;
+  border-top: none;
+}
+
+.bzfl li {
+  padding: 0 12px 0 10px;
+}
+
+.bzfl li.cur {
+  background: #AE0001;
+  color: #FFF;
+}
+
+.bztxt {
+  width: 270px;
+  height: 28px;
+  line-height: 28px;
+  border: none;
+  background-position: -154px -188px;
+  background-color: #FFF;
+  padding-left: 25px;
+  color: #999;
+}
+
+.bzsobnt, .twbnt {
+  height: 30px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+.bzsobnt {
+  width: 90px;
+  border: none 0;
+  cursor: pointer;
+  background-position: -93px -158px;
+  margin-right: 5px;
+  line-height: 30px;
+  padding-left: 12px;
+}
+
+.twbnt {
+  width: 72px;
+  background-position: 0 -158px;
+  line-height: 32px;
+  overflow: hidden;
+  padding-left: 18px;
+}
+
+.twbnt:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+
+/***nav***/
+.svctnav {
+  height: 42px;
+  background-position: 0 -227px;
+  background-repeat: repeat-x;
+}
+
+.svctnav a {
+  float: left;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 30px;
+  color: #AA2228;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.svctnav li {
+  float: left;
+  margin: 0 3px;
+  _display: inline;
+}
+
+.svctnav li.first {
+  margin: 0 3px 0 0;
+}
+
+.svctnav li.bzico {
+  background-position: right -5px;
+  position: relative;
+}
+
+.svctnav li.act a {
+  padding: 0 30px;
+}
+
+.svctnav li.act a, .svctnav a:hover {
+  background: #AA2228;
+  color: #FFF;
+  text-decoration: none;
+}
+
+.svctnav li.cur a {
+  background: #FFF;
+  height: 38px;
+  line-height: 34px;
+  border: 2px solid #A92328;
+  color: #474747;
+  padding: 0 28px;
+}
+
+.svctnav li.cur a:hover {
+  color: #A92328;
+  background: #FFF;
+}
+
+.svctnav li div.bzzxnav {
+  display: none;
+  width: 968px;
+  position: absolute;
+  top: 39px;
+  left: -128px;
+  background: #FFF;
+  padding: 0 15px;
+  border: 1px solid #A92328;
+  border-top: none;
+}
+
+.svctnav li.cur div.bzzxnav {
+  display: block;
+}
+
+.svctnav dl {
+  background: url(../images/hline.gif) repeat-x;
+  padding: 10px;
+}
+
+.svctnav li.cur dl a, .svctnav li.cur .wzclm a {
+  float: none;
+  font-size: 12px;
+  line-height: 24px;
+  padding: 0 10px 0 0;
+  border: none;
+}
+
+.svctnav li.cur dl a {
+  font-weight: normal;
+}
+
+.svctnav li.cur dt a {
+  font-weight: bold;
+  padding: 0;
+}
+
+.svctnav li.cur dl a:hover {
+  background: #FFF;
+  color: #c00;
+}
+
+.svctnav dl.first {
+  background: none;
+}
+
+.svctnav dd, .svctnav dt {
+  float: left;
+}
+
+.svctnav dt {
+  width: 110px;
+  text-align: center;
+}
+
+.svctnav dd {
+  width: 756px;
+}
+
+.wzclm {
+  padding: 0 0 0 38px;
+}
+
+.wzclm a {
+  white-space: nowrap;
+}
+
+/***-------------
+right-----------------------------------------***/
+.zxQQ i {
+  width: 60px;
+  height: 60px;
+  float: left;
+  background-position: -78px -42px;
+  margin: 0 15px;
+  _display: inline;
+}
+
+.zxQQ em {
+  width: 118px;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.zxQQ p {
+  color: #999;
+  font-size: 13px;
+  padding: 0 15px 0 5px;
+}
+
+.fgx {
+  height: 10px;
+  overflow: hidden;
+  clear: both;
+  border-bottom: 1px solid #EBEBEB;
+  margin-right: 10px;
+}
+
+.w110 {
+  width: 160px;
+}
+
+.zxtel i {
+  width: 70px;
+  height: 45px;
+  float: left;
+  background-position: 0 -45px;
+  margin: 45px 20px 0 10px;
+  display: inline;
+}
+
+.zxtel em {
+  color: #999;
+  line-height: 22px;
+}
+
+.zxtel p {
+  font-size: 16px;
+  margin-bottom: 5px;
+  line-height: 22px;
+  word-wrap: break-word;
+}
+
+.ggTit {
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px solid #D9D7D7;
+}
+
+.con25 li {
+  height: 25px;
+  line-height: 25px;
+  overflow: hidden;
+  color: #999;
+}
+
+/***-------------
+left-----------------------------------------***/
+.svlmnav {
+  width: 240px;
+  position: relative;
+  z-index: 10;
+  background: #FFF;
+}
+
+.svlmnav li {
+  height: 34px;
+  line-height: 34px;
+  padding-left: 30px;
+  color: #CCC;
+}
+
+.svlmnav li.act {
+  position: relative;
+  background: #A92328;
+  color: #A92328;
+}
+
+.svlmnav li.act a {
+  color: #FFF;
+}
+
+.svlmnav li.act i {
+  width: 5px;
+  height: 38px;
+  position: absolute;
+  top: 0;
+  right: -5px;
+  background-position: -12px -90px;
+}
+
+.svlmnav li.dlm {
+  background-position: -162px -89px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/***-------------
+服务中心 css----------------------------------------------------------------------------------***/
+/***xginfo***/
+.wzinfo {
+  height: 156px;
+}
+
+.wzinfo li, .wzinfo div, .wzinfo p {
+  float: left;
+}
+
+.wzinfo li {
+  width: 280px;
+  padding: 15px 0 15px 12px;
+}
+
+.wzinfo div {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.wzinfo p {
+  width: 168px;
+  color: #666;
+  height: 24px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.wzinfo p strong {
+  font-size: 14px;
+}
+
+.overnav h3, .overnav em {
+  height: 30px;
+  line-height: 32px;
+  overflow: hidden;
+  float: left;
+}
+
+.overnav h3 {
+  background: #A51D22;
+  color: #FFF;
+  padding: 0 50px 0 20px;
+}
+
+.overnav em {
+  width: 190px;
+  background-position: 0 -128px;
+}
+
+.overnav i {
+  width: 6px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  left: -6px;
+  background-position: 0 -91px;
+}
+
+.overnav span {
+  float: right;
+  padding-right: 15px;
+}
+
+.overnav span strong {
+  color: #CC0000;
+}
+
+.h440 {
+  min-height: 440px;
+  _height: 446px;
+  background: #FFF;
+}
+
+.cjwtCon dl {
+  width: 437px;
+  height: 180px;
+  float: left;
+  margin: 15px 15px 0 0;
+  _display: inline;
+}
+
+.cjwtCon dt {
+  height: 31px;
+  line-height: 30px;
+  background: url(../images/hline2.gif) 0 30px repeat-x;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+.cjwtCon dt em {
+  float: left;
+  border: 1px solid #D9D7D7;
+  border-bottom: none;
+  background: #FFF;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+.cjwtCon dt span {
+  float: right;
+}
+
+.cjwtCon dt span a {
+  color: #999;
+}
+
+.cjwtCon dd {
+  height: 28px;
+  line-height: 28px;
+  overflow: hidden;
+  color: #999;
+  padding-left: 8px;
+}
+
+/***-------------
+帮助中心 css----------------------------------------------------------------------------------***/
+.h612 {
+  min-height: 637px;
+  *height: 643px;
+  background: #FFF;
+}
+
+.rmlcCon {
+  height: 76px;
+}
+
+.rmlcCon em, .rmlcCon b, .rmlcCon div {
+  float: left;
+  _display: inline;
+}
+
+.rmlcCon em {
+  width: 120px;
+  text-indent: -200px;
+  overflow: hidden;
+  background-position: -17px -103px;
+  margin: 23px 10px 0 15px;
+}
+
+.rmlcCon b {
+  width: 16px;
+  height: 76px;
+  background-position: -139px -47px;
+}
+
+.rmlcCon div {
+  width: 145px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.rmlcCon i {
+  width: 40px;
+  height: 40px;
+}
+
+.rmlcCon p {
+  height: 24px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.bzznCon dl {
+  background: url(../images/hline.gif) repeat-x;
+  padding: 15px 10px;
+}
+
+.bzznCon dl.first {
+  background: none;
+}
+
+.bzznCon dd, .bzznCon dt {
+  float: left;
+}
+
+.bzznCon dt {
+  width: 120px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bzznCon dd {
+  width: 750px;
+}
+
+.bzznCon dd a {
+  margin-right: 15px;
+  white-space: nowrap;
+  float: left;
+}
+
+.wzclmcon {
+  padding-left: 35px;
+  color: #999;
+}
+
+.wzclmcon a {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 2px;
+}
+
+/***-------------
+在线提问 css----------------------------------------------------------------------------------***/
+.baskct {
+  padding: 20px 30px 0 60px;
+}
+
+.baskct i {
+  color: #f00;
+  font-style: normal;
+}
+
+.baskct li {
+  margin-bottom: 10px;
+  clear: both;
+}
+
+.baskct li input {
+  vertical-align: middle;
+}
+
+.baskct li .txt {
+  height: 24px;
+  line-height: 24px;
+  width: 50px;
+  border: 1px solid #DDD;
+}
+
+.baskct li.co6 {
+  color: #999;
+  padding-left: 42px;
+}
+
+.baskct li div.txtar {
+  width: 544px;
+  float: left;
+}
+
+.baskct li span a {
+  color: #CC0000;
+}
+
+.inputtext {
+  width: 354px;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid #DDD;
+}
+
+.inputtext2 {
+  width: 130px;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid #DDD;
+}
+
+.areatext {
+  width: 344px;
+  height: 120px;
+  border: 1px solid #CCC;
+  font-size: 13px;
+  vertical-align: middle;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.pL42 {
+  padding-left: 42px;
+}
+
+.lyCon span {
+  color: #4C8AAC;
+}
+
+.lyCon em {
+  color: #999;
+}
+
+.lyCon strong {
+  color: #4C8AAC;
+}
+
+.lyCon .lycon-list {
+  border-bottom: 1px dashed #ddd;
+  padding: 10px;
+}
+
+.lyCon .lycon-list:hover {
+  background: #f2f2f2;
+}
+
+.lyCon .lycon-list-hf {
+  padding: 10px;
+  margin: 5px 0 0 20px;
+  border-left: 3px solid #c00;
+  background: #f2f2f2;
+}
+
+/***-------------
+推广中心 css----------------------------------------------------------------------------------***/
+.zzfwTit {
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden;
+}
+
+.zzfwTit h3, .zzfwTit span {
+  float: left;
+}
+
+.zzfwTit h3 {
+  padding: 0 20px 0 10px;
+}
+
+.zzfwTit span {
+  color: #666;
+}
+
+.zzfwCon li {
+  width: 298px;
+  float: left;
+  padding: 10px;
+  border-left: 1px solid #D9D7D7;
+}
+
+.zzfwCon li em {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.zzfwCon li div {
+  width: 298px;
+  height: 230px;
+  margin-bottom: 5px;
+}
+
+.zzfwCon li.nobor {
+  border-left: 0;
+}
+
+.zzfwCon li p a {
+  color: #CC0000;
+}
+
+.yxfwCon em, .yxfwCon p {
+  float: left;
+}
+
+.yxfwCon em {
+  width: 300px;
+  height: 230px;
+  margin-right: 15px;
+}
+
+.yxfwCon p {
+  width: 623px;
+  text-indent: 28px;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+/***-------------
+广告刊例 css----------------------------------------------------------------------------------***/
+.adintro {
+  border: 1px solid #D9D7D7;
+  border-top: 2px solid #AA2228;
+  text-indent: 25px;
+  padding: 10px 20px;
+  line-height: 28px;
+}
+
+.hlTit {
+  height: 30px;
+  line-height: 30px;
+  background: #A51D22;
+  color: #FFF;
+}
+
+.hlTit i {
+  background-position: 0 -91px;
+  height: 36px;
+  left: -6px;
+  position: absolute;
+  top: 0;
+  width: 6px;
+}
+
+.adhlCon li {
+  width: 292px;
+  float: left;
+  margin: 20px 0 0 20px;
+  _display: inline;
+}
+
+.adhlCon li div {
+  width: 290px;
+  height: 220px;
+  border: 1px solid #D9D7D7;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.adhlCon li i {
+  width: 172px;
+  height: 10px;
+  position: absolute;
+  bottom: -11px;
+  left: 118px;
+  background-position: 0 -215px;
+  overflow: hidden;
+}
+
+.adhlCon li em {
+  width: 204px;
+  height: 22px;
+  line-height: 22px;
+  overflow: hidden;
+  float: left;
+  font-size: 14px;
+}
+
+.adhlCon li span {
+  width: 72px;
+  padding-right: 16px;
+  height: 22px;
+  background-position: 0 -190px;
+  float: right;
+  text-align: center;
+}
+
+.adhlCon li span a {
+  color: #FFF;
+}
+
+.adlx li {
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  border-top: 1px solid #D9D7D7;
+}
+
+.adlx li i {
+  width: 300px;
+  float: left;
+  padding-left: 10px;
+}
+
+.adlx li span {
+  color: #666;
+}
+
+.adlx li.first {
+  border: 0;
+}
+
+/***-------------
+列表页 css----------------------------------------------------------------------------------***/
+.zxList {
+  padding: 0 25px 0 10px;
+}
+
+.zxList li {
+  height: 26px;
+  line-height: 26px;
+  overflow: hidden;
+  color: #999;
+  padding: 0 10px;
+}
+
+.zxList li a {
+  font-size: 14px;
+}
+
+.zxList li.line {
+  background: url(../images/hline.gif) repeat-x 0 bottom;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.zxList li span {
+  float: right;
+  color: #999;
+}
+
+/***-------------
+内容页 css----------------------------------------------------------------------------------***/
+.xgml {
+  height: 40px;
+  border-bottom: 1px solid #D5D5D5;
+  margin-right: 15px;
+}
+
+.xgml em {
+  float: left;
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.conml li {
+  width: 300px;
+  height: 28px;
+  line-height: 28px;
+  overflow: hidden;
+  float: left;
+}
+
+.conml li.act {
+  display: none;
+}
+
+.conml li a.cur {
+  color: #CC0000;
+}
+
+.conml p {
+  text-align: right;
+  color: #BE4D52;
+}
+
+.conml p i {
+  background-position: 0 -12px;
+  padding-left: 13px;
+  cursor: pointer;
+}
+
+.conml p i.sohui {
+  background-position: 0 -28px;
+}
+
+.svcon {
+  padding: 0 25px 0 15px;
+}
+
+.svcon a {
+  color: #007DCD;
+}
+
+.svcon img {
+  max-width: 705px;
+  _width: expression(this.width > 705 ? "705px" : this.width);
+}
+
+.svggcon img {
+  max-width: 685px;
+  _width: expression(this.width > 685 ? "685px" : this.width);
+}
+
+.xgml i {
+  width: 960px;
+  height: 10px;
+  background: url(../images/bzzxbg.gif);
+  position: absolute;
+  top: -10px;
+  left: -15px;
+  overflow: hidden;
+}
+
+/*form*/
+.tjbt {
+  width: 66px;
+  height: 33px;
+  line-height: 33px;
+  background: #A51D22;
+  text-align: center;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.form .txt {
+  width: 200px;
+}
+
+.form .reg-wrap {
+  width: 230px;
+}
+
+.form .reg-wrap .tip {
+  position: absolute;
+  right: 0;
+}
+
+.form select {
+  width: 202px;
+}
+
+.form textarea {
+  width: 400px;
+  height: 80px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-family: Microsoft yahei;
+}
+
+/*# sourceMappingURL=svctcss.css.map */

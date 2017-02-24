@@ -1,0 +1,16 @@
+﻿/*楼盘气泡*/
+.qp00,.qp01,.qp01,.qp02,.qp03,.qp04,.qp05 {color:#fff;cursor:pointer;height:32px;overflow:visible;position:relative;}
+.qp00 .s1{float:left;background:url(../images/qp01.png) no-repeat scroll 0 -340px;height:32px;}
+.qp00 .s1 em{float:left;display:block;color:#fff;height:32px;line-height:25px;background:url(../images/qp01.png) no-repeat scroll 100% -372px;padding:0 10px;font-style:normal}
+.qp01 .s1{float:left;background:url(../images/qp01.png) no-repeat scroll 0 -0;height:32px;}
+.qp01 .s1 em{float:left;display:block;color:#fff;height:32px;line-height:25px;background:url(../images/qp01.png) no-repeat scroll 100% -32px;padding:0 10px;font-style:normal}
+.qp02 .s1{float:left;background:url(../images/qp01.png) no-repeat scroll 0 -68px;height:32px;}
+.qp02 .s1 em{float:left;display:block;color:#fff;height:32px;line-height:25px;background:url(../images/qp01.png) no-repeat scroll 100% -100px;padding:0 10px;font-style:normal}
+.qp03 .s1{float:left;background:url(../images/qp01.png) no-repeat scroll 0 -136px;height:32px;}
+.qp03 .s1 em{float:left;display:block;color:#fff;height:32px;line-height:25px;background:url(../images/qp01.png) no-repeat scroll 100% -168px;padding:0 10px;font-style:normal}
+.qp04 .s1{float:left;background:url(../images/qp01.png) no-repeat scroll 0 -204px;height:32px;}
+.qp04 .s1 em{float:left;display:block;color:#fff;height:32px;line-height:25px;background:url(../images/qp01.png) no-repeat scroll 100% -236px;padding:0 10px;font-style:normal}
+.qp05 .s1{float:left;background:url(../images/qp01.png) no-repeat scroll 0 -272px;height:32px;}
+.qp05 .s1 em{float:left;display:block;color:#fff;height:32px;line-height:25px;background:url(../images/qp01.png) no-repeat scroll 100% -304px;padding:0 10px;font-style:normal}
+.qp00 em,.qp01 em,.qp02 em,.qp03 em,.qp04 em,.qp05 em{white-space:nowrap}
+.num03{ color:#333; padding:2px 3px; background-color:#fff; margin-left:10px; }

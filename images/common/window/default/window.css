@@ -1,0 +1,165 @@
+/*.CWINDOW,.CWINDOW ie6 {
+	background-color:#FFF
+}
+.CWINDOW .TITLE{
+	height:30px;
+	background-color:blue
+}
+.CWINDOW .CONTENT{
+	background-color:#EEE
+}
+*/
+/* 边框样式 */
+.CWINDOW .LEFT_TOP{
+	/* 左上：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 55px;
+	height: 70px;
+	background-image:url(window/default/LEFT_TOP.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .TOP{
+	/* 上边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	height: 33px;
+	background-image: url(window/default/TOP.gif);
+	background-repeat: repeat-x;
+}
+.CWINDOW .RIGHT_TOP{
+	/* 右上：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 55px;
+	height: 70px;
+	background-image: url(window/default/RIGHT_TOP.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .RIGHT{
+	/* 右边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 8px;
+	background-image: url(window/default/RIGHT.gif);
+	background-repeat: repeat-y;
+}
+.CWINDOW .RIGHT_BOTTOM{
+	/* 右下：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 25px;
+	height: 33px;
+	background-image: url(window/default/RIGHT_BOTTOM.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .RIGHT_BOTTOM_BY_BUTTON{
+	/* 右下(有按钮时)：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 55px;
+	height: 79px;
+	background-image: url(window/default/RIGHT_BOTTOM_BY_BUTTON.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .BOTTOM{
+	/* 下边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	height: 16px;
+	background-image: url(window/default/BOTTOM.gif);
+	background-repeat: repeat-x;
+}
+.CWINDOW .BOTTOM_BY_BUTTON{
+	/* 下边(有按钮时)：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	height: 41px;
+	background-image: url(window/default/BOTTOM_BY_BUTTON.gif);
+	background-repeat: repeat-x;
+}
+.CWINDOW .LEFT_BOTTOM{
+	/* 左下：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 25px;
+	height: 33px;
+	background-image: url(window/default/LEFT_BOTTOM.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .LEFT_BOTTOM_BY_BUTTON{
+	/* 左下(有按钮时)：请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 55px;
+	height: 79px;
+	background-image: url(window/default/LEFT_BOTTOM_BY_BUTTON.gif);
+	background-repeat: no-repeat;
+}
+.CWINDOW .LEFT{
+	/* 请不要定义padding/margin/border/top/right/bottom/left属性 */
+	width: 8px;
+	background-image: url(window/default/LEFT.gif);
+	background-repeat: repeat-y;
+}
+
+/* 功能区样式 */
+.CWINDOW .CLOSE{
+	width: 12px;
+	height: 11px;
+	right: 10px;
+	top: 10px;
+	font-size:0px;
+	cursor:default;
+}
+.CWINDOW .CLOSE_HOVER{
+	background:url(window/default/CLOSE_HOVER.gif) no-repeat;
+}
+.MODAL{
+	background-color:#333435;
+	filter:alpha(opacity=10);
+	opacity:0.1;
+}
+/* 请不要定义margin/left/top属性 */
+.CWINDOW .E_RESIZE{
+	width: 5px;
+	cursor: e-resize;
+}
+.CWINDOW .SE_RESIZE{
+	width: 5px;
+	height: 5px;
+	cursor: se-resize;
+}
+.CWINDOW .S_RESIZE{
+	height: 5px;
+	cursor: s-resize;
+}
+.CWINDOW .SW_RESIZE{
+	width: 5px;
+	height: 5px;
+	cursor: sw-resize;
+}
+.CWINDOW .W_RESIZE{
+	width: 5px;
+	cursor: w-resize;
+}
+.CWINDOW .NW_RESIZE{
+	width: 5px;
+	height: 5px;
+	cursor: nw-resize;
+}
+.CWINDOW .N_RESIZE{
+	height: 5px;
+	cursor: n-resize;
+}
+.CWINDOW .NE_RESIZE{
+	width: 5px;
+	height: 5px;
+	cursor: ne-resize;
+}
+
+/* 逻辑区样式 */
+.CWINDOW .CONTENT{
+	/* 请不要定义padding/margin/width/height/left/top属性 */
+	/*background-color:#344042;
+    color: #cccccc;*/
+	background-color:#FFF;
+}
+.CWINDOW .TITLE{
+	/* 请不要定义margin属性 */
+	padding:8px 30px 0px 10px;
+	_padding-top:9px;
+	top:0;
+	left:0;
+	text-align: left;
+	height: 23px;
+	overflow: hidden;
+}
+.CWINDOW .TITLE .TEXT{
+    font-size:14px;
+	font-weight:bold;
+	color:#FFF;
+    overflow: hidden;
+	white-space:nowrap;
+	
+}

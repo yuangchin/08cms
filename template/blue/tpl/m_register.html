@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+    <title>会员注册-{$hostname}</title>
+    <meta name="keywords" content="会员注册-{$hostname}" />
+    {tpl$m_headinner}
+    <?php $notop=1; ?>
+</head>
+<body>
+
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="web-allow" title="网站服务条款" data-footer="false" data-btn="back" class="active">
+        {tpl$m_header}
+        <article class="active">
+            <div class="p5"></div>
+            <ul class="list inset">
+                <li class="divider">网站服务条款</li>
+                <li style="padding:0">
+                    <div class="popup-content">
+                        <div id="xieyi-popup-content">
+                            {tpl$wzfwtk}
+                        </div>
+                    </div>
+                    <div id="popup_btn_container">
+                        <a data-target="back" class="cancel"  data-icon="close">不同意</a>
+                        <a href="#register-section" data-target="section" data-icon="icon-e603">同意</a>
+                    </div>
+                </li>
+            </ul>
+        </article>
+    </section><!-- /网站服务条款 -->
+    <section id="register-section" title="会员注册" data-footer="false" data-btn="back">
+        {tpl$m_header}
+        <article class="active" style="overflow:auto">
+            <ul class="list">
+                <li>
+                    <form name="cmsregister" id="register" method="post" enctype="multipart/form-data" action="{$mobileurl}register.php?forward=">
+                        <input type="hidden" name="fxpid"  value="<?php echo @$fxpid; ?>" />
+                        <input type="hidden" name="agree" value="on"/>
+                        <input type="hidden" name="forward" value="{c$freeurl [tclass=freeurl/] [fid=122/]}{/c$freeurl}"/>
+                        <div class="input-group">
+                            <div class="select" data-icon="icon-f0db">
+                                <select name="mchid" required title="请选择会员类型">
+                                    <option value="">选择会员类型</option>
+                                    <option value="1">普通会员</option>
+                                    <option value="2">经纪人</option>
+                                </select>
+                            </div>
+                            <input type="text" id="mname" name="mname" required pattern=".{3,15}" maxLength="15" min="0" max="18" placeholder="用户名" title="用户名不能为空">
+                            <input type="password" name="password" pattern=".{6,18}" maxLength="18" title="请输6到18个字符的密码" required placeholder="密码">
+                            <input type="password" name="password2" pattern=".{6,18}" maxLength="18" required placeholder="确认密码">
+                            <input type="email" name="email" required placeholder="安全邮箱">
+                            <div class="dn m-yzm">
+                                <input id="lxdh" type="number" name="lxdh" title="请输入正确的手机号" pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" required placeholder="手机号码">
+                                <input type="hidden" name="smstelfield"  value="lxdh" />
+                                <input type="number" id="msgcode" name="msgcode" pattern=".{6,18}" maxLength="18" required pattern="/^\s*\d{4,8}\s*$/" placeholder="确认码">
+                                <button onclick="sendverCode(60,this)" type="button" class="button small" style="position:absolute;right:3px;margin-top:-35px">获取确认码</button>
+                            </div>
+                            <div class="dn y-yzm">
+                                <input type="text" name="regcode" required maxLength="4" max="4" autocomplete="off" class="txt yzm" placeholder="验证码" />
+                            </div>
+                        </div>
+                        <input type="hidden" name="register" value="reg"/>
+                        <button class="block" type="submit" data-icon="icon icon-e641">马上注册</button>
+                    </form>
+                </li>
+            </ul>
+        </article>
+    </section><!-- /表单 -->
+</div>
+    {tpl$m_footer}
+    <script type="text/javascript">
+        $('#xieyi-popup-content').css({
+            height : $(window).height()-164
+            , overflow : 'auto'
+        })
+
+
+    // 手机短信
+    var isOpenMob = 'register', mobObj = $('#lxdh');
+    $.getJSON(CMS_ABS + uri2MVC("ajax=sms_msend&mod="+isOpenMob+"&act=init&datatype=json") + '&callback=?', function(info){
+        console.log(info)
+        if(info.error=='close'){
+            $('.y-yzm').show();
+            $(".m-yzm").remove();
+        }else{
+            $(".m-yzm").show();
+            $(".y-yzm").remove();
+        }
+    });
+
+    var open=1;
+    function sendverCode(os,btn){
+        if(open){
+            $.getJSON(CMS_ABS + uri2MVC("ajax=checkUserPhone&act=code&val="+mobObj.val()+"&datatype=json") + '&callback=?', function(info){
+                if( info == "号码已经存在于系统会员中，不能使用！" ){
+                     open=1;
+                    J.showToast(info,'info top');
+                } else {
+                    $.getJSON(CMS_ABS + uri2MVC("ajax=sms_msend&mod="+isOpenMob+"&act=code&tel="+mobObj.val()+"&datatype=json") + '&callback=?', function(info){
+                         open=1;
+                        if(info.error){
+                            J.showToast(info.message,'success info');
+                        }else{
+                            countdown(os,btn);
+                            mobObj.prop("readonly","readonly");
+                        }
+                    });
+                }
+            });
+        } else {
+            alert("短信已发送，注意查收");
+        }
+    open=0;
+
+    }
+
+    function countdown(senconds,btn1){
+        if(senconds>1){
+            $(btn1).html('重新发送(<span class="f-alizarin" id="getminut">'+senconds--+'</span>)').prop("disabled","disabled").css("cursor","no-drop");
+            setTimeout(function() {
+                countdown(senconds,btn1);
+            },1000);
+        }else{
+            $(btn1).html("获取确认码").prop("disabled","").css("cursor","pointer");
+            mobObj.prop("readonly","");
+        }
+    }
+
+
+    </script>
+</body>
+</html>

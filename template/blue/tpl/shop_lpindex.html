@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+<!--写字楼与商铺楼盘内页公用导航-->
+{tpl$office_lpnav}
+<div class="wrap">
+    <div class="blank10"></div>
+    <div class="w700 r por">
+        <dl id="lp-info" class="lp-info">
+            <dt>楼盘均价</dt>
+            <dd>
+                <span class="arial mr5">{if $dj}<i id="pri" class="pri fcr">{dj}</i>元/m&sup2;{else}售价待定{/if} </span>{if $bdsm}<i class="ico08 mr3 fcr">&#xe64b;</i><span class="fcr">{bdsm}</span>{/if}
+            </dd>
+            <dt>开盘时间</dt>
+            <dd>{if $kprq}{kprq}{else}待定{/if}</dd>
+            <dt>交房时间</dt>
+            <dd>{if $jfrq}{jfrq}{else}待定{/if}</dd>
+            {if $address}
+            <dt>楼盘地址</dt>
+            <dd>
+                {c$text [tclass=text/] [tname=address/] [trim=64/] [ellip=.../]}{/c$text} <a class="form-bdrs btn btn-sm mr5" href='{$cms_abs}etools/pointer.html#lat={dt_0}&lng={dt_1}&zoom=13&title={$subject}' target="_blank" ><i class="ico08 mr5">&#xe613;</i>查看地图</a>
+            </dd>
+            {/if}
+            {if $jzmj}
+            <dt>建筑面积</dt>
+            <dd><i>{jzmj}</i>m&sup2;</dd>
+            {/if}
+            {c$lpkfs [cname=楼盘开发商/] [tclass=archive/] [val=e/] [chid=13/] [arid=6/]}
+            <dt>开&nbsp;&nbsp;发&nbsp;&nbsp;商</dt>
+            <dd>
+                <i class="fcr"><a href="{arcurl}" target="_blank">{subject}</a></i>
+            </dd>
+            {/c$lpkfs}
+            <dd class="ptb15"><a data-head="我想购买" class="form-bdrs btn btn-sm mr5 btn-jqModal" data-css='{"width": 450}' href="#pop-wxgm" rel="nofollow"><i class="ico08 mr5">&#xf07a;</i>我想购买</a><a class="form-bdrs btn btn-sm mr5" onclick="return publicCollect('{$aid}');" href="javascript:;" rel="nofollow"><i class="ico08 mr5">&#xf004;</i>收藏</a><a id="sendtophone" data-css='{"width": 450}' data-head="发送到手机" class="form-bdrs btn btn-sm mr5 btn-jqModal" style="display: none;" href="#pop-phone" rel="nofollow"><i class="ico08 mr5">&#xe74d;</i>发送到手机</a> </dd>
+            <dd class="tel clearfix">
+                <i class="ico08">&#xe60e;</i><div class="tel-info fcr">{if $tel}{tel}{else}待定{/if}</div>
+                <p class="fcg msg">联系时，请告之在“{$hostname}”上看到，谢谢！</p>
+            </dd>
+        </dl>
+        <div class="blank10"></div>
+        <div class="lp-coltit"><h3 class="tit2">基本详情</h3><a target="_blank" href="{arcurl1}" class="more">更多&gt;&gt;</a></div>
+        <div class="bd-gray bdrs lp-jbcs">
+            <div class="blank15"></div>
+            <ul class="plr15">
+                <li><span>商铺类型 </span>{$ccid48title}</li>
+                <li><span>装修程度  </span>{c$zxcd2 [tclass=field/] [tname=zxcd/] [type=archive/] [fname=zxcd/]}{/c$zxcd2}</li>
+                <li><span>商铺总面积  </span>{if $spzmj}{spzmj}M<sup>2</sup>{/if}</li>
+                <li><span>绿化率  </span>{lhl}</li>
+                <li><span>容积率  </span>{yjl}</li>
+                <li><span>车位价格  </span>{cwjg}</li>
+                <li><span>物 业 费  </span>{wyf}</li>
+                <li><span>车位数  </span>{cksm}</li>
+                <li class="wb"><span>物业公司  </span>{wygs}</li>
+                <li class="wb"><span>售楼地址  </span>{sldz}</li>
+                <li class="wb"><span>楼内配套  </span>{c$lnpt2 [tclass=field/] [tname=lnpt/] [type=archive/] [fname=lnpt/]}{/c$lnpt2}</li>
+            </ul>
+            <div class="blank15"></div>
+        </div>
+    </div>
+    <div class="w480 l">
+        <div class="blank8"></div>
+        <div class="flash jqDuang" data-cell="|.sml i">
+            <div id="big" class="big">
+                <ul>
+                    {c$catalogs [tclass=catalogs/] [limits=4/] [listby=ca/] [casource=3/] [cainherit=2/] [wherestr=pid='7'/] [ttl=300/]}
+                    <li class="{if $v['sn_row'] > 1}dn{/if}" title="{title}" style="height:300px">
+                        {c$pushs1 [tclass=pushs/] [paid=push_shoplphdp/][val=a/] [limits=1/][classid1=$v[caid]/][wherestr=pid36 = '$aid'/] [ttl=600/]} 
+                            <img alt="{subject}" {c$image1 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=480/] [maxheight=300/] [thumb=1/]}src="{url_s}" width="480" height="300"{/c$image1} />
+                        {/c$pushs1}
+                    </li>
+                    {/c$catalogs}
+                    {c$lpnsp [cname=楼盘内视频/] [tclass=archive/] [arid=5/] [val=a/] [chid=12/] [detail=1/]}
+                    <li id="video" class="dn">
+                        <a href="{arcurl}" target="_blank"><img alt="{subject}" {c$image1 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=480/] [maxheight=300/] [thumb=1/]}src="{url_s}" width="480" height="300"{/c$image1} /></a>
+                    </li>
+                    {/c$lpnsp}
+                </ul>
+            </div>
+            <div id="sml" class="sml">
+                {c$catalogs2 [tclass=catalogs/] [limits=4/] [listby=ca/] [casource=3/] [cainherit=2/] [wherestr=pid='7'/] [ttl=300/]}<i class="{if $v['sn_row'] == 1}act{/if}">{title}</i>{/c$catalogs2}{c$lpnsp [cname=楼盘内视频/] [tclass=archive/] [arid=5/] [val=a/] [chid=12/] [detail=1/]}<i><span class="ico08">&#xe72f;</span>视频</i>{/c$lpnsp}
+            </div>
+        </div> <!-- /flash 幻灯片 -->
+        <div class="blank0"></div>
+        <div class="lp-coltit"><h3 class="tit2">最新动态</h3><a target="_blank" href="{arcurl2}" class="more">更多&gt;&gt;</a></div>
+        <div class="bd-gray bdrs">
+            <ul class="lp-tlist ptb8">
+                {c$archives [cname=资讯列表/] [tclass=archives/] [chids=1/] [chsource=2/] [limits=4/] [mode=in/] [arid=35/]}                <li>
+                    <i class="ico08 dot">&#xf052;</i><h4>{c$cnode [cname=cnode/] [tclass=cnode/] [listby=ca/] [val=b/] [casource=active/]}<a href="{indexurl}" target="_blank">[{title}]</a>{/c$cnode} <a target="_blank" title="{subject}" href="{arcurl}">{subject}</a></h4>
+                    <div class="fcg clearfix"><span class="l mr10"><i class="ico08">&#xe014;</i>{c$time [cname=time/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$time}</span><span class="l"><i class="ico08">&#xe000;</i>{clicks}</span></div>
+                </li>
+                {/c$archives}
+            </ul>
+        </div>
+    </div>
+   <div class="blank0"></div>
+</div>
+<div class="wrap clearfix">
+    <div class="lp-coltit">
+        <h3 class="tit1">楼盘图库</h3>
+        <div class="more">
+            {c$counts [tclass=acount/] [chids=7/] [chsource=2/] [val=b/] [casource=2/] [mode=in/] [arid=36/]}{if $b['counts']>0}<a href="{$arcurl3}#caid={$a[caid]}" rel="nofollow">{$a[title]}({counts})</a>|{/if}
+            {/c$counts}
+            <a href="{arcurl4}" target="_blank">更多>></a>
+        </div>
+    </div>
+    <div class="bd-gray bdrs">
+        <ul id="imgs" class="lp-plist clearfix plist-mod">
+            {c$pushs1 [tclass=pushs/] [paid=push_shoplptk/] [limits=4/][wherestr=pid36 = '$aid'/] [ttl=600/]}
+            <li>
+                <a href="{$arcurl4}" target="_blank">
+                    <img {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=250/] [maxheight=150/] [thumb=1/]}src="{url_s}" width="250" height="150"{/c$thumb} alt="{subject}"/>
+                    <em>{subject}</em>
+                </a>
+            </li>
+            {/c$pushs1}
+        </ul>
+    </div><!-- /楼盘图库 -->
+    <div class="blank10"></div>
+    <!-- 地图 -->
+    <div id="mapdiv" class="blank0"></div>
+    <!-- //地图 -->
+    <!-- 沙盘 -->
+    {if $stpic}
+    <div class="lp-coltit"><h3>{subject}沙盘</h3><span class="tip"><span>注：按下鼠标不松可以拖动图片</span><span><i class="ico1"></i>未售</span><span><i class="ico2"></i>在售</span><span><i class="ico3"></i>售完</span></span></div>
+    <div class="bd-gray bdrs clearfix">
+        <div class="w900 l">
+            <div class="blank1"></div>
+            <div id="shapan" class="shapan">
+                <div id="shapan-i" class="shapan-i">
+                    <img alt="{subject}" {c$image [tclass=image/] [tname=stpic/] [val=u/]} src="{url}" {/c$image}/>
+                    {c$archives [tclass=archives/] [chids=111/] [chsource=2/] [limits=50/] [mode=in/] [arid=35/] [detail=1/]}
+                    <a title="{subject}" class="sha-dot sha-dot-{xszt}" data-shapan="{shapan}" href="javascript:;" ><i></i>{subject}
+                        <div class="sha-dot-info">
+                            <dl>
+                                <dt><span class="ico08">&#xe014;</span>开盘时间：</dt>
+                                <dd>{kpsj}&nbsp;</dd>
+                                <dt><span class="ico08">&#xe015;</span>交房时间：</dt>
+                                <dd>{jfsj}&nbsp;</dd>
+                                <dt><span class="ico08">&#xf0f9;</span>单元：</dt>
+                                <dd>含{unit}个单元&nbsp;</dd>
+                                <dt><span class="ico08">&#xf039;</span>层数：</dt>
+                                <dd>{floor}层&nbsp;</dd>
+                                <dt><span class="ico08">&#xe004;</span>户数：</dt>
+                                <dd>共{hushu}户&nbsp;</dd>
+                                <dt><span class="ico08">&#xe651;</span>近期动态：</dt>
+                                <dd>{dongtai}&nbsp;</dd>
+                            </dl>
+                        </div>
+                    </a>
+                    {/c$archives}
+                </div>
+            </div>
+        </div>
+        <!-- <div class="w270 r">
+            {c$archives [tclass=archives/] [chids=111/] [chsource=2/] [limits=50/] [mode=in/] [arid=35/] [detail=1/]}
+            <div class="sha-dot-info">
+                [row]
+                <h4 class="tit">{subject}</h4>
+                [/row]
+            </div>
+            {/c$archives}
+        </div> -->
+        <div class="w270 r">
+            <div class="blank10"></div>
+            <div class="hx-info-tit fz14"><i id="hxback">&lt;&lt;返回</i><strong>{subject}楼栋列表</strong></div>
+            <div class="hx-info pr10" id="hx-info">
+                {c$archives [tclass=archives/] [chids=111/] [chsource=2/] [limits=50/] [mode=in/] [arid=35/] [detail=1/]}
+                <dl>
+                    <dt><span></span>{subject}</dt>
+                    <dd>
+                        <ul>
+                            <li><i>{subject}</i><i> {mj}m&sup2;</i></li>
+                        </ul>
+                    </dd>
+                </dl>
+                {/c$archives}
+            </div>
+        </div>
+    </div>
+    {/if}
+    <!-- /沙盘 -->
+    <div class="blank0"></div>
+    <!-- /其它楼盘 -->
+    <div class="lp-coltit"><a class="more" href="{arcurl3}" target="_blank">更多&gt;&gt;</a><h3 class="tit1">价格走势</h3></div>
+    <div class="bd-gray bdrs p20">
+        <div id="zst" class="pop-zst" style="height:260px"></div>
+    </div>
+</div>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<div class="wrap clearfix">
+    <div class="w900 l">{tpl$lpdp}</div>
+    <!-- 写字楼与商铺楼盘右侧 -->
+    {tpl$office_lpright}
+</div>
+    <!-- 意向 -->
+<div id="pop-wxgm" class="dn pop pop-wxgm modal">
+    <form class="jqValidate" data-tipmode="#tip-yx" method="get" onsubmit="return fyCummus(this,'意向提交',1);">
+    <input type="hidden" name="cuid" value="3" /><!--交互项目id-->
+    <input type="hidden" name="aid" value="{aid}" /><!--针对文档的aid,不是针对文档就不要这项-->
+    <ul class="clearfix form form-lg form-control">
+        <li>
+            <div class="blank20 mt-15"><span id="tip-yx"></span></div>
+            <input class="txt mr5" name="fmdata[ndxm]" type="text" data-type="*4-8" placeholder="您的姓名"/>
+        </li>
+        <li><input id="fmdata[sjhm]" name="fmdata[sjhm]" placeholder="联系号码" data-type="m" class="txt" type="text" rule="text"/></li>
+        <li><input class="txt" id="fmdata[qtsm]" name="fmdata[qtsm]" placeholder="意向说明" type="text"/></li>
+        <li class="reg-wrap" data-regcode="commu3">
+            <input type="text" name="regcode" data-type="*" class="txt" size="4" placeholder="验证码" value=""/>
+        </li>
+        <li>
+            <input type="submit" value="立即报名" class="btn"/>
+        </li>
+    </ul>
+    </form>
+</div>
+    <!-- /意向 -->
+<script type="text/javascript" src="{$tplurl}js/jqduang.js"></script>
+<script type="text/javascript" src="{$tplurl}js/highcharts.js"></script>
+{if $stpic}
+<script type="text/javascript">
+    var $shapanIA = $("#shapan-i a")
+    , $hxInfoDl   = $("#hx-info dl")
+    , hxBack      = $("#hxback");
+
+    $('#shapan-i').jqDrag({ attachment: '#shapan'})
+    
+
+    $shapanIA.click(function(e) {
+        $(this).toggleClass('act').siblings().removeClass('act')
+        $hxInfoDl.eq($shapanIA.index(this)).toggleClass('act').show().siblings().hide().removeClass('act');
+        hxBack.show();
+        e.stopPropagation();
+    }).each(function() {
+        var aShapan = $(this).attr('data-shapan').split(',');
+        $(this).css({left:parseInt(aShapan[0]),top:parseInt(aShapan[1])})
+        .find('.sha-dot-info').click(function(e) {
+            e.stopPropagation();
+        });
+    })
+
+    $hxInfoDl.click(function(e) {
+        $(this).toggleClass('act').show().siblings().hide().removeClass('act')
+        $shapanIA.eq($hxInfoDl.index(this)).toggleClass('act').siblings().removeClass('act');
+        hxBack.show();
+        e.stopPropagation();
+    }).find('dd').click(function(e) {
+        e.stopPropagation();
+    });
+
+    $(document).on('click', function () {
+        $shapanIA.removeClass('act');
+        $hxInfoDl.removeClass('act').show();
+        hxBack.hide();
+    });
+</script>
+{/if}
+<script>
+    var jsonData = {
+        "title": "",
+        "series": [{
+            "name": "\u672c\u9879\u76ee\u623f\u4ef7",
+            "datatype": "house",
+            "data": [
+            {c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}
+            {if $v['sn_row']>1},{/if}['{c$date [tclass=date/] [tname=createdate/] [date=y-m-d/]}{/c$date}',{$v[average]}]
+            {/c$outinfos}
+            ].reverse()
+        }],
+        "month_s": [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=m/d/]}{/c$date}'{/c$outinfos}].reverse()
+    };
+    var seriesData = jsonData.series;
+        
+</script>
+
+<script type="text/javascript" src="{$tplurl}js/lp.js"></script>
+<!-- 调用地图 -->
+{if $dt}
+<script type="text/javascript">
+    $('#mapdiv').replaceWith('<iframe id="iframe" width="100%" height="393" scrolling="no" allowtransparency="true" frameborder="0" src="{$cms_abs}info.php?fid=115&lp={aid}" ></iframe>');
+</script>
+{/if}
+<!-- /调用地图 -->
+<!-- 发送到手机短信模板 -->
+<script type="text/javascript">
+var isOpenMob='arc4info';
+
+    var msgpara = 'a,{chid},{aid}';
+</script>
+{tpl$smsphone}
+{tpl$tpl_lp_footer}
+</body>
+</html>

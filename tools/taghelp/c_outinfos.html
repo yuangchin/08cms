@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">自由调度列表 farchives</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>自由调用列表主要是用于站内其它标识难以实现的数据调用和站外数据应用于本站的标识。</p>
+</div>
+<span class="blank5"></span>
+<div>
+        <span class="blank3"></span>
+        <li class="t3">
+        站外数据调用需要分两步操作    
+        <span class="blank3"></span>
+       <p class="bg3"> 第一步：站外数据库连接：</p>
+        <span class="blank3"></span>
+            <p >
+        后台-->模板风格-->模板相关-->外部数据源-->添加外部数据源<br />
+        如下图：<br />
+        <img src="img/zylb.jpg"/>
+            </p>
+            <p>
+      说明：
+外部数据源名称：可已自定义，随便取名自已易记即可
+数据库服务器：本机的话一般用localhost，与主程序不在同一台服务器上即用IP地址
+以上图1填好后点击[测试连接]，如正确无误则会提示"外部数据源连接正确"
+            </p>
+           
+        <span class="blank3"></span>
+       <p class="bg3"> 第二步：数据调用</p>
+        <span class="blank3"></span>
+        <p>
+模板风格-->复合标识-->自由调用列表-->添加<br />
+        如下图：<br />
+        <img src="img/zybl1.jpg"/>
+            </p>
+            <p>
+            说明:
+            标识模板：其内的连接地址用组合式地址
+   外部数据源：选取在第一步新建的〖外部数据源名称〗
+定义内容查询字串：查询SQL语句</p>
+        </li>
+    </div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>会员登录-{$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/login.css?{$user_version}"/>
+</head>
+<body>
+<!-- header begin -->
+{tpl$head}
+<div class="blank20"></div>
+<!-- end begin -->
+<div class="wrap">
+    <!-- body -->
+    <div class="coltit1"><h3 class="tit">会员登录</h3></div>
+    <div class="content1 clearfix">
+        <div class="info-form">
+            <form class="jqValidate" data-tipmode="#tipinfo" method="post" action="?forward={forward}">
+            <div class="form form-lg form-control">
+                <ul class="w400">
+                    <li class="inputBox">
+                        <i class="user-ico"></i>
+                        <input type="text" class="txt user" name="username" value="" placeholder="用户名" data-type="*3-15"/>
+                    </li>
+                    <li class="inputBox">
+                        <i class="psd-ico"></i>
+                        <input type="password" placeholder="密&nbsp;&nbsp;码" class="txt psd" name="password" data-type="*" value=""/>
+                    </li>
+                    <li class="inputBox">
+                        <input type="radio" class="rad" checked="checked" id="rad1" name="expires" value="0"/><label for="rad1">永久保留</label>
+                        <input type="radio" class="rad" name="expires" id="rad2" value="-1"/><label for="rad2">不保留</label>
+                        <input type="radio" class="rad" name="expires" id="rad3" value="2592000"/><label for="rad3">1个月</label>
+                    </li>
+                    <li class="inputBox yzm reg-wrap" data-regcode="login" data-alias="a">
+                        <input type="text" name="regcode" data-type="*0-4" data-init="请输入验证码" class="txt ajaxurl" placeholder="验证码" value=""/>
+                    </li>
+                    <li class="inputBox">
+                        <input type="hidden" name="cmslogin" value="立即登录"/>
+                        <input type="submit" class="btn" value="立即登录" />
+                    </li>
+                    <li class="inputBox clearfix">
+                        <a class="r" data-head='<i class="ico08 fco">&#xf059;</i>找回密码' data-css='{"width": 500}' target="_blank" href="{$cms_abs}tools/lostpwd.php?"><i class="ico08 fco">&#xf059;</i>找回密码</a>
+                        <div id="tipinfo"></div>
+                    </li>
+                   <li class="inputBox clearfix msg"><span>登录或注册有问题请联系:<!-- qq -->
+                        {if $user_user_qq}
+                        <a title="点击这里给我发消息" style="padding:0" target="_blank" href="http://wpa.qq.com/msgrd?V=1&uin={user_user_qq}&Site=&Menu=yes"><img data-online-qq="{user_user_qq}" border="0" src="{$tplurl}newimages/pa_online.gif"></a>
+                        {/if}
+                        <!-- /qq -->{if @$user_user_tel} 电话:{$user_user_tel}{/if}</span>
+                    </li>
+                </ul>
+            </div>
+            </form>
+        </div>
+        <div class="info-right">
+            <div class="info-right-inner">
+                <h3>没有帐号</h3>
+                <a class="btn" href='{$cms_abs}register.php'>立即注册</a>
+                <h4>使用合作网站账号登录</h4>
+                <?php
+                // 快捷登录模块，如果所有外站登录都关闭的情况下隐藏该模块
+                if( @in_array(0, array_map("intval", array($qq_closed, $sina_closed))) ) {
+                ?>
+                <?php cls_phpToJavascript::showOtherBind();?>
+                     <?php if(empty($qq_closed)) {?>
+                     <a class="QQ_login" title="QQ登陆" href="javascript:;" onclick="OtherWebSiteLogin('qq', 600, 470);">QQ账号登录</a>
+                     <?php } ?>
+                     <?php if(empty($sina_closed)) {?>
+                     <a class="weibo_login" title="新浪微博" href="javascript:;" onclick="OtherWebSiteLogin('sina', 600, 400);">微博账号登录</a>
+                     <?php } ?> 
+              <?php
+                } // 快捷登录模块结束
+               ?>  
+            </div>
+        </div>
+        <div class="blank0"></div>  
+    </div>
+ </div>
+<div class="blank20"></div>
+    {tpl$foot} 
+</body>
+</html>

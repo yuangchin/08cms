@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}{c$nownav [cname=类目导航1/] [tclass=nownav/] [coids=ccid2,ccid3,ccid4,ccid5,ccid6,ccid8,ccid12,ccid14,ccid17,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+{c$cnode [cname=激活栏目关键词/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/esindex.css?{$user_version}"/>
+</head><body>
+{tpl$fy_head}
+{tpl$tpl_need_bread}
+
+<?php
+foreach(array('fsale','ccid1','ccid6','ccid12','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+	'ntype' => 'c',
+	'chid' => $caid, 
+	'nodes' => array('0','0,1'), 
+	//'orderbys' => array('aid','mj','clicks'),
+	//'cnstr' => 'caid=1',
+));
+$whrstr = cls_usql::where_str(array(
+	array('subject'), //array('biaoti',0,'like'),
+)); 
+?>
+<div class="wrap clearfix"> 
+  	<div class="blank5"></div>
+  	<div class="search-box"> 
+  		<div class="area">
+	  		<em>区域：</em>
+	  		<a class="{if empty($ccid1)}act{/if}" href='<? echo cls_uso::extra_url(1); ?>'>不限</a><?php $_rows = cls_uso::caco_urls(1);?>
+	  			{loop $_rows $k $v}<a class="{if @$ccid1==$k}act{/if}" href="{$v['url']}">{$v['title']}</a>&nbsp; {/loop} 
+  		</div>
+	</div>
+  <!--当前位置+搜索-->
+  <div class="fy-main">
+	<div class="need-list bor-blue plr10"> {c$xqlb  [tclass=archives/] [chids=$caid/] [chsource=2/] [limits=40/] [caidson=1/] [casource=2/] [cosource1=2/] [validperiod=1/] [orderstr=a.updatedate DESC/] [wherestr=$whrstr/] [ttl=600/] [mp=1/]}
+	  <div class="need-sort">共有<b class="fcr">{$mpacount}</b>个需求符合条件 </div>
+	  [row]
+	  <div class="need-item"> <span class="td1"><a target='_blank' href='{arcurl}' class='green bold _14px'>{c$subject50 [cname=subject50/] [tclass=text/] [tname=subject/] [trim=50/]}{/c$subject50}</a> {if $v['ccid1']}({ccid1title}){/if}</span> <span class="td2">{if $v['mj']}{mj}平米{else}待定{/if}</span> <span class="td3">{if $v['zj']}<em class="fcr">{zj}</em>{if $v['caid']==9}元/月{else}万元{/if}{else}待定{/if}</span> <span class="td4">{c$member  [tclass=member/] [val=a/] [detail=1/]}{if $a['mid']==0}{mname}{else}{xingming}{/if}{/c$member}</span> <span class="td5">
+		<?=u_time_format($v['refreshdate'])?>
+		更新</span>
+		<div class="blank0"></div>
+	  </div>
+	  [/row]
+	  {/c$xqlb}
+	  {if $mpacount>0}
+	  <div class="p10">{$mpnav}</div>
+	  {else}
+	  <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+	  {/if} </div>
+  </div>
+  <!-- 侧栏 -->
+  {tpl$fy_right}
+  <div class="blank0"></div>
+</div>
+<script type="text/javascript">
+  $('#qiugou').addClass('act');
+</script>
+{tpl$foot}
+</body>
+</html>

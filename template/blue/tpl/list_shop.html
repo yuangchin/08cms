@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+<title>{c$cnode [cname=家装title/] [tclass=cnode/][listby=ca/] [casource=active/]}{listtitle}{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid31/]}-{title}{/c$nownav}-{$hostname}</title>
+{c$cnode [cname=家装title/] [tclass=cnode/][listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}">
+<meta name="description" content="{listabstract}">
+{/c$cnode}
+{tpl$jz_headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/material_index.css?{$user_version}">
+</head><body>
+<!--header begin--> 
+{tpl$jz_head} 
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script> 
+<!--header end--> 
+<?
+foreach(array('ccid31','orderby','ordermode','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+    'ntype' => 'c',
+    'chid' => 103, 
+    'nodes' => array('0','0,31'), 
+));
+$whrstr = cls_usql::where_str(array(
+	array('subject'), 
+    //array('ccid31',0,'in',31)
+)); 
+$actccid31s = cls_catalogbase::Pccids($ccid31,31,1); 
+$actccid31top = isset($actccid31s[0]) ? $actccid31s[0] : 0; 
+?>
+<!-- 内容开始 -->
+<div class="wrap"> 
+  <!--左侧-->
+  <div class="col_left"> 
+    <!--产品检索--> 
+    <!-- 检索条件初始化 -->
+    <div class="dh_title">
+      <div class="dh_title_l">所有分类</div>
+      <div class="dh_title_r"></div>
+    </div>
+    <div class="dh_con">
+      <div class="dh_con_m">
+        <div class="pro_sorts">
+          <div class="js1"> <a class="{if !in_array($ccid31,$actccid31s)}red{else}blue{/if}_link" href='<? echo cls_uso::extra_url(31); ?>'><strong>所有商品</strong></a>
+            <?php $_rows = cls_uso::caco_urls(31); ?>
+            {loop $_rows $k $v}<a class="{if in_array($k,$actccid31s)}red{else}blue{/if}_link" href="{$v['url']}">{$v['title']}</a>{/loop} </div>
+            {if !empty($actccid31top)}
+            <div class="js1">
+              <?php $_rows = cls_uso::caco_urls(31,$actccid31top); /*,'ccid31_level2'*/ ?>
+              {loop $_rows $k $v}<a class="{if in_array($k,$actccid31s)}red{else}blue{/if}_link" href="{$v['url']}">{$v['title']}</a>{/loop} 
+            </div>
+            {/if} 
+          </div>
+      </div>
+    </div>
+    <span class="blank8"></span>
+    <div class="search_form">
+      <form method="get" action="{$cms_abs}index.php">
+        <input type="hidden" name="caid" value="513" />
+        <input type="hidden" name="addno" value="1" />
+        <input type="hidden" name="ccid31" value="{ccid31}" />
+        <ul>
+          <li><img src="{$tplurl}newimages/fdj.gif"></li>
+          <li class="zjc">找{if @$ccid31}{c$jz_spmc [cname=商品名称/] [tclass=cnode/] [listby=co31/] [cosource31=active/] [level=1/]}{title}{/c$jz_spmc}{else}商品{/if}</li>
+          <li class="input">
+            <input type="text" value=""  name="searchword" placeholder="请输入商品名称" class="txt clear-txt"/>
+          </li>
+          <li>
+            <input type="submit" value="搜索" class="searbtn1" name="">
+          </li>
+        </ul>
+      </form>
+    </div>
+    <!--/产品检索--> 
+    <span class="blank20"></span> 
+    <!--产品列表-->
+    <div class="sub_nav blank0"></div>
+    <div id="px" class="px"></div>
+    {c$jz_shoplist [cname=商品列表/] [tclass=archives/] [val=vv/] [chsource=2/] [chids=103/] [caidson=1/] [casource=1/] [caids=513/] [ccidson31=1/] [cosource31=2/] [validperiod=1/] [detail=1/] [orderstr=a.ccid42 DESC,a.refreshdate DESC/] [wherestr=$whrstr/] [ttl=900/] [mp=1/]} 
+    <script type="text/javascript">
+        $('#px').html('<ul> <li>共有<strong class="fcr">{$mpacount}</strong>个产品符合要求</li></ul> ')
+      </script> 
+    [row]
+    <div class="pro_list">
+      <div class="pro_pic"> <a target="_blank" href="{marcurl}"><img alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=100/] [thumb=2/]}src="{url_s}" width="100" height="100"{/c$thumb}>{if $vv['ccid42']}<i class="icon"></i>{/if}</a> </div>
+      <div class="pro_infor">
+        <div class="pro_name"><a title="{subject}" class="blue_link" target="_blank" href="{marcurl}">{subject}</a></div>
+        <div class="pro_saler"><span>介绍： {c$text [tclass=text/] [tname=abstract/] [trim=180/] [color=color/]}{/c$text}</span></div>
+      </div>
+      <div class="pro_price">
+        <div class="pro_price1"> 价　格： <span class="wryh">{if $vv['zj']}{zj}元{else}面议{/if}</span> <br>
+        </div>
+      </div>
+      <div class="blank0"></div>
+    </div>
+    [/row] 
+    <!--产品列表结束--> 
+    <!-- 分页 -->
+    <div class="ptb10"> {$mpnav} </div>
+    {/c$jz_shoplist}
+    {if $mpacount<=0}
+    <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>的{/if}信息</div>
+    {/if} </div>
+  <!--右侧-->
+  <div class="col_right"> 
+    <!--热门产品-->
+    <div class="hot_pro_title">
+      <div class="hot_pro_title_l">热门产品</div>
+      <div class="hot_pro_title_r"></div>
+    </div>
+    <div class="hot_pro_con"> 
+      <!--列表-->{c$jz_hotshop [cname=热门商品/] [tclass=archives/] [limits=6/] [chsource=2/] [chids=103/] [ccidson31=1/] [cosource31=2/] [validperiod=1/] [detail=1/] [orderstr=a.clicks DESC/]}
+      <div class="hot_pro_list"> <a href="{marcurl}"> <img alt="{subject}" {c$thumb [cname=thumb/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=210/] [maxheight=150/] [thumb=2/]}src="{url_s}" width="{width}" height="{height}"{/c$thumb}> </a>
+        <div class="hot_pro_price"><a title="{subject}" class="blue_link" target="_blank" href="{marcurl}">{subject}</a>{if $v['zj']}{zj}{else}面议{/if}</div>
+      </div>
+      {/c$jz_hotshop} </div>
+  </div>
+</div>
+{tpl$jz_foot} 
+<!--footer end-->
+</body>
+</html>

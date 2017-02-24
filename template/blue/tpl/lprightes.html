@@ -1,0 +1,37 @@
+<div class="w380 r">
+        <div class="lp-coltit"><h3><a href="{c$cnode [cname=激活楼盘区域/] [tclass=cnode/] [casource=2/] [listby=co1/] [cosource1=active/]}{indexurl2}{/c$cnode}" target="_blank">周边小区</a></h3></div>
+    <div class="bd-gray bdrs clearfix">
+        <div class="blank15"></div>
+    	 <!-- plist -->
+        <ul class="lp-plist2 clearfix mlr15">
+            {c$archives [tclass=archives/] [chsource=2/] [limits=5/] [chids=4/] [ttl=600/] [detail=1/] [cosource1=2/] [wherestr=((leixing='0' OR leixing='2') AND a.aid != '$aid')/]}
+            <li>
+                 <a href="{arcurl7}" target="_blank">
+                    <img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=100/] [maxheight=75/] [thumb=1/]} src="{url_s}"  height="75" width="100" {/c$image}/>
+                     <em>{subject}</em>
+                     <span class="fcg">售<i class="fco">{lpesfsl}</i>套 租<i class="fco">{lpczsl}</i>套</span>
+                     <span class="arial">{if $v['cspjj']}<b class="fcr">{cspjj}</b>元/m&sup2;{else}暂无统计{/if}</span>
+                </a>
+            </li>
+            {/c$archives}
+        </ul>
+    </div>
+    <div class="lp-coltit"><h3>购房工具</h3></div>
+    <div class="bd-gray bdrs clearfix">
+        <div class="home-tools xq-home-tools clearfix">
+            <a target="_blank" href="{c$08cms [cname=贷款计算器/] [tclass=freeurl/] [fid=3s/]}{/c$08cms}" class="fdjs">贷款计算器</a>
+            <a target="_blank" href="{c$08cms [cname=购房能力评估/] [tclass=freeurl/] [fid=5/]}{/c$08cms}" class="mlpg">购房能力评估</a>
+            <a target="_blank" href="{c$08cms [cname=公积金额度计算器/] [tclass=freeurl/] [fid=6/]}{/c$08cms}" class="gjjdk">公积金贷款</a>
+            <a target="_blank" href="{c$08cms [cname=提前还贷计算器/] [tclass=freeurl/] [fid=4/]}{/c$08cms}" class="tqhd">提前还贷</a>
+            <a target="_blank" href="{c$08cms [cname=提前还贷计算器/] [tclass=freeurl/] [fid=108/]}{/c$08cms}" class="gfsf">税费计算器</a>
+            <a href="{c$cnode [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl1}{/c$cnode}" class="lpsc" target="_blank">楼盘速查</a>
+        </div>
+    </div>
+    {if @$addno!=7&&@$dt}
+    <div class="blank10"></div>
+    <div id="mapdiv"></div>
+    <script type="text/javascript">
+    $('#mapdiv').replaceWith('<iframe id="iframe" width="100%" height="224" scrolling="no" allowtransparency="true" frameborder="0" src="{$cms_abs}info.php?fid=120&ids={$aid}&chid={$chid}&isxq=1" ></iframe>');
+    </script>
+    {/if}
+</div>

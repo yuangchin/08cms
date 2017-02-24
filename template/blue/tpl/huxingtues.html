@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+    {tpl$lptopes} 
+	<script type="text/javascript">
+        $("#fmn9,#fmn0,#xiaoqu").toggleClass('act');
+	</script>
+	<div id="wrapper" class="wrap">
+        	<!--滚动看图-->
+    	<div id="gallery" class="clearfix">
+            <h3 id="title">{subject}图库{c$shi [cname=shi/] [tclass=field/] [tname=shi/] [type=archive/] [fname=shi/]}{/c$shi}{c$ting [cname=ting/] [tclass=field/] [tname=ting/] [type=archive/] [fname=ting/]}{/c$ting}{c$wei [cname=wei/] [tclass=field/]
+    			[tname=wei/] [type=archive/] [fname=wei/]}{/c$wei}·{mj}M&sup2;</h3>
+            <div class="imgnav" id="imgnav"> 
+                 <div id="img">
+                     <div id="biglist" class="biglist"></div>
+                 </div>
+                  
+                 <div id="cbtn">
+                    <i class="prev ico08">&#xe68c;</i>
+                    <i class="next ico08">&#xe68f;</i> 
+                    <div id="cSlideUl">
+                        {c$dingfang [tclass=archive/] [val=vvvv/] [arid=3/] [detail=1/][chid=4/]}
+                    	<ul id="scrollwap">
+                            {c$lpsyhxt1 [cname=楼盘所有户型图1/] [tclass=archives/] [limits=100000/] [chsource=2/] [chids=11/] [mode=in/] [arid=3/] [ttl=600/]}
+    						<li class="{if $v['aid'] == $aid}hover{/if}" value="{sn_row}" data-url='{c$thumb [cname=thumb/] [tclass=image/] [tname=thumb/] [val=u/]}{url}{/c$thumb}' data-title='{subject}图库{c$shi [cname=shi/] [tclass=field/] [tname=shi/] [type=archive/] [fname=shi/]}{/c$shi}{c$ting [cname=ting/] [tclass=field/] [tname=ting/] [type=archive/] [fname=ting/]}{/c$ting}{c$wei [cname=wei/] [tclass=field/]
+                [tname=wei/] [type=archive/] [fname=wei/]}{/c$wei}·{mj}M&sup2;'>
+    							<img class="ubb_img" alt="{subject}"  {c$thumb [cname=thumb/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=116/] [maxheight=86/] [thumb=2/] }src="{url_s}" width="116" height="86"{/c$thumb} />
+                                <i></i>
+    						</li>{/c$lpsyhxt1}
+                    	</ul>
+                        {/c$dingfang}
+                    </div>
+                 </div> 
+                 <a id="view-pic" href="{c$thumb [cname=thumb_850/] [tclass=image/] [tname=thumb/] [val=u/] }{url}{/c$thumb}" target="_blank">查看原图</a>
+            </div>
+            <!--end滚动看图-->
+        </div>
+	</div>
+    {tpl$xcjs}
+	{tpl$foot}
+</body>
+</html>

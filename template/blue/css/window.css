@@ -1,0 +1,171 @@
+.CWINDOW {
+    -webkit-border-radius: 8px;       -moz-border-radius: 8px;            border-radius: 8px;
+}
+.CWINDOW .LEFT_TOP,
+.CWINDOW .TOP,
+.CWINDOW .RIGHT_TOP,
+.CWINDOW .RIGHT,
+.CWINDOW .RIGHT_BOTTOM,
+.CWINDOW .BOTTOM,
+.CWINDOW .LEFT_BOTTOM,
+.CWINDOW .LEFT {
+    opacity: .2; background: #000; filter: alpha(opacity=20);
+}
+/* 边框样式 */
+/* 左上：请不要定义padding/margin/border/top/right/bottom/left属性 */
+.CWINDOW .LEFT_TOP {
+    width: 8px; height: 28px; border-radius: 5px 0 0 0;
+}
+/* 上边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+.CWINDOW .TOP {
+    height: 38px;
+}
+/* 右上：请不要定义padding/margin/border/top/right/bottom/left属性 */
+.CWINDOW .RIGHT_TOP {
+    width: 8px; height: 28px; border-radius: 0 5px 0 0;
+}
+/* 右边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+.CWINDOW .RIGHT {
+    width: 9px;
+}
+/* 右下：请不要定义padding/margin/border/top/right/bottom/left属性 */
+.CWINDOW .RIGHT_BOTTOM {
+    width: 9px; height: 7px; border-radius: 0 0 5px 0;
+}
+/* 下边：请不要定义padding/margin/border/top/right/bottom/left属性 */
+.CWINDOW .BOTTOM {
+    height: 8px;
+}
+/* 左下：请不要定义padding/margin/border/top/right/bottom/left属性 */
+.CWINDOW .LEFT_BOTTOM {
+    width: 8px; height: 7px; border-radius: 0 0 0 5px;
+}
+/* 请不要定义padding/margin/border/top/right/bottom/left属性 */
+.CWINDOW .LEFT {
+    width: 9px;
+}
+/* 功能区样式 */
+.CWINDOW .CLOSE {
+    top: 16px; right: 18px;
+
+    width: 14px; height: 14px; cursor: pointer; background: url(../images/close.png);
+}
+.CWINDOW .CLOSE_HOVER {
+    background-position: -20px 0;
+}
+.MODAL {
+    opacity: .3;
+    background-color: black; filter: alpha(opacity=30);
+}
+/* 请不要定义margin/left/top属性 */
+.CWINDOW .E_RESIZE {
+    line-height: 0;
+
+    width: 5px; cursor: e-resize;
+}
+.CWINDOW .SE_RESIZE {
+    line-height: 0;
+
+    width: 5px; height: 5px; cursor: se-resize;
+}
+.CWINDOW .S_RESIZE {
+    line-height: 0;
+
+    height: 5px; cursor: s-resize;
+}
+.CWINDOW .SW_RESIZE {
+    line-height: 0;
+
+    width: 5px; height: 5px; cursor: sw-resize;
+}
+.CWINDOW .W_RESIZE {
+    line-height: 0;
+
+    width: 5px; cursor: w-resize;
+}
+.CWINDOW .NW_RESIZE {
+    line-height: 0;
+
+    width: 5px; height: 5px; cursor: nw-resize;
+}
+.CWINDOW .N_RESIZE {
+    line-height: 0;
+
+    height: 5px; cursor: n-resize;
+}
+.CWINDOW .NE_RESIZE {
+    line-height: 0;
+
+    width: 5px; height: 5px; cursor: ne-resize;
+}
+/* 逻辑区样式 */
+.CWINDOW .CONTENT {
+    /* 请不要定义padding/margin属性 */
+    background-color: #f7f7f7; /* filter: alpha(opacity=95); opacity: 0.95;  */
+}
+.CWINDOW .CONTENT .FORM {
+    font-size: 14px; margin: 0; padding: 12px;
+}
+.CWINDOW .TITLE {
+    font-size: 14px; line-height: 15px; overflow: hidden;
+    /* 请不要定义margin属性 */
+
+    margin: 8px 9px 0; background: #fff;
+}
+.CWINDOW .TITLE .TEXT {
+    font-size: 14px; font-weight: bold; line-height: 17px; overflow: hidden; padding: 10px; white-space: nowrap;
+
+    color: #369;
+}
+/* .CWINDOW .TITLE .TEXT span { background: #E6E6E6; }
+*/
+/* 内容列表 js设置 可选显示项目 窗口样式 */
+.aListSet_windowall {
+    position: absolute;
+
+    width: 400px; xtop: 100px;
+}
+.aListSet_wleftop {
+    float: left; width: 8px; height: 28px;
+
+    background: url(../images/window/LEFT_TOP.gif);
+}
+.aListSet_wintitle {
+    font-weight: bold; line-height: 28px; float: left; width: 380px;
+    height: 28px; text-align: left; background: url(../images/window/TOP.gif);
+}
+.aListSet_wintitle span {
+    color: #fff;
+}
+.aListSet_wrighttop {
+    float: left; width: 8px; height: 28px;
+
+    background: url(../images/window/RIGHT_TOP.gif);
+}
+.aListSet_wclose {
+    display: block; float: right;
+
+    width: 42px; height: 17px; cursor: pointer; background: url(../images/window/CLOSE.gif);
+}
+.aListSet_wclose:hover {
+    background: url(../images/window/CLOSE_HOVER.gif);
+}
+.aListSet_wcontent {
+    float: left;
+
+    width: 360px; padding: 0 20px 10px; background: #fff; background: url(../images/window/LEFT_RIGHT.gif) #fff;
+}
+.aListSet_wlefbottom {
+    float: left; overflow: hidden; width: 8px; height: 7px;
+
+    background: url(../images/window/LEFT_BOTTOM.gif);
+}
+.aListSet_wbottom {
+    line-height: 28px; float: left; overflow: hidden; width: 380px;
+    height: 7px; background: url(../images/window/BOTTOM.gif);
+}
+.aListSet_wrightbottom {
+    float: left; overflow: hidden; width: 8px; height: 7px;
+
+    background: url(../images/window/RIGHT_BOTTOM.gif);
+}

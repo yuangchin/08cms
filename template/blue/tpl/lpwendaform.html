@@ -1,0 +1,14 @@
+<form id="commuadd3" class="w700" name="commuadd3" method="post" action="{$cms_abs}etools/wdadd.php">
+            <input type="hidden" name="fmdata[pid]" value="{aid}" id="fmdata[pid]"/>
+            <div class="lp-content plr10">
+                <ul class="lp-tlist1 clearfix">
+                    <li class="clearfix"><i class="l lbl">类&nbsp;&nbsp;型：</i><select id="lpzb-lx" class="l" name="fmdata[caid]" rule="must" warn="必填" rev="类型">
+        					{c$zbptwk [cname=楼盘问答分类/] [tclass=catalogs/] [listby=ca/] [casource=3/] [wherestr=pid='517'/]}<option value="{caid}" {if $v[sn_row]==1}selected{/if}>{title}</option>{/c$zbptwk}
+        					</select></li>
+                    <li class="clearfix"><i class="l lbl">标&nbsp;&nbsp;题：</i><input type="text" size="68" id="fmdata[subject]" name="fmdata[subject]" value="" rule="text" must="1" warn="必填" mode="" regx="" min="4" max="50" rev="标题" offset="1"/><span class="fcr l">(*)</span></li>
+                    <li class="clearfix"><i class="l lbl">问&nbsp;&nbsp;题：</i><textarea rule="must" warn="必填" class="l mr5" cols="50" name="fmdata[question]" id="fmdata[question]" rows="4"></textarea><span class="fcr l">(*)</span>
+        					<span class="l">请不要超过100个汉字</span></li>
+                    <li class="clearfix"><input type="hidden" name="fmdata[pid]" value="<?php echo $aid;?>"><i class="lbl l">&nbsp;</i><input class="btn" type="submit" name="bsubmit" value="提交"></li>
+                </ul>
+            </div>
+        	</form>

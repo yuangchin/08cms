@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{listtitle}-{$hostname}</title>
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/lpfx.css?{$user_version}">
+<?php $pagetype = 'money'; ?>
+</head>
+<body>
+<!--统一头部-->
+{tpl$head}
+
+<?php
+foreach(array('ccid1','ccid12','ccid17','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+cls_uso::init(array(
+        'ntype' => 'c', //cm,m,oc,om
+        'chid' => 113,
+        'nodes' => array('0','0,1'),
+        // 'orderbys' => array('aid','mj','clicks'),
+        //'cnstr' => 'caid=1',
+));
+extract(cls_usql::order_str(1,'refreshdate DESC'));
+$whrstr = cls_usql::where_str(array(
+    array('subject'), //array('biaoti',0,'like'),
+));
+?>
+<div class="wrap">
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form form-bdrs w300">
+                    <button type="submit" class="btn"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+                    <div class="txt-wrap">
+                        <input type="text" class="txt" value="{if !empty($searchword)}{searchword}{/if}"  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_self">新房</a><i class="pipe">/</i>{title}
+        </span>
+    </div>
+    <div class="blank10"></div>
+<!--搜房源-->
+<div class="fangy p10 clearfix">
+    <h2>{title} <em>[共{c$counts [tclass=acount/] [chids=113/] [chsource=2/] [casource=1/] [caids=605/] [validperiod=1/]}{counts}{/c$counts}个特惠房源促销中]</em></h2>
+<div class="blank20"></div>
+    <div class="choose_list">
+        <label>区域</label>
+        <select id="select1" name="quyu" class="sortSelect">
+            <option {if empty($ccid1)}selected="selected"{/if} value='<? echo cls_uso::extra_url(1); ?>'>不限</option>
+            <?php $_rows = cls_uso::caco_urls(1);?>
+            {loop $_rows $k $v}<option {if $ccid1==$k}selected="selected"{/if} value="{$v['url']}">{$v['title']}</option>{/loop}
+        </select>
+    </div>
+    <div class="choose_list">
+     <label>类型</label>
+     <select id="select2" class="sortSelect" name="lx">
+        <option {if empty($ccid12)}selected="selected"{/if} value='<? echo cls_uso::extra_url(12); ?>'>不限</option>
+        <?php $_rows = cls_uso::caco_urls(12);?>
+        {loop $_rows $k $v}<option {if $ccid12==$k}selected="selected"{/if} value="{$v['url']}">{$v['title']}</option>{/loop}
+     </select>
+    </div>
+    <div class="choose_list">
+     <label>价位</label>
+     <select id="select3" class="sortSelect" name="dj">
+        <option {if empty($ccid17)}selected="selected"{/if} value='<? echo cls_uso::extra_url(17); ?>'>不限</option>
+        <?php $_rows = cls_uso::caco_urls(17);?>
+        {loop $_rows $k $v}<option {if $ccid17==$k}selected="selected"{/if} value="{$v['url']}">{$v['title']}</option>{/loop}
+     </select>
+    </div>
+</div>
+<div class="blank15"></div>
+<!--楼盘分销列表-->
+{c$archives [tclass=archives/] [chids=113/] [chsource=2/] [limits=5/] [casource=1/] [caids=605/] [cosource1=2/] [cosource17=2/] [cosource6=2/] [isfunc=1/] [wherestr=cls_usql::where_str(array(array('subject')))/] [detail=1/] [ttl=600/] [mp=1/]}
+<div class="fxbk clearfix">
+    <h2><a href="{arcurl}" target="_blank">{subject}</a><em>[{ccid1title}]</em></h2>
+    <div class="house clearfix">
+        <a href="{arcurl}" target="_blank"><img src="{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=750/] [maxheight=420/]}{url_s}{/c$image}" width="750" height="420" alt="{subject}"/></a>
+        <div class="houses_info clearfix">
+            <div class="blank15"></div>
+            <div class="w330 r clearfix">
+                <h3>{if $v['yhsm']}{yhsm}{else}暂无优惠{/if}</h3>
+                <div class="blank10"></div>
+                        <h4>市场价{if $v['dj']}{dj}元/m&sup2;{else}待定{/if}</h4>
+                <div class="blank20"></div>
+                <span class="houses_where clearfix">
+                    <p>楼盘位置：{if $v['ccid1']}{ccid1title}{else}-{/if}<br>开盘日期：<i>{if $v['kprq']}{kprq}{else}待定{/if}</i></p>
+                    <a class="J_Submit" href="{arcurl}" target="_blank">了解详情</a>
+                </span>
+                <span class="tuijian">
+                     <em><div id="_08_count_a3_{aid}" class="count08" url-params="{type: 'a', modid: 113, field: 'tjs'}">&nbsp;</div></em>人推荐
+                     <a class="J_Submit" href="{$cms_abs}info.php?fid=114&fxid={aid}" target="_blank">推荐购房</a>
+                </span>
+                <span class="tuijian">
+                     <em><div id="_08_count_a2_{aid}" class="count08" url-params="{type: 'a', modid: 113, field: 'yds'}">&nbsp;</div></em>人已预约看房
+                     <a class="J_Submit" href="{$cms_abs}info.php?fid=114&myself=1&fxid={aid}" target="_blank">我要购房</a>
+                </span>
+            </div>
+            <div class="blank15"></div>
+            <div class="houses_time clearfix">
+                 <span class="l">已成交:<em><div id="_08_count_a_{aid}" class="count08" url-params="{type: 'a', modid: 113, field: 'deal'}">&nbsp;</div></em>套</span>
+                <div class="l pl10" data-endtime="{enddate}" data-noend="<span class='info effective'>永久有效!</span>" data-end="<span class='info failure'>活动已经结束!</span>">
+                     <span>活动结束剩</span>
+                     <span class="pri-txt">
+                        <span class='day'><d>0</d></span>天<span class='hour'><h>0</h></span>小时<span class='minutes'><m>0</m></span>分<span class='second'><s>0</s></span>秒
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/c$archives}
+<!-- 分页 -->
+{if $mpacount>0}
+<div class="ptb10">{mpnav}</div>
+{else}
+ <div class="noinfo">很抱歉！暂无楼盘分销信息</div>
+{/if}
+</div>
+<!--统一底部-->
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/jSimulation.js"></script>
+<script type="text/javascript">
+    $('#select1').jSimulation({linkActive:1,vertical:0});
+    $('#select2,#select3').jSimulation({linkActive:1});
+</script>
+<script type="text/javascript" src="{$tplurl}js/setHdTime.js"></script>
+</body>
+</html>
+

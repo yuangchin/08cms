@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/calculator.css?{$user_version}"/>
+<?php $pagetype = 'tools'; ?>
+{tpl$head}
+<div class="wrap main">
+<!--计算器-->
+  <div class="bread clearfix">
+        <div class="l mt5"><a href="{$cms_abs}" target="_blank"><i class="ico08 fcr mr5">&#xf015;</i>首页</a><i class="pipe">/</i>购房工具</div>
+    </div>
+  <div class="calc_nav clearfix" id="calc_nav">
+    <ul class="cf fr">
+    <!-- 选中效果是给当前样式加"_h",例如：当前样式c_gf;选中样式c_gf_h -->
+    <li id="info-5" class="c_gf_h act"><a href="{c$freeurl [tclass=freeurl/] [fid=5/]}{/c$freeurl}"><i class="ico08">&#xf0b2;</i>购房能力评估</a></li>
+    <li id="info-3" class="c_dc"><a href="{c$debxjxq [cname=等额本息还款法/] [tclass=freeurl/] [fid=3/]}{/c$debxjxq}"><i class="ico08">&#xf1ec;</i>贷款计算器</a></li>
+    <li id="info-6" class="c_gj"><a href="{c$grzfgjjdkjsq [cname=个人公积金贷款/] [tclass=freeurl/] [fid=6/]}{/c$grzfgjjdkjsq}"><i class="ico08">&#xe623;</i>公积金贷款</a></li>
+    <li id="info-4" class="c_tq"><a href="{c$freeurl [tclass=freeurl/] [fid=4/]}{/c$freeurl}"><i class="ico08">&#xe622;</i>提前还贷</a></li>
+    <li id="info-108" class="c_sf"><a href="{c$tqhdjxq [cname=税费计算器/] [tclass=freeurl/] [fid=108/]}{/c$tqhdjxq}"><i class="ico08">&#xe626;</i>税费计算器</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="{$tplurl}js/template.js"></script>
+<script id="lltpl" type="text/html">
+  <!for (i = 0; i < title.length; i ++) {!>
+    <option <!=(i == 3 ? 'selected' : '')!> value="<!=value[i]!>"><!=title[i]!></option>
+  <!}!>
+</script>
+<script type="text/javascript">
+  $('#info-{fid}').addClass('act').siblings().removeClass('act');
+</script>

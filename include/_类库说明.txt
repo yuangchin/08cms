@@ -1,0 +1,99 @@
+***** 目录 *************************	
+
+abrels :      合辑后续操作脚本
+application : MVC应用目录
+ckeditor :    CkEditor在线HTML编辑器
+core_api ：   核心类库，均支持自动加载
+encoding :    编码或IP等的库文件
+extends :     扩展系统中的扩展类或函数
+filemanager : 文件选择界面
+js :          系统内置的js文件
+nusoaplib :   soap库
+paygate :     支付接口文件
+sms :         手机短信接口文件
+uc_client :   uc客户端
+upload :      swf上传组件
+zcore :       核心加密文件及说明
+
+***** 文件 *************************
+某此文件已经移动到core_api
+
+admin.fun.php :        管理后台/会员中心 共用函数，但前台页面不需要用
+admina.fun.php :       管理后台 用函数
+adminheader.cls.php :  后台视图公共头部
+adminm.fun.php :       会员中心 用函数
+advertising.php :      广告处理类
+arcbase.cls.php :      文档处理 基础类
+arccolsbase.cls.php :  文档列表中 列项目的数据处理类
+archivebase.cls.php :  单个文档 添加或编辑的操作类
+archivesbase.cls.php : 文档列表管理 的操作类
+arcopsbase.cls.php :   文档列表管理 中的批量操作类
+arcsearchsbase.cls.php :   文档列表中 搜索项目的处理类
+arcsetsbase.cls.php :  列表中列项目的数据处理类
+array.cls.php :        Array核心公共类
+cache.cls.php :        缓存读取操作公共类
+cache.fun.php :        缓存读取函数 （兼容旧版本）
+cachefile.cls.php :    缓存文件写入，更新，删除等相关操作
+catalog.cls.php :      有关类目及类目节点相关的处理方法
+center.fun.php :       xml/fsockopen 相关函数
+chinese.cls.php :      中文字符籍转化相关类
+ck_public_class.php :  CK(Editor)公共操作类
+common.fun.php :       提示信息，ajax提示等公共函数
+database.fun.php :     数据库操作相关函数
+dbother.cls.php :      有关数据库及查询相关的一些方法汇集
+debug.cls.php :        调式类
+defines.php :          常量定义文件
+env.cls.php :          跟服务器环境配置、超全局变量、系统全局设置等相关的处理方法
+excache.cls.php :      扩展缓存类
+factory.php :          工厂(模式)类
+farcbase.cls.php :     附件处理 基础类
+field.cls.php :        字段处理类
+field.fun.php :        字段处理函数
+fields.fun.php :       字段处理函数
+filesystemfile.php :   文件系统(FileSystem)，文件处理类
+filesystempath.php :   文件系统(FileSystem)，目录处理类
+ftp.fun.php :          ftp类
+gather.cls.php :       采集类
+general.fun.php :      系统常用函数(前后台/会员中心)
+general.inc.php :      公共包含文件(包括一些初始处理等)
+http.cls.php :         http类(读取/打开远程文件等)
+linkparse.cls.php :    html文本中，连接处理，包含附件图片上传等连接处理。
+loader.cls.php :       类的自动加载类
+mail.fun.php :         发邮件函数
+memberbase.cls.php :   单个会员添加或编辑的操作类
+membersbase.cls.php :  会员列表管理的操作类
+memcolsbase.cls.php :  列表中列项目的数据处理类
+memopsbase.cls.php :   文档列表管理中的批量操作类
+memsearchsbase.cls.php :   会员列表中搜索项目的处理类
+mem_static.fun.php :   用于管理后台会员管理列表的静态功能的函数
+mysql.cls.php :        mysql数据库操作类
+mysql.err.php :        mysql错误处理类
+mysqlquery.php :       数据库查询类
+node.cls.php :         有关类目节点、会员节点的处理方法
+pagecache.cls.php :    页面缓存类
+parse.fun.php :        标签解析相关函数
+passport_server.php :  (pw)通行证，服务器端
+phptojavascript.cls.php :  PHP转成JavaScript操作类
+pinyin.fun.php :       拼音的处理(兼容旧版本)
+progress.cls.php :     采集中 跳转/提示信息 处理类
+pushbase.cls.php :     推送信息手动添加或编辑的操作类
+pushcolsbase.cls.php : 列表中列项目的数据处理类
+pusherbase.cls.php :   推送操作类
+pushopsbase.cls.php :  文档列表管理中的批量操作类
+pushsbase.cls.php :    推送列表操作的管理界面类
+pushsearchsbase.cls.php :  列表中搜索项目的处理类
+pushsetsbase.cls.php : 列表中列项目的数据处理类
+secache.cls.php :      扩展缓存(优化缓存)类
+sms.cls.php :          手机短信接口 主控类
+splitword.cls.php :    分此类
+static.fun.php :       静态生成 函数
+string.cls.php :       针对文本的处理方法
+tpl.cls.php :          与模板相关的方法汇集 
+ucenter.cls.php :      ucenter会员整合类
+upload.cls.php :       上传类
+url.cls.php :          url相关的处理方法
+userbase.cls.php :     会员处理 基础类
+visualization.cls.php :    推送模块操作类
+zip.cls.php :          压缩类
+
+

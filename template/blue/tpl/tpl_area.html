@@ -1,0 +1,13 @@
+<div class="substate" onmouseover="this.className='substate substate-hover'" onmouseout="this.className='substate'">
+    <span class="tit-tag ptb8">
+        <span class="tit">主站<i class="ico08 ml5">&#xe68d;</i></span>
+        [切换分站]
+    </span>
+    {c$catalogs [cname=地区分站/] [tclass=catalogs/] [limits=50/] [listby=co1/] [orderstr=vieworder ASC/] [ttl=900/]}
+   	<? $k=count($_catalogs)?>
+    <div class="d-list {if $k>10}d-list-row{/if}">
+        <i class="ico08 arrow">&#xf0dc;</i>
+        [row]<a href="{indexurl}" target="_blank">{title}</a>[/row]
+    </div>
+    {/c$catalogs}
+</div>

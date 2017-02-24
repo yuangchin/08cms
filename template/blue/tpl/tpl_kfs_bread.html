@@ -1,0 +1,14 @@
+<div class="wrap">
+<div class="bread">
+    <div class="n-search n-search--small r w250">
+        <form method="get" action="{$cms_abs}index.php">
+			<input type="hidden" value="36" name="caid">
+			<input type="text" value="" class="txt clear-txt" placeholder="请输入开发商名称/地址" name="searchword">
+			<input type="submit" class="btn ico08"value="&#xf002;">
+		</form>
+    </div>
+
+    <div class="bread-entry">您当前的位置：<a href="{$cms_abs}" target="_blank">首页</a>&gt;{c$cnode [tclass=cnode/] [listby=ca/] [casource=36/]}<a href="{indexurl}" target="_blank">开发商</a>{/c$cnode}{if @$searchword} &gt; 关键词：“{searchword}” {/if} {if @$aid}&gt; {subject}{/if}</div>
+
+  </div>
+</div>

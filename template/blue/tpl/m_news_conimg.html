@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  <title>{subject}-{$cmstitle}</title>
+  <meta name="keywords" content="{keywords}"/>
+  <meta name="description" content="{abstract}"/>
+	{tpl$m_headinner}
+	<?php
+		$notop=1;
+	?>
+</head>
+<body>
+<div id="section_container">
+	<!-- 页面容器 -->
+	<section id="index_section" class="active" style="background-color:#262F3D">
+		<footer class="footer-text"><span id="count" class="left"></span><span id="subject" class="subject"></span></footer>
+		<article id="up_refresh_article" data-btn="img-org" class="active">
+        	{tpl$m_header_arc}
+			<div id="gallery" class="gallery">
+				<!-- 1:资讯，112:图库，114:直播，4:相册、户型 -->
+				<div class="bd">
+					<ul class="detail">
+						{if !empty($img)}
+							<?php
+				                $bb = cls_url::tag2atm($content,$ishtml=1);
+				                if(preg_match_all('@<img.*src="(.*)".*/>@isU',$bb,$url)){
+
+				                    foreach ($url[1] as $key => $value) {
+				                        echo '<li><img title="'.$value.'" alt="'.$subject.'" src="'.$cms_abs.'userfiles/notdel/blank.gif"/></li>';
+				                    }
+			                   	}
+                           ?><!-- /资讯图片 -->
+						{elseif !empty($img_hx)}
+								{c$archives [tclass=archives/] [chids=11/] [chsource=2/] [limits=1000/] [casource=1/] [caids=11/] [mode=in/] [arid=3/] [ttl=1200/]}
+							    <li data-index="{aid}">
+							    	<img title="{c$image [tclass=image/] [tname=thumb/] [maxwidth=640/] [padding=0/] [thumb=2/] [val=u/]}{url_s}{/c$image}" alt="{subject}-{c$shi}{c$ting}{c$wei}-{mj}m&sup2;" src="{$cms_abs}userfiles/notdel/blank.gif"/>
+							    </li>
+								{/c$archives}<!-- /户型 -->
+						{elseif !empty($img_tk)}
+								{c$archives [tclass=archives/] [chids=7/] [chsource=2/] [limits=1000/] [caidson=1/] [casource=1/] [caids=7/] [mode=in/] [arid=3/] [ttl=1200/]}
+							    <li data-index="{aid}">
+							    	<img title="{c$image [tclass=image/] [tname=thumb/] [maxwidth=640/] [padding=0/] [thumb=2/] [val=u/]}{url_s}{/c$image}" alt="{subject}" src="{$cms_abs}userfiles/notdel/blank.gif"/>
+							    </li>
+								{/c$archives}<!-- /相册 -->
+						{elseif !empty($img_sytk)}
+								{c$archives [tclass=archives/] [chids=7/] [chsource=2/] [limits=1000/] [caidson=1/] [casource=1/] [caids=7/] [mode=in/] [arid=36/] [ttl=1200/]}
+                                <li data-index="{aid}">
+                                    <img title="{c$image [tclass=image/] [tname=thumb/] [maxwidth=640/] [padding=0/] [thumb=2/] [val=u/]}{url_s}{/c$image}" alt="{subject}" src="{$cms_abs}userfiles/notdel/blank.gif"/>
+                                </li>
+                                {/c$archives}
+                                <!-- /相册 -->
+                        {elseif !empty($img_oldfang)}
+
+                    
+                            {c$archives [tclass=archives/] [chids=121/] [chsource=2/] [limits=50/] [casource=1/] [caids=623/] [mode=in/] [arid=38/]}
+                            <li data-index="{aid}"><img title='{c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=640/] [maxheight=400/] [thumb=1/]}{url}{/c$image}' alt="{subject}" src="{$cms_abs}userfiles/notdel/blank.gif"/></li>
+                            {/c$archives}
+
+						{else}
+								{c$tuji [tclass=images/] [tname=tuji/] [limits=30/] [maxwidth=640/] [thumb=2/] [padding=0/]}
+                            <li>
+                                <img title="{url_s}" alt="{title}" src="{$cms_abs}userfiles/notdel/blank.gif"/>
+                            </li>
+                                {/c$tuji}<!-- /资讯图集,直播,图库 -->
+						{/if}
+					</ul>
+				</div>
+			</div>
+		</article>
+	</section><!-- /主框架 -->
+
+</div>
+{tpl$m_footer}
+<script type="text/javascript" src="{$tplurl}mobile/js/TouchSlide.js?20150126"></script>
+<script type="text/javascript">
+var img_ind = 0;
+{if !empty($img)}
+	img_ind = {$img}-1
+{elseif !empty($img_hx)}
+	img_ind = {if $img_hx==1}0{else}$('#gallery').find('li[data-index="{$img_hx}"]').index(){/if};
+{elseif !empty($img_tk)}
+	img_ind = {if $img_tk==1}0{else}$('#gallery').find('li[data-index="{$img_tk}"]').index(){/if};
+{elseif !empty($img_sytk)}
+	img_ind = {if $img_sytk==1}0{else}$('#gallery').find('li[data-index="{$img_sytk}"]').index(){/if};
+{elseif !empty($img_tj)}
+	img_ind = <?= $img_tj-1 ?>;
+{elseif !empty($img_oldfang) }
+    img_ind = <?= $img_oldfang-1 ?>;
+{elseif !empty($img_czfang)}
+    img_ind = <?= $img_czfang-1 ?>;
+{/if}
+
+	var H = $(window).height()-51
+	, $img = $('#gallery').find('img').css({
+		maxWidth: '100%',
+		maxHeight: H
+	});
+	TouchSlide({
+		slideCell    : "#gallery",
+		mainCell     : ".bd ul",
+		effect       : "leftLoop",
+		switchLoad   : "title",
+		showDot : false ,
+		defaultIndex : img_ind,
+		pageStateCell : "#count",
+		startFun     : function(a,b) {
+			$('#img-org').attr('href', $img[a].title);
+			$('#subject').html($img[a].alt);
+		}
+	});
+	$('#gallery').on('click',function() {
+		$('footer').toggleClass('auto');
+	}).find('li').height(H);
+</script>
+</body>
+</html>

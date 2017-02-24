@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}-{$hostname}</title>
+{tpl$headinner}
+<link href="{$tplurl}css/mapcss.css?{$user_version}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- header begin -->
+{tpl$head}
+<!-- end begin -->
+<div class="container2">
+	<div class="main">
+		<div class="ldiv">
+			<div class="twtopbg"></div>
+            <ul class="tiwlist">
+               {c$farchives [cname=网站信息列表/] [tclass=farchives/] [casource=fcatalog26/] [limits=1000/] [orderstr=a.vieworder DESC/]}<li id="infoid_{aid}"><a href="{arcurl}">{subject}</a></li>{/c$farchives}
+                <li ><a href="{c$v3_webask [cname=网站提问/] [tclass=freeurl/] [fid=102/]}{/c$v3_webask}">网站提问</a></li>
+                
+            </ul>
+            <div class="twbotbg"></div>
+		</div>
+		<script type="text/javascript">document.getElementById("infoid_{aid}").className = "act";</script>
+		<div class="rdiv">
+			<h1 class="title">{subject}</h1>
+			<div class="content">{content}</div>
+		</div>
+	</div>
+	<div class="blank10"></div>
+	</div>
+	<div class="blank10"></div>
+    {tpl$foot} 
+</body>
+</html>

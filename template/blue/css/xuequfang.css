@@ -1,0 +1,335 @@
+/*xuequfanglist*/
+.w890 {
+    width: 890px;
+}
+.tuwen li {
+    height: 138px;padding: 35px 0;
+
+    border-bottom: 1px solid #eee;
+}
+.tuwen li:hover {
+    background-color: #f8f8f8;
+}
+.tuwen li:hover h3 a {
+    color: #693;
+}
+.tuwen li:hover .chover a {
+    color: #693;
+}
+.tuwen ul {
+    width: 890px;
+}
+.photo {
+    float: left;margin-right: 20px;
+}
+.intro {
+    font-family: Microsoft YaHei;
+
+    float: left;width: 455px;
+}
+.intro h3 {
+    line-height: 25px;overflow: hidden;
+
+    height: 25px;margin-bottom: 23px;
+}
+.intro h3 a {
+    font-family: Microsoft YaHei;
+    font-size: 24px;
+}
+.intro h3 i {
+    float: left;margin: 2px 3px 0 0;
+}
+.intro p {
+    font-size: 14px;overflow: hidden;height: 33px;color: #666;
+}
+.intro em i {
+    color: #39f;
+}
+.intro em a:hover {
+    color: #e43;
+}
+.leixing {
+    height: 25px;
+}
+.leixing span {
+    line-height: 22px;display: inline-block;overflow: hidden;height: 22px;margin-right: 2px;padding: 0 5px;color: #666;
+    border: 1px solid #9c0;
+}
+.jiage {
+    float: right;width: 230px;text-align: right;
+}
+.jiage .jg {
+    height: 108px;
+}
+.jiage p {
+    line-height: 26px;
+}
+.jiage .dk {
+    font-size: 12px;line-height: 30px;height: 30px;text-align: center;color: #fff;
+    background-color: #9c0;
+}
+.jiage .dk i {
+    color: #ff0;
+}
+.jiage .dk a {
+    color: #fff;
+}
+.jiage span.chover a:hover {
+    color: #e43;
+}
+/*xuequfanglistend*/
+
+/*xuequfangnry*/
+h2 {
+    font-size: 26px;padding-bottom: 7px;
+}
+.xdec {
+    height: 50px;border-top: 1px solid #ddd;
+    background-color: #f1f1f1;
+}
+.xdec ul {
+    margin-left: 1px;
+}
+.xdec ul li {
+    font-size: 16px;line-height: 50px;position: relative;float: left;width: 125px;margin-top: -1px;
+    margin-right: 1px;text-align: center;color: #333;
+}
+.xdec ul li a {
+    display: block;
+}
+.xdec ul li a:hover,
+.xdec ul li a.act {
+    font-size: 18px;font-weight: bolder;text-decoration: none;
+
+    color: #693;border-top: 1px solid #693;background-color: #fff;
+}
+.xxsy {
+    height: 350px;
+    margin-top: 30px;
+}
+.w412 {
+    width: 412px;
+}
+.w412 li {
+    font-size: 16px;padding-bottom: 14px;
+
+    color: #757575;
+}
+.w412 .es {
+    padding-bottom: 10px;
+
+    border-bottom: 1px dashed #eee;
+}
+.w412 .xz {
+    padding-top: 7px;
+}
+.w412 .tl {
+    padding-bottom: 0;
+}
+.w412 .es i {
+    padding: 0 4px 0 2px;
+
+    color: #47a3ff;
+}
+.w412 i {
+    color: #a3a3a3;
+}
+.w412 i.ico08 {
+    font-size: 25px;padding: 0 12px;
+
+    color: #9c0;border: 1px solid #9c0;border-radius: 5px;
+}
+.w412 em {
+    font-weight: bolder;
+}
+.w412 span {
+    color: #666;
+}
+.w412 span em {
+    font-size: 24px;
+
+    color: #e43;
+}
+.w412 p {
+    padding-left: 10px;
+}
+.w412 p.tel {
+    font-size: 28px;line-height: 28px;height: 28px;color: #6ba41e;
+}
+.w412 p.lx {
+    font-size: 12px;
+}
+.xxjst,
+.xxmapt,
+.gongyongt {
+    font-size: 24px;padding-left: 15px;
+
+    border-bottom: 1px solid #eee;
+}
+.xxjsb {
+    line-height: 30px;
+}
+.xxmap .xxmapb {
+    padding-top: 10px;
+}
+.gongyong dt,
+.gongyong dd {
+    line-height: 71px;
+
+    height: 70px;padding-left: 23px;
+}
+.gongyong dt {
+    overflow: hidden;color: #999;
+    background-color: #fcfcfc;
+}
+.gongyong dd {
+    float: left;overflow: hidden;color: #666;
+    border-bottom: 1px dashed #eee;
+}
+.gongyong span {
+    float: left;
+}
+.gy1,
+.gy2,
+.gy3,
+.gy4,
+.gy5 {
+    height: 71px;
+}
+.gy1 {
+    width: 200px;text-align: left;
+}
+.gy2,
+.gy3,
+.gy4 {
+    width: 174px;text-align: center;
+}
+.gy5 {
+    position: relative;
+
+    width: 130px;text-align: center;
+}
+dd .gy1 {
+    font-weight: bolder;
+}
+dd .gy1 a {
+    color: #693;
+}
+dd .gy3 i {
+    font-size: 24px;
+    font-weight: bolder;color: #693;
+}
+dd .gy4 i {
+    font-size: 24px;
+    font-weight: bolder;color: #693;
+}
+dd .gy4 em {
+    font-size: 14px;
+    font-weight: bolder;color: #39f;
+}
+/*xuequfangnryend*/
+
+/*gongyongright*/
+.w280 {
+    width: 280px;
+}
+.coltit3 {
+    line-height: 58px;position: relative;height: 59px;margin-bottom: -1px;
+}
+.coltit3 h3 {
+    float: left;
+
+    border-bottom: 1px solid #e43;
+}
+.coltit3 .title {
+    font-size: 18px;
+}
+.list li {
+    line-height: 32px;overflow: hidden;
+
+    height: 32px;
+}
+.list span {
+    color: #999;
+}
+.list a {
+    font-size: 12px;
+
+    color: #0666;
+}
+.list .more {
+    font-weight: normal;
+
+    float: right; padding: 0 5px;
+}
+.list .c2 {
+    font-size: 12px;
+
+    color: #c20000;
+}
+.coltit2 {
+    line-height: 36px;
+
+    height: 36px;*zoom: 1;
+}
+.coltit2 .title {
+    font-size: 14px;font-weight: bold;position: relative;
+
+    float: left;margin-bottom: -2px;padding: 0 10px;
+}
+.p6-25 {
+    padding: 6px 25px;
+}
+
+.bd {
+    line-height: 59px;position: relative;height: 59px;
+
+    border-bottom: 1px solid #ddd;
+}
+.bd1 {
+    font-size: 18px;float: left;
+
+    border-bottom: 1px solid #e43;
+}
+.gengduo {
+    float: right; width: 32px; height: 15px; margin-top: 22px;
+
+    background: url(../images/gengduo.jpg) no-repeat;
+}
+.tjtuw {
+    margin-right: -20px;
+}
+.tjtuw li {
+    display: inline;
+    float: left; overflow: hidden; width: 130px; margin: 16px 20px 8px 0;
+}
+.tjtuw .ico {
+    line-height: 20px;
+
+    float: right;cursor: pointer;color: #666;
+}
+.tjtuw .pri {
+    font-size: 16px;
+
+    color: #e43;
+}
+.tjtuw em {
+    font-size: 16px; display: block;overflow: hidden; height: 30px;
+
+    color: #666;
+}
+.tjtuw p {
+    font-size: 12px; color: #666;
+}
+.tjtuw li p {
+    line-height: 18px;overflow: hidden;
+
+    height: 18px;
+}
+.tjtuw li img {
+    width: 130px;height: 93px;
+
+    background: #fff;
+}
+/*gongyongrightend*/
+

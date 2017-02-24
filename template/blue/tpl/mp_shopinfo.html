@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{title}-{if $companynm}{companynm}{else}{mname}{/if}-{$hostname}</title>
+<meta content="{companynm}" name="keywords"> 
+<meta content="{companynm}{if $dizhi},地址是{dizhi}{/if}{if $lxdh},电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">  
+{tpl$jz_headinner} 
+</head>
+<body>
+<!--header begin-->
+ {tpl$jz_sj_head}
+<div class="container">
+  <div class="con">
+    <!--左侧栏开始-->
+    {tpl$jz_sj_left}
+    <!--左侧栏结束  右侧栏开始-->
+    <div class="right_bar">
+      <!--店铺基本信息开始-->
+      <div class="title4">
+        <div class="title4_l"></div>
+        <div class="title4_m">店铺基本信息</div>
+        <div class="title4_r"></div>
+      </div>
+      <div class="right_con2 jbxx">
+        店铺名称：{companynm}
+        <br>
+        开店时间：{kdtime}
+        <br>
+        所属卖场：{ssmc}
+        <br>
+        经营产品：{products}
+        <br></div>
+      <div class="right_b">
+        <div class="right_b_l"></div>
+        <div class="right_b_r"></div>
+      </div>
+      <!--店铺基本信息结束 店铺详情开始-->
+      <span class="blank10"></span>
+      <div class="title4">
+        <div class="title4_l"></div>
+        <div class="title4_m">店铺详情</div>
+        <div class="title4_r"></div>
+      </div>
+      <div class="right_con2 dpxq">
+        <div class="dpxq1">
+          <div class="dpxq1_l">
+            <img {c$image [tclass=image/] [tname=pic/] [val=u/] [maxwidth=270/] [maxheight=210/] [thumb=2/]} src="{url_s}"  height="210" width="270" {/c$image}/>
+          </div>
+          {c$cpyintro [cname=cpyintro/] [tclass=text/] [tname=cpyintro/] [dealhtml=safehtml/]}{/c$cpyintro}
+          <div class="blank0"></div>
+        </div>
+      </div>
+      <div class="right_b">
+        <div class="right_b_l"></div>
+        <div class="right_b_r"></div>
+      </div>
+      <!--店铺详情结束 联系方式开始-->
+      <span class="blank10"></span>
+      <div class="title4">
+        <div class="title4_l"></div>
+        <div class="title4_m">联系方式</div>
+        <div class="title4_r"></div>
+      </div>
+      <div class="right_con2 lxfs">
+        <div class="lxfs_l">
+          QQ在线咨询：{if $qq}
+        <script> var online= [] </script>
+         <script src="http://webpresence.qq.com/getonline?Type=1&{qq}:"></script>
+         <script>document.write('<a title="点击这里给我发消息" target="_blank" href="http://wpa.qq.com/msgrd?V=1&uin={qq}&Site={companynm}&Menu=yes"><img border="0" src="{$tplurl}newimages/'+(online[0]?'pa_online.gif':'pa.gif')+'"></a>');  
+         </script>
+        {else}暂无{/if}
+        <br>
+        电话：{if $lxdh}{lxdh}{else}暂无{/if}
+        <br>
+        EMail：{if $email}{email}{else}暂无{/if}
+        <br>
+        地址： {if $dizhi}{dizhi}{else}暂无{/if}
+        <br></div>
+      
+      <div class="blank0"></div>
+    </div>
+    <div class="right_b">
+      <div class="right_b_l"></div>
+      <div class="right_b_r"></div>
+    </div>
+    </div>
+  <!--footer begin-->
+  <span class="blank0"></span>
+</div>
+</div>
+  {tpl$jz_foot}
+</body>
+</html>

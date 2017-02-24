@@ -1,0 +1,179 @@
+<?php
+// ,'letter' 'ccid1','ccid2','ccid3','ccid6','ccid14','ccid18',
+foreach(array('ccid1','ccid45','searchword',) as $k) $$k = cls_Parse::Get("_da.$k");
+$sfields = getsearchfields(8);
+cls_uso::init(array(
+    'ntype' => 'c', //cm,m,oc,om
+    'chid' => 8, 
+    'rids' => array(1,2),
+    'nodes' => array('0,45','0,1'),
+    'orderbys' => array('aid','dj','clicks'),
+));
+extract(cls_usql::order_str(1,'a.ccid9 DESC,a.updatedate DESC'));
+$whrstr = cls_usql::where_str(array(
+    array('subject,dizhi','searchword'), 
+),''); 
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [cname=激活栏目标题1/] [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}{c$lpdh1 [cname=类目导航1/] [tclass=nownav/] [coids=ccid1,ccid2,ccid3,ccid4,ccid5,ccid6,ccid8,ccid43,ccid14,ccid17,ccid18/]}-{title}{/c$lpdh1}-{$hostname}</title>
+{c$cnode [cname=激活栏目关键词/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/houseindex.css?{$user_version}"/>
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/xuequfang.css?{$user_version}"/>
+<?php $pagetype = 'oldhouse'; ?>
+</head>
+<body>
+{tpl$head}
+
+<div class="wrap"> 
+    <div class="bread">
+        <div class="r w300">
+            <form method="get" action="{$cms_abs}index.php">
+                <div class="search-group form">
+                    <input type="submit" class="btn" value="搜 索" />
+                    <div class="txt-wrap">
+                        <input type="text" name="searchword" class="txt" placeholder="请输入关键字" value='' x-webkit-speech speech/>
+                    </div>
+                </div>
+                <input type="hidden" name="caid" value="26" />
+            </form>
+        </div>
+        <a href="{$cms_abs}" target="_blank"><i class="ico08 fcr mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a><i class="pipe">/</i><a class="ls" href="{c$loupanliebiao [cname=户型列表/] [tclass=cnode/] [listby=ca/] [casource=11/]}{indexurl}{/c$loupanliebiao}" target="_blank">户型列表</a>
+    </div><!-- /bread -->
+    
+    <!-- tab -->
+    <div class="lp-sea clearfix">
+      <div class="lp-title">
+            <a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=3/]}{indexurl}{/c$cnode}"><i class="ico08">&#xf0ca;</i>区域找房</a>
+            <a class="act" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=26/]}{indexurl}{/c$cnode}" target="_blank"><i class="ico08">&#xe6f9;</i>学区找房</a>
+            <a href="{c$freeurl [tclass=freeurl/] [fid=1/]}{/c$freeurl}" target="_blank"><i class="ico08">&#xe613;</i>地图找房</a>
+        </div>
+    </div>
+    <!-- /tab -->
+      <div class="lp-janshuo">
+        <div class="blank10"></div>
+        <div class="js-list">
+          <dl>
+            <dt class="l fw6">区&nbsp;&nbsp;域：</dt>
+            <dd><a class="{if empty($ccid1)}act{/if}" href='<? echo cls_uso::extra_url(1); ?>'>不限</a>
+              <?php $_rows = cls_uso::caco_urls(1);?>
+              {loop $_rows $k $v}<a class="{if $ccid1==$k}act{/if}" href="{$v['url']}">{$v['title']}</a>{/loop} </dd>
+          </dl>
+          <dl>
+            <dt class="l fw6">分&nbsp;&nbsp;类：</dt>
+            <dd><a class="{if empty($ccid45)}act{/if}" href='<? echo cls_uso::extra_url(45); ?>'>不限</a>
+              <?php $_rows = cls_uso::caco_urls(45);?>
+              {loop $_rows $k $v}<a class="{if $ccid45==$k}act{/if}" href="{$v['url']}">{$v['title']}</a>{/loop} </dd>
+          </dl>
+          <div class="blank5"></div>
+        </div>
+        <? $pick_urls=cls_uso::pick_urls(); unset($pick_urls['caid']); ?>
+        {if $pick_urls}
+        <div class="lp-dqtj clearfix"> <span class="tip l fw6">当前的查询条件是：</span> {loop $pick_urls $k $v}<a title="取消此条件" href="{$v['url']}">{$v['title']}</a>{/loop}<a title="取消所有" class="cancel"  href="{c$huxingtuliebiao [cname=户型图列表/] [tclass=cnode/] [listby=ca/] [casource=26/]}{indexurl}{/c$huxingtuliebiao}">取消所有</a> </div>
+        {/if} </div>
+      <div class="blank10"></div>
+
+
+
+	<div class="w890 l">
+        <div class="lp-kuan clearfix">
+            <div class="tab-nav">
+                <a class="item act">所有学校</a>
+            </div>
+            <div class="blank0"></div>
+            <div class="info clearfix">
+                <span id="tab-page" class="l tab-page"></span>
+            </div>
+        </div>
+        <div class="tuwen">
+        	<ul>
+        		{c$archives [cname=文档列表/] [tclass=archives/] [chids=8/] [chsource=2/] [casource=1/] [caids=8,26/] [cosource45=2/] [cosource1=2/] [detail=1/] [wherestr=$whrstr/] [ttl=600/] [mp=1/]}               
+                <li>
+                    <div class="photo">
+                        <a href="{arcurl}" target="_blank"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=180/] [maxheight=138/] [thumb=1/]} src="{url_s}"  height="138" width="180" {/c$image}/></a>   
+                    </div>
+                    <div class="intro">
+                        <h3>
+                            <a href="{arcurl}" target="_blank">{subject}</a>
+                        </h3>
+                        <p>
+                            <span>[{ccid1title}]{dizhi}</span>
+                        </p>
+                        <p>
+                            
+                        </p>
+                        <p class="leixing">
+                            {if $v['ccid45']}<span>{ccid45title}</span>{/if}
+                            {if $v['leibie']}<span>{c$leibie [cname=leibie/] [tclass=field/] [tname=leibie/] [type=archive/] [fname=leibie/]}{/c$leibie}</span>{/if}
+                            {if $v['jibie']}<span>{c$jibie [cname=jibie/] [tclass=field/] [tname=jibie/] [type=archive/] [fname=jibie/]}{/c$jibie}</span>{/if}
+                        </p>
+                    </div>
+                    <div class="jiage">                       
+                        <div class="jg">
+                            {c$archives1 [cname=cxcx/] [tclass=archives/] [limits=4/] [chsource=2/] [val=a/] [chids=4/] [mode=belong/] [arid=1/] [detail=1/][wherestr=(leixing='0' OR leixing='2')/]}
+                            <p class="clearfix">
+                                <span class="r">{if $a['dj']}{dj}元/m&sup2;{else}待定{/if}</span>
+                                <span class="l chover"><a href="{arcurl7}">{subject}</a></span>
+                            </p>
+                            {/c$archives1}
+                        </div>
+                        <div class="dk"><a href="{arcurl}" target="_blank">>参看全部对口小区(<i>{c$count [tclass=acount/] [chids=4/] [chsource=2/] [val=a/] [mode=belong/] [arid=1/] [detail=1/] [wherestr=(leixing='0' OR leixing='2')/]}{counts}{/c$count}</i>)<</a></div>                        
+                    </div>
+                </li>
+                {/c$archives}
+            </ul>
+            {if $mpacount>0}
+        <div class="ptb20">{$mpnav}</div>
+        {else}
+        <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$cnode}信息</div>
+        {/if}
+
+		</div>
+    </div>
+	<div class="r w280">
+        <div class="coltit3">
+            <h3 class="title">热门学校</h3>
+        </div>
+        <div class="bd-gray p6-25 clearfix">
+            <ul class="list">
+              {c$tjjcon [tclass=archives/] [chids=8/] [chsource=2/] [casource=1/] [caids=26/] [orderstr=a.wclicks DESC/] [ttl=1200/]} <li><span class="more arial"><i class="c2">{if $v['ccid45']}<span>{ccid45title}</span>{/if}</i></span><a href="{arcurl}" target="_blank" title="吉利家园">{subject}</a></li>
+              {/c$tjjcon}
+                   
+            </ul>
+        </div>    
+
+        <div class="clearfix">
+            <div class="bd">
+               {c$cnode [tclass=cnode/] [listby=ca/] [casource=3/]}
+                    <a href="{indexurl}" target="_blank">
+                    <div class="r gengduo"></div>
+                    </a>
+                {/c$cnode}
+                <h3 class="l bd1">学区房学校推荐</h3>
+            </div>
+            <div class="area2_10"> 
+                <ul class="tjtuw clearfix">
+                    {c$pushs [tclass=pushs/] [paid=push_xqf/] [limits=6/] [ttl=600/]}                        
+                        {c$archive [tclass=archive/] [chid=8/] [val=a/] [id=$v[fromid]/] [detail=1/]}                         
+                        <li>
+                            <a href="{arcurl}" target="_blank" title="{subject}"><img alt="{subject}" {c$image [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=126/] [maxheight=90/] [thumb=1/]} src="{url_s}"  height="90" width="126" {/c$image}/><em>{subject}</em></a>
+                            <p><i class="ico">{ccid45title}</i>{if $a['leibie']}{c$leibie [cname=leibie/] [tclass=field/] [tname=leibie/] [type=archive/] [fname=leibie/]}{/c$leibie}{else}待定{/if}</p>
+                        </li>
+                        {/c$archive}
+                    {/c$pushs}
+                </ul>
+            </div>
+        </div>
+    </div>    
+	<div class="blank0"></div>
+</div>
+
+{tpl$foot}
+</body>	
+</html>

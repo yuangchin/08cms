@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">副件列表 farchives</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>副件列表也是系统最主要的标签之一，一般使用在有文字广告，图片广告以及flash广告的地方。</p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">参数</div>
+<div>
+	<ul>
+    <li class="bg3">标识模板(重要)</li>
+    <span class="blank2"></span>
+    <li class="t1">1.参考文档列表标识。<br />2.常用原始标识:{link}、{image}、{flash}、{html}。<i class="FcO">//副件模型字段，属自定义字段</i><br />3.常配合图片模块标识、flash模块标识、文本处理使用。</li>
+	<span class="blank2"></span>
+    </ul>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+<div>
+    <!-- exam1 -->
+	<div>
+        <span class="blank5"></span>
+        <li class="bg3">示例1</li>
+        <li class="t2">效果:</li>
+        <li><img src="img/archives22.gif" class="pad15" /></li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>{if $v['sn_row']!=1} | {/if} <a href="{link}" target="_blank">{c$subject22}</a></xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li>说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>显示一段友情链接。{c$subject22}为文本处理，限制显示的最大长度不能超过22个字节。需要注意的是副件列表的href原始标识不同于文档标识的原始标识，副件列表表示href的原始标识为{link}。<br />
+        <b class="FcR">截图如下</b><br />
+        <img src="img/yqlj.jpg" class="img"/>
+        
+        </p></li>
+    </div>
+    <!-- exam2 -->
+    <div>
+        <span class="blank5"></span>
+        <li class="bg3">示例2</li>
+        <li class="t2">结果:</li>
+        <li><img src="img/archives23.gif" class="pad15" /></li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>{if $v['image']}<a href="{link}" target="_blank">{c$ad_image650_100}</a>{elseif $v['html']}{html}{elseif
+$v['flash']}{c$flash650_100}{/if}<br><br>
+</xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li>说明</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>显示一个混合广告。所谓的混合广告就是集合了html代码模块广告、图片广告和flash广告的功能，当其为这三种任意一种的时候都能正确显示。$v['image']是$image的另一种写法，它是副件相关中的原始标识，$v['html']、$v['flash']也是一样。{c$ad_image650_100}和{c$flash650_100}分别是图片模块和flash模块。
+        
+            <b class="FcR">截图如下：</b><br />
+            <img class="img" src="img/bq6.jpg"/>
+        </p></li>
+    </div>
+    
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

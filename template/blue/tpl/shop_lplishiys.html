@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}历史价格{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}{c$nownav [cname=nownav/] [tclass=nownav/] [coids=ccid1,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$nownav}-{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+</head>
+<body>
+<!--写字楼与商铺楼盘内页公用导航-->
+{tpl$office_lpnav}
+<div class="wrap clearfix">
+	<div class="w900 l">
+        <div class="clearfix mb10" id="price_chart">
+            <div class="lp-coltit "><h3 class="tit1">价格走势</h3></div>
+            <div class="p10 bd-gray bdrs">
+                <div class="mb10 fz14">
+                    <a href="{c$08cms [tclass=freeurl/] [fid=2/]}{/c$08cms}" class="calculator r" target="_blank"><i class="ico08 fcg">&#xf1ec;</i>房贷计算器</a>住宅参考价格：<b class="fz22 arial fco">{dj}</b>元/平米<br/>
+                    <i class="ico08 fco mr3">&#xe64b;</i>价格说明：{bdsm}
+                </div>
+                <div id="zst" style="height:200px;"></div>
+            </div>
+        </div>
+
+        <div class="clearfix mb10" id="price_table">
+        	<div class="lp-coltit "><h3 class="tit1">历史价格</h3></div>
+            <div class="ptb10 lp-con1">
+            	<table cellspacing="0" cellpadding="0" border="0" width="100%" id="price_list">
+					<tbody>
+						<tr bgcolor="#eeeeee">
+                            <td width="70" class="lsjg_td lsjg_bor">记录时间<i class="ico08">&#xe74a;</i></td>
+                            <td width="100" class="lsjg_td lsjg_bor">均价<i class="ico08">&#xe61d;</i></td>
+                            <td width="100" class="lsjg_td lsjg_bor">最低价<i class="ico08">&#xe61f;</i></td>
+                            <td width="100" class="lsjg_td lsjg_bor">最高价<i class="ico08">&#xe61b;</i></td>
+                            <td align="center" class="lsjg_td lsjg_bor1">价格说明<i class="ico08">&#xf06b;</i></td>
+                        </tr>
+                        {c$outinfos [tclass=outinfos/] [dsid=0/] [limits=50/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}
+                        <tr {if $v['sn_row']%2==0}class="bg"{/if}>
+                        <td class=" lsjg_bor">{c$date [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$date}</td>
+                        <td class=" lsjg_bor">{if $v['average']}{average}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor">{if $v['lowest']}{lowest}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor">{if $v['highest']}{highest}元/平方米{else}-{/if}</td>
+                        <td class=" lsjg_bor1">{if $v['message']}{message}{else}-{/if}</td>
+                        </tr>
+                        {/c$outinfos}
+					</tbody>
+				</table>
+            </div>
+        </div>
+    </div>
+    <!-- 写字楼与商铺楼盘右侧 -->
+    {tpl$office_lpright}
+</div>
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<script type="text/javascript" src="{$tplurl}js/highcharts.js"></script>
+<script>
+    var jsonData = {
+        "title": "",
+        "series": [{
+            "name": "\u672c\u9879\u76ee\u623f\u4ef7",
+            "datatype": "house",
+            "data": [
+            {c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}
+            {if $v['sn_row']>1},{/if}['{c$date [tclass=date/] [tname=createdate/] [date=y-m-d/]}{/c$date}',{$v[average]}]
+            {/c$outinfos}
+            ].reverse()
+        }],
+        "month_s": [{c$outinfos [tclass=outinfos/] [dsid=0/] [wherestr=SELECT * FROM {$tblprefix}housesrecords WHERE isnew='1' and aid='$aid' order by createdate DESC,cid DESC/]}{if $v['sn_row']>1},{/if}'{c$date [tclass=date/] [tname=createdate/] [date=m/d/]}{/c$date}'{/c$outinfos}].reverse()
+    };
+    var seriesData = jsonData.series;
+        
+</script>
+<script type="text/javascript" src="{$tplurl}js/lp.js"></script>
+{tpl$tpl_lp_footer}
+</body>
+</html>

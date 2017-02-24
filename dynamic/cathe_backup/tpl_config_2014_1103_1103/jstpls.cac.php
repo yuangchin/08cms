@@ -1,0 +1,4 @@
+<?php
+$jstpls = array (
+) ;
+?>

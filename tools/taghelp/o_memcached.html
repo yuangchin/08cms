@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Memcached安装</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">memcached安装</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>Memcache是一个高性能的分布式的内存对象缓存系统，通过在内存里维护一个统一的巨大的hash表，它能够用来存储各种格式的数据，包括图像、视频、文件以及数据库检索的结果等。简单的说就是将数据调用到内存中，然后从内存中读取，从而大大提高读取速度。  </p>
+</div>
+<span class="blank5"></span>
+<div>
+    <li class="bg3">说明</li>
+    <li>
+
+1.memcached 1.2.1 for Win32 binaries <br />
+
+目前本版本是 Win32 服务器端的 memcached 最新版本，直接下载就可以了；<br />
+
+2.php_memcache-5.2-Win32-vc6-x86-20090408.zip<br />
+
+本文件是 php 所需的 PECL 扩展，即 php_memcache 扩展；（一定要和自己的 PHP 版本相同，我用的是5.2.1）<br />
+
+有了源码包包，那就开始大快体验吧，按照下面的步骤
+</li>
+<div class="blank5"></div>
+<li class="bg4 w3 h">
+<xmp>
+    a. 将第一个包解压放某个盘下面，比如在c:\memcached
+    
+    b.开始-运行(快捷键‘WIN+R’) 输入“cmd”,  在终端（也即cmd命令界面）下输入 
+    ‘c:\memcached\memcached.exe -d install' 安装
+    
+    c. 再输入： ‘c:\memcached\memcached.exe -d start' 启动。（需要注意的: 以后memcached将作为windows的一个
+    服务每次开机时自动启动。这样服务器端已经安装完毕了）
+    
+    d. 解压第二个包包，里面会只有一个 php_memcache.dll 文件，把它放入 usr/local/php5/ext/ 中
+    
+    e. 在C:\WINDOWS\php.ini 加入一行 ‘extension=php_memcache.dll'(不知道为什么 PHP 会有两个配置文件，
+    一个在 usr/local/php5/php.ini, 而另一个则在 C：/WINDOWS/中，而且只改前一个配置文件不起作用，
+    所以就把 WINDOWS 中的 php.ini 也改掉了！)
+    
+    f. 接着在 php.ini 文件里加上:
+    
+    复制代码 代码如下:
+    
+    [Memcache] 
+    
+    memcache.allow_failover = 1 
+    memcache.max_failover_attempts=20 
+    memcache.chunk_size =8192 
+    memcache.default_port = 11211 
+    
+    最好就放在刚才写 "extension=php_memcache.dll" 的下面。（这是默认的一些配置） 
+    
+    g.重新启动Apache，然后查看一下phpinfo，如果有 memcache 的说明，那么就说明安装成功啦！ 
+
+</xmp>
+</li>
+<div class="blank5"></div>
+<li>
+3.试运行： <br />
+
+写一个 example.php 文件：（更多使用方法可以参看 PHP 手册里的 Memcache Functions 使用说明） 
+复制代码 代码如下:
+</li>
+<div class="blank5"></div>
+<li class="bg4 w3 h">
+<xmp>
+    <?php 
+    
+    $memcache = new Memcache; 
+    $memcache->connect('localhost', 11211) or die ("Could not connect"); 
+    
+    $version = $memcache->getVersion(); 
+    echo "Server's version: ".$version."<br/>\n"; 
+    
+    $tmp_object = new stdClass; 
+    $tmp_object->str_attr = 'test'; 
+    $tmp_object->int_attr = 123; 
+    
+    $memcache->set('key', $tmp_object, false, 10) or die ("Failed to save data at the server"); 
+    echo "Store data in the cache (data will expire in 10 seconds)<br/>\n"; 
+    
+    $get_result = $memcache->get('key'); 
+    echo "Data from the cache:<br/>\n"; 
+    
+    var_dump($get_result); 
+    
+    ?> 
+</xmp>
+</li>
+<div class="blank5"></div>
+<li>
+如果有输出如下代码:
+Server's version: 1.4.5 
+Store data in the cache (data will expire in 10 seconds) 
+Data from the cache: 
+object(stdClass)#3 (2) { ["str_attr"]=> string(4) "test" ["int_attr"]=> int(123) } 
+
+则说明，我们的 Memcached 已经正常运行啦！ :~> 
+    </li>
+</div>
+
+<a onclick="scrollTo(0,0)" href="#" class="ltop"></a>
+</body>
+</html>

@@ -1,0 +1,278 @@
+#wrap {
+    width: 1000px; margin: 0 auto;
+
+    text-align: left;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+input,
+textarea,
+select {
+    font-family: inherit; font-size: inherit; font-weight: inherit;
+}
+input,
+textarea,
+select {
+    *font-size: 100%;
+}
+legend {
+    color: #000;
+}
+select,
+input {
+    padding: 1px 0;
+
+    vertical-align: middle;
+}
+label {
+    cursor: hand, pointer;
+}
+/******
+计算器
+********************/
+.b_cal_box_bg1 a,
+.b_cal_box_bg2 a,
+.b_cal_box_bg3 a,
+.b_cal_box_bg4 a,
+.b_cal_box_bg5 a,
+.b_cal_box_bg6 a,
+.b_cal_box_red1 a,
+.b_cal_box_red2 a,
+.b_cal_box_red3 a,
+.b_cal_box_red4 a,
+.b_cal_box_red5 a,
+.b_cal_box_red6 a {
+    display: block; width: 170px; height: 38px;
+
+    background: url(../images/bicon_calculator.gif) no-repeat;
+}
+.b_cal_box_bg1 a {
+    margin: 50px 0 0 70px;
+
+    background-position: -1px 0;
+}
+.b_cal_box_bg2 a {
+    margin: 0 0 0 70px;
+
+    background-position: -1px -54px;
+}
+.b_cal_box_bg3 a {
+    margin: 10px 0 0 70px;
+
+    background-position: -1px -106px;
+}
+.b_cal_box_bg4 a {
+    width: 222px; margin: 10px 0 0 70px;
+
+    background-position: -1px -159px;
+}
+.b_cal_box_bg5 a {
+    margin: 30px 0 0 70px;
+
+    background-position: -1px -210px;
+}
+.b_cal_box_bg6 a {
+    margin: 10px 0 0 70px;
+
+    background-position: -1px -262px;
+}
+.b_cal_box_red1 a,
+.b_cal_box_bg1 a:hover {
+    margin: 50px 0 0 70px;
+
+    background-position: -300px 0;
+}
+.b_cal_box_red2 a,
+.b_cal_box_bg2 a:hover {
+    margin: 0 0 0 70px;
+
+    background-position: -300px -54px;
+}
+.b_cal_box_red3 a,
+.b_cal_box_bg3 a:hover {
+    margin: 10px 0 0 70px;
+
+    background-position: -300px -106px;
+}
+.b_cal_box_red4 a,
+.b_cal_box_bg4 a:hover {
+    width: 222px; margin: 10px 0 0 70px;
+
+    background-position: -300px -159px;
+}
+.b_cal_box_red5 a,
+.b_cal_box_bg5 a:hover {
+    margin: 30px 0 0 70px;
+
+    background-position: -300px -210px;
+}
+.b_cal_box_red6 a,
+.b_cal_box_bg6 a:hover {
+    margin: 10px 0 0 70px;
+
+    background-position: -300px -262px;
+}
+/*-------------计算器-----------------*/
+.b_cal {
+    border: 1px solid #dbdbdb; background: url(../images/b_cal_bg.gif) repeat-x 0 -850px;
+}
+.b_cal_bg {
+    padding: 20px 0 10px;
+
+    background: url(../images/b_cal_bg.gif) no-repeat 480px 2px;
+}
+.b_cal_line {
+    border-right: 1px solid #eee;
+}
+.b_cal_box {
+    width: 298px; height: 220px; padding: 10px;
+}
+.b_cal_bg1 {
+    width: 130px; height: 70px;
+
+    background: url(../images/bicon_calculator.gif) no-repeat -7px -340px;
+}
+.b_cal_bg2 {
+    width: 130px; height: 70px;
+
+    background: url(../images/bicon_calculator.gif) no-repeat -133px -340px;
+}
+.b_cal_bg3 {
+    width: 130px; height: 70px;
+
+    background: url(../images/bicon_calculator.gif) no-repeat -263px -340px;
+}
+.b_cal_box_bg {
+    height: 40px; border: none;
+    background: url(../images/bicon_calculator.gif) no-repeat;
+}
+/*---内容区---*/
+/*内容区—左侧*/
+.b_cal_left {
+    width: 440px; padding: 10px 20px;
+}
+.b_cal_left_top {
+    padding: 0 0 10px; border-bottom: 1px solid #efefef;
+}
+.b_cal_bg4 {
+    width: 340px; height: 40px; padding: 0 0 10px 0;
+
+    background: url(../images/bicon_calculator.gif) no-repeat 20px -681px;
+}
+.b_cal_left_conn {
+    padding: 10px 0 0 0;
+}
+.b_cal_left_conn ul li {
+    clear: both; margin-bottom: 8px;
+
+    color: #777;
+}
+.b_cal_left_conn ul li input {
+    line-height: 24px; height: 20px;
+
+    border: 1px solid #c9c9c9; background: #fff;
+}
+.b_cal_left_conn ul li input.radio {
+    border: none;
+}
+.b_cal_left_conn ul li select {
+    font-size: 14px;
+    line-height: 24px; height: 24px;
+}
+.b_cal_left_conn ul li span {
+    display: inline-block;
+
+    width: 140px; text-align: right;
+}
+.b_cal_left_conn ul li.cbt {
+    margin: 20px 10px 0 70px; background: #fff;
+}
+.b_cal_left_conn ul li .sbmt {
+    width: 88px; height: 25px;
+
+    cursor: pointer; border: none; background: url(../images/bicon_calculator.gif) no-repeat -22px -432px;
+}
+.b_cal_left_conn ul li .sbmt:hover {
+    width: 88px; border: none;
+    background: #fff url(../images/bicon_calculator.gif) no-repeat -252px -432px;
+}
+.b_cal_left_conn ul li .tbmt {
+    width: 88px; height: 25px;
+
+    cursor: pointer; border: none; background: url(../images/bicon_calculator.gif) no-repeat -140px -432px;
+}
+.b_cal_left_conn ul li .tbmt:hover {
+    width: 88px; height: 25px; border: none;
+    background: #fff url(../images/bicon_calculator.gif) no-repeat -370px -432px;
+}
+/*内容区—右侧*/
+.b_cal_right {
+    font-family: Simsun; width: 450px;
+    padding: 25px 0 10px 20px; color: #777;
+}
+.b_cal_right h1 {
+    font-size: 14px; font-weight: bold; clear: both; color: #d30009;
+}
+.b_cal_right ul li {
+    line-height: 28px; float: left; width: 210px; height: 28px; padding: 3px 0 3px 0;
+
+    border-bottom: 1px dashed #e1e1e1;
+}
+.b_cal_right ul li span {
+    color: #d30009;
+}
+.b_cal_right ul li input {
+    line-height: 20px; height: 20px; border: 1px solid #c9c9c9;
+    background: #fff;
+}
+.b_cal_right ul h2 {
+    font-weight: bold; display: block; clear: both;
+
+    color: #d30009;
+}
+.b_cal_right span.tip {
+    display: block;
+    clear: both; width: 400px; padding: 10px 0 10px 0; text-align: right; text-align: right; color: #333;
+}
+.b_cal_right p {
+    line-height: 30px;
+
+    padding: 5px 0 0 0;
+}
+/*提前还贷计算器*/
+.b_cal_l {
+    margin-left: 30px;
+}
+.b_cal_bg5 {
+    width: 340px; height: 35px; padding: 0 0 13px 0;
+
+    background: url(../images/bicon_calculator.gif) no-repeat 20px -635px;
+}
+/*等额本金还款法*/
+.b_cal_bg6 {
+    width: 340px; height: 25px; padding: 0 0 13px 0;
+
+    background: url(../images/bicon_calculator.gif) no-repeat 20px -560px;
+}
+/*等额本息还款法*/
+.b_cal_bg7 {
+    width: 340px; height: 25px; padding: 0 0 13px 0;
+
+    background: url(../images/bicon_calculator.gif) no-repeat 20px -520px;
+}
+/* 购房能力评估*/
+.b_cal_bg8 {
+    width: 340px; height: 20px; padding: 0 0 13px 0;
+
+    background: url(../images/bicon_calculator.gif) no-repeat 20px -485px;
+}
+/*个人住房公积金贷款计算器*/
+.b_cal_bg9 {
+    width: 340px; height: 25px; padding: 0 0 13px 0;
+
+    background: url(../images/bicon_calculator.gif) no-repeat 20px -601px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+</head>
+
+<body>
+<div class="w1 h1 bg1">类目导航 nownav</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">概述</div>
+<div class="t2">
+	<p>类目导航是系统常用标签之一，一般用于面包屑导航。</p>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">参数</div>
+<div>
+	<ul>
+    <li class="t1">1.参考文档列表标识。<br />2.常用原始标识:{title}、{indexurl}、{indexurl1}。</li>
+	<span class="blank2"></span>
+    </ul>
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">示例</div>
+<div>
+	<div>
+        <span class="blank5"></span>
+        <li class="t2">效果:</li>
+        <li><img src="img/archives7.gif" class="pad50" /></li>
+        <li class="t2">标识模板(template)代码:</li>
+        <li class="bg4 w3 h">
+            <div>
+                <xmp>{if $v['sn_row'] !=1 } <a href="{indexurl}">{title}</a>{/if}</xmp>
+            </div>
+        </li>
+        <span class="blank3"></span>
+        <li class="bg3">描述</li>
+        <span class="blank3"></span>
+        <li class="t3"><p>制作导航，当前网页所在位置。
+        
+            <b class="FcR">截图如下：</b><br />
+            <img class="img" src="img/bq7.jpg"/>
+        </p></li>
+    </div>
+    
+</div>
+
+<a class="ltop" href="#" onclick="scrollTo(0,0)"></a>
+</body>
+</html>

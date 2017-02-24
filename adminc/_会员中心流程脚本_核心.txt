@@ -1,0 +1,44 @@
+
+*************************************
+以下脚本不能从核心直接覆盖
+(即不能从adminm中直接盖到adminc中)
+需要手动升级找到adminm中的变化代码升级到adminc中
+
+
+func/main.php：会员中心中涉及到模板样式因素的函数
+func/mcnvurls.cac.php：会员中心右侧子导航的配置文件
+*************************************
+
+会员中心文档示范脚本不投入正式使用
+archive.inc.php.bk :        文档编辑示范脚本 
+archives.inc.php.bk : 	    文档列表管理示范脚本 
+archives_load.inc.php.bk :  文档（合辑）加载列表示范脚本 
+archives_pid.inc.php.bk :   文档（辑内）管理列表示范脚本 
+*************************************
+
+entry.php ：                会员中心,入口文件
+memberbind.inc.php ：       会员绑定 绑定QQ与新浪微博
+
+archiveinfo.inc.php :       文档基本信息（更多）脚本
+crexchange.inc.php :        现金积分互兑脚本
+crrecords.inc.php :         积分变更记录脚本                
+gtexchange.inc.php :        积分兑换会员组脚本
+index.inc.php :             会员中心的首页
+mcerts.inc.php :            实名认证管理
+memberinfo.inc.php :        会员基本信息脚本
+memberpwd.inc.php :         会员密码修改脚本
+memberstate.inc.php :       会员的状态信息脚本
+paymanager.inc.php :        会员综合支付选择脚本（家装未启用）
+payonline.inc.php :         会员在线支付脚本
+payother.inc.php :          其他支付脚本
+pays.inc.php :              支付记录管理列表脚本
+pmbox.inc.php :             站内短信发送记录列表管理脚本
+pmsend.inc.php :            站内短信发送脚本
+pmuc.inc.php :              短信综合管理脚本（家装未启用）
+sms_member.inc.php :        手机短信余额，充值，发送，记录管理脚本
+static.inc.php :            会员空间静态设置脚本
+trusteeship.inc.php :       会员托管设置
+uclasses.inc.php :          会员所发布的文档进行分类脚本（家装未启用）
+userfiles.inc.php :         会员上传的附件列表管理（家装未启用）
+utrans.inc.php :            会员自助申请变更会员组（家装未启用）
+webcall.inc.php :           400电话设置脚本

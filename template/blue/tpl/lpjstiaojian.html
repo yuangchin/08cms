@@ -1,0 +1,98 @@
+<?php
+foreach(array('djfrom','djto','ccid1','ccid12','ccid17','ccid18','orderby','ordermode','searchword','letter') as $k) $$k = cls_Parse::Get("_da.$k");
+$sfields = getsearchfields(4);
+$letter = mhtmlspecialchars($letter);
+cls_uso::init(array(
+    'ntype' => 'c', //cm,m,oc,om
+    'chid' => 4, 
+    'rids' => array(1,2), //'caid','caid,ccid1'
+    'nodes' => array('0','0,1','0,2','0,12','0,17','0,18','0,1,17'),
+    'orderbys' => array('aid','dj','refreshdate','kpsj','clicks'),
+    'addno' => 1,
+));
+extract(cls_usql::order_str(1,'a.ccid41 DESC,a.vieworder ASC'));
+$whrstr = cls_usql::where_str(array(
+    array('subject,address','searchword'), 
+    array('tslp','tslp','mso1','1'),
+    array('zxcd','zxcd'), 
+    array('lcs','lcs','inlike','1'),
+    array('hxs','hxs'),
+),u_exsql(4)); 
+?>
+<!-- tab -->
+<div class="lp-sea clearfix">
+  <div class="lp-title"><a class="act" href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl1}{/c$cnode}"><i class="ico08">&#xf0ca;</i>区域找房</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=11/]}{indexurl}{/c$cnode}"><i class="ico08" style="font-size:16px">&#xe004;</i>户型找房</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=2/]}{indexurl3}{/c$cnode}"><i class="ico08">&#xe637;</i>房价找房</a><a href="{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=559/]}{indexurl}{/c$cnode}"><i class="ico08">&#xe635;</i>特价房</a><a href="{c$freeurl [tclass=freeurl/] [fid=1/]}{/c$freeurl}" target="_blank"><i class="ico08">&#xe613;</i>地图找房</a></div>
+</div>
+<!-- /tab -->
+<div class="lp-janshuo">
+  <div class="blank10"></div>
+  <!-- 检索 -->
+  <div class="js-list bdrs">
+    <? $dlnum = 0; ?>
+    {loop $sfields $f $fn}
+    <? $key = is_numeric($f) ? ($f ? "ccid$f" : 'caid') : $f; $$key= empty($$key)?'':$$key; $_rows = !is_numeric($f) ? cls_uso::field_urls($f) : cls_uso::caco_urls($f); ?>
+    <? if($f == 2 && (empty($ccid1) || $fcdisabled2)) continue;?>
+    <? if($fcdisabled3 && in_array($f,array(3,14)) || empty($ccid3) && $f == 14) continue;$dlnum++;?>
+    {if $dlnum > 4}
+    {if $dlnum == 5}
+    <div class="blank5"></div>
+    <div class="morefjj clearfix" id="moretj">
+      <ul class="hover-list1">
+        <li class="tip fw6">更多：</li>
+        {/if} 
+        <li class="list-{$f} droplist"><i class="ico08">&#xe684;</i><em>{if empty($$key)}{$fn}{else}{loop $_rows $k $v}{if $$key==$k}{$v['title']}{/if}{/loop}{/if}</em>
+          <div class="items">
+          <a class="{if empty($$key)}act{/if}" href='<? echo cls_uso::extra_url($key); ?>'>不限</a>
+          {loop $_rows $k $v}
+          <a class="{if $$key==$k}act{/if}" href="{$v['url']}">{$v['title']}</a>
+          {/loop}
+          </div>
+          {if $f=='lcs'}<span class="msg"><i></i><b></b>1~3层为低层，4~7层为多层，<br/>
+          12层为小高层，13~25层为高层，<br/>
+          26层（楼高100米）以上为超高层。</span>{/if} 
+          </li>
+        {else}
+        <dl class="list-{$f}">
+          <dt class="l fw6">{$fn}：</dt>
+          <dd>
+            <a {if empty($$key)} class="act"{/if} href='<? echo cls_uso::extra_url($key); ?>'>不限</a>
+            {loop $_rows $k $v}
+            <a {if $$key==$k} class="act"{/if} href="{$v['url']}">{$v['title']}</a>
+            {/loop}
+            {if $f==17} <span class="set">
+            <form action="{$cms_abs}index.php" class="form form-sm form-bdrs" method="get">
+              <input type="hidden" name="caid" value="2" />
+              {if !empty($letter)}<input type="hidden" name="letter" value="{$letter}" />{/if}
+              <input type="hidden" name="addno" value="1" />
+              {loop $sfields $f $fn}
+              <? $key = is_numeric($f) ? ($f ? "ccid$f" : 'caid') : $f; $$key= empty($$key)?'':$$key; if(empty($$key) || $f==17) continue; ?>
+              <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $$key; ?>" />
+              {/loop}
+              <input type="text" class="txt" title="请输入最低价格"  name="djfrom" value="{djfrom}" size="6">
+              -
+              <input class="txt" type="text"  title="请输入最高价格" name="djto" value="{djto}" size="6">
+              元
+              <input class="btn" type="submit" value="确定" id="pConfirmButton">
+            </form>
+            </span> {/if} </dd>
+        </dl>
+        {/if}
+        {/loop}
+        {if $dlnum > 4}
+      </ul>
+    </div>
+    {/if}
+    <div class="blank0"></div>
+  </div>
+  <!-- 当前条件 -->
+  <?
+    $pick_urls=cls_uso::pick_urls();
+    unset($pick_urls['caid']);
+  ?>
+  {if $pick_urls}
+  <div class="lp-dqtj clearfix"> <span class="tip l fw6">当前条件：</span> <?php echo u_sch_now_area(array('mjfrom','mjto'),'平'); ?> <?php echo u_sch_now_area(array('djfrom','djto'),'元'); ?> {loop $pick_urls $k $v}
+    <?php if(in_array($k,array('mjfrom','mjto','djfrom','djto'))) continue; ?>
+    <a title="取消此条件" href="{$v['url']}">{$v['title']} <i class="ico08">&#xf057;</i></a> {/loop} <a class="cancel" title="取消所有" href="{c$loupanliebiao [cname=楼盘列表/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl1}{/c$loupanliebiao}"><i class="ico08">&#xf0e2;</i>取消所有</a> </div>
+  {/if} 
+  <!-- /当前条件 -->
+</div>

@@ -1,0 +1,12 @@
+<? if($caid==3){$chidx=3;$bnt='btn';$mapmod='mai';$fycata='<em>二手房</em>正在出售';}else{$chidx=2; $bnt='cz-btn'; $mapmod='zhu';$fycata='<em>租房</em>正在出租';}?>
+<div class="sea-form">
+   <form action="{$cms_abs}index.php" method="get" data-drop=1>
+		<input type="hidden" id="chid" value="{$chidx}" />
+		<input type="hidden" name="caid" value="{$caid}" />
+    	<input type="text" class="txt clear-txt" placeholder="房源名称/地址/小区名称"  value="{if @$searchword}{searchword}{/if}" name="searchword" x-webkit-speech speech/>
+    	<input type="submit" class="{$bnt}" value="找出租房"/>
+    </form>
+    <a class="dt2 l mlr10" href="{c$dtzf [cname=地图找房/] [tclass=freeurl/] [fid=1/]}{/c$dtzf}#mode={$mapmod}" target="_blank">地图找房</a>
+    <span class="r mr10">这里有<b class="fcr">{c$num [tclass=acount/] [chids=$chidx/] [chsource=2/] [casource=2/] [validperiod=1/]}{counts}{/c$num}</b>套{$fycata}</span>
+</div>
+<div class="blank10"></div>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+<title>{companynm}-装修公司-{$hostname}</title>
+ <meta content="{companynm}" name="keywords"> 
+ <meta content="{companynm}{if $dizhi},公司地址是{dizhi}{/if}{if $lxdh},公司电话是{lxdh}{/if}{if $qq},联系QQ是{qq}{/if}" name="description">
+{tpl$jz_headinner}
+</head>
+<body>
+{tpl$jz_m_head}
+<!--内容开始-->
+<div class="area"> 
+  <!--左侧栏开始-->
+  {tpl$jz_m_left}
+  <!--右侧栏开始-->
+  <div class="right_bar">
+    <div class="R_title">
+        <div class="R_title_L">公司公告</div>
+    </div>
+    <div class="R_con1" style="padding: 10px;">
+
+        <p> <strong>{comgonggao}</strong> </p>
+        <p>&nbsp;</p>
+
+        <div class="blank0"></div>
+    </div>
+    
+    <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+    <span class="blank10"></span>
+    
+    <div class="R_title">
+      <!-- 店铺推荐 -->
+        <div class="R_title_L">最新成功案例</div>
+        <div class="R_title_R"><a href="{c$jz_m_cgalurl [cname=成功案例链接/] [tclass=mcatalogs/] [limits=1/] [listby=0/] [casource=1/] [caids=8/]}{indexurl}{/c$jz_m_cgalurl}">查看更多&gt;&gt;</a></div>
+    </div>
+    <div class="R_con1 ieHack">
+        <span class="blank10"></span>
+        {c$jz_m_cgal [tclass=archives/] [limits=4/] [chsource=2/] [chids=102/] [caidson=1/] [casource=1/] [caids=511/] [ccidson19=1/] [cosource19=1/] [ccids19=203/] [space=1/] [validperiod=1/] [detail=1/] [ttl=900/]}<div class="R_con_list">
+            <div class="R_con2">
+                <a href="{marcurl}" target="_blank">        
+                   <img alt="{subject}" {c$thumb [cname=thumb/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=100/] [thumb=2/]}src="{url_s}" width="150" height="100"{/c$thumb}>
+                </a>
+            </div>
+            <div class="R_con3"><strong><a href="{marcurl}" target="_blank">{subject}</a></strong><br> {c$shi}{c$ting}{c$wei}{mj}平方</div>
+        </div>{/c$jz_m_cgal}
+    <div class="cl"></div></div>
+    <div class="R_B">
+        <div class="R_B_L"></div>
+        <div class="R_B_R"></div>
+    </div>
+    <span class="blank10"></span>
+
+    <div class="R_title">
+        <div class="R_title_L">免费量房名单</div>
+      {if $grouptype31 == 102}<div class="R_title_L1"><a href="{$cms_abs}info.php?fid=201{if !empty($mid)}&mid={$mid}{/if}">[点此申请]</a></div>{/if}
+        <div class="R_title_R"></div>
+    </div><table class="bor1" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr class="L_title_bg">
+    <td height="26" width="15%">业主</td>
+    <td>楼盘小区</td>
+    <td width="10%">房屋户型</td>
+    <td width="10%">建筑面积</td>
+    <td width="10%">装修类型</td>
+    <td width="10%">预算价格</td>
+    <td width="10%">申请日期</td>
+  </tr>
+  {c$mspacsfreelflist [cname=空间首页免费量房/] [tclass=commus/] [limits=20/] [cuid=32/] [checked=1/] [wherestr=tomid='$mid'/] [mp=1/]}
+  <tr class="L_con_bg{if $v['sn_row']%2==0}2{else}1{/if}">
+    <td align="center" height="26">{xingming}</td>
+    <td>{xqname}</td>
+    <td align="center">{shi}室{ting}厅{wei}卫</td>
+    <td align="center">{mianji}平米</td>
+    <td align="center">家庭装修</td>
+    <td align="center">{c$yusuan [cname=yusuan/] [tclass=field/] [tname=yusuan/] [type=commu/] [fname=yusuan/]}{/c$yusuan}</td>
+    <td align="center">{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}</td>
+  </tr>
+{/c$mspacsfreelflist}
+    </tbody></table>
+  </div>
+  <!--右侧栏结束--> 
+</div>
+<!--内容结束--> 
+<!--footer begin--> 
+	{tpl$jz_foot}
+<!--footer end-->
+</body></html>

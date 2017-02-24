@@ -1,0 +1,130 @@
+/*所有楼盘列表 */
+.price_all {
+    overflow: hidden;border: 1px solid #ddd;
+    background: url(../images/bs_bg.gif) repeat-x 0 bottom;
+}
+.price_all .title {
+    line-height: 34px; height: 34px;
+
+    border-bottom: 1px solid #ddd;
+}
+.price_all .title h2 {
+    font-family: Microsoft yahei;
+    font-size: 16px;font-weight: bold; color: #000;
+}
+.title a {
+    font-size: 14px;font-weight: normal;margin-right: 15px;
+}
+.price_all ul {
+    padding: 10px;
+}
+.price_all li {
+    float: left;
+}
+.price_all li a {
+    font-size: 14px;line-height: 26px;
+
+    float: left;overflow: hidden;width: 84px;height: 26px;text-align: center;
+}
+.price_all li a:hover,
+.price_all li a.act {
+    text-decoration: none;
+
+    color: #fff; background: #e43;
+}
+
+/* 各分区楼盘列表 */
+.pri_title,
+.pri_title_left,
+.pri_title_right,
+.centitle .rightmore,
+.pri_center li em {
+    background: url(../images/fj.gif) no-repeat;
+}
+.price_area {
+    overflow: hidden;padding-bottom: 10px;
+}
+.pri_title {
+    line-height: 36px;overflow: hidden; height: 36px;background-repeat: repeat-x;
+    background-position: 0 -94px;
+}
+.pri_title_left {
+    float: left;width: 15px; height: 36px;
+
+    background-position: 0 -47px;
+}
+.pri_title_right {
+    float: right;width: 15px; height: 36px;
+
+    background-position: 0 0;
+}
+.centitle {
+    line-height: 36px; float: left;width: 1170px; padding-top: 5px;
+}
+.centitle .rightmore {
+    line-height: 36px;
+
+    height: 36px; padding-right: 22px;  background-position: right -148px;
+}
+.pri_bot {
+    height: 20px;
+
+    background: url(../images/fj_bot.gif) no-repeat;
+}
+.pri_center {
+    padding: 10px;
+}
+.pri_center ul {
+    position: relative;
+
+    margin-right: -200px;
+}
+.pri_center li {
+    line-height: 18px;
+
+    float: left; overflow: hidden;height: 18px;margin-top: 14px;margin-right: 70px;
+}
+.pri_center li span {
+    display: block;float: left;
+}
+.pri_center li .name {
+    overflow: hidden; width: 140px;padding-right: 12px;
+
+    color: #049;
+}
+.pri_center li .name i {
+    color: #ee0002;
+}
+.pri_center li .name i a {
+    color: #ee0002;
+}
+.pri_center li .name a {
+    padding-right: 5px;
+
+    color: #049;
+}
+.pri_center li .name a:hover {
+    color: #f00;
+}
+.pri_center li .price {
+    font-family: arial;
+
+    overflow: hidden;width: 80px;
+}
+.pri_center li .price.lv {
+    color: #77ae0b;
+}
+.pri_center li em {
+    display: block; float: left;
+
+    width: 11px; height: 11px; margin-top: 3px;
+}
+.pri_center li .i0 {
+    background-position: 0 -181px;
+}
+.pri_center li .i1 {
+    background-position: 0 -195px;
+}
+.pri_center li .i2 {
+    background-position: 0 -209px;
+}

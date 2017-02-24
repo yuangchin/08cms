@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:mobile="http://www.baidu.com/schemas/sitemap-mobile/1/">
+    <url>
+        <loc>http://127.0.0.1/08cms/mobile/</loc>
+        <mobile:mobile type="mobile"/>
+        <lastmod>2017-02-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+                                                        </urlset>

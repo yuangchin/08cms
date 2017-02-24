@@ -1,0 +1,73 @@
+<?
+// 处理ajax分页调用
+$page = intval(cls_Parse::Get('_da.page'));
+$inajax = intval(cls_Parse::Get('_da.inajax'));
+if($page>1 && $inajax>0){
+?>
+{c$content [cname=content/] [tclass=text/] [tname=$content/] [dealhtml=safehtml/] [badword=1/] [mp=1/]}{/c$content}
+<?php
+die(); //cls_Parse::Message('');
+}
+?>
+{c$member [tclass=member/] [chids=2/] [chsource=2/] [val=m/] [detail=1/]}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={$mcharset}">
+    <title>{$subject}_公司动态_{cmane}-{$hostname}</title>
+    <meta name="keywords" content="公司,房屋出售,{$hostname}" />
+    {tpl$m_headinner}
+    <?
+    $otherdf=1;
+    $pagelimit=8;
+    ?>
+</head>
+<body>
+<div id="section_container">
+    <!-- 页面容器 -->
+    <section id="index_section" title="{$subject}" class="active" data-btn="back">
+        <footer>
+        <a href="#index_section" data-target="section" class="active">
+            <i class="icon-f015"></i>首页</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=4"><i class="icon-e61a"></i>二手房</a>
+        <a href="{$mobileurl}index.php?caid=13&mid={mid}&addno=5"><i class="icon-e623"></i>出租</a>
+        <a href="#broker_section" data-target="section"><i class="icon-e757"></i>经纪人</a>
+        {if $m['lxdh']}
+        <a href="tel:{lxdh}"><i class="icon-e612"></i>打电话</a>
+        {/if}
+        </footer>
+        {tpl$m_header}
+        <article class="active"  id="up_refresh_article">
+            <div>
+                <ul class="list detail">
+                    <li>
+                        <h1>{$subject} </h1>
+                        <div class="item fz12"><span class="f-asbestos"><span class="icon-e014"></span>{c$date [tclass=date/] [tname=$createdate/] [date=Y-m-d/] [time=H:i:s/]}{/c$date} <span class="icon-e000"></span>{$clicks} </span></div>
+                    </li>
+                    <li class="detail-con detail-img" id="load_content">
+                        {c$content [cname=content/] [tclass=text/] [tname=$content/] [dealhtml=safehtml/] [badword=1/] [mp=1/]}{/c$content}
+                    </li>
+                </ul>
+                <div class="refresh-container f-asbestos" {if $mpcount<=1}style="display:none;"{/if}>点击加载更多...</div>
+            </div>
+        </article>
+    </section>
+</div>
+{tpl$m_footer}
+<script type="text/javascript">
+//点击加载内页
+var loadopt={
+    'url':'{$arcurl}',
+    'aj_page'  :1,
+    'aj_pmax'  :'{$mpcount}',
+    'loadObj'  :'#load_content',//加载内容的对象
+    'scrollObj':'#up_refresh_article',//滚动对象
+    'moreObj'  :'.refresh-container'//点击对象
+}
+$(loadopt.moreObj).click(function(){
+    morePage(loadopt);
+});
+</script>
+</body>
+</html>
+{/c$member}

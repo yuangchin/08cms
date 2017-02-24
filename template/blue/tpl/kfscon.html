@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}-{$hostname}</title>
+{tpl$headinner}
+<link rel="stylesheet" href="{$tplurl}css/kfs.css?{$user_version}">
+<?php $pagetype = 'newhouse'; ?>
+</head>
+<body>
+{tpl$head}
+<!--当前位置+搜索-->
+<div class="wrap clearfix">
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form form-bdrs w300">
+                    <button class="btn" type="submit"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+                    <div class="txt-wrap">
+                      <input type="text" class="txt" value=""  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a><i class="pipe">/</i>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}" >{title}</a>{/c$cnode}<i class="pipe">/</i>{subject}
+        </span>
+    </div>
+    <div class="busines-card clearfix">
+        <span class="logo l"><a title="{subject}" href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/][listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}"><img {c$image [cname=logo/] [tclass=image/] [tname=thumb/]}src="{url}" width="200" height="70"{/c$image} alt="{$hostname}"/></a></span>
+        <div class="info">
+           <div class="pl20 pt20">
+           <h1>{subject}</h1>
+           <p>电话：{if $tel}{tel}{else}暂无{/if}</p>
+           <p>地址：{address}</p>
+           </div>
+        </div>
+    </div>
+  <div class="blank15"></div>
+   <div class="kf-left">
+    <div class="clearfix">
+        <div id="title">
+            <span class="r mt15"><i class="ico08">&#xe000;</i> 点击<span class="fcr"><div id="_08_count_c_{aid}" class="count08" url-params="{type: 'a', modid: 13, field: 'clicks'}">&nbsp;</div></span>次<a onclick="return publicCollect('{$aid}');" href="javascript:;" rel="nofollow"><i class="ico08">&#xf004;</i> 添加收藏</a></span>
+            <h2><i class="ico08 fz18">&#xe66f;</i> {c$text [cname=text/] [tclass=text/] [tname=subject/] [trim=46/]}{/c$text}</h2>
+        </div>
+        <div id="title_line"></div>
+        <div class="con" id="zoom">
+          <div class="con" id="zoom2">{content}</div>
+        </div>
+    </div>
+         <div class="blank20"></div>
+          <div class="borh clearfix">
+            <div class="title_menu"><i class="ico08">&#xe60d;</i> 开发商楼盘</div>
+            <div class="kfshouse clearfix">
+            <ul>
+                {c$archives [tclass=archives/] [limits=8/] [chsource=2/] [chids=4/] [mode=in/] [arid=6/] [detail=1/] [wherestr=(leixing='0' OR leixing='1')/] [ttl=600/]}
+                <li>
+                    <a href="{arcurl}" target="_blank" title="{subject}"><img alt="{subject}" {c$thumb_150_112 [cname=thumb_150_112/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=150/] [maxheight=112/] [thumb=1/]}src="{url_s}" width="150" height="112"{/c$thumb_150_112} />
+                    <span><i>[{ccid1title}]</i><b>{subject}</b></span>
+                    <span><em>均价：{dj}元/m&sup2;</em></span>
+                    </a>
+                </li>
+                {/c$archives}
+            </ul>
+            </div>
+        </div>
+     </div>
+    <div class="kf-right">
+        <!-- 热门开发商 -->
+           <div class="hotkfs">
+            <div class="area2_3">
+            <h3>热门开发商</h3>
+            </div>
+           <div class="borh clearfix">
+               <div class="p10">
+               <ul>
+                {c$archives [cname=热门开发商/] [tclass=archives/] [chsource=2/] [chids=13/] [orderstr=a.wclicks DESC/] [forceindex=a.wclicks/] [ttl=600/]}
+                <li>
+                 <i class="area2_41">{sn_row}</i>
+                 <span class="area2_42"><a href="{arcurl}" title="{subject}" target="_blank">{c$text [cname=text/] [tclass=text/] [tname=subject/] [trim=40/]}{/c$text}</a></span>
+                </li>
+                {/c$archives}
+               </ul>
+               </div>
+          </div>
+        </div>
+
+        <!-- 开放商名录 -->
+        <div class="kfs-ml ">
+            <div class="area2_3">
+            <h3>品牌开发商</h3>
+            </div>
+            <div class="borh clearfix">
+               <div class="p10">
+                  <ul>
+                    {c$fgfgfh [tclass=pushs/] [paid=push_kfs/] [limits=8/]}
+                     <li>
+                        <a href="{url}" target="_blank" title="{subject}">{subject}</a>
+                     </li>
+                     {/c$fgfgfh}
+                  </ul>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blank10"></div>
+{tpl$foot}
+</body>
+</html>

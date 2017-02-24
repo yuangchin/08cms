@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+{c$cnode [cname=激活栏目关键词/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<title>{listtitle}-{$hostname}</title>
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/fangtuan.css?{$user_version}">
+<?php $pagetype = 'newhouse'; ?>
+<?
+$whrstr = cls_usql::where_str(array(
+array('subject'),
+));
+?>
+</head>
+<body>
+<!-- 头部 -->
+{tpl$head}
+<!-- 主体 -->
+<div class="wrap">
+	<!-- 面包屑 -->
+    <div class="bread clearfix">
+        <div class="r">
+            <form name="searchform" method="get" action="{$cms_abs}index.php" >
+                <div class="search-group form w300">
+                    <button type="submit" class="btn"><i class="ico08 mr5">&#xe607;</i>搜索</button>
+                    <div class="txt-wrap">
+                        <input type="text" class="txt" value="{if !empty($searchword)}{searchword}{/if}"  placeholder="请输入关键字" name="searchword" id="searchword" x-webkit-speech speech>
+                    </div>
+                    <input type="hidden" name="caid" value="{caid}">
+                </div>
+            </form>
+        </div>
+        <span class="l mt5">
+            <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_self">新房</a><i class="pipe">/</i>{c$cnode [tclass=cnode/] [listby=ca/] [val=a/] [casource=active/]}<a href="{indexurl}" target="_self">{title}</a>{/c$cnode}(共有<span><b class="fcr">{c$counts_caid5  [tclass=acount/] [chsource=2/] [chids=5/] [ccids18=124/] [ccids19=140/] [ccids35=3035/]}{if $v['counts']}{counts}{else}0{/if}{/c$counts_caid5}</b></span>个团购)
+        </span>
+    </div>
+    <!-- 广告 -->
+       <!--团购列表广告1000_70--><div id="_08_adv_fcatalog08"></div>
+    <!-- 广告 -->
+    <div class="blank10"></div>
+    {if empty($searchword)}
+    <!-- 今日团购 -->
+    <div class="jrtg clearfix">
+    	{c$pushs [tclass=pushs/] [paid=push_102/] [limits=1/] [ttl=600/]}
+            {c$archive [tclass=archive/] [chid=5/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+        <div class="l-titimg">
+            <div class="recom">今日团购</div>
+            <h2><a href="{arcurl}" target="_blank" title="{subject}">{subject}</a></h2>
+            <div class="imgimg">
+                <a href="{arcurl}" target="_blank" title="{subject}"><img alt="{subject}" {c$image [cname=image/] [tclass=image/] [tname=$v[thumb]/] [val=u/] [maxwidth=620/] [maxheight=280/] [thumb=1/] [padding=0/]} src="{url_s}"  height="280" width="620" {/c$image}></a>
+                <div class="bminfo">
+                    <div class="jqDuang ma" data-effect="leftMarqueue" data-visible="3" data-interval="30">
+                        <ul>
+                            {c$fthome_baoming [cname=房团Home-报名实况/] [tclass=commus/] [cuid=8/] [checked=1/] [isall=1/] [wherestr=SELECT c.lxren,c.xinbie,c.lxdh,a.*
+                        FROM {$tblprefix }commu_df c INNER JOIN {$tblprefix }".atbl(5)." a ON a.aid=c.aid WHERE a.aid=$a[aid]/]}
+                            <li><?php echo cls_string::CutStr($v['lxren'],2,'').'**'; ?>
+                                <em><?php echo " ".substr($v['lxdh'],0,3).'*****'.substr($v['lxdh'],-3)." "; ?></em>
+                                报名成功
+                            </li>
+                            {/c$fthome_baoming}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="r-info w300">
+            <div class="end-date clearfix" data-endTime="{enddate}" data-endele=".biaod" data-btn=".btn-tg-{aid}" data-noend="<span class='fcr'>永久有效!</span>" data-end="<span class='fcr'>活动已经结束!</span>">
+                <span>剩余时间：</span>
+                <span class="pri-txt">
+                    <span class='day'><d>0</d></span>天<span class='hour'><h>0</h></span>小时<span class='minutes'><m>0</m></span>分<span class='second'><s>0</s></span>秒
+                </span>
+            </div>
+            <div class="jg pt40 clearfix">
+                <ul>
+                    <li>
+                        <i class="ico1"></i>
+                        <span><em class="f90">{if $a['tgj']}{tgj}{else}待定{/if}</em></span><span>最低价</span>
+                    </li>
+                    <li>
+                        <i class="ico1"></i>
+                        <span><b>{if $a['scj']}{scj}{else}待定{/if}</b></span><span>市场价</span>
+                    </li>
+                    <li>
+                        <i class="ico2"></i>
+                        <span><b>{clicks}</b></span><span>人气</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="ptb5">楼盘地址：{if $a['hdadr']}{hdadr}{else}待定{/if}</div>
+            <div class="ptb5">联系电话：<em>{if $a['hdtel']}{hdtel}{else}待定{/if}</em></div>
+            <div class="biaod">
+                <!-- 表单 -->
+                <form id="bmform" class="jqValidate" data-tipmode="#tg-tip" onsubmit="return fyCummus(this,'报名');">
+                    <input type="hidden" name="cuid" value="8" />
+                    <input type="hidden" name="aid" value="{aid}" />
+                    <div class="blank25" style="margin-top:-10px"><span id="tg-tip"></span></div>
+                    <ul class="form form-control">
+                        <li>
+                            <input type="text" class="txt" name="fmdata[lxren]" placeholder="您的姓名" data-type="*3-15"/>
+                        </li>
+                        <li>
+                            <input type="text" class="txt" name="fmdata[lxdh]" placeholder="您的电话" value="" data-type="m" />
+                        </li>
+                        <li class="reg-wrap" data-regcode="commu8">
+                            <input type="text" placeholder="验证码" name="regcode" class="txt regcode" placeholder="" value=""/>
+                        </li>
+                        <li>
+                            <div class="r info">已报名<em><div id="_08_count_a5_{aid}" class="count08" url-params="{type: 'a', modid: 5, field: 'hdnum'}">&nbsp;</div></em>人<br />房源共<em>{ksnum}</em>套</div>
+                        {if $a['enddate']<$timestamp&&$a['enddate']!=0}<a class="btn-tg end" href="###" rel="nofollow">报名结束</a>{else}<input type="submit" class="btn-tg" value="立即报名"/>{/if}
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        {/c$archive}
+      {/c$pushs}
+    </div>
+    <div class="blank10"></div>
+    <!-- 预订流程 -->
+    <div class="tg-ydlc clearfix">
+        <ul>
+        <li class="firstF">预订流程</li>
+        <li class="act">选择楼盘</li>
+        <li>在线咨询</li>
+        <li>报名预约</li>
+        <li>预订完成</li>
+        <li>签约完成</li>
+        <li>购房成功</li>
+        </ul>
+    </div>
+    <div class="blank10"></div>
+    {/if}
+
+    <!-- 团购列表 -->
+    {c$archives [tclass=archives/] [limits=5/] [chsource=2/] [chids=5/] [caidson=1/] [casource=1/] [caids=5/] [wherestr=$whrstr/] [detail=1/] [ttl=600/] [mp=1/]}
+    <div class="tg-list clearfix">
+        <div class="linfo">
+        <h2><a href="{arcurl}" target="_blank" title="{subject}">{subject}</a></h2>
+        <a href="{arcurl}" target="_blank" title="{subject}"><img alt="{subject}" {c$thumb820_320 [cname=thumb820_320/] [tclass=image/] [tname=$v[thumb]/] [val=u/] [maxwidth=820/] [maxheight=320/] [thumb=1/] [padding=0/]} src="{url_s}"  height="320" width="820" {/c$thumb820_320}></a>
+        </div>
+        <div class="rinfo w300">
+        	{c$dglp [tclass=archive/] [chid=4/] [arid=3/][val=b/] [detail=1/]}
+            <h1><a href="{arcurl}" target="_blank" title="{subject}">{subject}</a></h1>
+            <h3>{if $b['bdsm']}{bdsm}{else}优惠说明{/if}</h3>
+             {/c$dglp}
+            <div class="ptb10 clearfix">
+            <div class="biaod">
+                    <div class="r info">已报名<em><div id="_08_count_a5_{aid}" class="count08" url-params="{type: 'a', modid: 5, field: 'hdnum'}">&nbsp;</div></em>人<br />房源共<em>{ksnum}</em>套</div>
+                    <a class="btn-tg btn-tg-{aid}" href="{arcurl}#tgyh">立即报名</a>
+                </div>
+            </div>
+            <div class="jg ptb5 clearfix">
+                <ul>
+                    <li>
+                        <i class="ico1"></i>
+                        <span><em class="f90">{if $v['tgj']}{tgj}{else}待定{/if}</em></span><span>团购价</span>
+                    </li>
+                    <li>
+                        <i class="ico1"></i>
+                        <span><b>{if $v['scj']}{scj}{else}待定{/if}</b></span><span>市场价</span>
+                    </li>
+                    <li>
+                        <i class="ico2"></i>
+                        <span><b>{clicks}</b></span><span>人气</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="topbk">
+            <div class="end-date clearfix" data-endTime="{enddate}" data-endele=".btn-tg-{aid}" data-noend="<span class='fcr'>永久有效!</span>" data-end="<span class='fcr'>活动已经结束!</span>">
+                <span>剩余时间：</span>
+                <span class="pri-txt">
+                    <span class='day'><d>0</d></span>天<span class='hour'><h>0</h></span>小时<span class='minutes'><m>0</m></span>分<span class='second'><s>0</s></span>秒
+                </span>
+            </div>
+            <div class="ptb5">楼盘地址：{if $v['hdadr']}{hdadr}{else}待定{/if}</div>
+            </div>
+            <div class="tel"><i></i>{if $v['hdtel']}{hdtel}{else}待定{/if}</div>
+        </div>
+    </div>
+   {/c$archives}
+        {if $mpacount>0}
+		  <div class="ptb20">{$mpnav}</div>
+        {else}
+			<div class="noinfo borD8">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+		{/if}
+</div>
+<!-- 底部 -->
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/jqduang.js?{$user_version}"></script>
+<script type="text/javascript" src="{$tplurl}js/setHdTime.js?{$user_version}"></script>
+</body>
+</html>

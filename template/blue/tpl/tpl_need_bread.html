@@ -1,0 +1,19 @@
+{c$zycaid [tclass=cnode/] [listby=ca/] [casource=active/] [level=1/]}<? $zycaid=$v['caid'];?>{/c$zycaid}
+    <div class="wrap">
+        <div class="bread clearfix">
+            <div class="r w300">
+                <form method="get" action="{$cms_abs}index.php">
+                    <div class="search-group form">
+                        <input type="submit" class="btn" value="搜索">
+                        <div class="txt-wrap">
+                            <input type="text" id="searchword" name="searchword" value="" placeholder="{if @$searchword}{searchword}{else}请输入{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}的关键字{/if}" class="txt">
+                        </div>
+                        <input type="hidden" value="{$caid}" name="caid">
+                    </div>
+                </form>
+            </div>
+            <div class="l mt5"><a href="{$cms_abs}" target="_blank"><i class="ico08 fcr mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$deefd [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$deefd}" target="_blank">二手房</a>{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }<i class="pipe">/</i><a href="{indexurl}">{title}列表</a>{/c$yjlmtit}{if !empty($aid)}<i class="pipe">/</i>{subject}{/if}
+            </div>
+        </div>
+    </div>
+    <!-- 面包屑与搜索 end -->

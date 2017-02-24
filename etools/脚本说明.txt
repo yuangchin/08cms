@@ -1,0 +1,33 @@
+ajax.php	前台各种调用数据ajax
+answer.php	前台以及会员中心对提问的问题回答
+brandbuy.php	前台对商品下订单
+CacheLock.class.php     进程锁，模板中，对会员房源信息统计时使用
+ck_house_info.php	(ckeditor插件)插入楼盘信息
+ck_plot_pigure.php	(ckeditor插件)插入小区图
+ck_size_chart.php	(ckeditor插件)插入户型图
+comment.php	资讯评论
+comment_kf.php	看房评论
+comment_zt.php	专题评论
+cu_js.php  	交互权限判断(这里指输出js标记变量,具体判断再页面中实现)
+dfang.php		团购报名
+dianpin.php	楼盘点评
+fyadd.php   发布房源
+guanzu.php	关注楼盘
+jbask.php	问答举报
+jubao.php	房源举报
+kanfangbm.php	看房团报名
+lpliuyan.php	楼盘留言
+mcounter.php	会员发布的资讯，出租，出售，求租，求购信息的统计
+pointer.html	地图
+scang.php	收藏店铺
+scask.php	问答收藏
+tuangou.php	商品团购报名
+wdadd.php	问答提问
+webtw.php	网站提问
+xguanzu.php	需求关注
+yixiang2.php	租房意向，购买意向
+yixiang.php	楼盘意向
+zhoubianadd.php	周边添加
+zvdp.php	(新闻)读完心情提交
+
+

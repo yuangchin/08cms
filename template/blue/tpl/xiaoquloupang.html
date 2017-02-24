@@ -1,0 +1,119 @@
+<?php
+foreach(array('ccid1','orderby','ordermode','searchword','letter') as $k) $$k = cls_Parse::Get("_da.$k");
+$sfields = getsearchfields(4);
+$letter = mhtmlspecialchars($letter);
+cls_uso::init(array(
+    'ntype' => 'c', //cm,m,oc,om
+    'chid' => 4,
+    'nodes' => array('0'),
+));
+extract(cls_usql::order_str(1,'a.lpesfsl DESC,a.lpczsl DESC'));
+$whrstr = cls_usql::where_str(array(
+    array('subject,address','searchword'),
+),u_exsql(4,2));
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>小区列表-{$hostname}</title>
+{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="description" content="{listabstract}" />
+<meta name="keywords" content="{listkeywords}" />
+{/c$cnode}
+{tpl$headinner}
+<link  rel="stylesheet" type="text/css" href="{$tplurl}css/esindex.css?{$user_version}"/>
+</head>
+<body>
+{tpl$fy_head}
+<div class="wrap">
+    <div class="bread clearfix">
+        <div class="r w300">
+            <form method="get" action="{$cms_abs}index.php">
+                <div class="search-group form">
+                    <button type="submit" class="btn"><i class="ico08 fz16 mr3">&#xe607;</i>小区</button>
+                    <div class="txt-wrap">
+                        <input name="searchword" placeholder="小区名称/地址" value="{if !empty($searchword)}{searchword}{/if}" class="txt" type="text" id="lxdh">
+                    </div>
+                    <input type="hidden" name="caid" value="2"/>
+                    <input type="hidden" name="addno" value="2"/>
+                </div>
+            </form>
+        </div>
+        <div class="l mt5"><a href="{$cms_abs}" target="_blank"><i class="ico08 fcr mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$deefd [tclass=cnode/] [listby=ca/] [casource=3/]}{indexurl}{/c$deefd}" target="_blank">二手房</a><i class="pipe">/</i>小区列表</div>
+    </div>
+    <!-- 小区检索 -->
+<div class="search-box">
+    <div class="area"><em>区域：</em><a class="{if empty($ccid1)}act{/if}" href='<? echo cls_uso::extra_url('1'); ?>'>不限</a>
+    <?php
+    $_rows = cls_uso::caco_urls(1); //print_r($_rows);
+    ?>
+    {loop $_rows $k $v}
+    <a class="{if $ccid1==$k}act{/if}" href="{$v['url']}">{$v['title']}</a>
+    {/loop}
+    </div>
+    <div class="blank10"></div>
+    <div class="area area-letter">
+        <em>字母：</em><a class="{if empty($_da['letter'])}act{/if}" href="<?php echo cls_uso::extra_url('letter'); ?>">不限</a>
+            <?php
+            for($i=0; $i<26; $i++){ $chr = chr(65+$i);
+               echo "<a ".($letter==$chr ? ' class="act"' : '')." href='".cls_uso::extra_url('letter',"&letter=$chr")."' >$chr</a>";
+            }?>
+    </div>
+</div>
+
+    <!-- /小区检索 -->
+
+    <div class="w940 l">
+        <div class="xq-tit">
+            <div class="inner">
+                <span id="mpacount" class='r mr10 fz12'>
+                    共有<b class="fcr fz18"><i data-mpacount="1">0</i></b>个记录
+                </span>
+                <h2 class="tit1">小区列表</h2>
+            </div>
+        </div>
+        <div class="xq-list">
+        {c$xqjslb [cname=小区检索列表/] [tclass=archives/] [chsource=2/] [chids=4/] [limits=12/] [ccidson1=1/] [cosource1=2/] [detail=1/] [wherestr=$whrstr/] [orderstr=a.lpesfsl DESC/] [ttl=600/] [mp=1/]}
+        [row]
+            <div class='item clearfix'>
+                <div class='pic'>
+                     <a href='{arcurl7}' target="_blank"><img class="img" alt="{subject}" {c$image [cname=image/] [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=160/] [maxheight=120/] [thumb=1/]}src="{url_s}" width="160" height="120"{/c$image} /></a>
+                </div>
+                <div class='detail'>
+                    <h3> <a target="_blank" href='{arcurl7}'>{subject}</a> </h3>
+                    <p> {address} <a class="icon4" target="_blank" href='{$cms_abs}etools/pointer.html#lat={dt_0}&lng={dt_1}&zoom=11&title=<?=htmlspecialchars($v['subject'])?>'><i class="ico08">&#xe613;</i>查看地图</a> </p>
+                    <p><span class="icon1"><i class="ico08">&#xf05b;</i>{ccid1title}</span></p>
+                    <p> {c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=11/] [mode=in/] [arid=3/]}{if $n['counts']}<a href='{$v[arcurl9]}' target="_blank">户型<i class="fco">({counts})</i></a>{/if}{/c$num} {c$num [tclass=acount/] [val=n/] [chsource=2/] [chids=7/] [mode=in/] [arid=3/]}{if $n['counts']}<a href='{$v[arcurl10]}' target="_blank">相册<i class="fco">({counts})</i></a>{/if}{/c$num} 人气：{clicks} </p>
+                </div>
+                <div class='additional'>
+                    <p><a target="_blank" href="{arcurl8}&fang=mai"><i class="ico">售</i><span class='num'>{lpesfsl}</span>套</a> </p>
+                    <p>最低价：<a target="_blank" href="{arcurl8}&fang=mai"><span class='num'>{csjdj}</span>万元</a> </p>
+                    <p>最高价：<a target="_blank" href="{arcurl8}&fang=mai"><span class='num'>{csjgz}</span>万元</a> </p>
+                </div>
+                <div class='additional'>
+                    <p><a target="_blank" href="{arcurl8}&fang=zhu"><i class="ico ico1">租</i><span class='num'>{lpczsl}</span>套</a> </p>
+                    <p>最低价：<a target="_blank" href="{arcurl8}&fang=zhu"><span class='num'>{czzdj}</span>元/月</a> </p>
+                    <p>最高价：<a target="_blank" href="{arcurl8}&fang=zhu"><span class='num'>{czzgj}</span>元/月</a> </p>
+                </div>
+                <div class='blank0'></div>
+            </div>
+        [/row]
+        {/c$xqjslb}
+
+        {if $mpacount<=0}
+         <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>的{/if}信息</div>
+        {/if}
+        </div>
+        <div class="ptb20">{$mpnav}</div>
+    </div>
+    <!-- 侧栏 -->
+    {tpl$fy_right}
+    <div class="blank0"></div>
+</div>
+{tpl$foot}
+<script type="text/javascript">
+    $('#mpacount').find('[data-mpacount]').replaceWith({$mpacount});
+</script>
+</body>
+</html>

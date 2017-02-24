@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>免费量房-{$hostname}</title>
+{tpl$jz_headinner}
+<link type="text/css" rel="stylesheet" href="{$tplurl}css/common_front.css?{$user_version}">
+<link type="text/css" rel="stylesheet" href="{$tplurl}css/wylf.css?{$user_version}">
+<style>
+.ferfiaOverlay { z-index: 10; position: absolute; width: 100%; background: #000; top: 0; left: 0 }
+.hm_hidc { display: none; position: absolute; left: 0; top: 0; background: #EEE; width: 290px; -webkit-box-shadow: 3px 3px 3px #ddd; -moz-box-shadow: 3px 3px 3px #ddd; box-shadow: 3px 3px 3px #ddd; }
+.wylf5_1 { background-color: #eee; }
+</style>
+</head><body>
+{tpl$jz_head}
+<script type="text/javascript" src="{$cms_abs}include/js/validator.js"></script> 
+<!--header begin--> 
+<!--量房banner1000_314-->
+<div id="_08_adv_fcatalog112"></div>
+<div class="wrap"><img src="{$tplurl}newimages/lflc.jpg" width="1000"></div>
+<!--内容开始-->
+<div class="blank10"></div>
+<div class="wrap"> 
+  <!--左侧栏开始-->
+  <div class="title7">
+	<div class="title7_L">马上申请免费量房 <span class="nom f12 gray79">(<span class="red">*</span>为必填项)</span></div>
+  </div>
+  <div class="con3">
+	<form method="post" action="{$mspaceurl}liangfang.php"  name="hmForm" id="hmForm" >
+	  <div class="wylf1"> <strong>您的姓名：</strong>
+		<input type="text" value="" name="fmdata[xingming]" offset="5" class="input wylf" rule="text" must="1" rev="姓名">
+		<label class="red"> *&nbsp;</label>
+		<input type="radio" class="radio" checked="" id="male" value="1" name="fmdata[sex]">
+		<label for="male">先生</label>
+		<input type="radio" class="radio" id="female" value="2" name="fmdata[sex]">
+		<label for="female">女士</label>
+	  </div>
+	  <div class="wylf2"> <strong>您的手机：</strong>
+		<input type="text" value="" offset="3" name="fmdata[tel]" class="input wylf" rule="text" must="1" regx="/^\s*\d{3,4}[-]?\d{7,8}\s*$/">
+		<img id="mobileIcon" src="{$tplurl}newimages/mobile_hp.gif">
+		<label class="red"> *</label>
+		<label class=" gray79">核实信息真实性以便为您提供更好的免费服务</label>
+	  </div>
+	  <div class="wylf1"> <strong>您的 QQ： </strong>
+		<input type="text" value="" name="fmdata[qq]" class="input wylf"  rev="QQ">
+	  </div>
+	  <div class="wylf2"><strong>装修类型：</strong>
+		<input type="radio" class="radio" checked="" id="decti1" value="1" name="fmdata[zxtype]">
+		<label for="decti1">家庭装修</label>
+		<input type="radio" class="radio" id="decti2" value="2" name="fmdata[zxtype]">
+		<label for="decti2">办公装修</label>
+		<input type="radio" class="radio" id="decti3" value="3" name="fmdata[zxtype]">
+		<label for="decti3">商业装修</label>
+		<input type="radio" class="radio" id="decti4" value="4" name="fmdata[zxtype]">
+		<label for="decti4">其他</label>
+	  </div>
+	  <div class="wylf1"> <strong>小区名称：</strong>
+		<input type="text" focused="1" value="" id="fmdata[xqname]" name="fmdata[xqname]" class="input wylf ac_input" rule="text" must="1"  rev="小区">
+		<label class="red"> *</label>
+	  </div>
+	  <div class="wylf2"> <strong>详细地址：</strong>
+		<input type="text" name="fmdata[address]" id="fmdata[address]" class="input wylf" rule="text" must="1" rev="地址" offset="2">
+		<label class="red"> *</label>
+		<label class=" gray79">填写详细的地址方便装修公司上门量房</label>
+	  </div>
+
+	  <div class="wylf1">
+		<label><strong>房屋类型：</strong></label>
+		<input type="radio" class="radio" checked="" id="bti1" value="1" name="fmdata[housetype]">
+		<label for="bti1">普通</label>
+		<input type="radio" class="radio" id="bti2" value="2" name="fmdata[housetype]">
+		<label for="bti2">复式</label>
+		<input type="radio" class="radio" id="bti3" value="3" name="fmdata[housetype]">
+		<label for="bti3">跃式</label>
+		<input type="radio" class="radio" id="bti4" value="4" name="fmdata[housetype]">
+		<label for="bti4">LOFT</label>
+		<input type="radio" class="radio" id="bti5" value="5" name="fmdata[housetype]">
+		<label for="bti5">别墅</label>
+		<input type="radio" class="radio" id="bti6" value="6" name="fmdata[housetype]">
+		<label for="bti6">其它</label>
+		<input type="hidden" value="" name="building_type">
+	  </div>
+	  <div class="wylf2"> <strong>户型结构：</strong>
+		<select name="fmdata[shi]" rule="must" offset="7">
+		  <option value="">请选择</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		  <option value="9">9</option>
+		</select>
+		<label>室</label>
+		<select name="fmdata[ting]" rule="must" offset="7">
+		  <option value="">请选择</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+		<label>厅</label>
+		<select name="fmdata[wei]" rule="must" offset="7">
+		  <option value="">请选择</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+		<label>卫</label>
+		<label class="red"> *</label>
+	  </div>
+	  <div class="wylf1"> <strong>房屋面积：</strong>
+		<input type="text" style="width: 50px;" value="" name="fmdata[mianji]" class="input wylf" rule="text" must="1" rev="面积" offset="3">
+		平米
+		<label class="red"> *</label>
+	  </div>
+	  <div class="wylf2">
+		<label><strong>喜欢风格：</strong></label>
+		<?
+$arr = cls_cache::Read('coclasses',32);
+$result = '';
+foreach($arr as $k=>$v){
+	if($v['level']==0){
+		$result .= "<input type='checkbox' class='checkbox' id='o$k' value='$k' name='fmdata[fengge][]'><label for='o$k'>$v[title]</label>\n";
+	}
+}
+echo $result;
+		?>
+	  </div>
+	  <div class="wylf1">
+		<label><strong>装修方式：</strong></label>
+		<input type="radio" class="radio" id="decm1" value="1" name="fmdata[fittingmethod]">
+		<label for="decm1">全包</label>
+		<input type="radio" class="radio" id="decm2" value="2" name="fmdata[fittingmethod]">
+		<label for="decm2">半包</label>
+		<input type="radio" class="radio" id="decm3" value="3" name="fmdata[fittingmethod]">
+		<label for="decm3">清包</label>
+		<input type="radio" class="radio" id="decm4" value="4" name="fmdata[fittingmethod]">
+		<label for="decm4">设计</label>
+	  </div>
+	  <div class="wylf2">
+		<label><strong>您的预算：</strong></label>
+		<input type="radio" class="radio" checked="" id="bdg1" value="1" name="fmdata[yusuan]">
+		<label for="bdg1">4万以下</label>
+		<input type="radio" class="radio" id="bdg2" value="2" name="fmdata[yusuan]">
+		<label for="bdg2">4-6万</label>
+		<input type="radio" class="radio" id="bdg3" value="3" name="fmdata[yusuan]">
+		<label for="bdg3">6-8万</label>
+		<input type="radio" class="radio" id="bdg4" value="4" name="fmdata[yusuan]">
+		<label for="bdg4">8-10万</label>
+		<input type="radio" class="radio" id="bdg5" value="5" name="fmdata[yusuan]">
+		<label for="bdg5">10-15万</label>
+		<input type="radio" class="radio" id="bdg6" value="6" name="fmdata[yusuan]">
+		<label for="bdg6">15-20万</label>
+		<input type="radio" class="radio" id="bdg7" value="7" name="fmdata[yusuan]">
+		<label for="bdg7">20万以上</label>
+	  </div>
+	  <div class="wylf1">
+		<label><strong>选择装修公司：</strong></label>
+		<label class="red"> <span class="red">（一次最多可选择3家装修公司）
+		  <input type="hidden" rule="must" name="companyIds[]" id="cpdxval" value=""/>
+		  </span></label>
+	  </div>
+	  <div class="list-jzgs0" id="get_zxcp"> {if @$mid}
+		{c$xzzxgs [cname=装修公司选择已确认的会员/] [tclass=members/] [chsource=2/] [chids=11/] [wherestr=m.mid='$mid'/]}
+		<div class="list-jzgs"> [row]
+		  <label class="list_l">
+			<input type="checkbox" id="companyIds[]{mid}" value="{mid}" class="companyIds checkbox"  checked="true">
+		  </label>
+		  <div class="list_r">
+			<div class="list-jzgs1"><a target="_blank" href="{mspacehome}">{c$pic_175_55 [cname=pic_175_55/] [tclass=image/] [tname=pic/] [val=t/] [maxwidth=175/] [maxheight=55/] [thumb=2/]}<img width="175" height="55" src="{url}">{/c$pic_175_55}</a></div>
+			<div class="list-jzgs2">
+			  <div class="a2">用户评分：</div>
+			  <div class="a3"><a class="greenlink1" target="_blank" href="{mspacehome}">{zonghepf}</a></div>
+			  <div class="a4">评论：</div>
+			  <div class="a5"><a class="greenlink1" target="_blank" href="{mspacehome}">{dpnum}条 </a></div>
+			</div>
+		  </div>
+		</div>
+		[/row]
+		{/c$xzzxgs}
+		{else} 
+		<!-- 家装频道_量房公司 --> 
+		{c$pushs [tclass=pushs/] [paid=push_lfzxgs/] [limits=20/][ttl=600/]}
+		{c$member  [tclass=member/] [chsource=11/] [val=a/] [id=$v[fromid]/] [detail=1/]}
+		<div class="list-jzgs">
+		  <label class="list_l">
+			<input type="checkbox" id="companyIds[]{mid}" value="{mid}" class="companyIds checkbox" >
+		  </label>
+		  <div class="list_r">
+			<div class="list-jzgs1"><a target="_blank" href="{mspacehome}">{c$pic_175_55 [cname=pic_175_55/] [tclass=image/] [tname=pic/] [val=t/] [maxwidth=175/] [maxheight=55/] [thumb=2/]}<img width="175" height="55" src="{url}">{/c$pic_175_55}</a></div>
+			<div class="list-jzgs2">
+			  <div class="a2">用户评分：</div>
+			  <div class="a3"><a class="greenlink1" target="_blank" href="{mspacehome}">{zonghepf}</a></div>
+			  <div class="a4">评论：</div>
+			  <div class="a5"><a class="greenlink1" target="_blank" href="{mspacehome}">{dpnum}条 </a></div>
+			</div>
+		  </div>
+		</div>
+		{/c$member}
+		{/c$pushs}
+		{/if}
+		<div class="blank1"></div>
+		<div class="list-jzgs-1">
+		  <input type="hidden" value="1" name="bsubmit" />
+		  <input type="image" id="preSubmit" src="{$tplurl}newimages/tj-qrww.gif">
+		  {c$mflfyzm [tclass=regcode/] [type=commu32/] [js=1/]} <?php echo _08_HTML::getCode('hmForm11', 'hmForm', 'lfyzmk');?> {/c$mflfyzm} </div>
+	  </div>
+	</form>
+	<!--看看谁家也要装修-->
+	<div class="blank10"></div>
+	<table id="wylf6" width="980" cellspacing="0" cellpadding="0" border="0" align="center" class="wylf6">
+	  <tbody>
+		<tr class="title-wylf">
+		  <td>业主</td>
+		  <td>小区名称</td>
+		  <td>房屋结构</td>
+		  <td>面积</td>
+		  <td>预算</td>
+		  <td>申请日期</td>
+		  <td>装修公司</td>
+		</tr>
+	  {c$freelflist [cname=免费量房列表/] [tclass=commus/] [cuid=32/] [isfunc=1/] [checked=1/] [isall=1/] [wherestr=u_sql_hmeasure()/] [mp=1/]}
+	  [row]
+	  <tr class="wylf{if $v['sn_row']%2==0}5{else}4{/if}">
+		<td>{xingming}</td>
+		<td>{xqname}</td>
+		<td>{shi}/{ting}/{wei}</td>
+		<td>{mianji}平米</td>
+		<td>{c$yusuan [cname=yusuan/] [tclass=field/] [tname=yusuan/] [type=commu/] [fname=yusuan/]}{/c$yusuan}</td>
+		<td>{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd}</td>
+		<td><?php u_sql_hmcorps($v['createdate'],$v['mid']); ?></td>
+	  </tr>
+	  [/row]
+	  {/c$freelflist}
+		</tbody>
+	</table>
+	<div class="ptb10">{$mpnav}</div>
+	<div class="blank0"></div>
+  </div>
+</div>
+<!--内容结束--> 
+<!--footer begin--> 
+{tpl$jz_foot} 
+<!--footer end-->
+<script type="text/javascript">
+/*var $xqInput = $('input[id="fmdata[xqname]"]')
+,$xqAddress  = $('input[id="fmdata[address]"]');
+
+$xqInput.searchWord({
+  param:{
+	caid   : 2
+	,_isxq : 1
+  }
+  ,template: function() {
+		return '<li data-address="' + this.address + '">' + this.subject + '</li>'
+	}
+  ,selectFun:function(a) {
+  	$(this).val(a.html());
+  	$xqAddress.val(a.attr('data-address')).focus().blur();
+  }
+});*/
+//选择装修公司
+$("#get_zxcp").click(function(){
+	var cp_checked=$(".companyIds:checked")
+	if(cp_checked.size()>3){alert("一次最多可选择3家装修公司"); return false;}
+	_comids='';
+	cp_checked.each(function(){
+		_comids=+$(this).val()+","+_comids;
+		});
+	$("#cpdxval").val(_comids);
+})
+$('#wylf6').on('mouseover','tr',function(){
+	$(this).addClass("wylf5_1").find(".hm_hidc").toggle().parent().css('position','relative');
+}).on('mouseout','tr',function(){
+	$(this).removeClass("wylf5_1").find(".hm_hidc").toggle().parent().css('position','static');
+});
+</script> 
+</body>
+</html>

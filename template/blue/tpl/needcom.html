@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{subject}{c$cnode [cname=激活栏目名称/] [tclass=cnode/] [listby=ca/] [casource=active/]}-{listtitle}{/c$cnode}–{$hostname}</title>
+<meta name="keywords" content="{keywords}"/>
+<meta name="description" content="{abstract}"/>
+{tpl$headinner}
+<link rel="stylesheet" href="{$tplurl}css/esindex.css?{$user_version}"/>
+</head>
+<body>
+{tpl$fy_head}
+{tpl$tpl_need_bread}
+<div class="wrap clearfix">
+	<div class="blank5"></div>
+	<!--当前位置+搜索-->
+	<div class="fy-main l">
+		<div class="need-detail p10 bd-gray">
+			<a onclick="return publicCollect('{$aid}');" class="r btn btn-sm form-bdrs"><i class="ico08">&#xf004;</i> 收藏需求</a><h1 class="title">{subject}</h1>
+			<div class="blank0"></div>
+			<ul class="info">
+				<li><b>发布时间：</b>{c$createdate_ymd [cname=createdate_ymd/] [tclass=date/] [tname=createdate/] [date=Y-m-d/]}{/c$createdate_ymd} </li>
+				<li><b>更新时间：</b> <?=u_time_format($refreshdate)?></li>
+				<li><b>意向面积：</b><span class='fs20 fcr fw6'>{mj}</span>M&sup2;</li>
+				<li><b>意向价格：</b><span class='fs20 fcr fw6'>{zj}</span>{if $caid == 10}万元{else}元/月{/if}</li>
+				<li><b>具体需求：</b><span class="l" style="width:620px">{jtyq}</span></li>
+			</ul>
+			<div class="tel clearfix">
+				<i class="ico08 ico-tel">&#xe744;</i>
+				{c$archive [cname=需求会员信息2/] [tclass=archive/] [detail=1/] [pmid=27/]}
+                <p><b class="font24">{lxdh}</b> 联系人：{if empty($mid)}游客{else}{xingming}{/if}</p>
+                <p>联系时请告知是从{$hostname}看到的,谢谢。</p>
+                [#pm#]
+                <p><i class="fz16">没有浏览权限,请升级为经纪人!</i></p>
+				{/c$archive}
+            </div>
+            <div class="blank10"></div>
+		</div>
+	</div>
+	{tpl$fy_right}
+</div>
+<div class="blank10"></div>
+{tpl$foot}
+<script type="text/javascript" src="{$tplurl}js/fy.js?{$user_version}"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<?php
+$dy_member=1;
+$bsubmit = cls_Parse::Get('_da.bsubmit');
+$curuser = cls_UserMain::CurUser();
+$minfo = &$curuser->info;
+$mid = $minfo['mid'];
+$mchid = @$minfo['mchid'];
+if(empty($mid)){
+	cls_message::show('请先登录会员。',"{$mobileurl }index.php?caid=11");
+}
+
+if(!empty($bsubmit)){
+	$oA = new cls_member(array('mid'=>$mid));
+	$oA->ReadInfo();//读取会员资料
+	$oA->ReadConfig();//读取配置
+    $fmdata = &$GLOBALS['fmdata'];
+	//初始化设置项目
+	foreach(array('password_self','email','xingming','lxdh') as $k){//后台架构字段
+		if($k=='password_self' && empty($fmdata['npassword'])) continue;
+        $oA->additem($k,array('_type' => 'field'));
+	}
+    $oA->sv_set_fmdata();  //设置$this->fmdata中的值
+    $oA->sv_items(); //进行余下的所有项目处理，此时未执行数据库操作
+    $oA->sv_update(); //执行自动操作及更新以上变更
+    //结束时需要的事务，包括操作记录、成功提示等
+    $msg = empty($fmdata['npassword']) ? "修改成功！" : "密码修改成功！";
+    cls_message::show($msg,"{$mobileurl }index.php?caid=11&addno=1");
+
+}else{
+	$curuser->detail_data();
+}
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset={mcharset}">
+  <title>修改会员资料-{$hostname}</title>
+  <meta name="keywords" content="修改会员资料" />
+  <meta name="description" content="修改会员资料" />
+  {tpl$m_headinner}
+</head>
+<body>
+<div id="section_container">
+  <!-- 页面容器 -->
+  <section id="index_section" title="修改会员资料" data-footer="false" data-btn="back" class="active">
+	  {tpl$m_header}
+	<article id="up_refresh_article"  class="active">
+	  <div>
+			<ul class="list">
+				<li>
+					<form action="?caid=11&addno=1" method="post">
+						<input name="fid" type="hidden" value="{fid}"
+						<input name="mid" type="hidden" value="{$minfo['mid']}">
+						<div class="input-group">
+							<div class="input-group-divider grid"><span class="col-1">修改密码</span><span class="col-0 fz12 icon-f05a">三项为空时不修改密码</span></div>
+							<div class="input-row">
+								<label>原始密码</label>
+								<input type="password" id="fmdata[opassword]" name="fmdata[opassword]" value=""/>
+							</div>
+							<div class="input-row">
+								<label>新密码</label>
+								<input type="password" id="fmdata[npassword]" name="fmdata[npassword]" value=""/>
+							</div>
+							<div class="input-row">
+								<label>重复密码</label>
+								<input type="password" id="fmdata[npassword2]" name="fmdata[npassword2]"/>
+							</div>
+						</div>
+						<div class="input-group">
+							<div class="input-group-divider">其它资料</div>
+							<div class="input-row">
+								<label>姓名</label>
+								<input type="text" id="fmdata[xingming]" name="fmdata[xingming]" value="{$minfo['xingming']}" required title="姓名不能为空"/>
+							</div>
+							<div class="input-row">
+								<label>手机号码</label>
+								<input type="text" id="fmdata[lxdh]" name="fmdata[lxdh]" value="{$minfo['lxdh']}" required pattern="^\s*\d{3,4}[-]?\d{7,8}\s*$" title="电话不能为空或格式不对"/>
+							</div>
+							<div class="input-row">
+								<label>邮箱</label>
+								<input type="email" id="fmdata[email]" name="fmdata[email]" value="{$minfo['email']}" required title="邮箱不能为空"/>
+							</div>
+
+						</div>
+						<input type="hidden" name="bsubmit" value="修改资料"/>
+						<button id="aaa" class="block" data-icon="icon icon-f076">确定修改</button>
+					</form>
+				</li>
+			</ul>
+		 	</div>
+		</article>
+	</section>
+</div>
+{tpl$m_footer}
+<script type="text/javascript">
+	$()fm.password2.onblur = function() {
+	    fm.password2.setCustomValidity(fm.password2.value != fm.password.value?'两次密码不一致':'');
+	}
+</script>
+</body>
+</html>

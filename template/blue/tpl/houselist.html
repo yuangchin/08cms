@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{c$cnode [tclass=cnode/] [listby=ca/] [casource=active/]}{listtitle}{/c$cnode}{c$lptitle [tclass=nownav/] [coids=ccid1,ccid2,ccid3,ccid14,ccid17,ccid6,ccid12,ccid18/]}-{title}{/c$lptitle}-{$hostname}</title>
+{c$cnode [cname=激活栏目关键词/] [tclass=cnode/] [listby=ca/] [casource=active/]}
+<meta name="keywords" content="{listkeywords}"/>
+<meta name="description" content="{listabstract}"/>
+{/c$cnode}
+{tpl$headinner}
+<link rel="stylesheet" type="text/css" href="{$tplurl}css/houseindex.css?{$user_version}"/>
+<?php $pagetype = 'newhouse'; ?>
+</head>
+<body>
+{tpl$head}
+<div class="wrap">
+    <!-- 面包屑 -->
+    <div class="bread">
+        <a href="{$cms_abs}" target="_blank"><i class="ico08 ico mr5">&#xf015;</i>首页</a><i class="pipe">/</i><a href="{c$lpsy [cname=楼盘首页/] [tclass=cnode/] [val=v/] [listby=ca/] [casource=2/]}{indexurl}{/c$lpsy}" target="_blank">新房</a><i class="pipe">/</i><a class="ls" href="{c$loupanliebiao [cname=楼盘列表/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl1}{/c$loupanliebiao}" target="_blank">楼盘列表</a>
+    </div>
+    <!-- 检索 -->
+	{tpl$lpjstiaojian}
+<!-- 检索结束 -->
+	<div class="blank20"></div>
+	<div class="w930 l">
+        <div class="lp-kuan clearfix">
+            <div class="tab-nav clearfix">
+                <a class="item act" href="{c$loupanliebiao [cname=楼盘列表/] [tclass=cnode/] [listby=ca/] [casource=2/]}{indexurl1}{/c$loupanliebiao}">所有楼盘</a>
+            </div>
+            <div class="blank0"></div>
+            <div class="info clearfix">
+                <span id="tab-page" class="l tab-page"></span>
+                 <span class="r">
+                    <a class="sort-btn {if !in_array($orderby,array('dj','clicks','kpsj'))}act{/if}" href="<?=cls_uso::extra_url('orderby|ordermode')?>">默认</a>
+                    <?=cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">楼盘价格<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "dj", array("act bldown","act blup",""))?>
+                    <?=cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">开盘时间<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "kpsj", array("act bldown","act blup",""))?>
+                    <?=cls_uso::order_tpl('<a class="sort-btn (class)" rel="nofollow" href="(url)">人气<i class="ico08 u">&#xf0dc;</i><i class="ico08 d">&#xf0db;</i></a>', "clicks", array("act bldown","act blup",""))?>
+
+                 </span>
+            </div>
+        </div>
+        {c$yslplb [tclass=archives/] [chsource=2/] [chids=4/] [caidson=1/] [casource=2/] [ccidson1=1/] [cosource1=2/] [ccidson2=1/] [cosource2=2/] [cosource3=2/] [cosource14=2/] [ccidson17=1/] [cosource17=2/] [ccidson18=1/] [cosource18=2/] [ccidson12=1/] [cosource12=2/] [detail=1/] [wherestr=$whrstr/] [orderstr=$orderstr/][ttl=600/] [mp=1/]}
+        [row]
+        <div class="houselist">
+            <div class="pic">
+                <a href='{arcurl}' target="_blank"><img alt="{subject}" {c$thumb [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=160/] [maxheight=120/] [thumb=1/]} data-original="{url_s}" src="{$cms_abs}userfiles/notdel/blank.gif" height="120" width="160"
+{/c$thumb}/>{if $v['ccid41']}<i class="btn btn-xs">推荐</i>{/if}</a>
+            </div>
+            <div class="info">
+                <h3><a href='{arcurl}' target="_blank" class="lv2"><span>{subject}</span></a>
+                <i class="btn btn-xs dais-{ccid18}">{ccid18title}</i></h3>
+                <p>[{ccid1title} {ccid2title}]<span title="{address}">{c$text [tclass=text/] [tname=address/] [trim=45/] [ellip=.../]}{/c$text}</span><a class="icon3" href='{$cms_abs}etools/pointer.html#lat={dt_0}&lng={dt_1}&zoom=13&title=<?=htmlspecialchars($v['subject'])?>' target="_blank"><i class="ico08">&#xe612;</i>查看地图</a></p>
+                <p>{c$archives [tclass=archives/] [chids=11/] [chsource=2/] [val=q/] [limits=3/] [mode=in/] [arid=3/] [orderstr=a.mclicks DESC/] [forceindex=a.mclicks/] [wherestr=zlhx=1/]}<em>主力户型：</em>[row]<a class="mr10" href="{arcurl}" target="_blank" >[{c$shi}/{mj}m&sup2;]</a>[/row]{/c$archives}</p>
+                <p class="tags pt5"><span>{ccid12title}</span>{if $v['zxcd']}<span>{c$zxcd}</span>{/if}{if $v['tslp']}<?php echo cls_uview::field_value($v['tslp'], 'tslp', 4, "<span>(title)</span>"); ?>{/if}</p>
+            </div>
+            <div class="other clearfix">
+                <p class="dj">{if $v['ccid18']==198 && $v['leixing']==0}<a class="msg" href="{arcurl8}&fang=mai" target="_blank">已售完查看二手房源</a>{else} <a href='{arcurl2}' target="_blank"  id="average-price-{aid}">{if $v['dj']==0}<em>待定</em>{else}<em class="arial">{dj}</em>元/m&sup2;{/if}</a>{/if}</p>
+                <div class="blank10"></div>
+                <p>{if $v['bdsm']}<span class="btn btn-xs">{bdsm}</span>{/if}</p>
+                <div class="blank5"></div>
+                {if $v['tel']}<p class="tel"><i class="ico08">&#xe63f;</i>{tel}</p>{/if}
+            </div>
+            <div class="blank0"></div>
+            <p class="info2 clearfix">
+                <span class="r">
+                    <a class="ml10" href="{$cms_abs}index.php?caid=516&lpid={aid}" target="_blank"><span class="ico08">&#xe773;</span>问答</a>
+                    <a class="ml10" href="{arcurl5}" target="_blank"><span class="ico08">&#xe755;</span>点评</a>
+                    {c$lptg [tclass=archives/] [val=b/] [limits=1/] [chsource=2/] [chids=5/] [ttl=600/] [mode=in/] [arid=3/]}<a class="ml10" href="{arcurl}" target="_blank"><span class="ico08">&#xf0c0;</span>团购</a>{/c$lptg}
+                    <label for="pro_{aid}" class="db ml10"><input type="checkbox" id="pro_{aid}" name="" value="" onclick="add_comp(this, '{subject}', '{arcurl}', '{aid}')"/ ><span class="ico08">&#xe604;</span>对比</label>
+                </span>
+                {c$archives1 [tclass=archives/] [chids=1/] [chsource=2/] [val=b/] [limits=1/] [caidson=1/] [casource=1/] [caids=502/] [mode=in/] [arid=1/]}
+                <a href="{arcurl}" title="{subject}" target="_blank"><i class="ico08">&#xf0a1;</i> {subject}</a>
+                {/c$archives1}
+            </p>
+        </div>
+        [/row]
+        {/c$yslplb}
+        {if $mpacount>0}
+		<!-- 分页 -->
+        <div class="ptb20">{mpnav}</div>
+        {else}
+         <div class="noinfo">很抱歉！暂无{if @$searchword}<span>"{searchword}"</span>{/if}{c$yjlmtit [tclass=cnode/] [listby=ca/] [casource=active/] }{title}{/c$yjlmtit}信息</div>
+        {/if}
+	</div>
+    <!-- 右侧 -->
+	{tpl$houselist_right}
+</div>
+
+<script type="text/javascript" src="{$tplurl}js/jquery.js"></script>
+<!-- 懒加载 -->
+<script type="text/javascript" src="{$tplurl}js/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+    $('.pic img').lazyload({effect : "fadeIn"});
+</script>
+<!-- 对比 -->
+<script type="text/javascript" src="{$tplurl}js/contrast.js"></script>
+<script type="text/javascript">
+    //对比框的位置Array(0-左边 1-右边,距边的size,距顶的size)
+    var comp_boxMXY = [1,0,300],chid = '4',comp_action='{$cms_abs}info.php?fid=8&chid='+chid+'#aids=';
+</script>
+<script type="text/javascript">
+    $('#tab-page').html('<span class="msg"><span class="ico08 fco mr3">&#xe60d;</span>共找到<b class="fco arial fz14">{$mpacount}</b>个楼盘</span>')
+</script>
+<!-- 自动完成 -->
+<!-- <script type="text/javascript" src="{$tplurl}js/jqautocomplete.js"></script> -->
+{tpl$foot}
+</body>
+</html>

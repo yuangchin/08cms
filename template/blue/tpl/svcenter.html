@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={mcharset}" />
+<title>{if !empty($futitle)}{futitle}{else}{title}{/if}-{hostname}</title>
+{if !empty($keywords)}
+<meta content="{keywords}" name='keywords'>
+<meta content="{description}" name='description'>
+{/if}
+{tpl$headinner}
+<base target="_blank"/>
+</head>
+<body>
+ <!--服务中心通用头部-->
+ {tpl$tpl_svhead}
+  <div class="blank10"></div>
+  <div class="wrap">
+  	<img src="{$tplurl}images/bgpic.gif" width="1200" />
+    <div class="blank15"></div>
+      <div class="w920 l">
+      
+      <div class="bgFF clearfix">
+      <div class="blank10"></div>
+        <div class="wzinfo pLR10">
+        <!--帮助中心推送位：图文推荐-->
+            <ul>
+                {c$bztttj [tclass=pushs/] [paid=push_111/] [limits=6/] [ttl=600/]}<li>
+                    <div>
+                    <a href="{url}" title="{subject}"><img {c$icon40_40 [tclass=image/] [tname=thumb/] [val=u/] [maxwidth=40/] [maxheight=40/] [icon=1/]} src="{url}" width="40" height="40" {/c$icon40_40} alt="{subject}"/></a>
+                    </div>
+                    <p><strong><a href="{url}" title="{subject}" >{subject}</a></strong></p>
+                    <p>{c$abstract28 [tclass=text/] [tname=abstract/] [dealhtml=clearhtml/] [trim=28/]}{/c$abstract28}</p>
+                </li>
+                {/c$bztttj}
+            </ul>
+        </div>
+       </div>
+       <div class="blank15"></div>
+       <div class="bgFF clearfix">
+       <div class="h440">
+       <div class="blank10"></div>
+       <div class="overnav pos clearfix"><i></i><h3>常见问题</h3><em></em></div>
+       <div class="blank10"></div>
+       	  <div class="cjwtCon pL15">
+          <!---推送位：常见问题-->
+          	{c$fwzxzlm [tclass=catalogs/] [limits=30/] [listby=ca/] [casource=3/] [wherestr=pid='561'/] [ttl=1200/]}
+            {c$jhtj [tclass=pushs/] [paid=push_112/] [val=x/] [limits=5/] [classid1=$v[caid]/] [ttl=600/]}
+            
+            <dl>
+                <dt><span><a href="{$v['indexurl']}" target="_self">更多&gt;&gt;</a></span><em><a href="{$v['indexurl']}" target="_self">{$v['title']}</a></em></dt>
+                [row]<dd>&middot;<a href="{url}" title="{subject}">{subject}</a></dd>[/row]
+            </dl>
+            {/c$jhtj}
+          {/c$fwzxzlm}
+          </div>
+          </div>
+          <div class="blank15"></div>
+       </div>
+      </div>
+      <!--帮助中心统一右边信息-->
+     	{tpl$tpl_svright}
+</div>
+
+<!--公用底部-->
+{tpl$foot}
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>综合标识调用</title>
+<link type="text/css" rel="stylesheet" href="css/css.css" />
+
+</head>
+
+<body>
+<div class="w1 h1 bg1">综合标识调用</div>
+<a name="top"></a>
+<span class="blank5"></span>
+
+<div class="w1 h1 bg2">一、前言</div>
+<div>
+	综合标识调用,主要是为了让用户对标识的能深入地了解标识在html静态页面中的调用。
+</div>
+<span class="blank5"></span>
+<div class="w1 h1 bg2">二、综合标识调用的案例</div>
+<div>
+	<ul>
+        <li class="bg3">案例一：文字列表 （文档列表、类目节点及日期的调用）
+</li>
+        <li class="t3">
+       文字列表调用有以下几个步骤:<br/>
+        1、先看一下静态代码的结构，如图-01所示。<br/>
+        <img src="img/dy01.gif"/><br/>
+        html静态代码<br/>
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;[案例]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101225/207366_1.html"&gt;2010广州车展 四款首发全新中级车导购&lt;/a&gt;&lt;span&gt;2010-12-25&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;strong&gt;[人群与用途]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101225/207364_1.html"&gt;铁二期部分线路开通试运营&lt;/a&gt;&lt;span&gt; 2010-12-25&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;strong&gt;[体验试驾]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101206/86144_1.html"&gt;贺中关村店试营业 捷亚泰宝来8.98万起&lt;/a&gt;&lt;span&gt;2010-12-06&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;strong&gt;[体验试驾]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101122/1462_1.html"&gt;家轿新领袖 PCauto静态评测东风标致408&lt;/a&gt;&lt;span&gt; 2010-11-22&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;strong&gt;[体验试驾]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101115/1458_1.html"&gt;上海火灾遇难人数上升至58人&lt;/a&gt;&lt;span&gt;  2010-11-15&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;&lt;strong&gt;[体验试驾]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101114/1452_1.html"&gt;马力升至424 Se版&lt;/a&gt;&lt;span&gt;   2010-11-14&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;strong&gt;[体验试驾]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101114/1451_1.html"&gt;科鲁兹两厢版海外路试曝光 期待国产&lt;/a&gt;&lt;span&gt; 2010-11-14&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;strong&gt;[修车手册]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101111/879_1.html"&gt;eeeeeeeeeeee&lt;/a&gt;&lt;span&gt;        2010-11-11&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;strong&gt;[媒体评测]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101108/877_1.html"&gt;超乎预期 全新沃尔沃S60/V60意大利试驾&lt;/a&gt;&lt;span&gt;        2010-11-08&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;strong&gt;[媒体评测]&lt;/strong&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101108/876_1.html"&gt;酷感十足 华贵不减 奥迪A7 Sportback评测&lt;/a&gt;&lt;span&gt;        2010-11-08&lt;/span&gt;&lt;/li&gt;<br/>
+&lt;/ul&gt;<br/>
+2、创建文档列表标识{c$zxlist25}，如图-02所示。<br/>
+        <img src="img/dy02.gif"/><br/>
+        其中，内嵌的类目节点标识{c$jhnmu}，如图-03所示。<br/>
+		<img src="img/dy03.gif"/><br/>
+        时间日期类型标识，如图-04所示。
+        <img src="img/dy04.gif"/><br/>
+        3、将{c$zxlist25}标识代替静态模板上的HTML即可。<br/>
+        html静态代码：&lt;ul&gt; {c$zxlist25} &lt;/ul&gt;
+</li>
+</ul>
+
+       
+</li>
+
+<li class="bg3">案例二：图文列表（文档列表、图片模块及类型标识应用）
+</li>
+        <li class="t3">
+         图文列表调用有以下几个步骤:<br/>
+        1、先看一下静态代码的结构，如图-05所示。<br/>
+        <img src="img/dy05.gif"/><br/>
+        html静态代码<br/>
+        &lt;ul class="pList clearfix"&gt;                         
+&lt;li&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101111/1121_1.html"&gt;&lt;img width="120" height="80" alt="" src="http://auto.08cms.com/userfiles/image/20101117/17095252eb3e0cb3261816_120_80.jpg"&gt;&lt;/a&gt;
+  &lt;h4&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101111/1121_1.html"&gt;英特尔WIDI打通电视笔记本&lt;/a&gt;&lt;/h4&gt;
+  &lt;/li&gt;<br/>
+&lt;li&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101111/1120_1.html"&gt;&lt;img width="120" height="80" alt="" src="http://auto.08cms.com/userfiles/image/20101127/27093518d55b8a433d7457_120_80.jpg"&gt;&lt;/a&gt;
+&lt;h4&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101111/1120_1.html"&gt;浙江组团来京招揽高端人才&lt;/a&gt;&lt;/h4&gt;
+  &lt;/li&gt;<br/>
+&lt;/ul&gt;
+2、创建文档列表标识{c$tuwen6}，如图-06所示。<br/>
+        <img src="img/dy06.gif"/><br/>
+其中，文档列表标识{c$tuwen6}内嵌套的图片标识{c$thumb120_80}，如图-07所示。<br/>
+<img src="img/dy07.gif"/><br/>
+3、将实例中的模板静态代码改成&lt;ul class="pList clearfix"&gt; {c$tuwen6} &lt;/ul&gt;
+
+
+        </li>
+        
+        <li class="bg3">案例三：图文案例（文档列表、图片模块 及文本处理的应用）
+</li>
+        <li class="t3">
+         图文列表调用有以下几个步骤:<br/>
+        1、先看一下静态代码的结构，如图-08所示。<br/>
+        <img src="img/dy08.gif"/><br/>
+        html静态代码<br/>
+        &lt;ul class="tList"&gt;
+&lt;li class="pTxt"&gt;
+&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101111/1160_1.html"&gt; &lt;img width="120" height="80" alt="" src="http://auto.08cms.com/userfiles/image/20101116/16141721438b5036f60259_120_80.jpg"&gt;&lt;/a&gt;
+&lt;h4&gt;&lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101111/1160_1.html"&gt;微软张亚勤：天才的蜕变&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;这10年，张亚勤渐渐摆脱了“神 童”的光环，并对其自身价值甚至... &lt;a target="_blank" href="http://auto.08cms.com/html/kanche/20101111/1160_1.html"&gt;[详细]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;<br/>
+2、创建文档列表标识{c$jiantuwen1}，如图-09所示。<br/>
+        <img src="img/dy09.gif"/><br/>
+其中，文档列表标识{c$jiantuwen1}内嵌套的图片标识｛c$thumb120_80｝，如图-10所示<br/>
+<img src="img/dy10.gif"/><br/>
+文档列表标识{c$jiantuwen1}内嵌套的文本处理标识｛c$abstract60｝，如图-11所示<br/>
+<img src="img/dy11.gif"/><br/>
+        
+     </ul>  
+    
+</div>
+<a href="#top" class="ltop"></a>
+</body>
+</html>
